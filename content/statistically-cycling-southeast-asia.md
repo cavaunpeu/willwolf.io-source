@@ -1,6 +1,6 @@
 Title: Statistically Cycling Southeast Asia
 Date: 2014-05-16 00:36
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Tags: cycle tour, linear regression
 Slug: statistically-cycling-southeast-asia

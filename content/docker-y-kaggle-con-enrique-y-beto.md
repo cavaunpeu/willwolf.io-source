@@ -1,6 +1,6 @@
 Title: Docker y Kaggle con Enrique y Beto
 Date: 2017-03-22 19:56
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: docker-y-kaggle-con-enrique-y-beto
 Status: published

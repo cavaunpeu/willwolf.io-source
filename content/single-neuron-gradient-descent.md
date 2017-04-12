@@ -1,6 +1,6 @@
 Title: Single Neuron Gradient Descent
 Date: 2016-05-06 00:42
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Tags: gradient descent, loss functions, neural networks
 Slug: single-neuron-gradient-descent

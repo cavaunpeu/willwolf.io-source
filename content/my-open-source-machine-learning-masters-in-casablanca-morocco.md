@@ -1,6 +1,6 @@
 Title: My Open-Source Machine Learning Masters (in Casablanca, Morocco)
 Date: 2016-07-29 15:23
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: my-open-source-machine-learning-masters-in-casablanca-morocco
 Status: published

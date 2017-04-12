@@ -1,6 +1,6 @@
 Title: Ordered Categorical GLMs for Product Feedback Scores
 Date: 2017-03-17 16:55
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: ordered-categorical-glms-for-product-feedback-scores
 Status: published

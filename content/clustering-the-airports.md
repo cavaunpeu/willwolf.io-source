@@ -1,6 +1,6 @@
 Title: Clustering South American Airports
 Date: 2014-04-25 03:51
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Tags: airports, kmeans clustering, social network analysis, South America
 Slug: clustering-the-airports

@@ -1,6 +1,6 @@
 Title: Intercausal Reasoning in Bayesian Networks
 Date: 2017-03-13 15:14
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: intercausal-reasoning-in-bayesian-networks
 Status: published

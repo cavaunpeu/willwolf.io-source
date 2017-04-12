@@ -1,6 +1,6 @@
 Title: Simulación Estadística del Plebiscito Colombiano: ¿Realmente Ganaron Los del "No?"
 Date: 2016-10-12 11:53
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: simulating-the-colombian-peace-vote-did-the-no-really-win-2
 Status: published

@@ -1,6 +1,6 @@
 Title: Recurrent Neural Network Gradients, and Lessons Learned Therein
 Date: 2016-10-18 14:00
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: recurrent-neural-network-gradients-and-lessons-learned-therein
 Status: published

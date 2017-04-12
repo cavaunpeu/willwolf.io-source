@@ -1,6 +1,6 @@
 Title: Bayesian Inference via Simulated Annealing
 Date: 2017-02-07 15:33
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: bayesian-inference-via-simulated-annealing
 Status: published
@@ -56,4 +56,4 @@ Thanks a lot for reading.
 ---
 Code:
 
-The code for this project can be found [here](https://github.com/cavaunpeu/bayesian-inference-simulated-annealing). 
+The code for this project can be found [here](https://github.com/cavaunpeu/bayesian-inference-simulated-annealing).

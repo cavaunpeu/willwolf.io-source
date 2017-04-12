@@ -1,6 +1,6 @@
 Title: dotify: Recommending Spotify Music Through Country Arithmetic
 Date: 2016-04-15 18:33
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Tags: flask, python, react, recommender systems, vector embeddings
 Slug: dotify-recommending-spotify-music-through-country-arithmetic

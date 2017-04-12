@@ -1,6 +1,6 @@
 Title: Simulating the Colombian Peace Vote: Did the "No" Really Win?
 Date: 2016-10-12 14:58
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: simulating-the-colombian-peace-vote-did-the-no-really-win
 Status: published

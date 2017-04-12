@@ -1,6 +1,6 @@
 Title: Travel Recommendations with Jaccard Similarities
 Date: 2015-10-03 02:40
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Tags: recommender systems, scala
 Slug: travel-recommendations-with-jaccard-similarities

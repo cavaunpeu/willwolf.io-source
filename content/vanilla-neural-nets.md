@@ -1,6 +1,6 @@
 Title: Vanilla Neural Nets
 Date: 2016-05-15 21:27
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Tags: neural networks
 Slug: vanilla-neural-nets

@@ -1,6 +1,6 @@
 Title: Docker and Kaggle with Ernie and Bert
 Date: 2016-11-22 13:39
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Slug: docker-and-kaggle-with-ernie-and-bert
 Status: published

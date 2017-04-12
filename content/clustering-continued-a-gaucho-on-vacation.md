@@ -1,6 +1,6 @@
 Title: Clustering Continued: A Gaucho on Vacation
 Date: 2014-05-02 19:11
-Author: admin
+Author: Will Wolf
 Category: Uncategorized
 Tags: airports, ggplot, kmeans clustering, South America
 Slug: clustering-continued-a-gaucho-on-vacation
