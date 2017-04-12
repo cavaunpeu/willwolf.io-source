@@ -63,8 +63,8 @@ En todos los posts, pienso que los autores desafortunadamente no aclaran
 muy bien la línea divisoria entre la derivación de los gradientes y su
 implementación (eficiente) en código, o por lo menos brincan demasiado
 rápido del primero al segundo. Definen variables
-como  `dbnext`{.EnlighterJSRAW data-enlighter-language="python"},
- `delta_t`{.EnlighterJSRAW data-enlighter-language="python"},
+como  `dbnext`,
+ `delta_t`,
 y $e_{hi}^{2f3}$ sin explicar cabalmente su significado en los
 gradientes analíticos mismos. Como ejemplo, el primer post incluye la
 siguiente sección:

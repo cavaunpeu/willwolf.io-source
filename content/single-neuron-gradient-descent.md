@@ -34,7 +34,7 @@ Our neuron looks like this:
 
 Our parameters look like this:
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 ACTIVATION = 3
 INITIAL_WEIGHT = .5
 INITIAL_BIAS = 2
@@ -48,7 +48,7 @@ Let's work backwards
 
 We have an initial weight and bias of:
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 weight = 3
 bias = 2
 ```
@@ -56,7 +56,7 @@ bias = 2
 After each iteration of gradient descent, we update these parameters
 via:
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 weight += -LEARNING_RATE * weight_gradient
 bias += -LEARNING_RATE * bias_gradient
 ```
@@ -192,7 +192,7 @@ $$
 $$
 
 From there, we just plug in our values from the start ($x$ is
-our `ACTIVATION`{.EnlighterJSRAW data-enlighter-language="null"}) to
+our `ACTIVATION`) to
 solve for `weight_gradient`{.EnlighterJSRAW
 data-enlighter-language="null"} and `bias_gradient`{.EnlighterJSRAW
 data-enlighter-language="null"}. The result of each is a *real-valued
@@ -201,7 +201,7 @@ mathematical concept.
 
 Finally, as initially prescribed, we update our weight and bias via:
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 weight += -LEARNING_RATE * weight_gradient
 bias += -LEARNING_RATE * bias_gradient
 ```

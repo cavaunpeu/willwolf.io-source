@@ -87,7 +87,7 @@ for each country, compute population proportions across these trials,
 and compare with a stacked-bar ggplot. The red bars are for "major"
 airports, green for "semi-major," and blue for "non-major."
 
-``` {.EnlighterJSRAW data-enlighter-language="null"}
+```
 # create stacked bar chart in ggplot
 ggplot(km_by_country, aes(x=Country, y=FractOfWhole, fill=Cluster))
         + geom_bar(position="stack", stat="identity", width=0.75)

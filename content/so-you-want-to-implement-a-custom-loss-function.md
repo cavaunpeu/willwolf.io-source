@@ -83,7 +83,7 @@ encoding the 4 features described above - and we have our corresponding
 target. (In addition, we initialize our weights to 0, and define an
 epsilon with which to clip our predictions in (0, 1)).
 
-``` {.EnlighterJSRAW data-enlighter-language="null"}
+```
 X = np.array([
     [ 0.3213, 0.4856, 0.2995, 2.5044],
     [ 0.3005, 0.4757, 0.2974, 2.4691],
@@ -104,7 +104,7 @@ eps = 1e-15
 
 We have our model:
 
-``` {.EnlighterJSRAW data-enlighter-theme="beyond"}
+```
 def wTx(w, x):
    return np.dot(x, w)
 
@@ -125,7 +125,7 @@ predict that it will be delayed (and leave our house 30 minutes later),
 then we'll be stressed, -$1000, and dining on rubber for the following
 few hours.
 
-``` {.EnlighterJSRAW data-enlighter-language="null"}
+```
 def custom_loss(y, y_predicted):
     return -(y*np.log(y_predicted) - (1-y)*np.log(1-y_predicted)**2).mean()
 
@@ -147,13 +147,13 @@ if we guess 0.2, it's not so bad; if we guess 0.6 it's not so bad; if we
 guess &gt; 0.8, it's really, really bad. \~25 bad. Finally, we compute
 our gradient. As easy as:
 
-``` {.EnlighterJSRAW data-enlighter-language="null"}
+```
 gradient = grad(custom_loss_given_weights)
 ```
 
 And, lastly, apply basic gradient descent:
 
-``` {.EnlighterJSRAW data-enlighter-language="null"}
+```
 for i in range(10000):
     weights -= gradient(weights) * .01
 ```

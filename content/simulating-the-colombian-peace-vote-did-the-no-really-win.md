@@ -59,7 +59,7 @@ probability $p_{invalid}\%$.
 probability $p_{misclassification}\%$.
 5. Majority vote wins.
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 YES_BALLOTS = 6377482
 NO_BALLOTS = 6431376
 UNMARKED_BALLOTS = 86243
@@ -83,7 +83,7 @@ Each remaining, valid ballot is then misclassified with probability
 $p_{misclassification}$. Finally, the tallies of "Yes" and "No" votes
 are counted, and the percentage of "Yes" votes is returned.
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 def simulate_vote(probability_yes):
     yes_votes = int(TOTAL_VOTES * probability_yes)
     no_votes = TOTAL_VOTES - yes_votes
@@ -113,7 +113,7 @@ Let's try this out for varying values of $p_{yes}$. To start, if the
 true, underlying percentage of "Yes" voters were 51%, how often would
 the "No" vote still win?
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 In [16]:
 
 percentage_of_tallied_votes_that_were_yes = simulate_vote(.51)
@@ -128,7 +128,7 @@ arrived at the polls intending to vote "Yes," the "No" vote would have
 nonetheless won in 0 of 100,000 trials. So, how close can we get before
 we start seeing backwards results?
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 for epsilon in [1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7]:
     probability_yes = .5 + epsilon
     percentage_of_tallied_votes_that_were_yes = simulate_vote(probability_yes)

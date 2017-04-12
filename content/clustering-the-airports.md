@@ -97,7 +97,7 @@ really is. Simple subtraction.
 
 ![For k-means clustering analysis on SA airports.](figures/sa_airports_predicted_withinss_plot.png)
 
-``` {.EnlighterJSRAW data-enlighter-language="null"}
+```
 PredSumVal K
 1   43854.32 2
 2   33887.51 3

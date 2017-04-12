@@ -63,7 +63,7 @@ probabilidad de $p_{invalid}\%$.
 de $p_{misclassification}$.
 5. El voto mayoritario gana.
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 YES_BALLOTS = 6377482
 NO_BALLOTS = 6431376
 UNMARKED_BALLOTS = 86243
@@ -89,7 +89,7 @@ también modelado con un proceso Binomial. Por fin, el número de votos
 por el "Sí" y por el "No" se cuentan, y el porcentaje de los que
 pertenecen al "Sí" se entrega.
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 def simulate_vote(probability_yes):
     yes_votes = int(TOTAL_VOTES * probability_yes)
     no_votes = TOTAL_VOTES - yes_votes
@@ -119,7 +119,7 @@ Intentémoslo para valores diferentes de $p_{yes}$. Para empezar, si
 el porcentaje verdadero y subyacente de los que querían el "Sí" fuera
 51%, ¿con qué frecuencia ganaría el "No?"
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 In [16]:
 
 percentage_of_tallied_votes_that_were_yes = simulate_vote(.51)
@@ -135,7 +135,7 @@ ganado igual en 0 de 100,000 pruebas. Pues, la pregunta es la siguiente:
 ¿cuánto nos podemos acercar a la linea divisoria antes de empezar a ver
 resultados que no son representativos?
 
-``` {.EnlighterJSRAW data-enlighter-language="python"}
+```
 for epsilon in [1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7]:
     probability_yes = .5 + epsilon
     percentage_of_tallied_votes_that_were_yes = simulate_vote(probability_yes)
