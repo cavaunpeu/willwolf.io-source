@@ -37,8 +37,6 @@ Once more, this work can be found in the notebook linked above. The
 accompanying repository can be
 found [here](https://github.com/cavaunpeu/intercausal-reasoning).
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/simple_bayesian_network.png){.aligncenter
-.size-full .wp-image-1068 width="473"
-height="319"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/simple_bayesian_network.png)
+![](figures/simple_bayesian_network.png)
 
 Your thoughts are welcome. Many thanks for reading.

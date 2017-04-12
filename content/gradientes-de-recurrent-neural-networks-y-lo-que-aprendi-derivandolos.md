@@ -416,4 +416,3 @@ Referencias claves para este artículo se nombran:
     Python/numpy](https://gist.github.com/karpathy/d4dee566867f8291f086)
 -   [Machine Learning - Recurrent Neural Networks
     Maths](https://www.existor.com/en/ml-rnn.html)
-

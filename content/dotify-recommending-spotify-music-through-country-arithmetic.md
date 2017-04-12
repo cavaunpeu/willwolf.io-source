@@ -24,10 +24,10 @@ being the classic party trick. With
 [dotify](http://dotify.herokuapp.com/), I set out to embed
 countries into vector space myself, and use these embeddings to
 recommend music. What are some songs like "Colombia" .. times "Turkey"
-.. minus "Germany," you ask? [![dotify
-Background](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/04/spotify-is-not-available-in-your-country.png){.aligncenter
-.size-full .wp-image-336 width="800"
-height="239"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/04/spotify-is-not-available-in-your-country.png)
+.. minus "Germany," you ask?
+
+![dotify Background](images/spotify_not_available.png)
+
 To embed, I employ the timeless Implicit Matrix Factorization of [Hu,
 Koren, and Volinsky](http://yifanhu.net/PUB/cf.pdf) on daily Spotify
 Charts data. For a given song in a given country, implicit feedback is
@@ -45,10 +45,9 @@ identical fashion. Feel free to keep entering countries and operators:
 your expression can be as long as you like. Finally, when you're ready
 to terminate your expression and receive song recommendations, simply
 enter the equals sign ("=") in the operator dropdown. For example:
-[![dotify
-Screenshot](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/04/Screen-Shot-2016-04-14-at-10.15.03-PM-1024x566.png){.aligncenter
-.size-large .wp-image-334 width="1024"
-height="566"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/04/Screen-Shot-2016-04-14-at-10.15.03-PM.png)
+
+![dotify Screenshot](images/dotify_screenshot.png)
+
 The app is built with the following core technologies: Flask as both API
 endpoints and a web server; React and LESS on the front-end; Webpack for
 asset compilaton; Postgres database; Heroku for deployment. Feedback is

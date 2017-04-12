@@ -101,16 +101,12 @@ information to recreate the original thereafter.
 Here's an image of the downsized flag of Afghanistan as passed into our
 network:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/afghanistan_reduced_bitmap.png){.aligncenter
-.wp-image-883 .size-full width="102"
-height="68"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/afghanistan_reduced_bitmap.png)
+![](images/afghanistan_reduced_bitmap.png)
 
 So, this is as good as we're ever going to do. When we pass this into
 our network, here's what it predicts:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/reconstructed_afghanistan_reduced_bitmap.png){.size-full
-.wp-image-884 .aligncenter width="102"
-height="68"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/reconstructed_afghanistan_reduced_bitmap.png)
+![](images/reconstructed_afghanistan_reduced_bitmap.png)
 
 Not terrible. Of course, this could be improved with, squarely, more
 training data.
@@ -119,9 +115,7 @@ After training our auto-encoder, we solve for the 64 individual images
 that "maximally activate" each of the 64 "feature detectors," i.e. each
 of our hidden-layer nodes.
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/features.png){.aligncenter
-.size-full .wp-image-882 width="950"
-height="703"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/features.png)
+![](figures/flag_embedding_features.png)
 
 As anticipated, there does in fact appear to be some higher-level
 "structure" in our flags. In other words, we can now empirically see: a
@@ -135,57 +129,36 @@ Next, let's pass all images back through our network, obtain the
 [TSNE](http://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html) algorithm,
 and plot.
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/tsne_plot-1-1024x999.png){.size-large
-.wp-image-886 .aligncenter width="1024"
-height="999"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/tsne_plot-1.png)
+![](figures/country_embeddings_tsne_plot.png)
 
 Points that are close together indicate flags that are visually similar.
 So, what have we learned (or rather, what human intuition have we
 corroborated with empirical, numerical evidence)? Notable similarities
 include:
 
--   Belgium, Chad and Mali:
+- Belgium, Chad and Mali:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/belgium-300x200.jpg){.wp-image-887
-.size-medium .aligncenter width="300"
-height="200"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/belgium.jpg)
+![](images/belgium_flag.jpg)
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/chad-300x181.jpg){.aligncenter
-.wp-image-888 .size-medium width="300"
-height="181"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/chad.jpg)
+![](images/chad_flag.jpg)
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/mali-300x180.jpg){.aligncenter
-.size-medium .wp-image-889 width="300"
-height="180"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/mali.jpg)
+![](images/mali_flag.jpg)
 
--   Malaysia, Liberia and Puerto Rico
+- Malaysia, Liberia and Puerto Rico
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/malaysia-300x181.jpg){.aligncenter
-.size-medium .wp-image-895 width="300"
-height="181"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/malaysia.jpg)
+![](images/malaysia_flag.jpg)
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/liberia-300x180.jpg){.aligncenter
-.size-medium .wp-image-894 width="300"
-height="180"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/liberia.jpg)
-[  
-](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/malaysia.jpg)
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/puerto-rico-300x180.jpg){.aligncenter
-.size-medium .wp-image-896 width="300"
-height="180"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/puerto-rico.jpg)
+![](images/liberia_flag.jpg)
 
--   Canada, Denmark and Peru:
+![](images/puerto_rico_flag.jpg)
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/canada-300x180.jpg){.aligncenter
-.size-medium .wp-image-891 width="300"
-height="180"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/canada.jpg)
+- Canada, Denmark and Peru:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/denmark-300x180.jpg){.aligncenter
-.size-medium .wp-image-892 width="300"
-height="180"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/denmark.jpg)
+![](images/canada_flag.jpg)
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/peru-300x180.jpg){.aligncenter
-.size-medium .wp-image-893 width="300"
-height="180"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/peru.jpg)
+![](images/denmark_flag.jpg)
+
+![](images/peru_flag.jpg)
 
 Here, we see that similarity is defined not just across one type of
 feature, but necessarily, across all. Respectively, the above 3 groups
@@ -201,23 +174,17 @@ hidden-layer of our auto-encoder, and feed-forward (i.e. pass it through
 the decoder). The result is then resized back to the original (where
 more resolution is inherently lost).
 
--   Morocco:
+- Morocco:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/morocco-300x200.png){.aligncenter
-.size-medium .wp-image-907 width="300"
-height="200"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/morocco.png)
+![](images/morocco_generated_flag.png)
 
--   Morocco + Colombia:
+- Morocco + Colombia:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/morocco_colombia-300x200.png){.aligncenter
-.size-medium .wp-image-906 width="300"
-height="200"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/morocco_colombia.png)
+![](images/morocco_colombia_generated_flag.png)
 
--   Morocco + Colombia + Malaysia
+- Morocco + Colombia + Malaysia
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/morocco_colombia_malaysia-300x200.png){.aligncenter
-.size-medium .wp-image-908 width="300"
-height="200"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/12/morocco_colombia_malaysia.png)
+![](images/morocco_colombia_malaysia_generated_flag.png)
 
 If only there were more countries in the world such that I could get
 more data. But hey, we need fewer borders, not more. Thanks for reading.
