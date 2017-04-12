@@ -17,8 +17,8 @@ revelations of word2vec is the remarkably intuitive results of taking
 arithmetic combinations of these vectors - adding, subtracting,
 multiplying, etc. - with
 
-\$latex vector\_{king} - vector\_{man} + vector\_{girl} \\approx
-vector\_{queen}\$
+$latex vector_{king} - vector_{man} + vector_{girl} \approx
+vector_{queen}$
 
 being the classic party trick. With
 [dotify](http://dotify.herokuapp.com/), I set out to embed
@@ -32,9 +32,9 @@ To embed, I employ the timeless Implicit Matrix Factorization of [Hu,
 Koren, and Volinsky](http://yifanhu.net/PUB/cf.pdf) on daily Spotify
 Charts data. For a given song in a given country, implicit feedback is
 counted as the total number of times this song has been streamed
-throughout history. While the confidence matrix \$latex C\_{ui}\$ is
-typically defined as \$latex 1 + \\alpha(1 + R\_{ui})\$ , I tweaked it
-to be \$latex 1 + log \\alpha(1 + R\_{ui})\$ ; this performed better
+throughout history. While the confidence matrix $latex C_{ui}$ is
+typically defined as $latex 1 + \alpha(1 + R_{ui})$ , I tweaked it
+to be $latex 1 + log \alpha(1 + R_{ui})$ ; this performed better
 empirically - likely due to the fact that many songs have stream counts
 orders of magnitude higher than others. I've been trying to implement
 more algorithms by hand as of late, which you'll find in the code. To

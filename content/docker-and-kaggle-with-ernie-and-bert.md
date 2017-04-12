@@ -158,10 +158,10 @@ machine itself.
 
 In practice, this often looks like:
 
-\`docker --tlsverify --tlscacert="\\\$HOME/.docker/machine/certs/ca.pem"
---tlscert="\\\$HOME/.docker/machine/certs/cert.pem"
---tlskey="\\\$HOME/.docker/machine/certs/key.pem" -H=tcp://12.34.56:78
-run --rm -i -v /data:/data kaggle-contest build\_model.sh\`
+\`docker --tlsverify --tlscacert="$HOME/.docker/machine/certs/ca.pem"
+--tlscert="$HOME/.docker/machine/certs/cert.pem"
+--tlskey="$HOME/.docker/machine/certs/key.pem" -H=tcp://12.34.56:78
+run --rm -i -v /data:/data kaggle-contest build_model.sh\`
 
 Cooking tools that you can't buy at the store
 ---------------------------------------------

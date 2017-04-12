@@ -29,16 +29,16 @@ the OSMLM.
 
 For me, graduate school is suboptimal for 3 key reasons:
 
-1\. **It's expensive.** Upon a quick Google search, a 2-year graduate
-program would cost, conservatively, \\\$80,000 in tuition fees alone.
+1. **It's expensive.** Upon a quick Google search, a 2-year graduate
+program would cost, conservatively, $80,000 in tuition fees alone.
 This is a wholly nontrivial sum of money that would impact how I
 structure the next 10 years of my life.
 
-2\. **There are *far* more dependencies.** I have to apply. I have to get
+2. **There are *far* more dependencies.** I have to apply. I have to get
 accepted. I have to find the right professor. I have to find a city
 suitable to my broader interests and lifestyle. This takes time.
 
-3\. **By the time I finish, the field of machine learning will look
+3. **By the time I finish, the field of machine learning will look
 fundamentally different than it did when I started.** This is the most
 important point of all. The only way to remain current with the latest
 tools and techniques is to do just that. Given the furious and
@@ -47,10 +47,10 @@ requires much more than just a few hours on the weekend.
 
 ### Why the OSMLM
 
-1\. **I think the higher education paradigm is changing.** Access to
+1. **I think the higher education paradigm is changing.** Access to
 critical, academic knowledge is increasingly democratic: [Khan
 Academy](https://www.khanacademy.org/) can teach me about the Central
-Limit Theorem as well as any statistics professor. The \~\\\$250,000 in
+Limit Theorem as well as any statistics professor. The \~$250,000 in
 tuition fees commanded by an undergraduate education at a private
 American university is, for some, several decades of debt and
 concession, and for others, prohibitive beyond comedy, reason and
@@ -58,14 +58,14 @@ fantasy alike. If hard-skills are your end, online self-education is an
 immensely attractive, intuitive, and practical road to follow -
 especially in an industry as meritocratic as tech.
 
-2\. **I'm keenly aware of how productive I am in a self-teaching
+2. **I'm keenly aware of how productive I am in a self-teaching
 environment.** I'm largely self-taught in data science. Before that, it
-was online poker: a 5-year, \\\$50 to \\\$150,000 journey of
+was online poker: a 5-year, $50 to $150,000 journey of
 instructional videos, online forums, critical discussion with other
 players and personal coaching - all from the comfort of my bedroom. I'm
 very effective at learning things online.
 
-3\. **Some of the most impactful projects I've completed professionally
+3. **Some of the most impactful projects I've completed professionally
 stemmed directly from those I'd completed personally.** I would not know
 how to ensemble models if not for [Kaggle](https://www.kaggle.com/). I
 would not know how to perform hierarchical Bayesian inference if not for
@@ -75,14 +75,14 @@ The open-source data science community continues to teach me creative
 ways to use data to solve challenging problems. To this end, I want to
 consume, consume, consume.
 
-4\. **The road to further technical expertise is a function of little
+4. **The road to further technical expertise is a function of little
 more than time and effort.** I have a few years' industry experience as
 a Data Scientist. I can write clean code and productionize machine
 learning things. For me, the OSMLM is nothing more than taking all of
 the extra-curricular time spent learning new tools and algorithms and
 making it a full-time job.
 
-5\. **I'm extremely motivated.** The thought of studying machine learning
+5. **I'm extremely motivated.** The thought of studying machine learning
 all day has me smiling from ear to ear. Simply put, I f\*cking love this
 stuff.
 
@@ -116,21 +116,21 @@ What Will I Learn?
 
 I have 4 main areas of focus:
 
-1\. **"Deep Learning" with flavors of: auto-encoders, recommendation, and
+1. **"Deep Learning" with flavors of: auto-encoders, recommendation, and
 natural language processing.** I remain obsessed with encoding
 real-world entities as lists of numbers. I like applications that seek
 to understand people better than they understand themselves. Free-form
 text is everywhere (and relatively quick to process).
 
-2\. **Bayesian Inference.** Because they taught me frequentist statistics
+2. **Bayesian Inference.** Because they taught me frequentist statistics
 in school.
 
-3\. **Game Theory and Reinforcement Learning.** I wrote an [undergraduate
+3. **Game Theory and Reinforcement Learning.** I wrote an [undergraduate
 thesis](https://honors.libraries.psu.edu/catalog/1947) in game theory
 and group dynamics and remain eager to tackle more. Reinforcement
 Learning seems like the hipster way to solve such problems these days.
 
-4\. **Apache Spark and Distributed Computing.** I have a bit of
+4. **Apache Spark and Distributed Computing.** I have a bit of
 professional experience with Spark. As data continues to grow in size,
 distributed computing will move from a thing Google does to a no-duh
 occupational necessity.
@@ -140,15 +140,15 @@ What Does Success Look Like?
 
 Success has a few faces:
 
-1\. **Technical.** Have the technical expertise to lead teams focused on
+1. **Technical.** Have the technical expertise to lead teams focused on
 each of the above 4 topics (weighted towards the former 3,
 realistically).
 
-2\. **Personal.** Learning how I best learn. How do I structure my ideal
+2. **Personal.** Learning how I best learn. How do I structure my ideal
 working day? Do I prefer working alone, or indeed as part of a team?
 What is my optimal balance of reading, thinking, and coding?
 
-3\. **Language.** I intend to speak French like it's my mother tongue.
+3. **Language.** I intend to speak French like it's my mother tongue.
 
 What Happens Afterwards?
 ------------------------

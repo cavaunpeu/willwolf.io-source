@@ -36,25 +36,25 @@ from generative processes - a Binomial process, a Poisson process, a
 Normal process (as is used in this post), for example - which each
 require parameters to get off the ground (in the same way that an oven
 needs a temperature and a time limit before it can start making bread) -
-\$n\$* *and \$p\$*; *\$\\lambda\$; \$\\mu\$* *and \$\\sigma\$,
+$n$* *and $p$*; *$\lambda$; $\mu$* *and $\sigma$,
 respectively. In statistical inference, we work backwards: we're given
 the data, we hypothesize from which type of process(es) it was
 generated, and we then do our best to guess what these initial
 parameters were. Of course, we'll never actually know: if we did, we
 wouldn't need to do any modeling at all.
 
-Bayes's theorem is as follows: \$\$P(p | X) \\sim P(X | p)P(p)\$\$
+Bayes's theorem is as follows: $$P(p | X) \sim P(X | p)P(p)$$
 
-Initially, all we have is \$X\$: the data that we've observed. During
-inference, we pick a parameter value \$p\$ - let's start with \$p =
-123\$ - and compute both \$P(X | p)\$ and \$P(p)\$. We then multiply
-these two together, leaving us with an expression of how likely \$p\$ is
+Initially, all we have is $X$: the data that we've observed. During
+inference, we pick a parameter value $p$ - let's start with $p =
+123$ - and compute both $P(X | p)$ and $P(p)$. We then multiply
+these two together, leaving us with an expression of how likely $p$ is
 to be the *real* parameter that was initially plugged into our
 generative process (that then generated the data we have on hand). This
-expression is called the posterior probability (of \$p\$, given \$X\$).
+expression is called the posterior probability (of $p$, given $X$).
 
 The centerpiece of this process is the computation of the
-quantities \$P(X | p)\$ and \$P(p)\$. To understand, let us use the
+quantities $P(X | p)$ and $P(p)$. To understand, let us use the
 example of *vetting*, i.e. vetting an individual applying for
 citizenship in your country - a typically multi-step process. In this
 particular vetting process, there are two steps.
@@ -62,16 +62,16 @@ particular vetting process, there are two steps.
 1.  The first step, and perhaps the "broader stroke" of the two, is the
     prior probability of this parameter. In setting up our problem we
     choose a prior distribution - i.e. our *a priori* belief of the
-    possible range of values this true parameter \$p\$ can take - and
-    the prior probability \$P(p)\$ echoes how likely we thought \$p =
-    123\$ to be the real thing before we saw any data at all.
+    possible range of values this true parameter $p$ can take - and
+    the prior probability $P(p)$ echoes how likely we thought $p =
+    123$ to be the real thing before we saw any data at all.
 2.  The second step is the likelihood of our data given this parameter.
-    It says: "assuming \$p = 123\$ is the real thing, how likely was it
+    It says: "assuming $p = 123$ is the real thing, how likely was it
     to have observed the data that we did?" For further clarity, let's
     assume in an altogether different problem that our data consists of
     20 coin-flips - 17 heads, and 3 tails - and the parameter we're
-    currently *vetting* is \$p\_{heads} = .064\$ (where \$p\_{heads}\$
-    is the probability of flipping "heads"). So, "assuming \$p = .064\$
+    currently *vetting* is $p_{heads} = .064$ (where $p_{heads}$
+    is the probability of flipping "heads"). So, "assuming $p = .064$
     is the real thing, how likely was it to have observed the data that
     we did?" The answer: "Err, not likely whatsoever."
 
@@ -81,15 +81,15 @@ it's high, they check out.
 
 ### Computing the posterior on the log scale is important
 
-The prior probability \$P(p)\$ for a given parameter is a single
-floating point number. The likelihood of a single data point \$x\$ given
-that parameter \$p\$, expressed \$P(x | p)\$, is a single floating point
-number. To compute the likelihood of *all *of our data \$X\$ given that
-parameter \$p\$, expressed \$P(X | p)\$, we must multiply the individual
+The prior probability $P(p)$ for a given parameter is a single
+floating point number. The likelihood of a single data point $x$ given
+that parameter $p$, expressed $P(x | p)$, is a single floating point
+number. To compute the likelihood of *all *of our data $X$ given that
+parameter $p$, expressed $P(X | p)$, we must multiply the individual
 likelihoods together - one for each data point. For example, if we have
-100 data points, \$P(X | p)\$ is the product of 100 floating point
-numbers. We can write this compactly as: \$\$\\prod\\limits\_{i =
-1}\^{N} P(x\_i | p)\$\$
+100 data points, $P(X | p)$ is the product of 100 floating point
+numbers. We can write this compactly as: $$\prod\limits_{i =
+1}^{N} P(x_i | p)$$
 
 Likelihood values are often pretty small, and multiplying small numbers
 together makes them even smaller. As such, computing the posterior on

@@ -16,25 +16,25 @@ effect, you query for a country, and the engine suggests additional
 countries enjoyed by other users of similar taste. The methodology is
 pretty simple:
 
-1\. Capture travel-related tweets from the [Twitter
+1. Capture travel-related tweets from the [Twitter
 API](http://twitter4j.org/en/), defined as any containing the strings
-"\#ttot", "\#travel", "\#lp", "vacation", "holiday", "wanderlust",
+"#ttot", "#travel", "#lp", "vacation", "holiday", "wanderlust",
 "viajar", "voyager", "destination", "tbex", or "tourism."
 
-2\. If a tweet contains the name of one of 248 countries or territories,
+2. If a tweet contains the name of one of 248 countries or territories,
 or their respective capitals, label this tweet with this country. For
-example, the tweet "backpacking Iran is awesome! \#travel" would be
+example, the tweet "backpacking Iran is awesome! #travel" would be
 labled with "Iran."
 
-3\. Represent each country as a set of the user\_id's who have tweeted
+3. Represent each country as a set of the user_id's who have tweeted
 about it.
 
-4\. Compute a [Jaccard
+4. Compute a [Jaccard
 similarity](https://en.wikipedia.org/wiki/Jaccard_index) - defined as
 the size of the intersection of 2 sets divided by the size of their
 union - between all combinations of countries.
 
-5\. When a country is queried, return the 5 countries Jaccard-most
+5. When a country is queried, return the 5 countries Jaccard-most
 similar. The length of the bars on the plot are the respective
 similarity scores. So - let's try a few out!
 

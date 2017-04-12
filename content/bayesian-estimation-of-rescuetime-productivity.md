@@ -44,8 +44,8 @@ over the 5 levels at hand. As such, our goal is to infer the process
 that generated these samples in the first place. In the canonical case,
 this generative process would be a [Dirichlet
 distribution](https://en.wikipedia.org/wiki/Dirichlet_distribution) - a
-thing that takes a vector \$\\alpha\$ and returns vectors of the length
-of \$\\alpha\$ containing values that sum to 1. With a Dirichlet model
+thing that takes a vector $\alpha$ and returns vectors of the length
+of $\alpha$ containing values that sum to 1. With a Dirichlet model
 conditional on the RescueTime data observed, the world becomes ours: we
 can generate new samples (a "week" of RescueTime log!) ad infinitum, ask
 questions of these samples (e.g. "what percentage of the time can we
@@ -100,9 +100,9 @@ week and observe the resulting vector. Of course, while two weeks might
 have the same type, the resulting vectors will likely be (at least)
 slightly different.
 
-In this instance, given a Dirichlet Process \$DP(G\_0, \\alpha)\$ -
-where \$G\_0\$ is the base distribution (from which the cells and fibers
-decide what type of week we'll have) and \$\\alpha\$ is some prior - we
+In this instance, given a Dirichlet Process $DP(G_0, \alpha)$ -
+where $G_0$ is the base distribution (from which the cells and fibers
+decide what type of week we'll have) and $\alpha$ is some prior - we
 first draw a week-type distribution from the base, then draw our
 week-level probability vector from the result. As a bonus, a DP is able
 to infer an *infinite* number of week-type distributions from our data
@@ -131,57 +131,57 @@ here.
 ### The "Poor-Man's Dirichlet" via Linear Models
 
 A final approach has us modeling the mean of each productivity-level
-proportion \$\\mu\_i\$* *as:
+proportion $\mu_i$* *as:
 
-\$\$\\mu\_i = \\frac{exp(\\phi\_j)}{\\sum\\limits\_{j = 0}\^{4}
-exp(\\phi\_j)}, \\text{for i} \\in \\{0, 1, 2, 3, 4\\}\$\$
+$$\mu_i = \frac{exp(\phi_j)}{\sum\limits_{j = 0}^{4}
+exp(\phi_j)}, \text{for i} \in \{0, 1, 2, 3, 4\}$$
 
-For each \$\\phi\_j\$, we place a normal prior \$\\phi\_j \\sim
-\\text{Normal}(\\mu\_j, \\sigma\_j)\$, and finally give the likelihood
-of each productivity-level proportion \$p\_i\$ as \$p\_i \\sim
-\\text{Normal}(\\mu\_i, \\sigma)\$ as in the canonical Bayesian linear
+For each $\phi_j$, we place a normal prior $\phi_j \sim
+\text{Normal}(\mu_j, \sigma_j)$, and finally give the likelihood
+of each productivity-level proportion $p_i$ as $p_i \sim
+\text{Normal}(\mu_i, \sigma)$ as in the canonical Bayesian linear
 regression. There's two key points to make on this approach.
 
-1.  As each \$\\mu\_i\$ is given by the softmax function the values
-    \$\\phi\_j\$ are not uniquely identifiable, i.e.
+1.  As each $\mu_i$ is given by the softmax function the values
+    $\phi_j$ are not uniquely identifiable, i.e.
     `softmax(vector) = softmax(100 + vector)`. In other words, because
-    the magnitude of the values \$\\phi\_j\$ (how big they are)
+    the magnitude of the values $\phi_j$ (how big they are)
     is unimportant, we cannot (nor do we need to) solve for these values
     exactly. I like to think of this as inference on two multi-collinear
-    variables in a linear regression: with \$corr(x\_1, x\_2) \\approx
-    1\$, we can re-express our regression \$\\mu = \\alpha + \\beta\_1
-    x\_1 + \\beta\_2 x\_2\$ as \$\\mu = \\alpha + (\\beta\_1 +
-    \\beta\_2)x\_1\$; in effect, we now have only 1 coefficient to solve
-    for, and while the sum \$\\beta\_1 + \\beta\_2\$ is what we're
-    trying to infer, the individual values \$\\beta\_1\$ and
-    \$\\beta\_2\$ are of no importance. (For example, if \$\\beta\_1 +
-    \\beta\_2 = 10\$, we could choose \$\\beta\_1 = 3\$ and \$\\beta\_2
-    = 7\$, or \$\\beta\_1 = 9\$ and \$\\beta\_2 = 1\$, or \$\\beta\_1 =
-    .01\$ and \$\\beta\_2 = 9.99\$ to no material difference.) In this
+    variables in a linear regression: with $corr(x_1, x_2) \approx
+    1$, we can re-express our regression $\mu = \alpha + \beta_1
+    x_1 + \beta_2 x_2$ as $\mu = \alpha + (\beta_1 +
+    \beta_2)x_1$; in effect, we now have only 1 coefficient to solve
+    for, and while the sum $\beta_1 + \beta_2$ is what we're
+    trying to infer, the individual values $\beta_1$ and
+    $\beta_2$ are of no importance. (For example, if $\beta_1 +
+    \beta_2 = 10$, we could choose $\beta_1 = 3$ and $\beta_2
+    = 7$, or $\beta_1 = 9$ and $\beta_2 = 1$, or $\beta_1 =
+    .01$ and $\beta_2 = 9.99$ to no material difference.) In this
     case, while interpretation of the individual coefficients
-    \$\\beta\_1\$ and \$\\beta\_2\$ would be erroneous, we can still
-    make perfectly sound predictions on \$\\mu\$ with the posterior for
-    \$\\beta\_1 + \\beta\_2\$. To close, this is but a tangential way of
-    saying that while the posteriors of each individual \$\\phi\_j\$
+    $\beta_1$ and $\beta_2$ would be erroneous, we can still
+    make perfectly sound predictions on $\mu$ with the posterior for
+    $\beta_1 + \beta_2$. To close, this is but a tangential way of
+    saying that while the posteriors of each individual $\phi_j$
     will be of little informative value, the softmax itself will still
     work out just fine.
 2.  I've chosen the likelihood as the normal distribution with
-    respective means \$\\mu\_i\$ and a *shared* standard deviation
-    \$\\sigma\$. First, I note that I hope this is the correct approach,
+    respective means $\mu_i$ and a *shared* standard deviation
+    $\sigma$. First, I note that I hope this is the correct approach,
     i.e. "do it like you would with a typical linear model." Second, I
     chose a shared standard deviation (and, frankly, prayed it would be
     small) as my aim way to omit it from analysis/posterior prediction
-    entirely: while simulating \$\\mu\_i\$ seems perfectly sound, making
+    entirely: while simulating $\mu_i$ seems perfectly sound, making
     a draw from the likelihood function, i.e. the normal distribution
-    with mean \$mu\_i\$ and standard deviation \$\\sigma\$, would cause
+    with mean $mu_i$ and standard deviation $\sigma$, would cause
     our simulated productivity-level proportions to no longer add up to
     1! This seems like the worst of all evils. While the spread of the
     respective distributions *does* seem to vary - thus suggesting we
-    would be wise to infer a separate \$\\sigma\_i\$ for each - I chose
-    to brush this fact aside because: one, the \$p\_i\$'s are not
+    would be wise to infer a separate $\sigma_i$ for each - I chose
+    to brush this fact aside because: one, the $p_i$'s are not
     independent, i.e. as one goes up another must necessarily go down,
     which I hoped might be in some way "captured" by the single
-    parameter, and two, I didn't intend to use the \$\\sigma\$ posterior
+    parameter, and two, I didn't intend to use the $\sigma$ posterior
     in the analysis for the reason mentioned above, checking only to see
     that it converged.
 
@@ -244,16 +244,16 @@ Here (with *a, b, c, d, e* corresponding respectively to "Very
 Distracting Time," "Distracting Time," "Neutral," "Productive Time,"
 "Very Productive Time") I model the likelihoods of all but *e*, as this
 can be computed deterministically from the posterior samples of *a, b,
-c* and *d* as \$e = 1 - a - b - c - d\$. For priors, I place
-\$\\text{Normal}(0, 1)\$ priors on \$\\phi\_j\$, the magnitude of which
+c* and *d* as $e = 1 - a - b - c - d$. For priors, I place
+$\text{Normal}(0, 1)$ priors on $\phi_j$, the magnitude of which
 should be practically irrelevant as stated previously. Finally, I give
-\$\\sigma\$ a \$\\text{Uniform}(0, 1)\$ prior, which seemed like a
+$\sigma$ a $\text{Uniform}(0, 1)$ prior, which seemed like a
 logical magnitude for mapping a vector of values that sum to 1 to
 another vector of values that sum (to something close to) to 1.
 
 Instinctually, this modeling framework seems like it might have a few
 leaks in the theoretical ceiling - especially with respect to my choices
-surrounding the shared \$\\sigma\$ parameter. Should you have some
+surrounding the shared $\sigma$ parameter. Should you have some
 feedback on this approach, please do drop a line in the comments below.
 
 To fit the model, I use the standard Stan NUTS engine to build 4 MCMC
@@ -285,18 +285,18 @@ Both `Rhat` - a value which we hope to equal 1, would be "suspicious at
 1.01 and catastrophic at 1.10"^3^ - and `n_eff` - which expresses the
 "effective" number of samples, i.e. the samples not discarded due to
 high autocorrelation in the NUTS process - are right where we want them
-to be. Furthermore, \$\\sigma\$ ends up being rather small, and with a
+to be. Furthermore, $\sigma$ ends up being rather small, and with a
 rather-tight 97% prediction interval to boot.
 
 Next, let's draw 2000 samples from the joint posterior and plot the
-respective distributions of \$\\mu\_i\$ against one another:
+respective distributions of $\mu_i$ against one another:
 
 ![](figures/poor_mans_dirichlet_posteriors.png)
 
 Remember, the above posterior distributions are for the *expected
 values* (mean) of each productivity-level proportion. In our model, we
 then insert this mean into a normal distribution (the likelihood
-function) with standard deviation \$\\sigma\$ and draw our final value.
+function) with standard deviation $\sigma$ and draw our final value.
 
 Finally, let's compute the mean of each posterior for a final result:
 

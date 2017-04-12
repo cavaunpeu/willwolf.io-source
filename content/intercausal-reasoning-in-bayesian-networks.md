@@ -22,10 +22,10 @@ being in town" and a "car accident on the highway" exert influence over
 whether a traffic jam occurs, we'd like to compute the following
 probabilities: 
 
-\$\$P(\\text{Accident = 1}\\ |\\ \\text{Traffic = 1})\$\$
+$$P(\text{Accident = 1}\ |\ \text{Traffic = 1})$$
 
-\$\$P(\\text{Accident = 1}\\ |\\ \\text{Traffic = 1}, \\text{President =
-1})\$\$
+$$P(\text{Accident = 1}\ |\ \text{Traffic = 1}, \text{President =
+1})$$
 
 Answering these questions with given, ground-truth probabilities is an
 exercise in the factorization of graphical models. Conversely, using

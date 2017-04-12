@@ -122,7 +122,7 @@ reversed. In English, it says: "If the flight actually leaves on time,
 and we predict that it leaves on time (and leave our house early
 enough), then all is right with the world. However, if we instead
 predict that it will be delayed (and leave our house 30 minutes later),
-then we'll be stressed, -\$1000, and dining on rubber for the following
+then we'll be stressed, -$1000, and dining on rubber for the following
 few hours.
 
 ``` {.EnlighterJSRAW data-enlighter-language="null"}
@@ -135,11 +135,11 @@ def custom_loss_given_weights(w):
 ```
 
 Let's see what this function looks like, for each of y=1 and y=0, and
-varying values of y\_hat.
+varying values of y_hat.
 
-![y\_equals\_1](figures/y_equals_1.png)
+![y_equals_1](figures/y_equals_1.png)
 
-![y\_equals\_0](figures/y_equals_0.png)
+![y_equals_0](figures/y_equals_0.png)
 
 When *y = 1*, our cost is that of the typical logarithmic loss. At
 worst, our cost is \~5. However, when *y = 0*, the dynamic is different:

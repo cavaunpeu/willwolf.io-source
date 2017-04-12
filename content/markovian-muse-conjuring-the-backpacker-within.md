@@ -38,25 +38,25 @@ I first learned about Markov chain's in undergrad as a way to model
 industrial processes. To auto-generate text with a Markov chain, the
 process is as follows:
 
-1\. Initialize an empty string, *s*.
+1. Initialize an empty string, *s*.
 
-2\. Choose a word at random from a given body of text, and call
-it* word\_1*. Call the subsequent word *word\_2.*
+2. Choose a word at random from a given body of text, and call
+it* word_1*. Call the subsequent word *word_2.*
 
-3\. Add *word\_1* plus a whitespace to our string, such that *s = s +
-word\_1 + ' '.*
+3. Add *word_1* plus a whitespace to our string, such that *s = s +
+word_1 + ' '.*
 
-4\. Find all occurrences of "*word\_1 word\_2"* in the text. Then, create
-an array of each word that follows. For example, if our *word\_1 =
-\*"Will" and \*word\_2* = "went", and our text contains the snippets
+4. Find all occurrences of "*word_1 word_2"* in the text. Then, create
+an array of each word that follows. For example, if our *word_1 =
+\*"Will" and \*word_2* = "went", and our text contains the snippets
 "Will went to," "Will went further," and "Will went north," then this
 array would be defined as \["to", "further", "north"\]. Duplicate
 elements should remain in the array.
 
-5\. Select a word at random from the array we just created and call
-it *word\_3*. Then, set *word\_1 = word\_2 \*and *word\_2* =* word\_3.\*
+5. Select a word at random from the array we just created and call
+it *word_3*. Then, set *word_1 = word_2 \*and *word_2* =* word_3.\*
 
-6\. Repeat steps 3-5 until the length of our string exceeds a
+6. Repeat steps 3-5 until the length of our string exceeds a
 user-defined string length.
 
 The dataset I'm using is a full corpus of my [travel
@@ -72,7 +72,7 @@ get:
 
     So--Ill Just Tell You What Ive Been Trying To Stitch:
 
-    Paths, and a chicken pie and a terribly anti-climactic pile of roughly 11 baked beans. Shortly after, I parted with the group for the kid who cant ride a manual motor scooter company arrived, yelled at a small valley, and see what was up around there. I really dont understand how 20 people could have stayed a day longer, but alas, the upcoming safari beckoned. This in the ocean at sunset, and meeting a Latvian Emirates stewardess whos going to talk about Africa. Africa is rather different from anywhere Ive ever eaten, and we arrive at Uhuru Peak just as the sun rise. 7:30AM: Eggs, toast, bananas, mangoes on the east coast. The touristy ones are Nungwe and Kendwa, each up north, and this beach resort. I get on the sill of the bags for a good Italian meal and a tuk-tuk with my camera. Light painting and zooming in and out during 10+ second exposures: Boom--artsy. The pinnacle of the sea, each poked with a Rwandese girl who is currently living in a beautiful city to boot. I arrive at Uhuru before sunrise, while it normally commands a fee of \$49 stayed the next post. Kilimanjaro. Mount Kilimanjaro. F*cking beauty. We only stayed at the summit for about 15 minutes, and my world hasnt shattered nor universe exploded just yet. So--Ill just tell you what Ive been moving just a van, packed with roughly 20 seat-belt-less travelers, often outfitted with a toothpick, dipped in chili, and wrapped in newspaper.
+    Paths, and a chicken pie and a terribly anti-climactic pile of roughly 11 baked beans. Shortly after, I parted with the group for the kid who cant ride a manual motor scooter company arrived, yelled at a small valley, and see what was up around there. I really dont understand how 20 people could have stayed a day longer, but alas, the upcoming safari beckoned. This in the ocean at sunset, and meeting a Latvian Emirates stewardess whos going to talk about Africa. Africa is rather different from anywhere Ive ever eaten, and we arrive at Uhuru Peak just as the sun rise. 7:30AM: Eggs, toast, bananas, mangoes on the east coast. The touristy ones are Nungwe and Kendwa, each up north, and this beach resort. I get on the sill of the bags for a good Italian meal and a tuk-tuk with my camera. Light painting and zooming in and out during 10+ second exposures: Boom--artsy. The pinnacle of the sea, each poked with a Rwandese girl who is currently living in a beautiful city to boot. I arrive at Uhuru before sunrise, while it normally commands a fee of $49 stayed the next post. Kilimanjaro. Mount Kilimanjaro. F*cking beauty. We only stayed at the summit for about 15 minutes, and my world hasnt shattered nor universe exploded just yet. So--Ill just tell you what Ive been moving just a van, packed with roughly 20 seat-belt-less travelers, often outfitted with a toothpick, dipped in chili, and wrapped in newspaper.
 
 Fast-forward a year. Between January 1st, 2013, and March 1st, 2013, I
 was in Senegal and Guinea. Using these dates and the same post length,

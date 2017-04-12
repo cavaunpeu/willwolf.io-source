@@ -72,31 +72,31 @@ Why we want the gradient
 ------------------------
 
 I'll be keeping this simple because it is simple. Our initial weight
-(\$w\_0 = 3\$) and bias (\$b\_0 = 2\$) were chosen randomly. As such,
+($w_0 = 3$) and bias ($b_0 = 2$) were chosen randomly. As such,
 our network will likely make terrible predictions. By definition, our
 cost will be high. We want to make our cost low. Let's pick a new weight
-and bias that change this cost by \$\\Delta C\$, where \$\\Delta C\$ is
-some strictly negative number. For our weight: Define \$\\Delta C\$ as
+and bias that change this cost by $\Delta C$, where $\Delta C$ is
+some strictly negative number. For our weight: Define $\Delta C$ as
 "how much our cost changes with respect to a 1 unit change in our
 weight" times "how much we changed our weight". In math, that looks
 like:
 
-\\begin{align} \\Delta C &=\\frac{\\partial C}{\\partial w} (w\_{i+1} -
-w\_i)\\\\ &=\\nabla C \\cdot \\Delta w\\\\ \\end{align}
+\begin{align} \Delta C &=\frac{\partial C}{\partial w} (w_{i+1} -
+w_i)\\ &=\nabla C \cdot \Delta w\\ \end{align}
 
-Our goal is to make \$\\Delta C\$ strictly negative, such that every
+Our goal is to make $\Delta C$ strictly negative, such that every
 time we update our weight, we do so in a way that lowers our cost.
-Duh. Let's choose \$\\Delta w = -\\eta\\ \\nabla C\$. Our previous
+Duh. Let's choose $\Delta w = -\eta\ \nabla C$. Our previous
 expression becomes:
 
-\\begin{align} \\Delta C &=\\nabla C \\cdot \\Delta w\\\\ &=\\nabla C
-\\cdot (-\\eta\\ \\nabla C)\\\\ &=-\\eta||\\nabla C||\\\  
+\begin{align} \Delta C &=\nabla C \cdot \Delta w\\ &=\nabla C
+\cdot (-\eta\ \nabla C)\\ &=-\eta||\nabla C||\\
 
-\\end{align}
+\end{align}
 
-\$\\ ||\\nabla C||\$ is strictly positive, and a positive number
-multiplied by a negative number (\$-\\eta\$) is strictly negative. So,
-by choosing \$\\Delta w = -\\eta\\ \\nabla C\$, our \$\\Delta C\$ is
+$\ ||\nabla C||$ is strictly positive, and a positive number
+multiplied by a negative number ($-\eta$) is strictly negative. So,
+by choosing $\Delta w = -\eta\ \nabla C$, our $\Delta C$ is
 always negative; in other words, at each iteration of gradient descent -
 in which we perform `weight += delta_weight`{.EnlighterJSRAW
 data-enlighter-language="null"}, a.k.a.
@@ -105,11 +105,11 @@ data-enlighter-language="null"} - our cost always goes down. Nice.
 
 For our bias, it's the very same thing.
 
-Deriving \$\\frac{\\partial C}{\\partial w}\$ and \$\\frac{\\partial C}{\\partial b}\$
+Deriving $\frac{\partial C}{\partial w}$ and $\frac{\partial C}{\partial b}$
 --------------------------------------------------------------------------------------
 
-Deriving both \$\\frac{\\partial C}{\\partial w}\$
-and \$\\frac{\\partial C}{\\partial b}\$ is pure 12th grade calculus.
+Deriving both $\frac{\partial C}{\partial w}$
+and $\frac{\partial C}{\partial b}$ is pure 12th grade calculus.
 Plain and simple. If you forget your 12th grade calculus, spend \~2
 minutes refreshing your memory with an article online. It's not
 difficult. Before we begin, we must first define a cost function and an
@@ -120,72 +120,72 @@ loss](https://en.wikipedia.org/wiki/Loss_function#Quadratic_loss_function)
 and a [sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)
 respectively.
 
-\$C(\\hat{y}) = \\frac{1}{2}(y - \\hat{y})\^2\$
+$C(\hat{y}) = \frac{1}{2}(y - \hat{y})^2$
 
-\$\\sigma(z) = \\frac{1}{1 + e\^{-z}}\$
+$\sigma(z) = \frac{1}{1 + e^{-z}}$
 
-.. where \$\\hat{y}\$ is the neuron's final output, \$z\$ is the linear
-combination (\$wx+b\$) input, and \$\\hat{y} = \\sigma(z)\$.
+.. where $\hat{y}$ is the neuron's final output, $z$ is the linear
+combination ($wx+b$) input, and $\hat{y} = \sigma(z)$.
 
-Using the chain rule, our desired expression \$\\frac{\\partial
-C}{\\partial w}\$ becomes:
+Using the chain rule, our desired expression $\frac{\partial
+C}{\partial w}$ becomes:
 
-\\begin{align}
+\begin{align}
 
-\\frac{\\partial C}{\\partial w} &=
-C'(\\hat{y})\\frac{d}{dw}\\sigma(z)\\\  
+\frac{\partial C}{\partial w} &=
+C'(\hat{y})\frac{d}{dw}\sigma(z)\\
 
-&= C'(\\hat{y})\\sigma'(z)\\frac{d}{dw}z\\\  
+&= C'(\hat{y})\sigma'(z)\frac{d}{dw}z\\
 
-&= C'(\\hat{y})\\sigma'(z)\\frac{d}{dw}(wx + b)\\\  
+&= C'(\hat{y})\sigma'(z)\frac{d}{dw}(wx + b)\\
 
-&= C'(\\hat{y})\\sigma'(z)x\\\  
+&= C'(\hat{y})\sigma'(z)x\\
 
-\\end{align}
+\end{align}
 
-For our bias, the expression \$\\frac{\\partial C}{\\partial b}\$ is
+For our bias, the expression $\frac{\partial C}{\partial b}$ is
 almost identical:
 
-\\begin{align}
+\begin{align}
 
-\\frac{\\partial C}{\\partial b} &=
-C'(\\hat{y})\\frac{d}{db}\\sigma(z)\\\  
+\frac{\partial C}{\partial b} &=
+C'(\hat{y})\frac{d}{db}\sigma(z)\\
 
-&= C'(\\hat{y})\\sigma'(z)\\frac{d}{db}z\\\  
+&= C'(\hat{y})\sigma'(z)\frac{d}{db}z\\
 
-&= C'(\\hat{y})\\sigma'(z)\\frac{d}{db}(wx + b)\\\  
+&= C'(\hat{y})\sigma'(z)\frac{d}{db}(wx + b)\\
 
-&= C'(\\hat{y})\\sigma'(z)\\\  
+&= C'(\hat{y})\sigma'(z)\\
 
-\\end{align}
+\end{align}
 
-Now we need expressions for \$C'\$ and \$\\sigma'\$. Let's derive them.
+Now we need expressions for $C'$ and $\sigma'$. Let's derive them.
 
-\\begin{align}
+\begin{align}
 
-C'(\\hat{y}) &= 2 \\cdot \\frac{1}{2}(y - \\hat{y})\\\  
+C'(\hat{y}) &= 2 \cdot \frac{1}{2}(y - \hat{y})\\
 
-&= y - \\hat{y}\\\  
+&= y - \hat{y}\\
 
-\\end{align}
+\end{align}
 
-\\begin{align} \\sigma'(z) &= -1(1+e\^{-z})\^{-2}(e\^{-z})(-1)\\\\ &=
-\\frac{e\^{-z}}{1+e\^{-z}}\\\\ &=
-\\frac{1}{1+e\^{-z}}\\frac{e\^{-z}}{1+e\^{-z}}\\\\ &=
-\\frac{1}{1+e\^{-z}}\\frac{(1 + e\^{-z}) - 1}{1+e\^{-z}}\\\\ &=
-\\frac{1}{1+e\^{-z}}\\bigg(1 - \\frac{1}{1+e\^{-z}}\\bigg)\\\\ &=
-\\sigma(z)(1-\\sigma(z)) \\end{align}
+\begin{align} \sigma'(z) &= -1(1+e^{-z})^{-2}(e^{-z})(-1)\\ &=
+\frac{e^{-z}}{1+e^{-z}}\\ &=
+\frac{1}{1+e^{-z}}\frac{e^{-z}}{1+e^{-z}}\\ &=
+\frac{1}{1+e^{-z}}\frac{(1 + e^{-z}) - 1}{1+e^{-z}}\\ &=
+\frac{1}{1+e^{-z}}\bigg(1 - \frac{1}{1+e^{-z}}\bigg)\\ &=
+\sigma(z)(1-\sigma(z)) \end{align}
 
-As such, our final expressions for \$\\frac{\\partial C}{\\partial w}\$
-and \$\\frac{\\partial C}{\\partial b}\$ are:
+As such, our final expressions for $\frac{\partial C}{\partial w}$
+and $\frac{\partial C}{\partial b}$ are:
 
-\$\\frac{\\partial C}{\\partial w} &= (y - \\hat{y})(\\sigma(wx +
-b)(1-\\sigma(wx + b)))x\$
+$\frac{\partial C}{\partial w} &= (y - \hat{y})(\sigma(wx +
+b)(1-\sigma(wx + b)))x$
 
-\$\\frac{\\partial C}{\\partial b} &= (y - \\hat{y})(\\sigma(wx +
-b)(1-\\sigma(wx + b)))\$
+$\frac{\partial C}{\partial b} &= (y - \hat{y})(\sigma(wx +
+b)(1-\sigma(wx + b)))$
 
-From there, we just plug in our values from the start (\$x\$ is
+From there, we just plug in our values from the start ($x$ is
 our `ACTIVATION`{.EnlighterJSRAW data-enlighter-language="null"}) to
 solve for `weight_gradient`{.EnlighterJSRAW
 data-enlighter-language="null"} and `bias_gradient`{.EnlighterJSRAW

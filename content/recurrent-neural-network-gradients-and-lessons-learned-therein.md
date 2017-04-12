@@ -19,13 +19,13 @@ instead of an input of fixed length. Concretely, imagine we are training
 a sentiment classifier on a bunch of tweets. To embed these tweets in
 vector space, we create a bag-of-words model with vocabulary size 3. In
 a typical neural network, this implies an input layer of size 3; an
-input could be \$\[4, 9, 3\]\$, or \$\[1, 0, 5\]\$, or \$\[0, 0, 6\]\$,
+input could be $\[4, 9, 3\]$, or $\[1, 0, 5\]$, or $\[0, 0, 6\]$,
 for example. In a recurrent neural network, our input layer has the
 same size 3, but instead of just a single size-3 input, we can feed it a
 sequence of size-3 inputs of any length. For example, an input could be
-\$\[\[1, 8, 5\], \[2, 2, 4\]\]\$, or \$\[\[6, 7, 3\], \[6, 2, 4\], \[9,
-17, 5\]\]\$, or \$\[\[2, 3, 0\], \[1, 1, 7\], \[5, 5, 3\], \[8, 18,
-4\]\]\$.
+$\[\[1, 8, 5\], \[2, 2, 4\]\]$, or $\[\[6, 7, 3\], \[6, 2, 4\], \[9,
+17, 5\]\]$, or $\[\[2, 3, 0\], \[1, 1, 7\], \[5, 5, 3\], \[8, 18,
+4\]\]$.
 
 On the inside, recurrent neural networks have a different feedforward
 mechanism than typical neural networks. In addition, each input in our
@@ -62,16 +62,16 @@ the derivation of the gradients and their (efficient) implementation in
 code, or at the very least jump too quickly from one to another. They
 define variables like `dbnext`{.EnlighterJSRAW
 data-enlighter-language="python"},  `delta_t`{.EnlighterJSRAW
-data-enlighter-language="python"}, and \$e\_{hi}\^{2f3}\$ without
+data-enlighter-language="python"}, and $e_{hi}^{2f3}$ without
 thoroughly explaining their place in the analytical gradients
 themselves. As one example, the first post includes the snippet:
 
-> \$\$\\frac {\\partial J\^{t=2}} {\\partial w\^{xh}\_{mi}} =
-> e\^{t=2f2}\_{hi} \\frac {\\partial h\^{t=2}\_i} {\\partial
-> z\^{t=2}\_{hi}} \\frac {\\partial z\^{t=2}\_{hi}} {\\partial
-> w\^{xh}\_{mi}} + e\^{t=1f2}\_{hi} \\frac {\\partial h\^{t=1}\_i}
-> {\\partial z\^{t=1}\_{hi}} \\frac {\\partial z\^{t=1}\_{hi}}
-> {\\partial w\^{xh}\_{mi}}\$\$
+> $$\frac {\partial J^{t=2}} {\partial w^{xh}_{mi}} =
+> e^{t=2f2}_{hi} \frac {\partial h^{t=2}_i} {\partial
+> z^{t=2}_{hi}} \frac {\partial z^{t=2}_{hi}} {\partial
+> w^{xh}_{mi}} + e^{t=1f2}_{hi} \frac {\partial h^{t=1}_i}
+> {\partial z^{t=1}_{hi}} \frac {\partial z^{t=1}_{hi}}
+> {\partial w^{xh}_{mi}}$$
 
 So far, he's just talking about analytical gradients. Next, he gives
 hint to the implementation-in-code that follows.
@@ -81,21 +81,21 @@ hint to the implementation-in-code that follows.
 > we can initially compute the derivatives of *J* with respect to the
 > third unrolled network with only the first term:
 >
-> \$\$\\frac {\\partial J\^{t=3}} {\\partial w\^{xh}\_{mi}} =
-> e\^{t=3f3}\_{hi} \\frac {\\partial h\^{t=3}\_i} {\\partial
-> z\^{t=3}\_{hi}} \\frac {\\partial z\^{t=3}\_{hi}} {\\partial
-> w\^{xh}\_{mi}}\$\$
+> $$\frac {\partial J^{t=3}} {\partial w^{xh}_{mi}} =
+> e^{t=3f3}_{hi} \frac {\partial h^{t=3}_i} {\partial
+> z^{t=3}_{hi}} \frac {\partial z^{t=3}_{hi}} {\partial
+> w^{xh}_{mi}}$$
 >
 > And then add in the other term only when we get to the second unrolled
 > network:
 >
-> \$\$\\frac {\\partial J\^{t=2}} {\\partial w\^{xh}\_{mi}} =
-> (e\^{t=2f3}\_{hi} + e\^{t=2f2}\_{hi}) \\frac {\\partial h\^{t=2}\_i}
-> {\\partial z\^{t=2}\_{hi}} \\frac {\\partial z\^{t=2}\_{hi}}
-> {\\partial w\^{xh}\_{mi}}\$\$
+> $$\frac {\partial J^{t=2}} {\partial w^{xh}_{mi}} =
+> (e^{t=2f3}_{hi} + e^{t=2f2}_{hi}) \frac {\partial h^{t=2}_i}
+> {\partial z^{t=2}_{hi}} \frac {\partial z^{t=2}_{hi}}
+> {\partial w^{xh}_{mi}}$$
 
-Note the opposing definitions of the variable \$\\frac {\\partial
-J\^{t=2}} {\\partial w\^{xh}\_{mi}}\$. As far as I know, the latter is,
+Note the opposing definitions of the variable $\frac {\partial
+J^{t=2}} {\partial w^{xh}_{mi}}$. As far as I know, the latter is,
 in a vacuum, categorically false. This said, I believe the author is
 simply providing an alternative definition of this quantity in line with
 a computational shortcut he later takes.
@@ -115,17 +115,17 @@ perfect sense.
 ### Backpropagation Through Time
 
 In the simplest case, let's assume our network has 3 layers, and just 3
-parameters to optimize: \$\\mathbf{W\^{xh}}\$, \$\\mathbf{W\^{hh}}\$ and
-\$\\mathbf{W\^{hy}}\$. The foundational equations of this network are as
+parameters to optimize: $\mathbf{W^{xh}}$, $\mathbf{W^{hh}}$ and
+$\mathbf{W^{hy}}$. The foundational equations of this network are as
 follows:
 
--   \$\\mathbf{z\_t} = \\mathbf{W\^{xh}}\\mathbf{x} +
-    \\mathbf{W\^{hh}}\\mathbf{h\_{t-1}}\$
--   \$\\mathbf{h\_t} = tanh(\\mathbf{z\_t})\$
--   \$\\mathbf{y\_t} = \\mathbf{W\^{hy}}\\mathbf{h\_t}\$
--   \$\\mathbf{p\_t} = softmax(\\mathbf{y\_t})\$
--   \$\\mathbf{J\_t} = crossentropy(\\mathbf{p\_t},
-    \\mathbf{\\text{labels}\_t})\$
+-   $\mathbf{z_t} = \mathbf{W^{xh}}\mathbf{x} +
+    \mathbf{W^{hh}}\mathbf{h_{t-1}}$
+-   $\mathbf{h_t} = tanh(\mathbf{z_t})$
+-   $\mathbf{y_t} = \mathbf{W^{hy}}\mathbf{h_t}$
+-   $\mathbf{p_t} = softmax(\mathbf{y_t})$
+-   $\mathbf{J_t} = crossentropy(\mathbf{p_t},
+    \mathbf{\text{labels}_t})$
 
 I've written "softmax" and "cross-entropy" for clarity: before tackling
 the math below, it is important to understand what they do, and how to
@@ -134,231 +134,231 @@ derive their gradients by hand.
 Before moving forward, let's restate the definition of a partial
 derivative itself.
 
-> A partial derivative, for example \$\\frac{\\partial y}{\\partial
-> x}\$, measures how much \$y\$ increases with every 1-unit increase in
-> \$x\$.
+> A partial derivative, for example $\frac{\partial y}{\partial
+> x}$, measures how much $y$ increases with every 1-unit increase in
+> $x$.
 
-Our cost \$\\mathbf{J\_t}\$ is the *total* *cost* (i.e., not the average
+Our cost $\mathbf{J_t}$ is the *total* *cost* (i.e., not the average
 cost) of a given sequence of inputs. As such, a 1-unit increase in
-\$\\mathbf{W\^{hy}}\$ will impact each of \$\\mathbf{J\_1}\$,
-\$\\mathbf{J\_2}\$ and \$\\mathbf{J\_3}\$ individually. Therefore, our
+$\mathbf{W^{hy}}$ will impact each of $\mathbf{J_1}$,
+$\mathbf{J_2}$ and $\mathbf{J_3}$ individually. Therefore, our
 gradient is equal to the sum of the respective gradients at each time
-step \$t\$:
+step $t$:
 
-\$\$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{hy}}} =
-\\sum\\limits\_t \\frac{\\partial \\mathbf{J\_t}}{\\partial
-\\mathbf{W\^{hy}}} = \\frac{\\partial \\mathbf{J\_3}}{\\partial
-\\mathbf{W\^{hy}}} + \\frac{\\partial \\mathbf{J\_2}}{\\partial
-\\mathbf{W\^{hy}}} + \\frac{\\partial \\mathbf{J\_1}}{\\partial
-\\mathbf{W\^{hy}}}\$\$  
-\$\$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{hh}}} =
-\\sum\\limits\_t \\frac{\\partial \\mathbf{J\_t}}{\\partial
-\\mathbf{W\^{hh}}} = \\frac{\\partial \\mathbf{J\_3}}{\\partial
-\\mathbf{W\^{hh}}} + \\frac{\\partial \\mathbf{J\_2}}{\\partial
-\\mathbf{W\^{hh}}} + \\frac{\\partial \\mathbf{J\_1}}{\\partial
-\\mathbf{W\^{hh}}}\$\$  
-\$\$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{xh}}} =
-\\sum\\limits\_t \\frac{\\partial \\mathbf{J\_t}}{\\partial
-\\mathbf{W\^{xh}}} = \\frac{\\partial \\mathbf{J\_3}}{\\partial
-\\mathbf{W\^{xh}}} + \\frac{\\partial \\mathbf{J\_2}}{\\partial
-\\mathbf{W\^{xh}}} + \\frac{\\partial \\mathbf{J\_1}}{\\partial
-\\mathbf{W\^{xh}}}\$\$
+$$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hy}}} =
+\sum\limits_t \frac{\partial \mathbf{J_t}}{\partial
+\mathbf{W^{hy}}} = \frac{\partial \mathbf{J_3}}{\partial
+\mathbf{W^{hy}}} + \frac{\partial \mathbf{J_2}}{\partial
+\mathbf{W^{hy}}} + \frac{\partial \mathbf{J_1}}{\partial
+\mathbf{W^{hy}}}$$
+$$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hh}}} =
+\sum\limits_t \frac{\partial \mathbf{J_t}}{\partial
+\mathbf{W^{hh}}} = \frac{\partial \mathbf{J_3}}{\partial
+\mathbf{W^{hh}}} + \frac{\partial \mathbf{J_2}}{\partial
+\mathbf{W^{hh}}} + \frac{\partial \mathbf{J_1}}{\partial
+\mathbf{W^{hh}}}$$
+$$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{xh}}} =
+\sum\limits_t \frac{\partial \mathbf{J_t}}{\partial
+\mathbf{W^{xh}}} = \frac{\partial \mathbf{J_3}}{\partial
+\mathbf{W^{xh}}} + \frac{\partial \mathbf{J_2}}{\partial
+\mathbf{W^{xh}}} + \frac{\partial \mathbf{J_1}}{\partial
+\mathbf{W^{xh}}}$$
 
 Let's take this piece by piece.
 
 ### Algebraic Derivatives
 
-\$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{hh}}}\$:
+$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hh}}}$:
 
-Starting with \$\\frac{\\partial \\mathbf{J\_3}}{\\partial
-\\mathbf{W\^{hy}}}\$, we note that a change in \$\\mathbf{W\^{hy}}\$
-will only impact \$\\mathbf{J\_3}\$ at time \$t=3\$:
-\$\\mathbf{W\^{hy}}\$ plays no role in computing the value of anything
-other than \$\\mathbf{y\_3}\$. Therefore:
+Starting with $\frac{\partial \mathbf{J_3}}{\partial
+\mathbf{W^{hy}}}$, we note that a change in $\mathbf{W^{hy}}$
+will only impact $\mathbf{J_3}$ at time $t=3$:
+$\mathbf{W^{hy}}$ plays no role in computing the value of anything
+other than $\mathbf{y_3}$. Therefore:
 
-\$\$\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{W\^{hy}}} =
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{p\_3}}
-\\frac{\\partial \\mathbf{p\_3}}{\\partial \\mathbf{y\_3}}
-\\frac{\\partial \\mathbf{y\_3}}{\\partial \\mathbf{W\^{hy}}}\$\$  
-\$\$\\frac{\\partial \\mathbf{J\_2}}{\\partial \\mathbf{W\^{hy}}} =
-\\frac{\\partial \\mathbf{J\_2}}{\\partial \\mathbf{p\_2}}
-\\frac{\\partial \\mathbf{p\_2}}{\\partial \\mathbf{y\_2}}
-\\frac{\\partial \\mathbf{y\_2}}{\\partial \\mathbf{W\^{hy}}}\$\$  
-\$\$\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{W\^{hy}}} =
-\\frac{\\partial \\mathbf{J\_1}}{\\partial \\mathbf{p\_1}}
-\\frac{\\partial \\mathbf{p\_1}}{\\partial \\mathbf{y\_1}}
-\\frac{\\partial \\mathbf{y\_1}}{\\partial \\mathbf{W\^{hy}}}\$\$
+$$\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hy}}} =
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
+\frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
+\frac{\partial \mathbf{y_3}}{\partial \mathbf{W^{hy}}}$$
+$$\frac{\partial \mathbf{J_2}}{\partial \mathbf{W^{hy}}} =
+\frac{\partial \mathbf{J_2}}{\partial \mathbf{p_2}}
+\frac{\partial \mathbf{p_2}}{\partial \mathbf{y_2}}
+\frac{\partial \mathbf{y_2}}{\partial \mathbf{W^{hy}}}$$
+$$\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hy}}} =
+\frac{\partial \mathbf{J_1}}{\partial \mathbf{p_1}}
+\frac{\partial \mathbf{p_1}}{\partial \mathbf{y_1}}
+\frac{\partial \mathbf{y_1}}{\partial \mathbf{W^{hy}}}$$
 
-\$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{hh}}}\$:
+$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hh}}}$:
 
-Starting with \$\\frac{\\partial \\mathbf{J\_3}}{\\partial
-\\mathbf{W\^{hh}}}\$, a change in \$\\mathbf{W\^{hh}}\$ will impact our
-cost \$\\mathbf{J\_3}\$ in *3 separate ways: *once, when computing the
-value of \$\\mathbf{h\_1}\$; once, when computing the value of
-\$\\mathbf{h\_2}\$, which depends on \$\\mathbf{h\_1}\$; once, when
-computing the value of \$\\mathbf{h\_3}\$, which depends on
-\$\\mathbf{h\_2}\$, which depends on \$\\mathbf{h\_1}\$.
+Starting with $\frac{\partial \mathbf{J_3}}{\partial
+\mathbf{W^{hh}}}$, a change in $\mathbf{W^{hh}}$ will impact our
+cost $\mathbf{J_3}$ in *3 separate ways: *once, when computing the
+value of $\mathbf{h_1}$; once, when computing the value of
+$\mathbf{h_2}$, which depends on $\mathbf{h_1}$; once, when
+computing the value of $\mathbf{h_3}$, which depends on
+$\mathbf{h_2}$, which depends on $\mathbf{h_1}$.
 
-More generally, a change in \$\\mathbf{W\^{hh}}\$ will impact our cost
-\$\\mathbf{J\_t}\$ on \$t\$ separate occasions. Therefore:
+More generally, a change in $\mathbf{W^{hh}}$ will impact our cost
+$\mathbf{J_t}$ on $t$ separate occasions. Therefore:
 
-\$\$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{hh}}} =
-\\sum\\limits\_{k=0}\^{t} \\frac{\\partial \\mathbf{J\_t}}{\\partial
-\\mathbf{h\_t}} \\frac{\\partial \\mathbf{h\_t}}{\\partial
-\\mathbf{h\_k}} \\frac{\\partial \\mathbf{h\_k}}{\\partial
-\\mathbf{z\_k}} \\frac{\\partial \\mathbf{z\_k}}{\\partial
-\\mathbf{W\^{hh}}}\$\$
+$$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hh}}} =
+\sum\limits_{k=0}^{t} \frac{\partial \mathbf{J_t}}{\partial
+\mathbf{h_t}} \frac{\partial \mathbf{h_t}}{\partial
+\mathbf{h_k}} \frac{\partial \mathbf{h_k}}{\partial
+\mathbf{z_k}} \frac{\partial \mathbf{z_k}}{\partial
+\mathbf{W^{hh}}}$$
 
 Then, with this definition, we compute our individual gradients as:
 
-\\begin{align\*}
+\begin{align\*}
 
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{W\^{hh}}} &=
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{p\_3}}
-\\frac{\\partial \\mathbf{p\_3}}{\\partial \\mathbf{y\_3}}
-\\frac{\\partial \\mathbf{y\_3}}{\\partial \\mathbf{h\_3}}  
-\\frac{\\partial \\mathbf{h\_3}}{\\partial \\mathbf{z\_3}}  
-\\frac{\\partial \\mathbf{z\_3}}{\\partial \\mathbf{W\^{hh}}}\\\\ &+
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hh}}} &=
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
+\frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
+\frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
+\frac{\partial \mathbf{h_3}}{\partial \mathbf{z_3}}
+\frac{\partial \mathbf{z_3}}{\partial \mathbf{W^{hh}}}\\ &+
 
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{p\_3}}
-\\frac{\\partial \\mathbf{p\_3}}{\\partial \\mathbf{y\_3}}
-\\frac{\\partial \\mathbf{y\_3}}{\\partial \\mathbf{h\_3}}  
-\\frac{\\partial \\mathbf{h\_3}}{\\partial \\mathbf{z\_3}}  
-\\frac{\\partial \\mathbf{z\_3}}{\\partial \\mathbf{h\_2}}  
-\\frac{\\partial \\mathbf{h\_2}}{\\partial \\mathbf{z\_2}}  
-\\frac{\\partial \\mathbf{z\_2}}{\\partial \\mathbf{W\^{hh}}}\\\\ &+
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
+\frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
+\frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
+\frac{\partial \mathbf{h_3}}{\partial \mathbf{z_3}}
+\frac{\partial \mathbf{z_3}}{\partial \mathbf{h_2}}
+\frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
+\frac{\partial \mathbf{z_2}}{\partial \mathbf{W^{hh}}}\\ &+
 
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{p\_3}}
-\\frac{\\partial \\mathbf{p\_3}}{\\partial \\mathbf{y\_3}}
-\\frac{\\partial \\mathbf{y\_3}}{\\partial \\mathbf{h\_3}}  
-\\frac{\\partial \\mathbf{h\_3}}{\\partial \\mathbf{z\_3}}  
-\\frac{\\partial \\mathbf{z\_3}}{\\partial \\mathbf{h\_2}}  
-\\frac{\\partial \\mathbf{h\_2}}{\\partial \\mathbf{z\_2}}  
-\\frac{\\partial \\mathbf{z\_2}}{\\partial \\mathbf{h\_1}}  
-\\frac{\\partial \\mathbf{h\_1}}{\\partial \\mathbf{z\_1}}  
-\\frac{\\partial \\mathbf{z\_1}}{\\partial \\mathbf{W\^{hh}}}\\\  
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
+\frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
+\frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
+\frac{\partial \mathbf{h_3}}{\partial \mathbf{z_3}}
+\frac{\partial \mathbf{z_3}}{\partial \mathbf{h_2}}
+\frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
+\frac{\partial \mathbf{z_2}}{\partial \mathbf{h_1}}
+\frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
+\frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{hh}}}\\
 
-\\end{align\*}
+\end{align\*}
 
-\\begin{align\*}
+\begin{align\*}
 
-\\frac{\\partial \\mathbf{J\_2}}{\\partial \\mathbf{W\^{hh}}} &=  
-\\frac{\\partial \\mathbf{J\_2}}{\\partial \\mathbf{p\_2}}
-\\frac{\\partial \\mathbf{p\_2}}{\\partial \\mathbf{y\_2}}
-\\frac{\\partial \\mathbf{y\_2}}{\\partial \\mathbf{h\_2}}  
-\\frac{\\partial \\mathbf{h\_2}}{\\partial \\mathbf{z\_2}}  
-\\frac{\\partial \\mathbf{z\_2}}{\\partial \\mathbf{W\^{hh}}}\\\\ &+  
-\\frac{\\partial \\mathbf{J\_2}}{\\partial \\mathbf{p\_2}}
-\\frac{\\partial \\mathbf{p\_2}}{\\partial \\mathbf{y\_2}}
-\\frac{\\partial \\mathbf{y\_2}}{\\partial \\mathbf{h\_2}}  
-\\frac{\\partial \\mathbf{h\_2}}{\\partial \\mathbf{z\_2}}  
-\\frac{\\partial \\mathbf{z\_2}}{\\partial \\mathbf{h\_1}}  
-\\frac{\\partial \\mathbf{h\_1}}{\\partial \\mathbf{z\_1}}  
-\\frac{\\partial \\mathbf{z\_1}}{\\partial \\mathbf{W\^{hh}}}
+\frac{\partial \mathbf{J_2}}{\partial \mathbf{W^{hh}}} &=
+\frac{\partial \mathbf{J_2}}{\partial \mathbf{p_2}}
+\frac{\partial \mathbf{p_2}}{\partial \mathbf{y_2}}
+\frac{\partial \mathbf{y_2}}{\partial \mathbf{h_2}}
+\frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
+\frac{\partial \mathbf{z_2}}{\partial \mathbf{W^{hh}}}\\ &+
+\frac{\partial \mathbf{J_2}}{\partial \mathbf{p_2}}
+\frac{\partial \mathbf{p_2}}{\partial \mathbf{y_2}}
+\frac{\partial \mathbf{y_2}}{\partial \mathbf{h_2}}
+\frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
+\frac{\partial \mathbf{z_2}}{\partial \mathbf{h_1}}
+\frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
+\frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{hh}}}
 
-\\end{align\*}
+\end{align\*}
 
-\\begin{align\*}
+\begin{align\*}
 
-\\frac{\\partial \\mathbf{J\_1}}{\\partial \\mathbf{W\^{hh}}} &=  
-\\frac{\\partial \\mathbf{J\_1}}{\\partial \\mathbf{p\_1}}
-\\frac{\\partial \\mathbf{p\_1}}{\\partial \\mathbf{y\_1}}
-\\frac{\\partial \\mathbf{y\_1}}{\\partial \\mathbf{h\_1}}  
-\\frac{\\partial \\mathbf{h\_1}}{\\partial \\mathbf{z\_1}}  
-\\frac{\\partial \\mathbf{z\_1}}{\\partial \\mathbf{W\^{hh}}}
+\frac{\partial \mathbf{J_1}}{\partial \mathbf{W^{hh}}} &=
+\frac{\partial \mathbf{J_1}}{\partial \mathbf{p_1}}
+\frac{\partial \mathbf{p_1}}{\partial \mathbf{y_1}}
+\frac{\partial \mathbf{y_1}}{\partial \mathbf{h_1}}
+\frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
+\frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{hh}}}
 
-\\end{align\*}
+\end{align\*}
 
-\$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{xh}}}\$:
+$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{xh}}}$:
 
 Similarly:
 
-\$\$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{xh}}} =
-\\sum\\limits\_{k=0}\^{t} \\frac{\\partial \\mathbf{J\_t}}{\\partial
-\\mathbf{h\_t}} \\frac{\\partial \\mathbf{h\_t}}{\\partial
-\\mathbf{h\_k}} \\frac{\\partial \\mathbf{h\_k}}{\\partial
-\\mathbf{z\_k}} \\frac{\\partial \\mathbf{z\_k}}{\\partial
-\\mathbf{W\^{xh}}}\$\$
+$$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{xh}}} =
+\sum\limits_{k=0}^{t} \frac{\partial \mathbf{J_t}}{\partial
+\mathbf{h_t}} \frac{\partial \mathbf{h_t}}{\partial
+\mathbf{h_k}} \frac{\partial \mathbf{h_k}}{\partial
+\mathbf{z_k}} \frac{\partial \mathbf{z_k}}{\partial
+\mathbf{W^{xh}}}$$
 
 Therefore:
 
-\\begin{align\*}
+\begin{align\*}
 
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{W\^{xh}}} &=
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{p\_3}}
-\\frac{\\partial \\mathbf{p\_3}}{\\partial \\mathbf{y\_3}}
-\\frac{\\partial \\mathbf{y\_3}}{\\partial \\mathbf{h\_3}}  
-\\frac{\\partial \\mathbf{h\_3}}{\\partial \\mathbf{z\_3}}  
-\\frac{\\partial \\mathbf{z\_3}}{\\partial \\mathbf{W\^{xh}}}\\\\ &+  
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{p\_3}}
-\\frac{\\partial \\mathbf{p\_3}}{\\partial \\mathbf{y\_3}}
-\\frac{\\partial \\mathbf{y\_3}}{\\partial \\mathbf{h\_3}}  
-\\frac{\\partial \\mathbf{h\_3}}{\\partial \\mathbf{z\_3}}  
-\\frac{\\partial \\mathbf{z\_3}}{\\partial \\mathbf{h\_2}}  
-\\frac{\\partial \\mathbf{h\_2}}{\\partial \\mathbf{z\_2}}  
-\\frac{\\partial \\mathbf{z\_2}}{\\partial \\mathbf{W\^{xh}}}\\\\ &+  
-\\frac{\\partial \\mathbf{J\_3}}{\\partial \\mathbf{p\_3}}
-\\frac{\\partial \\mathbf{p\_3}}{\\partial \\mathbf{y\_3}}
-\\frac{\\partial \\mathbf{y\_3}}{\\partial \\mathbf{h\_3}}  
-\\frac{\\partial \\mathbf{h\_3}}{\\partial \\mathbf{z\_3}}  
-\\frac{\\partial \\mathbf{z\_3}}{\\partial \\mathbf{h\_2}}  
-\\frac{\\partial \\mathbf{h\_2}}{\\partial \\mathbf{z\_2}}  
-\\frac{\\partial \\mathbf{z\_2}}{\\partial \\mathbf{h\_1}}  
-\\frac{\\partial \\mathbf{h\_1}}{\\partial \\mathbf{z\_1}}  
-\\frac{\\partial \\mathbf{z\_1}}{\\partial \\mathbf{W\^{xh}}}
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{xh}}} &=
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
+\frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
+\frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
+\frac{\partial \mathbf{h_3}}{\partial \mathbf{z_3}}
+\frac{\partial \mathbf{z_3}}{\partial \mathbf{W^{xh}}}\\ &+
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
+\frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
+\frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
+\frac{\partial \mathbf{h_3}}{\partial \mathbf{z_3}}
+\frac{\partial \mathbf{z_3}}{\partial \mathbf{h_2}}
+\frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
+\frac{\partial \mathbf{z_2}}{\partial \mathbf{W^{xh}}}\\ &+
+\frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
+\frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
+\frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
+\frac{\partial \mathbf{h_3}}{\partial \mathbf{z_3}}
+\frac{\partial \mathbf{z_3}}{\partial \mathbf{h_2}}
+\frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
+\frac{\partial \mathbf{z_2}}{\partial \mathbf{h_1}}
+\frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
+\frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{xh}}}
 
-\\end{align\*}
+\end{align\*}
 
-\\begin{align\*}
+\begin{align\*}
 
-\\frac{\\partial \\mathbf{J\_2}}{\\partial \\mathbf{W\^{xh}}} &=  
-\\frac{\\partial \\mathbf{J\_2}}{\\partial \\mathbf{p\_2}}
-\\frac{\\partial \\mathbf{p\_2}}{\\partial \\mathbf{y\_2}}
-\\frac{\\partial \\mathbf{y\_2}}{\\partial \\mathbf{h\_2}}  
-\\frac{\\partial \\mathbf{h\_2}}{\\partial \\mathbf{z\_2}}  
-\\frac{\\partial \\mathbf{z\_2}}{\\partial \\mathbf{W\^{xh}}}\\\\ &+  
-\\frac{\\partial \\mathbf{J\_2}}{\\partial \\mathbf{p\_2}}
-\\frac{\\partial \\mathbf{p\_2}}{\\partial \\mathbf{y\_2}}
-\\frac{\\partial \\mathbf{y\_2}}{\\partial \\mathbf{h\_2}}  
-\\frac{\\partial \\mathbf{h\_2}}{\\partial \\mathbf{z\_2}}  
-\\frac{\\partial \\mathbf{z\_2}}{\\partial \\mathbf{h\_1}}  
-\\frac{\\partial \\mathbf{h\_1}}{\\partial \\mathbf{z\_1}}  
-\\frac{\\partial \\mathbf{z\_1}}{\\partial \\mathbf{W\^{xh}}}
+\frac{\partial \mathbf{J_2}}{\partial \mathbf{W^{xh}}} &=
+\frac{\partial \mathbf{J_2}}{\partial \mathbf{p_2}}
+\frac{\partial \mathbf{p_2}}{\partial \mathbf{y_2}}
+\frac{\partial \mathbf{y_2}}{\partial \mathbf{h_2}}
+\frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
+\frac{\partial \mathbf{z_2}}{\partial \mathbf{W^{xh}}}\\ &+
+\frac{\partial \mathbf{J_2}}{\partial \mathbf{p_2}}
+\frac{\partial \mathbf{p_2}}{\partial \mathbf{y_2}}
+\frac{\partial \mathbf{y_2}}{\partial \mathbf{h_2}}
+\frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
+\frac{\partial \mathbf{z_2}}{\partial \mathbf{h_1}}
+\frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
+\frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{xh}}}
 
-\\end{align\*}
+\end{align\*}
 
-\\begin{align\*}
+\begin{align\*}
 
-\\frac{\\partial \\mathbf{J\_1}}{\\partial \\mathbf{W\^{xh}}} &=  
-\\frac{\\partial \\mathbf{J\_1}}{\\partial \\mathbf{p\_1}}
-\\frac{\\partial \\mathbf{p\_1}}{\\partial \\mathbf{y\_1}}
-\\frac{\\partial \\mathbf{y\_1}}{\\partial \\mathbf{h\_1}}  
-\\frac{\\partial \\mathbf{h\_1}}{\\partial \\mathbf{z\_1}}  
-\\frac{\\partial \\mathbf{z\_1}}{\\partial \\mathbf{W\^{xh}}}
+\frac{\partial \mathbf{J_1}}{\partial \mathbf{W^{xh}}} &=
+\frac{\partial \mathbf{J_1}}{\partial \mathbf{p_1}}
+\frac{\partial \mathbf{p_1}}{\partial \mathbf{y_1}}
+\frac{\partial \mathbf{y_1}}{\partial \mathbf{h_1}}
+\frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
+\frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{xh}}}
 
-\\end{align\*}
+\end{align\*}
 
 ### Analytical Derivatives
 
 Finally, we plug in the individual partial derivates to compute our
 final gradients, where:
 
--   \$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{y\_t}} =
-    \\mathbf{p\_t} - \\mathbf{\\text{labels}\_t}\$, where
-    \$\\mathbf{\\text{labels}\_t}\$ is a one-hot vector of the correct
-    answer at a given time-step \$t\$
--   \$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{W\^{hy}}} =
-    (\\mathbf{p\_t} - \\mathbf{\\text{labels}\_t})\\mathbf{h\_t}\$
--   \$\\frac{\\partial \\mathbf{J\_t}}{\\partial \\mathbf{h\_t}} =
-    (\\mathbf{p\_t} - \\mathbf{\\text{labels}\_t})\\mathbf{W\^{hy}}\$
--   \$\\frac{\\partial \\mathbf{h\_t}}{\\partial \\mathbf{z\_t}} = 1 -
-    tanh\^2(\\mathbf{z\_t}) = 1 - \\mathbf{h\_t}\^2\$,
-    as \$\\mathbf{h\_t} = tanh(\\mathbf{z\_t})\$
--   \$\\frac{\\partial \\mathbf{z\_t}}{\\mathbf{h\_{t-1}}} =
-    \\mathbf{W\^{hh}}\$
--   \$\\frac{\\partial \\mathbf{z\_t}}{\\partial \\mathbf{W\^{xh}}} =
-    \\mathbf{x\_t}\$
--   \$\\frac{z\_t}{\\partial \\mathbf{W\^{hh}}} = \\mathbf{h\_{t-1}}\$
+-   $\frac{\partial \mathbf{J_t}}{\partial \mathbf{y_t}} =
+    \mathbf{p_t} - \mathbf{\text{labels}_t}$, where
+    $\mathbf{\text{labels}_t}$ is a one-hot vector of the correct
+    answer at a given time-step $t$
+-   $\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hy}}} =
+    (\mathbf{p_t} - \mathbf{\text{labels}_t})\mathbf{h_t}$
+-   $\frac{\partial \mathbf{J_t}}{\partial \mathbf{h_t}} =
+    (\mathbf{p_t} - \mathbf{\text{labels}_t})\mathbf{W^{hy}}$
+-   $\frac{\partial \mathbf{h_t}}{\partial \mathbf{z_t}} = 1 -
+    tanh^2(\mathbf{z_t}) = 1 - \mathbf{h_t}^2$,
+    as $\mathbf{h_t} = tanh(\mathbf{z_t})$
+-   $\frac{\partial \mathbf{z_t}}{\mathbf{h_{t-1}}} =
+    \mathbf{W^{hh}}$
+-   $\frac{\partial \mathbf{z_t}}{\partial \mathbf{W^{xh}}} =
+    \mathbf{x_t}$
+-   $\frac{z_t}{\partial \mathbf{W^{hh}}} = \mathbf{h_{t-1}}$
 
 At this point, you're done: you've computed your gradients, and you
 understand Backpropagation Through Time. From this point forward, all
@@ -367,16 +367,16 @@ that's left is writing some for-loops.
 ### Implementation Shortcuts
 
 As you'll readily note, when computing the gradient for, for
-example, \$\\frac{\\partial \\mathbf{J\_3}}{\\partial
-\\mathbf{W\^{xh}}}\$, we'll need access to our labels at time-steps
-\$t=3\$, \$t=2\$ and \$t=1\$. For \$\\frac{\\partial
-\\mathbf{J\_2}}{\\partial \\mathbf{W\^{xh}}}\$, we'll need our labels at
-time-steps \$t=2\$ and \$t=1\$. Finally, for \$\\frac{\\partial
-\\mathbf{J\_1}}{\\partial \\mathbf{W\^{xh}}}\$, we'll need our labels at
-just \$t=1\$. Naturally, we look to make this efficient: for, for
-example, \$\\frac{\\partial \\mathbf{J\_3}}{\\partial
-\\mathbf{W\^{xh}}}\$, how about just compute the \$t=3\$ parts at
-\$t=3\$, and add in the rest at \$t=2\$? Instead of explaining further,
+example, $\frac{\partial \mathbf{J_3}}{\partial
+\mathbf{W^{xh}}}$, we'll need access to our labels at time-steps
+$t=3$, $t=2$ and $t=1$. For $\frac{\partial
+\mathbf{J_2}}{\partial \mathbf{W^{xh}}}$, we'll need our labels at
+time-steps $t=2$ and $t=1$. Finally, for $\frac{\partial
+\mathbf{J_1}}{\partial \mathbf{W^{xh}}}$, we'll need our labels at
+just $t=1$. Naturally, we look to make this efficient: for, for
+example, $\frac{\partial \mathbf{J_3}}{\partial
+\mathbf{W^{xh}}}$, how about just compute the $t=3$ parts at
+$t=3$, and add in the rest at $t=2$? Instead of explaining further,
 I leave this step to you: it is ultimately trivial, a good exercise, and
 when you're finished, you'll find that your code readily resembles much
 of that written in the above resources.

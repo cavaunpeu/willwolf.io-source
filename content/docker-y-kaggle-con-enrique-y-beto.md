@@ -162,10 +162,10 @@ descargar un archivo directamente en el servidor remoto mismo.
 
 En la práctica, esto se ve generalmente así:
 
-\`docker --tlsverify --tlscacert="\\\$HOME/.docker/machine/certs/ca.pem"
---tlscert="\\\$HOME/.docker/machine/certs/cert.pem"
---tlskey="\\\$HOME/.docker/machine/certs/key.pem" -H=tcp://12.34.56:78
-run --rm -i -v /data:/data kaggle-contest build\_model.sh\`
+\`docker --tlsverify --tlscacert="$HOME/.docker/machine/certs/ca.pem"
+--tlscert="$HOME/.docker/machine/certs/cert.pem"
+--tlskey="$HOME/.docker/machine/certs/key.pem" -H=tcp://12.34.56:78
+run --rm -i -v /data:/data kaggle-contest build_model.sh\`
 
 Utensilios de cocina que no se compran en la tienda
 ---------------------------------------------------

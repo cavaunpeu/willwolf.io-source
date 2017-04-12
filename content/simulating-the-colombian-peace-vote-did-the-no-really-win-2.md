@@ -53,14 +53,14 @@ estadísticos."](https://speakerdeck.com/jakevdp/statistics-for-hackers)
 
 Formulemos el problem así:
 
-1\. \$V\_t=13,066,047\$ votantes llegan a votar.  
-2. \$p\_{yes}\\%\$ de los votantes tienen la intención de votar
-por el "Sí", mientras el resto \$(1-p\_{yes})\\%\$ tienen la intención
-de votar por el "No."  
+1. $V_t=13,066,047$ votantes llegan a votar.
+2. $p_{yes}\%$ de los votantes tienen la intención de votar
+por el "Sí", mientras el resto $(1-p_{yes})\%$ tienen la intención
+de votar por el "No."
 3. Cada persona invalida su voto (por dejarlo no marcado o nulo) con una
-probabilidad de \$p\_{invalid}\\%\$.  
+probabilidad de $p_{invalid}\%$.
 4. Cada voto válido se pone en la urna incorrecta con una probabilidad
-de \$p\_{misclassification}\$.  
+de $p_{misclassification}$.
 5. El voto mayoritario gana.
 
 ``` {.EnlighterJSRAW data-enlighter-language="python"}
@@ -76,14 +76,14 @@ N_TRIALS = 100000
 ```
 
 En cada prueba, asumimos una proporción verdadera y subyacente
-\$p\_{yes}\\%\$ de gente que vota por el "Sí." Por ejemplo, si le damos
-.48 al \$p\_{yes}\$, tendremos \$V\_t \* p\_{yes}\$ individuos con la
-intención de votar por el "Sí," y los demás \$V\_t \* (1-p\_{yes})\$
+$p_{yes}\%$ de gente que vota por el "Sí." Por ejemplo, si le damos
+.48 al $p_{yes}$, tendremos $V_t \* p_{yes}$ individuos con la
+intención de votar por el "Sí," y los demás $V_t \* (1-p_{yes})$
 por el "No." Asumimos que estos valores son estáticos: no son generados
 por un proceso random.
 
 A continuación, cada person entrega un voto inválido con
-probabilidad \$p\_{invalid}\$, que modelamos como una Binomial random
+probabilidad $p_{invalid}$, que modelamos como una Binomial random
 variable. Los votos válidos que quedan se ponen en la urna equivocada,
 también modelado con un proceso Binomial. Por fin, el número de votos
 por el "Sí" y por el "No" se cuentan, y el porcentaje de los que
@@ -115,7 +115,7 @@ def simulate_vote(probability_yes):
     return tallied_yes_votes / (tallied_yes_votes + tallied_no_votes)
 ```
 
-Intentémoslo para valores diferentes de \$p\_{yes}\$. Para empezar, si
+Intentémoslo para valores diferentes de $p_{yes}$. Para empezar, si
 el porcentaje verdadero y subyacente de los que querían el "Sí" fuera
 51%, ¿con qué frecuencia ganaría el "No?"
 
@@ -153,19 +153,19 @@ p_yes: 50.000100% | no_win_percentage: 48.791%
 p_yes: 50.000010% | no_win_percentage: 50.063%
 ```
 
-La primera frustración llega cuando \$p\_{yes} = .5001\$: si \$V\_t \*
-p\_{yes} = 13,066,047 \* .5001\$ ≈ 6,534,330 votantes quisieran el "Sí"
+La primera frustración llega cuando $p_{yes} = .5001$: si $V_t \*
+p_{yes} = 13,066,047 \* .5001$ ≈ 6,534,330 votantes quisieran el "Sí"
 vs. ≈ 6,531,716 el "No," el "No" hubiera ganado igual el 0.191% del
 tiempo. Otra vez, este resultado cuenta con el error humano: tanto por
 parte del votante en producir un voto inválido, como el del personal en
 introducir por accidente dicho voto en la urna equivocada.
 
 Mientras continuamos con la lista, los resultados se tornan más
-variables. Al \$p\_{yes} = .50001\$, se puede esperar que gane el "Sí"
-en tan sólo el 1 - .38688 = 61.312% del tiempo. Por fin, al \$p\_{yes} =
-.5000001\$ (que significa, tengan en cuenta, que existe una diferencia
+variables. Al $p_{yes} = .50001$, se puede esperar que gane el "Sí"
+en tan sólo el 1 - .38688 = 61.312% del tiempo. Por fin, al $p_{yes} =
+.5000001$ (que significa, tengan en cuenta, que existe una diferencia
 de personas que tenían la intención de votar por el "Sí" vs. por el "No"
-de tan sólo \$13,066,047 \* (p\_{yes} - (1 - p\_{yes})) \\approx 3\$),
+de tan sólo $13,066,047 \* (p_{yes} - (1 - p_{yes})) \approx 3$),
 el "No" aún hubiera ganado de veras en la *mayoría *de las pruebas
 hipotéticas. En ese caso, no estamos haciendo nada más que lanzar
 monedas.

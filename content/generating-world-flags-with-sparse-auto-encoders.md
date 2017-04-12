@@ -58,8 +58,8 @@ With a trained sparse auto-encoder, we can do a few things.
     for." These are the high-level features that characterize our data,
     i.e. stars, stripes and crescents in a dataset of flags.
 2.  Take a composition of existing encodings and generate a composite
-    flag. For example, feed \$\\text{encoding}\_{colombia} +
-    \\text{encoding}\_{laos}\$ into the hidden-layer of the network,
+    flag. For example, feed $\text{encoding}_{colombia} +
+    \text{encoding}_{laos}$ into the hidden-layer of the network,
     pass it through to the final layer and see what results.
 3.  Pass a vector of random values into our hidden-layer, pass it
     through to the final layer and generate a new flag entirely.
@@ -80,17 +80,17 @@ found
 [here](https://github.com/cavaunpeu/vanilla-neural-nets/tree/master/vanilla_neural_nets/autoencoder/sparse_autoencoder).
 The technical specifications are as follows:
 
-1.  Downsize images to \$(68, 102, 3)\$, which is roughly proportional
+1.  Downsize images to $(68, 102, 3)$, which is roughly proportional
     to the largest bounding box of the originals. Then, flatten to
-    vectors of \$68 \* 102 \* 3 = 20808\$ values.
-2.  Network dimensions are \$(20808, 64, 20808)\$.
-3.  Learning rate \$\\alpha = .05\$.
+    vectors of $68 \* 102 \* 3 = 20808$ values.
+2.  Network dimensions are $(20808, 64, 20808)$.
+3.  Learning rate $\alpha = .05$.
 4.  Training for 1000 epochs.
-5.  Sparsity parameter \$\\rho = .25\$.
-6.  Sparsity parameter in loss function \$\\beta = .25\$.
-7.  Initialize weights and biases with Gaussian of \$\\mu = 0\$,
-    \$\\sigma = \\frac{1}{\\sqrt{20808}}\$.
-8.  The full dataset is of size \$(138, 20808)\$. Yes, it's tiny! Use
+5.  Sparsity parameter $\rho = .25$.
+6.  Sparsity parameter in loss function $\beta = .25$.
+7.  Initialize weights and biases with Gaussian of $\mu = 0$,
+    $\sigma = \frac{1}{\sqrt{20808}}$.
+8.  The full dataset is of size $(138, 20808)$. Yes, it's tiny! Use
     the first 100 examples for training, the next 20 for validation, and
     the final 18 for testing.
 
