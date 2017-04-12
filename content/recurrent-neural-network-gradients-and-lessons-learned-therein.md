@@ -19,13 +19,13 @@ instead of an input of fixed length. Concretely, imagine we are training
 a sentiment classifier on a bunch of tweets. To embed these tweets in
 vector space, we create a bag-of-words model with vocabulary size 3. In
 a typical neural network, this implies an input layer of size 3; an
-input could be $\[4, 9, 3\]$, or $\[1, 0, 5\]$, or $\[0, 0, 6\]$,
+input could be $[4, 9, 3]$, or $[1, 0, 5]$, or $[0, 0, 6]$,
 for example. In a recurrent neural network, our input layer has the
 same size 3, but instead of just a single size-3 input, we can feed it a
 sequence of size-3 inputs of any length. For example, an input could be
-$\[\[1, 8, 5\], \[2, 2, 4\]\]$, or $\[\[6, 7, 3\], \[6, 2, 4\], \[9,
-17, 5\]\]$, or $\[\[2, 3, 0\], \[1, 1, 7\], \[5, 5, 3\], \[8, 18,
-4\]\]$.
+$[[1, 8, 5], [2, 2, 4]]$, or $[[6, 7, 3], [6, 2, 4], [9,
+17, 5]]$, or $[[2, 3, 0], [1, 1, 7], [5, 5, 3], [8, 18,
+4]]$.
 
 On the inside, recurrent neural networks have a different feedforward
 mechanism than typical neural networks. In addition, each input in our
@@ -66,11 +66,11 @@ data-enlighter-language="python"}, and $e_{hi}^{2f3}$ without
 thoroughly explaining their place in the analytical gradients
 themselves. As one example, the first post includes the snippet:
 
-> $$\frac {\partial J^{t=2}} {\partial w^{xh}_{mi}} =
-> e^{t=2f2}_{hi} \frac {\partial h^{t=2}_i} {\partial
-> z^{t=2}_{hi}} \frac {\partial z^{t=2}_{hi}} {\partial
-> w^{xh}_{mi}} + e^{t=1f2}_{hi} \frac {\partial h^{t=1}_i}
-> {\partial z^{t=1}_{hi}} \frac {\partial z^{t=1}_{hi}}
+> $$\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}} =
+> e^{t=2f2}_{hi} \frac{\partial h^{t=2}_i}{\partial
+> z^{t=2}_{hi}} \frac{\partial z^{t=2}_{hi}}{\partial
+> w^{xh}_{mi}} + e^{t=1f2}_{hi} \frac{\partial h^{t=1}_i}
+> {\partial z^{t=1}_{hi}} \frac{\partial z^{t=1}_{hi}}
 > {\partial w^{xh}_{mi}}$$
 
 So far, he's just talking about analytical gradients. Next, he gives
@@ -81,21 +81,21 @@ hint to the implementation-in-code that follows.
 > we can initially compute the derivatives of *J* with respect to the
 > third unrolled network with only the first term:
 >
-> $$\frac {\partial J^{t=3}} {\partial w^{xh}_{mi}} =
-> e^{t=3f3}_{hi} \frac {\partial h^{t=3}_i} {\partial
-> z^{t=3}_{hi}} \frac {\partial z^{t=3}_{hi}} {\partial
+> $$\frac{\partial J^{t=3}}{\partial w^{xh}_{mi}} =
+> e^{t=3f3}_{hi} \frac{\partial h^{t=3}_i}{\partial
+> z^{t=3}_{hi}} \frac{\partial z^{t=3}_{hi}}{\partial
 > w^{xh}_{mi}}$$
 >
 > And then add in the other term only when we get to the second unrolled
 > network:
 >
-> $$\frac {\partial J^{t=2}} {\partial w^{xh}_{mi}} =
-> (e^{t=2f3}_{hi} + e^{t=2f2}_{hi}) \frac {\partial h^{t=2}_i}
-> {\partial z^{t=2}_{hi}} \frac {\partial z^{t=2}_{hi}}
+> $$\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}} =
+> (e^{t=2f3}_{hi} + e^{t=2f2}_{hi}) \frac{\partial h^{t=2}_i}
+> {\partial z^{t=2}_{hi}} \frac{\partial z^{t=2}_{hi}}
 > {\partial w^{xh}_{mi}}$$
 
-Note the opposing definitions of the variable $\frac {\partial
-J^{t=2}} {\partial w^{xh}_{mi}}$. As far as I know, the latter is,
+Note the opposing definitions of the variable $\frac{\partial
+J^{t=2}}{\partial w^{xh}_{mi}}$. As far as I know, the latter is,
 in a vacuum, categorically false. This said, I believe the author is
 simply providing an alternative definition of this quantity in line with
 a computational shortcut he later takes.

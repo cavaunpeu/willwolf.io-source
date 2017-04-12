@@ -6,7 +6,7 @@ Slug: bayesian-estimation-of-rescuetime-productivity
 Status: published
 
 [RescueTime](http://www.rescuetime.com) is "a personal analytics service
-that shows you how you spend your time \[on the computer\], and provides
+that shows you how you spend your time [on the computer], and provides
 tools to help you be more productive." Personally, I've been a
 RescueTime user since late-January 2016, and while it does ping me
 guilty for harking back to a dangling Facebook tab in Chrome, I haven't
@@ -30,8 +30,8 @@ other minutia) an aggregate "productivity score" by day, week and year.
 
 The purpose of this post is to take my weekly summary for 2016 and
 examine how I'm doing thus far. More specifically, with a dataset
-containing the total seconds-per-week spent \[viewing resources
-categorized\] at each of the 5 distinct productivity levels, I'd like to
+containing the total seconds-per-week spent [viewing resources
+categorized] at each of the 5 distinct productivity levels, I'd like to
 infer the productivity breakdown of a typical week. Rows of this dataset
 - after dividing all values in each by its sum - will contain 5 numbers,
 with each expressing the percentage of that week spent at the respective

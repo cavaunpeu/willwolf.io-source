@@ -92,7 +92,7 @@ line instead.
 The plot seems to corroborate what we previously thought: k = 3 clusters
 is the best choice for our data set. To be absolutely certain, we can
 explicitly compute the predicted "loess" values that fall on our smooth
-line for k = \[2,9\] and see where the "marginal returns cutoff point"
+line for k = [2,9] and see where the "marginal returns cutoff point"
 really is. Simple subtraction.
 
 ![For k-means clustering analysis on SA airports.](figures/sa_airports_predicted_withinss_plot.png)

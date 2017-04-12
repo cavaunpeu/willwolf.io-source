@@ -20,7 +20,7 @@ use case for any product team.
 I recently learned about ordered categorical generalized linear models
 (GLMs) and thought back to the post above. Of course, while feedback
 scores do fall into discrete categories, there is an implicit ordinality
-therein: choosing integers in $\[1, 5\]$ is different from choosing
+therein: choosing integers in $[1, 5]$ is different from choosing
 colors in $\{\text{red}, \text{green}, \text{blue}\}$. This is
 because 5 is greater than 4, while green is not "greater" than "blue."
 (For a royalistic debate on the supremacy of the color green, please
@@ -57,9 +57,9 @@ total observed counts $x_k$ of each category $k$ and respective
 parameters $\alpha_k$ on our prior, our posterior distribution for
 our belief in $p$ is given as:
 
-\\[
+\[
 p \sim \text{Dirichlet}(\alpha_1 + x_1, ..., \alpha_k + x_k)
-\\]
+\]
 
 This makes both inference and posterior predictive sampling trivial: a
 few lines of code for each. Unfortunately, while delightfully simple,
@@ -110,7 +110,7 @@ our model gives the log-cumulative-odds, not the log-odds.
 Placing Normal priors on $\alpha_k$ and $\beta$ was an arbitrary
 choice. In fact, any prior that produces a continuous value should
 suffice: the constraint that $p_k$ must be a valid (cumulative)
-probability, i.e. $p_k$ must lie on the interval $\[0, 1\]$, is
+probability, i.e. $p_k$ must lie on the interval $[0, 1]$, is
 enforced by the inverse link function.
 
 ##### Subtracting φ~i~

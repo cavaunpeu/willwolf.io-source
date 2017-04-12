@@ -50,7 +50,7 @@ word_1 + ' '.*
 an array of each word that follows. For example, if our *word_1 =
 \*"Will" and \*word_2* = "went", and our text contains the snippets
 "Will went to," "Will went further," and "Will went north," then this
-array would be defined as \["to", "further", "north"\]. Duplicate
+array would be defined as ["to", "further", "north"]. Duplicate
 elements should remain in the array.
 
 5. Select a word at random from the array we just created and call

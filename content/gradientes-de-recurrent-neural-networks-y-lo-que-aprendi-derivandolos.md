@@ -20,13 +20,13 @@ imagínense que estamos entrenando un modelo de clasificación con un
 puñado de tuits. Para codificar dichos tuits en el espacio vectorial,
 creamos un modelo de bag-of-words con un vocabulario de 3 palabras
 distintas. En el neural network clásico, esto implica un "input layer"
-con un tamaño de 3; un input podría ser $\[4, 9, 3\]$, o $\[1, 0,
-5\]$, o $\[0, 0, 6\]$, por ejemplo. En el caso del recurrent neural
+con un tamaño de 3; un input podría ser $[4, 9, 3]$, o $[1, 0,
+5]$, o $[0, 0, 6]$, por ejemplo. En el caso del recurrent neural
 network, nuestro input layer tiene el mismo tamaño de 3, pero en lugar
 de un sólo input, le podemos alimentar una secuencia de inputs de tamaño
-3 de cualquier largo. Como ejemplo, un input podría ser $\[\[1, 8, 5\],
-\[2, 2, 4\]\]$, o $\[\[6, 7, 3\], \[6, 2, 4\], \[9, 17, 5\]\]$, o
-$\[\[2, 3, 0\], \[1, 1, 7\], \[5, 5, 3\], \[8, 18, 4\]\]$.
+3 de cualquier largo. Como ejemplo, un input podría ser $[[1, 8, 5],
+[2, 2, 4]]$, o $[[6, 7, 3], [6, 2, 4], [9, 17, 5]]$, o
+$[[2, 3, 0], [1, 1, 7], [5, 5, 3], [8, 18, 4]]$.
 
 En su interior, las recurrent neural networks tienen un mecanismo
 feedforward diferente del neural network típico. Además, cada input en
@@ -69,11 +69,11 @@ y $e_{hi}^{2f3}$ sin explicar cabalmente su significado en los
 gradientes analíticos mismos. Como ejemplo, el primer post incluye la
 siguiente sección:
 
-> $$\frac {\partial J^{t=2}} {\partial w^{xh}_{mi}} =
-> e^{t=2f2}_{hi} \frac {\partial h^{t=2}_i} {\partial
-> z^{t=2}_{hi}} \frac {\partial z^{t=2}_{hi}} {\partial
-> w^{xh}_{mi}} + e^{t=1f2}_{hi} \frac {\partial h^{t=1}_i}
-> {\partial z^{t=1}_{hi}} \frac {\partial z^{t=1}_{hi}}
+> $$\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}} =
+> e^{t=2f2}_{hi} \frac{\partial h^{t=2}_i}{\partial
+> z^{t=2}_{hi}} \frac{\partial z^{t=2}_{hi}}{\partial
+> w^{xh}_{mi}} + e^{t=1f2}_{hi} \frac{\partial h^{t=1}_i}
+> {\partial z^{t=1}_{hi}} \frac{\partial z^{t=1}_{hi}}
 > {\partial w^{xh}_{mi}}$$
 
 Hasta ahora, no está hablando sino de los gradientes analíticos. A
@@ -84,21 +84,21 @@ continuación, alude a la implementación-en-código que sigue.
 > we can initially compute the derivatives of *J* with respect to the
 > third unrolled network with only the first term:
 >
-> $$\frac {\partial J^{t=3}} {\partial w^{xh}_{mi}} =
-> e^{t=3f3}_{hi} \frac {\partial h^{t=3}_i} {\partial
-> z^{t=3}_{hi}} \frac {\partial z^{t=3}_{hi}} {\partial
+> $$\frac{\partial J^{t=3}}{\partial w^{xh}_{mi}} =
+> e^{t=3f3}_{hi} \frac{\partial h^{t=3}_i}{\partial
+> z^{t=3}_{hi}} \frac{\partial z^{t=3}_{hi}}{\partial
 > w^{xh}_{mi}}$$
 >
 > And then add in the other term only when we get to the second unrolled
 > network:
 >
-> $$\frac {\partial J^{t=2}} {\partial w^{xh}_{mi}} =
-> (e^{t=2f3}_{hi} + e^{t=2f2}_{hi}) \frac {\partial h^{t=2}_i}
-> {\partial z^{t=2}_{hi}} \frac {\partial z^{t=2}_{hi}}
+> $$\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}} =
+> (e^{t=2f3}_{hi} + e^{t=2f2}_{hi}) \frac{\partial h^{t=2}_i}
+> {\partial z^{t=2}_{hi}} \frac{\partial z^{t=2}_{hi}}
 > {\partial w^{xh}_{mi}}$$
 
-Noten las definiciones opuestas de la variable $\frac {\partial
-J^{t=2}} {\partial w^{xh}_{mi}}$. Hasta donde yo sé, la segunda es,
+Noten las definiciones opuestas de la variable $\frac{\partial
+J^{t=2}}{\partial w^{xh}_{mi}}$. Hasta donde yo sé, la segunda es,
 sin hacerle caso a algún posible código, categóricamente falsa. Dicho
 eso, creo que el autor está simplemente ofreciendo una definición
 alternativa para esta cantidad en cuanto a un atajo pequeño que luego

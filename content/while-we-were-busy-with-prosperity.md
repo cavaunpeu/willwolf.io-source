@@ -29,7 +29,7 @@ Ohio. And I don't know a single one.
 
 Republican presidential candidate, Donald Trump, waves to supporters
 after speaking at a campaign rally at the I-X Center Saturday, March 12,
-2016, in Cleveland. (AP Photo/Tony Dejak)\[/caption\]
+2016, in Cleveland. (AP Photo/Tony Dejak)[/caption]
 
 We have spent our adult lives in swift, upward mobility. We went to
 strong Universities because we went to strong high schools. For many,

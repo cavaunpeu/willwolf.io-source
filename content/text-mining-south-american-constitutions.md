@@ -68,7 +68,7 @@ rather large, as well as consider themselves republics, as the word
 "república" is large as well. Interestingly, we see in yellow that the
 word "podrá" is used frequently, a future-tense verb meaning "will be
 able to"; why is this word used instead of "puede," a present-tense
-conjugation of the same verb meaning "is **\[now\]** able to?" Given
+conjugation of the same verb meaning "is **[now]** able to?" Given
 that most of these countries gained independence from Spain in the last
 200 years, perhaps this small caveat is a reflection of founders'
 general apprehension for their country's future and true independence?
