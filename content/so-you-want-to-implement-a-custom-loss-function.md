@@ -142,9 +142,9 @@ varying values of y_hat.
 ![y_equals_0](figures/y_equals_0.png)
 
 When *y = 1*, our cost is that of the typical logarithmic loss. At
-worst, our cost is \~5. However, when *y = 0*, the dynamic is different:
+worst, our cost is ~5. However, when *y = 0*, the dynamic is different:
 if we guess 0.2, it's not so bad; if we guess 0.6 it's not so bad; if we
-guess &gt; 0.8, it's really, really bad. \~25 bad. Finally, we compute
+guess &gt; 0.8, it's really, really bad. ~25 bad. Finally, we compute
 our gradient. As easy as:
 
 ```
