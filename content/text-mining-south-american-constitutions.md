@@ -57,10 +57,9 @@ From there, we visualize! For this visualization, I choose to create a
 word-cloud with R's "wordcloud" package, and only include words that
 occur 20 times or more across the 9 constitutions. The bigger words
 occur more frequently, and vice versa. The biggest word, "derecho,"
-therefore occurs most frequently across the documents. [![Constitution's
-Wordcloud](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/wordcloud.png){.aligncenter
-.size-full .wp-image-155 width="800"
-height="800"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/wordcloud.png)
+therefore occurs most frequently across the documents.
+
+![constitution word cloud](figures/constitution_wordcloud.png)
 
 So, what do we have? Again, "derecho," or "right" (as in your "right" as
 a citizen) is used most frequently. In addition, it appears that the

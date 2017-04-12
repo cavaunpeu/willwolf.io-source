@@ -25,13 +25,8 @@ from Middle America. They are Latina females in Florida. They are
 tailgaters at Penn State football games. They are critical thinkers from
 Ohio. And I don't know a single one.
 
-\[caption id="attachment\_832" align="aligncenter"
-width="1024"\][![Republican presidential candidate, Donald Trump, waves
-to supporters after speaking at a campaign rally at the I-X Center
-Saturday, March 12, 2016, in Cleveland. (AP Photo/Tony
-Dejak)](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/11/56e4b57b1e0000950070fe8b-1024x512.jpeg){.size-large
-.wp-image-832 width="1024"
-height="512"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/11/56e4b57b1e0000950070fe8b.jpeg)
+![](images/56e4b57b1e0000950070fe8b-1024x512.jpeg)
+
 Republican presidential candidate, Donald Trump, waves to supporters
 after speaking at a campaign rally at the I-X Center Saturday, March 12,
 2016, in Cleveland. (AP Photo/Tony Dejak)\[/caption\]

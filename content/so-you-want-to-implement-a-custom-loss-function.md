@@ -136,11 +136,11 @@ def custom_loss_given_weights(w):
 
 Let's see what this function looks like, for each of y=1 and y=0, and
 varying values of y\_hat.
-![y\_equals\_1](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/y_equals_1.png){.aligncenter
-.size-full .wp-image-274 width="800" height="600"}
-[![y\_equals\_0](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/y_equals_0.png){.aligncenter
-.size-full .wp-image-273 width="800"
-height="600"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/y_equals_0.png)
+
+![y\_equals\_1](figures/y_equals_1.png)
+
+![y\_equals\_0](figures/y_equals_0.png)
+
 When *y = 1*, our cost is that of the typical logarithmic loss. At
 worst, our cost is \~5. However, when *y = 0*, the dynamic is different:
 if we guess 0.2, it's not so bad; if we guess 0.6 it's not so bad; if we

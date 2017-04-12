@@ -30,10 +30,8 @@ Problem setup
 
 Our neuron looks like this:
 
-[![single-neuron-gradient-descent
-(1)](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/05/single-neuron-gradient-descent-1-1024x174.png){.aligncenter
-.size-large .wp-image-429 width="1024"
-height="174"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2016/05/single-neuron-gradient-descent-1.png)
+![single_neuron_gradient_descent](images/single_neuron_gradient_descent.png)
+
 Our parameters look like this:
 
 ``` {.EnlighterJSRAW data-enlighter-language="python"}

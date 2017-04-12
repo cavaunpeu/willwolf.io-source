@@ -38,8 +38,7 @@ contando los votos a mano.
 
 ¿Sería posible que la mayoría quería el "Sí" y sin embargo perdió igual?
 
-![](https://si.wsj.net/public/resources/images/BN-QC122_COLPOL_J_20161003151620.jpg){.alignnone
-.size-large width="959" height="639"}
+![](images/colombian_plebiscite_vote.jpg)
 
 Para investigarlo, podemos formular el proceso del voto como un sencillo
 proceso estadístico y preguntarse: "Si repitiéramos el plebiscito muchas
@@ -94,25 +93,25 @@ pertenecen al "Sí" se entrega.
 def simulate_vote(probability_yes):
     yes_votes = int(TOTAL_VOTES * probability_yes)
     no_votes = TOTAL_VOTES - yes_votes
-    
+
     yes_votes_samples = N_TRIALS * [yes_votes]
     no_votes_samples = N_TRIALS * [no_votes]
-    
+
     invalid_ballots_yes = np.random.binomial(n=yes_votes_samples, p=P_INVALID)
     invalid_ballots_no = np.random.binomial(n=no_votes_samples, p=P_INVALID)
-    
+
     valid_yes_votes = yes_votes - invalid_ballots_yes
     valid_no_votes = no_votes - invalid_ballots_no
-    
+
     yes_votes_from_yes_voters = np.random.binomial(n=valid_yes_votes, p=1-P_MISCLASSIFICATION)
     no_votes_from_yes_voters = valid_yes_votes - yes_votes_from_yes_voters
-    
+
     no_votes_from_no_voters = np.random.binomial(n=valid_no_votes, p=1-P_MISCLASSIFICATION)
     yes_votes_from_no_voters = valid_no_votes - no_votes_from_no_voters
-    
+
     tallied_yes_votes = yes_votes_from_yes_voters + yes_votes_from_no_voters
     tallied_no_votes = no_votes_from_no_voters + no_votes_from_yes_voters
-    
+
     return tallied_yes_votes / (tallied_yes_votes + tallied_no_votes)
 ```
 
@@ -141,7 +140,7 @@ for epsilon in [1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7]:
     probability_yes = .5 + epsilon
     percentage_of_tallied_votes_that_were_yes = simulate_vote(probability_yes)
     proportion_of_trials_won_by_no = (percentage_of_tallied_votes_that_were_yes < .5).mean()
-    
+
     results = "p_yes: {:1.6f}% | no_win_percentage: {:1.3f}%"
     print(results.format(100*probability_yes, 100*proportion_of_trials_won_by_no))
 

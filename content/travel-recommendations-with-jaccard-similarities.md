@@ -38,19 +38,21 @@ union - between all combinations of countries.
 similar. The length of the bars on the plot are the respective
 similarity scores. So - let's try a few out!
 
-[![Screen-Shot-2015-10-03-at-4.46.24-PM](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/Screen-Shot-2015-10-03-at-4.46.24-PM-1024x659.png){.aligncenter
-.size-large .wp-image-289 width="1024"
-height="659"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/Screen-Shot-2015-10-03-at-4.46.24-PM.png)[](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/10/Screen-Shot-2015-10-03-at-4.46.24-PM.png)Not
+![colombia recommendations](figures/colombia_recommendations.png)
+
+Not
 bad. Venezuela - neighbor to the East - is recommended most highly.
 Again, this implies that those tweeting about Colombia were also
 tweeting about Venezuela.
-[![Screen-Shot-2015-10-03-at-4.51.53-PM](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/Screen-Shot-2015-10-03-at-4.51.53-PM-1024x677.png){.aligncenter
-.size-large .wp-image-290 width="1024"
-height="677"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/Screen-Shot-2015-10-03-at-4.51.53-PM.png)[](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/10/Screen-Shot-2015-10-03-at-4.51.53-PM.png)Seems
+
+![malaysia recommendations](figures/malaysia_recommendations.png)
+
+Seems
 logical.
-[![Screen-Shot-2015-10-03-at-4.54.46-PM](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/Screen-Shot-2015-10-03-at-4.54.46-PM-1024x710.png){.aligncenter
-.size-large .wp-image-291 width="1024"
-height="710"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2015/11/Screen-Shot-2015-10-03-at-4.54.46-PM.png)
+
+![india recommendations](figures/india_recommendations.png)
+
+
 Strange one, maybe? Then again, all countries - especially Greece,
 Italy, and France - are universally popular travel destinations, just
 like our query country India. As such, it's certainly conceivable that

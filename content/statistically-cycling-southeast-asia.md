@@ -25,11 +25,8 @@ who had cycled there from Warsaw - roughly 4,000 kilometers away if you
 divert through Eastern Europe and Turkey as he had done - in a month.
 There was just no point in comparing myself to this Polish Hercules.
 
-\[caption id="attachment\_186" align="aligncenter"
-width="800"\]\[![Cycling the weird and wide in Central (f\*cking)
-Asia](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/PamirBike.jpg){.size-full
-.wp-image-186 width="800" height="433"}Cycling the weird and wide in
-Central (f\*cking) Asia\[/caption\]
+![Cycling the weird and wide in Central (f\*cking)
+Asia](images/pamir_bike.jpg)
 
 For a better approximation of what's to come - one relative to your own
 experiences and diagnostic approach - perhaps there's a better way.
@@ -80,8 +77,8 @@ significances of this new fit.
 
 ``` {lang="r"}
 (Intercept)    60.625      1.301  46.594 1.27e-06 ***
-perc.paved     12.496      1.909   6.544  0.00282 ** 
-pop.dens      -13.295      1.647  -8.074  0.00128 ** 
+perc.paved     12.496      1.909   6.544  0.00282 **
+pop.dens      -13.295      1.647  -8.074  0.00128 **
 water.access  -13.980      1.742  -8.025  0.00131 **
 ```
 
@@ -135,7 +132,4 @@ buy it. Assuming you can speak some Chinese. Finally, here's a map of
 our findings. If you have a friend cycling in the area - do pass it
 along.
 
-[![diffIDX
-Map](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/diffIDX-Map.jpg){.aligncenter
-.size-full .wp-image-183 width="800"
-height="800"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/diffIDX-Map.jpg)
+![diffIDX Map](figures/cycling_difficulty_index.jpg)
