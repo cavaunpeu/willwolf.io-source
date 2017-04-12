@@ -28,14 +28,14 @@ make use of the comments section below.)
 
 In a multinomial regression, we can formulate our problem thus:
 
-\begin{align\*}
+\begin{align*}
 y &\sim \text{Multinomial}(1, p) \\
 p_j &= \frac{e^{\phi_j}}{\sum\limits_{k = 1}^{K} e^{\phi_k}}
 \\
 \phi_j &= \alpha_j + \beta_j X_i \\
 \alpha_j &\sim \text{Normal}(0, 10) \\
 \beta_j &\sim \text{Normal}(0, 10) \\
-\end{align\*}
+\end{align*}
 
 In a model with $k$ categorical outcomes, we typically have $k-1$
 linear equations for $\phi_j$. The link function - which you'll
@@ -69,14 +69,14 @@ preserved. To this effect, let us explore the ordered categorical GLM.
 
 The ordered categorical GLM can be specified thus:
 
-\begin{align\*}
+\begin{align*}
 &y \sim \text{Ordered}(p) \\
 &\log{\bigg(\frac{p_k}{1 - p_k}\bigg)} = \alpha_k - \phi_i
 \\
 &\phi_i = \beta X_i \\
 &\alpha_k \sim \text{Normal}(0, 10) \\
 &\beta \sim \text{Normal}(0, 10)
-\end{align\*}
+\end{align*}
 
 There's a few components to clarify:
 

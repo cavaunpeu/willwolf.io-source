@@ -12,7 +12,7 @@ computing. Educational resources are derived from online courses
 textbooks, predictive modeling competitions, academic research
 ([arXiv](https://arxiv.org/)), and the open-source software community.
 In machine learning, both the quantity and quality of these resources -
-all available for free or at a trivial cost - is truly f\*cking amazing.
+all available for free or at a trivial cost - is truly f*cking amazing.
 
 Why Am I Doing This?
 --------------------
@@ -83,7 +83,7 @@ the extra-curricular time spent learning new tools and algorithms and
 making it a full-time job.
 
 5. **I'm extremely motivated.** The thought of studying machine learning
-all day has me smiling from ear to ear. Simply put, I f\*cking love this
+all day has me smiling from ear to ear. Simply put, I f*cking love this
 stuff.
 
 How Long is the OSMLM?

@@ -19,7 +19,7 @@ In addition to being highly compose-able, this project is highly
 readable. Too often, data science code is a veritable circus of
 variables named "wtxb", six-times-nested for loops, and 80-line
 functions. The code within is both explicit and straightforward; few
-readers should be left wondering: "what the f\*ck does that variable
+readers should be left wondering: "what the f*ck does that variable
 mean?"
 
 Code can be found

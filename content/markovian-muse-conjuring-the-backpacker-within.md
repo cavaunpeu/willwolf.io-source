@@ -48,13 +48,13 @@ word_1 + ' '.*
 
 4. Find all occurrences of "*word_1 word_2"* in the text. Then, create
 an array of each word that follows. For example, if our *word_1 =
-\*"Will" and \*word_2* = "went", and our text contains the snippets
+*"Will" and *word_2* = "went", and our text contains the snippets
 "Will went to," "Will went further," and "Will went north," then this
 array would be defined as ["to", "further", "north"]. Duplicate
 elements should remain in the array.
 
 5. Select a word at random from the array we just created and call
-it *word_3*. Then, set *word_1 = word_2 \*and *word_2* =* word_3.\*
+it *word_3*. Then, set *word_1 = word_2 *and *word_2* =* word_3.*
 
 6. Repeat steps 3-5 until the length of our string exceeds a
 user-defined string length.

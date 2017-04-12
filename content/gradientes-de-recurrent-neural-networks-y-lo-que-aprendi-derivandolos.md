@@ -69,36 +69,33 @@ y $e_{hi}^{2f3}$ sin explicar cabalmente su significado en los
 gradientes analíticos mismos. Como ejemplo, el primer post incluye la
 siguiente sección:
 
-> $$\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}} =
-> e^{t=2f2}_{hi} \frac{\partial h^{t=2}_i}{\partial
-> z^{t=2}_{hi}} \frac{\partial z^{t=2}_{hi}}{\partial
-> w^{xh}_{mi}} + e^{t=1f2}_{hi} \frac{\partial h^{t=1}_i}
-> {\partial z^{t=1}_{hi}} \frac{\partial z^{t=1}_{hi}}
-> {\partial w^{xh}_{mi}}$$
+> $$
+\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}} =
+e^{t=2f2}_{hi} \frac{\partial h^{t=2}_i}{\partial z^{t=2}_{hi}} \frac{\partial z^{t=2}_{hi}}{\partial w^{xh}_{mi}} +
+e^{t=1f2}_{hi} \frac{\partial h^{t=1}_i} {\partial z^{t=1}_{hi}} \frac{\partial z^{t=1}_{hi}}{\partial w^{xh}_{mi}}
+$$
 
 Hasta ahora, no está hablando sino de los gradientes analíticos. A
 continuación, alude a la implementación-en-código que sigue.
 
-> So the thing to note is that we can delay adding in the backward
-> propagated errors until we get further into the loop. In other words,
-> we can initially compute the derivatives of *J* with respect to the
-> third unrolled network with only the first term:
+> So the thing to note is that we can delay adding in the backward propagated errors until we get further into the loop. In other words, we can initially compute the derivatives of *J* with respect to the third unrolled network with only the first term:
 >
-> $$\frac{\partial J^{t=3}}{\partial w^{xh}_{mi}} =
-> e^{t=3f3}_{hi} \frac{\partial h^{t=3}_i}{\partial
-> z^{t=3}_{hi}} \frac{\partial z^{t=3}_{hi}}{\partial
-> w^{xh}_{mi}}$$
+> $$
+\frac{\partial J^{t=3}}{\partial w^{xh}_{mi}} =
+e^{t=3f3}_{hi} \frac{\partial h^{t=3}_i}{\partial z^{t=3}_{hi}} \frac{\partial z^{t=3}_{hi}}{\partial w^{xh}_{mi}}
+$$
 >
 > And then add in the other term only when we get to the second unrolled
-> network:
+network:
 >
-> $$\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}} =
-> (e^{t=2f3}_{hi} + e^{t=2f2}_{hi}) \frac{\partial h^{t=2}_i}
-> {\partial z^{t=2}_{hi}} \frac{\partial z^{t=2}_{hi}}
-> {\partial w^{xh}_{mi}}$$
+> $$
+\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}} =
+(e^{t=2f3}_{hi} + e^{t=2f2}_{hi}) \frac{\partial h^{t=2}_i}{\partial z^{t=2}_{hi}}
+\frac{\partial z^{t=2}_{hi}}
+{\partial w^{xh}_{mi}}
+$$
 
-Noten las definiciones opuestas de la variable $\frac{\partial
-J^{t=2}}{\partial w^{xh}_{mi}}$. Hasta donde yo sé, la segunda es,
+Noten las definiciones opuestas de la variable $\frac{\partial J^{t=2}}{\partial w^{xh}_{mi}}$. Hasta donde yo sé, la segunda es,
 sin hacerle caso a algún posible código, categóricamente falsa. Dicho
 eso, creo que el autor está simplemente ofreciendo una definición
 alternativa para esta cantidad en cuanto a un atajo pequeño que luego
@@ -124,12 +121,12 @@ sólo 3 parámetros para optimizar: $\mathbf{W^{xh}}$,
 $\mathbf{W^{hh}}$ y $\mathbf{W^{hy}}$. Las ecuaciones
 principales son las siguientes:
 
--   $\mathbf{z_t} = \mathbf{W^{xh}}\mathbf{x} +
+- $\mathbf{z_t} = \mathbf{W^{xh}}\mathbf{x} +
     \mathbf{W^{hh}}\mathbf{h_{t-1}}$
--   $\mathbf{h_t} = tanh(\mathbf{z_t})$
--   $\mathbf{y_t} = \mathbf{W^{hy}}\mathbf{h_t}$
--   $\mathbf{p_t} = softmax(\mathbf{y_t})$
--   $\mathbf{J_t} = crossentropy(\mathbf{p_t},
+- $\mathbf{h_t} = \tanh(\mathbf{z_t})$
+- $\mathbf{y_t} = \mathbf{W^{hy}}\mathbf{h_t}$
+- $\mathbf{p_t} = \text{softmax}(\mathbf{y_t})$
+- $\mathbf{J_t} = \text{crossentropy}(\mathbf{p_t},
     \mathbf{\text{labels}})$
 
 He escrito "softmax" y "cross-entropy" por cuestiones de claridad: antes
@@ -214,15 +211,14 @@ $$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hh}}} =
 
 Con esta definición, calculamos nuestras gradientes como:
 
-\begin{align\*}
-
+$$
+\begin{align*}
 \frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hh}}} &=
 \frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
 \frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
 \frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
 \frac{\partial \mathbf{h_3}}{\partial \mathbf{z_3}}
 \frac{\partial \mathbf{z_3}}{\partial \mathbf{W^{hh}}}\\ &+
-
 \frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
 \frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
 \frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
@@ -230,7 +226,6 @@ Con esta definición, calculamos nuestras gradientes como:
 \frac{\partial \mathbf{z_3}}{\partial \mathbf{h_2}}
 \frac{\partial \mathbf{h_2}}{\partial \mathbf{z_2}}
 \frac{\partial \mathbf{z_2}}{\partial \mathbf{W^{hh}}}\\ &+
-
 \frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
 \frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
 \frac{\partial \mathbf{y_3}}{\partial \mathbf{h_3}}
@@ -240,11 +235,11 @@ Con esta definición, calculamos nuestras gradientes como:
 \frac{\partial \mathbf{z_2}}{\partial \mathbf{h_1}}
 \frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
 \frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{hh}}}\\
+\end{align*}
+$$
 
-\end{align\*}
-
-\begin{align\*}
-
+$$
+\begin{align*}
 \frac{\partial \mathbf{J_2}}{\partial \mathbf{W^{hh}}} &=
 \frac{\partial \mathbf{J_2}}{\partial \mathbf{p_2}}
 \frac{\partial \mathbf{p_2}}{\partial \mathbf{y_2}}
@@ -258,19 +253,19 @@ Con esta definición, calculamos nuestras gradientes como:
 \frac{\partial \mathbf{z_2}}{\partial \mathbf{h_1}}
 \frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
 \frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{hh}}}
+\end{align*}
+$$
 
-\end{align\*}
-
-\begin{align\*}
-
+$$
+\begin{align*}
 \frac{\partial \mathbf{J_1}}{\partial \mathbf{W^{hh}}} &=
 \frac{\partial \mathbf{J_1}}{\partial \mathbf{p_1}}
 \frac{\partial \mathbf{p_1}}{\partial \mathbf{y_1}}
 \frac{\partial \mathbf{y_1}}{\partial \mathbf{h_1}}
 \frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
 \frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{hh}}}
-
-\end{align\*}
+\end{align*}
+$$
 
 $\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{xh}}}$:
 
@@ -285,8 +280,8 @@ $$\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{xh}}} =
 
 Así que:
 
-\begin{align\*}
-
+$$
+\begin{align*}
 \frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{xh}}} &=
 \frac{\partial \mathbf{J_3}}{\partial \mathbf{p_3}}
 \frac{\partial \mathbf{p_3}}{\partial \mathbf{y_3}}
@@ -309,11 +304,11 @@ Así que:
 \frac{\partial \mathbf{z_2}}{\partial \mathbf{h_1}}
 \frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
 \frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{xh}}}
+\end{align*}
+$$
 
-\end{align\*}
-
-\begin{align\*}
-
+$$
+\begin{align*}
 \frac{\partial \mathbf{J_2}}{\partial \mathbf{W^{xh}}} &=
 \frac{\partial \mathbf{J_2}}{\partial \mathbf{p_2}}
 \frac{\partial \mathbf{p_2}}{\partial \mathbf{y_2}}
@@ -327,40 +322,40 @@ Así que:
 \frac{\partial \mathbf{z_2}}{\partial \mathbf{h_1}}
 \frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
 \frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{xh}}}
+\end{align*}
+$$
 
-\end{align\*}
-
-\begin{align\*}
-
+$$
+\begin{align*}
 \frac{\partial \mathbf{J_1}}{\partial \mathbf{W^{xh}}} &=
 \frac{\partial \mathbf{J_1}}{\partial \mathbf{p_1}}
 \frac{\partial \mathbf{p_1}}{\partial \mathbf{y_1}}
 \frac{\partial \mathbf{y_1}}{\partial \mathbf{h_1}}
 \frac{\partial \mathbf{h_1}}{\partial \mathbf{z_1}}
 \frac{\partial \mathbf{z_1}}{\partial \mathbf{W^{xh}}}
-
-\end{align\*}
+\end{align*}
+$$
 
 ### Derivadas Analíticas
 
 Finalmente, insertamos las derivadas parciales individuales para llegar
 a los gradientes finales con lo siguiente en mano:
 
--   $\frac{\partial \mathbf{J_t}}{\partial y} = \mathbf{p_t} -
+- $\frac{\partial \mathbf{J_t}}{\partial y} = \mathbf{p_t} -
     \mathbf{\text{labels}_t}$, where $\mathbf{\text{labels}_t}$
     is a one-hot vector of the correct answer at a given time-step $t$
--   $\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hy}}} =
+- $\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hy}}} =
     (\mathbf{p_t} - \mathbf{\text{labels}_t})\mathbf{h_t}$
--   $\frac{\partial \mathbf{J_t}}{\partial \mathbf{h_t}} =
+- $\frac{\partial \mathbf{J_t}}{\partial \mathbf{h_t}} =
     (\mathbf{p_t} - \mathbf{\text{labels}_t})\mathbf{W^{hy}}$
--   $\frac{\partial \mathbf{h_t}}{\partial \mathbf{z_t}} = 1 -
-    tanh^2(\mathbf{z_t}) = 1 - \mathbf{h_t}^2$,
-    as $\mathbf{h_t} = tanh(\mathbf{z_t})$
--   $\frac{\partial \mathbf{z_t}}{\mathbf{h_{t-1}}} =
+- $\frac{\partial \mathbf{h_t}}{\partial \mathbf{z_t}} = 1 -
+    \tanh^2(\mathbf{z_t}) = 1 - \mathbf{h_t}^2$,
+    as $\mathbf{h_t} = \tanh(\mathbf{z_t})$
+- $\frac{\partial \mathbf{z_t}}{\mathbf{h_{t-1}}} =
     \mathbf{W^{hh}}$
--   $\frac{\partial \mathbf{z_t}}{\partial \mathbf{W^{xh}}} =
+- $\frac{\partial \mathbf{z_t}}{\partial \mathbf{W^{xh}}} =
     \mathbf{x_t}$
--   $\frac{z_t}{\partial \mathbf{W^{hh}}} = \mathbf{h_{t-1}}$
+- $\frac{z_t}{\partial \mathbf{W^{hh}}} = \mathbf{h_{t-1}}$
 
 A esta altura, has terminado: has calculado tus gradientes, y entiendes
 bien el algoritmo de Backpropagation Through Time. De aquí en adelante,
@@ -403,16 +398,16 @@ Felices RNN's.
 
 Referencias claves para este artículo se nombran:
 
--   [Recurrent Neural Networks Tutorial Part 2 Implementing A Rnn With
+- [Recurrent Neural Networks Tutorial Part 2 Implementing A Rnn With
     Python Numpy And
     Theano](http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-2-implementing-a-language-model-rnn-with-python-numpy-and-theano/)
--   [Recurrent Neural Networks Tutorial Part 3 Backpropagation Through
+- [Recurrent Neural Networks Tutorial Part 3 Backpropagation Through
     Time And Vanishing
     Gradients](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/)
--   [The Unreasonable Effectiveness of Recurrent Neural
+- [The Unreasonable Effectiveness of Recurrent Neural
     Networks](https://karpathy.github.io/2015/05/21/rnn-effectiveness/)
--   [Minimal character-level language model with a Vanilla Recurrent
+- [Minimal character-level language model with a Vanilla Recurrent
     Neural Network, in
     Python/numpy](https://gist.github.com/karpathy/d4dee566867f8291f086)
--   [Machine Learning - Recurrent Neural Networks
+- [Machine Learning - Recurrent Neural Networks
     Maths](https://www.existor.com/en/ml-rnn.html)

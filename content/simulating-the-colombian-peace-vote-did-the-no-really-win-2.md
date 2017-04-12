@@ -77,8 +77,8 @@ N_TRIALS = 100000
 
 En cada prueba, asumimos una proporción verdadera y subyacente
 $p_{yes}\%$ de gente que vota por el "Sí." Por ejemplo, si le damos
-.48 al $p_{yes}$, tendremos $V_t \* p_{yes}$ individuos con la
-intención de votar por el "Sí," y los demás $V_t \* (1-p_{yes})$
+.48 al $p_{yes}$, tendremos $V_t * p_{yes}$ individuos con la
+intención de votar por el "Sí," y los demás $V_t * (1-p_{yes})$
 por el "No." Asumimos que estos valores son estáticos: no son generados
 por un proceso random.
 
@@ -153,8 +153,8 @@ p_yes: 50.000100% | no_win_percentage: 48.791%
 p_yes: 50.000010% | no_win_percentage: 50.063%
 ```
 
-La primera frustración llega cuando $p_{yes} = .5001$: si $V_t \*
-p_{yes} = 13,066,047 \* .5001$ ≈ 6,534,330 votantes quisieran el "Sí"
+La primera frustración llega cuando $p_{yes} = .5001$: si $V_t *
+p_{yes} = 13,066,047 * .5001$ ≈ 6,534,330 votantes quisieran el "Sí"
 vs. ≈ 6,531,716 el "No," el "No" hubiera ganado igual el 0.191% del
 tiempo. Otra vez, este resultado cuenta con el error humano: tanto por
 parte del votante en producir un voto inválido, como el del personal en
@@ -165,7 +165,7 @@ variables. Al $p_{yes} = .50001$, se puede esperar que gane el "Sí"
 en tan sólo el 1 - .38688 = 61.312% del tiempo. Por fin, al $p_{yes} =
 .5000001$ (que significa, tengan en cuenta, que existe una diferencia
 de personas que tenían la intención de votar por el "Sí" vs. por el "No"
-de tan sólo $13,066,047 \* (p_{yes} - (1 - p_{yes})) \approx 3$),
+de tan sólo $13,066,047 * (p_{yes} - (1 - p_{yes})) \approx 3$),
 el "No" aún hubiera ganado de veras en la *mayoría *de las pruebas
 hipotéticas. En ese caso, no estamos haciendo nada más que lanzar
 monedas.

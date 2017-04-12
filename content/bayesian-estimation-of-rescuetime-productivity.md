@@ -5,39 +5,13 @@ Category: Uncategorized
 Slug: bayesian-estimation-of-rescuetime-productivity
 Status: published
 
-[RescueTime](http://www.rescuetime.com) is "a personal analytics service
-that shows you how you spend your time [on the computer], and provides
-tools to help you be more productive." Personally, I've been a
-RescueTime user since late-January 2016, and while it does ping me
-guilty for harking back to a dangling Facebook tab in Chrome, I haven't
-yet dug much into the data it's thus-far stored.
+[RescueTime](http://www.rescuetime.com) is "a personal analytics service that shows you how you spend your time [on the computer], and provides tools to help you be more productive." Personally, I've been a RescueTime user since late-January 2016, and while it does ping me guilty for harking back to a dangling Facebook tab in Chrome, I haven't yet dug much into the data it's thus-far stored.
 
-In short, I built a [Shiny
-app](https://willwolf.shinyapps.io/rescue-time-estimation/) that
-estimates my/your typical week with RescueTime. In long, the analysis is
-as follows.
+In short, I built a [Shiny app](https://willwolf.shinyapps.io/rescue-time-estimation/) that estimates my/your typical week with RescueTime. In long, the analysis is as follows.
 
-The basic model of RescueTime is thus: track all activity, then
-categorize this activity by both "category" - "Software Development,"
-"Reference and Learning," "Social Learning," etc. - and "productivity
-level" - "Very Productive Time," "Productive Time," "Neutral Time,"
-"Distracting Time" and "Very Distracting Time." For example, 10 minutes
-spent on Twitter would be logged as (600 seconds, "Social Networking",
-"Very Distracting Time"), while 20 minutes on an
-[arxiv](https://arxiv.org/) paper logged as (1200 seconds, "Reference &
-Learning," "Very Productive Time"). Finally, RescueTime maintains (among
-other minutia) an aggregate "productivity score" by day, week and year.
+The basic model of RescueTime is thus: track all activity, then categorize this activity by both "category" - "Software Development," "Reference and Learning," "Social Learning," etc. - and "productivity level" - "Very Productive Time," "Productive Time," "Neutral Time," "Distracting Time" and "Very Distracting Time." For example, 10 minutes spent on Twitter would be logged as (600 seconds, "Social Networking", "Very Distracting Time"), while 20 minutes on an [arxiv](https://arxiv.org/) paper logged as (1200 seconds, "Reference & Learning," "Very Productive Time"). Finally, RescueTime maintains (among other minutia) an aggregate "productivity score" by day, week and year.
 
-The purpose of this post is to take my weekly summary for 2016 and
-examine how I'm doing thus far. More specifically, with a dataset
-containing the total seconds-per-week spent [viewing resources
-categorized] at each of the 5 distinct productivity levels, I'd like to
-infer the productivity breakdown of a typical week. Rows of this dataset
-- after dividing all values in each by its sum - will contain 5 numbers,
-with each expressing the percentage of that week spent at the respective
-productivity level. Examples might include: (.2, .3, .1, .2, .2), (.1,
-.3, .2, .15, .25) or (.05, .25, .3, .25, .15). Of course, the values in
-each row must sum to 1.
+The purpose of this post is to take my weekly summary for 2016 and examine how I'm doing thus far. More specifically, with a dataset containing the total seconds-per-week spent [viewing resources categorized] at each of the 5 distinct productivity levels, I'd like to infer the productivity breakdown of a typical week. Rows of this dataset - after dividing all values in each by its sum - will contain 5 numbers, with each expressing the percentage of that week spent at the respective productivity level. Examples might include: $(.2, .3, .1, .2, .2)$, $(.1, .3, .2, .15, .25)$ or $(.05, .25, .3, .25, .15)$. Of course, the values in each row must sum to 1.
 
 In effect, we can view each row as an empirical probability distribution
 over the 5 levels at hand. As such, our goal is to infer the process

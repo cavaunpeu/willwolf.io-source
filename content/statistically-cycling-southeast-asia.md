@@ -25,7 +25,7 @@ who had cycled there from Warsaw - roughly 4,000 kilometers away if you
 divert through Eastern Europe and Turkey as he had done - in a month.
 There was just no point in comparing myself to this Polish Hercules.
 
-![Cycling the weird and wide in Central (f\*cking)
+![Cycling the weird and wide in Central (f*cking)
 Asia](images/pamir_bike.jpg)
 
 For a better approximation of what's to come - one relative to your own

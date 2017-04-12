@@ -28,14 +28,14 @@ In machine learning, discovering structure in data in an unsupervised
 fashion - and especially when dealing with image, audio or video data -
 is typically performed via auto-encoders. The job of an auto-encoder is
 similar to that of a data compression model: take the original data and
-reduce it into something smaller that, \*crucially\*, contains all of
+reduce it into something smaller that, *crucially*, contains all of
 the information contained in the original. Said a different way, given
 the compressed representation of the data, we should be able to fully
 reconstruct the original input.
 
 In this post, I set out to discover structure in world flags.
 Specifically, I'd like to know: "what are the features that comprise
-these flags?" If successful, I should be able to \*numerically encode\*
+these flags?" If successful, I should be able to *numerically encode*
 a flag as not just its raw pixel values, but instead, "some red
 background, plus a green star in the middle" (in the case of Morocco).
 Of course, these features would only arise in a dataset full of flags:
@@ -50,7 +50,7 @@ output. The hidden layer is typically of a size smaller than the input
 and output layers, and has non-linear activations. Finally, a sparsity
 constraint is enforced such that the model favors having only a few
 non-zero hidden-layer activation values. For a given image, these
-activations \*are\* its compressed representation, i.e. it's "encoding."
+activations *are* its compressed representation, i.e. it's "encoding."
 
 With a trained sparse auto-encoder, we can do a few things.
 
@@ -82,7 +82,7 @@ The technical specifications are as follows:
 
 1.  Downsize images to $(68, 102, 3)$, which is roughly proportional
     to the largest bounding box of the originals. Then, flatten to
-    vectors of $68 \* 102 \* 3 = 20808$ values.
+    vectors of $68 * 102 * 3 = 20808$ values.
 2.  Network dimensions are $(20808, 64, 20808)$.
 3.  Learning rate $\alpha = .05$.
 4.  Training for 1000 epochs.
