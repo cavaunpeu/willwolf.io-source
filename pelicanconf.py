@@ -5,19 +5,20 @@ from __future__ import unicode_literals
 import os
 HOME = os.getenv('HOME')
 
+# Site settings
 AUTHOR = 'Will Wolf'
 SITENAME = 'will wolf'
+SITESUBTITLE = 'data science things and thoughts on the world'
 SITEURL = ''
-
 PATH = 'content'
-
 TIMEZONE = 'America/New_York'
-
 DEFAULT_LANG = 'en'
 
+# Theme settings
 THEME = os.path.join(HOME, 'repos/pelican-themes/aboutwilson')
 STATIC_PATHS = ['figures', 'images']
 
+# Plugin settings
 PLUGIN_PATHS = [os.path.join(HOME, 'repos/pelican-plugins')]
 PLUGINS = ['render_math']
 
