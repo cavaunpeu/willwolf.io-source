@@ -31,10 +31,9 @@ be consistently placed in the cluster pertaining to "major" airports;
 however, the cluster number assigned to this group on a given trial
 could be 1, 2, or 3. Below is a histogram of cluster sizes across 100
 k-means trials for the 293 South American airports being examined.
-[![Cluster Assignment Frequency
-Histogram](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/ClustFreqHist.png){.aligncenter
-.size-full .wp-image-114 width="640"
-height="640"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/ClustFreqHist.png)
+
+![Cluster Assignment Frequency Histogram](figures/airport_cluster_frequency_histograms.png)
+
 Since numbers assigned to each cluster (1, 2, or 3) change by trial,
 this graph isn't particularly useful. However, it does given significant
 evidence that cluster sizes will indeed vary by trial, which we'll use
@@ -90,18 +89,15 @@ airports, green for "semi-major," and blue for "non-major."
 
 ``` {.EnlighterJSRAW data-enlighter-language="null"}
 # create stacked bar chart in ggplot
-ggplot(km_by_country, aes(x=Country, y=FractOfWhole, fill=Cluster)) 
-        + geom_bar(position="stack", stat="identity", width=0.75) 
+ggplot(km_by_country, aes(x=Country, y=FractOfWhole, fill=Cluster))
+        + geom_bar(position="stack", stat="identity", width=0.75)
         + labs(
-            y="Percentage of Total Domestic Airports", 
+            y="Percentage of Total Domestic Airports",
             title="Cluster Proportionality of Domestic Airports"
         )
 ```
 
-[![Stack Bar Cluster
-Props](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/stackbar_clusterprops.png){.aligncenter
-.size-full .wp-image-120 width="640"
-height="640"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/stackbar_clusterprops.png)
+![Stack Bar Cluster Props](figures/cluster_proportions_stacked_barchart.png)
 
 Now for the fun part.
 
@@ -134,9 +130,8 @@ In a future post, it will be interesting to look more closely at the
 economic causes and effects for these air distributions. For now, let's
 just be thankful we're not gauchos in
 [Patagonia](http://willtravellife.com/blog/2013/04/22/photo-essay-the-conical-cathedral-of-patagonias-fitzroy/)
-planning a vacation. [![Gaucho
-Photo](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/NELS120786-TRIBES-GAUCHOS-015-1024x499.jpg){.aligncenter
-.size-large .wp-image-139 width="1024"
-height="499"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/05/NELS120786-TRIBES-GAUCHOS-015.jpg)
+planning a vacation.
+
+![Gaucho Photo](images/guachos_on_vacation.jpg)
 
 Photo Credit: [Jimmy Nelson](http://www.beforethey.com/tribe/gauchos)

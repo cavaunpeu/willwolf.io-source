@@ -16,9 +16,7 @@ and fur, straightens his banana-yellow turtleneck, lets out a deep,
 vigorous, crescent-shaped morning yawn and exclaims aloud: "Today, I'm
 going to make cupcakes for my dear friend Bert."
 
-[![](http://mms.businesswire.com/bwapps/mediaserver/ViewMedia?mgid=299779&vid=5){.aligncenter
-.size-large width="3000"
-height="2211"}](http://mms.businesswire.com/bwapps/mediaserver/ViewMedia?mgid=299779&vid=5)
+![](images/ernie_and_bert.png)
 
 Unfortunately, Ernie has never made cupcakes before. But no matter!
 He darts hastily to the kitchen, pulls out a cookbook, organizes the
@@ -201,5 +199,3 @@ Kaggle:
     Kaggle](https://speakerdeck.com/smly/workflow-serialization-and-docker-for-kaggle)
 2.  [How to get started with data science in
     containers](http://blog.kaggle.com/2016/02/05/how-to-get-started-with-data-science-in-containers/)
-
-

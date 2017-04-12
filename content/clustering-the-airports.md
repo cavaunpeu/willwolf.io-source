@@ -43,10 +43,10 @@ spanning the globe." We filter for South America and employ R's "igraph"
 package - a library dedicated to network analysis and visualization. I
 then produce a basic social network graph for all flights between Chile,
 Argentina and Paraguay merely for example - a visual of some of the data
-at hand and a testament to the graphical power of R. [![SNA
-Plot](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/snaplot.png){.aligncenter
-.size-full .wp-image-95 width="640"
-height="640"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/snaplot.png)
+at hand and a testament to the graphical power of R.
+
+![SNA Plot](figures/sa_airports_sna_plot.png)
+
 The `simplify` function is used to eliminate reverse routes: we don't
 need to map flights between Buenos Aires and Santiago as well as those
 from Santiago to Buenos Aires. As assumed, the visual confirms that most
@@ -74,10 +74,9 @@ prior to that." We run trials for k = 2 to k = 9. The article ["K-means
 Clustering 86 Single Malt Scotch
 Whiskies"](http://blog.revolutionanalytics.com/2013/12/k-means-clustering-86-single-malt-scotch-whiskies.html)
 on the Revolution Analytics blog was referenced heavily for this step.
-[![Within SS
-Plot](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/withinssplot.png){.aligncenter
-.size-full .wp-image-98 width="640"
-height="640"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/withinssplot.png)
+
+![Within SS Plot](figures/sa_airports_withinss_plot.png)
+
 From the graph, it appears that k = 3 is the value we want: "the
 marginal return of adding one more cluster is less than was the marginal
 return for adding the clusters prior to that." However, the k-means
@@ -86,21 +85,17 @@ is important to examine the impact of randomness on our results. In
 addition, after producing this graph a few times, it was immediately
 clear that our trend varies slightly across trials. In solution, we'll
 run 100 trials in ggplot, plot them in points, and examine the smoothing
-line instead. [![K-Means
-Smooth](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/kmeans_smooth.png){.aligncenter
-.size-full .wp-image-100 width="640"
-height="640"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/kmeans_smooth.png)
+line instead.
+
+![K-Means Smooth](figures/sa_airports_kmeans_smooth.png)
+
 The plot seems to corroborate what we previously thought: k = 3 clusters
 is the best choice for our data set. To be absolutely certain, we can
 explicitly compute the predicted "loess" values that fall on our smooth
 line for k = \[2,9\] and see where the "marginal returns cutoff point"
-really is. Simple subtraction \[caption id="attachment\_102"
-align="aligncenter" width="640"\]\[![For k-means clustering analysis on
-SA
-airports.](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/predValsPlot.png){.size-full
-.wp-image-102 width="640"
-height="640"}\][4](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2014/04/predValsPlot.png)
-For k-means clustering analysis on SA airports.\[/caption\]
+really is. Simple subtraction.
+
+![For k-means clustering analysis on SA airports.](figures/sa_airports_predicted_withinss_plot.png)
 
 ``` {.EnlighterJSRAW data-enlighter-language="null"}
 PredSumVal K

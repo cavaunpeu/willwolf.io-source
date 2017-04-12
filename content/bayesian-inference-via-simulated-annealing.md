@@ -22,9 +22,7 @@ that contrasts MCMC search via simulated annealing versus the (more
 standard) Metropolis algorithm. While far from groundbreaking, I did
 pick up the following few bits of intuition along the way.
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/traceplot-1.png){.aligncenter
-.size-full .wp-image-1053 width="1646"
-height="1500"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/traceplot-1.png)
+![](figures/bayesian_inference_simulated_annealing_traceplot.png)
 
 ### A new favorite analogy for Bayesian inference
 

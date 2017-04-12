@@ -16,9 +16,7 @@ hacia la metrópoli llena de galletas y muñecos de peluche, endereza el
 cuello de su suéter color banana, suelta un fuerte bostezo matutino y
 exclama: "Hoy, voy a preparar pasteles para mi querido compañero Beto."
 
-[![](http://mms.businesswire.com/bwapps/mediaserver/ViewMedia?mgid=299779&vid=5){.aligncenter
-.size-large width="3000"
-height="2211"}](http://mms.businesswire.com/bwapps/mediaserver/ViewMedia?mgid=299779&vid=5)
+![](images/ernie_and_bert.png)
 
 Por mala suerte, Enrique nunca ha hecho pasteles antes. ¡Pero no
 importa! Se precipita con prisa hacia la cocina, toma un libro de
@@ -209,5 +207,3 @@ sobre Docker para Kaggle:
     Kaggle](https://speakerdeck.com/smly/workflow-serialization-and-docker-for-kaggle)
 2.  [How to get started with data science in
     containers](http://blog.kaggle.com/2016/02/05/how-to-get-started-with-data-science-in-containers/)
-
-
