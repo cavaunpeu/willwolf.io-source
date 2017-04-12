@@ -76,9 +76,7 @@ The data at hand have 48 rows. First, let's see what they look like.
 
 Next, let's see how each level is distributed:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/empirical_boxplot.png){.aligncenter
-.wp-image-1015 width="800"
-height="914"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/empirical_boxplot.png)
+![](figures/observed_productivity_levels_empirical_boxplot.png)
 
 Finally, let's choose a modeling approach. Once more, I venture that
 each week should be viewed as a draw from a Dirichlet distribution; at
@@ -263,9 +261,7 @@ chains, following Richard McElreath's "four short chains to check, one
 long chain for inference!"^3^The results - fortunately, quite smooth -
 are as follows:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/traceplot.png){.aligncenter
-.wp-image-994 width="800"
-height="909"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/traceplot.png)
+![](figures/poor_mans_dirichlet_traceplot.png)
 
 The gray area of the plot pertains to the warmup period, while the white
 gives the valid samples. All four chains appear highly-stationary,
@@ -274,7 +270,7 @@ convergence diagnostics themselves:
 
 ``` {.lang:r .decode:true}
 Inference for Stan model: model.
-4 chains, each with iter=2000; warmup=1000; thin=1; 
+4 chains, each with iter=2000; warmup=1000; thin=1;
 post-warmup draws per chain=1000, total post-warmup draws=4000.
 
       mean se_mean   sd 1.5% 98.5% n_eff Rhat
@@ -295,9 +291,7 @@ rather-tight 97% prediction interval to boot.
 Next, let's draw 2000 samples from the joint posterior and plot the
 respective distributions of \$\\mu\_i\$ against one another:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/posteriors.png){.aligncenter
-.wp-image-995 width="800"
-height="909"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/posteriors.png)
+![](figures/poor_mans_dirichlet_posteriors.png)
 
 Remember, the above posterior distributions are for the *expected
 values* (mean) of each productivity-level proportion. In our model, we
@@ -306,9 +300,7 @@ function) with standard deviation \$\\sigma\$ and draw our final value.
 
 Finally, let's compute the mean of each posterior for a final result:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/donut_plot-1.png){.aligncenter
-.wp-image-1017 width="800"
-height="658"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/02/donut_plot-1.png)
+![](figures/poor_mans_dirichlet_donut_plot.png)
 
 In summary, I've got work to do. Time to cast off those "Neutral"
 clothes and toss it to the purple.

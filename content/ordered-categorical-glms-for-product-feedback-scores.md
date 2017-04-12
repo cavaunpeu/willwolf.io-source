@@ -148,10 +148,8 @@ probabilities <- c(.1, .2, .3, .3, .1)
 feedback <- rmultinom(n = N, size = 1, prob = probabilities) %>% t %>% max.col
 ```
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/empirical_distribution_explicit_feedback_scores-2.png){.aligncenter
-.wp-image-1156 width="900"
-height="793"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/empirical_distribution_explicit_feedback_scores-2.png)[  
-](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/empirical_distribution_explicit_feedback_scores-2.png)  
+![](figures/empirical_distribution_explicit_feedback_scores.png)
+
 Next, let's fit an ordered categorical GLM in the Stan modeling
 language. Note that we don't have any predictor variables \$x\_i\$;
 therefore, the only variables we will be estimating are our intercepts
@@ -200,9 +198,7 @@ distribution, where each sample is given as
 line gives the column-wise mean, and the error band gives the
 column-wise 92% interval.
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/mean_posterior_cumulative_distribution.png){.aligncenter
-.wp-image-1160 width="900"
-height="793"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/mean_posterior_cumulative_distribution.png)
+![](figures/mean_posterior_cumulative_distribution.png)
 
 Key points are as follows:
 
@@ -255,9 +251,7 @@ through the Dirichlet-Multinomial conjugacy described above. Sampling
 from this posterior follows trivially. While vanilla histograms should
 do the trick, let's plot the inferred densities just to be safe.
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/comparative_posterior_predictive_density_plots.png){.aligncenter
-.wp-image-1170 width="900"
-height="793"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/comparative_posterior_predictive_density_plots.png)
+![](figures/comparative_posterior_predictive_density_plots.png)
 
 To be frank, this has me a little disappointed! According to the
 posterior predictive densities of the weighted-average throws, there is
@@ -266,9 +260,7 @@ categorical models. To be thorough, let's plot 100 draws from the *raw*,
 respective posteriors: a distribution over cumulative distribution
 functions for each model.
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/comparative_posterior_cumulative_distributions.png){.aligncenter
-.wp-image-1172 width="900"
-height="793"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/comparative_posterior_cumulative_distributions.png)
+![](figures/comparative_posterior_cumulative_distributions.png)
 
 Yep, no difference. So, why do we think this is? What are our takeaways?
 
@@ -319,9 +311,7 @@ app](https://willwolf.shinyapps.io/ordered-categorical-a-b-test/) to be
 used as an A/B test calculator for ordered categorical data using the
 methodologies detailed above. Example output looks as follows:
 
-[![](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/a_b_comparison_plot-1.png){.aligncenter
-.wp-image-1218 .size-full width="1920"
-height="1063"}](http://numbers.willtravellife.com/wp-content/uploads/sites/2/2017/03/a_b_comparison_plot-1.png)
+![](figures/a_b_comparison_plot.png)
 
 Code for this work can be found
 [here](https://github.com/cavaunpeu/ordered-categorical-glm). Thanks for

@@ -13,6 +13,7 @@ TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
 
 THEME = "/Users/willwolf/repos/pelican-themes/aboutwilson"
+STATIC_PATHS = ['figures', 'images']
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
