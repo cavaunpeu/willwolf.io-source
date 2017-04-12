@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+import os
+HOME = os.getenv('HOME')
+
 AUTHOR = 'Will Wolf'
 SITENAME = 'will wolf'
 SITEURL = ''
@@ -12,8 +15,11 @@ TIMEZONE = 'America/New_York'
 
 DEFAULT_LANG = 'en'
 
-THEME = "/Users/willwolf/repos/pelican-themes/aboutwilson"
+THEME = os.path.join(HOME, 'repos/pelican-themes/aboutwilson')
 STATIC_PATHS = ['figures', 'images']
+
+PLUGIN_PATHS = [os.path.join(HOME, 'repos/pelican-plugins')]
+PLUGINS = ['render_math']
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
