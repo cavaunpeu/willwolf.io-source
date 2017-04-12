@@ -20,7 +20,12 @@ STATIC_PATHS = ['figures', 'images']
 
 # Plugin settings
 PLUGIN_PATHS = [os.path.join(HOME, 'repos/pelican-plugins')]
-PLUGINS = ['render_math']
+PLUGINS = ['render_math', 'disqus_static']
+
+# Comments
+DISQUS_SITENAME = 'willwolf'
+DISQUS_SECRET_KEY = os.getenv('DISQUS_SECRET_KEY')
+DISQUS_PUBLIC_KEY = os.getenv('DISQUS_PUBLIC_KEY')
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -30,14 +35,19 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+LINKS = (('Travel Blog', 'http://www.willtravellife.com'),)
 
-# Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+# Social
+TWITTER_USERNAME = '@willwolf_'
+SOCIAL = (
+    ('GitHub', 'www.github.com/cavaunpeu'),
+    ('Twitter', 'www.twitter.com/willwolf_'),
+    ('Email', 'mailto:williamabrwolf@gmail.com'),
+    ('LinkedIn', 'http://linkedin.com/in/williamabrwolf'),
+)
+
+# Categories
+DISPLAY_CATEGORIES_ON_MENU = False
 
 DEFAULT_PAGINATION = 10
 
