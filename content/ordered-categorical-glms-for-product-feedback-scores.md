@@ -28,6 +28,7 @@ make use of the comments section below.)
 
 In a multinomial regression, we can formulate our problem thus:
 
+$$
 \begin{align*}
 y &\sim \text{Multinomial}(1, p) \\
 p_j &= \frac{e^{\phi_j}}{\sum\limits_{k = 1}^{K} e^{\phi_k}}
@@ -36,6 +37,7 @@ p_j &= \frac{e^{\phi_j}}{\sum\limits_{k = 1}^{K} e^{\phi_k}}
 \alpha_j &\sim \text{Normal}(0, 10) \\
 \beta_j &\sim \text{Normal}(0, 10) \\
 \end{align*}
+$$
 
 In a model with $k$ categorical outcomes, we typically have $k-1$
 linear equations for $\phi_j$. The link function - which you'll
@@ -57,9 +59,9 @@ total observed counts $x_k$ of each category $k$ and respective
 parameters $\alpha_k$ on our prior, our posterior distribution for
 our belief in $p$ is given as:
 
-\[
+$$
 p \sim \text{Dirichlet}(\alpha_1 + x_1, ..., \alpha_k + x_k)
-\]
+$$
 
 This makes both inference and posterior predictive sampling trivial: a
 few lines of code for each. Unfortunately, while delightfully simple,
@@ -69,6 +71,7 @@ preserved. To this effect, let us explore the ordered categorical GLM.
 
 The ordered categorical GLM can be specified thus:
 
+$$
 \begin{align*}
 &y \sim \text{Ordered}(p) \\
 &\log{\bigg(\frac{p_k}{1 - p_k}\bigg)} = \alpha_k - \phi_i
@@ -77,6 +80,7 @@ The ordered categorical GLM can be specified thus:
 &\alpha_k \sim \text{Normal}(0, 10) \\
 &\beta \sim \text{Normal}(0, 10)
 \end{align*}
+$$
 
 There's a few components to clarify:
 

@@ -81,18 +81,22 @@ some strictly negative number. For our weight: Define $\Delta C$ as
 weight" times "how much we changed our weight". In math, that looks
 like:
 
+$$
 \begin{align} \Delta C &=\frac{\partial C}{\partial w} (w_{i+1} -
-w_i)\\ &=\nabla C \cdot \Delta w\\ \end{align}
+w_i)\\ &=\nabla C \cdot \Delta w\\
+\end{align}
+$$
 
 Our goal is to make $\Delta C$ strictly negative, such that every
 time we update our weight, we do so in a way that lowers our cost.
 Duh. Let's choose $\Delta w = -\eta\ \nabla C$. Our previous
 expression becomes:
 
+$$
 \begin{align} \Delta C &=\nabla C \cdot \Delta w\\ &=\nabla C
 \cdot (-\eta\ \nabla C)\\ &=-\eta||\nabla C||\\
-
 \end{align}
+$$
 
 $\ ||\nabla C||$ is strictly positive, and a positive number
 multiplied by a negative number ($-\eta$) is strictly negative. So,
@@ -120,70 +124,72 @@ loss](https://en.wikipedia.org/wiki/Loss_function#Quadratic_loss_function)
 and a [sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)
 respectively.
 
-$C(\hat{y}) = \frac{1}{2}(y - \hat{y})^2$
+$$
+C(\hat{y}) = \frac{1}{2}(y - \hat{y})^2
+$$
 
-$\sigma(z) = \frac{1}{1 + e^{-z}}$
+$$
+\sigma(z) = \frac{1}{1 + e^{-z}}
+$$
 
 .. where $\hat{y}$ is the neuron's final output, $z$ is the linear
 combination ($wx+b$) input, and $\hat{y} = \sigma(z)$.
 
-Using the chain rule, our desired expression $\frac{\partial
-C}{\partial w}$ becomes:
+Using the chain rule, our desired expression $\frac{\partial C}{\partial w}$ becomes:
 
+$$
 \begin{align}
-
 \frac{\partial C}{\partial w} &=
 C'(\hat{y})\frac{d}{dw}\sigma(z)\\
-
 &= C'(\hat{y})\sigma'(z)\frac{d}{dw}z\\
-
 &= C'(\hat{y})\sigma'(z)\frac{d}{dw}(wx + b)\\
-
 &= C'(\hat{y})\sigma'(z)x\\
-
 \end{align}
+$$
+
 
 For our bias, the expression $\frac{\partial C}{\partial b}$ is
 almost identical:
 
+$$
 \begin{align}
-
 \frac{\partial C}{\partial b} &=
 C'(\hat{y})\frac{d}{db}\sigma(z)\\
-
 &= C'(\hat{y})\sigma'(z)\frac{d}{db}z\\
-
 &= C'(\hat{y})\sigma'(z)\frac{d}{db}(wx + b)\\
-
 &= C'(\hat{y})\sigma'(z)\\
-
 \end{align}
+$$
 
 Now we need expressions for $C'$ and $\sigma'$. Let's derive them.
 
+$$
 \begin{align}
-
 C'(\hat{y}) &= 2 \cdot \frac{1}{2}(y - \hat{y})\\
-
 &= y - \hat{y}\\
-
 \end{align}
+$$
 
+$$
 \begin{align} \sigma'(z) &= -1(1+e^{-z})^{-2}(e^{-z})(-1)\\ &=
 \frac{e^{-z}}{1+e^{-z}}\\ &=
 \frac{1}{1+e^{-z}}\frac{e^{-z}}{1+e^{-z}}\\ &=
 \frac{1}{1+e^{-z}}\frac{(1 + e^{-z}) - 1}{1+e^{-z}}\\ &=
 \frac{1}{1+e^{-z}}\bigg(1 - \frac{1}{1+e^{-z}}\bigg)\\ &=
-\sigma(z)(1-\sigma(z)) \end{align}
+\sigma(z)(1-\sigma(z))
+\end{align}
+$$
 
 As such, our final expressions for $\frac{\partial C}{\partial w}$
 and $\frac{\partial C}{\partial b}$ are:
 
-$\frac{\partial C}{\partial w} &= (y - \hat{y})(\sigma(wx +
-b)(1-\sigma(wx + b)))x$
+$$
+\frac{\partial C}{\partial w} = (y - \hat{y})(\sigma(wx + b)(1-\sigma(wx + b)))x
+$$
 
-$\frac{\partial C}{\partial b} &= (y - \hat{y})(\sigma(wx +
-b)(1-\sigma(wx + b)))$
+$$
+\frac{\partial C}{\partial b} = (y - \hat{y})(\sigma(wx + b)(1-\sigma(wx + b)))
+$$
 
 From there, we just plug in our values from the start ($x$ is
 our `ACTIVATION`{.EnlighterJSRAW data-enlighter-language="null"}) to
