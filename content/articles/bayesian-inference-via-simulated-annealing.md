@@ -1,7 +1,6 @@
 Title: Bayesian Inference via Simulated Annealing
 Date: 2017-02-07 15:33
 Author: Will Wolf
-Category: Uncategorized
 Slug: bayesian-inference-via-simulated-annealing
 Status: published
 

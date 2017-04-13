@@ -1,7 +1,6 @@
 Title: While We Were Busy with Prosperity
 Date: 2016-11-10 17:10
 Author: Will Wolf
-Category: Uncategorized
 Slug: while-we-were-busy-with-prosperity
 Status: published
 

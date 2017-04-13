@@ -1,8 +1,6 @@
 Title: Markovian Muse: Conjuring the Backpacker Within
 Date: 2015-06-29 00:17
 Author: Will Wolf
-Category: Uncategorized
-Tags: markov chains, recurrent neural networks
 Slug: markovian-muse-conjuring-the-backpacker-within
 Status: published
 

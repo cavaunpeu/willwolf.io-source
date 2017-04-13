@@ -1,8 +1,6 @@
 Title: Text-Mining South American Constitutions
 Date: 2014-05-06 20:11
 Author: Will Wolf
-Category: Uncategorized
-Tags: text-mining, word-cloud
 Slug: text-mining-south-american-constitutions
 Status: published
 

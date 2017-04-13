@@ -15,7 +15,7 @@ TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
 
 # Theme settings
-THEME = os.path.join(HOME, 'repos/pelican-themes/aboutwilson')
+THEME = 'theme'
 STATIC_PATHS = ['figures', 'images']
 
 # URL settings
@@ -23,6 +23,10 @@ ARTICLE_URL = '{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
+
+# Category settings
+USE_FOLDER_AS_CATEGORY = False
+DEFAULT_CATEGORY = 'Uncategorized'
 
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', os.path.join(HOME, 'repos/pelican-plugins')]

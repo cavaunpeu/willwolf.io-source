@@ -1,7 +1,6 @@
 Title: Generating World Flags with Sparse Auto-Encoders
 Date: 2016-12-13 20:55
 Author: Will Wolf
-Category: Uncategorized
 Slug: generating-world-flags-with-sparse-auto-encoders
 Status: published
 
