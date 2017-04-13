@@ -75,9 +75,9 @@ def custom_loss_given_weights(w):
 
 Let's see what this function looks like, for each of $y = 1$ and $y = 0$, and varying values of y_hat.
 
-![y_equals_1](figures/y_equals_1.png)
+![y_equals_1]({filename}/figures/y_equals_1.png)
 
-![y_equals_0](figures/y_equals_0.png)
+![y_equals_0]({filename}/figures/y_equals_0.png)
 
 When $y = 1$, our cost is that of the typical logarithmic loss. At worst, our cost is $\approx 5$. However, when $y = 0$, the dynamic is different: if we guess $0.2$, it's not so bad; if we guess $0.6$ it's not so bad; if we guess $> 0.8$, it's really, really bad. $\approx 25$ bad. Finally, we compute our gradient. As easy as:
 

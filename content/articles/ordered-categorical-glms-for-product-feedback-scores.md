@@ -73,7 +73,7 @@ N <- 50 probabilities <- c(.1, .2, .3, .3, .1)
 feedback <- rmultinom(n = N, size = 1, prob = probabilities) %>% t %>% max.col
 ```
 
-![explicit feedback scores]({filename}figures/empirical_distribution_explicit_feedback_scores.png)
+![explicit feedback scores]({filename}/figures/empirical_distribution_explicit_feedback_scores.png)
 
 Next, let's fit an ordered categorical GLM in the Stan modeling language. Note that we don't have any predictor variables $x_i$; therefore, the only variables we will be estimating are our intercepts $\alpha_k$.
 
@@ -110,7 +110,7 @@ Our model estimates four values: $\alpha_1, \alpha_2, \alpha_3$ and $\alpha_4$. 
 
 The posterior samples from our model will be vectors of cumulative probabilities, i.e. cumulative distribution functions. Let's examine the variation in these estimates, and plot them against the proportion of each class observed in our original data to see how well our model did. The following plot is constructed with 2,000 samples from our posterior distribution, where each sample is given as $\{\alpha_1, \alpha_2, \alpha_3, \alpha_4\}$. The dotted red line gives the column-wise mean, and the error band gives the column-wise 92% interval.
 
-![posterior cumulative distribution]({filename}figures/mean_posterior_cumulative_distribution.png)
+![posterior cumulative distribution]({filename}/figures/mean_posterior_cumulative_distribution.png)
 
 Key points are as follows:
 
@@ -134,11 +134,11 @@ Next, we can use each sample from `simulated_probabilities` to roll a multinomia
 
 The following plot compares the results for both the ordered categorical and multinomial models. Remember, we obtain the posterior of the latter through the Dirichlet-Multinomial conjugacy described above. Sampling from this posterior follows trivially. While vanilla histograms should do the trick, let's plot the inferred densities just to be safe.
 
-![comparative posterior density plots]({filename}figures/comparative_posterior_predictive_density_plots.png)
+![comparative posterior density plots]({filename}/figures/comparative_posterior_predictive_density_plots.png)
 
 To be frank, this has me a little disappointed! According to the posterior predictive densities of the weighted-average throws, there is no discernible difference between the multinomial and ordered categorical models. To be thorough, let's plot 100 draws from the *raw*, respective posteriors: a distribution over cumulative distribution functions for each model.
 
-![comparative posterior cumulative distributions]({filename}figures/comparative_posterior_cumulative_distributions.png)
+![comparative posterior cumulative distributions]({filename}/figures/comparative_posterior_cumulative_distributions.png)
 
 Yep, no difference. So, why do we think this is? What are our takeaways?
 
@@ -160,6 +160,6 @@ In this quote, he's describing the ordered categorical GLM (in addition to "zero
 
 To conclude, I built a [Shiny app](https://willwolf.shinyapps.io/ordered-categorical-a-b-test/) to be used as an A/B test calculator for ordered categorical data using the methodologies detailed above. Example output looks as follows:
 
-![a/b comparison plot]({filename}figures/a_b_comparison_plot.png)
+![a/b comparison plot]({filename}/figures/a_b_comparison_plot.png)
 
 Code for this work can be found [here](https://github.com/cavaunpeu/ordered-categorical-glm). Thanks for reading.

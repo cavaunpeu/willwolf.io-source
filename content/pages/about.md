@@ -5,7 +5,7 @@ Slug: about
 Status: published
 Template: page
 
-My name is Will Wolf - a technologist from Philadelphia. I currently live in Casablanca, Morocco where I'm pursuing an open-source ["masters"](http://willwolf.io/en/2016/07/29/my-open-source-machine-learning-masters-in-casablanca-morocco/) in machine learning. Just before, I worked as a Data Scientist at [ShopKeep](https://www.shopkeep.com) in New York City, and mentored Data Science and Programming in Python for [Thinkful](http://thinkful.com/). I'm passionate about mathematics, cycling, language and travel.
+My name is Will Wolf - a technologist from Philadelphia. I currently live in Casablanca, Morocco where I'm pursuing an open-source ["masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning. Just before, I worked as a Data Scientist at [ShopKeep](https://www.shopkeep.com) in New York City, and mentored Data Science and Programming in Python for [Thinkful](http://thinkful.com/). I'm passionate about mathematics, cycling, language and travel.
 
 I studied Industrial Engineering and Mathematics at Penn State University. There, I played ice hockey, enjoyed math classes more than most, and spent two years writing an Honors [thesis](https://honors-prod.sas.psu.edu/catalog/1947) on game theory and group dynamics with Dr. Eli Byrne. I graduated in December 2011.
 

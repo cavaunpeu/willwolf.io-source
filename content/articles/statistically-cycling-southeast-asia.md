@@ -10,7 +10,7 @@ I spent 6 months of my trip around the world traveling on a bicycle. First, I ro
 
 When I met other cyclists, I'd ask for advice. "What's the next country like? How are the roads? Is it easy to get food and water? How tough is the cycling?" While the information I would receive was valuable, it was always too relative to take at face value. *You* may find a country difficult or easy - *you* may have cycled fast or slow. I once met a Polish guy outside a bar in [Yerevan, Armenia](willtravellife.com/blog/2013/10/25/hail-linkin-park-crazy-guy-bike/) who had cycled there from Warsaw - roughly 4,000 kilometers away if you divert through Eastern Europe and Turkey as he had done - in a month. There was just no point in comparing myself to this Polish Hercules.
 
-![Cycling the weird and wide in Central (f*cking) Asia](images/pamir_bike.jpg)
+![Cycling the weird and wide in Central (f*cking) Asia]({filename}/images/pamir_bike.jpg)
 
 For a better approximation of what's to come - one relative to your own experiences and diagnostic approach - perhaps there's a better way.
 
@@ -50,4 +50,4 @@ Vietnam     47.6     268.46655  95.6            52.23755
 
 So, how do our predictions look? I buy 'em. Singapore would definitely be the easiest in which to cycle. Indonesia and Lao would likely be the hardest. China in the middle, though, with an index of 60? Again - I'd buy it. Assuming you can speak some Chinese. Finally, here's a map of our findings. If you have a friend cycling in the area - do pass it along.
 
-![diffIDX Map](figures/cycling_difficulty_index.jpg)
+![diffIDX Map]({filename}/figures/cycling_difficulty_index.jpg)

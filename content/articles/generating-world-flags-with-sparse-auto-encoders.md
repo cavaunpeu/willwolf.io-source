@@ -58,13 +58,13 @@ Not terrible. Of course, this could be improved with, squarely, more training da
 
 After training our auto-encoder, we solve for the 64 individual images that "maximally activate" each of the 64 "feature detectors," i.e. each of our hidden-layer nodes.
 
-![embedded features]({filename}figures/flag_embedding_features.png)
+![embedded features]({filename}/figures/flag_embedding_features.png)
 
 As anticipated, there does in fact appear to be some higher-level "structure" in our flags. In other words, we can now empirically see: a flag is a thing made up of some combination of horizontal stripes, vertical stripes, diagonal crosses, central emblems, the British crest, etc.
 
 Next, let's pass all images back through our network, obtain the 64-dimensional encoding for each, reduce these encodings into 2-dimensional space via the [TSNE](http://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html) algorithm, and plot.
 
-![tsne plot]({filename}figures/country_embeddings_tsne_plot.png)
+![tsne plot]({filename}/figures/country_embeddings_tsne_plot.png)
 
 Points that are close together indicate flags that are visually similar. So, what have we learned (or rather, what human intuition have we corroborated with empirical, numerical evidence)? Notable similarities include:
 

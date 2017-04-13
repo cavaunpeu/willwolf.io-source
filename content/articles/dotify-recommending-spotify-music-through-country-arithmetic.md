@@ -12,11 +12,11 @@ $$vector_{king} - vector_{man} + vector_{girl} \approx vector_{queen}$$
 
 being the classic party trick. With [dotify](http://dotify.herokuapp.com/), I set out to embed countries into vector space myself, and use these embeddings to recommend music. What are some songs like "Colombia" .. times "Turkey" .. minus "Germany," you ask?
 
-![dotify Background](images/spotify_not_available.png)
+![dotify Background]({filename}/images/spotify_not_available.png)
 
 To embed, I employ the timeless Implicit Matrix Factorization of [Hu, Koren, and Volinsky](http://yifanhu.net/PUB/cf.pdf) on daily Spotify Charts data. For a given song in a given country, implicit feedback is counted as the total number of times this song has been streamed throughout history. While the confidence matrix $C_{ui}$ is typically defined as $1 + \alpha(1 + R_{ui})$, I tweaked it to be $1 + \alpha\log{(1 + R_{ui})}$; this performed better empirically - likely due to the fact that many songs have stream counts orders of magnitude higher than others. I've been trying to implement more algorithms by hand as of late, which you'll find in the code. To use dotify: begin typing the name of a country, or simply press the down arrow, in order to select a country with your mouse or the enter key. Next, a dropdown of arithmetic operators will appear; select one in identical fashion. Feel free to keep entering countries and operators: your expression can be as long as you like. Finally, when you're ready to terminate your expression and receive song recommendations, simply enter the equals sign ("=") in the operator dropdown. For example:
 
-![dotify Screenshot](images/dotify_screenshot.png)
+![dotify Screenshot]({filename}/images/dotify_screenshot.png)
 
 The app is built with the following core technologies: Flask as both API endpoints and a web server; React and LESS on the front-end; Webpack for asset compilaton; Postgres database; Heroku for deployment.
 
