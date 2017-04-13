@@ -19,6 +19,6 @@ Answering these questions with given, ground-truth probabilities is an exercise
 
 Once more, this work can be found in the notebook linked above. The accompanying repository can be found [here](https://github.com/cavaunpeu/intercausal-reasoning).
 
-![](figures/simple_bayesian_network.png)
+![]({filename}figures/simple_bayesian_network.png)
 
 Your thoughts are welcome. Many thanks for reading.

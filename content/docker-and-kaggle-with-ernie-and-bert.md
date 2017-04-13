@@ -9,7 +9,7 @@ This post is meant to serve as an introduction to what Docker is and why and how
 
 One Monday morning, Ernie from the 'Street climbs out from under his red-and-blue pinstriped covers, puts both feet on the ground and opens his bedroom window. He stares out into a bustling metropolis of cookies and fur, straightens his banana-yellow turtleneck, lets out a deep, vigorous, crescent-shaped morning yawn and exclaims aloud: "Today, I'm going to make cupcakes for my dear friend Bert."
 
-![](images/ernie_and_bert.png)
+![]({filename}images/ernie_and_bert.png)
 
 Unfortunately, Ernie has never made cupcakes before. But no matter! He darts hastily to the kitchen, pulls out a cookbook, organizes the ingredients and turns on his small Easy-Bake oven. "I'll experiment here. I'll make the greatest cupcake known to all stuffed-animal-kind. And when I'm happy with the result, I'll make 50 more," he shouts.
 

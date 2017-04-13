@@ -15,7 +15,7 @@ While my peers are very diverse in race, culture, gender and geography, I don'
 
 As it is now so grippingly clear, these people do exist, and in numbers! They are blue collar workers. They are white men and white women from Middle America. They are Latina females in Florida. They are tailgaters at Penn State football games. They are critical thinkers from Ohio. And I don't know a single one.
 
-![](images/trump_rally.jpeg)
+![]({filename}images/trump_rally.jpeg)
 
 Republican presidential candidate, Donald Trump, waves to supporters after speaking at a campaign rally at the I-X Center Saturday, March 12, 2016, in Cleveland. (AP Photo/Tony Dejak)[/caption]
 

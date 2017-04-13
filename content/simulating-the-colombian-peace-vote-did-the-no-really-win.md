@@ -15,7 +15,7 @@ In other words, it was humans - tired humans - counting ballots by hand.
 
 Is it possible that the majority wanted "Yes" and still happened to lose?
 
-![](images/colombian_plebiscite_vote.jpg)
+![]({filename}images/colombian_plebiscite_vote.jpg)
 
 To answer this question, we can frame the vote as a simple statistical process and ask: "if we were to re-hold the vote many more times, how often would the 'Yes' vote actually win?"
 

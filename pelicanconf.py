@@ -18,6 +18,12 @@ DEFAULT_LANG = 'en'
 THEME = os.path.join(HOME, 'repos/pelican-themes/aboutwilson')
 STATIC_PATHS = ['figures', 'images']
 
+# URL settings
+ARTICLE_URL = '{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
+
 # Plugin settings
 PLUGIN_PATHS = [os.path.join(HOME, 'repos/pelican-plugins')]
 PLUGINS = ['render_math', 'disqus_static']
