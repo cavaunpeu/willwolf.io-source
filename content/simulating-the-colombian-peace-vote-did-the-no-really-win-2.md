@@ -15,7 +15,7 @@ En otras palabras, fueron seres humanos - seres humanos agotados - contando los 
 
 ¿Sería posible que la mayoría quería el "Sí" y sin embargo perdió igual?
 
-![]({filename}images/colombian_plebiscite_vote.jpg)
+![plebiscite vote]({filename}images/colombian_plebiscite_vote.jpg)
 
 Para investigarlo, podemos formular el proceso del voto como un sencillo proceso estadístico y preguntarse: "Si repitiéramos el plebiscito muchas más veces, ¿con qué frecuencia ganaría el 'Sí' de verdad?"
 

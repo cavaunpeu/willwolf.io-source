@@ -32,7 +32,7 @@ The data at hand have 48 rows. First, let's see what they look like.
 
 Next, let's see how each level is distributed:
 
-![]({filename}figures/observed_productivity_levels_empirical_boxplot.png)
+![empirical boxplot]({filename}figures/observed_productivity_levels_empirical_boxplot.png)
 
 Finally, let's choose a modeling approach. Once more, I venture that each week should be viewed as a draw from a Dirichlet distribution; at the very least, no matter how modeled, each week (draw) is inarguably a vector of values that sum to 1. To this effect, I see a few possible approaches.
 
@@ -116,7 +116,7 @@ Instinctually, this modeling framework seems like it might have a few leaks in t
 
 To fit the model, I use the standard Stan NUTS engine to build 4 MCMC chains, following Richard McElreath's "four short chains to check, one long chain for inference!"[^3]. The results - fortunately, quite smooth - are as follows:
 
-![]({filename}figures/poor_mans_dirichlet_traceplot.png)
+![traceplot]({filename}figures/poor_mans_dirichlet_traceplot.png)
 
 The gray area of the plot pertains to the warmup period, while the white gives the valid samples. All four chains appear highly-stationary, well-mixing and roughly identical. Finally, let's examine the convergence diagnostics themselves:
 
@@ -137,13 +137,13 @@ Both `Rhat` - a value which we hope to equal 1, would be "suspicious at 1.01 an
 
 Next, let's draw 2000 samples from the joint posterior and plot the respective distributions of $\mu_i$ against one another:
 
-![]({filename}figures/poor_mans_dirichlet_posteriors.png)
+![posterior plot]({filename}figures/poor_mans_dirichlet_posteriors.png)
 
 Remember, the above posterior distributions are for the *expected values* (mean) of each productivity-level proportion. In our model, we then insert this mean into a normal distribution (the likelihood function) with standard deviation $\sigma$ and draw our final value.
 
 Finally, let's compute the mean of each posterior for a final result:
 
-![]({filename}figures/poor_mans_dirichlet_donut_plot.png)
+![donut plot]({filename}figures/poor_mans_dirichlet_donut_plot.png)
 
 In summary, I've got work to do. Time to cast off those "Neutral" clothes and toss it to the purple.
 
