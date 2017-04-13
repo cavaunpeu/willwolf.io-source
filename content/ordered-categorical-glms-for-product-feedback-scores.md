@@ -44,23 +44,23 @@ $$
 
 There's a few components to clarify:
 
-##### Ordered distribution
+### Ordered distribution
 
 An Ordered distribution is a vanilla categorical distribution that accepts a vector of *cumulative probabilities* $p_k = \text{Pr}(y_i \leq k)$, as opposed to traditional probabilities $p_k = \text{Pr}(y_i = k)$. This preserves the ordering among variables.
 
-##### Link function
+### Link function
 
 In a typical logistic regression, we model the log-odds of observing a positive outcome as a linear function of the intercept plus weighted input variables. (The inverse of this function which we thereafter employ to obtain the raw probability $p$ is the *logistic* function, or *[sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)* function.) In the ordered categorical GLM, we instead model the *log-cumulative-odds* of observing a position outcome as a linear function of the intercept *minus* weighted input variables. We'll dive into the "minus" momentarily.
 
-##### Cumulative probability
+### Cumulative probability
 
 $p_k$ in the above equation is defined as $p_k = \text{Pr}(y_i \leq k)$. For this reason, the left-hand-side of the second line of our model gives the log-cumulative-odds, not the log-odds.
 
-##### Priors
+### Priors
 
 Placing Normal priors on $\alpha_k$ and $\beta$ was an arbitrary choice. In fact, any prior that produces a continuous value should suffice: the constraint that $p_k$ must be a valid (cumulative) probability, i.e. $p_k$ must lie on the interval $[0, 1]$, is enforced by the inverse link function.
 
-##### Subtracting $\phi_i$
+### Subtracting $\phi_i$
 
 Ultimately, $\phi_i$ is the linear model. Should we want to add additional predictors, we would append them here. So, why do we subtract $\phi_i$ from $\alpha_k$ instead of add? Intuitively, it would make sense for an increase in the value of a predictor variable, given a positive coefficient, to shift probability mass towards *larger* ordinal values. This makes for more fluid interpretation of our model parameters. Subtracting $\phi_i$ does just this: *increasing* the value of a given predictor *decreases* the log-cumulative-odds of every outcome value $k$ below the maximum (*every* outcome value below the maximum, because we have one linear model $\phi_i$ which we must subtract, separately, from each intercept $\alpha_k$ in order to compute $\log{\big(\frac{p_k}{1 - p_k}\big)}$) which shifts probability mass upwards. This way, the desired dynamic - "a bigger predictor should lead to a bigger outcome given a positive coefficient" - holds.
 
@@ -114,11 +114,11 @@ The posterior samples from our model will be vectors of cumulative probabilities
 
 Key points are as follows:
 
-##### The scale of our estimates
+### The scale of our estimates
 
 The marginal distributions of each estimated parameter are on the *log-cumulative-odds* scale. This is because $\alpha_k$ - the only set of parameters we are estimating - is set equal to $\log{\bigg(\frac{\text{Pr}(y_i \leq k)}{1 - \text{Pr}(y_i \leq k)}\bigg)}$ in our model above. So, what does a value of, say, $\alpha_3 = -1.5$ say about the probability of receiving a feedback score of 3 from a given user? I have no idea. As such, we necessarily convert these estimates from the *log-cumulative-odds* scale to the *cumulative probability* scale to make interpretation easier. The sigmoid function gives this conversion.
 
-##### The width of the band
+### The width of the band
 
 The width of the band quantifies the uncertainty in our estimate of the true cumulative distribution function. We used 50 samples: it should be reasonably wide. With 500,000 samples, the red band would be indistinguishable from the dotted line.
 
@@ -142,15 +142,15 @@ To be frank, this has me a little disappointed! According to the posterior predi
 
 Yep, no difference. So, why do we think this is? What are our takeaways?
 
-##### We didn't use any predictor variables
+### We didn't use any predictor variables
 
 In the ordered categorical case, we estimate $k - 1$ values of $\alpha_k$ and a *single set* of predictor coefficients. In the multinomial case, we estimate $k - 1$ sets of $\{\alpha_k, \beta_{X, k}\}$ values (for example, should we have $k = 3$ classes and two predictor variables $a$ and $b$, we'd estimate parameters $\alpha_1, \beta_{a, 1}, \beta_{b, 1}, \alpha_{2}, \beta_{a, 2}, \beta_{b, 2}$ in the simplest case). Given that we didn't use any predictor variables, we're simply estimating a set of intercepts $\alpha_k$ in each case. In the former, these values give the log-cumulative-odds of each outcome, while in the latter they give the log-odds outright. Given that the transformation between the two is deterministic, the ordered categorical and multinomial models should be functionally identical.
 
-##### We might want predictor variables
+### We might want predictor variables
 
 It is easy to conceive of a situation in which we'd want predictor variables. In this case, the ordered categorical model becomes a clear choice for ordered categorical data. Revisiting its formulation above, we see that predictors are trivial to add to the model: we just tack them onto the equation for $\phi_i$.
 
-##### The inconvenient realities of measurement
+### The inconvenient realities of measurement
 
 There's a quote I like from Richard McElreath (I just finished his textbook, [Statistical Rethinking](http://xcelab.net/rm/statistical-rethinking/), which I couldn't recommend much more highly):
 
