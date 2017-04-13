@@ -25,8 +25,9 @@ PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 
 # Plugin settings
-PLUGIN_PATHS = [os.path.join(HOME, 'repos/pelican-plugins')]
-PLUGINS = ['render_math', 'disqus_static']
+PLUGIN_PATHS = ['./plugins', os.path.join(HOME, 'repos/pelican-plugins')]
+PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid']
+MARKUP = ['md']
 
 # Date formatting
 DATE_FORMATS = {
