@@ -28,6 +28,11 @@ PAGE_SAVE_AS = '{slug}/index.html'
 PLUGIN_PATHS = [os.path.join(HOME, 'repos/pelican-plugins')]
 PLUGINS = ['render_math', 'disqus_static']
 
+# Date formatting
+DATE_FORMATS = {
+    'en': '%B %-d, %Y',
+}
+
 # Comments
 DISQUS_SITENAME = 'willwolf'
 DISQUS_SECRET_KEY = os.getenv('DISQUS_SECRET_KEY')
