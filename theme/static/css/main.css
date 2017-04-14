@@ -24,8 +24,10 @@ h5 {
 
 .navbar {
   border: None;
+  margin-bottom: 0px;
 }
 
 .navbar-nav > li > a {
- line-height: 70px;
+ line-height: 90px;
+ font-size: 22px;
 }

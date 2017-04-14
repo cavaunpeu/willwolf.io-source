@@ -1,25 +1,27 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
-        <!-- <br>{% if SITESUBTITLE %}<small>{{ SITESUBTITLE }}</small></h1>{% endif %} -->
+<div class="page-header">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a>
+          <br>{% if SITESUBTITLE %}<small>{{ SITESUBTITLE }}</small></h1>{% endif %}</h1>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+          {% if ABOUT_PAGE %}
+              <li><a href="{{ ABOUT_PAGE }}" title="About"><span class="glyphicon glyphicon-user"></span> About</a></li>
+          {% endif %}
+          {% if ARCHIVES_PAGE %}
+              <li><a href="{{ ARCHIVES_PAGE }}" title="Archives"><span class="glyphicon glyphicon-th-list"></span> Archive</a></li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-        {% if ABOUT_PAGE %}
-            <li><a href="{{ ABOUT_PAGE }}" title="About"><span class="glyphicon glyphicon-user"></span> About</a></li>
-        {% endif %}
-        {% if ARCHIVES_PAGE %}
-            <li><a href="{{ ARCHIVES_PAGE }}" title="Archives"><span class="glyphicon glyphicon-th-list"></span> Archive</a></li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
+</div>
