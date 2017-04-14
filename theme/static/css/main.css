@@ -21,3 +21,11 @@ h4 {
 h5 {
   font-size: 18px;
 }
+
+.navbar {
+  border: None;
+}
+
+.navbar-nav > li > a {
+ line-height: 70px;
+}

@@ -28,6 +28,10 @@ PAGE_SAVE_AS = '{slug}/index.html'
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Uncategorized'
 
+# Page settings
+ABOUT_PAGE = '/about/'
+ARCHIVES_PAGE = '/archives/'
+
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', os.path.join(HOME, 'repos/pelican-plugins')]
 PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid']
