@@ -59,17 +59,12 @@ AUTHOR_FEED_RSS = None
 LINKS = (('Travel Blog', 'http://www.willtravellife.com'),)
 
 # Social
-TWITTER_USERNAME = '@willwolf_'
-SOCIAL = (
-    ('GitHub', 'www.github.com/cavaunpeu'),
-    ('Twitter', 'www.twitter.com/willwolf_'),
-    ('Email', 'mailto:williamabrwolf@gmail.com'),
-    ('LinkedIn', 'http://linkedin.com/in/williamabrwolf'),
-)
+GITHUB_USERNAME = 'cavaunpeu'
+TWITTER_USERNAME = 'willwolf_'
+LINKEDIN_USERNAME = 'williamabrwolf'
+EMAIL_ADDRESS = 'williamabrwolf@gmail.com'
 
-# Categories
-DISPLAY_CATEGORIES_ON_MENU = False
-
+# Pagination
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing

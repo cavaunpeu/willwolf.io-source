@@ -31,3 +31,7 @@ h5 {
  line-height: 90px;
  font-size: 22px;
 }
+
+#footer-wrapper > #social-links a > i {
+  padding: 3px;
+}
