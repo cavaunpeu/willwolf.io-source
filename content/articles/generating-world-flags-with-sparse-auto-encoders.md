@@ -45,13 +45,13 @@ First, let's see how well our network does. Again, its goal was to learn how to
 Here's an image of the downsized flag of Afghanistan as passed into our network:
 
 <p align="center">
-  <img src='images/afghanistan_reduced_bitmap.png'>
+  <img src='{filename}/images/afghanistan_reduced_bitmap.png'>
 </p>
 
 So, this is as good as we're ever going to do. When we pass this into our network, here's what it predicts:
 
 <p align="center">
-  <img src='images/reconstructed_afghanistan_reduced_bitmap.png'>
+  <img src='{filename}/images/reconstructed_afghanistan_reduced_bitmap.png'>
 </p>
 
 Not terrible. Of course, this could be improved with, squarely, more training data.
@@ -71,43 +71,43 @@ Points that are close together indicate flags that are visually similar. So, wha
 Belgium, Chad and Mali:
 
 <p align="center">
-  <img src='images/belgium_flag.jpg'>
+  <img src='{filename}/images/belgium_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='images/chad_flag.jpg'>
+  <img src='{filename}/images/chad_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='images/mali_flag.jpg'>
+  <img src='{filename}/images/mali_flag.jpg'>
 </p>
 
 Malaysia, Liberia and Puerto Rico:
 
 <p align="center">
-  <img src='images/malaysia_flag.jpg'>
+  <img src='{filename}/images/malaysia_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='images/liberia_flag.jpg'>
+  <img src='{filename}/images/liberia_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='images/puerto_rico_flag.jpg'>
+  <img src='{filename}/images/puerto_rico_flag.jpg'>
 </p>
 
 Canada, Denmark and Peru:
 
 <p align="center">
-  <img src='images/canada_flag.jpg'>
+  <img src='{filename}/images/canada_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='images/denmark_flag.jpg'>
+  <img src='{filename}/images/denmark_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='images/peru_flag.jpg'>
+  <img src='{filename}/images/peru_flag.jpg'>
 </p>
 
 Here, we see that similarity is defined not just across one type of feature, but necessarily, across all. Respectively, the above 3 groups seem heavy in: the "3 vertical bars" feature(s), the "stripes" and "thing in the top-left corner" feature(s), and the "cherry red" feature(s). (I include the optional "s" because the features are not particularly easy to identify nor apparently mutually exclusive in the feature map above.)
@@ -117,19 +117,19 @@ Finally, let's generate some new flags. The following images are what happens wh
 Morocco:
 
 <p align="center">
-  <img src='images/morocco_generated_flag.png'>
+  <img src='{filename}/images/morocco_generated_flag.png'>
 </p>
 
 Morocco + Colombia:
 
 <p align="center">
-  <img src='images/morocco_colombia_generated_flag.png'>
+  <img src='{filename}/images/morocco_colombia_generated_flag.png'>
 </p>
 
 Morocco + Colombia + Malaysia:
 
 <p align="center">
-  <img src='images/morocco_colombia_malaysia_generated_flag.png'>
+  <img src='{filename}/images/morocco_colombia_malaysia_generated_flag.png'>
 </p>
 
 If only there were more countries in the world such that I could get more data. But hey, we need fewer borders, not more.
