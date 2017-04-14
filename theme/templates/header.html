@@ -7,8 +7,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a>
-          <br>{% if SITESUBTITLE %}<small>{{ SITESUBTITLE }}</small></h1>{% endif %}</h1>
+        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+          {% if SITESUBTITLE %}
+          <h4>{{ SITESUBTITLE }}</h4>
+          {% endif %}
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
