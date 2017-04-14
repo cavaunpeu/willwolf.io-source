@@ -48,6 +48,7 @@ DISQUS_SECRET_KEY = os.getenv('DISQUS_SECRET_KEY')
 DISQUS_PUBLIC_KEY = os.getenv('DISQUS_PUBLIC_KEY')
 
 # Feed generation is usually not desired when developing
+SHOW_FEED = True # this is useful for showing link during development
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None

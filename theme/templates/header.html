@@ -22,6 +22,9 @@
           {% if ARCHIVES_PAGE %}
               <li><a href="{{ ARCHIVES_PAGE }}" title="Archives"><span class="glyphicon glyphicon-th-list"></span> Archive</a></li>
           {% endif %}
+          {% if SHOW_FEED %}
+              <li><a href="{{ FEED_ALL_ATOM }}" title="willwolf.io Atom feed"><span class="icon-rss"></span> RSS</a></li>
+          {% endif %}
         </ul>
       </div>
     </div>
