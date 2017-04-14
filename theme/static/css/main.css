@@ -1,5 +1,5 @@
 body {
-  font-size: 18px;
+  font-size: 19px;
 }
 
 h1 {
@@ -20,6 +20,28 @@ h4 {
 
 h5 {
   font-size: 18px;
+}
+
+/*Articles*/
+.article-body p, .article-body ol, .article-body ul {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: black;
+}
+
+.article-body h2, .article-body h3, .article-body h4, .article-body h5 {
+  margin-bottom: 16px;
+}
+
+/*Pages*/
+#content.body p, #content.body ol, #content.body ul {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: black;
+}
+
+#content.body .body h2, #content.body .body h3, #content.body .body h4, #content.body .body h5 {
+  margin-bottom: 16px;
 }
 
 .navbar {
