@@ -64,6 +64,9 @@ TWITTER_USERNAME = 'willwolf_'
 LINKEDIN_USERNAME = 'williamabrwolf'
 EMAIL_ADDRESS = 'williamabrwolf@gmail.com'
 
+# Analytics
+GOOGLE_ANALYTICS = 'UA-97412095-1'
+
 # Pagination
 DEFAULT_PAGINATION = 10
 
