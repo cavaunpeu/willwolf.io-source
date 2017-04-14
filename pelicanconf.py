@@ -55,9 +55,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (('Travel Blog', 'http://www.willtravellife.com'),)
-
 # Social
 GITHUB_USERNAME = 'cavaunpeu'
 TWITTER_USERNAME = 'willwolf_'
