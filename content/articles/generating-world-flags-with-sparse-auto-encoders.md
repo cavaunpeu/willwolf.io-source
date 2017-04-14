@@ -3,6 +3,7 @@ Date: 2016-12-13 20:55
 Author: Will Wolf
 Slug: generating-world-flags-with-sparse-auto-encoders
 Status: published
+Summary: Hand-rolled sparse autoencoders to generate novel world flags.
 
 I've always been enchanted by the notion of encoding real-world entities into lists of numbers. In essence, I believe that hard truth is pristinely objective - like the lyrics of a song - and mathematics is the universe's all-powerful tool in expressing incontrovertibility.
 

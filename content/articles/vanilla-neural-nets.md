@@ -3,6 +3,7 @@ Date: 2016-05-15 21:27
 Author: Will Wolf
 Slug: vanilla-neural-nets
 Status: published
+Summary: A Python library for some canonical neural networks, with a self-righteous emphasis on readability.
 
 To better understand neural networks, I've decided to implement [several from scratch](https://github.com/cavaunpeu/vanilla-neural-nets).
 

@@ -3,6 +3,7 @@ Date: 2014-05-02 19:11
 Author: Will Wolf
 Slug: clustering-continued-a-gaucho-on-vacation
 Status: published
+Summary: In our [previous post]({filename}clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups; moving forward, we'll take a closer look at what this really means.
 
 In our [previous post](clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups. Moving forward, we'll take a closer look into what this really means.
 

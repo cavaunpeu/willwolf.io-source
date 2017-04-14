@@ -3,6 +3,7 @@ Date: 2016-10-18 14:00
 Author: Will Wolf
 Slug: gradientes-de-recurrent-neural-networks-y-lo-que-aprendi-derivandolos
 Status: published
+Summary: Gradientes de recurrent neural networks a mano.
 
 He pasado la mayoría de la última semana construyendo recurrent neural networks a mano. Estoy tomando el curso de [Udacity Deep Learning](https://www.udacity.com/course/deep-learning--ud730), y, llegando al contenido sobre RNN's y LSTM's, decidí construir algunos de ellos desde cero yo mismo.
 

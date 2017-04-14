@@ -3,6 +3,7 @@ Date: 2017-03-17 16:55
 Author: Will Wolf
 Slug: ordered-categorical-glms-for-product-feedback-scores
 Status: published
+Summary: A follow-up to Erik Bernhardsson's post ["More MCMC – Analyzing a small dataset with 1-5 ratings"](https://erikbern.com/2015/12/05/more-mcmc-analyzing-a-small-dataset-with-1-5-ratings/) using ordered categorical generalized linear models.
 
 TL;DR: there's a [Shiny app](https://willwolf.shinyapps.io/ordered-categorical-a-b-test/) too.
 

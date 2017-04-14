@@ -3,6 +3,7 @@ Date: 2017-02-03 18:42
 Author: Will Wolf
 Slug: bayesian-estimation-of-rescuetime-productivity
 Status: published
+Summary: Modeling a typical week of RescueTime data via an alternative take on the Dirichlet distribution.
 
 [RescueTime](http://www.rescuetime.com) is "a personal analytics service that shows you how you spend your time [on the computer], and provides tools to help you be more productive." Personally, I've been a RescueTime user since late-January 2016, and while it does ping me guilty for harking back to a dangling Facebook tab in Chrome, I haven't yet dug much into the data it's thus-far stored.
 

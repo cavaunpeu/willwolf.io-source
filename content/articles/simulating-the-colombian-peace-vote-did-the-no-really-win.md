@@ -3,6 +3,7 @@ Date: 2016-10-12 14:58
 Author: Will Wolf
 Slug: simulating-the-colombian-peace-vote-did-the-no-really-win
 Status: published
+Summary: Una simulación estadística del [plebiscito colombiano de 2016](https://en.wikipedia.org/wiki/Colombian_peace_agreement_referendum,_2016).
 
 On October 2nd, 2016, I watched in awe as Colombia's national plebiscite for its just-signed peace accord narrowly failed. For the following week, I brooded over the result: the disinformation campaign, Uribe's antics, and just how good the [deal](https://www.youtube.com/playlist?list=PLa28R7QEiMblKeZ_OlZ_XfjjxjfeIhpuL) really seemed to be. Two days ago, I chanced upon this [post](https://theconversation.com/colombia-did-not-vote-no-in-its-peace-referendum-what-the-statistics-reveal-66471), which reminds us that the razor-thin margin - 6,431,376 "No" vs. 6,377,482 "Yes" - is not particularly convincing, nor, as it happens, immune to human error.
 

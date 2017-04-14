@@ -3,6 +3,7 @@ Date: 2015-06-29 00:17
 Author: Will Wolf
 Slug: markovian-muse-conjuring-the-backpacker-within
 Status: published
+Summary: Auto-generating travel blog posts via Markovian processes.
 
 I haven't travel-blogged in a while - mainly because I haven't been traveling. When I was, the writing flowed easily: I'd wander, hike, try and fail, and humbling lessons about the world and its creatures seemed around every corner. There was plenty about which to write. Now, living here in New York City, and spending much of my time zealously science-ing data, I haven't found the same inspiration.
 

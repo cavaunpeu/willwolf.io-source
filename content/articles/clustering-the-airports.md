@@ -3,6 +3,7 @@ Date: 2014-04-25 03:51
 Author: Will Wolf
 Slug: clustering-the-airports
 Status: published
+Summary: A data-enthused look at air travel on my favorite continent: South America and the Falkland Islands.
 
 Greetings, all, and welcome to my new website! For those that know me, I am the increasingly lazy creator and curator of [Will Travel Life](http://willtravellife.com) - where I post stories, photos, and philosophical muse from a 2+ year backpacking and cycling trip around the world. For those that don't, it's a pleasure to have you at my journalistic side.
 

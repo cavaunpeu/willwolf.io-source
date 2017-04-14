@@ -3,6 +3,7 @@ Date: 2017-03-22 19:56
 Author: Will Wolf
 Slug: docker-y-kaggle-con-enrique-y-beto
 Status: published
+Summary: Este post tiene como objetivo familiarizarlos con lo que es Docker, por qué y cómo usarlo para Kaggle.
 
 Este post tiene como objetivo familiarizarlos con lo que es Docker, por qué y cómo usarlo para Kaggle. Para hacer las cosas más simples, hablaremos principalmente de Plaza Sésamo y pasteles en lugar de computadoras y datos.
 

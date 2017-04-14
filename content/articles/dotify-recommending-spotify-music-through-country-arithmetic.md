@@ -3,6 +3,7 @@ Date: 2016-04-15 18:33
 Author: Will Wolf
 Slug: dotify-recommending-spotify-music-through-country-arithmetic
 Status: published
+Summary: A web app for Spotify music recommendation using [Implicit Matrix Factorization](http://yifanhu.net/PUB/cf.pdf) and "country arithmetic."
 
 Ever since the release of [word2vec](https://en.wikipedia.org/wiki/Word2vec) I've been fascinated with embedding things - words, places, people - into vector space. Though not a mathematical historian, I don't believe this concept is at all new: matrix factorization methods like [Singular Value Decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition) have given us this ability for years. This said, one of the most exciting revelations of word2vec is the remarkably intuitive results of taking arithmetic combinations of these vectors - adding, subtracting, multiplying, etc. - with
 

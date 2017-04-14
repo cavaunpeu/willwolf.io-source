@@ -3,6 +3,7 @@ Date: 2016-11-22 13:39
 Author: Will Wolf
 Slug: docker-and-kaggle-with-ernie-and-bert
 Status: published
+Summary: An introduction to what Docker is and why and how to use it for Kaggle.
 
 This post is meant to serve as an introduction to what Docker is and why and how to use it for Kaggle. For simplicity, we will primarily speak about Sesame Street and cupcakes in lieu of computers and data.
 

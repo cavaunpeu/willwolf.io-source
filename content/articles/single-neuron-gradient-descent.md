@@ -3,6 +3,7 @@ Date: 2016-05-06 00:42
 Author: Will Wolf
 Slug: single-neuron-gradient-descent
 Status: published
+Summary: Performing gradient descent on a single neuron.
 
 In my experience, the gap between a conceptual understanding of how a machine learning model "learns" and a concrete, "I can do this with a pencil and paper" understanding is large. This gap is further exacerbated by the nature of popular machine learning libraries which allow you to use powerful models without knowing how they really work. This isn't such a bad thing. But knowledge is power. In this post, I aim to close the gap above for a vanilla neural network that learns by gradient descent: we will use gradient descent to learn a weight and a bias for a single neuron. From there, when learning an entire network of millions of neurons, we just do the same thing a bunch more times. The rest is details. The following assumes a cursory knowledge of [linear combinations](https://en.wikipedia.org/wiki/Linear_combination), [activation functions](https://en.wikipedia.org/wiki/Activation_function), [cost functions](https://class.coursera.org/ml-005/lecture/6), and how they all fit together in [forward propagation](https://www.youtube.com/watch?v=UJwK6jAStmg). It is math-heavy with some Python interspersed.
 

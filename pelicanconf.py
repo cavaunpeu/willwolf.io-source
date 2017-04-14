@@ -34,7 +34,7 @@ ARCHIVES_PAGE = '/archives/'
 
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
-PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid', 'summary']
+PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid']
 MARKUP = ['md']
 
 # Date formatting
