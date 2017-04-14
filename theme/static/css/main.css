@@ -22,38 +22,60 @@ h5 {
   font-size: 18px;
 }
 
-/*Articles*/
-.article-body p, .article-body ol, .article-body ul {
-  margin-bottom: 24px;
-  line-height: 1.6;
-  color: black;
-}
-
-.article-body h2, .article-body h3, .article-body h4, .article-body h5 {
-  margin-bottom: 16px;
-}
-
-/*Pages*/
-#content.body p, #content.body ol, #content.body ul {
-  margin-bottom: 24px;
-  line-height: 1.6;
-  color: black;
-}
-
-#content.body .body h2, #content.body .body h3, #content.body .body h4, #content.body .body h5 {
-  margin-bottom: 16px;
-}
-
+/*Navbar*/
 .navbar {
   border: None;
   margin-bottom: 0px;
 }
 
 .navbar-nav > li > a {
- line-height: 90px;
- font-size: 22px;
+  line-height: 90px;
+  font-size: 22px;
 }
 
 #footer-wrapper > #social-links a > i {
   padding: 3px;
+}
+
+/*Articles*/
+.article-body > p {
+  line-height: 1.6;
+}
+
+.article-body > p, .article-body > ol, .article-body > ul {
+  margin-bottom: 24px;
+  color: black;
+}
+
+.article-body > ol > li, .article-body > ul > li {
+  line-height: 1.6;
+}
+
+.article-body > h2, .article-body > h3, .article-body > h4, .article-body > h5 {
+  margin-bottom: 16px;
+}
+
+.article-body .highlight > pre {
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+/*Pages*/
+#content.body > p, #content.body > ol, #content.body > ul {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: black;
+}
+
+#content.body > h2, #content.body > h3, #content.body > h4, #content.body > h5 {
+  margin-bottom: 16px;
+}
+
+/*Jupyter notebooks*/
+body div > ol > li, body div > ul > li {
+  line-height: 1.6;
+}
+
+body div > blockquote > p {
+  line-height: 1.6;
 }
