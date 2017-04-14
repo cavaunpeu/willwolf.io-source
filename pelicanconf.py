@@ -33,8 +33,8 @@ ABOUT_PAGE = '/about/'
 ARCHIVES_PAGE = '/archives/'
 
 # Plugin settings
-PLUGIN_PATHS = ['./plugins', os.path.join(HOME, 'repos/pelican-plugins')]
-PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid']
+PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
+PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid', 'summary']
 MARKUP = ['md']
 
 # Date formatting
