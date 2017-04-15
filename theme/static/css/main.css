@@ -34,6 +34,40 @@ h5 {
   font-size: 22px;
 }
 
+#myNavbar > ul > li > #activeLanguage.dropdown-toggle {
+  padding-bottom: 2px;
+  height: 75px;
+}
+
+#myNavbar > ul > li.dropdown.open > .dropdown-toggle {
+  background-color: transparent;
+}
+
+#myNavbar .dropdown-menu::before, #myNavbar .dropdown-menu::after {
+    border: none;
+    content: none;
+}
+
+#myNavbar .dropdown-menu {
+ background-color: transparent;
+ border: none;
+ box-shadow: none;
+ left: 17px;
+}
+
+#myNavbar #inactiveLanguage {
+ float: left;
+ font-size: 22px;
+ color: inherit;
+}
+
+#myNavbar #inactiveLanguage {
+ background-color: transparent;
+ background-image: none;
+ color: #555555;
+}
+
+/*Footer*/
 #footer-wrapper > #social-links a > i {
   padding: 3px;
 }

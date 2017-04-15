@@ -47,6 +47,17 @@ DEFAULT_LANG = 'en'
 I18N_SUBSITES = {
     'es': {}
 }
+language_name_lookup = {
+    'en': 'English',
+    'es': 'Español',
+}
+
+def lookup_lang_name(lang_code):
+    return language_name_lookup[lang_code]
+
+JINJA_FILTERS = {
+    'lookup_lang_name': lookup_lang_name,
+}
 
 # Comments
 DISQUS_SITENAME = 'willwolf'
