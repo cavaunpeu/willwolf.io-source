@@ -1,6 +1,7 @@
 Title: Travel Recommendations with Jaccard Similarities
 Date: 2015-10-03 02:40
 Author: Will Wolf
+lang: en
 Slug: travel-recommendations-with-jaccard-similarities
 Status: published
 Summary: A Scala-based web app that gives travel recommendations via Twitter data and the Jaccard similarity.

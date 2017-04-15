@@ -1,6 +1,7 @@
 Title: Text-Mining South American Constitutions
 Date: 2014-05-06 20:11
 Author: Will Wolf
+lang: en
 Slug: text-mining-south-american-constitutions
 Status: published
 Summary: Rudimentary text-mining of Latin American constitutions.

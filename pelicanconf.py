@@ -15,7 +15,7 @@ TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
 
 # Theme settings
-THEME = 'theme'
+THEME = './theme/'
 STATIC_PATHS = ['figures', 'images', 'favicon.ico']
 
 # URL settings
@@ -34,12 +34,18 @@ ARCHIVES_PAGE = '/archives/'
 
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
-PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid']
+PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid', 'i18n_subsites']
 MARKUP = ['md']
 
 # Date formatting
 DATE_FORMATS = {
     'en': '%B %-d, %Y',
+}
+
+# Multilanguage
+DEFAULT_LANG = 'en'
+I18N_SUBSITES = {
+    'es': {}
 }
 
 # Comments

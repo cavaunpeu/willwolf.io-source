@@ -1,6 +1,7 @@
 Title: Single Neuron Gradient Descent
 Date: 2016-05-06 00:42
 Author: Will Wolf
+lang: en
 Slug: single-neuron-gradient-descent
 Status: published
 Summary: Performing gradient descent on a single neuron.

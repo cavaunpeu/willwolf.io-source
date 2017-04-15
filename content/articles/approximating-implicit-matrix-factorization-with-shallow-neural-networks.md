@@ -1,6 +1,7 @@
 Title: Approximating Implicit Matrix Factorization with Shallow Neural Networks
 Date: 2017-04-07 10:07
 Author: Will Wolf
+lang: en
 Slug: approximating-implicit-matrix-factorization-with-shallow-neural-networks
 Status: published
 Summary: In this work, we look to beat the performance of [Implicit Matrix Factorization](http://yifanhu.net/PUB/cf.pdf) on a recommendation task using 5 different neural network architectures.
