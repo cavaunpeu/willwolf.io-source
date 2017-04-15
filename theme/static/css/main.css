@@ -73,6 +73,8 @@ h5 {
 }
 
 /*Jupyter notebooks*/
+/*There was a change made on line 3346 of ipython.css; this change should be made
+here, but I had trouble overriding it in a reasonable way*/
 body div > ol > li, body div > ul > li {
   line-height: 1.6;
 }
