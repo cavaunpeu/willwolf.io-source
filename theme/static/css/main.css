@@ -4,23 +4,23 @@ body {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 48px !important;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 40px !important;
 }
 
 h3 {
-  font-size: 32px;
+  font-size: 32px !important;
 }
 
 h4 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 /*Navbar*/
@@ -73,12 +73,40 @@ h5 {
 }
 
 /*Jupyter notebooks*/
+
 /*There was a change made on line 3346 of ipython.css; this change should be made
 here, but I had trouble overriding it in a reasonable way*/
+
 body div > ol > li, body div > ul > li {
   line-height: 1.6;
 }
 
 body div > blockquote > p {
   line-height: 1.6;
+}
+
+.rendered_html h1 {
+    margin: .5em 0;
+    font-weight: bold;
+}
+
+.rendered_html h2 {
+    margin: .65em 0;
+}
+
+.rendered_html h3 {
+    margin: .75em 0;
+}
+
+.rendered_html h4 {
+    margin: 0.85em 0;
+}
+
+.rendered_html h5 {
+    margin: 1.25em 0;
+}
+
+.rendered_html h6 {
+    font-size: 77%;
+    margin: 1.65em 0;
 }
