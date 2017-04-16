@@ -86,7 +86,7 @@ LINKEDIN_USERNAME = 'williamabrwolf'
 EMAIL_ADDRESS = 'williamabrwolf@gmail.com'
 
 # Analytics
-GOOGLE_ANALYTICS = 'UA-97412095-1'
+GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS_TRACKING_ID')
 
 # Pagination
 DEFAULT_PAGINATION = 10
