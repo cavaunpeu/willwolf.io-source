@@ -91,5 +91,8 @@ GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS_TRACKING_ID')
 # Pagination
 DEFAULT_PAGINATION = 10
 
+# License
+LICENSE = "MIT"
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
