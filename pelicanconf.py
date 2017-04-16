@@ -15,7 +15,7 @@ TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
 
 # Theme settings
-THEME = 'theme'
+THEME = './theme/'
 STATIC_PATHS = ['figures', 'images', 'favicon.ico']
 
 # URL settings
@@ -29,17 +29,41 @@ USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Uncategorized'
 
 # Page settings
-ABOUT_PAGE = '/about/'
-ARCHIVES_PAGE = '/archives/'
+ABOUT_PAGE = 'about/'
+ABOUT_PAGE_LINK_TEXT = 'About'
+
+ARCHIVE_PAGE = 'archive/'
+ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
-PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid']
+PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid', 'i18n_subsites']
 MARKUP = ['md']
 
 # Date formatting
 DATE_FORMATS = {
     'en': '%B %-d, %Y',
+}
+
+# Multilanguage
+DEFAULT_LANG = 'en'
+I18N_SUBSITES = {
+    'es': {
+        'SITESUBTITLE': 'cosas de data science y pensamientos sobre el mundo',
+        'ABOUT_PAGE_LINK_TEXT': 'Acerca de',
+        'ARCHIVE_PAGE_LINK_TEXT': 'Archivo',
+    }
+}
+language_name_lookup = {
+    'en': 'English',
+    'es': 'Español',
+}
+
+def lookup_lang_name(lang_code):
+    return language_name_lookup[lang_code]
+
+JINJA_FILTERS = {
+    'lookup_lang_name': lookup_lang_name,
 }
 
 # Comments
@@ -62,10 +86,13 @@ LINKEDIN_USERNAME = 'williamabrwolf'
 EMAIL_ADDRESS = 'williamabrwolf@gmail.com'
 
 # Analytics
-GOOGLE_ANALYTICS = 'UA-97412095-1'
+GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS_TRACKING_ID')
 
 # Pagination
 DEFAULT_PAGINATION = 10
+
+# License
+LICENSE = "MIT"
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

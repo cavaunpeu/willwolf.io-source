@@ -1,6 +1,7 @@
 Title: Docker and Kaggle with Ernie and Bert
 Date: 2016-11-22 13:39
 Author: Will Wolf
+lang: en
 Slug: docker-and-kaggle-with-ernie-and-bert
 Status: published
 Summary: An introduction to what Docker is and why and how to use it for Kaggle.

@@ -1,6 +1,7 @@
 Title: Statistically Cycling Southeast Asia
 Date: 2014-05-16 00:36
 Author: Will Wolf
+lang: en
 Slug: statistically-cycling-southeast-asia
 Status: published
 Summary: Predicting the difficulty of the road ahead: a bike ride through Southeast Asia.
