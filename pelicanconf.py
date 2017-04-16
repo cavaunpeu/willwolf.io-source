@@ -30,7 +30,10 @@ DEFAULT_CATEGORY = 'Uncategorized'
 
 # Page settings
 ABOUT_PAGE = '/about/'
-ARCHIVES_PAGE = '/archives/'
+ABOUT_PAGE_LINK_TEXT = 'About'
+
+ARCHIVE_PAGE = '/archives/'
+ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
@@ -45,7 +48,11 @@ DATE_FORMATS = {
 # Multilanguage
 DEFAULT_LANG = 'en'
 I18N_SUBSITES = {
-    'es': {}
+    'es': {
+        'SITESUBTITLE': 'cosas de data science y pensamientos sobre el mundo',
+        'ABOUT_PAGE_LINK_TEXT': 'Acerca de',
+        'ARCHIVE_PAGE_LINK_TEXT': 'Archivo',
+    }
 }
 language_name_lookup = {
     'en': 'English',
