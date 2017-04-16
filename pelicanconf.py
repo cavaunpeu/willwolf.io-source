@@ -29,10 +29,10 @@ USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Uncategorized'
 
 # Page settings
-ABOUT_PAGE = '/about/'
+ABOUT_PAGE = 'about/'
 ABOUT_PAGE_LINK_TEXT = 'About'
 
-ARCHIVE_PAGE = '/archives/'
+ARCHIVE_PAGE = 'archive/'
 ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 
 # Plugin settings
