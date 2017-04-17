@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 import os
-HOME = os.getenv('HOME')
 
 # Site settings
 AUTHOR = 'Will Wolf'
