@@ -1,7 +1,7 @@
 Title: archives
 Date: 2014-04-24 17:38
 Author: Will Wolf
-lang: es
+Lang: es
 Slug: archive
 Status: published
 Template: archives
