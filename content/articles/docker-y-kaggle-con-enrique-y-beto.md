@@ -2,6 +2,8 @@ Title: Docker y Kaggle con Enrique y Beto
 Date: 2017-03-22 19:56
 Author: Will Wolf
 lang: es
+url: 2017/03/22/docker-y-kaggle-con-enrique-y-beto/
+save_as: 2017/03/22/docker-y-kaggle-con-enrique-y-beto/index.html
 Slug: docker-and-kaggle-with-ernie-and-bert
 Status: published
 Summary: Este post tiene como objetivo familiarizarlos con lo que es Docker, por qué y cómo usarlo para Kaggle.

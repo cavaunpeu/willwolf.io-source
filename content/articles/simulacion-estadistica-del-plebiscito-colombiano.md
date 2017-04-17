@@ -2,6 +2,8 @@ Title: Simulación Estadística del Plebiscito Colombiano: ¿Realmente Ganaron L
 Date: 2016-10-12 11:53
 Author: Will Wolf
 lang: es
+url: 2016/10/12/simulating-the-colombian-peace-vote-did-the-no-really-win-2/
+save_as: 2016/10/12/simulating-the-colombian-peace-vote-did-the-no-really-win-2/index.html
 Slug: simulating-the-colombian-peace-vote-did-the-no-really-win
 Status: published
 Summary: Una simulación estadística del [plebiscito colombiano de 2016](https://en.wikipedia.org/wiki/Colombian_peace_agreement_referendum,_2016).
