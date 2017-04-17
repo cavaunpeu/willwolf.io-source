@@ -3,10 +3,6 @@
   <meta name="twitter:site" content="@{{ TWITTER_USERNAME }}">
   <meta name="twitter:creator" content="@{{ TWITTER_USERNAME }}">
   <meta name="twitter:domain" content="{{ SITEURL }}">
-  <!-- Will be overridden if article or page present -->
-  <meta property="twitter:title" content="{{ SITENAME }}"/>
-  <meta property="twitter:description" content="{{ SITESUBTITLE }}"/>
-  <meta property="twitter:image" content="{{ SITEURL }}/{{ AVATAR }}"/>
   {% if article %}
     <meta property="twitter:title" content="{{ article.title | striptags | e }}"/>
     <meta property="twitter:description" content="{{ article.summary | striptags | e }}"/>
@@ -15,5 +11,9 @@
     <meta property="twitter:title" content="{{ page.title | striptags | e }}"/>
     <meta property="twitter:description" content="{{ page.summary | striptags | e }}"/>
     <meta property="twitter:image" content="{{ SITEURL }}/{{ page.image }}"/>
+  {% else %}
+    <meta property="twitter:title" content="{{ SITENAME }}"/>
+    <meta property="twitter:description" content="{{ SITESUBTITLE }}"/>
+    <meta property="twitter:image" content="{{ SITEURL }}/{{ AVATAR }}"/>
   {% endif %}
 {% endif %}
