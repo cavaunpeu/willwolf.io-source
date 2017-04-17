@@ -17,6 +17,9 @@
 		<link href="/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
 	{% endif %}
 
+	<!-- Twitter Cards -->
+  {% include "twitter_card.html" %}
+
 	<!-- CSS -->
 	<link href="{{ main_siteurl }}/theme/css/ipython.css?v={12345}" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">

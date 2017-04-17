@@ -1,0 +1,24 @@
+{% if TWITTER_CARDS %}
+  {% if TWITTER_USERNAME %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@{{ TWITTER_USERNAME }}">
+    <meta name="twitter:creator" content="@{{ TWITTER_USERNAME }}">
+    <meta name="twitter:domain" content="{{ SITEURL }}">
+    {% if article %}
+      <meta property="twitter:title" content="{{ article.title | striptags | e }}"/>
+      <meta property="twitter:description" content="{{ article.summary | striptags | e }}"/>
+      {% if article.image %}
+        <meta property="twitter:image" content="{{ SITEURL }}/{{ article.image }}"/>
+      {% endif %}
+    {% elif page %}
+      <meta property="twitter:title" content="{{ page.title | striptags | e }}"/>
+      <meta property="twitter:description" content="{{ page.summary | striptags | e }}"/>
+      {% if page.image %}
+        <meta property="twitter:image" content="{{ SITEURL }}/{{ page.image }}"/>
+      {% endif %}
+    {% endif %}
+    <meta property="twitter:title" content="{{ SITENAME }}"/>
+    <meta property="twitter:description" content="{{ SITESUBTITLE }}"/>
+    <meta property="twitter:image" content="{{ SITEURL }}/{{ AVATAR }}"/>
+  {% endif %}
+{% endif %}

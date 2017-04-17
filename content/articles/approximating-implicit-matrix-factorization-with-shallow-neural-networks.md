@@ -5,5 +5,6 @@ Lang: en
 Slug: approximating-implicit-matrix-factorization-with-shallow-neural-networks
 Status: published
 Summary: In this post, we look to beat the performance of [Implicit Matrix Factorization](http://yifanhu.net/PUB/cf.pdf) on a recommendation task using 5 different neural network architectures.
+Image: figures/imf_country_vectors_cosine_similarity_plot.png
 
 {% notebook downloads/notebooks/neural_implicit_mf.ipynb cells[3:] %}

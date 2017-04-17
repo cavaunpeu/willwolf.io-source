@@ -87,6 +87,10 @@ TWITTER_USERNAME = 'willwolf_'
 LINKEDIN_USERNAME = 'williamabrwolf'
 EMAIL_ADDRESS = 'williamabrwolf@gmail.com'
 
+# Twitter cards
+TWITTER_CARDS = True
+AVATAR = 'images/will.jpg'
+
 # Analytics
 GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS_TRACKING_ID')
 
