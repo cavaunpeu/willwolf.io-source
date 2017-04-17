@@ -47,6 +47,7 @@ DATE_FORMATS = {
 
 # Multilanguage
 DEFAULT_LANG = 'en'
+I18N_UNTRANSLATED_ARTICLES = 'remove'
 I18N_SUBSITES = {
     'es': {
         'SITESUBTITLE': 'cosas de data science y pensamientos sobre el mundo',
