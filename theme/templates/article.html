@@ -6,7 +6,7 @@
 	<div class="text-center article-header">
 		<h1 itemprop="name headline" class="article-title">{{ article.title }}</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">{{article.author or "Wilson Freitas"}}</h4>
+			<h4 itemprop="name">{{article.author or AUTHOR}}</h4>
 		</span>
 		<time datetime="{{ article.date.isoformat() }}" itemprop="datePublished">{{ article.locale_date }}</time>
 	</div>
