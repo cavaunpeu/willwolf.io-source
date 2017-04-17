@@ -1,0 +1,78 @@
+name: willwolf.io
+channels:
+- anaconda-fusion
+- defaults
+dependencies:
+- appnope=0.1.0=py34_0
+- backports_abc=0.5=py34_0
+- beautifulsoup4=4.5.3=py34_0
+- decorator=4.0.11=py34_0
+- entrypoints=0.2.2=py34_0
+- icu=54.1=0
+- ipykernel=4.5.2=py34_0
+- ipython=5.1.0=py34_1
+- ipython_genutils=0.1.0=py34_0
+- ipywidgets=5.2.2=py34_1
+- jinja2=2.9.6=py34_0
+- jsonschema=2.5.1=py34_0
+- jupyter=1.0.0=py34_3
+- jupyter_client=4.4.0=py34_0
+- jupyter_console=5.0.0=py34_0
+- jupyter_core=4.2.1=py34_0
+- libiconv=1.14=0
+- libxml2=2.9.4=0
+- libxslt=1.1.29=0
+- lxml=3.7.2=py34_0
+- markupsafe=0.23=py34_2
+- mistune=0.7.3=py34_1
+- nbconvert=4.2.0=py34_0
+- nbformat=4.2.0=py34_0
+- notebook=4.3.1=py34_0
+- openssl=1.0.2k=1
+- path.py=10.0=py34_0
+- pexpect=4.2.1=py34_0
+- pickleshare=0.7.4=py34_0
+- pip=9.0.1=py34_1
+- prompt_toolkit=1.0.9=py34_0
+- ptyprocess=0.5.1=py34_0
+- pygments=2.1.3=py34_0
+- pyqt=5.6.0=py34_2
+- python=3.4.3=2
+- pyzmq=16.0.2=py34_0
+- qt=5.6.2=0
+- qtconsole=4.2.1=py34_1
+- readline=6.2=2
+- setuptools=27.2.0=py34_0
+- simplegeneric=0.8.1=py34_1
+- sip=4.18=py34_0
+- six=1.10.0=py34_0
+- sqlite=3.13.0=0
+- terminado=0.6=py34_0
+- tk=8.5.18=0
+- tornado=4.4.2=py34_0
+- traitlets=4.3.1=py34_0
+- wcwidth=0.1.7=py34_0
+- wheel=0.29.0=py34_0
+- widgetsnbextension=1.2.6=py34_0
+- xz=5.0.5=1
+- zlib=1.2.8=3
+- pip:
+  - backports-abc==0.5
+  - blinker==1.4
+  - disqus-python==0.4.2
+  - docutils==0.13.1
+  - feedgenerator==1.9
+  - ghp-import==0.5.5
+  - ipdb==0.10.2
+  - ipython-genutils==0.1.0
+  - jupyter-client==4.4.0
+  - jupyter-console==5.0.0
+  - jupyter-core==4.2.1
+  - markdown==2.6.8
+  - pelican==3.7.1
+  - prompt-toolkit==1.0.9
+  - python-dateutil==2.6.0
+  - pytz==2017.2
+  - unidecode==0.4.20
+# prefix: /Users/willwolf/anaconda3/envs/willwolf.io
+
