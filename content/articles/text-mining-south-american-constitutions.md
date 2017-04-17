@@ -5,6 +5,7 @@ Lang: en
 Slug: text-mining-south-american-constitutions
 Status: published
 Summary: Rudimentary text-mining of Latin American constitutions.
+Image: figures/constitution_wordcloud.png
 
 With the advent of social media, and the Babylonian deluge of tweets, YouTube comments, and wall posts traversing the internet daily, text-mining has become an increasingly important tool of the data scientist. Basically, all of these tweets, Facebook posts, etc. form a valuable and robust set of data, and text-mining helps us understand what it all really means. Universal Studios might mine text to process mass reviews of its latest movie on social media; Ryanair might mine text to gauge just how shitty the public thinks its service really is. In this post, I set out to understand what South America stands for, or purportedly stands for, as a whole.
 

@@ -7,6 +7,7 @@ Save_as: 2017/03/22/docker-y-kaggle-con-enrique-y-beto/index.html
 Slug: docker-and-kaggle-with-ernie-and-bert
 Status: published
 Summary: Este post tiene como objetivo familiarizarlos con lo que es Docker, por qué y cómo usarlo para Kaggle.
+Image: ../images/ernie_and_bert.png
 
 Este post tiene como objetivo familiarizarlos con lo que es Docker, por qué y cómo usarlo para Kaggle. Para hacer las cosas más simples, hablaremos principalmente de Plaza Sésamo y pasteles en lugar de computadoras y datos.
 

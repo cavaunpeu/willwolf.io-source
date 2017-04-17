@@ -5,5 +5,6 @@ Lang: en
 Slug: intercausal-reasoning-in-bayesian-networks
 Status: published
 Summary: Simple intercausal reasoning on a 3-node Bayesian network.
+Image: figures/intercausal_reasoning_posterior_plot.png
 
 {% notebook downloads/notebooks/intercausal_reasoning.ipynb cells[3:] %}

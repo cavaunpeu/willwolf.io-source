@@ -7,6 +7,7 @@ Save_as: 2016/10/12/simulating-the-colombian-peace-vote-did-the-no-really-win-2/
 Slug: simulating-the-colombian-peace-vote-did-the-no-really-win
 Status: published
 Summary: Una simulación estadística del [plebiscito colombiano de 2016](https://en.wikipedia.org/wiki/Colombian_peace_agreement_referendum,_2016).
+Image: ../images/colombian_plebiscite_vote.jpg
 
 El 2 de octubre del 2016, observé con terror como los colombianos votaron por el "No" en su plebiscito nacional para decretar el recién firmado acuerdo de paz. En la siguiente semana, medité sobre el resultado y las cosas que hubieran sucedido: la gran campaña de desinformación, las payasadas de Uribe y lo súper bueno que realmente parecía el [acuerdo](https://www.youtube.com/playlist?list=PLa28R7QEiMblKeZ_OlZ_XfjjxjfeIhpuL) mismo. Hace dos días, me topé por casualidad con este [post](https://theconversation.com/colombia-did-not-vote-no-in-its-peace-referendum-what-the-statistics-reveal-66471), que nos pide recordar que el margen escaso con el que ganó el "No" - 6,431,376 vs. 6,377,482 - no es particularmente convincente, ni, en realidad, tan decisivo frente al error humano.
 

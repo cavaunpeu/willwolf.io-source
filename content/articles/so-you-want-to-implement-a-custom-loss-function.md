@@ -5,6 +5,7 @@ Lang: en
 Slug: so-you-want-to-implement-a-custom-loss-function
 Status: published
 Summary: Implementing custom loss functions in Python using [autograd](https://github.com/HIPS/autograd).
+Image: figures/y_equals_1.png
 
 It's often not so hard.
 

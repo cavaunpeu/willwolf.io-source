@@ -5,6 +5,7 @@ Lang: en
 Slug: statistically-cycling-southeast-asia
 Status: published
 Summary: Predicting the difficulty of the road ahead: a bike ride through Southeast Asia.
+Image: figures/cycling_difficulty_index.jpg
 
 I spent 6 months of my trip around the world traveling on a bicycle. First, I rode from Istanbul, Turkey to Bishkek, Kyrgyzstan, and then through small parts of China and Laos. While you may think I'm crazy, the other cyclists I met along the way would offer a very different perspective. Why? Because the majority of them were Western Europeans, cycling from their front door (in France, for example) all the way to Indonesia.
 

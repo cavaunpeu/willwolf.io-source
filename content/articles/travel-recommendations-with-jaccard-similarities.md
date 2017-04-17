@@ -5,6 +5,7 @@ Lang: en
 Slug: travel-recommendations-with-jaccard-similarities
 Status: published
 Summary: A Scala-based web app that gives travel recommendations via Twitter data and the Jaccard similarity.
+Image: figures/colombia_recommendations.png
 
 I recently finished building a [web app](http://countryrecommender.herokuapp.com/) that recommends travel destinations. You input a country, and it provides you with 5 other countries which you might also enjoy. The recommendations are generated via a basic application of [collaborative filtering](https://en.wikipedia.org/wiki/Collaborative_filtering). In effect, you query for a country, and the engine suggests additional countries enjoyed by other users of similar taste. The methodology is pretty simple:
 

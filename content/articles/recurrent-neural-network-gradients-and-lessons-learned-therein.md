@@ -5,6 +5,7 @@ Lang: en
 Slug: recurrent-neural-network-gradients-and-lessons-learned-therein
 Status: published
 Summary: Recurrent neural network gradients by hand.
+Image: images/rnn_gradient.png
 
 I've spent the last week hand-rolling recurrent neural networks. I'm currently taking Udacity's Deep Learning [course](https://www.udacity.com/course/deep-learning--ud730), and arriving at the section on RNN's and LSTM's, I decided to build a few for myself.
 

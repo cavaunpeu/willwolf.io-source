@@ -5,6 +5,7 @@ Lang: en
 Slug: clustering-continued-a-gaucho-on-vacation
 Status: published
 Summary: In our [previous post]({filename}clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups; moving forward, we'll take a closer look at what this really means.
+Image: figures/cluster_proportions_stacked_barchart.png
 
 In our [previous post](clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups. Moving forward, we'll take a closer look into what this really means.
 

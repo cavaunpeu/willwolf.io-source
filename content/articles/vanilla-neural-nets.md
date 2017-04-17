@@ -5,6 +5,7 @@ Lang: en
 Slug: vanilla-neural-nets
 Status: published
 Summary: A Python library for some canonical neural networks, with a self-righteous emphasis on readability.
+Image: images/vanilla.jpeg
 
 To better understand neural networks, I've decided to implement [several from scratch](https://github.com/cavaunpeu/vanilla-neural-nets).
 

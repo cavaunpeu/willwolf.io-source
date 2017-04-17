@@ -5,6 +5,7 @@ Lang: en
 Slug: clustering-the-airports
 Status: published
 Summary: A data-enthused look at air travel on my favorite continent: South America and the Falkland Islands.
+Image: figures/sa_airports_sna_plot.png
 
 Greetings, all, and welcome to my new website! For those that know me, I am the increasingly lazy creator and curator of [Will Travel Life](http://willtravellife.com) - where I post stories, photos, and philosophical muse from a 2+ year backpacking and cycling trip around the world. For those that don't, it's a pleasure to have you at my journalistic side.
 

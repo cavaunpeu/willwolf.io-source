@@ -5,6 +5,7 @@ Lang: en
 Slug: bayesian-inference-via-simulated-annealing
 Status: published
 Summary: A toy, hand-rolled Bayesian model, optimized via simulated annealing.
+Image: figures/bayesian_inference_simulated_annealing_traceplot.png
 
 I recently finished a [course](https://www.coursera.org/learn/discrete-optimization) on discrete optimization and am currently working through Richard McElreath's *excellent* [textbook](http://xcelab.net/rm/statistical-rethinking/) Statistical Rethinking. Combining the two, and duly jazzed by this [video](https://www.youtube.com/watch?v=SC5CX8drAtU) on the Traveling Salesman Problem, I'd thought I'd build a toy Bayesian model and try to optimize it via simulated annealing.
 
