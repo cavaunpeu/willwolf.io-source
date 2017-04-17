@@ -1,7 +1,7 @@
 Title: RescueTime Inference via the "Poor Man's Dirichlet"
 Date: 2017-02-03 18:42
 Author: Will Wolf
-lang: en
+Lang: en
 Slug: bayesian-estimation-of-rescuetime-productivity
 Status: published
 Summary: Modeling a typical week of RescueTime data via an alternative take on the Dirichlet distribution.

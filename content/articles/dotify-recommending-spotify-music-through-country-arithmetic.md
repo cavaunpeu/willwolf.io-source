@@ -1,7 +1,7 @@
 Title: dotify: Recommending Spotify Music Through Country Arithmetic
 Date: 2016-04-15 18:33
 Author: Will Wolf
-lang: en
+Lang: en
 Slug: dotify-recommending-spotify-music-through-country-arithmetic
 Status: published
 Summary: A web app for Spotify music recommendation using [Implicit Matrix Factorization](http://yifanhu.net/PUB/cf.pdf) and "country arithmetic."

@@ -1,7 +1,7 @@
 Title: Markovian Muse: Conjuring the Backpacker Within
 Date: 2015-06-29 00:17
 Author: Will Wolf
-lang: en
+Lang: en
 Slug: markovian-muse-conjuring-the-backpacker-within
 Status: published
 Summary: Auto-generating travel blog posts via Markovian processes.

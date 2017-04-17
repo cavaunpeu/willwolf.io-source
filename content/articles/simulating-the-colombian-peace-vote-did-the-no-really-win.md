@@ -1,7 +1,7 @@
 Title: Simulating the Colombian Peace Vote: Did the "No" Really Win?
 Date: 2016-10-12 14:58
 Author: Will Wolf
-lang: en
+Lang: en
 Slug: simulating-the-colombian-peace-vote-did-the-no-really-win
 Status: published
 Summary: A post-mortem statistical simulation of the [2016 Colombian plebiscite](https://en.wikipedia.org/wiki/Colombian_peace_agreement_referendum,_2016).

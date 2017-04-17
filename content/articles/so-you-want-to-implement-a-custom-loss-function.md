@@ -1,7 +1,7 @@
 Title: So You Want to Implement a Custom Loss Function?
 Date: 2015-11-18 02:12
 Author: Will Wolf
-lang: en
+Lang: en
 Slug: so-you-want-to-implement-a-custom-loss-function
 Status: published
 Summary: Implementing custom loss functions in Python using [autograd](https://github.com/HIPS/autograd).

@@ -1,7 +1,7 @@
 Title: Clustering South American Airports
 Date: 2014-04-25 03:51
 Author: Will Wolf
-lang: en
+Lang: en
 Slug: clustering-the-airports
 Status: published
 Summary: A data-enthused look at air travel on my favorite continent: South America and the Falkland Islands.

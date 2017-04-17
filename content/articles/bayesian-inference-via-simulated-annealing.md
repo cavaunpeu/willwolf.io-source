@@ -1,7 +1,7 @@
 Title: Bayesian Inference via Simulated Annealing
 Date: 2017-02-07 15:33
 Author: Will Wolf
-lang: en
+Lang: en
 Slug: bayesian-inference-via-simulated-annealing
 Status: published
 Summary: A toy, hand-rolled Bayesian model, optimized via simulated annealing.

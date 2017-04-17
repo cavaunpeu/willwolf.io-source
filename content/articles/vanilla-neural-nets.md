@@ -1,7 +1,7 @@
 Title: Vanilla Neural Nets
 Date: 2016-05-15 21:27
 Author: Will Wolf
-lang: en
+Lang: en
 Slug: vanilla-neural-nets
 Status: published
 Summary: A Python library for some canonical neural networks, with a self-righteous emphasis on readability.
