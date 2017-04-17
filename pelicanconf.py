@@ -15,7 +15,9 @@ DEFAULT_LANG = 'en'
 
 # Theme settings
 THEME = './theme/'
-STATIC_PATHS = ['figures', 'images', 'favicon.ico']
+
+# Static path settings
+STATIC_PATHS = ['figures', 'images', 'favicon.ico', 'CNAME']
 
 # URL settings
 ARTICLE_URL = '{date:%Y}/{date:%m}/{date:%d}/{slug}/'
