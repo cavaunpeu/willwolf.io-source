@@ -54,6 +54,7 @@ I18N_SUBSITES = {
         'SITESUBTITLE': 'cosas de data science y pensamientos sobre el mundo',
         'ABOUT_PAGE_LINK_TEXT': 'Acerca de',
         'ARCHIVE_PAGE_LINK_TEXT': 'Archivo',
+        'AVATAR': '../images/will.jpg'
     }
 }
 language_name_lookup = {
