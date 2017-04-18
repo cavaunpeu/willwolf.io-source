@@ -4,23 +4,32 @@ body {
 }
 
 h1 {
-  font-size: 48px !important;
-}
-
-h2 {
   font-size: 40px !important;
 }
 
+h2 {
+  font-size: 33px !important;
+}
+
 h3 {
-  font-size: 32px !important;
+  font-size: 27px !important;
 }
 
 h4 {
-  font-size: 24px !important;
+  font-size: 20px !important;
 }
 
 h5 {
-  font-size: 18px !important;
+  font-size: 15px !important;
+}
+
+/*Header*/
+#site-title {
+  font-size: 44px;
+}
+
+#site-subtitle {
+  font-size: 24px;
 }
 
 /*Navbar*/
