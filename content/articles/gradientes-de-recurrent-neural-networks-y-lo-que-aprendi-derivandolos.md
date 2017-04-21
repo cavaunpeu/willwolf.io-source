@@ -111,7 +111,7 @@ $$
 
 #### $\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hh}}}$:
 
-Empezando con $\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hh}}}$, un cambio en $\mathbf{W^{hh}}$ impacta a nuestro costo en *3 momentos distintos: *por primera vez al calcular el valor de $\mathbf{h_1}$; por segunda vez al calcular el valor de $\mathbf{h_2}$, que está condicionado a $\mathbf{h_1}$; por tercera vez al calcular $\mathbf{h_3}$, que está condicionado a $\mathbf{h_2}$, que está condicionado a $\mathbf{h_1}$.
+Empezando con $\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hh}}}$, un cambio en $\mathbf{W^{hh}}$ impacta a nuestro costo en *3 momentos distintos:* por primera vez al calcular el valor de $\mathbf{h_1}$; por segunda vez al calcular el valor de $\mathbf{h_2}$, que está condicionado a $\mathbf{h_1}$; por tercera vez al calcular $\mathbf{h_3}$, que está condicionado a $\mathbf{h_2}$, que está condicionado a $\mathbf{h_1}$.
 
 En términos más generales, un cambio en $\mathbf{W^{hh}}$ impacta al costo $\mathbf{J_t}$ en $t$ momentos distintos. Sigue que:
 

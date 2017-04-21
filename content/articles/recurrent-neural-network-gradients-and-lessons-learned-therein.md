@@ -115,7 +115,7 @@ $$
 
 #### $\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hh}}}$:
 
-Starting with $\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hh}}}$, a change in $\mathbf{W^{hh}}$ will impact our cost $\mathbf{J_3}$ in *3 separate ways: *once, when computing the value of $\mathbf{h_1}$; once, when computing the value of $\mathbf{h_2}$, which depends on $\mathbf{h_1}$; once, when computing the value of $\mathbf{h_3}$, which depends on $\mathbf{h_2}$, which depends on $\mathbf{h_1}$.
+Starting with $\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hh}}}$, a change in $\mathbf{W^{hh}}$ will impact our cost $\mathbf{J_3}$ in *3 separate ways:* once, when computing the value of $\mathbf{h_1}$; once, when computing the value of $\mathbf{h_2}$, which depends on $\mathbf{h_1}$; once, when computing the value of $\mathbf{h_3}$, which depends on $\mathbf{h_2}$, which depends on $\mathbf{h_1}$.
 
 More generally, a change in $\mathbf{W^{hh}}$ will impact our cost $\mathbf{J_t}$ on $t$ separate occasions. Therefore:
 
