@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: deriving-the-softmax-from-first-principles
 Status: published
-Summary: Deriving the softmax from first conditional probabilistic principles, and how this framework extends to derive the softmax regression, conditional random fields, naive Bayes and hidden Markov models.
+Summary: Deriving the softmax from first conditional probabilistic principles, and how this framework extends naturally to define the softmax regression, conditional random fields, naive Bayes and hidden Markov models.
 Image: images/generative_discriminative_models_flowchart.png
 
 The original goal of this post was to explore the relationship between the softmax and sigmoid functions. In truth, this relationship had always seemed just out of reach: "One has an exponent in the numerator! One has a summation! One has a 1 in the denominator!" And of course, the two have different names.
