@@ -419,7 +419,7 @@ However, this only holds if one of the following two are true:
 
 Remember, the point of this exponentiation was to put our weighted input elements "on the arithmetic path to becoming valid probabilities," i.e. to make them strictly positive. This said, there is nothing (to my knowledge) that mandates that a factor produce a strictly positive number. So which came first — the chicken or the egg (the exponent or the softmax)?
 
-In truth, I'm not actually sure, but I do believe we can safely treat the softmax numerator and an unnormalized Gibb's distribution as equivalent, and simply settle on: *call it what you will, we need an exponent in there somewhere to put this thing in $[0, 1].*
+In truth, I'm not actually sure, but I do believe we can safely treat the softmax numerator and an unnormalized Gibb's distribution as equivalent and simply settle on: *call it what you will, we need an exponent in there somewhere to put this thing in $[0, 1]$.*
 
 ## Summary
 This exercise has made the relationships between canonical machine learning models, activation functions and the basic axiom of conditional probability a whole lot clearer. For more information, to reference the resources below, especially Daphne Koller's material on [probabilistic graphical models](https://www.coursera.org/learn/probabilistic-graphical-models). Thanks a lot for reading this far.
