@@ -38,7 +38,13 @@ ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
-PLUGINS = ['render_math', 'disqus_static', 'ipynb.liquid', 'i18n_subsites']
+PLUGINS = [
+    'render_math',
+    'disqus_static',
+    'ipynb.liquid',
+    'i18n_subsites',
+    'bootstrapify'
+]
 MARKUP = ['md']
 
 # Date formatting
@@ -99,7 +105,7 @@ GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS_TRACKING_ID')
 DEFAULT_PAGINATION = 10
 
 # License
-LICENSE = "MIT"
+LICENSE = 'MIT'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
