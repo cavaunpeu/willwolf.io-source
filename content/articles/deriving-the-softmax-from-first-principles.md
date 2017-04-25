@@ -9,7 +9,7 @@ Image: images/generative_discriminative_models_flowchart.png
 
 The original goal of this post was to explore the relationship between the softmax and sigmoid functions. In truth, this relationship had always seemed just out of reach: "One has an exponent in the numerator! One has a summation! One has a 1 in the denominator!" And of course, the two have different names.
 
-Once derived, I quickly realized how this relationship backed out into a more general modeling framework motivated by the conditional probability axiom itself. As such, this post first explores how the sigmoid is but a special case of the softmax, and the underpinnings of each in Gibb's distributions, factor products and probabilistic graphical models. Next, we go on to show how this framework extends naturally to define canonical model classes such as the softmax regression, conditional random fields, naive Bayes and hidden Markov models.
+Once derived, I quickly realized how this relationship backed out into a more general modeling framework motivated by the conditional probability axiom itself. As such, this post first explores how the sigmoid is but a special case of the softmax, and the underpinnings of each in Gibbs distributions, factor products and probabilistic graphical models. Next, we go on to show how this framework extends naturally to define canonical model classes such as the softmax regression, conditional random fields, naive Bayes and hidden Markov models.
 
 ## Our goal
 This is a predictive model. It is a diamond that receives an input and produces an output.
@@ -226,10 +226,10 @@ Lemma: Given that our output function<sup>1</sup> performs exponentiation *so as
 2. One of $\tilde{a}, \tilde{b}, \tilde{c}$.
 3. Model input elements are $[x_0, x_1, x_2, x_3]$. Weighted model input elements are $w_0x_0, w_1x_1, w_2x_2, w_3x_3$.
 
-Unfortunately, this only holds if we buy the fact that $\tilde{P}(a, \mathbf{x}) = \prod\limits_i e^{(w_ix_i)}$ in the first place. Introducing the [Gibb's distribution](https://www.youtube.com/watch?v=kFcjl3A9QuA&t=314s).
+Unfortunately, this only holds if we buy the fact that $\tilde{P}(a, \mathbf{x}) = \prod\limits_i e^{(w_ix_i)}$ in the first place. Introducing the [Gibbs distribution](https://www.youtube.com/watch?v=kFcjl3A9QuA&t=314s).
 
-## Gibb's distribution
-A Gibb's distribution gives the unnormalized joint probability distribution over a set of outcomes, analogous to the $e^{\tilde{a}}, e^{\tilde{b}}, e^{\tilde{c}}$ computed above, as:
+## Gibbs distribution
+A Gibbs distribution gives the unnormalized joint probability distribution over a set of outcomes, analogous to the $e^{\tilde{a}}, e^{\tilde{b}}, e^{\tilde{c}}$ computed above, as:
 
 $$
 \tilde{P}_{\Phi}(\mathbf{X_1, ..., X_n})
@@ -275,7 +275,7 @@ $$
 $$
 where $\Phi = \{\phi_1(\mathbf{D_1}), ..., \phi_k(\mathbf{D_k})\}$ and $G$ is the *induced graph* for $\Phi$.
 
-The first half of this lemma does nothing more than restate the definition of an unnormalized Gibb's distribution. Expanding on the second half, we note:
+The first half of this lemma does nothing more than restate the definition of an unnormalized Gibbs distribution. Expanding on the second half, we note:
 
 > The graph induced by a set of factors is a pretty picture in which we draw a circle around each variable in the factor domain superset and draw lines between those that appear concurrently in a given factor domain.
 
@@ -290,7 +290,7 @@ Finally, it follows that:
 Unfortunately, the resulting factor product $\tilde{P}_{\Phi}$ is still unnormalized just like $e^{\tilde{a}}, e^{\tilde{b}}, e^{\tilde{c}}$ in our original model.
 
 ## Partition function
-The partition function was the denominator, i.e. "normalizer", in our softmax function. It is used to turn an unnormalized probability distribution into a normalized (i.e. valid) probability distribution. A true Gibb's distribution is given as follows:
+The partition function was the denominator, i.e. "normalizer", in our softmax function. It is used to turn an unnormalized probability distribution into a normalized (i.e. valid) probability distribution. A true Gibbs distribution is given as follows:
 
 $$
 \tilde{P}_{\Phi}(\mathbf{X_1, ..., X_n})
@@ -386,7 +386,7 @@ $$
 P(y, \mathbf{x}) = P(y)\prod\limits_{i=1}^{K}P(x_i\vert y)
 $$
 
-In effect, this model gives a (normalized) Gibb's distribution outright where the factors are *already valid probabilities* expressing the relationship between each input element and the output.
+In effect, this model gives a (normalized) Gibbs distribution outright where the factors are *already valid probabilities* expressing the relationship between each input element and the output.
 
 ### The distribution of our data
 
@@ -410,7 +410,7 @@ Finally, hidden Markov models are to naive Bayes what conditional random fields 
 ![generative vs. discriminative models]({filename}/images/generative_discriminative_models_flowchart.png)
 
 ## Where does $e$ come from?
-Equation (2) states that the numerator of the softmax, i.e. the exponentiated linear combination of input elements, is equivalent to the unnormalized joint probability of our inputs and outputs as given by the Gibb's distribution factor product.
+Equation (2) states that the numerator of the softmax, i.e. the exponentiated linear combination of input elements, is equivalent to the unnormalized joint probability of our inputs and outputs as given by the Gibbs distribution factor product.
 
 However, this only holds if one of the following two are true:
 
@@ -419,7 +419,7 @@ However, this only holds if one of the following two are true:
 
 Remember, the point of this exponentiation was to put our weighted input elements "on the arithmetic path to becoming valid probabilities," i.e. to make them strictly positive. This said, there is nothing (to my knowledge) that mandates that a factor produce a strictly positive number. So which came first — the chicken or the egg (the exponent or the softmax)?
 
-In truth, I'm not actually sure, but I do believe we can safely treat the softmax numerator and an unnormalized Gibb's distribution as equivalent and simply settle on: *call it what you will, we need an exponent in there somewhere to put this thing in $[0, 1]$.*
+In truth, I'm not actually sure, but I do believe we can safely treat the softmax numerator and an unnormalized Gibbs distribution as equivalent and simply settle on: *call it what you will, we need an exponent in there somewhere to put this thing in $[0, 1]$.*
 
 ## Summary
 This exercise has made the relationships between canonical machine learning models, activation functions and the basic axiom of conditional probability a whole lot clearer. For more information, to reference the resources below, especially Daphne Koller's material on [probabilistic graphical models](https://www.coursera.org/learn/probabilistic-graphical-models). Thanks a lot for reading this far.
