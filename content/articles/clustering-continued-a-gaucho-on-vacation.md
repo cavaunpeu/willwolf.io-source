@@ -7,7 +7,7 @@ Status: published
 Summary: In our [previous post]({filename}clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups; moving forward, we'll take a closer look at what this really means.
 Image: figures/cluster_proportions_stacked_barchart.png
 
-In our [previous post](clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups. Moving forward, we'll take a closer look into what this really means.
+In our [previous post]({filename}clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups. Moving forward, we'll take a closer look into what this really means.
 
 As mentioned previously, the k-means algorithm incorporates some element of mathematical randomness. On one k-means trial, the algorithm may assign 30% of our airports to Cluster 1, 65% to Cluster 2, and 5% to Cluster 3. Other times, this distribution could look more like 35%, 55%, and 10% respectively. The more clusters we input, or the larger we make k, the less the distributions vary by trial.
 
