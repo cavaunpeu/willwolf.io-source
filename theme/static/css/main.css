@@ -208,12 +208,10 @@ img, svg {
   margin-bottom: .5em;
 }
 
-/*Currently used in notebooks/flight-prediction.ipynb to format the two (world map) Iframes*/
 .output_execute_result.output_html.output_subarea.rendered_html {
     margin: .4em;
     padding: 0;
     max-width: inherit;
-    overflow-x: visible;
 }
 
 /* Code formatting */
