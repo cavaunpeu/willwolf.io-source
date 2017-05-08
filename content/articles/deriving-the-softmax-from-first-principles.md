@@ -344,7 +344,7 @@ What we'd like is a valid probability distribution over possible outputs *condit
 
 \*Softmax regression is also known as multinomial regression, or multi-class logistic regression. Binary logistic regression is a special case of softmax regression in the same way that the sigmoid is a special case of the softmax.
 
-To compute our conditional probability distribution, we'll Equation (1):
+To compute our conditional probability distribution, we'll revisit Equation (1):
 
 $$
 P(y\vert \mathbf{x})

@@ -184,7 +184,7 @@ body div > blockquote > p {
   margin-top: .2em !important;
 }
 
-img {
+img, svg {
   display: block;
   margin: auto;
 }
@@ -206,6 +206,14 @@ img {
   margin-left: .2em;
   margin-right: .2em;
   margin-bottom: .5em;
+}
+
+/*Currently used in notebooks/flight-prediction.ipynb to format the two (world map) Iframes*/
+.output_execute_result.output_html.output_subarea.rendered_html {
+    margin: .4em;
+    padding: 0;
+    max-width: inherit;
+    overflow-x: visible;
 }
 
 /* Code formatting */
