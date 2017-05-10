@@ -184,7 +184,7 @@ simple_reg_fit = fit_flight_model(simple_reg, X_train, y_train, X_val, y_val, ep
 plot_model_fit(simple_reg_fit)
 ```
 
-![simple regression initial](../figures/transfer_learning_simple_regression_initial.png)
+![simple regression initial]({filename}/figures/transfer_learning_simple_regression_initial.png)
 
 
 ## Deeper regression
@@ -197,7 +197,7 @@ deeper_reg_fit = fit_flight_model(deeper_reg, X_train, y_train, X_val, y_val, ep
 plot_model_fit(deeper_reg_fit)
 ```
 
-![deeper regression initial](../figures/transfer_learning_deeper_regression_initial.png)
+![deeper regression initial]({filename}/figures/transfer_learning_deeper_regression_initial.png)
 
 ## Test set predictions
 
@@ -467,11 +467,11 @@ dp_model.compile(optimizer=Adam(lr=.001), loss='binary_crossentropy')
 SVG(model_to_dot(dp_model.model).create(prog='dot', format='svg'))
 ```
 
-![dot product embedding model](../figures/dot_product_embedding_model.svg)
+![dot product embedding model]({filename}/figures/dot_product_embedding_model.svg)
 
 ## Fit
 
-![dot product embedding model fit](../figures/dot_product_embedding_model_fit.png)
+![dot product embedding model fit]({filename}/figures/dot_product_embedding_model_fit.png)
 
 ## Visualize embeddings
 
@@ -482,7 +482,7 @@ To visualize results, we'll:
 4. Use the scaled embedding as a percentile-index into a color gradient. Here, we've chosen the colors of the rainbow: low values are blue/purple, and high values are orange/red.
 
 ```python
-plot_embeddings_on_world_map(unique_origins, output_path='../figures/dp_model_map.html')
+plot_embeddings_on_world_map(unique_origins, output_path='{filename}/figures/dp_model_map.html')
 ```
 
 <iframe width="1000" height="800" src="https://willwolf-public.s3.amazonaws.com/transfer-learning-flight-delays/dp_model_map.html" frameborder="0" allowfullscreen></iframe>
@@ -599,7 +599,7 @@ vae_model.compile(optimizer=Adam(lr=LEARNING_RATE), loss=[vae_model.variational_
 SVG(model_to_dot(vae_model.model).create(prog='dot', format='svg'))
 ```
 
-![vae embedding model](../figures/vae_embedding_model.svg)
+![vae embedding model]({filename}/figures/vae_embedding_model.svg)
 
 ```python
 # build VAE training, test sets
@@ -624,7 +624,7 @@ print('    Test:       {}'.format(X_test_r_origin.shape))
         Test:       (21907, 3186)
 
 ## Fit
-![vae product embedding model fit](../figures/vae_product_embedding_model_fit.png)
+![vae product embedding model fit]({filename}/figures/vae_product_embedding_model_fit.png)
 
 ## Visualize
 <iframe width="1000" height="800" src="https://willwolf-public.s3.amazonaws.com/transfer-learning-flight-delays/vae_model_map.html" frameborder="0" allowfullscreen></iframe>
@@ -650,7 +650,7 @@ simple_reg_fit = fit_flight_model(simple_reg, X_train, y_train, X_val, y_val, ep
 plot_model_fit(simple_reg_fit)
 ```
 
-![simple regression augmented](../figures/transfer_learning_simple_regression_augmented.png)
+![simple regression augmented]({filename}/figures/transfer_learning_simple_regression_augmented.png)
 
 
 ```python
@@ -661,7 +661,7 @@ deeper_reg_fit = fit_flight_model(deeper_reg, X_train, y_train, X_val, y_val, ep
 plot_model_fit(deeper_reg_fit)
 ```
 
-![deeper regression augmented](../figures/transfer_learning_deeper_regression_augmented.png)
+![deeper regression augmented]({filename}/figures/transfer_learning_deeper_regression_augmented.png)
 
 ```python
 y_pred_simple = simple_reg.model.predict(X_test).ravel()
@@ -701,9 +701,7 @@ Notwithstanding, the airport embeddings do seem to provide a nice lift over our 
 
 ## Code
 
-The repository for this project can be found [here](https://github.com/cavaunpeu/flight-delays).
-
-<a id="footnotes"></a>
+The [repository](https://github.com/cavaunpeu/flight-delays) and [rendered notebook](http://nbviewer.jupyter.org/github/cavaunpeu/flight-delays/blob/master/notebooks/flight-prediction.ipynb?flush_cache=true) for this project can be found at their respective links.
 
 ## Footnotes
 
