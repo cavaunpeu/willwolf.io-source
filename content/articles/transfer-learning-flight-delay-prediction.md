@@ -485,7 +485,7 @@ To visualize results, we'll:
 plot_embeddings_on_world_map(unique_origins, output_path='{filename}/figures/dp_model_map.html')
 ```
 
-<iframe width="1000" height="800" src="https://willwolf-public.s3.amazonaws.com/transfer-learning-flight-delays/dp_model_map.html" frameborder="0" allowfullscreen></iframe>
+<iframe width="946" height="800" src="https://willwolf-public.s3.amazonaws.com/transfer-learning-flight-delays/dp_model_map.html" frameborder="0" allowfullscreen></iframe>
 
 ## Variational autoencoder
 
@@ -627,7 +627,7 @@ print('    Test:       {}'.format(X_test_r_origin.shape))
 ![vae product embedding model fit]({filename}/figures/vae_product_embedding_model_fit.png)
 
 ## Visualize
-<iframe width="1000" height="800" src="https://willwolf-public.s3.amazonaws.com/transfer-learning-flight-delays/vae_model_map.html" frameborder="0" allowfullscreen></iframe>
+<iframe width="946" height="800" src="https://willwolf-public.s3.amazonaws.com/transfer-learning-flight-delays/vae_model_map.html" frameborder="0" allowfullscreen></iframe>
 
 ## Finally, transfer the learning
 
