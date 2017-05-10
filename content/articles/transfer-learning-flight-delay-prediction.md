@@ -52,27 +52,6 @@ Our flight-delay design matrix $X$ will include the following columns: `DayOfWee
 Let's get started.
 
 ```python
-FLIGHTS_PATH = '../data/flights-2008-sample.feather'
-
-# build X, y
-flights = feather.read_dataframe(FLIGHTS_PATH)
-X = flights[['DayOfWeek', 'DayofMonth', 'Month', 'ScheduledDepTimestamp', 'Origin', 'Dest', 'UniqueCarrier']].copy()
-y = flights['total_delay'].copy()
-
-# one-hot
-one_hot_matrices = []
-for col in filter(lambda col: col != 'ScheduledDepTimestamp', X.columns):
-    one_hot_matrices.append( pd.get_dummies(X[col]) )
-
-one_hot_matrix = np.concatenate(one_hot_matrices, axis=1)
-X = np.hstack([ X['ScheduledDepTimestamp'].values.reshape(-1, 1), one_hot_matrix ])
-
-# normalize
-X = StandardScaler().fit_transform(X)
-y = np.log(y + 1).values
-```
-
-```python
 TEST_SIZE = int(X.shape[0] * .4)
 
 
