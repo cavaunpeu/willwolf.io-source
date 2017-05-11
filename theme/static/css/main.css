@@ -255,8 +255,11 @@ div.input_area > div.highlight {
   font-style: italic !important;
 }
 .highlight .err {
-  color: #a61717 !important;
-  background-color: #e3d2d2 !important;
+  /*Commented out such that math characters in code blocks are not marked with red boxes*/
+
+  /*color: #a61717 !important;
+  background-color: #e3d2d2 !important;*/
+  border: none !important;
 }
 .highlight .k {
   font-weight: bold !important;
