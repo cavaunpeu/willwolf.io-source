@@ -206,7 +206,7 @@ As such, we'd like the most conservative distribution that obeys its constraints
 For `temperature`, this is the [Gaussian distribution](https://en.wikipedia.org/wiki/Normal_distribution). Its probability density function is given as:
 
 $$
-P(x\vert \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(x - \mu)^2}{2\sigma^2}\bigg)}
+P(y\vert \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(y - \mu)^2}{2\sigma^2}\bigg)}
 $$
 
 For `cat or dog`, this is the [Bernoulli distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution). Its probability mass function is given as:
@@ -253,8 +253,42 @@ Graphically, this looks as follows, with three distributions in and three output
 
 The bottleneck is the ["exponential family"](https://en.wikipedia.org/wiki/Exponential_family) of probability distributions.
 
+### Exponential functions
+> In probability and statistics, an exponential family is a set of probability distributions of a certain form, specified below. This special form is chosen for mathematical convenience, on account of some useful algebraic properties, as well as for generality, as exponential families are in a sense very natural sets of distributions to consider.
 
+-- Wikipedia
 
+I don't relish quoting this paragraph -- and especially one so ambiguous. This said, the reality is that exponential functions provide, at a minimum, a unifying framework for deriving the canonical activation and loss functions we've come to know and love. To move forward, we simply have to cede that the "mathematical conveniences, on account of some useful algebraic properties, etc." that motivate this "certain form" are not totally heinous nor misguided.
+
+A distribution belongs to the exponential family if it can be written in the following form:
+
+$$
+p(y; n) = b(y)\exp(\eta^T T(y) - a(\eta))
+$$
+
+where:
+- $\eta$ is the *natural parameter* of the distribution. (We will hereby work with the single-parameter exponential family form.)
+- $T(y)$ is the *sufficient statistic*. It is often the case that $T(y) = y$.
+- $a(\eta)$ is the *log partition function*, which normalizes the distribution. (A more in-depth discussion of this normalizing constant can be found in a previous post of mine: [Deriving the Softmax from First Principles]({filename}deriving-the-softmax-from-first-principles.md).)
+
+"A fixed choice of $T$, $a$ and $b$ defines a family (or set) of distributions that is parameterized by $\eta$; as we vary $\eta$, we then get different distributions within this family."[^1] This simply means that a coin with $p(\text{heads}) = .6$ gives a different distribution over outcomes than one with $p(\text{heads}) = .7$. Easy.
+
+#### Gaussian distribution
+Since we're working with the single-parameter form, we'll assume that $\sigma^2$ is known and equals $1$. Therefore, $\eta$ will equal $\mu$, i.e. the thing we pass into the Gaussian (that moves it left or right).
+$$
+\begin{align*}
+P(y\vert \mu, \sigma^2)
+&= \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(y - \mu)^2}{2\sigma^2}\bigg)}\\
+&= \frac{1}{\sqrt{2\pi}}\exp{\bigg(-\frac{(y - \mu)^2}{2}\bigg)}\\
+&= \frac{1}{\sqrt{2\pi}}\exp{\bigg(-\frac{1}{2}(y^2 - 2\mu y + \mu^2)\bigg)}\\
+&= \frac{1}{\sqrt{2\pi}}\exp{\bigg(-\frac{1}{2}y^2\bigg)} \cdot \exp{\bigg(\mu y - \frac{1}{2}\mu^2\bigg)}\\
+\end{align*}
+$$
+
+- $\eta = \mu$
+- $T(y) = y$
+- $a(\eta) = \frac{1}{2}\mu^2 = \frac{1}{2}\eta^2$
+- $b(y) = \frac{1}{\sqrt{2\pi}}\exp{(-\frac{1}{2}y^2)}$
 
 ## Loss function
 
@@ -266,6 +300,8 @@ The bottleneck is the ["exponential family"](https://en.wikipedia.org/wiki/Expon
   - their canonical loss functions plus regularization
   - their functional forms
   - their output distributions themselves, i.e. max entropy
+
+when you derive the identity function you'll have to make mention of the variance which is constant
 
 Like many dove deeper into the field. I started reading textbooks,
 
@@ -327,3 +363,5 @@ posterior predictive distribution
 
 ## references
 -
+
+[^1]: [CS229 Machine Learning Course Materials, Lecture Notes 1](http://cs229.stanford.edu/materials.html)
