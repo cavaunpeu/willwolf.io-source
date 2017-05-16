@@ -148,7 +148,9 @@ Out[3]: 0.2460287703075343
 
 In the first distribution, we are least certain as to what tomorrow's weather will bring. As such, this has the highest entropy. In the third distribution, we are almost certain it's going to hail. As such, this has the lowest entropy.
 
-Now, we can start our descent into the pool.
+Finally, it is a probability distribution that dictates the different taxi assignments just above. A distribution for a random variable that has many possible outcomes has a higher entropy than a distribution that gives only one.
+
+We can start our descent into the pool.
 
 # Response variable
 
@@ -170,10 +172,8 @@ Unfortunately, we don't know. All we do know, in fact, is the following:
 
 For clarity, each one of these assumptions is utterly banal. *Can we use them nonetheless to select probability distributions for our random variables?*
 
-lagrange multipliers
-
 ### Maximum entropy distributions
-Consider another continuous-valued random variable: "Uber's yearly profit." Like `temperature`, it also has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$ Trivially, the respective means and variances will be different. Assume we observe 10 values of each that look as follows:
+Consider another continuous-valued random variable: "Uber's yearly profit." Like `temperature`, it also has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$ Trivially, the respective means and variances will be different. Assume we observe 10 (fictional) values of each that look as follows:
 
 | uber | temperature |
 |------|-------------|
@@ -193,13 +193,44 @@ Plotting, we get the following:
 ![](../figures/temperature_random_variable.png?)
 ![](../figures/uber_random_variable.png?)
 
-definition: “the distribution that can happen the most ways is also the distribution with the biggest information entropy. the distribution with the biggest entropy is the most conservative distribution that obeys its constraints”
-the maximum entropy distribution
+We are not given the true underlying probability distribution associated with each random variable -- not its general "shape," nor the parameters that control its general shape. In fact, we will *never* be given these things; the point of statistics is to infer what they are.
 
-choosing the distribution with the largest entropy means spreading probability as evenly as possible, while still remaining consistent with anything we think we know about a process
+To make an initial choice we keep two things in mind:
+- *We'd like to be conservative*. We've only seen 10 values of "Uber's yearly profit;" we don't want to discount the fact that the next 20 could fall into $[-60, -50]$ just because they haven't yet been observed.
+- *We need to choose the same probability distribution "shape" for both random variables, as we've made identical assumptions for each*.
 
-the distribution that can happen the most number of ways is the most plausible distribution, a.k.a. the maximum entropy distribution
+As such, we'd like the most conservative distribution that obeys its constraints. This is the *maximum entropy distribution*.
 
+For `temperature`, this is the [Gaussian distribution](https://en.wikipedia.org/wiki/Normal_distribution). Its probability density function is given as:
+
+$$
+P(x\vert \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(x - \mu)^2}{2\sigma^2}\bigg)}
+$$
+
+For `cat or dog`, this is the [Bernoulli distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution). Its probability mass function is given as:
+
+$$
+p(\text{outcome}) =
+\begin{cases}
+1 - p & \text{for } \text{outcome = cat}\\
+p & \text{for } \text{outcome = dog}\\
+\end{cases}
+$$
+
+For `red or green or blue`, this is the [multinomial distribution](https://en.wikipedia.org/wiki/Multinomial_distribution). Its probability mass function is given as:
+
+$$
+p(\text{outcome}) =
+\begin{cases}
+p_{\text{red}} & \text{for } \text{outcome = red}\\
+p_{\text{green}} & \text{for } \text{outcome = green}\\
+1 - p_{\text{red}} - p_{\text{green}} & \text{for } \text{outcome = blue}\\
+\end{cases}
+$$
+
+While it may seem like we've "waved our hands" over the connection between the stated equality constraints for the response variable of each model and the respective distributions we've selected, it is [Lagrange multipliers](https://en.wikipedia.org/wiki/Lagrange_multiplier) that succinctly and algebraically bridge this gap. This [post](https://www.dsprelated.com/freebooks/sasp/Maximum_Entropy_Property_Gaussian.html) gives a terrific example of this derivation. I've chosen to omit it as I did not feel it would contribute to the clarity nor direction of this post.
+
+Finally, while we do assume that a Gaussian dictates the true distribution of values of both "Uber's yearly profit" and `temperature`, it is, trivially, a different Gaussian for each. This is because each random variable has its own true underlying mean and variance. These values make the respective Gaussians taller or wider -- shifted left or shifted right.
 
 ## Functional form
 
