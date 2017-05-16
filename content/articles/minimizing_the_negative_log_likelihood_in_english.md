@@ -7,6 +7,8 @@ Status: draft
 Summary:
 Image:
 
+change "model" to "estimator"
+
 Roughly speaking, my machine learning journey began on [Kaggle](http://kaggle.com). "There's data, a model and a loss function to optimize," I learned. "Regression models predict continuous-valued real numbers; classification models predict 'red,' 'green,' 'blue.' Typically, the former employs the mean squared error or mean absolute error; the latter, the cross-entropy loss. Stochastic gradient descent updates the model's parameters to drive these losses down." Furthermore, to build these models, just `import sklearn`.
 
 A dexterity with the above is often sufficient for -- at least from a technical stance -- both employment and impact as a Data Scientist. In industry, commonplace prediction and inference problems -- binary churn prediction, credit scoring, product recommendation and A/B testing, for example -- are easily matched with an off-the-shelf algorithm plus proficient Data Scientist for a measurable boost to the company's bottom line. In a vacuum, I think this is fine: the winning driver does not *need* to know how to build the car. Surely, I've been this driver before.
@@ -25,7 +27,7 @@ When deploying a predictive model in a production setting, it is generally in ou
 
 ![bottom of pool](http://img2.hungertv.com/wp-content/uploads/2014/09/SP_Kanawaza-616x957.jpg)
 
-First, let's meet our three protagonists. We'll define them in Keras for the illustrative purpose of a unified and idiomatic API.
+First, let's meet our three protagonists. We'll define them in [Keras](https://keras.io/) for the illustrative purpose of a unified and idiomatic API.
 
 ## [Linear regression](http://ufldl.stanford.edu/tutorial/supervised/LinearRegression/) with mean squared error
 
@@ -233,9 +235,25 @@ While it may seem like we've "waved our hands" over the connection between the s
 Finally, while we do assume that a Gaussian dictates the true distribution of values of both "Uber's yearly profit" and `temperature`, it is, trivially, a different Gaussian for each. This is because each random variable has its own true underlying mean and variance. These values make the respective Gaussians taller or wider -- shifted left or shifted right.
 
 ## Functional form
+Our three protagonists generate predictions via distinct functions: the [identity function](https://en.wikipedia.org/wiki/Identity_function), the [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) and the [softmax function](https://en.wikipedia.org/wiki/Softmax_function), respectively. The respective Keras output layers make this clear:
 
-exponential family distributions
-my last softmax post
+```python
+output = Dense(1)(input)
+output = Dense(1, activation='sigmoid')(input)
+output = Dense(3, activation='softmax')(input)
+```
+
+In this section, I'd like to:
+- Show how each of the Gaussian, Bernoulli and multinomial distributions can be reduced to the same functional form.
+- Show how this functional form allows us to naturally derive the output functions for our three protagonist models.
+
+Graphically, this looks as follows, with three distributions in and three output functions out.
+
+![bottleneck](https://electric-cloud.com/wp-content/uploads/use-case-graphic_bottleneck.png)
+
+The bottleneck is the ["exponential family"](https://en.wikipedia.org/wiki/Exponential_family) of probability distributions.
+
+
 
 
 ## Loss function
