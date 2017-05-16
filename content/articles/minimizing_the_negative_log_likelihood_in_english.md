@@ -19,13 +19,15 @@ Marginally wiser, I now know two truths about the above:
 1. Techniques we anoint as "machine learning" - classification and regression models, notably - have their underpinnings almost entirely in statistics. For this reason, terminology can often flow between.
 2. None of this stuff is new.
 
-The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. Notwithstanding, it typically *is* in our best interest to use an off-the-shelf model in a production setting just the same -- something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then come back up to the surface.
+The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. I assume the reader is familiar with concepts in both machine learning and statistics, and comes in search of a deeper understanding of the connections therein. There will be math -- but only as much as necessary.
+
+When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then come back up to the surface.
 
 ![bottom of pool](http://img2.hungertv.com/wp-content/uploads/2014/09/SP_Kanawaza-616x957.jpg)
 
 First, let's meet our three protagonists. We'll define them in Keras for the illustrative purpose of a unified and idiomatic API.
 
-### Linear regression with mean squared error
+## [Linear regression](http://ufldl.stanford.edu/tutorial/supervised/LinearRegression/) with mean squared error
 
 ```python
 input = Input(shape=(10,))
@@ -35,7 +37,7 @@ model = Model(input, output)
 model.compile(optimizer=optimizer, loss='mean_squared_error')
 ```
 
-### Logistic regression with binary cross-entropy loss
+## [Logistic regression](http://ufldl.stanford.edu/tutorial/supervised/LogisticRegression/) with binary cross-entropy loss
 ```python
 input = Input(shape=(10,))
 output = Dense(1, activation='sigmoid')(input)
@@ -44,7 +46,7 @@ model = Model(input, output)
 model.compile(optimizer=optimizer, loss='binary_crossentropy')
 ```
 
-### Softmax regression with categorical cross-entropy loss
+## [Softmax regression](http://ufldl.stanford.edu/tutorial/supervised/SoftmaxRegression/) with categorical cross-entropy loss
 ```python
 input = Input(shape=(10,))
 output = Dense(3, activation='softmax')(input)
@@ -53,7 +55,78 @@ model = Model(input, output)
 model.compile(optimizer=optimizer, loss='categorical_crossentropy')
 ```
 
-The goal of this post...
+Next, we'll select four components key to each: the type of output it generates, its functional form, its loss function and its loss function plus regularization. For each model, we'll describe the statistical underpinnings of each component -- the steps on the ladder towards the bottom of the pool.
+
+Before diving in, we'll need to define a few important concepts.
+
+## Random variable
+I define a random variable as "a thing that can take on a bunch of different values."
+- "The tenure of despotic rulers in Central Africa" is a random variable. It could take on values of 25.73 years, 14.12 years, 8.99 years, ad infinitum; it could not take on values of 1.12 million years, nor -5 years.
+- "The height of the next person to leave the supermarket" is a random variable.
+- "The color of shirt I wear on Mondays" is a random variable. (Incidentally, this one only has ~3 unique values.)
+
+## Probability distribution
+A probability distribution is a lookup table for the likelihood of observing each unique value of a random variable. Assuming a given variable can take on values in $\{a, b, c, d\}$, the following is a valid probability distribution:
+
+```python
+p = {'a': .14, 'b': .37, 'c': .03, 'd': .46}
+```
+
+Trivially, these values must sum to 1.
+
+- A *probability mass function* is a probability distribution for a discrete-valued random variable.
+- A *probability density function* _**gives**_ a probability distribution for a continuous-valued random variable.
+  - *Gives*, because this function itself is not a lookup table. Given a random variable that takes on values in $[0, 1]$, we do not and cannot define $p(0.01)$, $p(0.001)$, $p(0.0001)$, etc.
+  - Instead, we define a function that tells us the probability of observing a value within a certain *range*, i.e. $p(0.01 < X < .4)$.
+  - This is the probability density function, where $p(0 \leq X \leq 1) = 1$.
+
+## Entropy
+Entropy quantifies the number of ways we can reach a given outcome. Imagine 8 friends are splitting into 2 taxis en route to a Broadway show. Consider the following two scenarios:
+  - *4 friends climb into each taxi.* We could accomplish this with the following assignments:
+
+  ```python
+  # fill the first, then the second
+  assignment_1 = [1, 1, 1, 1, 2, 2, 2, 2]
+
+  # alternate assignments
+  assignment_2 = [1, 2, 1, 2, 1, 2, 1, 2]
+
+  # alternate assignments in batches of two
+  assignment_1 = [1, 1, 2, 2, 1, 1, 2, 2]
+
+  # etc.
+  ```
+
+  - *All friends climb into the first taxi.* There is only one possible assignment.
+
+  ```python
+  assignment_1 = [1, 1, 1, 1, 1, 1, 1, 1]
+  ```
+
+ (In this case, the Broadway show is probably in [West Africa](http://willtravellife.com/2013/04/how-does-a-west-african-bush-taxi-work/) or a similar part of the world.)
+
+Since there are more ways to reach the first outcome than there are the second, the first outcome has a higher entropy.
+
+## Output
+
+Roughly speaking, each model looks as follows. It is a diamond that receives an input and produces an output.
+
+![simple input/output model](../images/simple_input_output_model.png)
+
+The key difference amongst our models is the type of output produced by each.
+- Linear regression produces a
+
+### Maximum entropy distributions
+
+## Functional form
+
+exponential family distributions
+my last softmax post
+
+
+## Loss function
+
+
 
 3 characters.
   - their canonical loss functions
