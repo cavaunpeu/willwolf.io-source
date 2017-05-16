@@ -21,7 +21,7 @@ Marginally wiser, I now know two truths about the above:
 
 The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. I assume the reader is familiar with concepts in both machine learning and statistics, and comes in search of a deeper understanding of the connections therein. There will be math -- but only as much as necessary.
 
-When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then come back up to the surface.
+When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then come back up to the surface. Lemmas will be written in _**bold**_.
 
 ![bottom of pool](http://img2.hungertv.com/wp-content/uploads/2014/09/SP_Kanawaza-616x957.jpg)
 
@@ -55,7 +55,7 @@ model = Model(input, output)
 model.compile(optimizer=optimizer, loss='categorical_crossentropy')
 ```
 
-Next, we'll select four components key to each: the type of output it generates, its functional form, its loss function and its loss function plus regularization. For each model, we'll describe the statistical underpinnings of each component -- the steps on the ladder towards the bottom of the pool.
+Next, we'll select four components key to each: its response variable, its functional form, its loss function and its loss function plus regularization. For each model, we'll describe the statistical underpinnings of each component -- the steps on the ladder towards the bottom of the pool.
 
 Before diving in, we'll need to define a few important concepts.
 
@@ -66,10 +66,10 @@ I define a random variable as "a thing that can take on a bunch of different val
 - "The color of shirt I wear on Mondays" is a random variable. (Incidentally, this one only has ~3 unique values.)
 
 ## Probability distribution
-A probability distribution is a lookup table for the likelihood of observing each unique value of a random variable. Assuming a given variable can take on values in $\{a, b, c, d\}$, the following is a valid probability distribution:
+A probability distribution is a lookup table for the likelihood of observing each unique value of a random variable. Assuming a given variable can take on values in $\{\text{rain, snow, sleet, hail}\}$, the following is a valid probability distribution:
 
 ```python
-p = {'a': .14, 'b': .37, 'c': .03, 'd': .46}
+p = {'rain': .14, 'snow': .37, 'sleet': .03, 'hail': .46}
 ```
 
 Trivially, these values must sum to 1.
@@ -107,16 +107,99 @@ Entropy quantifies the number of ways we can reach a given outcome. Imagine 8 fr
 
 Since there are more ways to reach the first outcome than there are the second, the first outcome has a higher entropy.
 
-## Output
+### More explicitly
+We compute entropy for probability distributions. This computation is given as:
+
+$$
+H(p) = -E\log{P_i} = -\sum\limits_{i=1}^{n} p_i \log{p_i}
+$$
+
+where:
+- There are $n$ unique, possible events.
+- Each event $i$ has probability $p_i$.
+
+Entropy is the *weighted-average log probability* over possible events, which measures the *uncertainty inherent in their probability distribution.* The higher the entropy, the less certain we are about the value we're going to get.
+
+Let's calculate the entropy of our distribution above.
+
+```python
+p = {'rain': .14, 'snow': .37, 'sleet': .03, 'hail': .46}
+
+def entropy(prob_dist):
+    return -sum([ p*log(p) for p in prob_dist.values() ])
+
+In [1]: entropy(p)
+Out[1]: 1.1055291211185652
+```
+
+For comparison, let's assume two more distributions and calculate their respective entropies.
+
+```python
+p_2 = {'rain': .01, 'snow': .37, 'sleet': .03, 'hail': .59}
+
+p_3 = {'rain': .01, 'snow': .01, 'sleet': .03, 'hail': .95}
+
+In [2]: entropy(p_2)
+Out[2]: 0.8304250977453105
+
+In [3]: entropy(p_3)
+Out[3]: 0.2460287703075343
+```
+
+In the first distribution, we are least certain as to what tomorrow's weather will bring. As such, this has the highest entropy. In the third distribution, we are almost certain it's going to hail. As such, this has the lowest entropy.
+
+Now, we can start our descent into the pool.
+
+# Response variable
 
 Roughly speaking, each model looks as follows. It is a diamond that receives an input and produces an output.
 
 ![simple input/output model](../images/simple_input_output_model.png)
 
-The key difference amongst our models is the type of output produced by each.
-- Linear regression produces a
+The models differ in the type of response variable they predict, i.e. the $y$.
+- Linear regression predicts a continuous-valued real number. Let's call it `temperature`.
+- Logistic regression predicts a binary label. Let's call it `cat or dog`
+- Softmax regression predicts a multi-class label. Let's call it `red or green or blue`.
+
+In each model, the response variable can take on a bunch of different values. In other words, they are *random variables.* Which probability distributions are associated with each?
+
+Unfortunately, we don't know. All we do know, in fact, is the following:
+- `temperature` has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$.
+- `cat or dog` takes on the value `cat` or `dog`. The likelihood of observing each outcome does not change over time, in the same way that $p(\text{heads})$ for a fair coin is always $0.5$.
+- `red or green or blue` takes on the value `red` or `green` or `blue`. The likelihood of observing each outcome does not change over time, in the same way that the probability of rolling a given number from fair die is always $\frac{1}{6}$.
+
+For clarity, each one of these assumptions is utterly banal. *Can we use them nonetheless to select probability distributions for our random variables?*
+
+lagrange multipliers
 
 ### Maximum entropy distributions
+Consider another continuous-valued random variable: "Uber's yearly profit." Like `temperature`, it also has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$ Trivially, the respective means and variances will be different. Assume we observe 10 values of each that look as follows:
+
+| uber | temperature |
+|------|-------------|
+| -100 | -50         |
+| -80  | 5           |
+| -20  | 56          |
+| 5    | 65          |
+| 15   | 62          |
+| -10  | 63          |
+| 22   | 60          |
+| 12   | 78          |
+| 70   | 100         |
+| 100  | -43         |
+
+Plotting, we get the following:
+
+![](../figures/temperature_random_variable.png?)
+![](../figures/uber_random_variable.png?)
+
+definition: “the distribution that can happen the most ways is also the distribution with the biggest information entropy. the distribution with the biggest entropy is the most conservative distribution that obeys its constraints”
+the maximum entropy distribution
+
+choosing the distribution with the largest entropy means spreading probability as evenly as possible, while still remaining consistent with anything we think we know about a process
+
+the distribution that can happen the most number of ways is the most plausible distribution, a.k.a. the maximum entropy distribution
+
 
 ## Functional form
 
