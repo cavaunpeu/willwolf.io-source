@@ -23,7 +23,35 @@ The goal of this post is to take three models we know, love, and know how to use
 
 ![bottom of pool](http://img2.hungertv.com/wp-content/uploads/2014/09/SP_Kanawaza-616x957.jpg)
 
-This post will have three protagonists.
+First, let's meet our three protagonists. We'll define them in Keras for the illustrative purpose of a unified and idiomatic API.
+
+### Linear regression with mean squared error
+
+```python
+input = Input(shape=(10,))
+output = Dense(1)(input)
+
+model = Model(input, output)
+model.compile(optimizer=optimizer, loss='mean_squared_error')
+```
+
+### Logistic regression with binary cross-entropy loss
+```python
+input = Input(shape=(10,))
+output = Dense(1, activation='sigmoid')(input)
+
+model = Model(input, output)
+model.compile(optimizer=optimizer, loss='binary_crossentropy')
+```
+
+### Softmax regression with categorical cross-entropy loss
+```python
+input = Input(shape=(10,))
+output = Dense(3, activation='softmax')(input)
+
+model = Model(input, output)
+model.compile(optimizer=optimizer, loss='categorical_crossentropy')
+```
 
 The goal of this post...
 
