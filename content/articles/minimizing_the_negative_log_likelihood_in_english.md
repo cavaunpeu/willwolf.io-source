@@ -11,19 +11,19 @@ change "model" to "estimator"
 
 Roughly speaking, my machine learning journey began on [Kaggle](http://kaggle.com). "There's data, a model and a loss function to optimize," I learned. "Regression models predict continuous-valued real numbers; classification models predict 'red,' 'green,' 'blue.' Typically, the former employs the mean squared error or mean absolute error; the latter, the cross-entropy loss. Stochastic gradient descent updates the model's parameters to drive these losses down." Furthermore, to build these models, just `import sklearn`.
 
-A dexterity with the above is often sufficient for -- at least from a technical stance -- both employment and impact as a Data Scientist. In industry, commonplace prediction and inference problems -- binary churn prediction, credit scoring, product recommendation and A/B testing, for example -- are easily matched with an off-the-shelf algorithm plus proficient Data Scientist for a measurable boost to the company's bottom line. In a vacuum, I think this is fine: the winning driver does not *need* to know how to build the car. Surely, I've been this driver before.
+A dexterity with the above is often sufficient for -- at least from a technical stance -- both employment and impact as a data scientist. In industry, commonplace prediction and inference problems -- binary churn, credit scoring, product recommendation and A/B testing, for example -- are easily matched with an off-the-shelf algorithm plus proficient data scientist for a measurable boost to the company's bottom line. In a vacuum I think this is fine: the winning driver does not *need* to know how to build the car. Surely, I've been this driver before.
 
 Once fluid with "scikit-learn fit and predict," I turned to statistics. I was always aware that the two were related, yet figured them ultimately parallel sub-fields of my job. With the former, I build classification models; with the latter, I infer signup rates with the exponential distribution and MCMC -- right?
 
-Before long, I dove deeper into machine learning -- reading textbooks, studying documentation and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example; **"why are you calling it the negative log-likelihood?"**
+Before long, I dove deeper into machine learning -- reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example; **"why are you calling it the negative log-likelihood?"**
 
 Marginally wiser, I now know two truths about the above:
 1. Techniques we anoint as "machine learning" - classification and regression models, notably - have their underpinnings almost entirely in statistics. For this reason, terminology can often flow between.
 2. None of this stuff is new.
 
-The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. I assume the reader is familiar with concepts in both machine learning and statistics, and comes in search of a deeper understanding of the connections therein. There will be math -- but only as much as necessary.
+The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. I will assume the reader is familiar with concepts in both machine learning and statistics, and comes in search of a deeper understanding of the connections therein. There will be math -- but only as much as necessary.
 
-When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then come back up to the surface. Lemmas will be written in _**bold**_.
+When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then work our way back to the surface. Lemmas will be written in -> _**bold**_.
 
 ![bottom of pool](http://img2.hungertv.com/wp-content/uploads/2014/09/SP_Kanawaza-616x957.jpg)
 
@@ -57,7 +57,7 @@ model = Model(input, output)
 model.compile(optimizer=optimizer, loss='categorical_crossentropy')
 ```
 
-Next, we'll select four components key to each: its response variable, its functional form, its loss function and its loss function plus regularization. For each model, we'll describe the statistical underpinnings of each component -- the steps on the ladder towards the bottom of the pool.
+Next, we'll select four components key to each: its response variable, its functional form, its loss function and its loss function plus regularization. For each model, we'll describe the statistical underpinnings of each component -- the steps on the ladder towards the surface of the pool.
 
 Before diving in, we'll need to define a few important concepts.
 
@@ -152,7 +152,7 @@ In the first distribution, we are least certain as to what tomorrow's weather wi
 
 Finally, it is a probability distribution that dictates the different taxi assignments just above. A distribution for a random variable that has many possible outcomes has a higher entropy than a distribution that gives only one.
 
-We can start our descent into the pool.
+Let's dive in. We'll start at the bottom and work our way back to the top.
 
 # Response variable
 
@@ -209,24 +209,24 @@ $$
 P(y\vert \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(y - \mu)^2}{2\sigma^2}\bigg)}
 $$
 
-For `cat or dog`, this is the [Bernoulli distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution). Its probability mass function is given as:
+For `cat or dog`, this is the [Binomial distribution](https://en.wikipedia.org/wiki/Binomial_distribution). Its probability mass function  (for a single observation) is given as:
 
 $$
 p(\text{outcome}) =
 \begin{cases}
-1 - p & \text{for } \text{outcome = cat}\\
-p & \text{for } \text{outcome = dog}\\
+1 - p & \text{outcome = cat}\\
+p & \text{outcome = dog}\\
 \end{cases}
 $$
 
-For `red or green or blue`, this is the [multinomial distribution](https://en.wikipedia.org/wiki/Multinomial_distribution). Its probability mass function is given as:
+For `red or green or blue`, this is the [multinomial distribution](https://en.wikipedia.org/wiki/Multinomial_distribution). Its probability mass function (for a single observation) is given as:
 
 $$
 p(\text{outcome}) =
 \begin{cases}
-p_{\text{red}} & \text{for } \text{outcome = red}\\
-p_{\text{green}} & \text{for } \text{outcome = green}\\
-1 - p_{\text{red}} - p_{\text{green}} & \text{for } \text{outcome = blue}\\
+p_{\text{red}} & \text{outcome = red}\\
+p_{\text{green}} & \text{outcome = green}\\
+1 - p_{\text{red}} - p_{\text{green}} & \text{outcome = blue}\\
 \end{cases}
 $$
 
@@ -244,7 +244,7 @@ output = Dense(3, activation='softmax')(input)
 ```
 
 In this section, I'd like to:
-- Show how each of the Gaussian, Bernoulli and multinomial distributions can be reduced to the same functional form.
+- Show how each of the Gaussian, Binomial and multinomial distributions can be reduced to the same functional form.
 - Show how this functional form allows us to naturally derive the output functions for our three protagonist models.
 
 Graphically, this looks as follows, with three distributions in and three output functions out.
@@ -285,10 +285,56 @@ P(y\vert \mu, \sigma^2)
 \end{align*}
 $$
 
+where:
 - $\eta = \mu$
 - $T(y) = y$
-- $a(\eta) = \frac{1}{2}\mu^2 = \frac{1}{2}\eta^2$
+- $a(\eta) = \frac{1}{2}\mu^2$
 - $b(y) = \frac{1}{\sqrt{2\pi}}\exp{(-\frac{1}{2}y^2)}$
+
+Finally, we'll express $a(\eta)$ in terms of $\eta$ itself:
+
+$$
+\begin{align*}
+a(\eta)
+&= \frac{1}{2}\mu^2\\
+&= \frac{1}{2}\eta^2
+\end{align*}
+$$
+
+#### Binomial distribution
+We previously defined the Binomial distribution (for a single observation) in a crude, peacewise form. We'll now define it in a more compact form which will make it easier to show that it is a member of the exponential family.
+
+$$
+\begin{align*}
+p(y)
+&= p^y(1-p)^{1-y}\\
+&= \exp\bigg(\log\bigg(y\log{p} + (1-y)\log(1-p)\bigg)\bigg)\\
+&= \exp\bigg(y\log{p} + \log(1-p) - y\log(1-p)\bigg)\\
+&= \exp\bigg(\log\bigg(\frac{p}{1-p}\bigg)y + \log(1-p)\bigg) \\
+\end{align*}
+$$
+
+where:
+- $\eta = \log\bigg(\frac{p}{1-p}\bigg)$
+- $T(y) = y$
+- $a(\eta) = -\log(1-p)$
+- $b(y) = 1$
+
+Finally, we'll express $a(\eta)$ in terms of $\eta$ itself:
+
+$$
+\eta = \log\bigg(\frac{p}{1-p}\bigg) \implies p = \frac{1}{1 + e^{-\eta}}
+$$
+
+$$
+\begin{align*}
+a(\eta)
+&= -\log(1-p)\\
+&= -\log\bigg(1-\frac{1}{1 + e^{-\eta}}\bigg)\\
+&= -\log\bigg(\frac{1}{1 + e^{\eta}}\bigg)\\
+&= \log(1 + e^{\eta})\\
+\end{align*}
+$$
 
 ## Loss function
 
