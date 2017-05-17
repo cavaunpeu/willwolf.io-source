@@ -594,10 +594,35 @@ $$
 _**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability distribution thereof.**_
 
 ##### KL-Divergence
+We previously defined entropy as a way to quantify the uncertainty inherent in a probability distribution. Next, let's use this same notion to quantify the additional uncertainty introduced when using the probabilities from one distribution *to describe those of another.*
 
+##### Example
+Suppose the true distribution of two events is $(p_1 = .3, p_2 = .7)$. Unfortunately, we build a model that thinks these events happen with probabilities $(q_1 = .25, q_2 = .75)$. How much additional uncertainty have we introduced by approximating $p$ with $q$?
 
+$$\begin{align*}
+D_{KL}(p, q) &= H(q) - H(p)\\
+  &= -\sum\limits_{i=1}^{n} q_i \log{q_i} - \Big(-\sum\limits_{i=1}^{n} p_i \log{p_i}\Big)\\
+  &= \sum\limits_{i=1}^{n} p_i \log{p_i} - \sum\limits_{i=1}^{n} q_i \log{q_i}\\
+  &= \sum\limits_{i=1}^{n} p_i \log{p_i} - \sum\limits_{i=1}^{n} p_i \log{q_i}\\
+  &= \sum\limits_{i=1}^{n} p_i \Big(\log(p_i) - \log(q_i)\Big)\\
+  &= \sum\limits_{i=1}^{n} p_i \log\Big(\frac{p_i}{q_i}\Big)
+\end{align*}$$
 
-- mean for l2, median for l1
+If $p = q$, $D_{KL}(p, q) = 0$. This makes sense from both a conceptual and algebraic standpoint.
+
+##### Cross entropy
+The K-L divergence between distributions requires us to know their respective probabilities. Unfortunately, for our response variables $y$ that we're trying to predict, we don't know what these true, underlying probabilities are: that's why we build the model.
+
+Instead, we quantify the difference in the true and predicted distributions (for binary or categorical variables) using the *cross entropy*, given as:
+
+$$
+\begin{align*}
+H(p, q)
+&= H(p) + D_\text{KL}(p, q)\\
+&= -\sum_i p_i log(q_i)
+\end{align*}$$
+
+While we compute the expression on the second line, it does rearrange to that on the first. As such, the cross entropy can be viewed as the assumed uncertainty in the true distribution $p$ plus the additional uncertainty introduced by approximating $p$ with $q$ -- our model's prediction of the true distribution of the response variable.
 
 ## what is marginalization/integration
 
