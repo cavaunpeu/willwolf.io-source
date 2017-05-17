@@ -567,6 +567,34 @@ Notwithstanding, most optimization routines *minimize*. So, for practical purpos
 
 _**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the mean squared error between the observed $y$ and our prediction thereof.**_
 
+#### Logistic regression
+Same thing.
+
+Negative log-likelihood:
+
+$$
+\begin{align*}
+-\log{P(y\vert x; \theta)}
+&= -\log{\prod\limits_{i = 1}^m(\phi^{(i)})^{y^{(i)}}(1 - \phi^{(i)})^{1 - y^{(i)}}}\\
+&= -\sum\limits_{i = 1}^m\log{\bigg((\phi^{(i)})^{y^{(i)}}(1 - \phi^{(i)})^{1 - y^{(i)}}\bigg)}\\
+&= -\sum\limits_{i = 1}^m\log{(\phi^{(i)})^{y^{(i)}} + \log{(1 - \phi^{(i)})^{1 - y^{(i)}}}}\\
+&= -\sum\limits_{i = 1}^my^{(i)}\log{(\phi^{(i)})} + (1 - y^{(i)})\log{(1 - \phi^{(i)})}\\
+\end{align*}
+$$
+
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability thereof.**_
+
+#### Multinomial distribution
+Negative log-likelihood:
+
+$$
+-\log{P(y\vert x; \theta)} = -\prod\limits_{k=1}^{K}y_k\log\pi_k\\
+$$
+
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability distribution thereof.**_
+
+##### KL-Divergence
+
 
 
 - mean for l2, median for l1
