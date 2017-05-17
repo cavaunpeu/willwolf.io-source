@@ -404,7 +404,9 @@ $$
 \end{align*}
 $$
 
-This you will recognize as the softmax function. Finally:
+This you will recognize as the softmax function. (For a probabilistically-motivated derivation, please see a previous [post]({filename}deriving-the-softmax-from-first-principles.md).)
+
+Finally:
 
 $$
 \begin{align*}
@@ -425,6 +427,69 @@ a(\eta)
 &= \log\Bigg(\sum\limits_{k=1}^K e^{\eta_k}\Bigg)\\
 \end{align*}
 $$
+
+### Generalized linear models
+Each protagonist model outputs a response variable that is distributed according to some (exponential) distribution. However, the *canonical parameter* of this distribution, i.e. the thing we pass in, will *vary per observation*.
+
+Consider the logistic regression model that's predicting `cat or dog`. If we input a picture of a cat, we'll output "cat" according to the stated distribution.
+
+$$
+p(\text{outcome}) =
+\begin{cases}
+1 - p & \text{outcome = cat}\\
+p & \text{outcome = dog}\\
+\end{cases}
+$$
+
+If we input a picture of a dog, we'll output "dog" according the same distribution.
+
+$$
+p(\text{outcome}) =
+\begin{cases}
+1 - p & \text{outcome = cat}\\
+p & \text{outcome = dog}\\
+\end{cases}
+$$
+
+Trivially, the $p$ value must be different in each case. In the former, $p$ should be small, such that we output "cat" with probability $1 - p \approx 1$. In the latter, $p$ should be large, such that we output "dog" with probability $p \approx 1$.
+
+So, what dictates the following?
+- $\mu_i$ in the case of our linear regression, in which $y_i \sim \mathcal{N}(\mu_i, \sigma^2)$
+- $p_i$ in the case of our logistic regression, in which $y_i \sim \text{Binomial}(p_i, 1)$
+- $\pi_i$ in the case of our softmax regression, in which $y_i \sim \text{Multinomial}(\pi_i, 1)$
+
+Here, I've introduced the subscript $i$. This makes explicit the `cat or dog` dynamic from above: each input to a given model will result in its *own* canonical parameter being passed to the distribution on the response variable. That cat picture better make $p_i \approx 0$.
+
+How do we go from a 10-feature input $x$ to this canonical parameter? We take a linear combination:
+
+$$
+w^Tx = \eta
+$$
+
+#### Linear regression
+$\eta = \mu$. This is what we need for the normal distribution.
+
+_**> The identity function (i.e a no-op) gives us the mean of the response variable. This mean is required by the normal distribution, which dictates the outcomes of the continuous-valued target $y$.**_
+
+#### Logistic regression
+$\eta = \log\bigg(\frac{\phi}{1-\phi}\bigg)$. (Earlier, we said that $\phi$ is the probability $p$ that we need for the binomial distribution; $p(\phi, 1)$ was more clear than $p(p, 1)$.) To solve for $\phi$, we solve for $\phi$.
+
+As you'll remember we did this above: $\phi = \frac{1}{1 + e^{-\eta}}$.
+
+_**> The sigmoid function gives us the probability that the response variable takes on the positive class. This probability is required by the binomial distribution, which dictates the outcomes of the binary target $y$.**_
+
+It does this in the same way that our weather distribution dictates tomorrow's forecast.
+
+```python
+p = {'rain': .14, 'snow': .37, 'sleet': .03, 'hail': .46}
+```
+
+#### Softmax regression
+$\eta = \log\bigg(\frac{\pi_k}{\pi_K}\bigg)$. To solve for $\pi_i$, i.e. the full vector of probabilities, we solve for each individual probability $\pi_{k, i}$ then put them in a list.
+
+We did this above as well: $\frac{e^{\eta_k}}{\sum\limits_{k=1}^K e^{\eta_k}}$. This is the softmax function.
+
+_**> The softmax function gives us the probability that the response variable takes on each of the possible classes. This probability mass function is required by the multinomial distribution, which dictates the outcomes of the multi-class target $y$.**_
 
 ## Loss function
 
