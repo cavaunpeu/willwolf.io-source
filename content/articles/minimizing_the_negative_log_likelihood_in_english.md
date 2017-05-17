@@ -9,6 +9,7 @@ Image:
 
 change "model" to "estimator"
 change p to phi
+change P(x) to p(x)
 
 Roughly speaking, my machine learning journey began on [Kaggle](http://kaggle.com). "There's data, a model and a loss function to optimize," I learned. "Regression models predict continuous-valued real numbers; classification models predict 'red,' 'green,' 'blue.' Typically, the former employs the mean squared error or mean absolute error; the latter, the cross-entropy loss. Stochastic gradient descent updates the model's parameters to drive these losses down." Furthermore, to build these models, just `import sklearn`.
 
@@ -175,7 +176,7 @@ Unfortunately, we don't know. All we do know, in fact, is the following:
 
 For clarity, each one of these assumptions is utterly banal. *Can we use them nonetheless to select probability distributions for our random variables?*
 
-### Maximum entropy distributions
+## Maximum entropy distributions
 Consider another continuous-valued random variable: "Uber's yearly profit." Like `temperature`, it also has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$ Trivially, the respective means and variances will be different. Assume we observe 10 (fictional) values of each that look as follows:
 
 | uber | temperature |
@@ -254,7 +255,7 @@ Graphically, this looks as follows, with three distributions in and three output
 
 The bottleneck is the ["exponential family"](https://en.wikipedia.org/wiki/Exponential_family) of probability distributions.
 
-### Exponential functions
+## Exponential functions
 > In probability and statistics, an exponential family is a set of probability distributions of a certain form, specified below. This special form is chosen for mathematical convenience, on account of some useful algebraic properties, as well as for generality, as exponential families are in a sense very natural sets of distributions to consider.
 
 -- Wikipedia
@@ -274,8 +275,9 @@ where:
 
 "A fixed choice of $T$, $a$ and $b$ defines a family (or set) of distributions that is parameterized by $\eta$; as we vary $\eta$, we then get different distributions within this family."[^1] This simply means that a coin with $p(\text{heads}) = .6$ gives a different distribution over outcomes than one with $p(\text{heads}) = .7$. Easy.
 
-#### Gaussian distribution
+### Gaussian distribution
 Since we're working with the single-parameter form, we'll assume that $\sigma^2$ is known and equals $1$. Therefore, $\eta$ will equal $\mu$, i.e. the thing we pass into the Gaussian (that moves it left or right).
+
 $$
 \begin{align*}
 P(y\vert \mu, \sigma^2)
@@ -302,7 +304,7 @@ a(\eta)
 \end{align*}
 $$
 
-#### Binomial distribution
+### Binomial distribution
 We previously defined the binomial distribution (for a single observation) in a crude, peacewise form. We'll now define it in a more compact form which will make it easier to show that it is a member of the exponential family. $\phi$ gives the probability of observing the true class, i.e. $p(\text{cat}) = .7 \implies \phi = .7$.
 
 $$
@@ -339,7 +341,7 @@ $$
 
 Our expression for $\phi$ will look like the sigmoid function.
 
-#### Multinomial distribution
+### Multinomial distribution
 Like the binomial distribution, we'll first rewrite the multinomial (for single observation) in a more compact form. $\pi$ gives a vector of class probabilities for the $K$ classes. $k$ denotes one of these classes.
 
 $$
@@ -429,7 +431,7 @@ a(\eta)
 \end{align*}
 $$
 
-### Generalized linear models
+## Generalized linear models
 Each protagonist model outputs a response variable that is distributed according to some (exponential) distribution. However, the *canonical parameter* of this distribution, i.e. the thing we pass in, will *vary per observation*.
 
 Consider the logistic regression model that's predicting `cat or dog`. If we input a picture of a cat, we'll output "cat" according to the stated distribution.
@@ -467,12 +469,12 @@ $$
 \theta^Tx = \eta
 $$
 
-#### Linear regression
+### Linear regression
 $\eta = \mu$. This is what we need for the normal distribution.
 
 _**> The identity function (i.e a no-op) gives us the mean of the response variable. This mean is required by the normal distribution, which dictates the outcomes of the continuous-valued target $y$.**_
 
-#### Logistic regression
+### Logistic regression
 $\eta = \log\bigg(\frac{\phi}{1-\phi}\bigg)$. (Earlier, we said that $\phi$ is the probability $p$ that we need for the binomial distribution; $p(\phi, 1)$ was more clear than $p(p, 1)$.) To solve for $\phi$, we solve for $\phi$.
 
 As you'll remember we did this above: $\phi = \frac{1}{1 + e^{-\eta}}$.
@@ -485,7 +487,7 @@ It does this in the same way that our weather distribution dictates tomorrow's f
 p = {'rain': .14, 'snow': .37, 'sleet': .03, 'hail': .46}
 ```
 
-#### Softmax regression
+### Softmax regression
 $\eta = \log\bigg(\frac{\pi_k}{\pi_K}\bigg)$. To solve for $\pi_i$, i.e. the full vector of probabilities, we solve for each individual probability $\pi_{k, i}$ then put them in a list.
 
 We did this above as well: $\frac{e^{\eta_k}}{\sum\limits_{k=1}^K e^{\eta_k}}$. This is the softmax function.
@@ -496,7 +498,7 @@ Finally, why a linear model? Andrew Ng calls it a "design choice."[^1] I've moti
 - A linear combination is perhaps the simplest way to consider the impact of each feature on the canonical parameter.
 - A linear combination commands that either $x$, or a *function of $x$*, vary linearly with $\eta$. As such, we could write our model as $\eta = \theta^T\Phi(x)$, where $\Phi$ applies some complex transformation to our features. This makes the "simplicity" of the linear combination less simple.
 
-## Loss function
+# Loss function
 We've now discussed how each response variable is generated, and how we compute the parameters for those distributions on a per-observation basis. Now, how do we quantify how good these parameters are?
 
 To get us started, let's go back to predicting `cat or dog`. If we input a picture of a cat, we should compute $p \approx 0$ given our binomial distribution.
@@ -511,7 +513,7 @@ $$
 
 A perfect computation gives $p = 0$. The loss function quantifies how close we got.
 
-### Maximum likelihood estimation
+## Maximum likelihood estimation
 Each of our three distributions receives a parameter -- $\mu, \phi$ and $\pi$ respectively. We then pass in a $y$ and the distribution tells us the probability of observing that value. (In the case of continuous-valued random variables, i.e. our distribution is a probability density function, it tells us a value *proportional* to this probability.)
 
 If we instead *fix* $y$ and pass in varying *parameter values*, our function becomes a *likelihood function*. It will tell us the likelihood of a given parameter having produced the now-fixed $y$.
@@ -546,7 +548,7 @@ $$
 
 The product of numbers in $[0, 1]$ gets very small, very quickly. Let's maximize the log likelihood instead so we can work with sums.
 
-#### Linear regression
+### Linear regression
 Maximize the log-likelihood of the Gaussian distribution.
 
 $$
@@ -567,7 +569,7 @@ Notwithstanding, most optimization routines *minimize*. So, for practical purpos
 
 _**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the mean squared error between the observed $y$ and our prediction thereof.**_
 
-#### Logistic regression
+### Logistic regression
 Same thing.
 
 Negative log-likelihood:
@@ -584,7 +586,7 @@ $$
 
 _**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability thereof.**_
 
-#### Multinomial distribution
+### Multinomial distribution
 Negative log-likelihood:
 
 $$
@@ -593,7 +595,7 @@ $$
 
 _**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability distribution thereof.**_
 
-##### KL-Divergence
+#### KL-Divergence
 We previously defined entropy as a way to quantify the uncertainty inherent in a probability distribution. Next, let's use this same notion to quantify the additional uncertainty introduced when using the probabilities from one distribution *to describe those of another.*
 
 ##### Example
@@ -610,7 +612,7 @@ D_{KL}(p, q) &= H(q) - H(p)\\
 
 If $p = q$, $D_{KL}(p, q) = 0$. This makes sense from both a conceptual and algebraic standpoint.
 
-##### Cross entropy
+#### Cross entropy
 The K-L divergence between distributions requires us to know their respective probabilities. Unfortunately, for our response variables $y$ that we're trying to predict, we don't know what these true, underlying probabilities are: that's why we build the model.
 
 Instead, we quantify the difference in the true and predicted distributions (for binary or categorical variables) using the *cross entropy*, given as:
@@ -624,45 +626,81 @@ H(p, q)
 
 While we compute the expression on the second line, it does rearrange to that on the first. As such, the cross entropy can be viewed as the assumed uncertainty in the true distribution $p$ plus the additional uncertainty introduced by approximating $p$ with $q$ -- our model's prediction of the true distribution of the response variable.
 
+# Maximum a posteriori estimation
+When estimating $\theta$ via the MLE, we put no constraints on the permissible values thereof. More explicitly, we allow $\theta$ to be *equally likely to assume any real number* -- be it $0$, or $10$, or $-20$, or $2.37 \times 10^{36}$.
+
+In practice, this assumption is both unrealistic and superfluous: typically, we do wish to constrain $\theta$ (our weights) to a non-infinite range of values. We do this by putting a *prior* on $\theta$. Whereas the MLE computes $\underset{\theta}{\arg\max}\ p(y\vert x; \theta)$, the maximum a posteriori estimate, or MAP, computes $\underset{\theta}{\arg\max}\ p(y\vert x; \theta)p(\theta)$.
+
+As before, we start by taking the log. Our joint likelihood with prior now reads:
+
+$$
+\begin{align*}
+\theta_{MAP}
+&= \underset{\theta}{\arg\max}\ \log \prod\limits_{i=1}^{m} p(y^{(i)}\vert x^{(i)}; \theta)p(\theta)\\
+&= \underset{\theta}{\arg\max}\ \sum\limits_{i=1}^{m} \log{p(y^{(i)}\vert x^{(i)}; \theta)} + \log{p(\theta)}\\
+\end{align*}
+$$
+
+We dealt with the left term in the previous section. Now, we'll simply tack on the log-prior to the respective log-likelihoods.
+
+As $\theta$ is a continuous-valued real number, let's assign it a Gaussian distribution with mean 0 and variance $\lambda$.
+
+$$
+\theta \sim \mathcal{N}(0, \lambda)
+$$
+
+$$
+\begin{align*}
+\log{p(\theta\vert 0, \lambda)}
+&= \log\Bigg(\frac{1}{\sqrt{2\pi}\lambda}\exp{\bigg(-\frac{(\theta - 0)^2}{2\lambda^2}\bigg)}\Bigg)\\
+&= \log{C_1} -\frac{\theta^2}{2\lambda^2}\\
+&= \log{C_1} - C_2\theta^2\\
+\end{align*}
+$$
+
+Our goal is to maximize this term plus the log likelihood -- or minimize their opposite -- with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
+
+$$
+\begin{align*}
+\log{C_1} - C_2\theta^2
+&\propto - C_2\theta^2\\
+&= C_2\Vert \theta\Vert_{2}^{2}\\
+\end{align*}
+$$
+
+This is L2 regularization. Furthermore, placing different prior distributions on $\theta$ yields different machine learning regularization terms; most notably, a [Laplace prior](https://en.wikipedia.org/wiki/Laplace_distribution) gives the L1.
+
+## Linear regression
+
+$$
+\underset{\theta}{\arg\min} \sum\limits_{i=1}^{m}(y^{(i)} - \theta^Tx^{(i)})^2 + C\Vert \theta\Vert_{2}^{2}
+$$
+
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the mean squared error between the observed $y$ and our prediction thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+
+## Logistic regression
+
+$$
+\underset{\theta}{\arg\min}
+-\sum\limits_{i = 1}^my^{(i)}\log{(\phi^{(i)})} + (1 - y^{(i)})\log{(1 - \phi^{(i)})} + C\Vert \theta\Vert_{2}^{2}
+$$
+
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+
+## Softmax regression
+
+$$
+-\log{P(y\vert x; \theta)} = -\prod\limits_{k=1}^{K}y_k\log\pi_k + C\Vert \theta\Vert_{2}^{2}
+$$
+
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability distribution thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+
+Finally, in machine learning, we say that regularizing our weights ensures that "no weight becomes too large," i.e. too "influential" in predicting $y$. In statistical terms, we can equivalently say that this term *restricts the permissible values of these weights to a given interval. Furthermore, this interval is dictated by the scaling constant $C$, which intrinsically parameterizes the prior distribution itself. In L2 regularization, this constant gives the variance of the Gaussian*.
+
+# something on posterior predictive distribution
+
 ## what is marginalization/integration
 
-## MLE, MAP
-- MLE on a PMF for classification?
-  - yeah this is how you back out into the KL divergence/cross entropy loss
-- MLE ...with a uniform prior on theta
-  - it can run off to huge values!
-- overfitting tradeoffs
-  - regularization
-  - shrinkage!
-- MAP tends to MLE as n goes to infin
-  - convex combination of prior and sample mean
-- regularization
-
-To summarize: Under the previous probabilistic assumptions on the data, least-squares regression corresponds to finding the maximum likelihood esti- mate of θ. This is thus one set of assumptions under which least-squares re- gression can be justified as a very natural method that’s just doing maximum likelihood estimation.
-
-..check out that camdp post on regularization mle blah linear regression
-
-## exponential families
-
-posterior predictive distribution
-
-## fully bayesian approaches
-- theta is usually very high-dimensional and we can't integrate over the full thing
-- so, we take the MAP and get a point-estimate
-
-## obtaining the MLE, MAP via various inference algorithms
-
-## exponential families
-
-## maximum entropy distributions
-- why do we actually choose normal? max entrp!
-## regularization terms
-
-## bayesian models
-- absolute loss implies we pick the posterior median
-- squared loss implies we pick the posterior mean
-
-## samplers
 
 ## references
 -
