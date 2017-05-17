@@ -339,10 +339,10 @@ $$
 Our expression for $\phi$ will look like the sigmoid function.
 
 #### Multinomial distribution
-Like the binomial distribution, we'll first rewrite the multinomial (for single observation) in a more compact form. $\pi$ gives a vector of class probabilities.
+Like the binomial distribution, we'll first rewrite the multinomial (for single observation) in a more compact form. $\pi$ gives a vector of class probabilities for the $K$ classes. $k$ denotes one of these classes.
 
 $$
-p(y\vert \pi) = \prod\limits_{i=1}^{K}\pi_i^{y_i}
+p(y\vert \pi) = \prod\limits_{k=1}^{K}\pi_i^{y_k}
 $$
 
 This is almost pedantic: it says that $p(y=k)$ equals the probability of observing class $k$. For example, given
@@ -366,17 +366,17 @@ Expanding into the exponential family we get:
 $$
 \begin{align*}
 p(y\vert \pi)
-&= \prod\limits_{i=1}^{K}\pi_i^{y_i}\\
-&= \exp\bigg(\sum\limits_{i=1}^{K}y_i\log{\pi_i}\bigg)\\
-&= \exp\bigg(\sum\limits_{i=1}^{K}y_i\log{\pi_i}\bigg)\\
-&= \exp\bigg(\sum\limits_{i=1}^{K-1}y_i\log{\pi_i} + \bigg(1 - \sum\limits_{i=1}^{K-1}y_i\bigg)\log\bigg(1 - \sum\limits_{i=1}^{K-1}\pi_i\bigg)\bigg)\\
-&= \exp\bigg(\sum\limits_{i=1}^{K-1}y_i\log{\pi_i} - \bigg(\sum\limits_{i=1}^{K-1}y_i\bigg) \log(\pi_K) + \log(\pi_K)), \quad \text{where}\ \pi_K = 1 - \sum\limits_{i=1}^{K-1}\pi_i\\
-&= \exp\bigg(\sum\limits_{i=1}^{K-1}\log\bigg(\frac{\pi_i}{\pi_K}\bigg) y_i + \log(\pi_K)\bigg)
+&= \prod\limits_{k=1}^{K}\pi_k^{y_k}\\
+&= \exp\bigg(\sum\limits_{k=1}^{K}y_k\log{\pi_k}\bigg)\\
+&= \exp\bigg(\sum\limits_{k=1}^{K}y_k\log{\pi_k}\bigg)\\
+&= \exp\bigg(\sum\limits_{k=1}^{K-1}y_k\log{\pi_k} + \bigg(1 - \sum\limits_{k=1}^{K-1}y_k\bigg)\log\bigg(1 - \sum\limits_{k=1}^{K-1}\pi_k\bigg)\bigg)\\
+&= \exp\bigg(\sum\limits_{k=1}^{K-1}y_k\log{\pi_k} - \bigg(\sum\limits_{k=1}^{K-1}y_k\bigg) \log(\pi_K) + \log(\pi_K)), \quad \text{where}\ \pi_K = 1 - \sum\limits_{k=1}^{K-1}\pi_k\\
+&= \exp\bigg(\sum\limits_{k=1}^{K-1}\log\bigg(\frac{\pi_k}{\pi_K}\bigg) y_k + \log(\pi_K)\bigg)
 \end{align*}
 $$
 
 where:
-- $\eta = \log\bigg(\frac{\pi_i}{\pi_K}\bigg)$
+- $\eta = \log\bigg(\frac{\pi_k}{\pi_K}\bigg)$
 - $T(y) = y$
 - $a(\eta) = -\log(\pi_K)$
 - $b(y) = 1$
@@ -385,22 +385,22 @@ Finally, we'll express $a(\eta)$ in terms of $\eta$, i.e. the parameter that thi
 
 $$
 \begin{align*}
-\eta_i
-  &= \log\bigg(\frac{\pi_i}{\pi_K}\bigg) \implies\\
-\frac{\pi_i}{\pi_K}
-  &= e^{\eta_i} \implies\\
-\sum\limits_{i=1}^K \frac{\pi_i}{\pi_K}
-  &= \sum\limits_{i=1}^K e^{\eta_i} \implies\\
-\frac{1}{\pi_K}\sum\limits_{i=1}^K \pi_i
-  &= \sum\limits_{i=1}^K e^{\eta_i} \implies\\
+\eta_k
+  &= \log\bigg(\frac{\pi_k}{\pi_K}\bigg) \implies\\
+\frac{\pi_k}{\pi_K}
+  &= e^{\eta_k} \implies\\
+\sum\limits_{k=1}^K \frac{\pi_k}{\pi_K}
+  &= \sum\limits_{k=1}^K e^{\eta_k} \implies\\
+\frac{1}{\pi_K}\sum\limits_{k=1}^K \pi_k
+  &= \sum\limits_{k=1}^K e^{\eta_k} \implies\\
 \frac{1}{\pi_K} \cdot 1
-  &= \sum\limits_{i=1}^K e^{\eta_i} \implies\\
+  &= \sum\limits_{k=1}^K e^{\eta_k} \implies\\
 \pi_K
-  &= \frac{1}{\sum\limits_{i=1}^K e^{\eta_i}} \implies\\
-\frac{\pi_i}{\frac{1}{\sum\limits_{i=1}^K e^{\eta_i}}}
-  &= e^{\eta_i} \implies\\
-\pi_i
-  &= \frac{e^{\eta_i}}{\sum\limits_{i=1}^K e^{\eta_i}}
+  &= \frac{1}{\sum\limits_{k=1}^K e^{\eta_k}} \implies\\
+\frac{\pi_k}{\frac{1}{\sum\limits_{k=1}^K e^{\eta_k}}}
+  &= e^{\eta_k} \implies\\
+\pi_k
+  &= \frac{e^{\eta_k}}{\sum\limits_{k=1}^K e^{\eta_k}}
 \end{align*}
 $$
 
@@ -408,8 +408,8 @@ This you will recognize as the softmax function. Finally:
 
 $$
 \begin{align*}
-\frac{\pi_i}{\pi_K}
-  &= e^{\eta_i} \implies\\
+\frac{\pi_k}{\pi_K}
+  &= e^{\eta_k} \implies\\
 \frac{\pi_K}{\pi_K}
   &= e^{\eta_K} \implies\\
 \eta_K &= 0\\
@@ -421,8 +421,8 @@ $$
 a(\eta)
 &= -\log(\pi_K)\\
 &= \log(\pi_K^{-1})\\
-&= \log\Bigg(\frac{\sum\limits_{i=1}^K e^{\eta_i}}{e^{\eta_K}}\Bigg)\\
-&= \log\Bigg(\sum\limits_{i=1}^K e^{\eta_i}\Bigg)\\
+&= \log\Bigg(\frac{\sum\limits_{k=1}^K e^{\eta_k}}{e^{\eta_K}}\Bigg)\\
+&= \log\Bigg(\sum\limits_{k=1}^K e^{\eta_k}\Bigg)\\
 \end{align*}
 $$
 
