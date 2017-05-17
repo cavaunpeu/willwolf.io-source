@@ -8,6 +8,7 @@ Summary:
 Image:
 
 change "model" to "estimator"
+change p to phi
 
 Roughly speaking, my machine learning journey began on [Kaggle](http://kaggle.com). "There's data, a model and a loss function to optimize," I learned. "Regression models predict continuous-valued real numbers; classification models predict 'red,' 'green,' 'blue.' Typically, the former employs the mean squared error or mean absolute error; the latter, the cross-entropy loss. Stochastic gradient descent updates the model's parameters to drive these losses down." Furthermore, to build these models, just `import sklearn`.
 
@@ -23,7 +24,7 @@ Marginally wiser, I now know two truths about the above:
 
 The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. I will assume the reader is familiar with concepts in both machine learning and statistics, and comes in search of a deeper understanding of the connections therein. There will be math -- but only as much as necessary.
 
-When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then work our way back to the surface. Lemmas will be written in -> _**bold**_.
+When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then work our way back to the surface. Lemmas will be written in _**bold**_.
 
 ![bottom of pool](http://img2.hungertv.com/wp-content/uploads/2014/09/SP_Kanawaza-616x957.jpg)
 
@@ -263,7 +264,7 @@ I don't relish quoting this paragraph -- and especially one so ambiguous. This s
 A distribution belongs to the exponential family if it can be written in the following form:
 
 $$
-p(y; n) = b(y)\exp(\eta^T T(y) - a(\eta))
+p(y; \eta) = b(y)\exp(\eta^T T(y) - a(\eta))
 $$
 
 where:
@@ -463,7 +464,7 @@ Here, I've introduced the subscript $i$. This makes explicit the `cat or dog` dy
 How do we go from a 10-feature input $x$ to this canonical parameter? We take a linear combination:
 
 $$
-w^Tx = \eta
+\theta^Tx = \eta
 $$
 
 #### Linear regression
@@ -491,34 +492,82 @@ We did this above as well: $\frac{e^{\eta_k}}{\sum\limits_{k=1}^K e^{\eta_k}}$. 
 
 _**> The softmax function gives us the probability that the response variable takes on each of the possible classes. This probability mass function is required by the multinomial distribution, which dictates the outcomes of the multi-class target $y$.**_
 
+Finally, why a linear model? Andrew Ng calls it a "design choice."[^1] I've motivated this formulation a bit in the [softmax post]({filename}deriving-the-softmax-from-first-principles.md). mathematicalmonk would probably have a more principled explanation than us both. For now, we'll make do with the following:
+- A linear combination is perhaps the simplest way to consider the impact of each feature on the canonical parameter.
+- A linear combination commands that either $x$, or a *function of $x$*, vary linearly with $\eta$. As such, we could write our model as $\eta = \theta^T\Phi(x)$, where $\Phi$ applies some complex transformation to our features. This makes the "simplicity" of the linear combination less simple.
+
 ## Loss function
+We've now discussed how each response variable is generated, and how we compute the parameters for those distributions on a per-observation basis. Now, how do we quantify how good these parameters are?
+
+To get us started, let's go back to predicting `cat or dog`. If we input a picture of a cat, we should compute $p \approx 0$ given our binomial distribution.
+
+$$
+p(\text{outcome}) =
+\begin{cases}
+1 - p & \text{outcome = cat}\\
+p & \text{outcome = dog}\\
+\end{cases}
+$$
+
+A perfect computation gives $p = 0$. The loss function quantifies how close we got.
+
+### Maximum likelihood estimation
+Each of our three distributions receives a parameter -- $\mu, \phi$ and $\pi$ respectively. We then pass in a $y$ and the distribution tells us the probability of observing that value. (In the case of continuous-valued random variables, i.e. our distribution is a probability density function, it tells us a value *proportional* to this probability.)
+
+If we instead *fix* $y$ and pass in varying *parameter values*, our function becomes a *likelihood function*. It will tell us the likelihood of a given parameter having produced the now-fixed $y$.
+
+If this is not clear, consider the following example:
+
+> A Moroccan walks into a bar. He's wearing a football jersey that's missing a sleeve. He has a black eye, and blood on his jeans. How did he most likely spend his day?
+>
+> 1. At home, reading a book.
+> 2. Training for a bicycle race.
+> 3. At the soccer game drinking beers with his friends - all of whom are MMA fighters and despise the other team.
+
+We'd like to pick the parameter that most likely gave rise to our data. This is the *maximum likelihood estimate*. Mathematically, we define it as:
+
+$$
+\underset{\text{parameter}}{\arg\max}\ p(y\vert \text{parameter})
+$$
+
+As we've now seen (ad nauseum), $y$ depends on the parameter its distribution receives. Additionally, this parameter -- $\mu, \phi$ or $\pi$ -- is defined in terms of $\eta$. Further, $\eta = \theta^T x$. As such, $y$ is a function of $\theta$ and the observed data $x$. This is perhaps *the* elementary truism of machine learning -- you've known this since Day 1.
+
+Since our observed data are fixed, $\theta$ is the only thing that we can vary. Let's rewrite our argmax in these terms:
+
+$$
+\underset{\theta}{\arg\max}\ p(y\vert x; \theta)
+$$
+
+Finally, this expression gives the argmax over a single data point, i.e. training observation, $(x_i, y_i)$. To give the likelihood over all observations, assuming they are independent of one another (i.e. the outcome of the first observation should not be expected to impact that of the third), we take the product.
+
+$$
+\underset{\theta}{\arg\max} \prod\limits_{i=1}^{m}p(y^{(i)}\vert x^{(i)}; \theta)
+$$
+
+The product of numbers in $[0, 1]$ gets very small, very quickly. Let's maximize the log likelihood instead so we can work with sums.
+
+#### Linear regression
+Maximize the log-likelihood of the Gaussian distribution.
+
+$$
+\begin{align*}
+\log{P(y\vert x; \theta)}
+&= \log{\prod\limits_{i=1}^{m}P(y^{(i)}\vert x^{(i)}; \theta)}\\
+&= \sum\limits_{i=1}^{m}\log{P(y^{(i)}\vert x^{(i)}; \theta)}\\
+&= \sum\limits_{i=1}^{m}\log{\frac{1}{\sqrt{2\pi}\sigma}\exp{\bigg(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\bigg)}}\\
+&= \sum\limits_{i=1}^{m}\log{\frac{1}{\sqrt{2\pi}\sigma}} + \sum\limits_{i=1}^{m}\log{\exp{\bigg(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\bigg)}}\\
+&= m\log{\frac{1}{\sqrt{2\pi}\sigma}} - \frac{1}{2\sigma^2}\sum\limits_{i=1}^{m}(y^{(i)} - \theta^Tx^{(i)})^2\\
+&= C_1 - C_2\sum\limits_{i=1}^{m}(y^{(i)} - \theta^Tx^{(i)})^2\\
+\end{align*}
+$$
+
+Maximizing the log-likelihood of our data with respect to $\theta$ is equivalent to maximizing the negative mean squared error between the observed $y$ and our prediction thereof.
+
+Notwithstanding, most optimization routines *minimize*. So, for practical purposes, we go the other way.
+
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the mean squared error between the observed $y$ and our prediction thereof.**_
 
 
-
-3 characters.
-  - their canonical loss functions
-    - mean, median
-  - their canonical loss functions plus regularization
-  - their functional forms
-  - their output distributions themselves, i.e. max entropy
-
-when you derive the identity function you'll have to make mention of the variance which is constant
-
-Like many dove deeper into the field. I started reading textbooks,
-
-are relatively straightforward
-
-In industry, most prediction and inference problems are relatively straightforward
-
-Most prediction and inference problems in industry are relative
-
-to be an impactful Data Scientist.
-
-motivate
-
-! start with linear regression and go all the way through. then repeat (quickly enough) for logistic regression.
-
-- 'its easy to start with sklearn docs, y_true, y_pred, etc. and never think about think in terms of probabilistic models'
 
 - mean for l2, median for l1
 
