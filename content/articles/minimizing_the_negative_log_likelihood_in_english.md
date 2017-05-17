@@ -209,7 +209,7 @@ $$
 P(y\vert \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(y - \mu)^2}{2\sigma^2}\bigg)}
 $$
 
-For `cat or dog`, this is the [Binomial distribution](https://en.wikipedia.org/wiki/Binomial_distribution). Its probability mass function  (for a single observation) is given as:
+For `cat or dog`, this is the [binomial distribution](https://en.wikipedia.org/wiki/Binomial_distribution). Its probability mass function  (for a single observation) is given as:
 
 $$
 p(\text{outcome}) =
@@ -302,37 +302,127 @@ a(\eta)
 $$
 
 #### Binomial distribution
-We previously defined the Binomial distribution (for a single observation) in a crude, peacewise form. We'll now define it in a more compact form which will make it easier to show that it is a member of the exponential family.
+We previously defined the binomial distribution (for a single observation) in a crude, peacewise form. We'll now define it in a more compact form which will make it easier to show that it is a member of the exponential family. $\phi$ gives the probability of observing the true class, i.e. $p(\text{cat}) = .7 \implies \phi = .7$.
 
 $$
 \begin{align*}
-p(y)
-&= p^y(1-p)^{1-y}\\
-&= \exp\bigg(\log\bigg(y\log{p} + (1-y)\log(1-p)\bigg)\bigg)\\
-&= \exp\bigg(y\log{p} + \log(1-p) - y\log(1-p)\bigg)\\
-&= \exp\bigg(\log\bigg(\frac{p}{1-p}\bigg)y + \log(1-p)\bigg) \\
+p(y\vert \phi)
+&= \phi^y(1-\phi)^{1-y}\\
+&= \exp\bigg(\log\bigg(y\log{\phi} + (1-y)\log(1-\phi)\bigg)\bigg)\\
+&= \exp\bigg(y\log{\phi} + \log(1-\phi) - y\log(1-\phi)\bigg)\\
+&= \exp\bigg(\log\bigg(\frac{\phi}{1-\phi}\bigg)y + \log(1-\phi)\bigg) \\
 \end{align*}
 $$
 
 where:
-- $\eta = \log\bigg(\frac{p}{1-p}\bigg)$
+- $\eta = \log\bigg(\frac{\phi}{1-\phi}\bigg)$
 - $T(y) = y$
-- $a(\eta) = -\log(1-p)$
+- $a(\eta) = -\log(1-\phi)$
 - $b(y) = 1$
 
-Finally, we'll express $a(\eta)$ in terms of $\eta$ itself:
+Finally, we'll express $a(\eta)$ in terms of $\eta$, i.e. the parameter that this distribution accepts:
 
 $$
-\eta = \log\bigg(\frac{p}{1-p}\bigg) \implies p = \frac{1}{1 + e^{-\eta}}
+\eta = \log\bigg(\frac{\phi}{1-\phi}\bigg) \implies \phi = \frac{1}{1 + e^{-\eta}}
 $$
 
 $$
 \begin{align*}
 a(\eta)
-&= -\log(1-p)\\
+&= -\log(1-\phi)\\
 &= -\log\bigg(1-\frac{1}{1 + e^{-\eta}}\bigg)\\
 &= -\log\bigg(\frac{1}{1 + e^{\eta}}\bigg)\\
 &= \log(1 + e^{\eta})\\
+\end{align*}
+$$
+
+Our expression for $\phi$ will look like the sigmoid function.
+
+#### Multinomial distribution
+Like the binomial distribution, we'll first rewrite the multinomial (for single observation) in a more compact form. $\pi$ gives a vector of class probabilities.
+
+$$
+p(y\vert \pi) = \prod\limits_{i=1}^{K}\pi_i^{y_i}
+$$
+
+This is almost pedantic: it says that $p(y=k)$ equals the probability of observing class $k$. For example, given
+
+```python
+p = {'rain': .14, 'snow': .37, 'sleet': .03, 'hail': .46}
+```
+
+we would compute:
+
+$$
+\begin{align*}
+p(y = \text{snow} = [0, 1, 0, 0])
+&= (.14^0 * .37^1 * .03^0 * .46^0)\\
+&= .37\\
+\end{align*}
+$$
+
+Expanding into the exponential family we get:
+
+$$
+\begin{align*}
+p(y\vert \pi)
+&= \prod\limits_{i=1}^{K}\pi_i^{y_i}\\
+&= \exp\bigg(\sum\limits_{i=1}^{K}y_i\log{\pi_i}\bigg)\\
+&= \exp\bigg(\sum\limits_{i=1}^{K}y_i\log{\pi_i}\bigg)\\
+&= \exp\bigg(\sum\limits_{i=1}^{K-1}y_i\log{\pi_i} + \bigg(1 - \sum\limits_{i=1}^{K-1}y_i\bigg)\log\bigg(1 - \sum\limits_{i=1}^{K-1}\pi_i\bigg)\bigg)\\
+&= \exp\bigg(\sum\limits_{i=1}^{K-1}y_i\log{\pi_i} - \bigg(\sum\limits_{i=1}^{K-1}y_i\bigg) \log(\pi_K) + \log(\pi_K)), \quad \text{where}\ \pi_K = 1 - \sum\limits_{i=1}^{K-1}\pi_i\\
+&= \exp\bigg(\sum\limits_{i=1}^{K-1}\log\bigg(\frac{\pi_i}{\pi_K}\bigg) y_i + \log(\pi_K)\bigg)
+\end{align*}
+$$
+
+where:
+- $\eta = \log\bigg(\frac{\pi_i}{\pi_K}\bigg)$
+- $T(y) = y$
+- $a(\eta) = -\log(\pi_K)$
+- $b(y) = 1$
+
+Finally, we'll express $a(\eta)$ in terms of $\eta$, i.e. the parameter that this distribution accepts:
+
+$$
+\begin{align*}
+\eta_i
+  &= \log\bigg(\frac{\pi_i}{\pi_K}\bigg) \implies\\
+\frac{\pi_i}{\pi_K}
+  &= e^{\eta_i} \implies\\
+\sum\limits_{i=1}^K \frac{\pi_i}{\pi_K}
+  &= \sum\limits_{i=1}^K e^{\eta_i} \implies\\
+\frac{1}{\pi_K}\sum\limits_{i=1}^K \pi_i
+  &= \sum\limits_{i=1}^K e^{\eta_i} \implies\\
+\frac{1}{\pi_K} \cdot 1
+  &= \sum\limits_{i=1}^K e^{\eta_i} \implies\\
+\pi_K
+  &= \frac{1}{\sum\limits_{i=1}^K e^{\eta_i}} \implies\\
+\frac{\pi_i}{\frac{1}{\sum\limits_{i=1}^K e^{\eta_i}}}
+  &= e^{\eta_i} \implies\\
+\pi_i
+  &= \frac{e^{\eta_i}}{\sum\limits_{i=1}^K e^{\eta_i}}
+\end{align*}
+$$
+
+This you will recognize as the softmax function. Finally:
+
+$$
+\begin{align*}
+\frac{\pi_i}{\pi_K}
+  &= e^{\eta_i} \implies\\
+\frac{\pi_K}{\pi_K}
+  &= e^{\eta_K} \implies\\
+\eta_K &= 0\\
+\end{align*}
+$$
+
+$$
+\begin{align*}
+a(\eta)
+&= -\log(\pi_K)\\
+&= \log(\pi_K^{-1})\\
+&= \log\Bigg(\frac{\sum\limits_{i=1}^K e^{\eta_i}}{e^{\eta_K}}\Bigg)\\
+&= \log\Bigg(\sum\limits_{i=1}^K e^{\eta_i}\Bigg)\\
 \end{align*}
 $$
 
