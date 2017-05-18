@@ -720,5 +720,10 @@ Thanks so much for reading this far. Now, climb out of the pool, grab a towel an
 
 ![drink and towel](https://www.washingtonian.com/wp-content/uploads/2015/05/Pool520-994x664.jpg)
 
+## Resources
+I recently gave a talk on this topic at [Facebook Developer Circle: Casablanca](https://www.facebook.com/groups/265793323822652). Voilà the:
+- [Slides](https://www.slideshare.net/WilliamWolfDataScien/youve-been-doing-statistics-all-along)
+- [Video](https://www.facebook.com/aboullaite.mohammed/videos/1959648697600819/)
+
 [^1]: [CS229 Machine Learning Course Materials, Lecture Notes 1](http://cs229.stanford.edu/materials.html)
 [^2]: [mathematical monk - Machine Learning](https://www.youtube.com/playlist?list=PLD0F06AA0D2E8FFBA)
