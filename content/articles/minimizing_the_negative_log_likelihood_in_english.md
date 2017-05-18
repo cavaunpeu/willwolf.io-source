@@ -375,7 +375,7 @@ p(y\vert \pi)
 $$
 
 where:
-- $\eta = \log\bigg(\frac{\pi_k}{\pi_K}\bigg)$
+- $\eta_k = \log\bigg(\frac{\pi_k}{\pi_K}\bigg)$
 - $T(y) = y$
 - $a(\eta) = -\log(\pi_K)$
 - $b(y) = 1$
@@ -395,9 +395,16 @@ $$
 \frac{1}{\pi_K} \cdot 1
   &= \sum\limits_{k=1}^K e^{\eta_k} \implies\\
 \pi_K
-  &= \frac{1}{\sum\limits_{k=1}^K e^{\eta_k}} \implies\\
+  &= \frac{1}{\sum\limits_{k=1}^K e^{\eta_k}}
+\end{align*}
+$$
+
+Plugging back into the second line we get:
+
+$$
+\begin{align*}
 \frac{\pi_k}{\frac{1}{\sum\limits_{k=1}^K e^{\eta_k}}}
-  &= e^{\eta_k} \implies\\
+  &= e^{\eta_k}\ \implies\\
 \pi_k
   &= \frac{e^{\eta_k}}{\sum\limits_{k=1}^K e^{\eta_k}}
 \end{align*}
