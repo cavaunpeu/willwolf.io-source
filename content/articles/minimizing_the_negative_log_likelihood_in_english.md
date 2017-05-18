@@ -731,5 +731,7 @@ I hope this post serves as useful context for the machine learning estimators we
 
 Thanks for reading this far. Now, climb out of the pool, grab a towel and `import sklearn` (or Keras, TensorFlow, Stan, Edward, etc.).
 
+![drink and towel](https://www.washingtonian.com/wp-content/uploads/2015/05/Pool520-994x664.jpg)
+
 [^1]: [CS229 Machine Learning Course Materials, Lecture Notes 1](http://cs229.stanford.edu/materials.html)
 [^2]: [mathematical monk - Machine Learning](https://www.youtube.com/playlist?list=PLD0F06AA0D2E8FFBA)
