@@ -64,6 +64,7 @@ Before diving in, we'll need to define a few important concepts.
 
 ## Random variable
 I define a random variable as "a thing that can take on a bunch of different values."
+
 - "The tenure of despotic rulers in Central Africa" is a random variable. It could take on values of 25.73 years, 14.12 years, 8.99 years, ad infinitum; it could not take on values of 1.12 million years, nor -5 years.
 - "The height of the next person to leave the supermarket" is a random variable.
 - "The color of shirt I wear on Mondays" is a random variable. (Incidentally, this one only has ~3 unique values.)
