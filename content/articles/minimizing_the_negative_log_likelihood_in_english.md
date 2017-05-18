@@ -9,11 +9,11 @@ Image: images/bottleneck.png
 
 Roughly speaking, my machine learning journey began on [Kaggle](http://kaggle.com). "There's data, a model (i.e. estimator) and a loss function to optimize," I learned. "Regression models predict continuous-valued real numbers; classification models predict 'red,' 'green,' 'blue.' Typically, the former employs the mean squared error or mean absolute error; the latter, the cross-entropy loss. Stochastic gradient descent updates the model's parameters to drive these losses down." Furthermore, to fit these models, just `import sklearn`.
 
-A dexterity with the above is often sufficient for -- at least from a technical stance -- both employment and impact as a data scientist. In industry, commonplace prediction and inference problems -- binary churn, credit scoring, product recommendation and A/B testing, for example -- are easily matched with an off-the-shelf algorithm plus proficient data scientist for a measurable boost to the company's bottom line. In a vacuum I think this is fine: the winning driver does not *need* to know how to build the car. Surely, I've been this person before.
+A dexterity with the above is often sufficient for — at least from a technical stance — both employment and impact as a data scientist. In industry, commonplace prediction and inference problems — binary churn, credit scoring, product recommendation and A/B testing, for example — are easily matched with an off-the-shelf algorithm plus proficient data scientist for a measurable boost to the company's bottom line. In a vacuum I think this is fine: the winning driver does not *need* to know how to build the car. Surely, I've been this person before.
 
-Once fluid with "scikit-learn fit and predict," I turned to statistics. I was always aware that the two were related, yet figured them ultimately parallel sub-fields of my job. With the former, I build classification models; with the latter, I infer signup counts with the Poisson distribution and MCMC -- right?
+Once fluid with "scikit-learn fit and predict," I turned to statistics. I was always aware that the two were related, yet figured them ultimately parallel sub-fields of my job. With the former, I build classification models; with the latter, I infer signup counts with the Poisson distribution and MCMC — right?
 
-Before long, I dove deeper into machine learning -- reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example.
+Before long, I dove deeper into machine learning — reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example.
 
 _**"Why are you calling it the negative log-likelihood?"**_
 
@@ -22,7 +22,7 @@ Marginally wiser, I now know two truths about the above:
 1. Techniques we anoint as "machine learning" - classification and regression models, notably - have their underpinnings almost entirely in statistics. For this reason, terminology often flows between the two.
 2. None of this stuff is new.
 
-The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. I will assume the reader is familiar with concepts in both machine learning and statistics, and comes in search of a deeper understanding of the connections therein. There will be math -- but only as much as necessary. Most of the derivations can be skipped without consequence.
+The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. I will assume the reader is familiar with concepts in both machine learning and statistics, and comes in search of a deeper understanding of the connections therein. There will be math — but only as much as necessary. Most of the derivations can be skipped without consequence.
 
 When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then work our way back to the surface. Lemmas will be written in _**bold**_.
 
@@ -58,7 +58,7 @@ model = Model(input, output)
 model.compile(optimizer=_, loss='categorical_crossentropy')
 ```
 
-Next, we'll select four components key to each: its response variable, functional form, loss function and loss function plus regularization term. For each model, we'll describe the statistical underpinnings of each component -- the steps on the ladder towards the surface of the pool.
+Next, we'll select four components key to each: its response variable, functional form, loss function and loss function plus regularization term. For each model, we'll describe the statistical underpinnings of each component — the steps on the ladder towards the surface of the pool.
 
 Before diving in, we'll need to define a few important concepts.
 
@@ -79,9 +79,9 @@ Trivially, these values must sum to 1.
 
 - A *probability mass function* is a probability distribution for a discrete-valued random variable.
 - A *probability density function* _**gives**_ a probability distribution for a continuous-valued random variable.
-  - *Gives*, because this function itself is not a lookup table. Given a random variable that takes on values in $[0, 1]$, we do not and cannot define $\Pr(X = 0.01)$, $\Pr(X = 0.001)$, $\Pr(X = 0.0001)$, etc.
-  - Instead, we define a function that tells us the probability of observing a value within a certain *range*, i.e. $\Pr(0.01 < X < .4)$.
-  - This is the probability density function, where $\Pr(0 \leq X \leq 1) = 1$.
+    - *Gives*, because this function itself is not a lookup table. Given a random variable that takes on values in $[0, 1]$, we do not and cannot define $\Pr(X = 0.01)$, $\Pr(X = 0.001)$, $\Pr(X = 0.0001)$, etc.
+    - Instead, we define a function that tells us the probability of observing a value within a certain *range*, i.e. $\Pr(0.01 < X < .4)$.
+    - This is the probability density function, where $\Pr(0 \leq X \leq 1) = 1$.
 
 ## Entropy
 Entropy quantifies the number of ways we can reach a given outcome. Imagine 8 friends are splitting into 2 taxis en route to a Broadway show. Consider the following two scenarios:
@@ -176,7 +176,7 @@ Unfortunately, we don't know. All we do know, in fact, is the following:
 - `cat or dog` takes on the value `cat` or `dog`. The likelihood of observing each outcome does not change over time, in the same way that $\Pr(\text{heads})$ for a fair coin is always $0.5$.
 - `red or green or blue` takes on the value `red` or `green` or `blue`. The likelihood of observing each outcome does not change over time, in the same way that the probability of rolling a given number on fair die is always $\frac{1}{6}$.
 
-For clarity, each one of these assumptions is utterly banal -- "so lacking in originality as to be obvious and boring." *Can we use them nonetheless to select probability distributions for our random variables?*
+For clarity, each one of these assumptions is utterly banal — "so lacking in originality as to be obvious and boring." *Can we use them nonetheless to select probability distributions for our random variables?*
 
 ## Maximum entropy distributions
 Consider another continuous-valued random variable: "Uber's yearly profit." Like `temperature`, it also has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$. Trivially, the respective means and variances will be different. Assume we observe 10 (fictional) values of each that look as follows:
@@ -199,7 +199,7 @@ Plotting, we get:
 ![temperature random variable]({filename}/figures/temperature_random_variable.png?)
 ![uber random variable]({filename}/figures/uber_random_variable.png?)
 
-We are not given the true underlying probability distribution associated with each random variable -- not its general "shape," nor the parameters that control this shape. We will *never* be given these things, in fact: the point of statistics is to infer what they are.
+We are not given the true underlying probability distribution associated with each random variable — not its general "shape," nor the parameters that control this shape. We will *never* be given these things, in fact: the point of statistics is to infer what they are.
 
 To make an initial choice we keep two things in mind:
 
@@ -239,7 +239,7 @@ $$
 
 While it may seem like we've "waved our hands" over the connection between the stated equality constraints for the response variable of each model and the respective distributions we've selected, it is [Lagrange multipliers](https://en.wikipedia.org/wiki/Lagrange_multiplier) that succinctly and algebraically bridge this gap. This [post](https://www.dsprelated.com/freebooks/sasp/Maximum_Entropy_Property_Gaussian.html) gives a terrific example of this derivation. I've chosen to omit it as I did not feel it would contribute to the clarity nor direction of this post.
 
-Finally, while we do assume that a Gaussian dictates the true distribution of values of both "Uber's yearly profit" and `temperature`, it is, trivially, a different Gaussian for each. This is because each random variable has its own true underlying mean and variance. These values make the respective Gaussians taller or wider -- shifted left or shifted right.
+Finally, while we do assume that a Gaussian dictates the true distribution of values of both "Uber's yearly profit" and `temperature`, it is, trivially, a different Gaussian for each. This is because each random variable has its own true underlying mean and variance. These values make the respective Gaussians taller or wider — shifted left or shifted right.
 
 # Functional form
 Our three protagonists generate predictions via distinct functions: the [identity function](https://en.wikipedia.org/wiki/Identity_function), the [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) and the [softmax function](https://en.wikipedia.org/wiki/Softmax_function), respectively. The respective Keras output layers make this clear:
@@ -264,9 +264,9 @@ The conceptual bottleneck is the ["exponential family"](https://en.wikipedia.org
 ## Exponential family distributions
 > In probability and statistics, an exponential family is a set of probability distributions of a certain form, specified below. This special form is chosen for mathematical convenience, on account of some useful algebraic properties, as well as for generality, as exponential families are in a sense very natural sets of distributions to consider.
 
--- Wikipedia
+— Wikipedia
 
-I don't relish quoting this paragraph -- and especially one so deliriously general. This said, the reality is that exponential functions provide, at a minimum, a unifying framework for deriving the canonical activation and loss functions we've come to know and love. To move forward, we simply have to cede that the "mathematical conveniences, on account of some useful algebraic properties, etc." that motivate this "certain form" are not totally heinous nor misguided.
+I don't relish quoting this paragraph — and especially one so deliriously general. This said, the reality is that exponential functions provide, at a minimum, a unifying framework for deriving the canonical activation and loss functions we've come to know and love. To move forward, we simply have to cede that the "mathematical conveniences, on account of some useful algebraic properties, etc." that motivate this "certain form" are not totally heinous nor misguided.
 
 A distribution belongs to the exponential family if it can be written in the following form:
 
@@ -530,7 +530,7 @@ $$
 A perfect computation gives $\phi = 0$. The loss function quantifies how close we got.
 
 ## Maximum likelihood estimation
-Each of our three distributions receives a parameter -- $\mu, \phi$ and $\pi$ respectively. We then pass in a $y$ and the distribution tells us the probability of observing that value. (In the case of continuous-valued random variables, i.e. our distribution is a probability density function, it tells us a value *proportional* to this probability.)
+Each of our three distributions receives a parameter — $\mu, \phi$ and $\pi$ respectively. We then pass in a $y$ and the distribution tells us the probability of observing that value. (In the case of continuous-valued random variables, i.e. our distribution is a probability density function, it tells us a value *proportional* to this probability.)
 
 If we instead *fix* $y$ and pass in varying *parameter values*, our function becomes a *likelihood function*. It will tell us the likelihood of a given parameter having produced the now-fixed $y$.
 
@@ -548,7 +548,7 @@ $$
 \underset{\text{parameter}}{\arg\max}\ p(y\vert \text{parameter})
 $$
 
-As we've now seen (ad nauseum), $y$ depends on the parameter its distribution receives. Additionally, this parameter -- $\mu, \phi$ or $\pi$ -- is defined in terms of $\eta$. Further, $\eta = \theta^T x$. As such, $y$ is a function of $\theta$ and the observed data $x$. This is perhaps *the* elementary truism of machine learning -- you've known this since Day 1.
+As we've now seen (ad nauseum), $y$ depends on the parameter its distribution receives. Additionally, this parameter — $\mu, \phi$ or $\pi$ — is defined in terms of $\eta$. Further, $\eta = \theta^T x$. As such, $y$ is a function of $\theta$ and the observed data $x$. This is perhaps *the* elementary truism of machine learning — you've known this since Day 1.
 
 Since our observed data are fixed, $\theta$ is the only thing that we can vary. Let's rewrite our argmax in these terms:
 
@@ -631,10 +631,10 @@ $$
 D_{KL}(p, q) = H(p, q) - H(p)
 $$
 
-Why don't we use this in machine learning models instead of the cross entropy? The K-L divergence between distributions requires us to know the true, underlying probabilities of both the actual distribution $p$ and our prediction thereof. Unfortunately, we never have the former: that's why we build the model.
+Why don't we use this in machine learning models instead of the cross entropy? The KL-divergence between distributions requires us to know the true, underlying probabilities of both the actual distribution $p$ and our prediction thereof. Unfortunately, we never have the former: that's why we build the model.
 
 # Maximum a posteriori estimation
-When estimating $\theta$ via the MLE, we put no constraints on the permissible values thereof. More explicitly, we allow $\theta$ to be *equally likely to assume any real number* -- be it $0$, or $10$, or $-20$, or $2.37 \times 10^{36}$.
+When estimating $\theta$ via the MLE, we put no constraints on the permissible values thereof. More explicitly, we allow $\theta$ to be *equally likely to assume any real number* — be it $0$, or $10$, or $-20$, or $2.37 \times 10^{36}$.
 
 In practice, this assumption is both unrealistic and superfluous: typically, we do wish to constrain $\theta$ (our weights) to a non-infinite range of values. We do this by putting a *prior* on $\theta$. Whereas the MLE computes $\underset{\theta}{\arg\max}\ p(y\vert x; \theta)$, the maximum a posteriori estimate, or MAP, computes $\underset{\theta}{\arg\max}\ p(y\vert x; \theta)p(\theta)$.
 
@@ -665,7 +665,7 @@ $$
 \end{align*}
 $$
 
-Our goal is to maximize this term plus the log likelihood -- or equivalently, minimize their opposite -- with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
+Our goal is to maximize this term plus the log likelihood — or equivalently, minimize their opposite — with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
 
 $$
 \begin{align*}
@@ -715,28 +715,28 @@ $$
 By term, this reads:
 
 - $p(y\vert x, D)$: given historical data $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$, i.e. some training data, and a new observation $x$, compute the distribution of the possible values of the response $y$.
-  - In machine learning, we typically select the *expected* value of that distribution, i.e. a single value, or point estimate.
+    - In machine learning, we typically select the *expected* value of that distribution, i.e. a single value, or point estimate.
 - $p(y\vert x, D, \theta)$: given historical data $D$, a new observation $x$ and *any plausible value of $\theta$*, i.e. perhaps not the optimal value, compute $y$.
-  - This is given by the functional form of the model in question, i.e. $y = \theta^Tx$ in the case of linear regression.
+    - This is given by the functional form of the model in question, i.e. $y = \theta^Tx$ in the case of linear regression.
 - $p(\theta\vert x, D)$: given historical data $D$ and a new observation $x$, compute the distribution of the values of $\theta$ that plausibly gave rise to our data.
-  - The $x$ plays no part; it's simply there so that the expression under the integral factors correctly.
-  - In machine learning, we typically select the MLE or MAP estimate of that distribution, i.e. a single value, or point estimate.
+    - The $x$ plays no part; it's simply there such that the expression under the integral factors correctly.
+    - In machine learning, we typically select the MLE or MAP estimate of that distribution, i.e. a single value, or point estimate.
 
 In a perfect world, we'd do the following:
 
 - Compute the *full distribution* over $\theta$.
 - With each value in this distribution and a new observation $x$, compute $y$.
-  - Keep in mind that $\theta$ is an object which contains all of our weights. In 10-feature linear regression, it will have 10 elements. In a neural network, it could have millions.
+    - NB: $\theta$ is an object which contains all of our weights. In 10-feature linear regression, it will have 10 elements. In a neural network, it could have millions.
 - We now have a *full distribution* over the possible values of the response $y$.
 
-*Instead of a point estimate for $\theta$, and a point estimate for $y$ given a new observation $x$ (which makes use of $\theta$), we have **distributions** for each*.
+_**>Instead of a point estimate for $\theta$, and a point estimate for $y$ given a new observation $x$ (which makes use of $\theta$), we have distributions for each**_.
 
 Unfortunately, in complex systems with a non-trivial functional form and number of weights, this computation becomes intractably large. As such, in fully Bayesian modeling, we approximate these distributions. In classic machine learning, we assign them a single value (point estimate). It's a bit lazy, really.
 
 ![@betanalpha bayesian tweet]({filename}/images/going_fully_bayesian.png)
 
 # Summary
-I hope this post serves as useful context for the machine learning models we know and love. A deeper understanding of these algorithms offers humility -- the knowledge that none of these concepts are particularly new -- as well as a vision for how to extend these algorithms in the direction of robustness and increased expressivity.
+I hope this post serves as useful context for the machine learning models we know and love. A deeper understanding of these algorithms offers humility — the knowledge that none of these concepts are particularly new — as well as a vision for how to extend these algorithms in the direction of robustness and increased expressivity.
 
 Thanks so much for reading this far. Now, climb out of the pool, grab a towel and `import sklearn`.
 
@@ -744,6 +744,7 @@ Thanks so much for reading this far. Now, climb out of the pool, grab a towel an
 
 ## Resources
 I recently gave a talk on this topic at [Facebook Developer Circle: Casablanca](https://www.facebook.com/groups/265793323822652). Voilà the:
+
 - [Slides](https://www.slideshare.net/WilliamWolfDataScien/youve-been-doing-statistics-all-along)
 - [Video](https://www.facebook.com/aboullaite.mohammed/videos/1959648697600819/)
 
