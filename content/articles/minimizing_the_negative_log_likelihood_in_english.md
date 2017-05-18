@@ -726,9 +726,10 @@ Unfortunately, in complex systems with a non-trivial functional form and number 
 
 ![](./images/going_fully_bayesian.png)
 
+# Summary
+I hope this post serves as useful context for the machine learning estimators we know and love. A deeper understanding of these algorithms offers humility -- the knowledge that none of these concepts are particularly new -- as well as a vision for how to extend these algorithms in the direction of robustness and increased expressivity.
 
-
-## references
--
+Thanks for reading this far. Now, climb out of the pool, grab a towel and `import sklearn` (or Keras, TensorFlow, Stan, Edward, etc.).
 
 [^1]: [CS229 Machine Learning Course Materials, Lecture Notes 1](http://cs229.stanford.edu/materials.html)
+[^2]: [mathematical monk - Machine Learning](https://www.youtube.com/playlist?list=PLD0F06AA0D2E8FFBA)
