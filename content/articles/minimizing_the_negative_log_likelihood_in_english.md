@@ -697,9 +697,35 @@ _**> Minimizing the negative log-likelihood of our data with respect to $\theta$
 
 Finally, in machine learning, we say that regularizing our weights ensures that "no weight becomes too large," i.e. too "influential" in predicting $y$. In statistical terms, we can equivalently say that this term *restricts the permissible values of these weights to a given interval. Furthermore, this interval is dictated by the scaling constant $C$, which intrinsically parameterizes the prior distribution itself. In L2 regularization, this constant gives the variance of the Gaussian*.
 
-# something on posterior predictive distribution
+# Going fully Bayesian
 
-## what is marginalization/integration
+The key goal of a predictive model is to compute the following distribution:
+
+$$
+p(y\vert x, D) = \int p(y\vert x, D, \theta)p(\theta\vert x, D)d\theta
+$$
+
+By term, this reads:
+- $p(y\vert x, D)$: given historical data $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$, i.e. some training data, and a new observation $x$, I'd like to compute the distribution over the possible values of the response $y$.
+  - In machine learning, we typically select the *expected* value of that distribution, i.e. a single value, or point estimate.
+- $p(y\vert x, D, \theta)$: given historical data $D$, a new observation $x$ and *any plausible value of $\theta$*, i.e. perhaps not the optimal value, I'd like to guess the most likely value of $y$.
+  - This is given by the functional form of our equation, i.e. $y = \theta^Tx$ in the case of linear regression.
+- $p(\theta\vert x, D)$: given historical data $D$ and a new observation $x$, I'd like to compute the distribution over the possible values of $\theta$ that most likely gave rise to our data.
+  - The $x$ plays no part; it's simply there so that the expression under the integral factors correctly.
+  - In machine learning, we typically select the MLE or MAP estimate of that distribution i.e. a single value, or point estimate.
+
+In a perfect world, we'd do the following:
+- Compute the *full distribution* over $\theta$.
+- With each value in this distribution and a new observation $x$, compute $y$.
+  - Keep in mind that $\theta$ is an object which contains all of our weights. In 10-feature linear regression, it will have 10 elements. In a neural network, it could have millions.
+- We now have a distribution over the possible values of the response $y$.
+
+*Instead of a point estimate for $\theta$, and a point estimate for $y$ given a new observation $x$ (which makes use of $\theta$), we have **distributions** for each*.
+
+Unfortunately, in complex systems with a non-trivial functional form and number of weights, this computation becomes intractably large. As such, in fully Bayesian modeling, we approximate these distributions. In classic machine learning, we assign them a single value (point estimate). It's a bit lazy, really.
+
+![](./images/going_fully_bayesian.png)
+
 
 
 ## references
