@@ -1,10 +1,10 @@
 Title: Minimizing the Negative Log-Likelihood, in English
-Date: 2017-04-07 10:07
+Date: 2017-05-18 12:24
 Author: Will Wolf
 Lang: en
 Slug: minimizing_the_negative_log_likelihood_in_english
-Status: draft
-Summary: This post is an effort to contextualize the statistical underpinnings of the machine learning models we know and love. It walks through random variables, entropy, exponential family probability distributions, generalized linear models, maximum likelihood estimation, cross entropy, KL divergence, maximum a posteriori estimation and going "fully Bayesian."
+Status: published
+Summary: Statistical underpinnings of the machine learning models we know and love. A walk through random variables, entropy, exponential family distributions, generalized linear models, maximum likelihood estimation, cross entropy, KL divergence, maximum a posteriori estimation and going "fully Bayesian."
 Image: images/bottleneck.png
 
 Roughly speaking, my machine learning journey began on [Kaggle](http://kaggle.com). "There's data, a model (i.e. estimator) and a loss function to optimize," I learned. "Regression models predict continuous-valued real numbers; classification models predict 'red,' 'green,' 'blue.' Typically, the former employs the mean squared error or mean absolute error; the latter, the cross-entropy loss. Stochastic gradient descent updates the model's parameters to drive these losses down." Furthermore, to fit these models, just `import sklearn`.
@@ -13,9 +13,12 @@ A dexterity with the above is often sufficient for -- at least from a technical 
 
 Once fluid with "scikit-learn fit and predict," I turned to statistics. I was always aware that the two were related, yet figured them ultimately parallel sub-fields of my job. With the former, I build classification models; with the latter, I infer signup counts with the Poisson distribution and MCMC -- right?
 
-Before long, I dove deeper into machine learning -- reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example; _**"why are you calling it the negative log-likelihood?"**_
+Before long, I dove deeper into machine learning -- reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example.
+
+_**"Why are you calling it the negative log-likelihood?"**_
 
 Marginally wiser, I now know two truths about the above:
+
 1. Techniques we anoint as "machine learning" - classification and regression models, notably - have their underpinnings almost entirely in statistics. For this reason, terminology often flows between the two.
 2. None of this stuff is new.
 
@@ -76,32 +79,33 @@ Trivially, these values must sum to 1.
 
 - A *probability mass function* is a probability distribution for a discrete-valued random variable.
 - A *probability density function* _**gives**_ a probability distribution for a continuous-valued random variable.
-  - *Gives*, because this function itself is not a lookup table. Given a random variable that takes on values in $[0, 1]$, we do not and cannot define $\Pr(\mathbf{X} = 0.01)$, $\Pr(\mathbf{X} = 0.001)$, $\Pr(\mathbf{X} = 0.0001)$, etc.
-  - Instead, we define a function that tells us the probability of observing a value within a certain *range*, i.e. $\Pr(0.01 < \mathbf{X} < .4)$.
-  - This is the probability density function, where $\Pr(0 \leq \mathbf{X} \leq 1) = 1$.
+  - *Gives*, because this function itself is not a lookup table. Given a random variable that takes on values in $[0, 1]$, we do not and cannot define $\Pr(X = 0.01)$, $\Pr(X = 0.001)$, $\Pr(X = 0.0001)$, etc.
+  - Instead, we define a function that tells us the probability of observing a value within a certain *range*, i.e. $\Pr(0.01 < X < .4)$.
+  - This is the probability density function, where $\Pr(0 \leq X \leq 1) = 1$.
 
 ## Entropy
 Entropy quantifies the number of ways we can reach a given outcome. Imagine 8 friends are splitting into 2 taxis en route to a Broadway show. Consider the following two scenarios:
-  - *4 friends climb into each taxi.* We could accomplish this with the following assignments:
 
-  ```python
-  # fill the first, then the second
-  assignment_1 = [1, 1, 1, 1, 2, 2, 2, 2]
+- *Four friends climb into each taxi.* We could accomplish this with the following assignments:
 
-  # alternate assignments
-  assignment_2 = [1, 2, 1, 2, 1, 2, 1, 2]
+```python
+# fill the first, then the second
+assignment_1 = [1, 1, 1, 1, 2, 2, 2, 2]
 
-  # alternate assignments in batches of two
-  assignment_1 = [1, 1, 2, 2, 1, 1, 2, 2]
+# alternate assignments
+assignment_2 = [1, 2, 1, 2, 1, 2, 1, 2]
 
-  # etc.
-  ```
+# alternate assignments in batches of two
+assignment_3 = [1, 1, 2, 2, 1, 1, 2, 2]
 
-  - *All friends climb into the first taxi.* There is only one possible assignment.
+# etc.
+```
 
-  ```python
-  assignment_1 = [1, 1, 1, 1, 1, 1, 1, 1]
-  ```
+- *All friends climb into the first taxi.* There is only one possible assignment.
+
+```python
+assignment_1 = [1, 1, 1, 1, 1, 1, 1, 1]
+```
 
  (In this case, the Broadway show is probably in [West Africa](http://willtravellife.com/2013/04/how-does-a-west-african-bush-taxi-work/) or a similar part of the world.)
 
@@ -115,6 +119,7 @@ H(p) = -\sum\limits_{i=1}^{n} p_i \log{p_i}
 $$
 
 where:
+
 - There are $n$ unique events.
 - Each event $i$ has probability $p_i$.
 
@@ -155,9 +160,10 @@ Now, let's dive into the pool. We'll start at the bottom and work our way back t
 # Response variable
 Roughly speaking, each model looks as follows. It is a diamond that receives an input and produces an output.
 
-![simple input/output model](../images/simple_input_output_model.png)
+![simple input/output model]({filename}/images/simple_input_output_model.png)
 
 The models differ in the type of response variable they predict, i.e. the $y$.
+
 - Linear regression predicts a continuous-valued real number. Let's call it `temperature`.
 - Logistic regression predicts a binary label. Let's call it `cat or dog`
 - Softmax regression predicts a multi-class label. Let's call it `red or green or blue`.
@@ -165,6 +171,7 @@ The models differ in the type of response variable they predict, i.e. the $y$.
 In each model, the response variable can take on a bunch of different values. In other words, they are *random variables.* Which probability distributions are associated with each?
 
 Unfortunately, we don't know. All we do know, in fact, is the following:
+
 - `temperature` has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$.
 - `cat or dog` takes on the value `cat` or `dog`. The likelihood of observing each outcome does not change over time, in the same way that $\Pr(\text{heads})$ for a fair coin is always $0.5$.
 - `red or green or blue` takes on the value `red` or `green` or `blue`. The likelihood of observing each outcome does not change over time, in the same way that the probability of rolling a given number on fair die is always $\frac{1}{6}$.
@@ -189,12 +196,13 @@ Consider another continuous-valued random variable: "Uber's yearly profit." Like
 
 Plotting, we get:
 
-![](../figures/temperature_random_variable.png?)
-![](../figures/uber_random_variable.png?)
+![temperature random variable]({filename}/figures/temperature_random_variable.png?)
+![uber random variable]({filename}/figures/uber_random_variable.png?)
 
 We are not given the true underlying probability distribution associated with each random variable -- not its general "shape," nor the parameters that control this shape. We will *never* be given these things, in fact: the point of statistics is to infer what they are.
 
 To make an initial choice we keep two things in mind:
+
 - *We'd like to be conservative*. We've only seen 10 values of "Uber's yearly profit;" we don't want to discount the fact that the next 20 could fall into $[-60, -50]$ just because they haven't yet been observed.
 - *We need to choose the same probability distribution "shape" for both random variables, as we've made identical assumptions for each*.
 
@@ -243,6 +251,7 @@ output = Dense(3, activation='softmax')(input)
 ```
 
 In this section, I'd like to:
+
 - Show how each of the Gaussian, binomial and multinomial distributions can be reduced to the same functional form.
 - Show how this functional form allows us to naturally derive the output functions for our three protagonist models.
 
@@ -252,7 +261,7 @@ Graphically, this looks as follows, with three distributions going in and three 
 
 The conceptual bottleneck is the ["exponential family"](https://en.wikipedia.org/wiki/Exponential_family) of probability distributions.
 
-## Exponential functions
+## Exponential family distributions
 > In probability and statistics, an exponential family is a set of probability distributions of a certain form, specified below. This special form is chosen for mathematical convenience, on account of some useful algebraic properties, as well as for generality, as exponential families are in a sense very natural sets of distributions to consider.
 
 -- Wikipedia
@@ -266,6 +275,7 @@ p(y; \eta) = b(y)\exp(\eta^T T(y) - a(\eta))
 $$
 
 where:
+
 - $\eta$ is the *canonical parameter* of the distribution. (We will hereby work with the single-canonical-parameter exponential family form.)
 - $T(y)$ is the *sufficient statistic*. It is often the case that $T(y) = y$.
 - $a(\eta)$ is the *log partition function*, which normalizes the distribution. (A more in-depth discussion of this normalizing constant can be found in a previous post of mine: [Deriving the Softmax from First Principles]({filename}deriving-the-softmax-from-first-principles.md).)
@@ -286,6 +296,7 @@ p(y\vert \mu, \sigma^2)
 $$
 
 where:
+
 - $\eta = \mu$
 - $T(y) = y$
 - $a(\eta) = \frac{1}{2}\mu^2$
@@ -315,6 +326,7 @@ p(y\vert \phi)
 $$
 
 where:
+
 - $\eta = \log\bigg(\frac{\phi}{1-\phi}\bigg)$
 - $T(y) = y$
 - $a(\eta) = -\log(1-\phi)$
@@ -375,6 +387,7 @@ p(y\vert \pi)
 $$
 
 where:
+
 - $\eta_k = \log\bigg(\frac{\pi_k}{\pi_K}\bigg)$
 - $T(y) = y$
 - $a(\eta) = -\log(\pi_K)$
@@ -700,6 +713,7 @@ p(y\vert x, D) = \int p(y\vert x, D, \theta)p(\theta\vert x, D)d\theta
 $$
 
 By term, this reads:
+
 - $p(y\vert x, D)$: given historical data $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$, i.e. some training data, and a new observation $x$, compute the distribution of the possible values of the response $y$.
   - In machine learning, we typically select the *expected* value of that distribution, i.e. a single value, or point estimate.
 - $p(y\vert x, D, \theta)$: given historical data $D$, a new observation $x$ and *any plausible value of $\theta$*, i.e. perhaps not the optimal value, compute $y$.
@@ -709,6 +723,7 @@ By term, this reads:
   - In machine learning, we typically select the MLE or MAP estimate of that distribution, i.e. a single value, or point estimate.
 
 In a perfect world, we'd do the following:
+
 - Compute the *full distribution* over $\theta$.
 - With each value in this distribution and a new observation $x$, compute $y$.
   - Keep in mind that $\theta$ is an object which contains all of our weights. In 10-feature linear regression, it will have 10 elements. In a neural network, it could have millions.
@@ -718,7 +733,7 @@ In a perfect world, we'd do the following:
 
 Unfortunately, in complex systems with a non-trivial functional form and number of weights, this computation becomes intractably large. As such, in fully Bayesian modeling, we approximate these distributions. In classic machine learning, we assign them a single value (point estimate). It's a bit lazy, really.
 
-![](./images/going_fully_bayesian.png)
+![@betanalpha bayesian tweet]({filename}/images/going_fully_bayesian.png)
 
 # Summary
 I hope this post serves as useful context for the machine learning models we know and love. A deeper understanding of these algorithms offers humility -- the knowledge that none of these concepts are particularly new -- as well as a vision for how to extend these algorithms in the direction of robustness and increased expressivity.
