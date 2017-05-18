@@ -630,32 +630,32 @@ $$
 
 We dealt with the left term in the previous section. Now, we'll simply tack on the log-prior to the respective log-likelihoods.
 
-As $\theta$ is a continuous-valued real number, let's assign it a Gaussian distribution with mean 0 and variance $\lambda$.
+As every element of $\theta$ is a continuous-valued real number, let's assign it a Gaussian distribution with mean 0 and variance $V$.
 
 $$
-\theta \sim \mathcal{N}(0, \lambda)
+\theta \sim \mathcal{N}(0, V)
 $$
 
 $$
 \begin{align*}
-\log{p(\theta\vert 0, \lambda)}
-&= \log\Bigg(\frac{1}{\sqrt{2\pi}\lambda}\exp{\bigg(-\frac{(\theta - 0)^2}{2\lambda^2}\bigg)}\Bigg)\\
-&= \log{C_1} -\frac{\theta^2}{2\lambda^2}\\
+\log{p(\theta\vert 0, V)}
+&= \log\Bigg(\frac{1}{\sqrt{2\pi}V}\exp{\bigg(-\frac{(\theta - 0)^2}{2V^2}\bigg)}\Bigg)\\
+&= \log{C_1} -\frac{\theta^2}{2V^2}\\
 &= \log{C_1} - C_2\theta^2\\
 \end{align*}
 $$
 
-Our goal is to maximize this term plus the log likelihood -- or minimize their opposite -- with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
+Our goal is to maximize this term plus the log likelihood -- or equivalently, minimize their opposite -- with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
 
 $$
 \begin{align*}
 \log{C_1} - C_2\theta^2
 &\propto - C_2\theta^2\\
-&= C_2\Vert \theta\Vert_{2}^{2}\\
+&\propto C_2\Vert \theta\Vert_{2}^{2}\\
 \end{align*}
 $$
 
-This is L2 regularization. Furthermore, placing different prior distributions on $\theta$ yields different machine learning regularization terms; most notably, a [Laplace prior](https://en.wikipedia.org/wiki/Laplace_distribution) gives the L1.
+This is L2 regularization. Furthermore, placing different prior distributions on $\theta$ yields different regularization terms; most notably, a [Laplace prior](https://en.wikipedia.org/wiki/Laplace_distribution) gives the L1.
 
 ## Linear regression
 
@@ -680,9 +680,9 @@ $$
 -\log{P(y\vert x; \theta)} = -\prod\limits_{k=1}^{K}y_k\log\pi_k + C\Vert \theta\Vert_{2}^{2}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability distribution thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. multi-class log loss) between the observed $y$ and our prediction of the probability distribution thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
 
-Finally, in machine learning, we say that regularizing our weights ensures that "no weight becomes too large," i.e. too "influential" in predicting $y$. In statistical terms, we can equivalently say that this term *restricts the permissible values of these weights to a given interval. Furthermore, this interval is dictated by the scaling constant $C$, which intrinsically parameterizes the prior distribution itself. In L2 regularization, this constant gives the variance of the Gaussian*.
+Finally, in machine learning, we say that regularizing our weights ensures that "no weight becomes too large," i.e. too "influential" in predicting $y$. In statistical terms, we can equivalently say that this term *restricts the permissible values of these weights to a given interval. Furthermore, this interval is dictated by the scaling constant $C$, which intrinsically parameterizes the prior distribution itself.* In L2 regularization, this scaling constant gives the variance of the Gaussian.
 
 # Going fully Bayesian
 
@@ -693,19 +693,19 @@ p(y\vert x, D) = \int p(y\vert x, D, \theta)p(\theta\vert x, D)d\theta
 $$
 
 By term, this reads:
-- $p(y\vert x, D)$: given historical data $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$, i.e. some training data, and a new observation $x$, I'd like to compute the distribution over the possible values of the response $y$.
+- $p(y\vert x, D)$: given historical data $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$, i.e. some training data, and a new observation $x$, compute the distribution of the possible values of the response $y$.
   - In machine learning, we typically select the *expected* value of that distribution, i.e. a single value, or point estimate.
-- $p(y\vert x, D, \theta)$: given historical data $D$, a new observation $x$ and *any plausible value of $\theta$*, i.e. perhaps not the optimal value, I'd like to guess the most likely value of $y$.
-  - This is given by the functional form of our equation, i.e. $y = \theta^Tx$ in the case of linear regression.
-- $p(\theta\vert x, D)$: given historical data $D$ and a new observation $x$, I'd like to compute the distribution over the possible values of $\theta$ that most likely gave rise to our data.
+- $p(y\vert x, D, \theta)$: given historical data $D$, a new observation $x$ and *any plausible value of $\theta$*, i.e. perhaps not the optimal value, compute $y$.
+  - This is given by the functional form of the model in question, i.e. $y = \theta^Tx$ in the case of linear regression.
+- $p(\theta\vert x, D)$: given historical data $D$ and a new observation $x$, compute the distribution of the values of $\theta$ that plausibly gave rise to our data.
   - The $x$ plays no part; it's simply there so that the expression under the integral factors correctly.
-  - In machine learning, we typically select the MLE or MAP estimate of that distribution i.e. a single value, or point estimate.
+  - In machine learning, we typically select the MLE or MAP estimate of that distribution, i.e. a single value, or point estimate.
 
 In a perfect world, we'd do the following:
 - Compute the *full distribution* over $\theta$.
 - With each value in this distribution and a new observation $x$, compute $y$.
   - Keep in mind that $\theta$ is an object which contains all of our weights. In 10-feature linear regression, it will have 10 elements. In a neural network, it could have millions.
-- We now have a distribution over the possible values of the response $y$.
+- We now have a *full distribution* over the possible values of the response $y$.
 
 *Instead of a point estimate for $\theta$, and a point estimate for $y$ given a new observation $x$ (which makes use of $\theta$), we have **distributions** for each*.
 
@@ -716,7 +716,7 @@ Unfortunately, in complex systems with a non-trivial functional form and number 
 # Summary
 I hope this post serves as useful context for the machine learning models we know and love. A deeper understanding of these algorithms offers humility -- the knowledge that none of these concepts are particularly new -- as well as a vision for how to extend these algorithms in the direction of robustness and increased expressivity.
 
-Thanks for reading this far. Now, climb out of the pool, grab a towel and `import sklearn` (or Keras, TensorFlow, Stan, Edward, etc.).
+Thanks so much for reading this far. Now, climb out of the pool, grab a towel and `import sklearn`.
 
 ![drink and towel](https://www.washingtonian.com/wp-content/uploads/2015/05/Pool520-994x664.jpg)
 
