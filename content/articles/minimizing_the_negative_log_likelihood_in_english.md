@@ -620,7 +620,7 @@ q = {'red': .35, 'green': .4, 'blue':, .25}
 ```
 
 $$
-H(p, q) = -\sum_i p_i log(q_i)
+H(p, q) = -\sum_i p_i\log(q_i)
 $$
 
 This is the definition of cross entropy.
