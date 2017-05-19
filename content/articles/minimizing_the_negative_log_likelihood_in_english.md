@@ -67,7 +67,7 @@ I define a random variable as "a thing that can take on a bunch of different val
 
 - "The tenure of despotic rulers in Central Africa" is a random variable. It could take on values of 25.73 years, 14.12 years, 8.99 years, ad infinitum; it could not take on values of 1.12 million years, nor -5 years.
 - "The height of the next person to leave the supermarket" is a random variable.
-- "The color of shirt I wear on Mondays" is a random variable. (Incidentally, this one only has ~3 unique values.)
+- "The color of shirt I wear on Mondays" is a random variable. (Incidentally, this one only has ~3 distinct values.)
 
 ## Probability distribution
 A probability distribution is a lookup table for the likelihood of observing each unique value of a random variable. Assuming a given variable can take on values in $\{\text{rain, snow, sleet, hail}\}$, the following is a valid probability distribution:
@@ -314,7 +314,7 @@ a(\eta)
 $$
 
 ### Binomial distribution
-We previously defined the binomial distribution (for a single observation) in a crude, peacewise form. We'll now define it in a more compact form which will make it easier to show that it is a member of the exponential family. Again, $\phi$ gives the probability of observing the true class, i.e. $\Pr(\text{cat}) = .7 \implies \phi = .3$.
+We previously defined the binomial distribution (for a single observation) in a crude, piecewise form. We'll now define it in a more compact form which will make it easier to show that it is a member of the exponential family. Again, $\phi$ gives the probability of observing the true class, i.e. $\Pr(\text{cat}) = .7 \implies \phi = .3$.
 
 $$
 \begin{align*}
