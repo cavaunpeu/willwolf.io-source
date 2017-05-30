@@ -5,7 +5,7 @@ Lang: en
 Slug: my-open-source-machine-learning-masters-in-casablanca-morocco
 Status: published
 Summary: A 9-month self-curated deep-dive into select topics in machine learning and distributed computing.
-Image: images/will.jpg
+Image: images/open_source.png
 
 The Open-Source Machine Learning Masters (OSMLM) is a self-curated deep-dive into select topics in machine learning and distributed computing. Educational resources are derived from online courses ([MOOCs](https://en.wikipedia.org/wiki/Massive_open_online_course)), textbooks, predictive modeling competitions, academic research ([arXiv](https://arxiv.org/)), and the open-source software community. In machine learning, both the quantity and quality of these resources - all available for free or at a trivial cost - is truly f*cking amazing.
 
