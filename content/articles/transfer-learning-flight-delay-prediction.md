@@ -215,7 +215,7 @@ For a more complete yet equally approachable explanation, please see [Goldberg a
 ## Variational autoencoder
 
 ### Discriminative models
-The previous network is a *discriminative* model: given two inputs `origin` and `dest`, it outputs the conditional probability that `exists = 1`. While discriminative models are effective in distinguishing *between* output classes, they don't offer an idea of what data look like within each class itself. To see why, let's restate Bayes rule for a given input $x$:
+The previous network is a *discriminative* model: given two inputs `origin` and `dest`, it outputs the conditional probability that `exists = 1`. While discriminative models are effective in distinguishing *between* output classes, they don't offer an idea of what data look like within each class itself. To see why, let's restate Bayes' rule for a given input $x$:
 
 $$P(Y\vert x) = \frac{P(x\vert Y)P(Y)}{P(x)} = \frac{P(x, Y)}{P(x)}$$
 
@@ -232,7 +232,7 @@ Conversely, a variational autoencoder is a *generative* model: instead of jumpin
 
 The joint probability can be rewritten as $P(X, Y) = P(Y)P(X\vert Y)$: as such, generative models tell us the distribution over classes in our dataset, as well as the distribution of inputs within each class. Suppose we are trying to predict t-shirt colors with a 3-feature input; generative models would tell us: "30% of your t-shirts are green - typically produced by inputs near `x = [1, 2, 3]`; 40% are red - typically produced by inputs near `x = [10, 20, 30]`; 30% are blue - typically produced by inputs near `x = [100, 200, 300]`. This is in contrast to a discriminative model which would simply compute: given an input $x$, your output probabilities are: $\{\text{red}: .2, \text{green}: .3, \text{blue}: .5\}$.
 
-_**To generate new data with a generative model, we draw from $P(Y)$, then $P(X\vert Y)$. To make predictions, we solicit $P(Y), P(x\vert Y)$ and $P(x)$ and employ Bayes rule outright.**_
+_**To generate new data with a generative model, we draw from $P(Y)$, then $P(X\vert Y)$. To make predictions, we solicit $P(Y), P(x\vert Y)$ and $P(x)$ and employ Bayes' rule outright.**_
 
 ### Manifold assumption
 The goal of both autoencoders is to discover underlying "structure" in our data: while each airport can be one-hot encoded into a 3186-dimensional vector, we wish to learn a, or even the, reduced space in which our data both live and vary. This concept is well understood through the "manifold assumption," explained succinctly in this [CrossValidated thread](https://stats.stackexchange.com/questions/66939/what-is-the-manifold-assumption-in-semi-supervised-learning):
@@ -256,7 +256,7 @@ Coordinates on the plate detail airport character; choosing coordinates - say, `
 
 $$P(z)P(x\vert z) = P(z, x)$$
 
-Our goal is to infer the priors that likely generated these data via Bayes rule:
+Our goal is to infer the priors that likely generated these data via Bayes' rule:
 
 $$P(z\vert x) = \frac{P(z)P(x\vert z)}{P(x)}$$
 
@@ -319,7 +319,7 @@ Our goal is to maximize this expression, or minimize the opposite:
 
 $$-\log{P(x\vert z)} + KL(q_{\lambda}(z\vert x)\Vert P(z))$$
 
-In machine learning parlance: "minimize the negative log likelihood of our data (generated via $z$) plus the divergence between the distribution (ceramic plate) of $z$ and our approximation thereof."
+In machine learning parlance: "minimize the negative log likelihood of our data (generated via $z$) plus the divergence between the true distribution of $z$ (the ceramic plate) and our approximation thereof."
 
 See what we did?
 
