@@ -319,7 +319,7 @@ Our goal is to maximize this expression, or minimize the opposite:
 
 $$-\log{P(x\vert z)} + KL(q_{\lambda}(z\vert x)\Vert P(z))$$
 
-In machine learning parlance: "minimize the negative log likelihood of our data (generated via $z$) plus the divergence between the distribution (ceramic plate) of $z$ and our approximation thereof."
+In machine learning parlance: "minimize the negative log likelihood of our data (generated via $z$) plus the divergence between the true distribution of $z$ (the ceramic plate) and our approximation thereof."
 
 See what we did?
 
