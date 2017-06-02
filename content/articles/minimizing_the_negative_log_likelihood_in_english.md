@@ -119,10 +119,10 @@ $$
 
 where:
 
-- There are $n$ unique events.
+- There are $n$ distinct events.
 - Each event $i$ has probability $p_i$.
 
-Entropy is the *weighted-average log probability* over possible events, which measures the *uncertainty inherent in their probability distribution.* The higher the entropy, the less certain we are about the value we're going to get.
+Entropy is the *weighted-average log probability* over possible events — this much reads directly from the equation — which measures the *uncertainty inherent in their probability distribution.* The higher the entropy, the less certain we are about the value we're going to get.
 
 Let's calculate the entropy of our distribution above.
 
