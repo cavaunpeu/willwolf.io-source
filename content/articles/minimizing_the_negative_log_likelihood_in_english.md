@@ -13,9 +13,7 @@ A dexterity with the above is often sufficient for — at least from a technical
 
 Once fluid with "scikit-learn fit and predict," I turned to statistics. I was always aware that the two were related, yet figured them ultimately parallel sub-fields of my job. With the former, I build classification models; with the latter, I infer signup counts with the Poisson distribution and MCMC — right?
 
-Before long, I dove deeper into machine learning — reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example.
-
-_**"Why are you calling it the negative log-likelihood?"**_
+Before long, I dove deeper into machine learning — reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example: _**"why are you calling it the negative log-likelihood?"**_
 
 Marginally wiser, I now know two truths about the above:
 
