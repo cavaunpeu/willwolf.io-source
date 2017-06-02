@@ -535,7 +535,7 @@ A perfect computation gives $\phi = 0$. The loss function quantifies how close w
 ## Maximum likelihood estimation
 Each of our three distributions receives a parameter — $\mu, \phi$ and $\pi$ respectively. We then pass in a $y$ and the distribution tells us the probability of observing that value. (In the case of continuous-valued random variables, i.e. our distribution is a probability density function, it tells us a value *proportional* to this probability.)
 
-If we instead *fix* $y$ and pass in varying *parameter values*, our function becomes a *likelihood function*. It will tell us the likelihood of a given parameter having produced the now-fixed $y$.
+If we instead *fix* $y$ and pass in varying *parameter values*, this same function becomes a *likelihood function*. It will tell us the likelihood of a given parameter having produced the now-fixed $y$.
 
 If this is not clear, consider the following example:
 
@@ -543,7 +543,7 @@ If this is not clear, consider the following example:
 >
 > 1. At home, reading a book.
 > 2. Training for a bicycle race.
-> 3. At the soccer game drinking beers with his friends - all of whom are MMA fighters and despise the other team.
+> 3. At the soccer game drinking beers with his friends — all of whom are MMA fighters that despise the other team.
 
 We'd like to pick the parameter that most likely gave rise to our data. This is the *maximum likelihood estimate*. Mathematically, we define it as:
 
@@ -565,7 +565,7 @@ $$
 \underset{\theta}{\arg\max} \prod\limits_{i=1}^{m}p(y^{(i)}\vert x^{(i)}; \theta)
 $$
 
-The product of numbers in $[0, 1]$ gets very small, very quickly. Let's maximize the log likelihood instead so we can work with sums.
+The product of numbers in $[0, 1]$ gets very small, very quickly. Let's maximize the log-likelihood instead so we can work with sums.
 
 ### Linear regression
 Maximize the log-likelihood of the Gaussian distribution. Remember, $x$ and $\theta$ assemble to give $\mu$, where $\theta^Tx = \mu$.
@@ -602,13 +602,17 @@ $$
 \end{align*}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability thereof.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. binary log loss) between the observed $y$ and our prediction of the probability thereof.**_
 
 ### Multinomial distribution
 Negative log-likelihood:
 
 $$
--\log{P(y\vert x; \theta)} = -\prod\limits_{k=1}^{K}y_k\log\pi_k\\
+\begin{align*}
+-\log{P(y\vert x; \theta)}
+&= -\log\prod\limits_{i=1}^{m}\prod\limits_{k=1}^{K}\pi_k^{y_k}\\
+&= -\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k\log\pi_k\\
+\end{align*}
 $$
 
 _**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. multi-class log loss) between the observed $y$ and our prediction of the probability distribution thereof.**_
