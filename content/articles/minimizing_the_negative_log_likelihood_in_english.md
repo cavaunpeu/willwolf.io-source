@@ -472,13 +472,14 @@ $$
 Trivially, the $\phi$ value must be different in each case. In the former, $\phi$ should be small, such that we output "cat" with probability $1 - \phi \approx 1$. In the latter, $\phi$ should be large, such that we output "dog" with probability $\phi \approx 1$.
 
 So, what dictates the following?
+
 - $\mu_i$ in the case of linear regression, in which $y_i \sim \mathcal{N}(\mu_i, \sigma^2)$
 - $\phi_i$ in the case of logistic regression, in which $y_i \sim \text{Binomial}(\phi_i, 1)$
 - $\pi_i$ in the case of softmax regression, in which $y_i \sim \text{Multinomial}(\pi_i, 1)$
 
-Here, I've introduced the subscript $i$. This makes explicit the `cat or dog` dynamic from above: each input to a given model will result in its *own* canonical parameter being passed to the distribution on the response variable. That logistic regression better make $\phi_i \approx 0$ when looking at a picture of cat.
+Here, I've introduced the subscript $i$. This makes explicit the `cat or dog` dynamic from above: each input to a given model will result in its *own* canonical parameter being passed to the distribution on the response variable. That logistic regression better make $\phi_i \approx 0$ when looking at a picture of a cat.
 
-How do we go from a 10-feature input $x$ to this canonical parameter? We take a linear combination:
+Finally, how do we go from a 10-feature input $x$ to this canonical parameter? We take a linear combination:
 
 $$
 \eta = \theta^Tx
@@ -509,7 +510,10 @@ We did this above as well: $\pi_{k, i} = \frac{e^{\eta_k}}{\sum\limits_{k=1}^K e
 
 _**> The softmax function gives us the probability that the response variable takes on each of the possible classes. This probability mass function is required by the multinomial distribution, which dictates the outcomes of the multi-class target $y$.**_
 
-Finally, why a linear model, i.e. why $\eta = \theta^Tx$? Andrew Ng calls it a "design choice."[^1] I've motivated this formulation a bit in the [softmax post]({filename}deriving-the-softmax-from-first-principles.md). mathematicalmonk[^2] would probably have a more principled explanation than us both. For now, we'll make do with the following:
+Finally, why a linear model, i.e. why $\eta = \theta^Tx$?
+
+Andrew Ng calls it a "design choice."[^1] I've motivated this formulation a bit in the [softmax post]({filename}deriving-the-softmax-from-first-principles.md). mathematicalmonk[^2] would probably have a more principled explanation than us both. For now, we'll make do with the following:
+
 - A linear combination is perhaps the simplest way to consider the impact of each feature on the canonical parameter.
 - A linear combination commands that either $x$, or a *function of $x$*, vary linearly with $\eta$. As such, we could write our model as $\eta = \theta^T\Phi(x)$, where $\Phi$ applies some complex transformation to our features. This makes the "simplicity" of the linear combination less simple.
 
