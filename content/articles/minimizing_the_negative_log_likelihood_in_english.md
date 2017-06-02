@@ -167,13 +167,13 @@ The models differ in the type of response variable they predict, i.e. the $y$.
 - Logistic regression predicts a binary label. Let's call it `cat or dog`
 - Softmax regression predicts a multi-class label. Let's call it `red or green or blue`.
 
-In each model, the response variable can take on a bunch of different values. In other words, they are *random variables.* Which probability distributions are associated with each?
+In each model, the response variable can take on a bunch of different values. In other words, they are *random variables.* What probability distribution is associated with each?
 
 Unfortunately, we don't know. All we do know, in fact, is the following:
 
 - `temperature` has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$.
 - `cat or dog` takes on the value `cat` or `dog`. The likelihood of observing each outcome does not change over time, in the same way that $\Pr(\text{heads})$ for a fair coin is always $0.5$.
-- `red or green or blue` takes on the value `red` or `green` or `blue`. The likelihood of observing each outcome does not change over time, in the same way that the probability of rolling a given number on fair die is always $\frac{1}{6}$.
+- `red or green or blue` takes on the value `red` or `green` or `blue`. The likelihood of observing each outcome does not change over time, in the same way that the probability of rolling a given number on a fair die is always $\frac{1}{6}$.
 
 For clarity, each one of these assumptions is utterly banal — "so lacking in originality as to be obvious and boring." *Can we use them nonetheless to select probability distributions for our random variables?*
 
