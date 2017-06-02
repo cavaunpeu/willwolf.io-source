@@ -672,7 +672,7 @@ $$
 \end{align*}
 $$
 
-Our goal is to maximize this term plus the log likelihood — or equivalently, minimize their opposite — with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
+Our goal is to maximize this term plus the log-likelihood — or equivalently, minimize their opposite — with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
 
 $$
 \begin{align*}
