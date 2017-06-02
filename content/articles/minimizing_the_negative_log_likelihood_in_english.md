@@ -678,7 +678,7 @@ $$
 \begin{align*}
 \log{C_1} - C_2\theta^2
 &\propto - C_2\theta^2\\
-&\propto C_2\Vert \theta\Vert_{2}^{2}\\
+&\propto C\Vert \theta\Vert_{2}^{2}\\
 \end{align*}
 $$
 
@@ -690,7 +690,7 @@ $$
 \underset{\theta}{\arg\min} \sum\limits_{i=1}^{m}(y^{(i)} - \theta^Tx^{(i)})^2 + C\Vert \theta\Vert_{2}^{2}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the mean squared error between the observed $y$ and our prediction thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the mean squared error between the observed $y$ and our prediction thereof, plus the squared sum of (the elements of) $\theta$ itself.**_
 
 ## Logistic regression
 
@@ -699,15 +699,15 @@ $$
 -\sum\limits_{i = 1}^my^{(i)}\log{(\phi^{(i)})} + (1 - y^{(i)})\log{(1 - \phi^{(i)})} + C\Vert \theta\Vert_{2}^{2}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. binary log loss) between the observed $y$ and our prediction of the probability thereof, plus the squared sum of (the elements of) $\theta$ itself.**_
 
 ## Softmax regression
 
 $$
--\log{P(y\vert x; \theta)} = -\prod\limits_{k=1}^{K}y_k\log\pi_k + C\Vert \theta\Vert_{2}^{2}
+-\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k\log\pi_k + C\Vert \theta\Vert_{2}^{2}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. multi-class log loss) between the observed $y$ and our prediction of the probability distribution thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. multi-class log loss) between the observed $y$ and our prediction of the probability distribution thereof, plus the squared sum of (the elements of) $\theta$ itself.**_
 
 Finally, in machine learning, we say that regularizing our weights ensures that "no weight becomes too large," i.e. too "influential" in predicting $y$. In statistical terms, we can equivalently say that this term *restricts the permissible values of these weights to a given interval. Furthermore, this interval is dictated by the scaling constant $C$, which intrinsically parameterizes the prior distribution itself.* In L2 regularization, this scaling constant gives the variance of the Gaussian.
 
