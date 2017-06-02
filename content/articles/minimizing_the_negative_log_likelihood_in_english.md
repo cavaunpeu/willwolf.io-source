@@ -618,7 +618,7 @@ $$
 _**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. multi-class log loss) between the observed $y$ and our prediction of the probability distribution thereof.**_
 
 #### [Cross entropy](https://en.wikipedia.org/wiki/Cross_entropy)
-We previously defined entropy as a way to quantify the uncertainty inherent in a probability distribution. Next, we'll use this same notion to quantify the uncertainty inherent in using the probabilities *in one distribution to predict events in another.*
+We previously defined entropy as a way to quantify the uncertainty inherent in a probability distribution. Next, we'll use this same notion to quantify the uncertainty inherent in using the probabilities *in one distribution to predict the events of another.*
 
 ```python
 p = {'red': .25, 'green': .45, 'blue':, .3}
@@ -632,13 +632,13 @@ $$
 This is the definition of cross entropy.
 
 #### [KL-Divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence)
-Similarly, the Kullback-Leibler divergence quantifies the *additional uncertainty in $p$* introduced by using $q$ to approximate $p$. It is given, almost trivially, as:
+Similarly, the Kullback-Leibler Divergence quantifies the *additional uncertainty in $p$* introduced by using $q$ to approximate $p$. It is given, almost trivially, as:
 
 $$
 D_{KL}(p, q) = H(p, q) - H(p)
 $$
 
-Why don't we use this in machine learning models instead of the cross entropy? The KL-divergence between distributions requires us to know the true, underlying probabilities of both the actual distribution $p$ and our prediction thereof. Unfortunately, we never have the former: that's why we build the model.
+Why don't we use this in machine learning models instead of the cross entropy? The KL-Divergence between distributions requires us to know the true, underlying probabilities of both the actual distribution $p$ and our prediction thereof. Unfortunately, we never have the former: that's why we build the model.
 
 # Maximum a posteriori estimation
 When estimating $\theta$ via the MLE, we put no constraints on the permissible values thereof. More explicitly, we allow $\theta$ to be *equally likely to assume any real number* — be it $0$, or $10$, or $-20$, or $2.37 \times 10^{36}$.
