@@ -241,7 +241,7 @@ While it may seem like we've "waved our hands" over the connection between the s
 Finally, while we do assume that a Gaussian dictates the true distribution of values of both "Uber's yearly profit" and `temperature`, it is, trivially, a different Gaussian for each. This is because each random variable has its own true underlying mean and variance. These values make the respective Gaussians taller or wider — shifted left or shifted right.
 
 # Functional form
-Our three protagonists generate predictions via distinct functions: the [identity function](https://en.wikipedia.org/wiki/Identity_function), the [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) and the [softmax function](https://en.wikipedia.org/wiki/Softmax_function), respectively. The respective Keras output layers make this clear:
+Our three protagonists generate predictions via distinct functions: the [identity function](https://en.wikipedia.org/wiki/Identity_function) (i.e. a no-op), the [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) and the [softmax function](https://en.wikipedia.org/wiki/Softmax_function), respectively. The Keras output layers make this clear:
 
 ```python
 output = Dense(1)(input)
@@ -252,7 +252,7 @@ output = Dense(3, activation='softmax')(input)
 In this section, I'd like to:
 
 - Show how each of the Gaussian, binomial and multinomial distributions can be reduced to the same functional form.
-- Show how this functional form allows us to naturally derive the output functions for our three protagonist models.
+- Show how this common functional form allows us to naturally derive the output functions for our three protagonist models.
 
 Graphically, this looks as follows, with three distributions going in and three output functions coming out.
 
@@ -265,7 +265,7 @@ The conceptual bottleneck is the ["exponential family"](https://en.wikipedia.org
 
 — Wikipedia
 
-I don't relish quoting this paragraph — and especially one so deliriously general. This said, the reality is that exponential functions provide, at a minimum, a unifying framework for deriving the canonical activation and loss functions we've come to know and love. To move forward, we simply have to cede that the "mathematical conveniences, on account of some useful algebraic properties, etc." that motivate this "certain form" are not totally heinous nor misguided.
+I don't relish quoting this paragraph — and especially one so deliriously ambiguous. This said, the reality is that exponential functions provide, at a minimum, a unifying framework for deriving the canonical activation and loss functions we've come to know and love. To move forward, we simply have to cede that the "mathematical conveniences, on account of some useful algebraic properties, etc." that motivate this "certain form" are not totally heinous nor misguided.
 
 A distribution belongs to the exponential family if it can be written in the following form:
 
