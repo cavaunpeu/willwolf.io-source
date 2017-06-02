@@ -202,10 +202,10 @@ We are not given the true underlying probability distribution associated with ea
 
 To make an initial choice we keep two things in mind:
 
-- *We'd like to be conservative*. We've only seen 10 values of "Uber's yearly profit;" we don't want to discount the fact that the next 20 could fall into $[-60, -50]$ just because they haven't yet been observed.
+- *We'd like to be conservative*. We've only seen ten values of "Uber's yearly profit;" we don't want to discount the fact that the next twenty could fall into $[-60, -50]$ just because they haven't yet been observed.
 - *We need to choose the same probability distribution "shape" for both random variables, as we've made identical assumptions for each*.
 
-As such, we'd like the most conservative distribution that obeys its constraints. This is the [*maximum entropy distribution*](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution).
+As such, we'd like the most conservative distribution that obeys the "utterly banal" constraints stated above. This is the [*maximum entropy distribution*](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution).
 
 For `temperature`, the maximum entropy distribution is the [Gaussian distribution](https://en.wikipedia.org/wiki/Normal_distribution). Its probability density function is given as:
 
