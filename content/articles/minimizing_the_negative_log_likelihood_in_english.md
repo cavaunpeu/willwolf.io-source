@@ -282,7 +282,7 @@ where:
 "A fixed choice of $T$, $a$ and $b$ defines a family (or set) of distributions that is parameterized by $\eta$; as we vary $\eta$, we then get different distributions within this family."[^1] This simply means that a coin with $\Pr(\text{heads}) = .6$ gives a different distribution over outcomes than one with $\Pr(\text{heads}) = .7$. Easy.
 
 ### Gaussian distribution
-Since we're working with the single-parameter form, we'll assume that $\sigma^2$ is known and equals $1$. Therefore, $\eta$ will equal $\mu$, i.e. the thing we pass into the Gaussian (that moves it left or right).
+Since we're working with the single-parameter form, we'll assume that $\sigma^2$ is known and equals $1$.
 
 $$
 \begin{align*}
@@ -347,10 +347,10 @@ a(\eta)
 \end{align*}
 $$
 
-You will recognize our expression for $\phi$ as the sigmoid function.
+You will recognize our expression for $\phi$ - the probability of observing the true class - as the sigmoid function.
 
 ### Multinomial distribution
-Like the binomial distribution, we'll first rewrite the multinomial (for single observation) in a more compact form. $\pi$ gives a vector of class probabilities for the $K$ classes; $k$ denotes one of these classes.
+Like the binomial distribution, we'll first rewrite the multinomial (for a single observation) in a more compact form. $\pi$ gives a vector of class probabilities for the $K$ classes; $k$ denotes one of these classes.
 
 $$
 p(y\vert \pi) = \prod\limits_{k=1}^{K}\pi_k^{y_k}
