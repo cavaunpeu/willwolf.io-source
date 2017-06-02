@@ -13,9 +13,7 @@ A dexterity with the above is often sufficient for — at least from a technical
 
 Once fluid with "scikit-learn fit and predict," I turned to statistics. I was always aware that the two were related, yet figured them ultimately parallel sub-fields of my job. With the former, I build classification models; with the latter, I infer signup counts with the Poisson distribution and MCMC — right?
 
-Before long, I dove deeper into machine learning — reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example.
-
-_**"Why are you calling it the negative log-likelihood?"**_
+Before long, I dove deeper into machine learning — reading textbooks, papers and source code and writing this blog. Therein, I began to come across *terms I didn't understand used to describe the things that I did.* "I understand what the categorical cross-entropy loss is, what it does and how it's defined," for example: _**"why are you calling it the negative log-likelihood?"**_
 
 Marginally wiser, I now know two truths about the above:
 
@@ -121,10 +119,10 @@ $$
 
 where:
 
-- There are $n$ unique events.
+- There are $n$ distinct events.
 - Each event $i$ has probability $p_i$.
 
-Entropy is the *weighted-average log probability* over possible events, which measures the *uncertainty inherent in their probability distribution.* The higher the entropy, the less certain we are about the value we're going to get.
+Entropy is the *weighted-average log probability* over possible events — this much reads directly from the equation — which measures the *uncertainty inherent in their probability distribution.* The higher the entropy, the less certain we are about the value we're going to get.
 
 Let's calculate the entropy of our distribution above.
 
@@ -169,13 +167,13 @@ The models differ in the type of response variable they predict, i.e. the $y$.
 - Logistic regression predicts a binary label. Let's call it `cat or dog`
 - Softmax regression predicts a multi-class label. Let's call it `red or green or blue`.
 
-In each model, the response variable can take on a bunch of different values. In other words, they are *random variables.* Which probability distributions are associated with each?
+In each model, the response variable can take on a bunch of different values. In other words, they are *random variables.* What probability distribution is associated with each?
 
 Unfortunately, we don't know. All we do know, in fact, is the following:
 
 - `temperature` has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$.
 - `cat or dog` takes on the value `cat` or `dog`. The likelihood of observing each outcome does not change over time, in the same way that $\Pr(\text{heads})$ for a fair coin is always $0.5$.
-- `red or green or blue` takes on the value `red` or `green` or `blue`. The likelihood of observing each outcome does not change over time, in the same way that the probability of rolling a given number on fair die is always $\frac{1}{6}$.
+- `red or green or blue` takes on the value `red` or `green` or `blue`. The likelihood of observing each outcome does not change over time, in the same way that the probability of rolling a given number on a fair die is always $\frac{1}{6}$.
 
 For clarity, each one of these assumptions is utterly banal — "so lacking in originality as to be obvious and boring." *Can we use them nonetheless to select probability distributions for our random variables?*
 
@@ -204,10 +202,10 @@ We are not given the true underlying probability distribution associated with ea
 
 To make an initial choice we keep two things in mind:
 
-- *We'd like to be conservative*. We've only seen 10 values of "Uber's yearly profit;" we don't want to discount the fact that the next 20 could fall into $[-60, -50]$ just because they haven't yet been observed.
+- *We'd like to be conservative*. We've only seen ten values of "Uber's yearly profit;" we don't want to discount the fact that the next twenty could fall into $[-60, -50]$ just because they haven't yet been observed.
 - *We need to choose the same probability distribution "shape" for both random variables, as we've made identical assumptions for each*.
 
-As such, we'd like the most conservative distribution that obeys its constraints. This is the [*maximum entropy distribution*](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution).
+As such, we'd like the most conservative distribution that obeys the "utterly banal" constraints stated above. This is the [*maximum entropy distribution*](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution).
 
 For `temperature`, the maximum entropy distribution is the [Gaussian distribution](https://en.wikipedia.org/wiki/Normal_distribution). Its probability density function is given as:
 
@@ -243,7 +241,7 @@ While it may seem like we've "waved our hands" over the connection between the s
 Finally, while we do assume that a Gaussian dictates the true distribution of values of both "Uber's yearly profit" and `temperature`, it is, trivially, a different Gaussian for each. This is because each random variable has its own true underlying mean and variance. These values make the respective Gaussians taller or wider — shifted left or shifted right.
 
 # Functional form
-Our three protagonists generate predictions via distinct functions: the [identity function](https://en.wikipedia.org/wiki/Identity_function), the [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) and the [softmax function](https://en.wikipedia.org/wiki/Softmax_function), respectively. The respective Keras output layers make this clear:
+Our three protagonists generate predictions via distinct functions: the [identity function](https://en.wikipedia.org/wiki/Identity_function) (i.e. a no-op), the [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) and the [softmax function](https://en.wikipedia.org/wiki/Softmax_function), respectively. The Keras output layers make this clear:
 
 ```python
 output = Dense(1)(input)
@@ -254,7 +252,7 @@ output = Dense(3, activation='softmax')(input)
 In this section, I'd like to:
 
 - Show how each of the Gaussian, binomial and multinomial distributions can be reduced to the same functional form.
-- Show how this functional form allows us to naturally derive the output functions for our three protagonist models.
+- Show how this common functional form allows us to naturally derive the output functions for our three protagonist models.
 
 Graphically, this looks as follows, with three distributions going in and three output functions coming out.
 
@@ -267,7 +265,7 @@ The conceptual bottleneck is the ["exponential family"](https://en.wikipedia.org
 
 — Wikipedia
 
-I don't relish quoting this paragraph — and especially one so deliriously general. This said, the reality is that exponential functions provide, at a minimum, a unifying framework for deriving the canonical activation and loss functions we've come to know and love. To move forward, we simply have to cede that the "mathematical conveniences, on account of some useful algebraic properties, etc." that motivate this "certain form" are not totally heinous nor misguided.
+I don't relish quoting this paragraph — and especially one so deliriously ambiguous. This said, the reality is that exponential functions provide, at a minimum, a unifying framework for deriving the canonical activation and loss functions we've come to know and love. To move forward, we simply have to cede that the "mathematical conveniences, on account of some useful algebraic properties, etc." that motivate this "certain form" are not totally heinous nor misguided.
 
 A distribution belongs to the exponential family if it can be written in the following form:
 
@@ -284,7 +282,7 @@ where:
 "A fixed choice of $T$, $a$ and $b$ defines a family (or set) of distributions that is parameterized by $\eta$; as we vary $\eta$, we then get different distributions within this family."[^1] This simply means that a coin with $\Pr(\text{heads}) = .6$ gives a different distribution over outcomes than one with $\Pr(\text{heads}) = .7$. Easy.
 
 ### Gaussian distribution
-Since we're working with the single-parameter form, we'll assume that $\sigma^2$ is known and equals $1$. Therefore, $\eta$ will equal $\mu$, i.e. the thing we pass into the Gaussian (that moves it left or right).
+Since we're working with the single-parameter form, we'll assume that $\sigma^2$ is known and equals $1$.
 
 $$
 \begin{align*}
@@ -349,10 +347,10 @@ a(\eta)
 \end{align*}
 $$
 
-You will recognize our expression for $\phi$ as the sigmoid function.
+You will recognize our expression for $\phi$ - the probability of observing the true class - as the sigmoid function.
 
 ### Multinomial distribution
-Like the binomial distribution, we'll first rewrite the multinomial (for single observation) in a more compact form. $\pi$ gives a vector of class probabilities for the $K$ classes; $k$ denotes one of these classes.
+Like the binomial distribution, we'll first rewrite the multinomial (for a single observation) in a more compact form. $\pi$ gives a vector of class probabilities for the $K$ classes; $k$ denotes one of these classes.
 
 $$
 p(y\vert \pi) = \prod\limits_{k=1}^{K}\pi_k^{y_k}
@@ -474,13 +472,14 @@ $$
 Trivially, the $\phi$ value must be different in each case. In the former, $\phi$ should be small, such that we output "cat" with probability $1 - \phi \approx 1$. In the latter, $\phi$ should be large, such that we output "dog" with probability $\phi \approx 1$.
 
 So, what dictates the following?
+
 - $\mu_i$ in the case of linear regression, in which $y_i \sim \mathcal{N}(\mu_i, \sigma^2)$
 - $\phi_i$ in the case of logistic regression, in which $y_i \sim \text{Binomial}(\phi_i, 1)$
 - $\pi_i$ in the case of softmax regression, in which $y_i \sim \text{Multinomial}(\pi_i, 1)$
 
-Here, I've introduced the subscript $i$. This makes explicit the `cat or dog` dynamic from above: each input to a given model will result in its *own* canonical parameter being passed to the distribution on the response variable. That logistic regression better make $\phi_i \approx 0$ when looking at a picture of cat.
+Here, I've introduced the subscript $i$. This makes explicit the `cat or dog` dynamic from above: each input to a given model will result in its *own* canonical parameter being passed to the distribution on the response variable. That logistic regression better make $\phi_i \approx 0$ when looking at a picture of a cat.
 
-How do we go from a 10-feature input $x$ to this canonical parameter? We take a linear combination:
+Finally, how do we go from a 10-feature input $x$ to this canonical parameter? We take a linear combination:
 
 $$
 \eta = \theta^Tx
@@ -511,7 +510,10 @@ We did this above as well: $\pi_{k, i} = \frac{e^{\eta_k}}{\sum\limits_{k=1}^K e
 
 _**> The softmax function gives us the probability that the response variable takes on each of the possible classes. This probability mass function is required by the multinomial distribution, which dictates the outcomes of the multi-class target $y$.**_
 
-Finally, why a linear model, i.e. why $\eta = \theta^Tx$? Andrew Ng calls it a "design choice."[^1] I've motivated this formulation a bit in the [softmax post]({filename}deriving-the-softmax-from-first-principles.md). mathematicalmonk[^2] would probably have a more principled explanation than us both. For now, we'll make do with the following:
+Finally, why a linear model, i.e. why $\eta = \theta^Tx$?
+
+Andrew Ng calls it a "design choice."[^1] I've motivated this formulation a bit in the [softmax post]({filename}deriving-the-softmax-from-first-principles.md). mathematicalmonk[^2] would probably have a more principled explanation than us both. For now, we'll make do with the following:
+
 - A linear combination is perhaps the simplest way to consider the impact of each feature on the canonical parameter.
 - A linear combination commands that either $x$, or a *function of $x$*, vary linearly with $\eta$. As such, we could write our model as $\eta = \theta^T\Phi(x)$, where $\Phi$ applies some complex transformation to our features. This makes the "simplicity" of the linear combination less simple.
 
@@ -533,7 +535,7 @@ A perfect computation gives $\phi = 0$. The loss function quantifies how close w
 ## Maximum likelihood estimation
 Each of our three distributions receives a parameter — $\mu, \phi$ and $\pi$ respectively. We then pass in a $y$ and the distribution tells us the probability of observing that value. (In the case of continuous-valued random variables, i.e. our distribution is a probability density function, it tells us a value *proportional* to this probability.)
 
-If we instead *fix* $y$ and pass in varying *parameter values*, our function becomes a *likelihood function*. It will tell us the likelihood of a given parameter having produced the now-fixed $y$.
+If we instead *fix* $y$ and pass in varying *parameter values*, this same function becomes a *likelihood function*. It will tell us the likelihood of a given parameter having produced the now-fixed $y$.
 
 If this is not clear, consider the following example:
 
@@ -541,7 +543,7 @@ If this is not clear, consider the following example:
 >
 > 1. At home, reading a book.
 > 2. Training for a bicycle race.
-> 3. At the soccer game drinking beers with his friends - all of whom are MMA fighters and despise the other team.
+> 3. At the soccer game drinking beers with his friends — all of whom are MMA fighters that despise the other team.
 
 We'd like to pick the parameter that most likely gave rise to our data. This is the *maximum likelihood estimate*. Mathematically, we define it as:
 
@@ -563,7 +565,7 @@ $$
 \underset{\theta}{\arg\max} \prod\limits_{i=1}^{m}p(y^{(i)}\vert x^{(i)}; \theta)
 $$
 
-The product of numbers in $[0, 1]$ gets very small, very quickly. Let's maximize the log likelihood instead so we can work with sums.
+The product of numbers in $[0, 1]$ gets very small, very quickly. Let's maximize the log-likelihood instead so we can work with sums.
 
 ### Linear regression
 Maximize the log-likelihood of the Gaussian distribution. Remember, $x$ and $\theta$ assemble to give $\mu$, where $\theta^Tx = \mu$.
@@ -600,19 +602,23 @@ $$
 \end{align*}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability thereof.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. binary log loss) between the observed $y$ and our prediction of the probability thereof.**_
 
 ### Multinomial distribution
 Negative log-likelihood:
 
 $$
--\log{P(y\vert x; \theta)} = -\prod\limits_{k=1}^{K}y_k\log\pi_k\\
+\begin{align*}
+-\log{P(y\vert x; \theta)}
+&= -\log\prod\limits_{i=1}^{m}\prod\limits_{k=1}^{K}\pi_k^{y_k}\\
+&= -\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k\log\pi_k\\
+\end{align*}
 $$
 
 _**> Minimizing the negative log-likelihood of our data with respect to $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. multi-class log loss) between the observed $y$ and our prediction of the probability distribution thereof.**_
 
 #### [Cross entropy](https://en.wikipedia.org/wiki/Cross_entropy)
-We previously defined entropy as a way to quantify the uncertainty inherent in a probability distribution. Next, we'll use this same notion to quantify the uncertainty inherent in using the probabilities *in one distribution to predict events in another.*
+We previously defined entropy as a way to quantify the uncertainty inherent in a probability distribution. Next, we'll use this same notion to quantify the uncertainty inherent in using the probabilities *in one distribution to predict the events of another.*
 
 ```python
 p = {'red': .25, 'green': .45, 'blue':, .3}
@@ -626,13 +632,13 @@ $$
 This is the definition of cross entropy.
 
 #### [KL-Divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence)
-Similarly, the Kullback-Leibler divergence quantifies the *additional uncertainty in $p$* introduced by using $q$ to approximate $p$. It is given, almost trivially, as:
+Similarly, the Kullback-Leibler Divergence quantifies the *additional uncertainty in $p$* introduced by using $q$ to approximate $p$. It is given, almost trivially, as:
 
 $$
 D_{KL}(p, q) = H(p, q) - H(p)
 $$
 
-Why don't we use this in machine learning models instead of the cross entropy? The KL-divergence between distributions requires us to know the true, underlying probabilities of both the actual distribution $p$ and our prediction thereof. Unfortunately, we never have the former: that's why we build the model.
+Why don't we use this in machine learning models instead of the cross entropy? The KL-Divergence between distributions requires us to know the true, underlying probabilities of both the actual distribution $p$ and our prediction thereof. Unfortunately, we never have the former: that's why we build the model.
 
 # Maximum a posteriori estimation
 When estimating $\theta$ via the MLE, we put no constraints on the permissible values thereof. More explicitly, we allow $\theta$ to be *equally likely to assume any real number* — be it $0$, or $10$, or $-20$, or $2.37 \times 10^{36}$.
@@ -666,13 +672,13 @@ $$
 \end{align*}
 $$
 
-Our goal is to maximize this term plus the log likelihood — or equivalently, minimize their opposite — with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
+Our goal is to maximize this term plus the log-likelihood — or equivalently, minimize their opposite — with respect to $\theta$. For a final step, let's discard the parts that don't include $\theta$ itself.
 
 $$
 \begin{align*}
 \log{C_1} - C_2\theta^2
 &\propto - C_2\theta^2\\
-&\propto C_2\Vert \theta\Vert_{2}^{2}\\
+&\propto C\Vert \theta\Vert_{2}^{2}\\
 \end{align*}
 $$
 
@@ -684,7 +690,7 @@ $$
 \underset{\theta}{\arg\min} \sum\limits_{i=1}^{m}(y^{(i)} - \theta^Tx^{(i)})^2 + C\Vert \theta\Vert_{2}^{2}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the mean squared error between the observed $y$ and our prediction thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the mean squared error between the observed $y$ and our prediction thereof, plus the squared sum of (the elements of) $\theta$ itself.**_
 
 ## Logistic regression
 
@@ -693,15 +699,15 @@ $$
 -\sum\limits_{i = 1}^my^{(i)}\log{(\phi^{(i)})} + (1 - y^{(i)})\log{(1 - \phi^{(i)})} + C\Vert \theta\Vert_{2}^{2}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. log loss) between the observed $y$ and our prediction of the probability thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the binary cross-entropy (i.e. binary log loss) between the observed $y$ and our prediction of the probability thereof, plus the squared sum of (the elements of) $\theta$ itself.**_
 
 ## Softmax regression
 
 $$
--\log{P(y\vert x; \theta)} = -\prod\limits_{k=1}^{K}y_k\log\pi_k + C\Vert \theta\Vert_{2}^{2}
+-\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k\log\pi_k + C\Vert \theta\Vert_{2}^{2}
 $$
 
-_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. multi-class log loss) between the observed $y$ and our prediction of the probability distribution thereof, plus the squared sum of the (elements of) $\theta$ itself.**_
+_**> Minimizing the negative log-likelihood of our data with respect to $\theta$ given a Gaussian prior on $\theta$ is equivalent to minimizing the categorical cross-entropy (i.e. multi-class log loss) between the observed $y$ and our prediction of the probability distribution thereof, plus the squared sum of (the elements of) $\theta$ itself.**_
 
 Finally, in machine learning, we say that regularizing our weights ensures that "no weight becomes too large," i.e. too "influential" in predicting $y$. In statistical terms, we can equivalently say that this term *restricts the permissible values of these weights to a given interval. Furthermore, this interval is dictated by the scaling constant $C$, which intrinsically parameterizes the prior distribution itself.* In L2 regularization, this scaling constant gives the variance of the Gaussian.
 
