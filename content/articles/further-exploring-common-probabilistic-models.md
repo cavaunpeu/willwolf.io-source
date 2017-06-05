@@ -7,7 +7,7 @@ Status: draft
 Summary:
 Image:
 
-The previous post on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them effectively — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
+The [previous post]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md) on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them effectively — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
 
 In this post, we're going to stay on the surface: instead of deconstructing common models, we're going to further explore the relationships between them — swimming to different corners of the pool itself. Keeping us afloat will be Bayes' theorem — our balanced, dependable yet at times fragile pool tube, so to speak — which we'll take with us wherever we go.
 
@@ -116,7 +116,7 @@ $$
 \int P(x, y)dy = P(x)
 $$
 
-As such, we can *marginalize $y$ out of the numerator* so as to obtain the denominator we require.
+As such, we can *marginalize $y$ out of the numerator* so as to obtain the denominator we require. This denominator is often called the "evidence."
 
 ##### Marginalization example
 Marginalization took me a while to understand. Imagine we have the following joint probability distribution out of which we'd like to marginalize $A$.
@@ -277,29 +277,93 @@ In simple terms, MCMC estimation for a given parameter $\phi$ works as follows:
 After a few thousand iterations — and discarding the first few hundred, in which we drunkenly amble towards the region of high joint probability — we now have a bucket of samples from our desired posterior distribution. Nota bene: we never had to touch the high-dimensional integral $\int P(D, \theta)d\theta$.
 
 ## Variational inference
-In large-scale models, one powerful approach to approximating the posterior is to compute this approximation via optimization.
-variational inference
-mcmc
-advi
+In large-scale models, MCMC methods are often too slow. Conversely, variational inference provides a framework for casting the problem of posterior approximation as an *optimization* problem — far faster than a sampling-based approach. This yields an *analytical* approximation to $P(\theta\vert D)$. The following explanation of variational inference is taken largely from a previous post of mine: [Transfer Learning for Flight Delay Prediction]({filename}/articles/transfer-learning-flight-delay-prediction.md).
+
+For our approximating distribution we'll choose one that is simple, parametric and familiar: the normal (Gaussian) distribution, parameterized by some set of parameters $\lambda$.
+
+$$q_{\lambda}(\theta\vert D)$$
+
+Our goal is to force this distribution to closely resemble the original; the [KL divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence) quantifies their difference:
+
+$$KL(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D)) = \int{q_{\lambda}(\theta\vert D)\log\frac{q_{\lambda}(\theta\vert D)}{P(\theta\vert D)}d\theta}$$
+
+Our goal is to obtain the argmin with respect to $\lambda$:
+
+$$q_{\lambda}^{*}(\theta\vert D) = \underset{\lambda}{\arg\min}\ \text{KL}(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D))$$
+
+Expanding the divergence, we obtain:
+
+$$
+\begin{align*}
+KL(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D))
+&= \int{q_{\lambda}(\theta\vert D)\log\frac{q_{\lambda}(\theta\vert D)}{P(\theta\vert D)}d\theta}\\
+&= \int{q_{\lambda}(\theta\vert D)\log\frac{q_{\lambda}(\theta\vert D)P(D)}{P(\theta, D)}d\theta}\\
+&= \int{q_{\lambda}(\theta\vert D)\bigg(\log{q_{\lambda}(\theta\vert D) -\log{P(\theta, D)} + \log{P(D)}}\bigg)d\theta}\\
+&= \int{q_{\lambda}(\theta\vert D)\bigg(\log{q_{\lambda}(\theta\vert D)} -\log{P(\theta, D)}}\bigg)d\theta + \log{P(D)}\int{q_{\lambda}(\theta\vert D)d\theta}\\
+&= \int{q_{\lambda}(\theta\vert D)\bigg(\log{q_{\lambda}(\theta\vert D)} -\log{P(\theta, D)}}\bigg)d\theta + \log{P(D)} \cdot 1
+\end{align*}
+$$
+
+As such, since only the left term depends on $\lambda$, minimizing the entire expression with respect to $\lambda$ amounts to minimizing this term. Incidentally, the opposite (negative) of this term is called the [ELBO](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/lectures/variational-inference-i.pdf), or the "evidence lower bound."
+
+$$
+ELBO(\lambda) = -\int{q_{\lambda}(\theta\vert D)\bigg(\log{q_{\lambda}(\theta\vert D)} -\log{P(\theta, D)}}\bigg)d\theta
+$$
+
+To see why, let's plug the ELBO into the equation above and solve for $\log{P(D)}$:
+
+$$\log{P(D)} = ELBO(\lambda) + KL(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D))$$
+
+In English: "the log of the evidence is at least the lower bound of the evidence plus the divergence between our true posterior $P(\theta\vert D)$ and our (variational) approximation to this posterior $q_{\lambda}(\theta\vert D)$."
+
+As such, minimizing this divergence is equivalent to *maximizing* the ELBO, as:
+
+$$
+KL(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D)) = -ELBO(\lambda) + \log{P(D)}
+$$
+
+### Optimization
+Let's restate the equation for the ELBO and rearrange further:
+
+$$
+\begin{align*}
+ELBO(\lambda)
+&= -\int{q_{\lambda}(\theta\vert D)\bigg(\log{q_{\lambda}(\theta\vert D)} -\log{P(\theta, D)}}\bigg)d\theta\\
+&= -\int{q_{\lambda}(\theta\vert D)\bigg(\log{q_{\lambda}(\theta\vert D)} -\log{P(D\vert \theta)} - \log{P(\theta)}}\bigg)d\theta\\
+&= -\int{q_{\lambda}(\theta\vert D)\bigg(\log{q_{\lambda}(\theta\vert D)} - \log{P(\theta)}}\bigg)d\theta + \log{P(D\vert \theta)}\int{q_{\lambda}(\theta\vert D)d\theta}\\
+&= -\int{q_{\lambda}(\theta\vert D)\log{\frac{q_{\lambda}(\theta\vert D)}{P(\theta)}}d\theta} + \log{P(D\vert \theta)} \cdot 1\\
+&= \log{P(D\vert \theta)} -KL(q_{\lambda}(\theta\vert D)\Vert P(\theta))\\
+\end{align*}
+$$
+
+Our goal is to maximize this expression or minimize the opposite:
+
+$$
+-\log{P(D\vert \theta)} + KL(q_{\lambda}(\theta\vert D)\Vert P(\theta))
+$$
+
+One step further, we obtain:
+
+$$
+\begin{align*}
+&= \log{P(D\vert \theta)} -q_{\lambda}(\theta\vert D)\log{q_{\lambda}(\theta\vert D)} + q_{\lambda}(\theta\vert D)\log{P(\theta)}\\
+&= \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{P(D\vert \theta)} -\log{q_{\lambda}(\theta\vert D)} + \log{P(\theta)}]\\
+&= \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{P(D,  \theta)} -\log{q_{\lambda}(\theta\vert D)}]\\
+&= \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{P(D,  \theta)}] - \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{q_{\lambda}(\theta\vert D)}]\\
+\end{align*}
+$$
+
+In machine learning parlance: "minimize the negative log joint probability of our data given $\theta$ — a MAP estimate — plus the negative entropy of our variational approximation." Minimizing the latter encourages our approximation to have low-entropy, i.e. to distribute its mass in a conservative fashion.
+
+For a more in-depth discussion of both entropy and KL-divergence please see [Minimizing the Negative Log-Likelihood, in English]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md).
+
+## Additional methods
+advi, hmc
 
 - approximate inference:
   - variational inference for the ELBO because the denominator is hard
     - faster
-  - MCMC to *skip the denominator entirely!*
-    - slower
 - maybe write out the posterior predictive interval integration because i don't know how to do it
-- the partition function:
-  - part of the *prediction* step
-  - it's the thing we must do if we approach it from the PGM standpoint, and the thing we're already told to do by the GLM standpoint
-  - when we're computing the probability of P(y=green|x), we:
-    - compute the numerator by an exponentiated wTx
-    - normalize by the partition function
-    - bayes rule breaks this down further:
-      - that probability is P(y=green|x):
-        - the joint probability P(y=green, x)/P(x)
-      - the denominator could be hard to compute if we have tons of classes:
-        - this is mostly because we have to compute numerators for each one -- not for the big bad sum at the end
-        - for this we use things like negative sampling
 - when it's all said and done, what do full posteriors actually do for us?
   - decision theory
   - comfort
