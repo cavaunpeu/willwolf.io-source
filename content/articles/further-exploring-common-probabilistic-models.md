@@ -250,12 +250,37 @@ P(\theta\vert D)
 \end{align*}
 $$
 
-## Exact inference
-
-## Approximate inference
-As $\theta$ takes continuous values, we can no longer employ the "delete and collapse" method of discrete marginalization. Furthermore, in all but trivial cases, $\theta$ is a high-dimensional vector or matrix. As such, we're left to compute a "high-dimensional integral that lacks an analytic (closed-form) solution — this is the central computational challenge in inference."[^1]
+As $\theta$ takes continuous values, we can no longer employ the "delete and collapse" method of marginalization in discrete distributions. Furthermore, in all but trivial cases, $\theta$ is a high-dimensional vector or matrix, leaving us to compute a "high-dimensional integral that lacks an analytic (closed-form) solution — the central computational challenge in inference."[^1]
 
 As such, computing the full distribution $P(\theta\vert D)$ becomes *approximating* the full distribution $P(\theta\vert D)$.
+
+## Markov chain monte carlo
+In small to medium-sized models, we often take an alternative ideological approach to approximating $P(\theta\vert D)$: instead of computing a distribution — a gory algebraic expression whose shape is dictated by a few canonical parameters — we produce *samples* from this distribution. Roughly speaking, the aggregate of these samples then gives, retrodictively, the distribution itself. The general family of these methods is known as those of Markov chain monte carlo, or MCMC.
+
+In simple terms, MCMC estimation for a given parameter $\phi$ works as follows:
+
+1. Initialize $\phi$ to some value $\phi_{\text{current}}$.
+2. Compute the prior probability of $\phi_{\text{current}}$ and the probability of having observed our data under $\phi_{\text{current}}$ — $P(\phi_{\text{current}})$ and $P(D\vert \phi_{\text{current}})$, respectively. Their product gives $P(D, \phi_{\text{current}})$ — the joint probability of having observed the proposed parameter estimate and our observed data.
+3. Add $\phi_{\text{current}}$ into a big plastic bucket of "accepted values."
+4. Propose moving to a new, nearby value $\phi_{\text{proposal}}$. This value is drawn from an entirely separate *sampling distribution* which bears no influence on our prior $P(\phi)$ nor likelihood function $P(D\vert \phi)$. Repeat Step 2 using $\phi_{\text{proposal}}$ instead of $\phi_{\text{current}}$.
+5. Walk the following tree:
+    - If $P(D, \phi_{\text{proposal}}) \gt P(D, \phi_{\text{current}})$:
+      - Set $\phi_{\text{current}} = \phi_{\text{proposal}}$.
+      - Move to Step 3.
+    - Else:
+      - With some small probability:
+        - Set $\phi_{\text{current}} = \phi_{\text{proposal}}$.
+        - Move to Step 3.
+      - Else:
+        - Move to Step 4.
+
+After a few thousand iterations — and discarding the first few hundred, in which we drunkenly amble towards the region of high joint probability — we now have a bucket of samples from our desired posterior distribution. Nota bene: we never had to touch the high-dimensional integral $\int P(D, \theta)d\theta$.
+
+## Variational inference
+In large-scale models, one powerful approach to approximating the posterior is to compute this approximation via optimization.
+variational inference
+mcmc
+advi
 
 - approximate inference:
   - variational inference for the ELBO because the denominator is hard
