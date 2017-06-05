@@ -252,7 +252,7 @@ $$
 
 As $\theta$ takes continuous values, we can no longer employ the "delete and collapse" method of marginalization in discrete distributions. Furthermore, in all but trivial cases, $\theta$ is a high-dimensional vector or matrix, leaving us to compute a "high-dimensional integral that lacks an analytic (closed-form) solution — the central computational challenge in inference."[^1]
 
-As such, computing the full distribution $P(\theta\vert D)$ becomes *approximating* the full distribution $P(\theta\vert D)$.
+As such, computing the full distribution $P(\theta\vert D)$ becomes *approximating* the full distribution $P(\theta\vert D)$. To this end, we'll introduce two families of algorithms.
 
 ## Markov chain monte carlo
 In small to medium-sized models, we often take an alternative ideological approach to approximating $P(\theta\vert D)$: instead of computing a distribution — a gory algebraic expression whose shape is dictated by a few canonical parameters — we produce *samples* from this distribution. Roughly speaking, the aggregate of these samples then gives, retrodictively, the distribution itself. The general family of these methods is known as those of Markov chain monte carlo, or MCMC.
@@ -357,18 +357,44 @@ In machine learning parlance: "minimize the negative log joint probability of ou
 
 For a more in-depth discussion of both entropy and KL-divergence please see [Minimizing the Negative Log-Likelihood, in English]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md).
 
-## Additional methods
-advi, hmc
+# Posterior predictive distribution
+With our estimate for $\theta$ as a full distribution, we can now make a new prediction as a full distribution as well.
 
-- approximate inference:
-  - variational inference for the ELBO because the denominator is hard
-    - faster
-- maybe write out the posterior predictive interval integration because i don't know how to do it
-- when it's all said and done, what do full posteriors actually do for us?
-  - decision theory
-  - comfort
-  - fidelity
-  - small world
-  - the robo post
+$$
+\begin{align*}
+P(y\vert x, D)
+&= \int P(y\vert x, D, \theta)P(\theta\vert x, D)d\theta\\
+&= \int P(y\vert x, \theta)P(\theta\vert D)d\theta\\
+\end{align*}
+$$
+
+- The right term under the integral is the posterior distribution of our parameter $\theta$ given the "training" data, $P(\theta\vert D)$. Since it does not depend on a new input $x$ we can remove $x$.
+- The left term under the integral is our likelihood function: given an $x$ and a $\theta$, it produces a $y$. While this function does depend on $\theta$, whose values are pulled from our posterior $P(\theta\vert D)$, it does not depend on $D$ itself. As such, we can remove $D$.
+
+Integrating over $\theta$ yields a distribution over $y$: we've now captured not just the uncertainty in *inference*, but also the uncertain in our *prediction* as well.
+
+# What do these distributions actually do for me?
+Said differently, "why is it important to quantify uncertainty?"
+
+I think we, as humans, are exceptionally qualified to answer this question: we need to look no further than ourselves, our choices, our environment.
+
+- The cross-walk says "go." Do I:
+  - Close my eyes, lie down for a 15-second nap in the middle of the road, then walk backwards the rest of the way?
+  - Quickly look both ways then walk leisurely across the road, keeping an eye out for cyclists at the same time.
+- A company emails to say "we'd like to discuss the possibility of a full-time role." Do I:
+  - Respond saying "Great! Let's chat further" while continuing to speak with other companies.
+  - Respond saying "Great! Let's chat further" and promptly sever all contact with other companies.
+- An extremely reliable lifelong friend calls to say they've found me a beautiful studio in Manhattan for $600/month, and would need to confirm in the next 24 hours if I'd like to take it. Do I:
+  - Take it.
+  - Call three friends to ask if they think that this makes sense.
+- An extremely sketchy real estate broker calls to say they've found me a beautiful studio in Manhattan for $600/month, and would need to confirm in the next 24 hours if I'd like to take it. Do I:
+  - Take it.
+  - Call three friends to ask if they think that this seems makes sense.
+
+The notion is the same in probabilistic modeling. Furthermore, we often "not big data" with which to model, and therefore a substantially non-zero amount of uncertainty in our estimates and predictions.
+
+Finally, with distributional estimates in hand, we can begin to make more robust, measured and logical decisions. We can do this because, while point estimates give a quick summary, distributions tell a thorough story: where the peaks are, their width and height, their distance from one another, etc. For an excellent exploration of posterior decision analysis, check out Rasmus Bååth's [Probable Points and Credible Intervals, Part 2: Decision Theory](http://www.sumsar.net/blog/2015/01/probable-points-and-credible-intervals-part-two/).
+
+Thanks for reading.
 
 [^1]: [Edward — Inference of Probabilistic Models](http://edwardlib.org/tutorials/inference)
