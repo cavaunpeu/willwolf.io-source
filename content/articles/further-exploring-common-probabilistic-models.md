@@ -217,11 +217,46 @@ $$
 $$
 
 # "Fully Bayesian learning"
+We previously lamented the shortcomings of "lowly point estimates" and sang the praises of computing estimates as full distributions. Unfortunately, this is a computationally-hard thing to do.
 
-- to get full distributions, we need Bayes' denominator
-  - it's often intractable -- we therefore approximate
-  - approximation methods include:
-  - mcmc, variational inference, advi
+To see why, let's revisit Bayes' theorem. Assume we are estimating the parameters $\theta$ of a softmax regression model and have placed a prior on $\theta$. In concrete terms, this estimate can be written as $P(\theta\vert D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)})))$: the distribution over our belief in the true value of $\theta$ given the data we've observed. Bayes' theorem allows us to expand this quantity into:
+
+$$
+P(\theta\vert D) = \frac{P(D\vert\theta)P(\theta)}{P(D)}
+$$
+
+Previously, we computed a "lowly point estimate" for this quantity — the MAP — as:
+
+$$
+\begin{align*}
+\theta_{MAP}
+&= \underset{\theta}{\arg\max}\ \log \prod\limits_{i=1}^{m} P(y^{(i)}\vert x^{(i)}; \theta)P(\theta)\\
+&= \underset{\theta}{\arg\max}\ \log \prod\limits_{i=1}^{m} P(\theta\vert (y^{(i)}, x^{(i)}))\\
+\end{align*}
+$$
+
+While $P(y^{(i)}\vert x^{(i)}; \theta)P(\theta) \neq P(\theta\vert (y^{(i)}, x^{(i)}))$, the argmaxes of the respective products are equal. For this reason, we were able to compute a point estimate for $P(\theta\vert D)$, i.e. a "summarization" of $P(\theta\vert D)$ in a single value, without ever computing the denominator $P(D)$.
+
+(As a brief aside, please note that we could summarize $P(\theta\vert D)$ with *any* single value from this distribution. We often select the maximum likelihood estimate — the single value of $\theta$ that most likely gave rise to our data, or the MAP — the single value of $\theta$ that most likely gave rise to our data and most plausibly occurred itself.)
+
+To compute $P(\theta\vert D)$ itself — trivially, a full distribution as the term suggests — we will need to compute $P(D)$ after all. As before, this can be accomplished via marginalization:
+
+$$
+\begin{align*}
+P(\theta\vert D)
+&= \frac{P(D\vert\theta)P(\theta)}{P(D)}\\
+&= \frac{P(D, \theta)}{P(D)}\\
+&= \frac{P(D, \theta)}{\int P(D, \theta)d\theta}\\
+\end{align*}
+$$
+
+## Exact inference
+
+## Approximate inference
+As $\theta$ takes continuous values, we can no longer employ the "delete and collapse" method of discrete marginalization. Furthermore, in all but trivial cases, $\theta$ is a high-dimensional vector or matrix. As such, we're left to compute a "high-dimensional integral that lacks an analytic (closed-form) solution — this is the central computational challenge in inference."[^1]
+
+As such, computing the full distribution $P(\theta\vert D)$ becomes *approximating* the full distribution $P(\theta\vert D)$.
+
 - approximate inference:
   - variational inference for the ELBO because the denominator is hard
     - faster
@@ -246,3 +281,5 @@ $$
   - fidelity
   - small world
   - the robo post
+
+[^1]: [Edward — Inference of Probabilistic Models](http://edwardlib.org/tutorials/inference)
