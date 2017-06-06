@@ -11,7 +11,7 @@ The [previous post]({filename}/articles/minimizing_the_negative_log_likelihood_i
 
 In this post, we're going to stay on the surface: instead of deconstructing common models, we're going to further explore the relationships between them — swimming to different corners of the pool itself. Keeping us afloat will be Bayes' theorem — a balanced, dependable yet at times fragile pool ring, so to speak — which we'll take with us wherever we go.
 
-![](https://c1.staticflickr.com/7/6151/6137348439_199f5119be_b.jpg)
+![pool ring](https://c1.staticflickr.com/7/6151/6137348439_199f5119be_b.jpg)
 
 While there are many potential themes of probabilistic models we might explore, we'll herein focus on two: **generative vs. discriminative models**, and **"fully Bayesian" vs. "lowly point estimate" learning**. We will stick to the supervised setting as well.
 
@@ -401,6 +401,6 @@ Finally, with distributional estimates in hand, we can begin to make more robust
 
 Many thanks for reading, and to our pool ring Bayes'.
 
-![](https://ak8.picdn.net/shutterstock/videos/19157749/thumb/2.jpg)
+![girls having drinks on pool rings](https://ak8.picdn.net/shutterstock/videos/19157749/thumb/2.jpg)
 
 [^1]: [Edward — Inference of Probabilistic Models](http://edwardlib.org/tutorials/inference)
