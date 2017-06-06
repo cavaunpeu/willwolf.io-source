@@ -4,14 +4,14 @@ Author: Will Wolf
 Lang: en
 Slug: further-exploring-common-probabilistic-models
 Status: published
-Summary:
-Image:
+Summary: Exploring generative vs. discriminative models, and sampling and variational methods for approximate inference through the lens of Bayes' theorem.
+Image: images/pool_ring.jpg
 
 The [previous post]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md) on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them for fun and profit — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
 
 In this post, we're going to stay on the surface: instead of deconstructing common models, we're going to further explore the relationships between them — swimming to different corners of the pool itself. Keeping us afloat will be Bayes' theorem — a balanced, dependable yet at times fragile pool ring, so to speak — which we'll take with us wherever we go.
 
-![](http://www.yourfaxlesspaydayloan.com/wp-content/uploads/2014/05/inner_tube.png)
+![](https://c1.staticflickr.com/7/6151/6137348439_199f5119be_b.jpg)
 
 While there are many potential themes of probabilistic models we might explore, we'll herein focus on two: **generative vs. discriminative models**, and **"fully Bayesian" vs. "lowly point estimate" learning**. We will stick to the supervised setting as well.
 
