@@ -1,27 +1,27 @@
-Title: The Bayesian Formalism: Further Exploring Common Probabilistic Models
-Date: 2017-04-07 10:07
+Title: Further Exploring Common Probabilistic Models
+Date: 2017-07-06 10:00
 Author: Will Wolf
 Lang: en
 Slug: further-exploring-common-probabilistic-models
-Status: draft
+Status: published
 Summary:
 Image:
 
-The [previous post]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md) on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them effectively — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
+The [previous post]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md) on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them for fun and profit — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
 
-In this post, we're going to stay on the surface: instead of deconstructing common models, we're going to further explore the relationships between them — swimming to different corners of the pool itself. Keeping us afloat will be Bayes' theorem — our balanced, dependable yet at times fragile pool tube, so to speak — which we'll take with us wherever we go.
+In this post, we're going to stay on the surface: instead of deconstructing common models, we're going to further explore the relationships between them — swimming to different corners of the pool itself. Keeping us afloat will be Bayes' theorem — a balanced, dependable yet at times fragile pool ring, so to speak — which we'll take with us wherever we go.
 
 ![](http://www.yourfaxlesspaydayloan.com/wp-content/uploads/2014/05/inner_tube.png)
 
 While there are many potential themes of probabilistic models we might explore, we'll herein focus on two: **generative vs. discriminative models**, and **"fully Bayesian" vs. "lowly point estimate" learning**. We will stick to the supervised setting as well.
 
-Finally, our pool tube is not a godhead — we are not nautical missionaries brandishing a divine statistical truth, demanding that each model we encounter interpret this truth in a rigid, bottom-up fashion. Instead, we'll begin with the goals, advantages and limitations of each model type, and fall back on Bayes' theorem to bridge the gaps between. Without it, we'd quickly start sinking.
+Finally, our pool ring is not a godhead — we are not nautical missionaries brandishing a divine statistical truth, demanding that each model we encounter interpret this truth in a rigid, bottom-up fashion. Instead, we'll explore the unique goals, formulations and shortcomings of each, and fall back on Bayes' theorem to bridge the gaps between. Without it, we'd quickly start sinking.
 
 # Discriminative vs. generative models
 The goal of a supervised model is to compute the distribution over outcomes $y$ given an input $x$, written $P(y\vert x)$. If $y$ is discrete, this distribution is a probability mass function, e.g. a multinomial or binomial distribution. If continuous, it is a probability density function, e.g. a Gaussian distribution.
 
 ## Discriminative models
-In discriminative models, we immediately direct our focus to this output distribution. Taking an example from the previous post, let's assume a softmax regression which receives some data $x$ and predicts a multi-class label `red or green or blue`. The model's output distribution is therefore multinomial; a multinomial distribution requires as a parameter a vector $\pi$ of respective outcome probabilities: `pi = {red: .27, green: .11, blue: .62}`, for example. We can compute these individual probabilities via the softmax function, where:
+In discriminative models, we immediately direct our focus to this output distribution. Taking an example from the [previous post]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md), let's assume a softmax regression which receives some data $x$ and predicts a multi-class label `red or green or blue`. The model's output distribution is therefore multinomial; a multinomial distribution requires as a parameter a vector $\pi$ of respective outcome probabilities, e.g. `{red: .27, green: .11, blue: .62}`. We can compute these individual probabilities via the softmax function, where:
 
 - $\pi_k = \frac{e^{\eta_k}}{\sum\limits_{k=1}^K e^{\eta_k}}$
 - $\eta_k = \theta_k^Tx$
@@ -30,7 +30,7 @@ In discriminative models, we immediately direct our focus to this output distrib
 ### Inference
 Typically, we perform inference by taking the *maximum likelihood estimate*: "which parameters $\theta$ most likely gave rise to the observed data pairs $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$ via the relationships described above?" We compute this estimate by maximizing the log-likelihood function with respect to $\theta$, or equivalently minimizing the negative log-likelihood in identical fashion — the latter better known as a "loss function" in machine learning parlance.
 
-Unfortunately, the maximum likelihood estimate includes no information about the plausibility of the chosen parameter value itself. As such, we often place a *prior* on our parameter and take the ["argmax"](https://en.wikipedia.org/wiki/Arg_max) over their product. This gives the *maximum a posterior* estimate, or MAP.
+Unfortunately, the maximum likelihood estimate includes no information about the plausibility of the chosen parameter value itself. As such, we often place a *prior* on our parameter and take the ["argmax"](https://en.wikipedia.org/wiki/Arg_max) over their product. This gives the *maximum a posteriori* estimate, or MAP.
 
 $$
 \begin{align*}
@@ -54,28 +54,29 @@ Consider the following three scenarios — taken from Daphne Koller's [Learning 
 
 > Two teams play 10 times, and the first wins 7 of the 10 matches.
 
-\> *Estimate that the probability of the first team winning is 0.7.*
+\> *Infer that the probability of the first team winning is 0.7.*
 
 Seems reasonable, right?
 
 > A coin is tossed 10 times, and comes out `heads` on 7 of the 10 tosses.
 
-\> *Estimate that the probability of observing `heads` is 0.7.*
+\> *Infer that the probability of observing `heads` is 0.7.*
 
 Changing only the analogy, this now seems wholly unreasonable — right?
 
 > A coin is tossed 10000 times, and comes out `heads` on 7000 of the 10000 tosses.
 
-\> *Estimate that the probability of observing `heads` is 0.7.*
+\> *Infer that the probability of observing `heads` is 0.7.*
 
-Finally, increasing the observed counts, the previous scenario seems plausible once more.
+Finally, increasing the observed counts, the previous scenario now seems plausible.
 
-I find this a terrific succession of examples with which to convey the notion of *uncertainty* — that the more data we have, the less uncertain we are about what's really going on. This notion is at the heart of Bayesian statistics and is extremely intuitive to us as humans. Unfortunately, when we compute "lowly point estimates," i.e. the argmin of the loss function with respect to our parameters $\theta$, we are discarding this uncertainty entirely. Should our model be fit with $n$ observations where $n$ is not a large number, our estimate would amount to that of Example #2: *a coin is tossed $n$ times, and comes out `heads` on `int(.7n)` of the `n` tosses — estimate that the probability of observing `heads` is squarely, immovably, `0.7`.*
+I find this a terrific succession of examples with which to convey the notion of *uncertainty* — that the more data we have, the less uncertain we are about what's really going on. This notion is at the heart of Bayesian statistics and is extremely intuitive to us as humans. Unfortunately, when we compute "lowly point estimates," i.e. the argmin of the loss function with respect to our parameters $\theta$, we are discarding this uncertainty entirely. Should our model be fit with $n$ observations where $n$ is not a large number, our estimate would amount to that of Example #2: *a coin is tossed $n$ times, and comes out `heads` on `int(.7n)` of `n` tosses — infer that the probability of observing `heads` is squarely, unflinchingly, `0.7`.*
 
-Conversely, what does *including* uncertainty look like? It looks like a *distribution*: a range of possible values for $\theta$. Further, these values are of varying plausibility as dictated by the data we've observed. In Example #2, while we'd still say that $\Pr(\text{heads}) = .7$ is the parameter value *most likely* to have generated our data, we'd additionally maintain that values in $[.3, .9]$ are plausible, albeit less so, as well. Again, this logic should be simple to grasp: it comes easy to us as humans.
+#### What does including uncertainty look like?
+It looks like a *distribution* — a range of possible values for $\theta$. Further, these values are of varying plausibility as dictated by the data we've observed. In Example #2, while we'd still say that $\Pr(\text{heads}) = .7$ is the parameter value *most likely* to have generated our data, we'd additionally maintain that other values in $(0, 1)$ are plausible, albeit less so, as well. Again, this logic should be simple to grasp: it comes easy to us as humans.
 
 ### Prediction
-With the parameter $\theta$ in hand prediction is simple: just plug back into our original function $P(y\vert x)$. With a point estimate for $\theta$, we'll compute but a lowly point estimate for $y$.
+With the parameter $\theta$ in hand prediction is simple: just plug back into our original function $P(y\vert x)$. With a point estimate for $\theta$, we compute but a single value for $y$.
 
 ## Generative models
 In generative models, we instead compute *component parts* of the desired output distribution $P(y\vert x)$ instead of directly computing $P(y\vert x)$ itself. To examine these parts, we'll turn to Bayes' theorem:
@@ -84,24 +85,26 @@ $$
 P(y\vert x) = \frac{P(x\vert y)P(y)}{P(x)}
 $$
 
-The numerator posits a generative mechanism for the observed data pairs $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$ in idiomatic terms. Specifically, it states that each pair was generated by:
+The numerator posits a generative mechanism for the observed data pairs $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$ in idiomatic terms; it states that each pair was generated by:
 
-1. Selecting a label $y^{(i)}$ from $P(y)$. If our model is predicting `red or green or blue`, $P(y)$ is likely a multinomial distribution. (If our observed label counts are `{'red': 20, 'green': 50, blue: 30}`, we would retrodictively believe this multinomial distribution to have had a parameter vector near $\pi = [.2, .5, .3]$.)
+1. Selecting a label $y^{(i)}$ from $P(y)$. If our model is predicting `red or green or blue`, $P(y)$ is likely a multinomial distribution.
+    - If our observed label counts are `{'red': 20, 'green': 50, 'blue': 30}`, we would retrodictively believe this multinomial distribution to have had a parameter vector near $\pi = [.2, .5, .3]$.
 2. Given a label $y^{(i)}$, select a value $x^{(i)}$ from $P(x\vert y)$. Trivially, this means that we are positing *three distinct distributions* of this form: $P(x\vert y=\text{red}), P(x\vert y=\text{green}), P(x\vert y=\text{blue})$.
+    - For example, if $y^{(i)} = \text{red}$, draw $x^{(i)}$ from $P(x\vert y=\text{red})$, and so forth.
 
 ### Inference
-The inference task is to compute $P(y)$ and each distinct $P(x\vert y_k)$. In a classification setting, the former is likely a multinomial distribution. The latter might be a multinomial distribution in the case of discrete-feature data, a set of binomial distributions in the case of discrete-feature data, or a set of Gaussian distributions in the case of continuous-feature data. In fact, these distributions can be whatever you'd like, dictated by the assumptions you make in your model.
+The inference task is to compute $P(y)$ and each distinct $P(x\vert y_k)$. In a classification setting, the former is likely a multinomial distribution. The latter might be a multinomial distribution or a set of binomial distributions in the case of discrete-feature data, or a set of Gaussian distributions in the case of continuous-feature data. In fact, these distributions can be whatever you'd like, dictated by the idiosyncrasies of the problem at hand.
 
 Finally, we can compute these distributions as per normal: via a maximum likelihood estimate, a MAP estimate, etc.
 
 ### Prediction
-To compute $P(y\vert x)$ we return to the beginning of this section:
+To compute $P(y\vert x)$ we return to Bayes' theorem:
 
 $$
 P(y\vert x) = \frac{P(x\vert y)P(y)}{P(x)}
 $$
 
-We now have the numerator $P(y)$ in hand and three distinct conditional distributions $P(x\vert y=\text{red}), P(x\vert y=\text{green})$ and $P(x\vert y=\text{blue})$. What about the denominator?
+We have the numerator $P(y)$ and three distinct conditional distributions $P(x\vert y=\text{red}), P(x\vert y=\text{green})$ and $P(x\vert y=\text{blue})$ in hand. What about the denominator?
 
 #### Conditional probability and marginalization
 The axiom of conditional probability allows us to write $P(B\vert A)P(A) = P(B, A)$, i.e. the *joint probability* of $B$ and $A$. This is a simple algebraic manipulation. As such, we can rewrite Bayes' theorem in its more compact form.
@@ -130,7 +133,7 @@ Marginalization took me a while to understand. Imagine we have the following joi
 | $a^2$ | $b^8$ | $.23$ |
 | $a^3$ | $b^8$ | $.17$ |
 
-The result of marginalization is $P(B)$, i.e. "what is the probability of observing each of the distinct values of $B$?" In this example there are two — $b^7$ and $b^8$. To marginalize over $A$, we simply:
+The result of this marginalization is $P(B)$, i.e. "what is the probability of observing each of the distinct values of $B$?" In this example there are two — $b^7$ and $b^8$. To marginalize over $A$, we simply:
 
 1. Delete the $A$ column.
 2. "Collapse" the remaining columns — in this case, $B$.
@@ -153,7 +156,8 @@ Step 2 gives:
 | $b^7$ | $.03 + .09 = .12$|
 | $b^8$ | $.14 + .34 + .23 + .17 = .88$|
 
-In the context of our generative model with a given input $x$, the result of this marginalization is a *scalar* — not a distribution. To see why, let's construct the joint distribution then marginalize:
+#### The denominator
+In the context of our generative model with a given input $x$, the result of this marginalization is a *scalar* — not a distribution. To see why, let's construct the joint distribution — the numerator — then marginalize:
 
 $P(x, y)$:
 
@@ -195,29 +199,29 @@ P(x\vert y = k) \neq 1
 \end{align*}
 $$
 
-Since $(1)$ is always true, $(2)$ would also have to hold true such that:
+Since $(1)$ is always true, the "$\neq$" in $(2)$ would need to become an "$=$" such that:
 
 $$
-\sum\limits_{k = 1}^K P(y = k)P(x\vert y = k) = \sum\limits_{k = 1}^K P(x, y = k) = 1
+\sum\limits_{k = 1}^K P(y = k)P(x\vert y = k) = 1
 $$
 
-Unfortunately, this is rarely the case.
+Unfortunately, $P(x\vert y = k) = 1$ is rarely if ever the case.
 
-As you'll now note, the $x$-specific partition function gives an equivalent result to the marginalized-over-$y$ joint distribution: a scalar value $P(x)$ with which to normalize the numerator. However, crucially, please keep in mind:
+As you'll now note, the $x$-specific partition function gives a result equivalent to that of the marginalized-over-$y$ joint distribution: a scalar value $P(x)$ with which to normalize the numerator. However, crucially, please keep in mind:
 
--  *The partition function is a specific component of a probabilistic model which always yields a scalar*.
-- *Marginalization is a much more general operation performed on a probability distribution, which yields a scalar only when the remaining variables(s) are homogeneous, i.e. each remaining columns contains a single distinct value.*
-  - In the majority of cases it will simply yield a reduced probability distribution over many value configurations, similar to the $P(B)$ example above.
+-  *The partition function is a specific component of a probabilistic model. It always yields a scalar*.
+- *Marginalization is a **much more general** operation performed on a probability distribution, which yields a scalar only when the remaining variables(s) are homogeneous, i.e. each remaining column contains a single distinct value.*
+  - In the majority of cases, marginalization will simply yield a reduced probability distribution over many value configurations, similar to the $P(B)$ example above.
 
 #### In practice, this is superfluous
-If we neglect to compute $P(x)$, i.e. if we don't normalize our joint distributions $P(x, y = k)$, we'll be left with an invalid probability distribution $\tilde{P}(y\vert x)$ in which the values do not sum to 1. This distribution might look like `P(y|x) = {'red': .00047, 'green': .0011, 'blue': .0000853}`. *If our goal is to simply compute the most likely label, taking the argmax of this unnormalized distribution works just fine.* This follows trivially from our Bayesian pool ring:
+If we neglect to compute $P(x)$, i.e. if we don't normalize our joint distributions $P(x, y = k)$, we'll be left with an invalid probability distribution $\tilde{P}(y\vert x)$ whose values do not sum to 1. This distribution might look like `P(y|x) = {'red': .00047, 'green': .0011, 'blue': .0000853}`. *If our goal is to simply compute the most likely label, taking the argmax of this unnormalized distribution works just fine.* This follows trivially from our Bayesian pool ring:
 
 $$
 \underset{y}{\arg\max}\ \frac{P(x, y)}{P(x)} = \underset{y}{\arg\max}\ P(x, y)
 $$
 
 # "Fully Bayesian learning"
-We previously lamented the shortcomings of "lowly point estimates" and sang the praises of computing estimates as full distributions. Unfortunately, this is a computationally-hard thing to do.
+We previously lamented the shortcomings of "lowly point estimates" and sang the praises of inferring the full distribution instead. Unfortunately, this is often a computationally-hard thing to do.
 
 To see why, let's revisit Bayes' theorem. Assume we are estimating the parameters $\theta$ of a softmax regression model and have placed a prior on $\theta$. In concrete terms, this estimate can be written as $P(\theta\vert D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)})))$: the distribution over our belief in the true value of $\theta$ given the data we've observed. Bayes' theorem allows us to expand this quantity into:
 
@@ -225,7 +229,7 @@ $$
 P(\theta\vert D) = \frac{P(D\vert\theta)P(\theta)}{P(D)}
 $$
 
-Previously, we computed a "lowly point estimate" for this quantity — the MAP — as:
+Previously, we computed a "lowly point estimate" for this distribution — the MAP — as:
 
 $$
 \begin{align*}
@@ -235,11 +239,11 @@ $$
 \end{align*}
 $$
 
-While $P(y^{(i)}\vert x^{(i)}; \theta)P(\theta) \neq P(\theta\vert (y^{(i)}, x^{(i)}))$, the argmaxes of the respective products are equal. For this reason, we were able to compute a point estimate for $P(\theta\vert D)$, i.e. a "summarization" of $P(\theta\vert D)$ in a single value, without ever computing the denominator $P(D)$.
+While $P(y^{(i)}\vert x^{(i)}; \theta)P(\theta) \neq P(\theta\vert (y^{(i)}, x^{(i)}))$, the argmaxes of the respective products *are* equal. For this reason, we were able to compute a point estimate for $P(\theta\vert D)$, i.e. a "summarization" of $P(\theta\vert D)$ in a single value, without ever computing the denominator $P(D)$.
 
-(As a brief aside, please note that we could summarize $P(\theta\vert D)$ with *any* single value from this distribution. We often select the maximum likelihood estimate — the single value of $\theta$ that most likely gave rise to our data, or the MAP — the single value of $\theta$ that most likely gave rise to our data and most plausibly occurred itself.)
+(As a brief aside, please note that we could summarize $P(\theta\vert D)$ with *any* single value from this distribution. We often select the maximum likelihood estimate — the single value of $\theta$ that most likely gave rise to our data, or the MAP — the single value of $\theta$ that both most likely gave rise to our data and most plausibly occurred itself.)
 
-To compute $P(\theta\vert D)$ itself — trivially, a full distribution as the term suggests — we will need to compute $P(D)$ after all. As before, this can be accomplished via marginalization:
+To compute $P(\theta\vert D)$ — trivially, a full distribution as the term suggests — we will need to compute $P(D)$ after all. As before, this can be accomplished via marginalization:
 
 $$
 \begin{align*}
@@ -250,18 +254,18 @@ P(\theta\vert D)
 \end{align*}
 $$
 
-As $\theta$ takes continuous values, we can no longer employ the "delete and collapse" method of marginalization in discrete distributions. Furthermore, in all but trivial cases, $\theta$ is a high-dimensional vector or matrix, leaving us to compute a "high-dimensional integral that lacks an analytic (closed-form) solution — the central computational challenge in inference."[^1]
+Since $\theta$ takes continuous values, we can no longer employ the "delete and collapse" method of marginalization in discrete distributions. Furthermore, in all but trivial cases, $\theta$ is a high-dimensional vector or matrix, leaving us to compute a "high-dimensional integral that lacks an analytic (closed-form) solution — the central computational challenge in inference."[^1]
 
-As such, computing the full distribution $P(\theta\vert D)$ becomes *approximating* the full distribution $P(\theta\vert D)$. To this end, we'll introduce two families of algorithms.
+As such, computing the full distribution $P(\theta\vert D)$ is *approximating* the full distribution $P(\theta\vert D)$. To this end, we'll introduce two new families of algorithms.
 
 ## Markov chain monte carlo
-In small to medium-sized models, we often take an alternative ideological approach to approximating $P(\theta\vert D)$: instead of computing a distribution — a gory algebraic expression whose shape is dictated by a few canonical parameters — we produce *samples* from this distribution. Roughly speaking, the aggregate of these samples then gives, retrodictively, the distribution itself. The general family of these methods is known as those of Markov chain monte carlo, or MCMC.
+In small to medium-sized models, we often take an alternative ideological approach to approximating $P(\theta\vert D)$: instead of computing a distribution, i.e. the canonical parameters of a gory algebraic expression which control its shape — we produce *samples* from this distribution. Roughly speaking, the aggregate of these samples then gives, retrodictively, the distribution itself. The general family of these methods is known as Markov chain monte carlo, or MCMC.
 
-In simple terms, MCMC estimation for a given parameter $\phi$ works as follows:
+In simple terms, MCMC inference for a given parameter $\phi$ works as follows:
 
 1. Initialize $\phi$ to some value $\phi_{\text{current}}$.
-2. Compute the prior probability of $\phi_{\text{current}}$ and the probability of having observed our data under $\phi_{\text{current}}$ — $P(\phi_{\text{current}})$ and $P(D\vert \phi_{\text{current}})$, respectively. Their product gives $P(D, \phi_{\text{current}})$ — the joint probability of having observed the proposed parameter estimate and our observed data.
-3. Add $\phi_{\text{current}}$ into a big plastic bucket of "accepted values."
+2. Compute the prior probability of $\phi_{\text{current}}$ and the probability of having observed our data under $\phi_{\text{current}}$ — $P(\phi_{\text{current}})$ and $P(D\vert \phi_{\text{current}})$, respectively. Their product gives $P(D, \phi_{\text{current}})$ — the joint probability of having observed the proposed parameter value and our observed data given this value.
+3. Add $\phi_{\text{current}}$ to a big green plastic bucket of "accepted values."
 4. Propose moving to a new, nearby value $\phi_{\text{proposal}}$. This value is drawn from an entirely separate *sampling distribution* which bears no influence on our prior $P(\phi)$ nor likelihood function $P(D\vert \phi)$. Repeat Step 2 using $\phi_{\text{proposal}}$ instead of $\phi_{\text{current}}$.
 5. Walk the following tree:
     - If $P(D, \phi_{\text{proposal}}) \gt P(D, \phi_{\text{current}})$:
@@ -274,10 +278,10 @@ In simple terms, MCMC estimation for a given parameter $\phi$ works as follows:
       - Else:
         - Move to Step 4.
 
-After a few thousand iterations — and discarding the first few hundred, in which we drunkenly amble towards the region of high joint probability — we now have a bucket of samples from our desired posterior distribution. Nota bene: we never had to touch the high-dimensional integral $\int P(D, \theta)d\theta$.
+After collecting a few thousand samples — and discarding the first few hundred, in which we drunkenly amble towards the region of high joint probability (a quantity *proportional* to the posterior probability) — we now have a bucket of samples from our desired posterior distribution. Nota bene: we never had to touch the high-dimensional integral $\int P(D, \theta)d\theta$.
 
 ## Variational inference
-In large-scale models, MCMC methods are often too slow. Conversely, variational inference provides a framework for casting the problem of posterior approximation as an *optimization* problem — far faster than a sampling-based approach. This yields an *analytical* approximation to $P(\theta\vert D)$. The following explanation of variational inference is taken largely from a previous post of mine: [Transfer Learning for Flight Delay Prediction]({filename}/articles/transfer-learning-flight-delay-prediction.md).
+In large-scale models, MCMC methods are often too slow. Conversely, variational inference provides a framework for casting the problem of posterior approximation as one of *optimization* — far faster than a sampling-based approach. This yields an *analytical* approximation to $P(\theta\vert D)$. The following explanation of variational inference is taken largely from a previous post of mine: [Transfer Learning for Flight Delay Prediction]({filename}/articles/transfer-learning-flight-delay-prediction.md).
 
 For our approximating distribution we'll choose one that is simple, parametric and familiar: the normal (Gaussian) distribution, parameterized by some set of parameters $\lambda$.
 
@@ -287,7 +291,7 @@ Our goal is to force this distribution to closely resemble the original; the [KL
 
 $$KL(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D)) = \int{q_{\lambda}(\theta\vert D)\log\frac{q_{\lambda}(\theta\vert D)}{P(\theta\vert D)}d\theta}$$
 
-Our goal is to obtain the argmin with respect to $\lambda$:
+To this end, we compute its argmin with respect to $\lambda$:
 
 $$q_{\lambda}^{*}(\theta\vert D) = \underset{\lambda}{\arg\min}\ \text{KL}(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D))$$
 
@@ -304,7 +308,7 @@ KL(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D))
 \end{align*}
 $$
 
-As such, since only the left term depends on $\lambda$, minimizing the entire expression with respect to $\lambda$ amounts to minimizing this term. Incidentally, the opposite (negative) of this term is called the [ELBO](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/lectures/variational-inference-i.pdf), or the "evidence lower bound."
+Since only the integral depends on $\lambda$, minimizing the entire expression with respect to $\lambda$ amounts to minimizing this term. Incidentally, the opposite (negative) of this term is called the [ELBO](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/lectures/variational-inference-i.pdf), or the "evidence lower bound."
 
 $$
 ELBO(\lambda) = -\int{q_{\lambda}(\theta\vert D)\bigg(\log{q_{\lambda}(\theta\vert D)} -\log{P(\theta, D)}}\bigg)d\theta
@@ -314,7 +318,7 @@ To see why, let's plug the ELBO into the equation above and solve for $\log{P(D)
 
 $$\log{P(D)} = ELBO(\lambda) + KL(q_{\lambda}(\theta\vert D)\Vert P(\theta\vert D))$$
 
-In English: "the log of the evidence is at least the lower bound of the evidence plus the divergence between our true posterior $P(\theta\vert D)$ and our (variational) approximation to this posterior $q_{\lambda}(\theta\vert D)$."
+In English: "the log of the evidence is at least the lower bound of the evidence plus the divergence from our (variational) approximation of the posterior $q_{\lambda}(\theta\vert D)$ to our true posterior $P(\theta\vert D)$."
 
 As such, minimizing this divergence is equivalent to *maximizing* the ELBO, as:
 
@@ -336,7 +340,7 @@ ELBO(\lambda)
 \end{align*}
 $$
 
-Our goal is to maximize this expression or minimize the opposite:
+Again, our goal is to maximize this expression or minimize its opposite:
 
 $$
 -\log{P(D\vert \theta)} + KL(q_{\lambda}(\theta\vert D)\Vert P(\theta))
@@ -346,14 +350,14 @@ One step further, we obtain:
 
 $$
 \begin{align*}
-&= \log{P(D\vert \theta)} -q_{\lambda}(\theta\vert D)\log{q_{\lambda}(\theta\vert D)} + q_{\lambda}(\theta\vert D)\log{P(\theta)}\\
-&= \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{P(D\vert \theta)} -\log{q_{\lambda}(\theta\vert D)} + \log{P(\theta)}]\\
-&= \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{P(D,  \theta)} -\log{q_{\lambda}(\theta\vert D)}]\\
-&= \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{P(D,  \theta)}] - \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{q_{\lambda}(\theta\vert D)}]\\
+&= -\log{P(D\vert \theta)} + q_{\lambda}(\theta\vert D)\log{q_{\lambda}(\theta\vert D)} - q_{\lambda}(\theta\vert D)\log{P(\theta)}\\
+&= \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[-\log{P(D\vert \theta)} +\log{q_{\lambda}(\theta\vert D)} - \log{P(\theta)}]\\
+&= \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[-\big(\log{P(D,  \theta)} -\log{q_{\lambda}(\theta\vert D)}\big)]\\
+&= -\mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{P(D,  \theta)}] + \mathop{\mathbb{E}}_{q_{\lambda}(\theta\vert D)}[\log{q_{\lambda}(\theta\vert D)}]\\
 \end{align*}
 $$
 
-In machine learning parlance: "minimize the negative log joint probability of our data given $\theta$ — a MAP estimate — plus the negative entropy of our variational approximation." Minimizing the latter encourages our approximation to have low-entropy, i.e. to distribute its mass in a conservative fashion.
+In machine learning parlance: "minimize the negative log joint probability of our data and parameter $\theta$ — a MAP estimate — plus the entropy of our variational approximation." As a *higher* entropy is desirable — an approximation which distributes its mass in a *conservative* fashion — this minimization is a balancing act between the two terms.
 
 For a more in-depth discussion of both entropy and KL-divergence please see [Minimizing the Negative Log-Likelihood, in English]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md).
 
@@ -368,10 +372,10 @@ P(y\vert x, D)
 \end{align*}
 $$
 
-- The right term under the integral is the posterior distribution of our parameter $\theta$ given the "training" data, $P(\theta\vert D)$. Since it does not depend on a new input $x$ we can remove $x$.
-- The left term under the integral is our likelihood function: given an $x$ and a $\theta$, it produces a $y$. While this function does depend on $\theta$, whose values are pulled from our posterior $P(\theta\vert D)$, it does not depend on $D$ itself. As such, we can remove $D$.
+- The right term under the integral is the posterior distribution of our parameter $\theta$ given the "training" data, $P(\theta\vert D)$. Since it does not depend on a new input $x$ we have removed $x$.
+- The left term under the integral is our likelihood function: given an $x$ and a $\theta$, it produces a $y$. While this function does depend on $\theta$ — whose values are pulled from our posterior $P(\theta\vert D)$ — it does not depend on $D$ itself. As such, we have removed $D$.
 
-Integrating over $\theta$ yields a distribution over $y$: we've now captured not just the uncertainty in *inference*, but also the uncertain in our *prediction* as well.
+Integrating over $\theta$ yields a distribution over $y$: we've now captured not just the uncertainty in *inference*, but also the corresponding uncertain in our *predictions*.
 
 # What do these distributions actually do for me?
 Said differently, "why is it important to quantify uncertainty?"
@@ -389,12 +393,12 @@ I think we, as humans, are exceptionally qualified to answer this question: we n
   - Call three friends to ask if they think that this makes sense.
 - An extremely sketchy real estate broker calls to say they've found me a beautiful studio in Manhattan for $600/month, and would need to confirm in the next 24 hours if I'd like to take it. Do I:
   - Take it.
-  - Call three friends to ask if they think that this seems makes sense.
+  - Call three friends to ask if they think that this makes sense.
 
-The notion is the same in probabilistic modeling. Furthermore, we often "not big data" with which to model, and therefore a substantially non-zero amount of uncertainty in our estimates and predictions.
+The notion is the same in probabilistic modeling. Furthermore, we often build models with "not big data," and therefore have a substantially non-zero amount of uncertainty in our parameter estimates and subsequent predictions.
 
-Finally, with distributional estimates in hand, we can begin to make more robust, measured and logical decisions. We can do this because, while point estimates give a quick summary, distributions tell a thorough story: where the peaks are, their width and height, their distance from one another, etc. For an excellent exploration of posterior decision analysis, check out Rasmus Bååth's [Probable Points and Credible Intervals, Part 2: Decision Theory](http://www.sumsar.net/blog/2015/01/probable-points-and-credible-intervals-part-two/).
+Finally, with distributional estimates in hand, we can begin to make more robust, measured and logical decisions. We can do this because, while point estimates give a quick summary of the dynamics of our system, distributions tell the full, thorough story: where the peaks are, their width and height, their distance from one another, etc. For an excellent exploration of what we can do with posterior distributions, check out Rasmus Bååth's [Probable Points and Credible Intervals, Part 2: Decision Theory](http://www.sumsar.net/blog/2015/01/probable-points-and-credible-intervals-part-two/).
 
-Thanks for reading.
+Many thanks for reading.
 
 [^1]: [Edward — Inference of Probabilistic Models](http://edwardlib.org/tutorials/inference)
