@@ -44,12 +44,12 @@ The $\log{P(\theta)}$ term can be easily rearranged into what is better known as
 
 The argmax finds the point(s) $\theta$ at which the given function attains its maximum value. As such, the typical discriminative model — softmax regression, logistic regression, linear regression, etc. — returns a single, lowly point estimate for the parameter in question.
 
-#### How do we compute this value?
+### How do we compute this value?
 In the trivial case where $\theta$ is 1-dimensional, we can take the derivative of the function in question with respect to $\theta$, set it equal to 0, then solve for $\theta$. (Additionally, in order to verify that we have indeed obtained a maximum, we should compute a second derivative and assert that its value is negative.)
 
 In the more realistic case where $\theta$ is a high-dimensional vector or matrix, we can compute the argmax by way of an optimization routine like stochastic gradient ascent or, as is more common, the argmin by way of stochastic gradient descent.
 
-#### What if we're uncertain about our parameter estimates?
+### What if we're uncertain about our parameter estimates?
 Consider the following three scenarios — taken from Daphne Koller's [Learning in Probabilistic Graphical Models](https://www.coursera.org/learn/probabilistic-graphical-models-3-learning/home/welcome).
 
 > Two teams play 10 times, and the first wins 7 of the 10 matches.
@@ -72,7 +72,7 @@ Finally, increasing the observed counts, the previous scenario now seems plausib
 
 I find this a terrific succession of examples with which to convey the notion of *uncertainty* — that the more data we have, the less uncertain we are about what's really going on. This notion is at the heart of Bayesian statistics and is extremely intuitive to us as humans. Unfortunately, when we compute "lowly point estimates," i.e. the argmin of the loss function with respect to our parameters $\theta$, we are discarding this uncertainty entirely. Should our model be fit with $n$ observations where $n$ is not a large number, our estimate would amount to that of Example #2: *a coin is tossed $n$ times, and comes out `heads` on `int(.7n)` of `n` tosses — infer that the probability of observing `heads` is squarely, unflinchingly, `0.7`.*
 
-#### What does including uncertainty look like?
+### What does including uncertainty look like?
 It looks like a *distribution* — a range of possible values for $\theta$. Further, these values are of varying plausibility as dictated by the data we've observed. In Example #2, while we'd still say that $\Pr(\text{heads}) = .7$ is the parameter value *most likely* to have generated our data, we'd additionally maintain that other values in $(0, 1)$ are plausible, albeit less so, as well. Again, this logic should be simple to grasp: it comes easy to us as humans.
 
 ### Prediction
@@ -106,7 +106,7 @@ $$
 
 We have the numerator $P(y)$ and three distinct conditional distributions $P(x\vert y=\text{red}), P(x\vert y=\text{green})$ and $P(x\vert y=\text{blue})$ in hand. What about the denominator?
 
-#### Conditional probability and marginalization
+### Conditional probability and marginalization
 The axiom of conditional probability allows us to write $P(B\vert A)P(A) = P(B, A)$, i.e. the *joint probability* of $B$ and $A$. This is a simple algebraic manipulation. As such, we can rewrite Bayes' theorem in its more compact form.
 
 $$
@@ -121,7 +121,7 @@ $$
 
 As such, we can *marginalize $y$ out of the numerator* so as to obtain the denominator we require. This denominator is often called the "evidence."
 
-##### Marginalization example
+### Marginalization example
 Marginalization took me a while to understand. Imagine we have the following joint probability distribution out of which we'd like to marginalize $A$.
 
 | $A$   | $B$   | $p$   |
@@ -156,7 +156,7 @@ Step 2 gives:
 | $b^7$ | $.03 + .09 = .12$|
 | $b^8$ | $.14 + .34 + .23 + .17 = .88$|
 
-#### The denominator
+### The denominator
 In the context of our generative model with a given input $x$, the result of this marginalization is a *scalar* — not a distribution. To see why, let's construct the joint distribution — the numerator — then marginalize:
 
 $P(x, y)$:
@@ -184,7 +184,7 @@ $$
 
 This gives $P(y\vert x)$: a valid probability distribution over the class labels $y$.
 
-#### Partition function
+### Partition function
 $P(x)$ often takes another name and even another variable: $Z$, the *partition function*. The stated purpose of this function is to normalize the numerator such that the above summation-to-1 holds. This normalization is necessary because the numerators typically will not sum to 1 themselves, which follows logically from the fact that:
 
 $$
@@ -213,7 +213,7 @@ As you'll now note, the $x$-specific partition function gives a result equivalen
 - *Marginalization is a **much more general** operation performed on a probability distribution, which yields a scalar only when the remaining variables(s) are homogeneous, i.e. each remaining column contains a single distinct value.*
   - In the majority of cases, marginalization will simply yield a reduced probability distribution over many value configurations, similar to the $P(B)$ example above.
 
-#### In practice, this is superfluous
+### In practice, this is superfluous
 If we neglect to compute $P(x)$, i.e. if we don't normalize our joint distributions $P(x, y = k)$, we'll be left with an invalid probability distribution $\tilde{P}(y\vert x)$ whose values do not sum to 1. This distribution might look like `P(y|x) = {'red': .00047, 'green': .0011, 'blue': .0000853}`. *If our goal is to simply compute the most likely label, taking the argmax of this unnormalized distribution works just fine.* This follows trivially from our Bayesian pool ring:
 
 $$
@@ -383,22 +383,24 @@ Said differently, "why is it important to quantify uncertainty?"
 I think we, as humans, are exceptionally qualified to answer this question: we need to look no further than ourselves, our choices, our environment.
 
 - The cross-walk says "go." Do I:
-  - Close my eyes, lie down for a 15-second nap in the middle of the road, then walk backwards the rest of the way?
-  - Quickly look both ways then walk leisurely across the road, keeping an eye out for cyclists at the same time.
+    - Close my eyes, lie down for a 15-second nap in the middle of the road, then walk backwards the rest of the way?
+    - Quickly look both ways then walk leisurely across the road, keeping an eye out for cyclists at the same time.
 - A company emails to say "we'd like to discuss the possibility of a full-time role." Do I:
-  - Respond saying "Great! Let's chat further" while continuing to speak with other companies.
-  - Respond saying "Great! Let's chat further" and promptly sever all contact with other companies.
+    - Respond saying "Great! Let's chat further" while continuing to speak with other companies.
+    - Respond saying "Great! Let's chat further" and promptly sever all contact with other companies.
 - An extremely reliable lifelong friend calls to say they've found me a beautiful studio in Manhattan for $600/month, and would need to confirm in the next 24 hours if I'd like to take it. Do I:
-  - Take it.
-  - Call three friends to ask if they think that this makes sense.
+    - Take it.
+    - Call three friends to ask if they think that this makes sense.
 - An extremely sketchy real estate broker calls to say they've found me a beautiful studio in Manhattan for $600/month, and would need to confirm in the next 24 hours if I'd like to take it. Do I:
-  - Take it.
-  - Call three friends to ask if they think that this makes sense.
+    - Take it.
+    - Call three friends to ask if they think that this makes sense.
 
 The notion is the same in probabilistic modeling. Furthermore, we often build models with "not big data," and therefore have a substantially non-zero amount of uncertainty in our parameter estimates and subsequent predictions.
 
 Finally, with distributional estimates in hand, we can begin to make more robust, measured and logical decisions. We can do this because, while point estimates give a quick summary of the dynamics of our system, distributions tell the full, thorough story: where the peaks are, their width and height, their distance from one another, etc. For an excellent exploration of what we can do with posterior distributions, check out Rasmus Bååth's [Probable Points and Credible Intervals, Part 2: Decision Theory](http://www.sumsar.net/blog/2015/01/probable-points-and-credible-intervals-part-two/).
 
-Many thanks for reading.
+Many thanks for reading, and to our pool ring Bayes'.
+
+![](https://ak8.picdn.net/shutterstock/videos/19157749/thumb/2.jpg)
 
 [^1]: [Edward — Inference of Probabilistic Models](http://edwardlib.org/tutorials/inference)
