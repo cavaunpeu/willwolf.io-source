@@ -269,14 +269,14 @@ In simple terms, MCMC inference for a given parameter $\phi$ works as follows:
 4. Propose moving to a new, nearby value $\phi_{\text{proposal}}$. This value is drawn from an entirely separate *sampling distribution* which bears no influence on our prior $P(\phi)$ nor likelihood function $P(D\vert \phi)$. Repeat Step 2 using $\phi_{\text{proposal}}$ instead of $\phi_{\text{current}}$.
 5. Walk the following tree:
     - If $P(D, \phi_{\text{proposal}}) \gt P(D, \phi_{\text{current}})$:
-      - Set $\phi_{\text{current}} = \phi_{\text{proposal}}$.
-      - Move to Step 3.
-    - Else:
-      - With some small probability:
         - Set $\phi_{\text{current}} = \phi_{\text{proposal}}$.
         - Move to Step 3.
-      - Else:
-        - Move to Step 4.
+    - Else:
+        - With some small probability:
+            - Set $\phi_{\text{current}} = \phi_{\text{proposal}}$.
+            - Move to Step 3.
+        - Else:
+            - Move to Step 4.
 
 After collecting a few thousand samples — and discarding the first few hundred, in which we drunkenly amble towards the region of high joint probability (a quantity *proportional* to the posterior probability) — we now have a bucket of samples from our desired posterior distribution. Nota bene: we never had to touch the high-dimensional integral $\int P(D, \theta)d\theta$.
 
