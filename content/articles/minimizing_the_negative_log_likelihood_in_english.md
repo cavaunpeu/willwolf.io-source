@@ -210,13 +210,13 @@ As such, we'd like the most conservative distribution that obeys the "utterly ba
 For `temperature`, the maximum entropy distribution is the [Gaussian distribution](https://en.wikipedia.org/wiki/Normal_distribution). Its probability density function is given as:
 
 $$
-p(y\vert \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(y - \mu)^2}{2\sigma^2}\bigg)}
+P(y\vert \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(y - \mu)^2}{2\sigma^2}\bigg)}
 $$
 
 For `cat or dog`, it is the [binomial distribution](https://en.wikipedia.org/wiki/Binomial_distribution). Its probability mass function  (for a single observation) is given as:
 
 $$
-p(\text{outcome}) =
+P(\text{outcome}) =
 \begin{cases}
 1 - \phi & \text{outcome = cat}\\
 \phi & \text{outcome = dog}\\
@@ -228,7 +228,7 @@ $$
 For `red or green or blue`, it is the [multinomial distribution](https://en.wikipedia.org/wiki/Multinomial_distribution). Its probability mass function (for a single observation) is given as:
 
 $$
-p(\text{outcome}) =
+P(\text{outcome}) =
 \begin{cases}
 \phi_{\text{red}} & \text{outcome = red}\\
 \phi_{\text{green}} & \text{outcome = green}\\
@@ -270,7 +270,7 @@ I don't relish quoting this paragraph — and especially one so deliriously ambi
 A distribution belongs to the exponential family if it can be written in the following form:
 
 $$
-p(y; \eta) = b(y)\exp(\eta^T T(y) - a(\eta))
+P(y; \eta) = b(y)\exp(\eta^T T(y) - a(\eta))
 $$
 
 where:
@@ -286,7 +286,7 @@ Since we're working with the single-parameter form, we'll assume that $\sigma^2$
 
 $$
 \begin{align*}
-p(y\vert \mu, \sigma^2)
+P(y\vert \mu, \sigma^2)
 &= \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\bigg(-\frac{(y - \mu)^2}{2\sigma^2}\bigg)}\\
 &= \frac{1}{\sqrt{2\pi}}\exp{\bigg(-\frac{(y - \mu)^2}{2}\bigg)}\\
 &= \frac{1}{\sqrt{2\pi}}\exp{\bigg(-\frac{1}{2}(y^2 - 2\mu y + \mu^2)\bigg)}\\
@@ -316,7 +316,7 @@ We previously defined the binomial distribution (for a single observation) in a 
 
 $$
 \begin{align*}
-p(y\vert \phi)
+P(y\vert \phi)
 &= \phi^y(1-\phi)^{1-y}\\
 &= \exp\bigg(\log\bigg(\phi^y(1-\phi)^{1-y}\bigg)\bigg)\\
 &= \exp\bigg(y\log{\phi} + \log(1-\phi) - y\log(1-\phi)\bigg)\\
@@ -353,7 +353,7 @@ You will recognize our expression for $\phi$ - the probability of observing the 
 Like the binomial distribution, we'll first rewrite the multinomial (for a single observation) in a more compact form. $\pi$ gives a vector of class probabilities for the $K$ classes; $k$ denotes one of these classes.
 
 $$
-p(y\vert \pi) = \prod\limits_{k=1}^{K}\pi_k^{y_k}
+P(y\vert \pi) = \prod\limits_{k=1}^{K}\pi_k^{y_k}
 $$
 
 This is almost pedantic: it says that $\Pr(y=k)$ equals the probability of observing class $k$. For example, given
@@ -376,7 +376,7 @@ Expanding into the exponential family form gives:
 
 $$
 \begin{align*}
-p(y\vert \pi)
+P(y\vert \pi)
 &= \prod\limits_{k=1}^{K}\pi_k^{y_k}\\
 &= \exp\bigg(\sum\limits_{k=1}^{K}y_k\log{\pi_k}\bigg)\\
 &= \exp\bigg(\sum\limits_{k=1}^{K-1}y_k\log{\pi_k} + \bigg(1 - \sum\limits_{k=1}^{K-1}y_k\bigg)\log\bigg(1 - \sum\limits_{k=1}^{K-1}\pi_k\bigg)\bigg)\\
@@ -452,7 +452,7 @@ Each protagonist model outputs a response variable that is distributed according
 Consider the logistic regression model that's predicting `cat or dog`. If we input a picture of a cat, we'll output "cat" according to the stated distribution.
 
 $$
-p(\text{outcome}) =
+P(\text{outcome}) =
 \begin{cases}
 1 - \phi & \text{outcome = cat}\\
 \phi & \text{outcome = dog}\\
@@ -462,7 +462,7 @@ $$
 If we input a picture of a dog, we'll output "dog" according the same distribution.
 
 $$
-p(\text{outcome}) =
+P(\text{outcome}) =
 \begin{cases}
 1 - \phi & \text{outcome = cat}\\
 \phi & \text{outcome = dog}\\
@@ -523,7 +523,7 @@ We've now discussed how each response variable is generated, and how we compute 
 To get us started, let's go back to predicting `cat or dog`. If we input a picture of a cat, we should compute $\phi \approx 0$ given our binomial distribution.
 
 $$
-p(\text{outcome}) =
+P(\text{outcome}) =
 \begin{cases}
 1 - \phi & \text{outcome = cat}\\
 \phi & \text{outcome = dog}\\
@@ -548,7 +548,7 @@ If this is not clear, consider the following example:
 We'd like to pick the parameter that most likely gave rise to our data. This is the *maximum likelihood estimate*. Mathematically, we define it as:
 
 $$
-\underset{\text{parameter}}{\arg\max}\ p(y\vert \text{parameter})
+\underset{\text{parameter}}{\arg\max}\ P(y\vert \text{parameter})
 $$
 
 As we've now seen (ad nauseum), $y$ depends on the parameter its distribution receives. Additionally, this parameter — $\mu, \phi$ or $\pi$ — is defined in terms of $\eta$. Further, $\eta = \theta^T x$. As such, $y$ is a function of $\theta$ and the observed data $x$. This is perhaps *the* elementary truism of machine learning — you've known this since Day 1.
@@ -556,13 +556,13 @@ As we've now seen (ad nauseum), $y$ depends on the parameter its distribution re
 Since our observed data are fixed, $\theta$ is the only thing that we can vary. Let's rewrite our argmax in these terms:
 
 $$
-\underset{\theta}{\arg\max}\ p(y\vert x; \theta)
+\underset{\theta}{\arg\max}\ P(y\vert x; \theta)
 $$
 
 Finally, this expression gives the argmax over a single data point, i.e. training observation, $(x^{(i)}, y^{(i)})$. To give the likelihood over all observations (assuming they are independent of one another, i.e. the outcome of the first observation should not be expected to impact that of the third), we take the product.
 
 $$
-\underset{\theta}{\arg\max} \prod\limits_{i=1}^{m}p(y^{(i)}\vert x^{(i)}; \theta)
+\underset{\theta}{\arg\max} \prod\limits_{i=1}^{m}P(y^{(i)}\vert x^{(i)}; \theta)
 $$
 
 The product of numbers in $[0, 1]$ gets very small, very quickly. Let's maximize the log-likelihood instead so we can work with sums.
@@ -643,15 +643,15 @@ Why don't we use this in machine learning models instead of the cross entropy? T
 # Maximum a posteriori estimation
 When estimating $\theta$ via the MLE, we put no constraints on the permissible values thereof. More explicitly, we allow $\theta$ to be *equally likely to assume any real number* — be it $0$, or $10$, or $-20$, or $2.37 \times 10^{36}$.
 
-In practice, this assumption is both unrealistic and superfluous: typically, we do wish to constrain $\theta$ (our weights) to a non-infinite range of values. We do this by putting a *prior* on $\theta$. Whereas the MLE computes $\underset{\theta}{\arg\max}\ p(y\vert x; \theta)$, the maximum a posteriori estimate, or MAP, computes $\underset{\theta}{\arg\max}\ p(y\vert x; \theta)p(\theta)$.
+In practice, this assumption is both unrealistic and superfluous: typically, we do wish to constrain $\theta$ (our weights) to a non-infinite range of values. We do this by putting a *prior* on $\theta$. Whereas the MLE computes $\underset{\theta}{\arg\max}\ P(y\vert x; \theta)$, the maximum a posteriori estimate, or MAP, computes $\underset{\theta}{\arg\max}\ P(y\vert x; \theta)P(\theta)$.
 
 As before, we start by taking the log. Our joint likelihood with prior now reads:
 
 $$
 \begin{align*}
 \theta_{MAP}
-&= \underset{\theta}{\arg\max}\ \log \prod\limits_{i=1}^{m} p(y^{(i)}\vert x^{(i)}; \theta)p(\theta)\\
-&= \underset{\theta}{\arg\max}\ \sum\limits_{i=1}^{m} \log{p(y^{(i)}\vert x^{(i)}; \theta)} + \log{p(\theta)}\\
+&= \underset{\theta}{\arg\max}\ \log \prod\limits_{i=1}^{m} P(y^{(i)}\vert x^{(i)}; \theta)P(\theta)\\
+&= \underset{\theta}{\arg\max}\ \sum\limits_{i=1}^{m} \log{P(y^{(i)}\vert x^{(i)}; \theta)} + \log{P(\theta)}\\
 \end{align*}
 $$
 
@@ -665,7 +665,7 @@ $$
 
 $$
 \begin{align*}
-\log{p(\theta\vert 0, V)}
+\log{P(\theta\vert 0, V)}
 &= \log\Bigg(\frac{1}{\sqrt{2\pi}V}\exp{\bigg(-\frac{(\theta - 0)^2}{2V^2}\bigg)}\Bigg)\\
 &= \log{C_1} -\frac{\theta^2}{2V^2}\\
 &= \log{C_1} - C_2\theta^2\\
@@ -716,16 +716,16 @@ Finally, in machine learning, we say that regularizing our weights ensures that 
 The key goal of a predictive model is to compute the following distribution:
 
 $$
-p(y\vert x, D) = \int p(y\vert x, D, \theta)p(\theta\vert x, D)d\theta
+P(y\vert x, D) = \int P(y\vert x, D, \theta)P(\theta\vert x, D)d\theta
 $$
 
 By term, this reads:
 
-- $p(y\vert x, D)$: given historical data $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$, i.e. some training data, and a new observation $x$, compute the distribution of the possible values of the response $y$.
+- $P(y\vert x, D)$: given historical data $D = ((x^{(i)}, y^{(i)}), ..., (x^{(m)}, y^{(m)}))$, i.e. some training data, and a new observation $x$, compute the distribution of the possible values of the response $y$.
     - In machine learning, we typically select the *expected* value of that distribution, i.e. a single value, or point estimate.
-- $p(y\vert x, D, \theta)$: given historical data $D$, a new observation $x$ and *any plausible value of $\theta$*, i.e. perhaps not the optimal value, compute $y$.
+- $P(y\vert x, D, \theta)$: given historical data $D$, a new observation $x$ and *any plausible value of $\theta$*, i.e. perhaps not the optimal value, compute $y$.
     - This is given by the functional form of the model in question, i.e. $y = \theta^Tx$ in the case of linear regression.
-- $p(\theta\vert x, D)$: given historical data $D$ and a new observation $x$, compute the distribution of the values of $\theta$ that plausibly gave rise to our data.
+- $P(\theta\vert x, D)$: given historical data $D$ and a new observation $x$, compute the distribution of the values of $\theta$ that plausibly gave rise to our data.
     - The $x$ plays no part; it's simply there such that the expression under the integral factors correctly.
     - In machine learning, we typically select the MLE or MAP estimate of that distribution, i.e. a single value, or point estimate.
 

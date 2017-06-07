@@ -1,5 +1,5 @@
 Title: Further Exploring Common Probabilistic Models
-Date: 2017-07-06 10:00
+Date: 2017-06-06 10:00
 Author: Will Wolf
 Lang: en
 Slug: further-exploring-common-probabilistic-models
