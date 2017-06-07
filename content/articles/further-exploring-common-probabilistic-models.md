@@ -6,6 +6,8 @@ Slug: further-exploring-common-probabilistic-models
 Status: published
 Summary: Exploring generative vs. discriminative models, and sampling and variational methods for approximate inference through the lens of Bayes' theorem.
 Image: images/pool_ring.jpg
+Url: 2017/07/06/further-exploring-common-probabilistic-models/
+Save_as: 2017/07/06/further-exploring-common-probabilistic-models/index.html
 
 The [previous post]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md) on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them for fun and profit — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
 
