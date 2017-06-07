@@ -15,7 +15,7 @@ In this post, we're going to stay on the surface: instead of deconstructing comm
 
 While there are many potential themes of probabilistic models we might explore, we'll herein focus on two: **generative vs. discriminative models**, and **"fully Bayesian" vs. "lowly point estimate" learning**. We will stick to the supervised setting as well.
 
-Finally, our pool ring is not a godhead — we are not nautical missionaries brandishing a divine statistical truth, demanding that each model we encounter interpret this truth in a rigid, bottom-up fashion. Instead, we'll explore the unique goals, formulations and shortcomings of each, and fall back on Bayes' theorem to bridge the gaps between. Without it, we'd quickly start sinking.
+Finally, our pool ring is not a godhead — we are not nautical missionaries brandishing a divine statistical truth, demanding that each model we encounter implement this truth in a rigid, bottom-up fashion. Instead, we'll explore the unique goals, formulations and shortcomings of each, and fall back on Bayes' theorem to bridge the gaps between. Without it, we'd quickly start sinking.
 
 # Discriminative vs. generative models
 The goal of a supervised model is to compute the distribution over outcomes $y$ given an input $x$, written $P(y\vert x)$. If $y$ is discrete, this distribution is a probability mass function, e.g. a multinomial or binomial distribution. If continuous, it is a probability density function, e.g. a Gaussian distribution.
