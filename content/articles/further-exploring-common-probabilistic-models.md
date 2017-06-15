@@ -6,6 +6,8 @@ Slug: further-exploring-common-probabilistic-models
 Status: published
 Summary: Exploring generative vs. discriminative models, and sampling and variational methods for approximate inference through the lens of Bayes' theorem.
 Image: images/pool_ring.jpg
+Url: 2017/07/06/further-exploring-common-probabilistic-models/
+Save_as: 2017/07/06/further-exploring-common-probabilistic-models/index.html
 
 The [previous post]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md) on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them for fun and profit — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
 
@@ -15,7 +17,7 @@ In this post, we're going to stay on the surface: instead of deconstructing comm
 
 While there are many potential themes of probabilistic models we might explore, we'll herein focus on two: **generative vs. discriminative models**, and **"fully Bayesian" vs. "lowly point estimate" learning**. We will stick to the supervised setting as well.
 
-Finally, our pool ring is not a godhead — we are not nautical missionaries brandishing a divine statistical truth, demanding that each model we encounter interpret this truth in a rigid, bottom-up fashion. Instead, we'll explore the unique goals, formulations and shortcomings of each, and fall back on Bayes' theorem to bridge the gaps between. Without it, we'd quickly start sinking.
+Finally, our pool ring is not a godhead — we are not nautical missionaries brandishing a divine statistical truth, demanding that each model we encounter implement this truth in a rigid, bottom-up fashion. Instead, we'll explore the unique goals, formulations and shortcomings of each, and fall back on Bayes' theorem to bridge the gaps between. Without it, we'd quickly start sinking.
 
 # Discriminative vs. generative models
 The goal of a supervised model is to compute the distribution over outcomes $y$ given an input $x$, written $P(y\vert x)$. If $y$ is discrete, this distribution is a probability mass function, e.g. a multinomial or binomial distribution. If continuous, it is a probability density function, e.g. a Gaussian distribution.
