@@ -5,7 +5,7 @@ Lang: en
 Slug: random-effects-neural-networks
 Status: published
 Summary: Coupling nimble probabilistic models with neural architectures in Edward and Keras: "what worked and what didn't," a conceptual overview of random effects, and directions for further exploration.
-Image: images/fixed_effects_data_fit.png
+Image: images/random_colors.jpg
 
 # Random Effects Neural Networks with Edward and Keras
 Bayesian probabilistic models provide a nimble and expressive framework for modeling "small-world" data. In contrast, deep learning offers a more rigid yet much more powerful framework for modeling data of massive size. [Edward](http://edwardlib.org/) is a probabilistic programming library that bridges this gap: "black-box" variational inference enables us to fit extremely flexible Bayesian models to large-scale data. Furthermore, these models themselves may take advantage of classic deep-learning architectures of arbitrary complexity.
