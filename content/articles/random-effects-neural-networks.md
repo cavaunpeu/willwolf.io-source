@@ -1,4 +1,4 @@
-Title: Random Effects Neural Networks
+Title: Random Effects Neural Networks in Edward and Keras
 Date: 2017-06-15 18:00
 Author: Will Wolf
 Lang: en
