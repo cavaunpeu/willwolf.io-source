@@ -7,7 +7,6 @@ Status: published
 Summary: Coupling nimble probabilistic models with neural architectures in Edward and Keras: "what worked and what didn't," a conceptual overview of random effects, and directions for further exploration.
 Image: images/random_colors.jpg
 
-# Random Effects Neural Networks with Edward and Keras
 Bayesian probabilistic models provide a nimble and expressive framework for modeling "small-world" data. In contrast, deep learning offers a more rigid yet much more powerful framework for modeling data of massive size. [Edward](http://edwardlib.org/) is a probabilistic programming library that bridges this gap: "black-box" variational inference enables us to fit extremely flexible Bayesian models to large-scale data. Furthermore, these models themselves may take advantage of classic deep-learning architectures of arbitrary complexity.
 
 Edward uses [TensorFlow](https://www.tensorflow.org/) for symbolic gradients and data flow graphs. As such, it interfaces cleanly with other libraries that do the same, namely [TF-Slim](https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html), [PrettyTensor](https://github.com/google/prettytensor) and [Keras](https://keras.io/). Personally, I've been working often with the latter, and am consistently delighted by the ease with which it allows me to specify complex neural architectures.
