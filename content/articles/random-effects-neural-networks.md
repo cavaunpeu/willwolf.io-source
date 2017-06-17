@@ -88,7 +88,7 @@ For an introduction to variational inference and Edward's API thereof, please re
 - [Edward: KL(q||p) Minimization](http://edwardlib.org/tutorials/klqp)
 - [Edward: API and Documentation - Inference](http://edwardlib.org/api/inference)
 
-Additionally, I provide an introduction to the basic math behind variational inference and the [ELBO](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/lectures/variational-inference-i.pdf) in a blog post of mine: [Further Exploring Common Probabilistic Models](http://willwolf.io/2017/07/06/further-exploring-common-probabilistic-models/).
+Additionally, I provide an introduction to the basic math behind variational inference and the [ELBO](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/lectures/variational-inference-i.pdf) in the previous post on this blog: [Further Exploring Common Probabilistic Models]({filename}/articles/further-exploring-common-probabilistic-models.md).
 
 ### Fit model
 For the approximate q-distributions, we apply the [softplus function](https://www.tensorflow.org/api_docs/python/tf/nn/softplus) — `log(exp(z) + 1)` — to the scale parameter values at the suggestion of the Edward docs.
