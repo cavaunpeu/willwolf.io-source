@@ -95,6 +95,10 @@ h5 {
   line-height: 1.6;
 }
 
+.article-body > ol > li > ul > li, .article-body > ul > li > ul > li {
+  line-height: 1.5;
+}
+
 .article-body > h2, .article-body > h3, .article-body > h4, .article-body > h5 {
   margin-bottom: 16px;
 }
