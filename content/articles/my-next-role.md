@@ -16,7 +16,7 @@ Within your organization, I could immediately bring value to: ETL infrastructure
 - A highly technical data science role — equal parts prototyping mathematical models and deploying them to production.
 - Excellent, direct technical mentorship, and the opportunity to mentor others.
 - A medium-to-large-sized company with a well-established data science team. Alternatively, a smaller company with machine learning at the core of its business that, necessarily, has made significant investments in its data science infrastructure and personnel.
-- Large quantities of  unstructured data that do not fit in RAM, ideally.
+- Large quantities of unstructured data that do not fit in RAM, ideally.
 
 ## Work samples
 - [Minimizing the Negative Log-Likelihood, in English]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md): Statistical underpinnings of the machine learning models we know and love. A walk through random variables, entropy, exponential family distributions, generalized linear models, maximum likelihood estimation, cross entropy, KL-divergence, maximum a posteriori estimation and going "fully Bayesian."
@@ -36,4 +36,4 @@ NYC/SF, primarily.
 - I once taught a university Spanish course, in French, in Guinea-Conakry.
 - Mathematics and code keep me smiling from ear to ear.
 
-For more about me, please see my full [bio]({filename}/pages/about.md) and [résumé]({filename}/pages/cv.md). In addition, social links can be found below.
+For more, please see my full [bio]({filename}/pages/about.md) and [résumé]({filename}/pages/cv.md). In addition, social links can be found below.
