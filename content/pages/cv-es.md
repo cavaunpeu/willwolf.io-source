@@ -9,7 +9,7 @@ Template: page
 ## Education
 ---
 
-### > [Open-Source "Masters," Machine Learning and Statistics](({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md))
+### > [Open-Source "Masters," Machine Learning and Statistics]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md)
 *Casablanca, Morocco, August 2016 to Present*
 
 A nine-month, self-curated deep-dive into select topics in machine learning and statistics. Educational resources derived from massive open online courses (MOOCs), textbooks, predictive modeling competitions and academic research (arXiv).
