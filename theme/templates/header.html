@@ -17,6 +17,9 @@
           {% if ABOUT_PAGE %}
               <li><a href="{{ SITEURL }}/{{ ABOUT_PAGE }}" title="{{ ABOUT_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-user"></span> {{ ABOUT_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
+          {% if CV_PAGE %}
+              <li><a href="{{ SITEURL }}/{{ CV_PAGE }}" title="{{ CV_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-folder-open"></span> {{ CV_PAGE_LINK_TEXT }}</a></li>
+          {% endif %}
           {% if ARCHIVE_PAGE %}
               <li><a href="{{ SITEURL }}/{{ ARCHIVE_PAGE }}" title="{{ ARCHIVE_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-th-list"></span> {{ ARCHIVE_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
