@@ -119,6 +119,14 @@ h5 {
   margin-bottom: 16px;
 }
 
+#content.body > ol > li, #content.body > ul > li {
+  line-height: 1.6;
+}
+
+#content.body > ol > li > ul > li, #content.body > ul > li > ul > li {
+  line-height: 1.5;
+}
+
 /*Jupyter notebooks*/
 
 /*There was a change made on line 3346 of ipython.css; this change should be made
