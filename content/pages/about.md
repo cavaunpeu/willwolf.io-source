@@ -24,4 +24,4 @@ As a human, I carry a deep passion for cycling and language. I speak fluent [Spa
 
 Travel is a big part of who I am. I've been to over 60 countries and believe strongly in the concrete, extraordinary value of traveling abroad. In addition, I'm active in the global [CouchSurfing](https://www.couchsurfing.com/) community as a guest, host and event participant. My profile can be found [here](https://www.couchsurfing.com/people/willw9).
 
-While I'm not sure where I plan to go with machine learning, I do not plan to stop. Ultimately, I'd like to work on human-scale problems that actually matter.
+While I'm not sure where I plan to go with data science, I do not plan to stop. Ultimately, I'd like to work on human-scale problems that actually matter.
