@@ -9,11 +9,14 @@ Image: images/math_blackboard.jpg
 
 My nine-month open-source ["masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning and statistics — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog — is soon ending. I'm now starting my search for an impossibly awesome "what's next."
 
+## What I bring
+Within your organization, I could immediately bring value to: ETL infrastructure, experimental design and execution, internal and external data products, i.e. algorithm design and deployment, and data evangelism efforts.
+
 ## I'm looking for
 - A highly technical data science role — equal parts prototyping mathematical models and deploying them to production.
 - Excellent, direct technical mentorship, and the opportunity to mentor others.
 - A medium-to-large-sized company with a well-established data science team. Alternatively, a smaller company with machine learning at the core of its business that, necessarily, has made significant investments in its data science infrastructure and personnel.
-- Ideally, large quantities of  unstructured data that do not fit in RAM.
+- Large quantities of  unstructured data that do not fit in RAM, ideally.
 
 ## Work samples
 - [Minimizing the Negative Log-Likelihood, in English]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md): Statistical underpinnings of the machine learning models we know and love. A walk through random variables, entropy, exponential family distributions, generalized linear models, maximum likelihood estimation, cross entropy, KL-divergence, maximum a posteriori estimation and going "fully Bayesian."
