@@ -10,12 +10,12 @@ Image: images/math_blackboard.jpg
 My nine-month open-source ["masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning and statistics — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog — is soon ending. I'm now starting my search for an impossibly awesome "what's next."
 
 ## What I bring
-Within your organization, I could immediately bring value to: ETL infrastructure, experimental design and execution, internal and external data products, i.e. algorithm design and deployment, and data evangelism efforts.
+I bring abundant experience in: machine learning, Bayesian statistics and probabilistic programming, backend engineering, and making complex ideas easy to understand. As such, within your organization, I could immediately bring value to: ETL infrastructure, experimental design and execution, internal and external data products, i.e. algorithm design and deployment, and data evangelism efforts.
 
 ## I'm looking for
 - A highly technical data science role — equal parts prototyping mathematical models and deploying them to production.
 - Excellent, direct technical mentorship, and the opportunity to mentor others.
-- A medium-to-large-sized company with a well-established data science team. Alternatively, a smaller company with machine learning at the core of its business that, necessarily, has made significant investments in its data science infrastructure and personnel.
+- A medium-to-large-sized company with a well-established data science team. Alternatively, a smaller company with machine learning at the core of its business that, necessarily, has made significant investments in data science infrastructure and personnel.
 - Large quantities of unstructured data that do not fit in RAM, ideally.
 
 ## Work samples
