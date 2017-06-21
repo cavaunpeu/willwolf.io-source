@@ -125,7 +125,7 @@ After undergrad, before work.
 - Recommender models: content-based and collaborative methods for explicit and implicit feedback problems
 - Natural language processing: word-embedding models for classification and similarity
 - Probabilistic graphical models: Bayesian and Markov networks for reasoning about medium-sized systems
-- Approximate inference techniques: MCMC sampling methods and variational inference for computing intractable posteriors
+- Approximate inference techniques: MCMC sampling methods and variational inference
 - Discrete optimization techniques: dynamic programming, constraint programming, mixed-integer programming and local search methods
 
 ## Engineering Tools
