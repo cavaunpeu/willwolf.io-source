@@ -52,7 +52,7 @@ Repositories I published (or contributed to) unrelated to the publications above
 - [tensorflow-models](https://github.com/cavaunpeu/tensorflow-models): Some basic models in TensorFlow
 - [vanilla-neural-nets](https://github.com/cavaunpeu/vanilla-neural-nets): A straightforward and highly readable implementation of vanilla neural nets
 - [dotify](https://github.com/cavaunpeu/dotify): A web application that recommends songs via "country arithmetic" and hand-rolled Implicit Matrix Factorization
-  - [Heroku app](http://dotify.herokuapp.com/)
+    - [Heroku app](http://dotify.herokuapp.com/)
 - [n-queens-sympy](https://github.com/cavaunpeu/n-queens-sympy): A simple solver for the N-Queens Problem using SymPy
 - [markdown-insert-screenshot](https://github.com/cavaunpeu/markdown-insert-screenshot): A lightweight Atom plugin for saving an interactive screen capture to a relative file destination
 
