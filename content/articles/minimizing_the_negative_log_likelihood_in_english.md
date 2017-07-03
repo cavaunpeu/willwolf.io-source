@@ -736,7 +736,7 @@ In a perfect world, we'd do the following:
     - NB: $\theta$ is an object which contains all of our weights. In 10-feature linear regression, it will have 10 elements. In a neural network, it could have millions.
 - We now have a *full distribution* over the possible values of the response $y$.
 
-_**>Instead of a point estimate for $\theta$, and a point estimate for $y$ given a new observation $x$ (which makes use of $\theta$), we have distributions for each**_.
+_**> Instead of a point estimate for $\theta$, and a point estimate for $y$ given a new observation $x$ (which makes use of $\theta$), we have distributions for each**_.
 
 Unfortunately, in complex systems with a non-trivial functional form and number of weights, this computation becomes intractably large. As such, in fully Bayesian modeling, we approximate these distributions. In classic machine learning, we assign them a single value (point estimate). It's a bit lazy, really.
 
