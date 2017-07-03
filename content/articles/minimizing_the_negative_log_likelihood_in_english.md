@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: minimizing_the_negative_log_likelihood_in_english
 Status: published
-Summary: Statistical underpinnings of the machine learning models we know and love. A walk through random variables, entropy, exponential family distributions, generalized linear models, maximum likelihood estimation, cross entropy, KL divergence, maximum a posteriori estimation and going "fully Bayesian."
+Summary: Statistical underpinnings of the machine learning models we know and love. A walk through random variables, entropy, exponential family distributions, generalized linear models, maximum likelihood estimation, cross entropy, KL-divergence, maximum a posteriori estimation and going "fully Bayesian."
 Image: images/bottleneck.png
 
 Roughly speaking, my machine learning journey began on [Kaggle](http://kaggle.com). "There's data, a model (i.e. estimator) and a loss function to optimize," I learned. "Regression models predict continuous-valued real numbers; classification models predict 'red,' 'green,' 'blue.' Typically, the former employs the mean squared error or mean absolute error; the latter, the cross-entropy loss. Stochastic gradient descent updates the model's parameters to drive these losses down." Furthermore, to fit these models, just `import sklearn`.

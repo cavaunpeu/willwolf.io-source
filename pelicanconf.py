@@ -36,6 +36,9 @@ ABOUT_PAGE_LINK_TEXT = 'About'
 ARCHIVE_PAGE = 'archive/'
 ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 
+CV_PAGE = 'cv/'
+CV_PAGE_LINK_TEXT = 'CV'
+
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
 PLUGINS = [

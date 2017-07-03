@@ -70,3 +70,6 @@ target/
 
 # exclude data from source control by default
 /data/
+
+# exclude utils
+utils
