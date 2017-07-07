@@ -73,3 +73,6 @@ target/
 
 # exclude utils
 utils
+
+# ignore python version
+.python-version
