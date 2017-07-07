@@ -22,8 +22,8 @@ As such, within your organization, I could immediately bring value to: ETL infra
 
 ## Work samples
 - [Minimizing the Negative Log-Likelihood, in English]({filename}/articles/minimizing_the_negative_log_likelihood_in_english.md): Statistical underpinnings of the machine learning models we know and love. A walk through random variables, entropy, exponential family distributions, generalized linear models, maximum likelihood estimation, cross entropy, KL-divergence, maximum a posteriori estimation and going "fully Bayesian."
-- [Random Effects Neural Networks in Edward and Keras]({filename}/articles/random-effects-neural-networks.md): Coupling nimble probabilistic models with neural architectures in Edward and Keras: "what worked and what didn't," a conceptual overview of random effects, and directions for further exploration.
 - [Neurally Embedded Emojis]({filename}/articles/neurally-embedded-emojis.md): Convolutional variational autoencoders for emoji generation and Siamese text-question-emoji-answer models. Keras, bidirectional LSTMs and snarky tweets [@united](https://twitter.com/united) within.
+- [Random Effects Neural Networks in Edward and Keras]({filename}/articles/random-effects-neural-networks.md): Coupling nimble probabilistic models with neural architectures in Edward and Keras: "what worked and what didn't," a conceptual overview of random effects, and directions for further exploration.
 - [Further Exploring Common Probabilistic Models]({filename}/articles/further-exploring-common-probabilistic-models.md): Exploring generative vs. discriminative models, and sampling and variational methods for approximate inference through the lens of Bayes' theorem.
 - [Dotify](https://github.com/cavaunpeu/dotify): A well-tested web application that recommends songs via "country arithmetic" and hand-rolled Implicit Matrix Factorization. Built with Flask, React, Webpack, PostgreSQL, Heroku and Docker.
 
