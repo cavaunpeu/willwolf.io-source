@@ -47,6 +47,7 @@ A nine-month, self-curated deep-dive into select topics in machine learning and 
 - [Apache Kafka, Udemy](https://www.udemy.com/apache-kafka-tutorial-for-beginners/)
 
 #### Code:
+
 Repositories I published (or contributed to) unrelated to the publications above.
 
 - [tensorflow-models](https://github.com/cavaunpeu/tensorflow-models): Some basic models in TensorFlow
