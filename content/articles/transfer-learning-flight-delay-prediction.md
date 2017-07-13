@@ -73,6 +73,7 @@ print('    Test:       {}'.format(X_test.shape))
 Let's build two baseline models with the data we have. Both models have a single ReLU output and are trained to minimize the mean squared error of the predicted delay via stochastic gradient descent.
 
 ReLU was chosen as an output activation because delays are both bounded below at 0 and bi-modal. I considered three separate strategies for predicting this distribution.
+
 1. Train a network with two outputs: `total_delay` and `total_delay == 0` (Boolean). Optimize this network with a composite loss function: mean squared error and binary cross-entropy, respectively.
 2. Train a "poor-man's" hierarchical model: a logistic regression to predict `total_delay == 0` and a standard regression to predict `total_delay`. Then, compute the final prediction as a thresholded ternary, e.g. `y_pred = np.where(y_pred_lr > threshhold, 0, y_pred_reg)`. Train the regression model with both all observations, and just those where `total_delay > 0`, and see which works best.
 3. Train a single network with a ReLU activation. This gives a reasonably elegant way to clip our outputs below at 0, and mean-squared-error still tries to place our observations into the correct mode (of the bimodal output distribution; this said, mean-squared-error may try to "play it safe" and predict between the modes).
