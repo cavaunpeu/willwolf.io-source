@@ -17,7 +17,7 @@ Before long, I dove deeper into machine learning — reading textbooks, papers a
 
 Marginally wiser, I now know two truths about the above:
 
-1. Techniques we anoint as "machine learning" - classification and regression models, notably - have their underpinnings almost entirely in statistics. For this reason, terminology often flows between the two.
+1. Techniques we anoint as "machine learning" — classification and regression models, notably — have their underpinnings almost entirely in statistics. For this reason, terminology often flows between the two.
 2. None of this stuff is new.
 
 The goal of this post is to take three models we know, love, and know how to use and explain what's really going on underneath the hood. I will assume the reader is familiar with concepts in both machine learning and statistics, and comes in search of a deeper understanding of the connections therein. There will be math — but only as much as necessary. Most of the derivations can be skipped without consequence.
@@ -347,7 +347,7 @@ a(\eta)
 \end{align*}
 $$
 
-You will recognize our expression for $\phi$ - the probability of observing the true class - as the sigmoid function.
+You will recognize our expression for $\phi$ — the probability of observing the true class — as the sigmoid function.
 
 ### Multinomial distribution
 Like the binomial distribution, we'll first rewrite the multinomial (for a single observation) in a more compact form. $\pi$ gives a vector of class probabilities for the $K$ classes; $k$ denotes one of these classes.
@@ -736,7 +736,7 @@ In a perfect world, we'd do the following:
     - NB: $\theta$ is an object which contains all of our weights. In 10-feature linear regression, it will have 10 elements. In a neural network, it could have millions.
 - We now have a *full distribution* over the possible values of the response $y$.
 
-_**>Instead of a point estimate for $\theta$, and a point estimate for $y$ given a new observation $x$ (which makes use of $\theta$), we have distributions for each**_.
+_**> Instead of a point estimate for $\theta$, and a point estimate for $y$ given a new observation $x$ (which makes use of $\theta$), we have distributions for each**_.
 
 Unfortunately, in complex systems with a non-trivial functional form and number of weights, this computation becomes intractably large. As such, in fully Bayesian modeling, we approximate these distributions. In classic machine learning, we assign them a single value (point estimate). It's a bit lazy, really.
 

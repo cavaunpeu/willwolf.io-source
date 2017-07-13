@@ -47,6 +47,7 @@ A nine-month, self-curated deep-dive into select topics in machine learning and 
 - [Apache Kafka, Udemy](https://www.udemy.com/apache-kafka-tutorial-for-beginners/)
 
 #### Code:
+
 Repositories I published (or contributed to) unrelated to the publications above.
 
 - [tensorflow-models](https://github.com/cavaunpeu/tensorflow-models): Some basic models in TensorFlow
@@ -68,18 +69,6 @@ Repositories I published (or contributed to) unrelated to the publications above
 
 - Semester abroad experience
 - Mathematics and engineering courses in credit towards undergraduate degree
-
-## Post-Graduation
----
-
-### > Travel
-*Worldwide, January 2012 to March 2014*
-
-After undergrad, before work.
-
-- Completed a 26.5-month solo backpacking and cycling trip around the world, visiting roughly 40 countries throughout East Africa, West Africa, South America, Scandinavia, Central Asia and Southeast Asia
-- Taught a primary school class, in Spanish, in Colombia, and Spanish and Physics courses, in French, to University and middle-school students in Guinea-Conakry
-- Pedaled a bicycle 7,600 kilometers from Istanbul, Turkey to Bishkek, Kyrgyzstan
 
 ## Employment History
 ---
@@ -134,6 +123,18 @@ After undergrad, before work.
 - Languages: Python scientific and inferential stack (Pandas, NumPy, SciPy, scikit-learn, TensorFlow, Keras, PyMC, Edward), R (tidyverse, Stan), Scala, SQL, Javascript (React), HTML, CSS, Git
 - Databases and web frameworks: Amazon Redshift, PostgreSQL, MySQL, Alembic, Flask, Tornado Web Server
 - Cloud computing services, data pipelines and containerization: Amazon Web Services (Data Pipeline, S3, EC2, EMR), Google Compute Engine, Docker, Luigi
+
+## Post-Graduation
+---
+
+### > Travel
+*Worldwide, January 2012 to March 2014*
+
+After undergrad, before work.
+
+- Completed a 26.5-month solo backpacking and cycling trip around the world, visiting roughly 40 countries throughout East Africa, West Africa, South America, Scandinavia, Central Asia and Southeast Asia
+- Taught a primary school class, in Spanish, in Colombia, and Spanish and Physics courses, in French, to University and middle-school students in Guinea-Conakry
+- Pedaled a bicycle 7,600 kilometers from Istanbul, Turkey to Bishkek, Kyrgyzstan
 
 ## Writing, Code, Social
 ---
