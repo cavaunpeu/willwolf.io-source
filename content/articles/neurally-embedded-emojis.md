@@ -354,7 +354,7 @@ We've thus far discussed the SQAM. Our final model will make use of two SQAM's i
 2. Compute the cosine similarity between `question`, `correct_answer` via `SQAM_1` — `correct_cos_sim`.
 3. Compute the cosine similarity between `question`, `incorrect_answer` via `SQAM_2` — `incorrect_cos_sim`.
 
-The model is trained to minimize the following: `max(0, margin - correct_cos_sim + incorrect_cos_sim)`, a variant of the [hinge loss](https://en.wikipedia.org/wiki/Hinge_loss). This ensures that `(question, correct_answer)` pairs have a higher cosine similarity than `(question, incorrect_answer)` pairs, mediated by `margin`. Note that this function is differentiable: it is simply a [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks).
+The model is trained to minimize the following: `max(0, margin - correct_cos_sim + incorrect_cos_sim)`, a variant of the [hinge loss](https://en.wikipedia.org/wiki/Hinge_loss). This ensures that `(question, correct_answer)` pairs have a higher cosine similarity than `(question, incorrect_answer)` pairs, mediated by `margin`. Note that this function is differentiable: it is simply a [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)).
 
 ### Architecture
 A single SQAM receives two inputs: a `question` — a max-padded sequence of token ids — and an `answer` — an emoji's 16-D latent code.
@@ -611,7 +611,7 @@ prediction_model = Model([question, answer], qa_model([question, answer]), name=
 ```
 
 ### Fit contrastive model
-Fitting `contrastive_model` will implicitly fit `prediction_model` as well, so long as latter has been compiled.
+Fitting `contrastive_model` will implicitly fit `prediction_model` as well, so long as the latter has been compiled.
 
 ```python
 # compile
@@ -715,7 +715,7 @@ Predictions:
 ```
 
 ### Additionally, we can predict on the full set of emojis
-Some emoji embeddings contain `np.inf` values, unfortunately. We could likely mitigate this by further tweaking hyperparameters of our autoencoder.
+Some emoji embeddings contain `np.inf` values, unfortunately. We could likely mitigate this by further tweaking the hyperparameters of our autoencoder.
 
 ```python
 all_embeddings = encoder.predict(emojis).astype(np.float64)
@@ -769,7 +769,7 @@ Not particularly useful. These emojis have 0 notion of sentiment, though: the mo
 ## Future work
 In this work, we trained a convolutional variational autoencoder to model the distribution of emojis. Next, we trained a Siamese question-answer model to answer text questions with emoji answers. Finally, we were able to use the latter to predict on novel emojis from the former.
 
-Moving forward, I see a few logical next steps:
+Moving forward, I see a few logical steps:
 
 - Use emoji embeddings that are conscious of sentiment — likely trained via a different network altogether. This way, we could make more meaningful (sentiment-based) predictions on novel emojis.
 - Predict on emojis generated from the autoencoder.
