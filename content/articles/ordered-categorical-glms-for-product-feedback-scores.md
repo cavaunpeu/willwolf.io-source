@@ -24,7 +24,7 @@ p_j &= \frac{e^{\phi_j}}{\sum\limits_{k = 1}^{K} e^{\phi_k}}\\
 \end{align*}
 $$
 
-In a model with $k$ categorical outcomes, we typically have $k-1$ linear equations for $\phi_j$. The link function - which you'll recognize as the [softmax](https://en.wikipedia.org/wiki/Softmax_function) - "squashes" these values such that they sum to 1 (with one of the values of $\phi_k$ fixed at an arbitrary constant). The Normal priors placed on $\alpha$ and $\beta$ were chosen arbitrarily: we can use any continuous-valued distribution we like.
+In a model with $k$ categorical outcomes, we typically have $k-1$ linear equations for $\phi_j$. The link function — which you'll recognize as the [softmax](https://en.wikipedia.org/wiki/Softmax_function) — "squashes" these values such that they sum to 1 (with one of the values of $\phi_k$ fixed at an arbitrary constant). The Normal priors placed on $\alpha$ and $\beta$ were chosen arbitrarily: we can use any continuous-valued distribution we like.
 
 In situations where we don't have predictor variables, we can alternatively draw the entire vector $p$ from a [Dirichlet](https://en.wikipedia.org/wiki/Dirichlet_distribution) distribution outright. As it happens, this offers us a trivially simple analytical solution to the posterior. This fact owes itself to [Dirichlet-Multinomial conjugacy](http://stats.stackexchange.com/questions/44494/why-is-the-dirichlet-distribution-the-prior-for-the-multinomial-distribution): given total observed counts $x_k$ of each category $k$ and respective parameters $\alpha_k$ on our prior, our posterior distribution for our belief in $p$ is given as:
 
@@ -52,7 +52,7 @@ An Ordered distribution is a vanilla categorical distribution that accepts a ve
 
 ### Link function
 
-In a typical logistic regression, we model the log-odds of observing a positive outcome as a linear function of the intercept plus weighted input variables. (The inverse of this function which we thereafter employ to obtain the raw probability $p$ is the *logistic* function, or *[sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)* function.) In the ordered categorical GLM, we instead model the *log-cumulative-odds* of observing a position outcome as a linear function of the intercept *minus* weighted input variables. We'll dive into the "minus" momentarily.
+In a typical logistic regression, we model the log-odds of observing a positive outcome as a linear function of the intercept plus weighted input variables. (The inverse of this function which we thereafter employ to obtain the raw probability $p$ is the *logistic* function, or *[sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)* function.) In the ordered categorical GLM, we instead model the *log-cumulative-odds* of observing a particular outcome as a linear function of the intercept *minus* weighted input variables. We'll dive into the "minus" momentarily.
 
 ### Cumulative probability
 
@@ -64,7 +64,7 @@ Placing Normal priors on $\alpha_k$ and $\beta$ was an arbitrary choice. In fact
 
 ### Subtracting $\phi_i$
 
-Ultimately, $\phi_i$ is the linear model. Should we want to add additional predictors, we would append them here. So, why do we subtract $\phi_i$ from $\alpha_k$ instead of add? Intuitively, it would make sense for an increase in the value of a predictor variable, given a positive coefficient, to shift probability mass towards *larger* ordinal values. This makes for more fluid interpretation of our model parameters. Subtracting $\phi_i$ does just this: *increasing* the value of a given predictor *decreases* the log-cumulative-odds of every outcome value $k$ below the maximum (*every* outcome value below the maximum, because we have one linear model $\phi_i$ which we must subtract, separately, from each intercept $\alpha_k$ in order to compute $\log{\big(\frac{p_k}{1 - p_k}\big)}$) which shifts probability mass upwards. This way, the desired dynamic - "a bigger predictor should lead to a bigger outcome given a positive coefficient" - holds.
+Ultimately, $\phi_i$ is the linear model. Should we want to add additional predictors, we would append them here. So, why do we subtract $\phi_i$ from $\alpha_k$ instead of add? Intuitively, it would make sense for an increase in the value of a predictor variable, given a positive coefficient, to shift probability mass towards *larger* ordinal values. This makes for a more fluid interpretation of our model parameters. Subtracting $\phi_i$ does just this: *increasing* the value of a given predictor *decreases* the log-cumulative-odds of every outcome value $k$ below the maximum (*every* outcome value below the maximum, because we have one linear model $\phi_i$ which we must subtract, separately, from each intercept $\alpha_k$ in order to compute $\log{\big(\frac{p_k}{1 - p_k}\big)}$) which shifts probability mass upwards. This way, the desired dynamic — "a bigger predictor should lead to a bigger outcome given a positive coefficient" — holds.
 
 Let's move to R to fit and compare these models. I'm enjoying R more and more for the ease of plotting with [ggplot2](http://docs.ggplot2.org/current/), as well as the functional "chains" offered by [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) ("to be pronounced with a sophisticated french accent," apparently) and Hadley Wickham's [dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html).
 
@@ -118,7 +118,7 @@ Key points are as follows:
 
 ### The scale of our estimates
 
-The marginal distributions of each estimated parameter are on the *log-cumulative-odds* scale. This is because $\alpha_k$ - the only set of parameters we are estimating - is set equal to $\log{\bigg(\frac{\text{Pr}(y_i \leq k)}{1 - \text{Pr}(y_i \leq k)}\bigg)}$ in our model above. So, what does a value of, say, $\alpha_3 = -1.5$ say about the probability of receiving a feedback score of 3 from a given user? I have no idea. As such, we necessarily convert these estimates from the *log-cumulative-odds* scale to the *cumulative probability* scale to make interpretation easier. The sigmoid function gives this conversion.
+The marginal distributions of each estimated parameter are on the *log-cumulative-odds* scale. This is because $\alpha_k$ — the only set of parameters we are estimating — is set equal to $\log{\bigg(\frac{\text{Pr}(y_i \leq k)}{1 - \text{Pr}(y_i \leq k)}\bigg)}$ in our model above. So, what does a value of, say, $\alpha_3 = -1.5$ say about the probability of receiving a feedback score of 3 from a given user? I have no idea. As such, we necessarily convert these estimates from the *log-cumulative-odds* scale to the *cumulative probability* scale to make interpretation easier. The sigmoid function gives this conversion.
 
 ### The width of the band
 
@@ -132,7 +132,7 @@ First, samples from this distribution can be transformed into probability mass 
 simulated_probabilities <- cbind(cutpoint_samples, 1) - cbind(0, cutpoint_samples)
 ```
 
-Next, we can use each sample from `simulated_probabilities` to roll a multinomial die. Here, I'll adopt the strategy Erik uses in the original post: with each sample, we'll simulate a large number - I've chosen 500 - of multinomial throws. This will give a histogram of empirical counts - similar to the first plot shown at the top of this post. With this distribution, we'll compute a weighted average. After repeating this for a large number of samples from our posterior, we'll have a distribution of weighted averages. (Incidentally, as Erik highlights in his post, the shape of this distribution can be assumed Normal as given by the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem).)
+Next, we can use each sample from `simulated_probabilities` to roll a multinomial die. Here, I'll adopt the strategy Erik uses in the original post: with each sample, we'll simulate a large number — I've chosen 500 — of multinomial throws. This will give a histogram of empirical counts — similar to the first plot shown at the top of this post. With this distribution, we'll compute a weighted average. After repeating this for a large number of samples from our posterior, we'll have a distribution of weighted averages. (Incidentally, as Erik highlights in his post, the shape of this distribution can be assumed Normal as given by the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem).)
 
 The following plot compares the results for both the ordered categorical and multinomial models. Remember, we obtain the posterior of the latter through the Dirichlet-Multinomial conjugacy described above. Sampling from this posterior follows trivially. While vanilla histograms should do the trick, let's plot the inferred densities just to be safe.
 
@@ -158,7 +158,7 @@ There's a quote I like from Richard McElreath (I just finished his textbook, [St
 
 > Both types of models help us transform our modeling to cope with the inconvenient realities of measurement, rather than transforming measurements to cope with the constraints of our models.
 
-In this quote, he's describing the ordered categorical GLM (in addition to "zero-inflated" models - models that "mix a binary event with an ordinary GLM likelihood like a Poisson or binomial" - hence the plurality). And therein lies the rub: a model is but an approximation of the world, and if one needs to bend to accommodate the other, the former should be preferred.
+In this quote, he's describing the ordered categorical GLM (in addition to "zero-inflated" models — models that "mix a binary event with an ordinary GLM likelihood like a Poisson or binomial" — hence the plurality). And therein lies the rub: a model is but an approximation of the world, and if one needs to bend to accommodate the other, the former should be preferred.
 
 To conclude, I built a [Shiny app](https://willwolf.shinyapps.io/ordered-categorical-a-b-test/) to be used as an A/B test calculator for ordered categorical data using the methodologies detailed above. Example output looks as follows:
 
