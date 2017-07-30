@@ -422,7 +422,7 @@ Remember, the point of this exponentiation was to put our weighted input element
 In truth, I'm not actually sure, but I do believe we can safely treat the softmax numerator and an unnormalized Gibbs distribution as equivalent and simply settle on: *call it what you will, we need an exponent in there somewhere to put this thing in $[0, 1]$.*
 
 ## Summary
-This exercise has made the relationships between canonical machine learning models, activation functions and the basic axiom of conditional probability a whole lot clearer. For more information, to reference the resources below, especially Daphne Koller's material on [probabilistic graphical models](https://www.coursera.org/learn/probabilistic-graphical-models). Thanks a lot for reading this far.
+This exercise has made the relationships between canonical machine learning models, activation functions and the basic axiom of conditional probability a whole lot clearer. For more information, please reference the resources below — especially Daphne Koller's material on [probabilistic graphical models](https://www.coursera.org/learn/probabilistic-graphical-models). Thanks so much for reading.
 
 ---
 References:
