@@ -212,7 +212,7 @@ Unfortunately, $P(x\vert y = k) = 1$ is rarely if ever the case.
 As you'll now note, the $x$-specific partition function gives a result equivalent to that of the marginalized-over-$y$ joint distribution: a scalar value $P(x)$ with which to normalize the numerator. However, crucially, please keep in mind:
 
 -  *The partition function is a specific component of a probabilistic model. It always yields a scalar*.
-- *Marginalization is a **much more general** operation performed on a probability distribution, which yields a scalar only when the remaining variables(s) are homogeneous, i.e. each remaining column contains a single distinct value.*
+- *Marginalization is a **much more general** operation performed on a probability distribution, which yields a scalar only when the remaining variable(s) are homogeneous, i.e. each remaining column contains a single distinct value.*
   - In the majority of cases, marginalization will simply yield a reduced probability distribution over many value configurations, similar to the $P(B)$ example above.
 
 ### In practice, this is superfluous
