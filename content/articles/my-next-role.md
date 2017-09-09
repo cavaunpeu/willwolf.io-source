@@ -3,7 +3,7 @@ Date: 2017-06-20 11:00
 Author: Will Wolf
 Lang: en
 Slug: my-next-role
-Status: published
+Status: draft
 Summary: Beginning the search for an impossibly awesome next role.
 Image: images/math_blackboard.jpg
 
