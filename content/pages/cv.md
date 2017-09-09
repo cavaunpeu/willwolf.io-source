@@ -76,7 +76,7 @@ Repositories I published (or contributed to) unrelated to the publications above
 ### > Machine Learning Engineer, [ASAPP, Inc.](https://www.asapp.com/)
 *New York, New York, August 2017 to Present*
 
-- AI for enterprise.
+- AI for enterprise. Stealth, for now.
 
 ### > Data Scientist, [ShopKeep](http://www.shopkeep.com/)
 *New York, New York, March 2015 to July 2016*
