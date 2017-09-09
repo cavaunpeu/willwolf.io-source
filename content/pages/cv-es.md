@@ -10,7 +10,7 @@ Template: page
 ---
 
 ### > [Open-Source "Masters," Machine Learning and Statistics]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md)
-*Casablanca, Morocco, August 2016 to Present*
+*Casablanca, Morocco, August 2016 to July 2017*
 
 A nine-month, self-curated deep-dive into select topics in machine learning and statistics. Educational resources derived from massive open online courses (MOOCs), textbooks, predictive modeling competitions and academic research (arXiv).
 
@@ -72,6 +72,14 @@ Repositories I published (or contributed to) unrelated to the publications above
 
 ## Employment History
 ---
+
+### > Machine Learning Engineer, [ASAPP, Inc.](https://www.asapp.com/)
+*New York, New York, August 2017 to Present*
+
+- Built “Merchants Like You” endpoint with word embeddings, Spark, Scala, Python, Flask and various clustering, nearest-neighbor and dimensionality reduction techniques
+- Deployed production models to predict merchant churn
+- Authored software package offering composable predictive modeling objects persisted to S3
+- Built and maintained internal ETL infrastructure
 
 ### > Data Scientist, [ShopKeep](http://www.shopkeep.com/)
 *New York, New York, March 2015 to July 2016*
