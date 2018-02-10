@@ -21,10 +21,11 @@ The following is a technical guide to the "Open-Source Machine Learning Masters"
     a. Educational resources
     b. Branding
     c. Workspace
-    d. Visas
-    e. Community
-    f. Costs
-    g. A sense of urgency
+    d. Where to live
+    e. Costs
+    f. Visas
+    g. Community
+    h. A sense of urgency
 4. Keeping a schedule
 5. Personal-development objectives, in parallel
 6. Applying for the next job
@@ -77,55 +78,65 @@ Yours may be different. However, the promise is: **all of these materials are av
 ### Branding
 Again, this is a radical choice! If only because you won't know many others doing the same.
 
-In NYC, everyone is asked for their story — in interviews, at parties, and on the subway alike. Getting ready to quit my job, leave the city and move to Morocco, what was mine? How I would present this to others in my life — before leaving, in Morocco, and upon return to the city? ...In fact, I started thinking about this well before I ever left.
+In NYC, everyone is asked for their story — in interviews, at parties, on the subway. Preparing to quit my job, leave the city and move to Morocco — what was mine? How would present this to others before leaving, during the experience, and after returning to the city? Believe it or not, I started thinking about this long before I ever left.
 
 #### Before
-- here's what i'm doing! i'm convicted! it's awesome! i'll be back, better than ever. (nothing changes in your home city. promise. this is the second time i've done this)
+Be excited. "Here's what I'm doing! Here's why I'm doing it! I'm scared, yet convicted. It's awesome, and I will be back, more learned than ever. Promise."
 
 #### During
-- maintain a blog:
-  - helps you to concretize knowledge
-  - helps you to stay relevant in other people's eyes
-  - gives you everything to discuss in interviews
-  - project forward as to the types of work you'll want to show to others, i.e. the types of jobs which you'll want to pursue
-  - do small projects that cover these areas, and write about them
-- twitter
-  - the machine learning o sphere is pretty small
-  - for all the same reasons that community building can be valuable, build a community withinn this community
-  - people will likely find your idea cool
+**Maintain a blog.** This is an extremely important point of strategy. **Arguably, this was my most crucial insight throughout this whole experience.**
+
+Maintaining a blog serves three key ends:
+
+1. **It helps you to concretize knowledge.** If you're going to share something with others, it is *easy* to motivate yourself to make sure you know what you're talking about. This stems from basic human tendency of fearing rejection, the perception of inconsistency, etc. A good blog post is one where you start with 70% of the knowledge required to share the material, and are forced to "cram" the remainder before publish.
+2. **It helps you to stay relevant in other peoples eyes.** I was active about sharing my posts on Twitter and DataTau. Fortunately, they were shared by others. Further, I received 7 interview requests from managers that had read my blog, and continue to receive them to this day.
+3. **It gives you something — everything — to talk about in your interviews upon your return.** I was keenly aware of the importance, for better or for worse, of maintaining a public sharing space of personal projects before I left for Morocco. Throughout the OSMLM, I could cynically be characterized as a "professional blog-writer/portfolio-builder". **Upon return, over half of my interviews began with: "Hey, I read that blog post which I really enjoyed. Mind walking me through it?" Uh, yep. No problem.**
+
+In addition to a blog, I found that **maintaining a presence on Twitter proved valuable as well.**
+
+1. **The machine learning community is small: build yourself a community within,** for all the same reasons that community-building is more generally valuable to your work, and quality of life.**
+2. **People will likely find your idea enviable, and admirable.** Everyone likes a "radical", and the idea of living abroad for a year. In addition, if you're passionate about machine learning (and cognizant about the speed at which it moves), you probably relish the thought of full-time study as well.
 
 ### Workspace
-- co working spaces are a thing!
-  - note: they can be quite expensive -- like 1/2 of what your rent costs
-- probably find one, and don't work out of your apartment
-  - this is really a personal choice, but it wouldn't have worked for me
+I rented an apartment in Casablanca. However, I would not have been happy working out of that apartment as well.
 
-### Visas
-- some countries are better suited for this than others
-- https://nomadlist.com/
-  - ranks cities based on:
-    - cost of living
-    - internet speed
-    - weather
-    - safety
-    - female friendly
-    - etc.
+For all those with ambition to work and travel: co-working spaces are a thing — even in Morocco. They have comparatively fast internet (to the median speed found in the city at large), desks, coffee, patios, food, and most importantly, other motivated individuals like yourself.
+
+This is a personal choice. However, staying in my apartment all day would not have worked for me.
+
+### Where to live
+The world is huge! And in most of the world, $1,000/month gets you pretty far.
+
+I chose to live in Morocco so as to improve my French, and live in an Arab country more generally. Your interests are probably different.
+
+[NomadList](https://nomadlist.com/) is a terrific resource for choosing where to "digital nomad". It indexes countries based on things like:
+
+- Cost of living
+- Internet speed
+- Weather
+- Safety
+- Female-friendliness
+- LGBTQ-friendliness
+- etc.
+
+If you're unsure about where you might want to go, I would start here. **In addition, moving abroad is of course in no way a requirement for this program, whatsoever**. However, the assumption is that you won't be generating income, so doing this in your home country might prove expensive.
+
+#### Visas
+Please, do not overlook visa requirements. Follow the rules. In Morocco, I was granted 3-month tourist visas, which I could renew by spending a few hours in neighboring Spain. For an in-depth look at visa regulations, please visit my personal favorite [VisaHQ](https://www.visahq.com/).
+
+### Costs
+Personally, my costs had the following dimensions:
+
+- **Monthly rent: $600/month** for a beautiful, central, sunlit, and furnished 2-bedroom apartment in the center of Casablanca, which I often split with a friend.
+- **Coworking space: $300/month**. Really expensive, in my opinion! (I found the same in Mexico City as well, that a monthly co-working fee ran roughly half of what I'd pay in rent.) All the same, **I only spent 2 months here before moving to friends' offices.**
+- **Educational resources: roughly $1,100.** This said, I spent **\$800 on the first half of the [Udacity Artifical Intelligence Nanodegree](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889) program.** Thereafter, I bought a textbook, subscribed to some Coursera courses at \$50/per, etc. **If I wanted this cost to be \$0, I could have made that happen.** However, I do find these costs to be trivial for the value you receive in return. And more resolutely, as compared to tuition in a formal Masters setting.
+
+In 10 months, I spent roughly $12,000. I ate out, traveled some, and overall afforded a terrific quality of life built around the thing I wanted to do most: full days of bright-eyed and well-rested machine learning study.
 
 ### Community
-- find a local startup Community
-  - there's likely one in whatever city you choose
-  - meetups
-- you'll sort've have this "digital nomad" vibe which, for better or for worse, is still relatively hip
-- being in a coworking space, and one that hosts events, will give you this for free
+I knew 2 people in Casablanca before I left. Finding a community was important to me.
 
-## Building a curriculum
-- here, i unfortunately have little advice.
-- you could really do this program for 2 reasons:
-  - you're just starting in the field
-  - you've been in the field, and want to keep improving, or deep-diving on a few topics
-- i know the landscape of this material really well, because it's really important to me
-- i know what i don't know, and i know where to learn about the things i don't know, and who to learn them from
-- this year for me was just navigating that subconscious ledger of courses, posts etc. that i dearly wanted to spend full days consuming prior to leaving
+Technology/entrepreneurship communities can be found worldwide ([Adrian Avendano](https://www.linkedin.com/in/adrianavendano/) is an unbelievable testament to this fact). Casablanca was no different. I attended Meetups, pitch events, happy hours, and even [PyData Casablanca](https://www.meetup.com/PyData-Casablanca/)! After a while, I was able to surround myself with people that kept me happy and helped me grow. In addition, choosing to work from a co-working space can often give you this for free. 
 
 ## Keeping a schedule
 - treat it like a job
