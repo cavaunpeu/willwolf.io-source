@@ -25,12 +25,13 @@ The following is a technical guide to the "Open-Source Machine Learning Masters"
     e. Costs
     f. Visas
     g. Community
-    h. A sense of urgency
+    h. Insurance
 4. Keeping a schedule
-5. Personal-development objectives, in parallel
-6. Applying for the next job
-7. Why there's very little risk
-8. Why more people aren't doing this
+5. A sense of urgency
+6. Personal-development objectives, in parallel
+7. Applying for the next job
+8. Why there's very little risk
+9. Why more people aren't doing this
 
 ## Why this might be right for you
 You should pursue the OSMLM for the same reasons that you'd pursue a traditional Masters program: because you want further technical expertise in this field. The motivation behind this ambition may vary: perhaps you've a Bachelors in Economics, and want to break into data science; perhaps you're dexterous with scikit-learn, are effective in your role, but need to understand more deeply how your tools work in order to obtain a promotion; perhaps, you're deeply curious about kernel methods and feel it imperative to become an expert. The OSMLM, like a formal Masters, is a semi-broad deep-dive into select topics in the field.
@@ -50,7 +51,6 @@ Addressing the above in order, the OSMLM might be right for you if:
 3. **You feel the meritocracy in your bones.** You're confident in your ability to master material, and communicate it back to others. You know what the bar is for employment in your desired role, you know that you'll surpass that bar after finishing this program, and you know that because *the meritocracy is real, this could do nothing but bear delicious, abundant fruit.*
 
 ## Building a curriculum
-
 I know the landscape of machine learning educational resources exceedingly well, if only because the field is dear to me. I know what I know, and I know what textbooks, courses, dissertations and papers I'm dying to have the time and energy to properly consume.
 
 For me, the OSMLM was 10 months of navigating, with discipline yet flexibility, this dreamscape.
@@ -121,7 +121,7 @@ I chose to live in Morocco so as to improve my French, and live in an Arab count
 
 If you're unsure about where you might want to go, I would start here. **In addition, moving abroad is of course in no way a requirement for this program, whatsoever**. However, the assumption is that you won't be generating income, so doing this in your home country might prove expensive.
 
-#### Visas
+### Visas
 Please, do not overlook visa requirements. Follow the rules. In Morocco, I was granted 3-month tourist visas, which I could renew by spending a few hours in neighboring Spain. For an in-depth look at visa regulations, please visit my personal favorite [VisaHQ](https://www.visahq.com/).
 
 ### Costs
@@ -136,30 +136,33 @@ In 10 months, I spent roughly $12,000. I ate out, traveled some, and overall aff
 ### Community
 I knew 2 people in Casablanca before I left. Finding a community was important to me.
 
-Technology/entrepreneurship communities can be found worldwide ([Adrian Avendano](https://www.linkedin.com/in/adrianavendano/) is an unbelievable testament to this fact). Casablanca was no different. I attended Meetups, pitch events, happy hours, and even [PyData Casablanca](https://www.meetup.com/PyData-Casablanca/)! After a while, I was able to surround myself with people that kept me happy and helped me grow. In addition, choosing to work from a co-working space can often give you this for free. 
+Technology/entrepreneurship communities can be found worldwide ([Adrian Avendano](https://www.linkedin.com/in/adrianavendano/) is an unbelievable testament to this fact). Casablanca was no different. I attended Meetups, pitch events, happy hours, and even [PyData Casablanca](https://www.meetup.com/PyData-Casablanca/)! After a while, I was able to surround myself with people that kept me happy and helped me grow. In addition, choosing to work from a co-working space can often give you this for free.
+
+### Insurance
+Like any extended international trip, ensure that you've premeditated your options in the event of theft, dental, or medical emergencies. This is standard practice.
+
+For the OSMLM, give special thought to *computer* insurance as well: without it, there's not a whole lot of work that you can do.
+
+If your computer breaks:
+  - Where's the computer store?
+  - How will i get a new one?
+  - How long will this take?
+
+This will vary by country. Investigate beforehand.
 
 ## Keeping a schedule
-- treat it like a job
-- take the weekends off!
-- exercise in the morning
-- leave at a reasonable hour, and perhaps do other things at night
+Like building a curriculum, this came easy to me: keeping a disciplined, focused schedule around machine-learning self-study was all I wanted to do.
 
-## a sense of urgency
-- leaving at 6pm or leaving at 9pm, and with a full time salary, well it doesn't make much of a difference
-- here, you've "ripped the carpet out from under you"
-- internalize this. know that your goal is to ultimately learn as much as possible, and expend your resources accordingly
-- the most precious of these resources, as you've intrinsically already agreed, is time
-- my point: it will become easy to spend your time well, to spend a lot of it, and to be focused
+If this comes less easily to you: **treat this like a job.** Get rest. Take weekends off. Exercise before you go to work (if that's your thing). Leave your workspace at a reasonable hour, and pursue hobbies, relationships and culture at night. Hold yourself accountable. Do whatever worked for you in a previous job, or period of your life.
 
-## costs
-how much did i spend?!
+## A sense of urgency
+In a salaried job, you trade the potential myriad upside of entrepreneurship for stability: assuming you do your job well, you *will* receive a paycheck twice a month, (largely) irrespective of the hours you put in. "Hustling" bears few fruit. Ultimately, your goal is longevity: to continue to do great work, and be excited about this work; to not burn out; to be there in a few years' time.
 
-## insurance
-- this is mostly a travel thing
-- however, since your computer is a crucial item for you, project ahead as to what would happen if it breaks
-  - where's the computer store?
-  - how will i get a new one?
-  - how long will this take?
+In the OSMLM, things are different. Here, you've "ripped the carpet out from under you". You have no paycheck, no immediate professional support, no structural "crutch." Furthermore, once finished, you will have something to *prove* to your previous professional world (in interviews, etc.).
+
+My [machine learning] goal for the OSMLM was to learn as much as possible. My resource-bottleneck was time. As such, it became *easy* to keep a robust schedule, and to work slightly-longer-than-normal hours. It was, stated *dramatically*, "fight or flight". Looking back, I am impressed, though not entirely surprised, with how much work I could produce in this context.
+
+In the OSMLM, a sense of urgency *is a feature, not a bug.* Use it to your advantage — as a biologically-principled IV of raw motivation.
 
 ## Personal-development objectives, in parallel
 - language
