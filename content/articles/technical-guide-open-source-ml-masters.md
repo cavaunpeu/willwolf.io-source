@@ -165,10 +165,17 @@ My [machine learning] goal for the OSMLM was to learn as much as possible. My re
 In the OSMLM, a sense of urgency *is a feature, not a bug.* Use it to your advantage — as a biologically-principled IV of raw motivation.
 
 ## Personal-development objectives, in parallel
-- language
-- working out
-- you're in control of your days. if you only want to work 4, or until 3:22pm every day, or whatever, you can!
-- the experience of living in a foreign country, and getting a fresh perspective on life. this isn't the place for me to extoll the benefits of travel, but yeah that's what we're talking about.
+In 2016, in addition to further technical expertise in machine learning, I wanted to both ~perfect my French, and live in an Arab country. Pursuing the OSMLM in Casablanca allowed me to pursue all three goals simultaneously.
+
+Besides the technical, what are your goals? Is there a language you'd like to learn? A sport you'd like to try? A number of books you'd like to read?
+
+There is no mandate to have a single focus. You're in control of your days. If you want to study machine learning from Monday-Thursday, then write fantasy novels on Fridays, you should do that. If you'd like to teach Spanish around, move into a school in Australia, and study machine learning at night.
+
+Of course, the "Open-Source * Masters" isn't about machine learning at all. Instead, it's about:
+
+1. Writing down your goals
+2. Acknowledging that most of the knowledge you desire is now freely available online
+3. Figuring out the most expedient way of accomplishing these goals, simultaneously
 
 ## Applying for the next job
 - they loved me. and especially if you worked hard.
