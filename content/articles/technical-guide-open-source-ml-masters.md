@@ -1,59 +1,69 @@
-Title: A Technical Guide to the Open-Source Machine Learning Masters
+Title: A Technical Guide to the "Open-Source Machine Learning Masters"
 Date: 2018-02-03 18:30
 Author: Will Wolf
 Lang: en
 Slug: technical-guide-open-source-ml-masters
-Status: draft
-Summary: fill me in
-Image: images/some png file
+Status: published
+Summary: The higher education paradigm is changing. A technical guide to designing the "Open-Source Masters" for yourself.
+Image: images/osmlm.jpg
 
 As an "in" professional discipline, Machine Learning exhibits a curious behavior: though talent is frustratingly scarce, it's immensely *easy* for the individual to obtain. Why? **It's all available online, (largely) free for the taking.**
 
-(delete?)*I did not get a Bachelor's degree in this field (because one didn't exist at the time). Self-teaching at my kitchen table in 2014, I landed a job as a software developer which morphed into a data scientist role. Self-teaching still, I joined [ShopKeep](https://www.shopkeep.com/)'s data science team. Eighteen months later and wanting further technical expertise, I quit my job, left NYC, and jumped full-time into machine learning self-study — the best, if only, way I knew how.*
+I did not get a bachelor's degree in this field. Self-teaching at my kitchen table in 2014, I landed a job as a software developer. Self-teaching still, I joined [ShopKeep](https://www.shopkeep.com/)'s Data Science team. Eighteen months later and wanting further technical expertise, I quit my job, left NYC, and jumped full-time into machine learning self-study — the best, if only, way I knew how.
 
-In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/articles/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to  plan and execute a similar experience for yourself.
+In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/articles/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to  plan and execute a similar program for yourself.
 
 The following is a technical guide to the "Open-Source Machine Learning Masters" (OSMLM), covering the following topics.
 
 1. Why this might be right for you
 2. Building a curriculum
 3. Logistics
+
     a. Educational resources
+
     b. Branding
+
     c. Workspace
+
     d. Where to live
+
     e. Costs
+
     f. Visas
+
     g. Community
+
     h. Insurance
+
 4. Keeping a schedule
 5. A sense of urgency
-6. Personal-development objectives, in parallel
+6. Personal development objectives, in parallel
 7. Applying for the next job
 8. Why there's very little risk
 
 ## Why this might be right for you
-You should pursue the OSMLM for the same reasons that you'd pursue a traditional Masters program: because you want further technical expertise in this field. The motivation behind this ambition may vary: perhaps you've a Bachelors in Economics, and want to break into data science; perhaps you're dexterous with scikit-learn, are effective in your role, but need to understand more deeply how your tools work in order to obtain a promotion. The OSMLM, like a formal Masters, is a semi-broad deep-dive into select topics in machine learning, and not much more.
+You should pursue the OSMLM for the same reasons that you'd pursue a traditional masters program: because you want further technical expertise in this field. The motivation behind this ambition may vary: perhaps you've a bachelors in Economics and want to break into data science, or perhaps you're dexterous with [scikit-learn](http://scikit-learn.org/stable/), are effective in your role, but need to understand more deeply how your tools work in order to obtain a promotion. The OSMLM, like a formal masters, is a semi-broad deep-dive into select topics in machine learning, and not much more.
 
-The OSMLM confers a number of obvious benefits in cost, expediency and flexibility. These are enumerated in detail in the [motivating post]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md). However, what are the downsides? To this effect, what type of person is required to pull this off?
+The OSMLM confers a number of obvious benefits in cost, expediency and flexibility. These are enumerated in detail in the [motivating post]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md). Notwithstanding, what are the downsides? To this effect, what type of person is required to pull this off?
 
 ### Downsides
 1. **There is no one to push you but yourself.** A priori, there are no professors. There are no study groups. There will be no tangible social pressure: it will probably just be you.
 2. **This might be viewed as a "radical" choice**. In ten years, I'm certain this will change. However, in 2018, you'll find few people with the line "Open-Source Masters" on their résumé.
-3. **The meritocracy comes to bear.** A Masters degree from a prominent University, along with a passable GPA, holds professional weight — for better or for worse. The OSMLM attacks on one singular vector: that talent is weight, and that success in this program is developing this talent. There will be no "diploma-crutch".
+3. **The meritocracy comes to bear.** A masters degree from a prominent University, along with a passable GPA, holds professional weight (for better or for worse). In contrast, the OSMLM attacks on one singular vector: that *talent* is weight, and that success in this program is developing this talent. There will be no "diploma-crutch".
 
 ### Who this is for
 Addressing the above in order, the OSMLM might be right for you if:
 
 1. **You're convicted about your passion for the field**. The thought of studying machine learning all day has you smiling from ear to ear. No one will push you but yourself, and that's the only person you need.
-2. **You don't mind being different.** You're not phased by the notion of explaining, crisply and with conviction, why you made the choice to pursue this program.
-3. **You feel the meritocracy in your bones.** You're confident in your ability to master material, and communicate it back to others. You know what the bar is for employment in your desired role, you know that you'll surpass that bar after finishing this program, and you trust that *because the meritocracy is real, this could do nothing but bear delicious, abundant fruit.*
+2. **You don't mind being different.** You're not phased by the notion of explaining — crisply and with conviction — why you made the choice to pursue this program.
+3. **You feel the meritocracy in your bones.** You're confident in your ability to master material, and communicate it back to others. You know what the bar is for employment in your desired role, you know that you'll surpass that bar after finishing this program, and you trust that *because the meritocracy is real, this program could do nothing but bear delicious, abundant fruit.*
 
 
 ## Logistics
 
 ### Educational resources
 Personally, I derived my educational resources from:
+
   - MOOCs (massive open online courses)
   - Textbooks (often obtainable in electronic format)
 - Blog posts
@@ -66,7 +76,7 @@ Yours may be different. However, the promise is: **all of these materials are av
 ### Branding
 Again, this is a radical choice! If only because you won't know many others doing the same.
 
-In NYC, everyone is asked for their story — in interviews, at parties, on the subway. Preparing to quit my job, leave the city and move to Morocco — what was mine? How would I present this to others before leaving, during the experience, and after returning to the city? Believe it or not, I started vetting this story long before I ever left.
+In NYC, everyone is asked for their story — in interviews, at parties, on the subway. Preparing to quit my job, leave the city and move to Morocco — what was mine? How would I present this to others before leaving, during the experience, and after returning to the city? Believe it or not, I started composing, if mentally rehearsing, this story long before I ever left.
 
 #### Before
 Be excited. "Here's what I'm doing! Here's why I'm doing it! I'm scared, yet convicted. It's awesome, and I will be back, more learned than ever. Promise."
@@ -77,7 +87,7 @@ Be excited. "Here's what I'm doing! Here's why I'm doing it! I'm scared, yet con
 Keeping a blog serves three principal ends:
 
 1. **It helps you to concretize knowledge.** If you're going to share something with others, it is *easy* to motivate yourself to make sure you know what you're talking about. This stems from the basic human tendencies of fearing both rejection, and the perception of inconsistency.
-2. **It helps you to stay relevant in other people's eyes.** I was active about sharing my posts on [Twitter](https://twitter.com/willwolf_) and DataTau. Fortunately, they were shared by others. In fact, I received 7 blind interview requests from managers that had read my blog (and continue to receive them to this day). This is a point of expediency, not braggadocio: do it well once, share it, and reap the rewards for a long time to come.
+2. **It helps you to stay relevant in other people's eyes.** I was diligent about sharing my posts on [Twitter](https://twitter.com/willwolf_) and [DataTau](http://www.datatau.com/). Fortunately, they were shared by others. In fact, I received 7 blind interview requests from managers that had read my blog (and continue to receive them to this day). This is a point of expediency, not braggadocio: do it well once, share it, and reap the rewards for a long time to come.
 3. **It gives you something — nay, everything — to talk about in your interviews upon your return.** I was keenly aware of the importance, for better or for worse, of maintaining a public sharing space of personal projects before I left for Morocco. Throughout the OSMLM, I could cynically be characterized as a "professional blog-writer/portfolio-builder". **Upon return, over half of my interviews began with: "Hey, I read that blog post which I really enjoyed. Mind walking me through it?" Uh, yep. No problem.**
 
 In addition to a blog, I found that **maintaining a presence on Twitter proved valuable as well.**
@@ -85,12 +95,15 @@ In addition to a blog, I found that **maintaining a presence on Twitter proved v
 1. **The machine learning community is small: build yourself a community within,** for all the same reasons that community-building is more generally valuable to your work, and quality of life.
 2. **People will likely find your idea enviable and admirable.** Everyone likes a "radical," and the idea of living in a "far-off land". In addition, if they're passionate about machine learning (and cognizant of the speed at which it moves), they probably relish the thought of full-time study as well.
 
+#### After
+See "Applying for the next job" below.
+
 ### Workspace
-I rented an apartment in Casablanca. However, I would not have been happy working out of that apartment as well.
+I lived in an apartment in Casablanca. However, I would not have been happy working out of this apartment as well.
 
 For all those with ambition to work and travel: co-working spaces are a thing. Even in Morocco. They have comparatively fast internet (to the median speed found in the city at large), desks, coffee, patios, food, and most importantly, other motivated individuals like yourself.
 
-Your choice of workspace is up to you. For me, finding a space outside of my apartment in which to work was important for social and emotional sanity.
+Your choice of workspace is up to you. For me, finding a space outside of my apartment in which to work was important for my social and emotional health.
 
 ### Where to live
 The world is huge! And in most of the world, $1,000/month gets you pretty far.
@@ -110,16 +123,16 @@ I chose to live in Morocco so as to improve my French, and live in an Arab count
 If you're unsure about where you might want to go, I would start here. **In addition, moving abroad is of course in no way a requirement for this program**. However, the assumption is that you won't be generating income, so pursuing the OSMLM in your home country might prove expensive.
 
 ### Visas
-Please, do not overlook visa requirements. Follow the rules. In Morocco, I was granted 3-month tourist visas, which I could renew by spending a few hours in neighboring Spain. For an in-depth look at visa regulations, please visit my personal favorite [VisaHQ](https://www.visahq.com/).
+Please, do not overlook visa requirements. Follow the rules. In Morocco, I was granted 3-month tourist visas, which I could renew by spending a few hours in neighboring Spain. For an in-depth look at visa regulations, please visit my personal favorite, [VisaHQ](https://www.visahq.com/).
 
 ### Costs
 Personally, my costs had the following dimensions:
 
 - **Monthly rent: $600/month** for a beautiful, central, sunlit, and furnished 2-bedroom apartment in the center of Casablanca, which I often split with a friend.
 - **Coworking space: $300/month**. Really expensive, in my opinion! (I found the same in Mexico City as well, that a monthly co-working fee ran roughly half of what I'd pay in rent.) All the same, **I only spent 2 months here before moving to friends' offices.**
-- **Educational resources: roughly $1,100.** This said, I spent **\$800 on the first half of the [Udacity Artifical Intelligence Nanodegree](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889) program.** Thereafter, I bought a textbook, subscribed to some Coursera courses at \$50/per, etc. **Overall, if I wanted this cost to be \$0, I could have made that happen.** However, I do find the aforementioned costs to be trivial considering the value I received in return. And more resolutely, as compared to tuition in a formal Masters setting.
+- **Educational resources: roughly $1,100.** This said, I spent $800 on the first half of the [Udacity Artifical Intelligence Nanodegree](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889) program. Thereafter, I bought a textbook, subscribed to some Coursera courses at $50/per, etc. **Overall, if I wanted this cost to be $0, I could have made that happen.** However, I do find the aforementioned costs to be trivial considering the value I received in return. And more resolutely, as compared to tuition in a formal masters setting.
 
-In 10 months, I spent roughly $12,000. I ate out, traveled some, and afforded a terrific quality of life built around the thing I wanted to do most: full days of bright-eyed, and well-rested, machine learning study.
+In 10 foo months, I spent roughly $12,000. I ate out, traveled some, and afforded a terrific quality of life built around the thing I wanted to do most: full days of bright-eyed, and well-rested, machine learning study.
 
 ### Community
 I knew 2 people in Casablanca before I arrived. Finding a community was important to me.
@@ -203,4 +216,4 @@ Being an effective machine learning practitioner requires fluency in a large bod
 
 To the extent that you're an effective autodidact, the OSMLM is a cost-effective, flexible, and overall expedient way in which to acquire this knowledge. It is not a sabbatical, but instead a *principled and strategic* period of focused study. Furthermore, it allows you to pursue other pressing personal goals in parallel, and brings energy, new perspective, and a point of differentiation as you return to the working world.
 
-As i was told by a VP of Research during an interview: "it's clear from your work that you learned far more in this year than you would have in a traditional Masters." Personally, *I didn't know how to do it any other way.*
+As i was told by a VP of Research during an interview: "it's clear from your work that you learned far more in this year than you would have in a traditional masters." Personally, *I didn't know how to do it any other way.*
