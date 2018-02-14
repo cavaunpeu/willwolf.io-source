@@ -13,7 +13,9 @@ I did not get a bachelor's degree in this field. Self-teaching at my kitchen tab
 
 In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/articles/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to plan and execute a similar program for yourself.
 
-The following is a practical guide to the "Open-Source Machine Learning Masters" (OSMLM), covering the following topics:
+The following is a practical guide to the "Open-Source Machine Learning Masters" (OSMLM). It is *not* a technical guide, which would provide concrete guidance on what to study. Instead, my aim is to provide motivation, logistical details, and strategic insight — to take you from "that seems cool, but crazy" to "woah, this is not only feasible, but really makes a lot of sense." I personally find the latter much more valuable.
+
+The content is organized as follows:
 
 1. Why this might be right for you
 2. Building a curriculum
