@@ -1,19 +1,19 @@
-Title: A Technical Guide to the "Open-Source Machine Learning Masters"
+Title: A Practical Guide to the "Open-Source Machine Learning Masters"
 Date: 2018-02-03 18:30
 Author: Will Wolf
 Lang: en
-Slug: technical-guide-open-source-ml-masters
+Slug: practical-guide-open-source-ml-masters
 Status: published
-Summary: The higher education paradigm is changing. A technical guide to designing the "Open-Source Masters" for yourself.
+Summary: The higher education paradigm is changing. A practical guide to designing the "Open-Source Masters" for yourself.
 Image: images/osmlm.jpg
 
 As an "in" professional discipline, Machine Learning exhibits a curious behavior: though talent is frustratingly scarce, it's immensely *easy* for the individual to obtain. Why? **It's all available online, (largely) free for the taking.**
 
 I did not get a bachelor's degree in this field. Self-teaching at my kitchen table in 2014, I landed a job as a software developer. Self-teaching still, I joined [ShopKeep](https://www.shopkeep.com/)'s Data Science team. Eighteen months later and wanting further technical expertise, I quit my job, left NYC, and jumped full-time into machine learning self-study — the best, if only, way I knew how.
 
-In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/articles/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to  plan and execute a similar program for yourself.
+In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/articles/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to plan and execute a similar program for yourself.
 
-The following is a technical guide to the "Open-Source Machine Learning Masters" (OSMLM), covering the following topics.
+The following is a practical guide to the "Open-Source Machine Learning Masters" (OSMLM), covering the following topics.
 
 1. Why this might be right for you
 2. Building a curriculum
