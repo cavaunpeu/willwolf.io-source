@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: practical-guide-open-source-ml-masters
 Status: published
-Summary: The higher education paradigm is changing. A practical guide to designing the "Open-Source Masters" for yourself.
+Summary: The higher education paradigm is changing. Motivation, logistics and strategic insight re: designing the "Open-Source Masters" for yourself.
 Image: images/osmlm.jpg
 
 As an "in" professional discipline, Machine Learning exhibits a curious behavior: though talent is frustratingly scarce, it's immensely *easy* for the individual to obtain. Why? **It's all available online, (largely) free for the taking.**
