@@ -13,7 +13,7 @@ I did not get a bachelor's degree in this field. Self-teaching at my kitchen tab
 
 In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/articles/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to plan and execute a similar program for yourself.
 
-The following is a practical guide to the "Open-Source Machine Learning Masters" (OSMLM), covering the following topics.
+The following is a practical guide to the "Open-Source Machine Learning Masters" (OSMLM), covering the following topics:
 
 1. Why this might be right for you
 2. Building a curriculum
@@ -42,14 +42,14 @@ The following is a practical guide to the "Open-Source Machine Learning Masters"
 8. Why there's very little risk
 
 ## Why this might be right for you
-You should pursue the OSMLM for the same reasons that you'd pursue a traditional masters program: because you want further technical expertise in this field. The motivation behind this ambition may vary: perhaps you've a bachelors in Economics and want to break into data science, or perhaps you're dexterous with [scikit-learn](http://scikit-learn.org/stable/), are effective in your role, but need to understand more deeply how your tools work in order to obtain a promotion. The OSMLM, like a formal masters, is a semi-broad deep-dive into select topics in machine learning, and not much more.
+You should pursue the OSMLM for the same reasons that you'd pursue a traditional master's program: because you want further technical expertise in this field. The motivation behind this ambition may vary: perhaps you've a bachelor's in Economics and want to break into data science, or perhaps you're dexterous with [scikit-learn](http://scikit-learn.org/stable/), are effective in your role, yet need to understand more deeply how your tools work in order to obtain a promotion. The OSMLM, like a formal master's, is a semi-broad deep-dive into select topics in machine learning and not much more.
 
 The OSMLM confers a number of obvious benefits in cost, expediency and flexibility. These are enumerated in detail in the [motivating post]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md). Notwithstanding, what are the downsides? To this effect, what type of person is required to pull this off?
 
 ### Downsides
 1. **There is no one to push you but yourself.** A priori, there are no professors. There are no study groups. There will be no tangible social pressure: it will probably just be you.
 2. **This might be viewed as a "radical" choice**. In ten years, I'm certain this will change. However, in 2018, you'll find few people with the line "Open-Source Masters" on their résumé.
-3. **The meritocracy comes to bear.** A masters degree from a prominent University, along with a passable GPA, holds professional weight (for better or for worse). In contrast, the OSMLM attacks on one singular vector: that *talent* is weight, and that success in this program is developing this talent. There will be no "diploma-crutch."
+3. **The meritocracy comes to bear.** A master's degree from a prominent University, along with a passable GPA, holds professional weight (for better or for worse). In contrast, the OSMLM attacks on one singular vector: that *talent* is weight, and that success in this program is developing this talent. There will be no "diploma-crutch."
 
 ### Who this is for
 Addressing the above in order, the OSMLM might be right for you if:
@@ -130,14 +130,14 @@ Personally, my costs had the following dimensions:
 
 - **Monthly rent: $600/month** for a beautiful, central, sunlit, and furnished 2-bedroom apartment in the center of Casablanca, which I often split with a friend.
 - **Coworking space: $300/month**. Really expensive, in my opinion! (I found the same in Mexico City as well, that a monthly co-working fee ran roughly half of what I'd pay in rent.) All the same, **I only spent 2 months here before moving to friends' offices.**
-- **Educational resources: roughly $1,100.** This said, I spent $800 on the first half of the [Udacity Artifical Intelligence Nanodegree](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889) program. Thereafter, I bought a textbook, subscribed to some Coursera courses at $50/per, etc. **Overall, if I wanted this cost to be $0, I could have made that happen.** In any event, I do find the aforementioned costs trivial considering the value I received in return, and even moreso as compared to tuition in a formal masters setting.
+- **Educational resources: roughly $1,100.** This said, I spent $800 on the first half of the [Udacity Artifical Intelligence Nanodegree](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889) program. Thereafter, I bought a textbook, subscribed to some Coursera courses at $50/per, etc. **Overall, if I wanted this cost to be $0, I could have made that happen.** In any event, I do find the aforementioned costs trivial considering the value I received in return, and even moreso as compared to tuition in a formal master's setting.
 
 In 10 months, I spent roughly $12,000. I ate out, traveled some, and afforded a terrific quality of life built around the thing I wanted to do most: full days of bright-eyed, and well-rested, machine learning study.
 
 ### Community
 I knew 2 people in Casablanca before I arrived. Finding a community was important to me.
 
-Technology/entrepreneurship communities can be found worldwide ([Adrian Avendano](https://www.linkedin.com/in/adrianavendano/) is an unbelievable testament to this fact). Casablanca was no different. I attended Meetups, pitch events, happy hours, and even [PyData Casablanca](https://www.meetup.com/PyData-Casablanca/)! After a while, I was able to surround myself with people that kept me happy and helped me grow. Choosing to work from a co-working space can often give you this "for free
+Technology/entrepreneurship communities can be found worldwide ([Adrian Avendano](https://www.linkedin.com/in/adrianavendano/) is an unbelievable testament to this fact). Casablanca was no different. I attended Meetups, pitch events, happy hours, and even [PyData Casablanca](https://www.meetup.com/PyData-Casablanca/)! After a while, I was able to surround myself with people that kept me happy and helped me grow. Choosing to work from a co-working space can often give you this "for free" as well.
 
 ### Insurance
 Like any extended international trip, ensure that you've premeditated your options in the event of theft, dental, or medical emergencies. This is standard practice.
@@ -157,7 +157,7 @@ I know the landscape of machine learning educational resources exceedingly well,
 
 For me, the OSMLM was 10 months of navigating, with discipline yet flexibility, this dreamscape.
 
-Unfortunately, prescribing you a concrete academic curriculum is outside the scope of this post for the following reasons:
+**Unfortunately, prescribing you a concrete academic curriculum is outside the scope of this post** for the following reasons:
 
 1. Everyone will have a different initial base of knowledge.
 2. On some level, your "curriculum" should already be in motion: if "you’re convicted about your passion for the field" (as noted above), you probably already have some idea of what you'd like to learn.
@@ -172,23 +172,23 @@ If this comes less easily to you: **treat this like a job.** Get rest. Take week
 ## A sense of urgency
 In a salaried job, you trade the myriad potential upsides of entrepreneurship for stability: assuming you do your job well, you *will* receive a paycheck twice a month, (largely) irrespective of the exact hours you put in. "Hustling" bears few fruit. Ultimately, your goal is longevity: to continue to do great work, and be excited about this work; to not burn out; to be there in a few years' time.
 
-In the OSMLM, things are different. Here, you've "ripped the carpet out from under you You have no paycheck, no immediate professional support, no structural "crutch Furthermore, once finished, you will have something to *prove* to your previous professional world (in interviews, etc.).
+In the OSMLM, things are different. Here, you've "ripped the carpet out from under you." You have no paycheck, no immediate professional support, no structural "crutch." Furthermore, once finished, you will have something to *prove* to your previous professional world (in interviews, etc.).
 
-My [machine learning] goal for the OSMLM was to learn as much as possible. My resource-bottleneck was time. As such, it became *easy* to keep a robust schedule, and to work slightly-longer-than-normal hours. It was, stated *dramatically*, "fight or flight Looking back, I am impressed, though not entirely surprised, with how much work I produced within this context.
+My [machine learning] goal for the OSMLM was to learn as much as possible. My resource-bottleneck was time. As such, it became *easy* to keep a robust schedule, and to work slightly-longer-than-normal hours. It was, stated *dramatically*, "fight or flight." Looking back, I am impressed, though not entirely surprised, with how much work I produced within this context.
 
-In the OSMLM, a sense of urgency is a *feature, not a bug.* Use it to your advantage — as a biologically-principled infusion of raw motivation.
+In the OSMLM, **a sense of urgency is a feature, not a bug.** Use it to your advantage — as a biologically-principled infusion of raw motivation.
 
 ## Personal development objectives, in parallel
 In 2016, in addition to further technical expertise in ML, I wanted to both ~perfect my French, and live in an Arab country. Pursuing the OSMLM in Casablanca allowed me to chase all three goals simultaneously.
 
 Besides the technical, what are *your* goals? Is there a language you'd like to learn? A sport you'd like to try? A list of books you'd like to read?
 
-There is no mandate to have a single focus: **you're in control of your days.** If you want to study machine learning from Monday-Thursday, then write fantasy novels on Fridays, you should do that. If you'd like to teach English abroad, move into a school in Japan, and study machine learning at night.
+There is no mandate to have a single focus: **you're in control of your days.** If you want to study machine learning from Monday-Thursday, then write fantasy novels on Fridays, you should do that. If you'd like to teach English abroad, move into a school in Japan and study machine learning at night.
 
 Of course, the OSMLM isn't about machine learning at all. Instead, it's about:
 
 1. Writing down your learning goals, and acknowledging that most of the knowledge they require is freely available online.
-3. Figuring out the most expedient way of accomplishing these goals, simultaneously.
+3. Figuring out the most expedient way of accomplishing these goals, ideally simultaneously.
 4. Getting after it, now.
 
 ## Applying for the next job
@@ -196,7 +196,7 @@ While this might seem daunting, it is *really* the easiest part.
 
 1. **Have a narrative**. Clearly communicate why you chose to pursue this program, and why it was the best choice for you, personally. To almost any employer for whom I wanted to work, it was a *very* easy case to make.
 2. **If you kept a blog, things will come to you.** As noted above, I got many interviews from people having read my blog; furthermore, the majority of my remaining interviews were structured around a walk-through of a post I had written. This puts you in the driver's seat from the start.
-3. **If it's clear that you worked hard, you really can't lose.** The OSMLM fits snugly with three key things a startup looks for in a prospective technical hire: a passion for your work, a demonstrated ability to learn quickly and autonomously, and a portfolio showcasing what you can actually do, today. If you worked hard throughout your OSMLM, you'll bring all 3 in spades.
+3. **If it's clear that you worked hard, you really can't lose.** The OSMLM aligns cleanly with three key things a startup looks for in a prospective technical hire: a passion for your work, a demonstrated ability to learn quickly and autonomously, and a portfolio showcasing what you can actually do, today. If you worked hard throughout your OSMLM, you'll bring all three in spades.
 
 When I returned from my [two-year trip](http://willtravellife.com/), and sat down to face my interviewer, that was all they wanted to discuss! It was seen as "different, courageous, enviable." Empirically, the OSMLM was received in largely the same manner.
 
@@ -208,7 +208,7 @@ Interviewing upon return is the fun part. You'll be surprised how well this expe
 *Assuming you put in the work,* I see two possible outcomes for this experience:
 
 1. **You realize you don't like machine learning all that much.** If you're disenchanted with this field after dedicating a meager 6-12 months to its mastery, then it's probably not for you. **Realizing this would be a win, not a loss.**
-2. **You become a pseudo-expert in machine learning**. Perhaps with another spoken language under your belt, or having lived abroad for the first time. You're energized, refreshed, and ready to return to a new job (or join the field itself). You have stories and a portfolio of work that raises other's eyes. **In my view, this is at once your worst-case, and best-case, scenario.**
+2. **You become a pseudo-expert in machine learning**. Perhaps with another spoken language under your belt, or having lived abroad for the first time. You're energized, refreshed, and ready to return to a job (or join the field itself). You have stories and a portfolio of work that raise other's eyes. **In my view, this is at once your worst-case, and best-case, scenario.**
 
 Simply put, dedicating an extended period of time to one of the hottest professional fields of the present can only bring opportunity.
 
@@ -217,4 +217,4 @@ Being an effective machine learning practitioner requires fluency in a large bod
 
 To the extent that you're an effective autodidact, the OSMLM is a cost-effective, flexible, and overall highly-expedient way in which to acquire this knowledge. It is not a sabbatical, but instead a *principled and strategic* period of focused study. Furthermore, it allows you to pursue other pressing personal goals in parallel, and brings energy, new perspective, and a point of differentiation as you return to the working world.
 
-As i was told by a VP of Research during an interview: "it's clear from your work that you learned far more in this year than you would have in a traditional masters. Personally, I didn't know how to do it any other way.
+As i was told by a VP of Research during an interview: "it's clear from your work that you learned far more in this year than you would have in a traditional master's." Personally, I didn't know how to do it any other way.
