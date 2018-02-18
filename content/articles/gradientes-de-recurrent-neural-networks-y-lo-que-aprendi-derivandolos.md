@@ -93,7 +93,7 @@ Tomémoslo pasa a paso.
 
 ### Derivadas Algebraicas
 <br>
-#### $\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hh}}}$:
+#### $\frac{\partial \mathbf{J_t}}{\partial \mathbf{W^{hy}}}$:
 
 Empezando con$\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hy}}}$, notamos que un cambio en $\mathbf{W^{hy}}$ impacta a $\mathbf{J_3}$ sólo cuando $t=3$, y no a ninguna otra cantidad. Sigue que:
 
@@ -104,7 +104,7 @@ $$
 \frac{\partial \mathbf{J_2}}{\partial \mathbf{W^{hy}}} =
 \frac{\partial \mathbf{J_2}}{\partial \mathbf{p_2}}
 \frac{\partial \mathbf{p_2}}{\partial \mathbf{y_2}}\frac{\partial \mathbf{y_2}}{\partial \mathbf{W^{hy}}}\\
-\frac{\partial \mathbf{J_3}}{\partial \mathbf{W^{hy}}} =
+\frac{\partial \mathbf{J_1}}{\partial \mathbf{W^{hy}}} =
 \frac{\partial \mathbf{J_1}}{\partial \mathbf{p_1}}
 \frac{\partial \mathbf{p_1}}{\partial \mathbf{y_1}}\frac{\partial \mathbf{y_1}}{\partial \mathbf{W^{hy}}}
 $$
