@@ -1,11 +1,11 @@
 Title: From Gaussian Algebra to Gaussian Processes
-Date: 2018-03-31 18:00
+Date: 2018-03-31 19:00
 Author: Will Wolf
 Lang: en
 Slug: gaussian-algebra-to-gaussian-processes
 Status: published
 Summary: A thorough, straightforward, un-intimidating introduction to Gaussian processes in NumPy.
-Image: plot in the first posterior
+Image: figures/gaussian-algebra-to-gaussian-processes/output_40_0.png
 
 Most **introductory tutorials** on Gaussian processes start with a nose-punch of **fancy statements**, like:
 
@@ -26,6 +26,7 @@ They continue with **fancy terms**, like:
 The following is the introductory tutorial on GPs that I wish I'd had myself. The goal is pedagogy — not the waving of **fancy words**.
 
 By the end of this tutorial, you should understand:
+
 - **What a Gaussian process is and how to build one in NumPy** — including those cool, swirly error blobs.
 - **The motivations behind their functional form**, i.e. how the GP comes to be.
 - The **fancy statements** above.
@@ -151,6 +152,7 @@ We just drew samples from a 1-dimensional Gaussian, i.e. the `sample` itself was
 ```
 
 In 2D, each sample will be a list of two numbers. `mu` will dictate the most-likely pair of values for the `sample` to assume, and the second parameter (yet unnamed) will dictate:
+
 1. How much the values in the first element of the list vary
 2. How much the values in the second element of the list vary
 3. How much the first and second elements vary with each other, e.g. if the first element is larger than expected, to what extent does the second element "follow suit" (and assume a value larger than expected as well)?
@@ -264,6 +266,7 @@ def make_features(x):
 Now, how do we get $A$? Well, we could simply make such a matrix ourselves — `np.random.randn(200, 2)` for instance. Separately, imagine we start with a 200D vector $X$ of arbitrary floats, use the above function to make 2 "features" for each, then take the transpose. This gives us our 200x2 matrix $A$. Next, we'll multiply this matrix by our 2D vector of weights $\mu_w$. You can think of the latter as passing a batch of data through a linear model (where our data have features $x = [x_1, x_2]$, and our parameters are $w = [w_1, w_2]$).
 
 Finally, we'll take draws from this $\text{Normal}(A\mu_w,\ A^T\Sigma_w A)$. This will give us tuples of the form `(x, y)`, where:
+
 - `x` is the original `x`-value
 - `y` is the value obtained after: making features out of $X$ and taking the transpose, giving $A$; taking the linear combination of $A$ with the mean-vector of weights; taking a draw from the multivariate-Gaussian we just defined, then plucking out the sample-element corresponding to `x`.
 
@@ -366,7 +369,7 @@ P(x, y) = \mathcal{N}\bigg([\mu_x, \mu_y],
     \end{bmatrix}\bigg)
 $$
 
-**NB: In this case, all 4 "Sigmas" in the 2x2 covariance matrix are scalars. If our covariance were bigger, say 31x31, but we still wrote it as we did above, then these 4 "Sigmas" would be *matrices* (with an aggregate size totalling 31x31).**
+*NB: In this case, all 4 "Sigmas" in the 2x2 covariance matrix are scalars. If our covariance were bigger, say 31x31, but we still wrote it as we did above, then these 4 "Sigmas" would be *matrices* (with an aggregate size totaling 31x31).*
 
 What if we wanted to know the distribution over $y$ conditional on $x$ taking on a certain value, e.g. $P(y\vert x > 1)$?
 
@@ -625,11 +628,12 @@ def plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples
     # Extract the variances, i.e. the diagonal, of our covariance matrix
     var_y_post = np.diag(cov_y_post)
 
-    # Plot the error bars. To do this, we fill the space between `(mu_y_post - var_y_post, mu_y_post + var_y_post)` for each `x`
-    plt.fill_between(x_test, mu_y_post - var_y_post, mu_y_post + var_y_post, color='#23AEDB', alpha=.5)  # plot error bars
+    # Plot the error bars.
+    # To do this, we fill the space between `(mu_y_post - var_y_post, mu_y_post + var_y_post)` for each `x`
+    plt.fill_between(x_test, mu_y_post - var_y_post, mu_y_post + var_y_post, color='#23AEDB', alpha=.5)
 
     # Scatter-plot our original 6 `(x, y)` tuples
-    plt.plot(x_train, y_train, 'ro', markersize=10)  # plot ground-truth `(x, y)` tuples
+    plt.plot(x_train, y_train, 'ro', markersize=10)
 
     # Optionally plot actual function evaluations from this posterior
     if n_samples > 0:
@@ -786,6 +790,5 @@ The [repository](https://github.com/cavaunpeu/gaussian-processes) and [rendered 
 2. [Gaussian Processes for Machine Learning](Gaussian Processes for Machine Learning). Carl Edward Rasmussen and Christopher K. I. Williams
 The MIT Press, 2006. ISBN 0-262-18253-X.
 3. [Fitting Gaussian Process Models in Python](https://blog.dominodatalab.com/fitting-gaussian-process-models-python/)
-3. McElreath, Richard. "Chapter 12." Statistical Rethinking: A Bayesian Course with Examples in R and Stan. Boca Raton, FL: CRC, Taylor & Francis Group, 2016. N. pag. Print.
 4. [Gaussian process regression
 ](http://sashagusev.github.io/2016-01/GP.html)
