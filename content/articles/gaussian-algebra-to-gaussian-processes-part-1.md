@@ -274,7 +274,7 @@ Finally, we'll take draws from this $\text{Normal}(A\mu_w,\ A^T\Sigma_w A)$. Thi
 To make it clear that $A$ was computed as a function of $X$, let's rename it to $A = \phi(X)^T$, and rewrite our distribution as follows:
 
 $$
-w\phi(X)^T \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
+\phi(X)^Tw \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
 $$
 
 In addition, let's set $\mu_w =$ `np.array([0, 0])` and $\Sigma_w =$ `np.diag([1, 2])`. Finally, we'll take draws, then plot.
@@ -470,7 +470,7 @@ Conditioning a > 1D Gaussian on one (or more) of its elements yields another Gau
 We previously posited a distribution over some vector of weights, $w \sim \text{Normal}(\mu_w, \Sigma_w)$. In addition, we posited a distribution over the linear map of these weights onto some matrix $A = \phi(X)^T$:
 
 $$
-w\phi(X)^T \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
+\phi(X)^Tw \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
 $$
 
 Given some ground-truth samples from this distribution $y$, i.e. ground-truth "function evaluations," we'd like to infer the weights $w$ most consistent with $y$.
@@ -579,15 +579,15 @@ first_dim_post, second_dim_post = zip(*TSNE(n_components=2).fit_transform(sample
 
 Samples from the prior are plotted in orange; samples from the posterior are plotted in blue. As this is a stochastic dimensionality-reduction algorithm, the results will be slightly different each time.
 
-At best, we can see that the posterior has slightly larger values in its covariance matrix, and has probably maintained a similar mean. This type of change (read: a small one) is expected, as we've only conditioned on 6 ground-truth tuples.
+At best, we can see that the posterior has slightly larger values in its covariance matrix, evidenced by the fact that the blue cloud is more disperse than the orange, and has probably maintained a similar mean. The magnitude of change (read: a small one) is expected, as we've only conditioned on 6 ground-truth tuples.
 
 # Predicting on new data
 
-We'd now like to sample new function evaluations given the updated distribution (i.e. posterior distribution) over weights. Previously, we generated these samples by centering a multivariate Gaussian on $\phi(x)^T\mu_{w}$, where $\mu_w$ was the mean of the prior distribution over weights. How do we do this with our posterior over weights instead?
+Previously, we sampled function evaluations by centering a multivariate Gaussian on $\phi(X)^T\mu_{w}$, where $\mu_w$ was the mean of the prior distribution over weights. We'd now like to do the same thing, but use our posterior over weights instead. How does this work?
 
 **Well, Gaussians are closed under linear maps.** So, we just follow the formula we had used above.
 
-This time, instead of input vector $X$, we'll use a new input vector called $X_{*}$.
+This time, instead of input vector $X$, we'll use a new input vector called $X_{*}$, i.e. the "new data" on which we'd like to predict.
 
 $$
 \phi(X_{*})^Tw \sim \text{Normal}(\phi(X_{*})^T\mu_{w, \text{post}},\ \phi(X_{*})^T \Sigma_{w, \text{post}}\phi(X_{*}))
@@ -614,7 +614,7 @@ def compute_gp_posterior(mu_w, cov_w, phi_func, x_train, y_train, x_test):
 mu_y_post, cov_y_post = compute_gp_posterior(mu_w, cov_w, phi_func, x_train, y_train, x_test)
 ```
 
-To plot, we typically just plot the error bars, i.e. the space within `(mu_y_post - var_y_post, mu_y_post + var_y_post)` for each `x`, as well as the ground-truth tuples as big red dots. **This gives nothing more than a picture of the mean-vector and covariance of our posterior.** Optionally, we can plot true function evaluations from this posterior as well, as we did with our prior.
+To plot, we typically just plot the error bars, i.e. the space within `(mu_y_post - var_y_post, mu_y_post + var_y_post)` for each `x`, as well as the ground-truth tuples as big red dots. **This gives nothing more than a picture of the mean-vector and covariance of our posterior.** Optionally, we can plot samples from this posterior as well, as we did with our prior.
 
 
 ```python
@@ -634,7 +634,7 @@ def plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples
     # Scatter-plot our original 6 `(x, y)` tuples
     plt.plot(x_train, y_train, 'ro', markersize=10)
 
-    # Optionally plot actual function evaluations from this posterior
+    # Optionally plot actual samples (function evaluations) from this posterior
     if n_samples > 0:
         for _ in range(n_samples):
             y_pred = np.random.multivariate_normal(mu_y_post, cov_y_post)
@@ -658,7 +658,7 @@ D = 20
 
 
 # Params of distribution over weights
-mu_w = np.zeros(D)  # mu_w.shape: (D, )
+mu_w = np.zeros(D)  # mu_w.shape: (D,)
 cov_w = 1.1 * np.diag(np.ones(D))  # cov_w.shape: (D, D)
 
 
@@ -704,7 +704,7 @@ def phi_func(x, D=D):
 
 That last one might look familiar. Therein, the features we chose (still arbitrarily, really) are called "radial basis functions" (among other names).
 
-We've loosely examined when we change the language through which we can express our model. Next, what if we changed the size of its vocabulary?
+We've loosely examined what happens when we change the language through which we articulate our model. Next, what if we changed the size of its vocabulary?
 
 First, let's backtrack, and try 8 of these radial basis functions instead of 20.
 
@@ -714,7 +714,7 @@ D = 8
 
 
 # Params of distribution over weights
-mu_w = np.zeros(D)  # mu_w.shape: (D, )
+mu_w = np.zeros(D)  # mu_w.shape: (D,)
 cov_w = 1.1 * np.diag(np.ones(D))  # cov_w.shape: (D, D)
 
 
@@ -738,7 +738,7 @@ D = 250
 
 
 # Params of distribution over weights
-mu_w = np.zeros(D)  # mu_w.shape: (D, )
+mu_w = np.zeros(D)  # mu_w.shape: (D,)
 cov_w = 1.1 * np.diag(np.ones(D))  # cov_w.shape: (D, D)
 
 
@@ -760,14 +760,14 @@ So, how far do we take this? `D = 1000`? `D = 50000`? How high can we go? **We'l
 
 # Summary
 
-In this tutorial, we've arrived at the mechanical notion of a Gaussian process via simple Gaussian algebra, and a bit of Gaussian calculus.
+In this tutorial, we've arrived at the mechanical notion of a Gaussian process via simple Gaussian algebra.
 
 **Thus far, we've elucidated the following ideas:**
 
 - A Gaussian process (GP) defines a distribution over functions (i.e. function evaluations). √
 - Marginalizing a Gaussian over a subset of its elements gives another Gaussian (just pluck out the pieces of interest). √
 - Conditioning a subset of the elements of a Gaussian on another subset gives another Gaussian (a simple algebraic formula). √
-- Posterior over functions (the linear map of the posterior over weights onto some matrix $A = \phi(X)^T$) √
+- Posterior over functions (the linear map of the posterior over weights onto some matrix $A = \phi(X_{*})^T$) √
 - Covariances (the second thing we need in order to specify a multivariate Gaussian) √
 
 **Conversely, we did not yet cover (directly):**
@@ -778,7 +778,7 @@ In this tutorial, we've arrived at the mechanical notion of a Gaussian process v
 
 These will be the subject of the following post.
 
-Thanks for reading, and don't let arcane pedagogy discourage you. There's almost always a clearer explanation at bay.
+Thanks for reading, and **don't let arcane pedagogy discourage you:** there's almost always a clearer explanation (or at least its attempt) at bay.
 
 ## Code
 The [repository](https://github.com/cavaunpeu/gaussian-processes) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/gaussian-processes/blob/master/gaussian-processes-part-1.ipynb) for this project can be found at their respective links.
