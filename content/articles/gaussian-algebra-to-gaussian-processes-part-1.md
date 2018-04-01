@@ -1,11 +1,11 @@
-Title: From Gaussian Algebra to Gaussian Processes
+Title: From Gaussian Algebra to Gaussian Processes, Part 1
 Date: 2018-03-31 19:00
 Author: Will Wolf
 Lang: en
-Slug: gaussian-algebra-to-gaussian-processes
+Slug: gaussian-algebra-to-gaussian-processes-part-1
 Status: published
 Summary: A thorough, straightforward, un-intimidating introduction to Gaussian processes in NumPy.
-Image: figures/gaussian-algebra-to-gaussian-processes/output_40_0.png
+Image: figures/gaussian-algebra-to-gaussian-processes-part-1/output_40_0.png
 
 Most **introductory tutorials** on Gaussian processes start with a nose-punch of **fancy statements**, like:
 
@@ -29,8 +29,7 @@ By the end of this tutorial, you should understand:
 
 - **What a Gaussian process is and how to build one in NumPy** — including those cool, swirly error blobs.
 - **The motivations behind their functional form**, i.e. how the GP comes to be.
-- The **fancy statements** above.
-- The **fancy words** above.
+- The **fancy statements** and **fancy terms** above.
 
 Let's get started.
 
@@ -78,7 +77,7 @@ _ = plt.title('`Gaussian(mu=.123, var=.456)` Density')
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_8_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_8_0.png)
 
 
 If we increase the variance `var`, what happens?
@@ -98,7 +97,7 @@ _ = plt.title('`Gaussian(mu=.123, var=bigger_number)` Density')
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_10_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_10_0.png)
 
 
 The density gets fatter. This should be familiar to you.
@@ -131,7 +130,7 @@ _ = plt.title('Histogram of 500 samples from `Gaussian(mu=.123, var=.456)`')
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_13_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_13_0.png)
 
 
 This looks similar to the true `Gaussian(mu=.123, var=.456)` density we plotted above. The more random samples we draw (then plot), the closer this histogram will approximate (look similar to) the true density.
@@ -155,7 +154,7 @@ In 2D, each sample will be a list of two numbers. `mu` will dictate the most-lik
 
 1. How much the values in the first element of the list vary
 2. How much the values in the second element of the list vary
-3. How much the first and second elements vary with each other, e.g. if the first element is larger than expected, to what extent does the second element "follow suit" (and assume a value larger than expected as well)?
+3. How much the first and second elements vary with each other, e.g. if the first element is larger than expected, to what extent does the second element "follow suit" (and assume a value larger than expected as well)
 
 The second parameter is the **covariance matrix**, `cov`. The elements on the diagonal give Items 1 and 2. The elements off the diagonal give Item 3. The covariance matrix is always square, and its values are always non-negative.
 
@@ -229,12 +228,12 @@ plt.grid(True)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_17_1.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_17_1.png)
 
 
 ## Gaussians are closed under linear maps
 
-The Gaussian for the blue dots tells us the following:
+Each cloud of Gaussian dots tells us the following:
 
 $$
 (x, y) \sim \text{Normal}(\mu, \Sigma)
@@ -278,7 +277,7 @@ $$
 w\phi(X)^T \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
 $$
 
-In addition, let's set $\mu_w =$ `np.array([0, 0])` and $\Sigma_w =$ np.diag([1, 2])`. Finally, we'll take draws, then plot.
+In addition, let's set $\mu_w =$ `np.array([0, 0])` and $\Sigma_w =$ `np.diag([1, 2])`. Finally, we'll take draws, then plot.
 
 
 ```python
@@ -308,18 +307,18 @@ for _ in range(17):
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_20_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_20_0.png)
 
 
 **This distribution over linear maps gives a distribution over functions**, where the "mean function" is $\phi(X)^T\mu_w$ (which reads directly from the `mu_lm` variable above).
 
-**Notwithstanding, I find this phrasing to be confusing**; to me, a "distribution over functions" sounds like some opaque object that spits out algebraic symbols via logic miles above my cognitive ceiling. As such, I instead think of this in more intuitive terms, as a **distribution over function evaluations**: a vector of floats $y$, where each $y_i$ corresponds to its initial input $x_i$.
+**Notwithstanding, I find this phrasing to be confusing**; to me, a "distribution over functions" sounds like some opaque object that spits out algebraic symbols via logic miles above my cognitive ceiling. As such, I instead think of this in more intuitive terms as a **distribution over function evaluations**, where a single function evaluation is a list of `(x, y)` tuples and nothing more.
 
-For example, given a vector `x = np.array([1, 2, 3])` and a function `lambda x: x**2`, an evaluation of this function gives `y = np.array([1, 4, 9])`. We now have tuples `[(1, 1), (2, 4), (3, 9)]`, which we can plot. This gives one "function evaluation."
+For example, given a vector `x = np.array([1, 2, 3])` and a function `lambda x: x**2`, an evaluation of this function gives `y = np.array([1, 4, 9])`. We now have tuples `[(1, 1), (2, 4), (3, 9)]` from which we can create a line plot. This gives one "function evaluation."
 
-Above, we did this 17 times then plotted the 200 resulting `(x, y)` tuples (as our input was a 200D vector $X$). This gave 17 curves. The curves are similar because of the given mean function `mu_lm`; they are different because of the given covariance matrix `cov_lm`.
+Above, we sampled 17 function evaluations, then plotted the 200 resulting `(x, y)` tuples (as our input was a 200D vector $X$) for each. The evaluations are similar because of the given mean function `mu_lm`; they are different because of the given covariance matrix `cov_lm`.
 
-Let's try some different "features" for our x-values then plot the same thing.
+Let's try some different "features" for our `x`-values then plot the same thing.
 
 
 ```python
@@ -328,10 +327,10 @@ phi_x = np.array([x ** (1 + i) for i in range(2)])
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_23_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_23_0.png)
 
 
-The features we choose give a "language" with which we can express a relationship between $x$ and $y$. Some features are more expressive than others; ome restrict us entirely from expressing certain relationships.
+"The features we choose give a 'language' with which we can express a relationship between $x$ and $y$."[^1] Some features are more expressive than others; some restrict us entirely from expressing certain relationships.
 
 For further illustration, let's employ step functions as features and see what happens.
 
@@ -342,12 +341,12 @@ phi_x = np.array([x < i for i in range(10)])
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_25_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_25_0.png)
 
 
 ## Gaussians are closed under conditioning and marginalization
 
-Let's revisit the 2D Gaussians plotted above. They took the form:
+Let's revisit the 2D Gaussians plotted above. They took the form (where $\mathcal{N}$ denotes the Normal, i.e. Gaussian distribution):
 
 $$
 (x, y) \sim \mathcal{N}(\mu, \Sigma)
@@ -369,7 +368,7 @@ P(x, y) = \mathcal{N}\bigg([\mu_x, \mu_y],
     \end{bmatrix}\bigg)
 $$
 
-*NB: In this case, all 4 "Sigmas" in the 2x2 covariance matrix are scalars. If our covariance were bigger, say 31x31, but we still wrote it as we did above, then these 4 "Sigmas" would be *matrices* (with an aggregate size totaling 31x31).*
+*NB: In this case, all 4 "Sigmas" in the 2x2 covariance matrix are floats. If our covariance were bigger, say 31x31, then these 4 Sigmas would be **matrices** (with an aggregate size totaling 31x31).*
 
 What if we wanted to know the distribution over $y$ conditional on $x$ taking on a certain value, e.g. $P(y\vert x > 1)$?
 
@@ -390,7 +389,7 @@ _ = plt.title('Histogram of y-values, when x > 1')
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_28_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_28_0.png)
 
 
 Cool! Looks kind of Gaussian as well.
@@ -417,13 +416,13 @@ $$
 \end{align*}
 $$
 
-**Marginalizing a > 1D Gaussian over one of its elements yields another Gaussian**: you just "pluck out" the elements you'd like to examine. **In other words, Gaussians are closed under marginalization.** It's almost too easy to warrant a formula.
+**Marginalizing a > 1D Gaussian over one of its elements yields another Gaussian**: you just "pluck out" the elements you'd like to examine. **In other words, Gaussians are closed under marginalization.** "It's almost too easy to warrant a formula."[^1]
 
-As an example, imagine we had the following Gaussian, and wanted to compute the marginal over the first 2 elements:
+As an example, imagine we had the following Gaussian $P(a, b, c)$, and wanted to compute the marginal over the first 2 elements, i.e. $P(a, b) = \int P(a, b, c)dc$:
 
 ```python
 
-# 3D Gaussian
+# P(a, b, c)
 mu = np.array([3, 5, 9])
 cov = np.array([
     [11, 22, 33],
@@ -431,7 +430,7 @@ cov = np.array([
     [77, 88, 99]
 ])
 
-# Marginal over the first 2 elements
+# P(a, b)
 mu_marginal = np.array([3, 5])
 cov_marginal = np.array([
     [11, 22],
@@ -474,9 +473,9 @@ $$
 w\phi(X)^T \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
 $$
 
-Given some ground-truth realizations from this distribution $y$, i.e. ground-truth "function evaluations," we'd like to infer the weights $w$ most consistent with these values.
+Given some ground-truth samples from this distribution $y$, i.e. ground-truth "function evaluations," we'd like to infer the weights $w$ most consistent with $y$.
 
-*In machine learning, we equivalently say that given a model and some observed data `(X_train, y_train)`, we compute/train/infer/optimize the weights of said model (often via backpropagation).*
+*In machine learning, we equivalently say that given a model and some observed data `(X_train, y_train)`, we'd like to compute/train/optimize the weights of said model (often via backpropagation).*
 
 Most precisely, our goal is to infer $P(w\vert y)$ (where $y$ are our observed function evaluations). To do this, we simply posit a joint distribution over both quantities:
 
@@ -502,9 +501,9 @@ P(w\vert y)
 \end{align*}
 $$
 
-This formula gives the posterior distribution over our weights given the model and observed data tuples `(x, y)`.
+This formula gives the posterior distribution over our weights $P(w\vert y)$ given the model and observed data tuples `(x, y)`.
 
-Until now, we've assumed a 2D $w$, and therefore a $\phi(X)$ in $\mathbb{R}^2$ as well. Moving forward, let's work with weights and features in $\mathbb{R}^{20}$ which will give us a more expressive language with which to capture the true relationship between some quantity $x$ and its corresponding $y$. $\mathbb{R}^{20}$ is an arbitrary choice.
+Until now, we've assumed a 2D $w$, and therefore a $\phi(X)$ in $\mathbb{R}^2$ as well. Moving forward, we'll work with weights and features in a higher-dimensional space, $\mathbb{R}^{20}$; this will give us a more expressive language with which to capture the true relationship between some quantity $x$ and its corresponding $y$. $\mathbb{R}^{20}$ is an arbitrary choice; it could have been $\mathbb{R}^{17}$, or $\mathbb{R}^{31}$, or $\mathbb{R}^{500}$ as well.
 
 
 ```python
@@ -561,7 +560,7 @@ def compute_weights_posterior(mu_w, cov_w, phi_func, x_train, y_train):
 mu_w_post, cov_w_post = compute_weights_posterior(mu_w, cov_w, phi_func, x_train, y_train)
 ```
 
-As with our prior over our weights, we can equivalently draw samples from the posterior, then plot. These samples will be 20D vectors; we reduce them to 2D for ease of visualization.
+As with our prior over our weights, we can equivalently draw samples from the posterior over our weights, then plot. These samples will be 20D vectors; we reduce them to 2D for ease of visualization.
 
 
 ```python
@@ -569,13 +568,13 @@ As with our prior over our weights, we can equivalently draw samples from the po
 samples_prior = np.random.multivariate_normal(mu_w, cov_w, size=250)
 samples_post = np.random.multivariate_normal(mu_w_post, cov_w_post, size=250)
 
-# Reduce to 2D for ease of plotting
+# Reduce to 2D for ease of visualization
 first_dim_prior, second_dim_prior = zip(*TSNE(n_components=2).fit_transform(samples_prior))
 first_dim_post, second_dim_post = zip(*TSNE(n_components=2).fit_transform(samples_post))
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_34_1.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_34_1.png)
 
 
 Samples from the prior are plotted in orange; samples from the posterior are plotted in blue. As this is a stochastic dimensionality-reduction algorithm, the results will be slightly different each time.
@@ -646,7 +645,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_40_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_40_0.png)
 
 
 The posterior distribution is nothing more than a distribution over function evaluations (25 of which are shown above) *most consistent with our model and observed data tuples.* As such, and to give further intuition, a crude way of computing this distribution might be continuously *drawing samples from our prior over function evaluations, and keeping only the ones that pass through, i.e. are "most consistent with," all of the red points above.*
@@ -673,7 +672,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_42_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_42_0.png)
 
 
 Not great. As a brief aside, how do we read the plot above? It's simply a function, a transformation, a lookup: given an $x$, it tells us the corresponding expected value $y$, and the variance around this estimate.
@@ -690,7 +689,7 @@ def phi_func(x, D=D, a=1e-5):
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_44_1.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_44_1.png)
 
 
 
@@ -700,7 +699,7 @@ def phi_func(x, D=D):
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_45_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_45_0.png)
 
 
 That last one might look familiar. Therein, the features we chose (still arbitrarily, really) are called "radial basis functions" (among other names).
@@ -728,7 +727,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_47_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_47_0.png)
 
 
 Very different! Holy overfit. What about 250?
@@ -752,7 +751,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes/output_49_0.png)
+![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_49_0.png)
 
 
 It appears that the more features we use, the more expressive, and/or less endemically prone to overfitting, our model becomes.
@@ -785,10 +784,10 @@ Thanks for reading, and don't let arcane pedagogy discourage you. There's almost
 The [repository](https://github.com/cavaunpeu/gaussian-processes) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/gaussian-processes/blob/master/gaussian-processes-part-1.ipynb) for this project can be found at their respective links.
 
 ## References
-1. [Gaussian Processes 1 - Philipp Hennig - MLSS 2013 Tübingen
-](https://www.youtube.com/watch?v=50Vgw11qn0o)
-2. [Gaussian Processes for Machine Learning](Gaussian Processes for Machine Learning). Carl Edward Rasmussen and Christopher K. I. Williams
+[^1]: [Gaussian Processes 1 - Philipp Hennig - MLSS 2013 Tübingen
+](https://www.youtube.com/watch?v=50Vgw11qn0o) (from which this post takes heavy inspiration)
+[^2]: [Gaussian Processes for Machine Learning](Gaussian Processes for Machine Learning). Carl Edward Rasmussen and Christopher K. I. Williams
 The MIT Press, 2006. ISBN 0-262-18253-X.
-3. [Fitting Gaussian Process Models in Python](https://blog.dominodatalab.com/fitting-gaussian-process-models-python/)
-4. [Gaussian process regression
+[^3]: [Fitting Gaussian Process Models in Python](https://blog.dominodatalab.com/fitting-gaussian-process-models-python/)
+[^4]: [Gaussian process regression
 ](http://sashagusev.github.io/2016-01/GP.html)
