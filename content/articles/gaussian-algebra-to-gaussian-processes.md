@@ -1,4 +1,4 @@
-Title: Gaussian Algebra to Gaussian Processes
+Title: From Gaussian Algebra to Gaussian Processes
 Date: 2018-03-31 18:00
 Author: Will Wolf
 Lang: en
@@ -776,3 +776,16 @@ In this tutorial, we've arrived at the mechanical notion of a Gaussian process v
 These will be the subject of the following post.
 
 Thanks for reading, and don't let arcane pedagogy discourage you. There's almost always a clearer explanation at bay.
+
+## Code
+The [repository](https://github.com/cavaunpeu/gaussian-processes) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/gaussian-processes/blob/master/gaussian-processes-part-1.ipynb) for this project can be found at their respective links.
+
+## References
+1. [Gaussian Processes 1 - Philipp Hennig - MLSS 2013 Tübingen
+](https://www.youtube.com/watch?v=50Vgw11qn0o)
+2. [Gaussian Processes for Machine Learning](Gaussian Processes for Machine Learning). Carl Edward Rasmussen and Christopher K. I. Williams
+The MIT Press, 2006. ISBN 0-262-18253-X.
+3. [Fitting Gaussian Process Models in Python](https://blog.dominodatalab.com/fitting-gaussian-process-models-python/)
+3. McElreath, Richard. "Chapter 12." Statistical Rethinking: A Bayesian Course with Examples in R and Stan. Boca Raton, FL: CRC, Taylor & Francis Group, 2016. N. pag. Print.
+4. [Gaussian process regression
+](http://sashagusev.github.io/2016-01/GP.html)
