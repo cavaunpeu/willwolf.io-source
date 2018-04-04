@@ -154,9 +154,9 @@ In 2D, each sample will be a list of two numbers. `mu` will dictate the most-lik
 
 1. How much the values in the first element of the list vary
 2. How much the values in the second element of the list vary
-3. How much the first and second elements vary with each other, e.g. if the first element is larger than expected, to what extent does the second element "follow suit" (and assume a value larger than expected as well)
+3. How much the first and second elements vary with each other, e.g. if the first element is larger than expected (i.e. larger than its corresponding mean), to what extent does the second element "follow suit" (and assume a value larger than expected as well)
 
-The second parameter is the **covariance matrix**, `cov`. The elements on the diagonal give Items 1 and 2. The elements off the diagonal give Item 3. The covariance matrix is always square, and its values are always non-negative.
+The second parameter is the **covariance matrix**, `cov`. The elements on the diagonal give Items 1 and 2. The elements off the diagonal give Item 3. The covariance matrix is always square, and the values along its diagonal are always non-negative.
 
 Given a 2D `mu` and 2x2 `cov`, we can draw samples from the 2D Gaussian. Here, we'll use NumPy. Inline, we comment on the expected shape of the samples.
 
