@@ -786,7 +786,7 @@ The [repository](https://github.com/cavaunpeu/gaussian-processes) and [rendered 
 ## References
 [^1]: [Gaussian Processes 1 - Philipp Hennig - MLSS 2013 Tübingen
 ](https://www.youtube.com/watch?v=50Vgw11qn0o) (from which this post takes heavy inspiration)
-[^2]: [Gaussian Processes for Machine Learning](Gaussian Processes for Machine Learning). Carl Edward Rasmussen and Christopher K. I. Williams
+[^2]: [Gaussian Processes for Machine Learning](http://gaussianprocess.org/gpml/?). Carl Edward Rasmussen and Christopher K. I. Williams
 The MIT Press, 2006. ISBN 0-262-18253-X.
 [^3]: [Fitting Gaussian Process Models in Python](https://blog.dominodatalab.com/fitting-gaussian-process-models-python/)
 [^4]: [Gaussian process regression
