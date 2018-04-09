@@ -264,7 +264,7 @@ def make_features(x):
 
 Now, how do we get $A$? Well, we could simply make such a matrix ourselves — `np.random.randn(200, 2)` for instance. Separately, imagine we start with a 200D vector $X$ of arbitrary floats, use the above function to make 2 "features" for each, then take the transpose. This gives us our 200x2 matrix $A$. Next, we'll multiply this matrix by our 2D vector of weights $\mu_w$. You can think of the latter as passing a batch of data through a linear model (where our data have features $x = [x_1, x_2]$, and our parameters are $w = [w_1, w_2]$).
 
-Finally, we'll take draws from this $\text{Normal}(A\mu_w,\ A^T\Sigma_w A)$. This will give us tuples of the form `(x, y)`, where:
+Finally, we'll take draws from this $\text{Normal}(A\mu_w,\ A\Sigma_w A^T)$. This will give us tuples of the form `(x, y)`, where:
 
 - `x` is the original `x`-value
 - `y` is the value obtained after: making features out of $X$ and taking the transpose, giving $A$; taking the linear combination of $A$ with the mean-vector of weights; taking a draw from the multivariate-Gaussian we just defined, then plucking out the sample-element corresponding to `x`.
