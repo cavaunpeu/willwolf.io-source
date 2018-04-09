@@ -24,7 +24,7 @@
               <li><a href="{{ SITEURL }}/{{ ARCHIVE_PAGE }}" title="{{ ARCHIVE_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-th-list"></span> {{ ARCHIVE_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
           {% if SHOW_FEED %}
-              <li><a href="{{ FEED_ALL_ATOM }}" title="willwolf.io Atom feed"><span class="icon-rss"></span> RSS</a></li>
+              <li><a href="{{ main_siteurl }}/{{ FEED_ALL_ATOM }}" title="willwolf.io Atom feed"><span class="icon-rss"></span> RSS</a></li>
           {% endif %}
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="{{ SITEURL }}" title={{ DEFAULT_LANG | lookup_lang_name }} id="activeLanguage"><span class="glyphicon glyphicon-flag"></span>{{ DEFAULT_LANG.upper() }}<span class="caret"></span></a>
