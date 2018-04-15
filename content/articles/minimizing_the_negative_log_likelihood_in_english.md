@@ -171,7 +171,7 @@ In each model, the response variable can take on a bunch of different values. In
 
 Unfortunately, we don't know. All we do know, in fact, is the following:
 
-- `temperature` has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$.
+- `temperature` has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (0, \infty)$.
 - `cat or dog` takes on the value `cat` or `dog`. The likelihood of observing each outcome does not change over time, in the same way that $\Pr(\text{heads})$ for a fair coin is always $0.5$.
 - `red or green or blue` takes on the value `red` or `green` or `blue`. The likelihood of observing each outcome does not change over time, in the same way that the probability of rolling a given number on a fair die is always $\frac{1}{6}$.
 
