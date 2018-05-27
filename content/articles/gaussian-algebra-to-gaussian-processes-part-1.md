@@ -152,8 +152,8 @@ We just drew samples from a 1-dimensional Gaussian, i.e. the `sample` itself was
 
 In 2D, each sample will be a list of two numbers. `mu` will dictate the most-likely pair of values for the `sample` to assume, and the second parameter (yet unnamed) will dictate:
 
-1. How much the values in the first element of the list vary
-2. How much the values in the second element of the list vary
+1. How much the values for the first element of the pair vary
+2. How much the values for the second element of the pair vary
 3. How much the first and second elements vary with each other, e.g. if the first element is larger than expected (i.e. larger than its corresponding mean), to what extent does the second element "follow suit" (and assume a value larger than expected as well)
 
 The second parameter is the **covariance matrix**, `cov`. The elements on the diagonal give Items 1 and 2. The elements off the diagonal give Item 3. The covariance matrix is always square, and the values along its diagonal are always non-negative.
@@ -204,8 +204,7 @@ plot_2d_draws(
 )
 
 """
-The covariance matrix has off-diagonal values of -2. This means that if `x` trends above its mean, `y` will tend to vary *twice as much,
-but in the opposite direction, i.e. below its mean.*
+The covariance matrix has off-diagonal values of -2. This means that if `x` trends above its mean, `y` will tend to vary *twice as much, below its mean.*
 """
 plot_2d_draws(
     mu=np.array([-5, -2]),
@@ -262,9 +261,11 @@ def make_features(x):
     return np.array([3 * np.cos(x), np.abs(x - np.abs(x - 3))])
 ```
 
-Now, how do we get $A$? Well, we could simply make such a matrix ourselves — `np.random.randn(200, 2)` for instance. Separately, imagine we start with a 200D vector $X$ of arbitrary floats, use the above function to make 2 "features" for each, then take the transpose. This gives us our 200x2 matrix $A$. Next, we'll multiply this matrix by our 2D vector of weights $\mu_w$. You can think of the latter as passing a batch of data through a linear model (where our data have features $x = [x_1, x_2]$, and our parameters are $w = [w_1, w_2]$).
+Now, how do we get $A$? Well, we could simply make such a matrix ourselves — `np.random.randn(200, 2)` for instance. Separately, imagine we start with a 200D vector $X$ of arbitrary floats, use the above function to make 2 "features" for each, then take the transpose. This gives us our 200x2 matrix $A$.
 
-Finally, we'll take draws from this $\text{Normal}(A\mu_w,\ A\Sigma_w A^T)$. This will give us tuples of the form `(x, y)`, where:
+Next, and still with the goal of obtaining samples $Aw$, we'll multiply this matrix by our 2D mean-vector of weights, $\mu_w$. You can think of the latter as passing a batch of data through a linear model (where our data have features $x = [x_1, x_2]$, and our parameters are $\mu_w = [w_1, w_2]$).
+
+Finally, we'll take draws from this $\text{Normal}(A\mu_w,\ A\Sigma_w A^T)$. This will give us tuples of the form `(x, Aw)`. For simplicity, we'll hereafter refer to this tuple as `(x, y)`.
 
 - `x` is the original `x`-value
 - `y` is the value obtained after: making features out of $X$ and taking the transpose, giving $A$; taking the linear combination of $A$ with the mean-vector of weights; taking a draw from the multivariate-Gaussian we just defined, then plucking out the sample-element corresponding to `x`.
@@ -378,7 +379,7 @@ $y$ is a single element, so the resulting conditional will be a univariate distr
 ```python
 y_values = []
 mu, cov = np.array([0, 0]), np.diag([1, 1])
-while len(y_values) < 345:
+while len(y_values) < 345:  # some random sample size
     x, y = np.random.multivariate_normal(mu, cov)
     if x > 1:
         y_values.append(y)
@@ -473,7 +474,7 @@ $$
 \phi(X)^Tw \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
 $$
 
-Given some ground-truth samples from this distribution $y$, i.e. ground-truth "function evaluations," we'd like to infer the weights $w$ most consistent with $y$.
+Given some ground-truth samples from this distribution $y = \phi(X)^Tw$, i.e. ground-truth "function evaluations," we'd like to infer the weights $w$ most consistent with $y$.
 
 *In machine learning, we equivalently say that given a model and some observed data `(X_train, y_train)`, we'd like to compute/train/optimize the weights of said model (often via backpropagation).*
 
@@ -533,7 +534,7 @@ def phi_func(x):
 
 # A function that computes the parameters of the linear map distribution
 def compute_linear_map_params(mu, cov, map_matrix):
-    mu_lm = mu.T @ map_matrix
+    mu_lm = map_matrix.T @ mu
     cov_lm = map_matrix.T @ cov @ map_matrix
     return mu_lm, cov_lm
 
@@ -648,7 +649,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_40_0.png)
 
 
-The posterior distribution is nothing more than a distribution over function evaluations (25 of which are shown above) *most consistent with our model and observed data tuples.* As such, and to give further intuition, a crude way of computing this distribution might be continuously *drawing samples from our prior over function evaluations, and keeping only the ones that pass through, i.e. are "most consistent with," all of the red points above.*
+The posterior distribution is nothing more than a distribution over function evaluations (from which we've sampled 25 function evaluations above) *most consistent with our model and observed data tuples.* As such, and to give further intuition, a crude way of computing this distribution might be continuously *drawing samples from our prior over function evaluations, and keeping only the ones that pass through, i.e. are "most consistent with," all of the red points above.*
 
 Finally, we stated before that **the features we choose (i.e. our `phi_func`) give a "language" with which we can express the relationship between $x$ and $y$.** Here, we've chosen a language with 20 words. What if we chose a different 20?
 
