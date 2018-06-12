@@ -471,7 +471,7 @@ Conditioning a > 1D Gaussian on one (or more) of its elements yields another Gau
 We previously posited a distribution over some vector of weights, $w \sim \text{Normal}(\mu_w, \Sigma_w)$. In addition, we posited a distribution over the linear map of these weights onto some matrix $A = \phi(X)^T$:
 
 $$
-\phi(X)^Tw \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
+y = \phi(X)^Tw \sim \text{Normal}(\phi(X)^T\mu_w,\ \phi(X)^T\Sigma_w \phi(X))
 $$
 
 Given some ground-truth samples from this distribution $y = \phi(X)^Tw$, i.e. ground-truth "function evaluations," we'd like to infer the weights $w$ most consistent with $y$.
