@@ -1,10 +1,10 @@
-Title: From Gaussian Algebra to Gaussian Processes, Part 1
-Date: 2018-03-31 19:00
+Title: From Gaussian Algebra to Gaussian Processes, Part 2
+Date: 2018-06-12 8:00
 Author: Will Wolf
 Lang: en
-Slug: gaussian-algebra-to-gaussian-processes-part-1
+Slug: gaussian-algebra-to-gaussian-processes-part-2
 Status: published
-Summary: A thorough, straightforward, un-intimidating introduction to Gaussian processes in NumPy.
+Summary: Introducing the RBF kernel, and motivating its ubiquitous use in Gaussian process.
 Image: figures/gaussian-algebra-to-gaussian-processes-part-1/output_19_0.png
 
 In the previous post, we covered the following topics:
@@ -32,7 +32,7 @@ For example:
 
 ```python
 X_train = np.array([-3, -5, 6, 2, 1])  # 5 inputs
-y_train = np.array([1, 4, 2, 9, 4])  # 5 corresponding outputs, which we'll use below
+y_train = np.array([1, 4, 2, 9, 4])  # 5 corresponding outputs, which we'll use later on
 
 def phi_func(x):
     return np.array([3 * np.cos(x), np.abs(x - np.abs(x - 3))])  # makes D=2 features for each input
@@ -46,7 +46,10 @@ One common such set of features are those given by "radial basis functions", a.k
 
 ```python
 def phi_func(x, D=D):
-    return np.array([np.exp(-.5 * (x - d)**2) for d in range(int(-D / 2), int(D / 2))])  # phi_x.shape: (D, len(x))
+    return np.array([np.exp(-.5 * (x - d)**2) for d in range(int(-D / 2), int(D / 2))])
+
+>>> phi_func(X_train).shape
+(D, 5)
 ```
 
 Again, the choice of which features to use is ultimately arbitrary, i.e. a choice left to the modeler.
@@ -57,7 +60,7 @@ Throughout the exercise, we saw that the larger the dimensionality $d$ of our fe
 
 # Computing features is expensive
 
-Ideally, we'd compute as many features as possible for each input element, i.e. employ `phi_func(x, D=some_huge_number)`. Tragically, the cost of doing so adds up, and ultimately becomes intractable past meaningfully large values of $d$.
+Ideally, we'd compute as many features as possible for each input element, i.e. employ `phi_func(x, D=some_huge_number)`. Unfortunately, the cost of doing so adds up, and ultimately becomes intractable past meaningfully-large values of $d$.
 
 **Perhaps there's a better way?**
 
@@ -253,7 +256,7 @@ $$
 K(X, X') = \varphi(X) \cdot \varphi (X')
 $$
 
-where $\varphi$ is some function that creates $d$ features out of $X$ (in the same vein as `phi_func` from above).
+where $\varphi$ is some function that creates $d$ features out of $X$ (in the same vein as `phi_func` from above).[^2]
 
 ## Example
 
@@ -400,13 +403,9 @@ In this post, we've unpacked the notion of a kernel, and its ubiquitous use in G
 In addition, we've introduced the RBF kernel, i.e. "squared exponential" kernel, and motivated its widespread application in these models.
 
 ## Code
-The [repository](https://github.com/cavaunpeu/gaussian-processes) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/gaussian-processes/blob/master/gaussian-processes-part-1.ipynb) for this project can be found at their respective links.
+The [repository](https://github.com/cavaunpeu/gaussian-processes) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/gaussian-processes/blob/master/gaussian-processes-part-2.ipynb) for this project can be found at their respective links.
 
 ## References
-[^1]: [Gaussian Processes 1 - Philipp Hennig - MLSS 2013 Tübingen
-](https://www.youtube.com/watch?v=50Vgw11qn0o) (from which this post takes heavy inspiration)
-[^2]: [Gaussian Processes for Machine Learning](http://gaussianprocess.org/gpml/?). Carl Edward Rasmussen and Christopher K. I. Williams
+[^1]: [Gaussian Processes for Machine Learning](http://gaussianprocess.org/gpml/?). Carl Edward Rasmussen and Christopher K. I. Williams
 The MIT Press, 2006. ISBN 0-262-18253-X.
-[^3]: [Fitting Gaussian Process Models in Python](https://blog.dominodatalab.com/fitting-gaussian-process-models-python/)
-[^4]: [Gaussian process regression
-](http://sashagusev.github.io/2016-01/GP.html)
+[^2]: [What is an intuitive explanation of Mercer's Theorem?](https://www.quora.com/What-is-an-intuitive-explanation-of-Mercers-Theorem)
