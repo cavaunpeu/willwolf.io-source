@@ -66,9 +66,15 @@ Ideally, we'd compute as many features as possible for each input element, i.e. 
 
 # How are these things used?
 
-Let's bring back our GP equations, and prepare ourselves to *squint*! In the previous post, we noted:
+Let's bring back our GP equations, and prepare ourselves to *squint*! In the previous post, we outlined the following modeling process:
 
-### Marginalizing $P(w, y)$ over $y$ gives the posterior distribution over weights, $P(w\vert y)$.
+1. Define prior distribution over weights and function evaluations, $P(w, y)$.
+2. Marginalizing $P(w, y)$ over $y$, i.e. $\int P(w, y)dy$, and given some observed function evaluations over $y$, compute the posterior distribution over weights, $P(w\vert y)$.
+3. Linear-mapping $P(w\vert y)$ onto some new, transformed test input $\phi(X_*)^T$, compute the posterior distribution over function evaluations, $P(y_*\ \vert\ y) = P(\phi(X_{*})^Tw\ \vert\ y)$.
+
+Now, let's unpack #2 and #3.
+
+### $P(w\vert y)$
 
 - First, the mathematical equation:
 
@@ -105,11 +111,11 @@ cov_w_post = cov_w - cov_w @ phi_x @ np.linalg.inv(cov_y) @ phi_x.T @ cov_w
            = cov_w - cov_w @ phi_x @ np.linalg.inv(phi_x.T @ cov_w @ phi_x) @ phi_x.T @ cov_w
 ```
 
-### The linear map of $P(w\vert y)$ onto some matrix $\phi(X_*)^T$ gives the posterior distribution over function evaluations, $P(y_*\ \vert\ y)$.
+### $P(y_*\ \vert\ y) = P(\phi(X_{*})^Tw\ \vert\ y)$
 
-Here, $X_*$ is a set of test points, e.g. `np.linspace(-10, 10, 200)`, and $P(y_*\ \vert\ y) = P(\phi(X_{*})^Tw\ \vert\ y)$.
+Here, $X_*$ is a set of test points, e.g. `np.linspace(-10, 10, 200)`.
 
-For readability, let's call $X_* \rightarrow$ `X_test` and $y_* \rightarrow$ `y_test`.
+In addition, let's call $X_* \rightarrow$ `X_test` and $y_* \rightarrow$ `y_test`.
 
 - The mathematical equations in code:
 
