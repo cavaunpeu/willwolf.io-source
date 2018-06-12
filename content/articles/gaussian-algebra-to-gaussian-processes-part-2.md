@@ -69,7 +69,7 @@ Ideally, we'd compute as many features as possible for each input element, i.e. 
 Let's bring back our GP equations, and prepare ourselves to *squint*! In the previous post, we outlined the following modeling process:
 
 1. Define prior distribution over weights and function evaluations, $P(w, y)$.
-2. Marginalizing $P(w, y)$ over $y$, i.e. $\int P(w, y)dy$, and given some observed function evaluations over $y$, compute the posterior distribution over weights, $P(w\vert y)$.
+2. Marginalizing $P(w, y)$ over $y$, i.e. $\int P(w, y)dy$, and given some observed function evaluations $y$, compute the posterior distribution over weights, $P(w\vert y)$.
 3. Linear-mapping $P(w\vert y)$ onto some new, transformed test input $\phi(X_*)^T$, compute the posterior distribution over function evaluations, $P(y_*\ \vert\ y) = P(\phi(X_{*})^Tw\ \vert\ y)$.
 
 Now, let's unpack #2 and #3.
@@ -198,16 +198,6 @@ A "kernel" is a function which gives the similarity between individual elements 
 
 For instance, imagine we have two sets of countries, $\{\text{France}, \text{Germany}, \text{Iceland}\}$ and $\{\text{Morocco}, \text{Denmark}\}$, and that similarity is given by an integer value in $[1, 5]$, where 1 is the least similar, and 5 is the most. Applying a kernel to these sets might give a Gram matrix such as:
 
-
-```python
-import pandas as pd
-
-pd.DataFrame([[4, 2, 1], [3, 3, 4]], columns=['France', 'Germany', 'Iceland'], index=['Morocco', 'Denmark'])
-```
-
-
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -247,8 +237,6 @@ pd.DataFrame([[4, 2, 1], [3, 3, 4]], columns=['France', 'Germany', 'Iceland'], i
   </tbody>
 </table>
 </div>
-
-
 
 **When you hear the term "kernel" in the context of machine learning, think "similarity between things in lists." That's it.**
 
