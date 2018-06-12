@@ -5,7 +5,7 @@ Lang: en
 Slug: gaussian-algebra-to-gaussian-processes-part-2
 Status: published
 Summary: Introducing the RBF kernel, and motivating its ubiquitous use in Gaussian processes.
-Image: figures/gaussian-algebra-to-gaussian-processes-part-1/output_19_0.png
+Image: figures/gaussian-algebra-to-gaussian-processes-part-2/output_19_0.png
 
 In the previous post, we covered the following topics:
 
