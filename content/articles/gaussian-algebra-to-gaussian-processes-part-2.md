@@ -24,7 +24,7 @@ Conversely, we did not directly cover:
 
 Here, we'll explain these two.
 
-# The more features we use, the more expressive our model
+## The more features we use, the more expressive our model
 
 We concluded the previous post by plotting posteriors over function evaluations given various `phi_func`s, i.e. a function that creates "features" $\phi(X)$ given an input $X$.
 
@@ -58,13 +58,13 @@ Throughout the exercise, we saw that the larger the dimensionality $d$ of our fe
 
 **So, how far can we take this?**
 
-# Computing features is expensive
+## Computing features is expensive
 
 Ideally, we'd compute as many features as possible for each input element, i.e. employ `phi_func(x, D=some_huge_number)`. Unfortunately, the cost of doing so adds up, and ultimately becomes intractable past meaningfully-large values of $d$.
 
 **Perhaps there's a better way?**
 
-# How are these things used?
+## How are these things used?
 
 Let's bring back our GP equations, and prepare ourselves to *squint*! In the previous post, we outlined the following modeling process:
 
@@ -138,7 +138,7 @@ cov_y_test_post = phi_x_test.T @ cov_w_post @ phi_x_test
                   phi_x.T @ cov_w @ phi_x_test
 ```
 
-# Never alone
+## Never alone
 
 Squinting at the equations for `mu_y_test_post` and `cov_y_test_post`, we see that `phi_x` and `phi_x_test` appear **only in the presence of another `phi_x`, or `phi_x_test`.**
 
@@ -158,7 +158,7 @@ In mathematical notation, they are (respectively):
 - $\phi(X)^T\Sigma_w \phi(X)$
 - $\phi(X)^T\Sigma_w \phi(X_*)$
 
-# Simplifying further
+## Simplifying further
 
 These are nothing more than *scaled* (via the $\Sigma_w$ term) dot products in some expanded feature space $\phi$.
 
@@ -192,7 +192,7 @@ As such, our four distinct scaled-dot-product terms can be rewritten as:
 
 *We have **not** explicitly chosen what this $\varphi$ function is.*
 
-# Kernels
+## Kernels
 
 A "kernel" is a function which gives the similarity between individual elements in two sets, i.e. a Gram matrix.
 
@@ -242,7 +242,7 @@ For instance, imagine we have two sets of countries, $\{\text{France}, \text{Ger
 
 NB: A "list" could be a list of vectors, i.e. a matrix. A vector, or a matrix, are the canonical inputs to a kernel.
 
-# Mercer's Theorem
+## Mercer's Theorem
 
 Mercer's Theorem has as a key result that any kernel function can be expressed as a dot product, i.e.
 
@@ -252,7 +252,7 @@ $$
 
 where $\varphi$ is some function that creates $d$ features out of $X$ (in the same vein as `phi_func` from above).[^2]
 
-## Example
+### Example
 
 To illustrate, I'll borrow an example from [CrossValidated](https://stats.stackexchange.com/questions/152897/how-to-intuitively-explain-what-a-kernel-is):
 
@@ -270,24 +270,24 @@ $$
 
 Note that this is nothing else but a dot product between two vectors $(1, x_1^2, x_2^2, \sqrt{2} x_1, \sqrt{2} x_2, \sqrt{2} x_1 x_2)$ and $(1, y_1^2, y_2^2, \sqrt{2} y_1, \sqrt{2} y_2, \sqrt{2} y_1 y_2)$, and $\varphi(\mathbf x) = \varphi(x_1, x_2) = (1, x_1^2, x_2^2, \sqrt{2} x_1, \sqrt{2} x_2, \sqrt{2} x_1 x_2)$. So the kernel $K(\mathbf x, \mathbf y) = (1 + \mathbf x^T \mathbf y)^2 = \varphi(\mathbf x) \cdot \varphi(\mathbf y)$ computes a dot product in 6-dimensional space without explicitly visiting this space."
 
-## What this means
+### What this means
 
 ![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-2/kernels-for-gaussian-processes.svg)
 
 - We start with inputs $X$ and $Y$.
 - Our goal is to compute the similarity between then, $\text{Sim}(X, Y)$.
 
-### Bottom path
+#### Bottom path
 - Lifting these inputs into some feature space, then computing their dot-product in that space, i.e. $\varphi(X) \cdot \varphi (Y)$ (where $F = \varphi$, since I couldn't figure out how to draw a $\varphi$ in [draw.io](http://draw.io)), is one strategy for computing this similarity.
 - Unfortunately, this robustness comes at a cost: **the computation is extremely expensive.**
 
-### Top Path
+#### Top Path
 - A valid kernel computes similarity between inputs. The function it employs might be extremely simple, e.g. $(X - Y)^{123}$; **the computation is extremely cheap.**
 
-### Mercer!
+#### Mercer!
 - Mercer's Theorem tells us that every valid kernel, i.e. the top path, is *implicitly traversing the bottom path.* **In other words, kernels allow us to directly compute the result of an extremely expensive computation, extremely cheaply.**
 
-# How does this help?
+## How does this help?
 
 Once more, the Gaussian process equations are littered with the following terms:
 
@@ -300,7 +300,7 @@ In addition, we previously established that the more we increase the dimensional
 
 Finally, past any meaningfully large value of $d$, and irrespective of what $\varphi$ actually is, **this computation becomes intractably expensive.**
 
-## Kernels!
+### Kernels!
 
 You know where this is going.
 
@@ -311,7 +311,7 @@ Given Mercer's theorem, we can state the following equalities:
 - $\varphi(X) \cdot \varphi(X) = K(X, X)$
 - $\varphi(X) \cdot \varphi(X_*) = K(X, X_*)$
 
-# Which kernels to choose?
+## Which kernels to choose?
 
 At the outset, we stated that our primary goal was to increase $d$. As such, **let's pick the kernel whose implicit $\varphi$ has the largest dimensionality possible.**
 
@@ -319,11 +319,11 @@ In the example above, we saw that the kernel $k(\mathbf x, \mathbf y)$ was impli
 
 **How about $d=\infty$?**
 
-# Radial basis function, a.k.a. the "squared-exponential"
+## Radial basis function, a.k.a. the "squared-exponential"
 
 This kernel is implicitly computing a $d=\infty$-dimensional dot-product. That's it. **That's why it's so ubiquitous in Gaussian processes.**
 
-# Rewriting our equations
+## Rewriting our equations
 
 With all of the above in mind, let's rewrite the equations for the parameters of our posterior distribution over function evaluations.
 
@@ -346,7 +346,7 @@ cov_y_test_post = phi_x_test.T @ cov_w_post @ phi_x_test
                   k(X_test, X_train) @ np.linalg.inv(k(X_train, X_train)) @ k(X_train, X_test)
 ```
 
-# Defining the kernel in code
+## Defining the kernel in code
 
 Mathematically, the RBF kernel is defined as follows:
 
@@ -381,7 +381,7 @@ mu_y_test_post = A @ y_train
 cov_y_test_post = k(X_test, X_test) - A @ k(X_train, X_test)
 ```
 
-# Visualizing results
+## Visualizing results
 
 ![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-2/output_17_0.png)
 
@@ -390,7 +390,7 @@ And for good measure, with some samples from the posterior:
 
 ![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-2/output_19_0.png)
 
-# In summary
+## In summary
 
 In this post, we've unpacked the notion of a kernel, and its ubiquitous use in Gaussian Processes.
 
