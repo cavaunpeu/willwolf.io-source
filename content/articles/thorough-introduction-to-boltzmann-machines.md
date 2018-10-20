@@ -11,8 +11,6 @@ Commands:
 - mv ~/Downloads/boltzmann-machines-part-1/output_* content/figures/thorough-introduction-to-boltzmann-machines/
 -  mv ~/Downloads/boltzmann-machines-part-1/boltzmann-machines-part-1.md content/articles
 
-# A Thorough Introduction to Boltzmann Machines
-
 The principal task of machine learning is to fit a model to some data. Thinking on the level of APIs, a model is an object with two methods:
 
 ```python
@@ -289,23 +287,6 @@ def update_parameters_with_true_negative_phase(weights, biases, var_combinations
 
 Finally, we're ready to train. Using the true negative phase, let's train our model for 100 epochs with $d=3$ then visualize results.
 
-
-```python
-from collections import defaultdict
-from functools import reduce
-from itertools import product, combinations
-from time import time
-
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import seaborn as sns
-
-%matplotlib inline
-```
-
-
 ```python
 seed = 42
 alpha = .01
@@ -527,12 +508,12 @@ _ = plt.title(f'{n_samples} Samples from Model')
 ```
 
 
-![png](output_7_0.png)
+![png](../figures/thorough-introduction-to-boltzmann-machines/output_7_0.png)
 
 
 The plot roughly matches the data-generating distribution: most points assume values of either $[1, 0, 1]$, or $[1, 0, 0]$ (given $p=[.8, .1, .5]$).
 
-# Sampling, via Gibbs
+## Sampling, via Gibbs
 
 The second, final method we need to implement is `sample`. In a Boltzmann machine, we typically do this via [Gibbs sampling](http://www.mit.edu/~ilkery/papers/GibbsSampling.pdf).
 
@@ -615,7 +596,7 @@ for config, likelihood in distribution:
 
 Close, ish enough.
 
-# Scaling up, and hitting the bottleneck
+## Scaling up, and hitting the bottleneck
 
 
 ```python
@@ -637,15 +618,7 @@ title='Time to Train Model for 10 Epochs\nwith Data Dimensionality of `n_units`'
 results_df.plot(x='n_units', kind='bar', figsize=(8, 6), title=title)
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x114f80400>
-
-
-
-
-![png](output_15_1.png)
+![png](../figures/thorough-introduction-to-boltzmann-machines/output_15_1.png)
 
 
 To reduce computational burden, and/or to fit a Boltzmann machine to data of non-trivial dimensionality (e.g. a 28x28 grey-scale image, which implies a Bernoulli random variable with 28x28=784 dimensions), we need to compute the positive and/or negative phase of our gradient faster than we currently are.
@@ -695,39 +668,7 @@ def update_parameters_with_gibbs_sampling(weights, biases, var_combinations, all
 
 Next, we'll define a function that we can parameterize by an optimization algorithm (computing the true negative phase, or approximating it via Gibb's sampling, in the above case) which will train a model for $n$ epochs and return data requisite for plotting.
 
-
-```python
-def train_model_for_n_epochs(optim_algo, n_units, p, run_num, epochs=100, alpha=alpha, verbose=True, n_samples=1000):
-    weights, biases, var_combinations, all_configs, data = reset_data_and_parameters(n_units=n_units, p=p)
-
-    timestamps, updates = [], []
-    for i in range(epochs):
-        timestamps.append(time())
-
-        weights, biases = optim_algo(
-            weights=weights,
-            biases=biases,
-            var_combinations=var_combinations,
-            all_configs=all_configs,
-            data=data,
-            alpha=alpha,
-            seed=run_num,
-            n_samples=n_samples
-        )
-
-        elapsed = timestamps[-1] - timestamps[0]
-
-        lik = Model(weights, biases, var_combinations, all_configs).likelihood(data, log=True)
-        algo_name = optim_algo.__name__.split('update_parameters_with_')[-1]
-        if i % 10 == 0 and verbose:
-            print(f'Epoch: {i} | Likelihood: {lik}')
-
-        updates.append( {'likelihood': lik, 'algo': algo_name, 'step': i, 'time': elapsed, 'run_num': run_num})
-
-    return pd.DataFrame(updates)
-```
-
-# How does training progress for varying data dimensionalities?
+## How does training progress for varying data dimensionalities?
 
 Finally, for data of `n_units` 3, 4, 5, etc., let's train models for 100 epochs and plot curves.
 
@@ -774,7 +715,7 @@ for n_units in range(min_units, max_units):
         all_updates.append(updates.assign(n_units=n_units))
 ```
 
-# Plot
+## Plot
 
 
 ```python
@@ -786,15 +727,7 @@ sns.lineplot(x="step", y="likelihood", hue="n_units", style="algo",
                 legend="full", data=df, ci=None, alpha=.8, palette=sns.color_palette("colorblind", max_units - min_units))
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x10221e978>
-
-
-
-
-![png](output_23_1.png)
+![png](../figures/thorough-introduction-to-boltzmann-machines/output_23_1.png)
 
 
 **When we let each algorithm run for 100 epochs, the true negative phase typically gives a model which assigns higher likelihood to the observed data.**
@@ -802,44 +735,6 @@ sns.lineplot(x="step", y="likelihood", hue="n_units", style="algo",
 However, the central point is that 100 epochs of the true negative phase takes a lot longer to run than does 100 epochs for the approximate negative phase.
 
 As such, let's run each for an equal amount of time, and plot results. Below, we define a function to train models for $n$ seconds (or 1 epoch—whichever comes first).
-
-
-```python
-def train_model_for_n_seconds(optim_algo, n_units, p, run_num, n_seconds=10, alpha=alpha, verbose=True, n_samples=1000):
-    weights, biases, var_combinations, all_configs, data = reset_data_and_parameters(n_units=n_units, p=p)
-
-    elapsed = 0
-    step = 0
-    timestamps, updates = [], []
-
-    while elapsed < n_seconds:
-        timestamps.append(time())
-
-        weights, biases = optim_algo(
-            weights=weights,
-            biases=biases,
-            var_combinations=var_combinations,
-            all_configs=all_configs,
-            data=data,
-            alpha=alpha,
-            seed=run_num,
-            n_samples=n_samples
-        )
-
-        elapsed = timestamps[-1] - timestamps[0]
-
-        lik = Model(weights, biases, var_combinations, all_configs).likelihood(data, log=True)
-        algo_name = optim_algo.__name__.split('update_parameters_with_')[-1]
-        if len(timestamps) > 1 and int(timestamps[-1]) - int(timestamps[-2]) > 0 and verbose:
-            print(f'Elapsed: {elapsed:.2}s | Likelihood: {lik}')
-
-        updates.append( {'likelihood': lik, 'algo': algo_name, 'step': step, 'time': elapsed, 'run_num': run_num})
-
-        step += 1
-
-    return pd.DataFrame(updates)
-```
-
 
 ```python
 all_updates = []
@@ -882,7 +777,7 @@ for n_units in range(min_units, max_units):
         all_updates.append(updates.assign(n_units=n_units))
 ```
 
-# How many epochs do we actually get through?
+## How many epochs do we actually get through?
 
 First, let's examine how many epochs each algorithm completes in its allotted time. In fact, for some values of `n_units`, we couldn't even complete a single epoch (when computing the true negative phase) in <= 1 second.
 
@@ -897,20 +792,12 @@ sns.lineplot(x='n_units', y='step', hue='algo', data=n_steps_df)
 plt.ylabel('Log # of epochs')
 ```
 
-
-
-
-    Text(0, 0.5, 'Log # of epochs')
-
-
-
-
-![png](output_28_1.png)
+![png](../figures/thorough-introduction-to-boltzmann-machines/output_28_1.png)
 
 
 Finally, we look at performance. With `n_units <= 7`, we see that 1 second of training with the true negative phase yields a better model. Conversely, **using 7 or more units, the added performance given by using the true negative phase is overshadowed by the amount of time it takes the model to train.**
 
-# Plot
+## Plot
 
 
 ```python
@@ -921,18 +808,10 @@ sns.lineplot(x="time", y="likelihood", hue="n_units", style="algo",
              palette=sns.color_palette("colorblind", max_units - min_units))
 ```
 
+![png](../figures/thorough-introduction-to-boltzmann-machines/output_31_1.png)
 
 
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x1155ca8d0>
-
-
-
-
-![png](output_31_1.png)
-
-
-# Summary
+## Summary
 
 Throughout this post, we've given a thorough introduction to a Boltzmann machine: what it does, how it trains, and some of the computational burdens and considerations inherent.
 
