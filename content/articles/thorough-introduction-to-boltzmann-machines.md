@@ -7,6 +7,12 @@ Status: published
 Summary: Foo
 Image: figures/thorough-introduction-to-boltzmann-machines/output_23_1.png
 
+Commands:
+- mv ~/Downloads/boltzmann-machines-part-1/output_* content/figures/thorough-introduction-to-boltzmann-machines/
+-  mv ~/Downloads/boltzmann-machines-part-1/boltzmann-machines-part-1.md content/articles
+
+# A Thorough Introduction to Boltzmann Machines
+
 The principal task of machine learning is to fit a model to some data. Thinking on the level of APIs, a model is an object with two methods:
 
 ```python
@@ -293,6 +299,7 @@ from time import time
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import seaborn as sns
 
 %matplotlib inline
@@ -493,7 +500,7 @@ for i in range(100):
 ```python
 def plot_n_samples(n_samples, weights, biases):
     """
-    TODO: put some axes on this thing and maybe label corners.
+    NB: We add some jitter to the points so as to better visualize density in a given corner of the model.
     """
     fig = plt.figure(figsize=(12, 9))
     ax = fig.add_subplot(111, projection='3d')
@@ -633,7 +640,7 @@ results_df.plot(x='n_units', kind='bar', figsize=(8, 6), title=title)
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1214082e8>
+    <matplotlib.axes._subplots.AxesSubplot at 0x114f80400>
 
 
 
@@ -782,7 +789,7 @@ sns.lineplot(x="step", y="likelihood", hue="n_units", style="algo",
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x12db10240>
+    <matplotlib.axes._subplots.AxesSubplot at 0x10221e978>
 
 
 
@@ -881,6 +888,7 @@ First, let's examine how many epochs each algorithm completes in its allotted ti
 
 
 ```python
+df = pd.concat(all_updates)
 n_steps_df = df.groupby(['algo', 'n_units'])['step'].max().map(np.log).reset_index()
 
 plt.figure(figsize=(9, 6))
@@ -892,7 +900,7 @@ plt.ylabel('Log # of epochs')
 
 
 
-    Text(0,0.5,'Log # of epochs')
+    Text(0, 0.5, 'Log # of epochs')
 
 
 
@@ -902,10 +910,10 @@ plt.ylabel('Log # of epochs')
 
 Finally, we look at performance. With `n_units <= 7`, we see that 1 second of training with the true negative phase yields a better model. Conversely, **using 7 or more units, the added performance given by using the true negative phase is overshadowed by the amount of time it takes the model to train.**
 
+# Plot
+
 
 ```python
-df = pd.concat(all_updates)
-
 plt.figure(figsize=(14, 8))
 plt.title('True vs. approximate negative phase, 1 second of training')
 sns.lineplot(x="time", y="likelihood", hue="n_units", style="algo",
@@ -916,12 +924,12 @@ sns.lineplot(x="time", y="likelihood", hue="n_units", style="algo",
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x12e2ab8d0>
+    <matplotlib.axes._subplots.AxesSubplot at 0x1155ca8d0>
 
 
 
 
-![png](output_30_1.png)
+![png](output_31_1.png)
 
 
 # Summary
