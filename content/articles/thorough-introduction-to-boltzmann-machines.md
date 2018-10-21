@@ -578,27 +578,7 @@ Close, ish enough.
 
 With data of vary dimensionality `n_units`, the following plot gives the time in seconds that it takes to train this model for 10 epochs.
 
-```python
-results = []
-
-for n_units in range(10):
-    p = np.random.uniform(size=n_units)
-    weights, biases, var_combinations, all_configs, data = reset_data_and_parameters(n_units=n_units, p=p)
-    start = time()
-    for i in range(10):
-        weights, biases = update_parameters_with_true_negative_phase(weights, biases, var_combinations, all_configs, data, alpha=1)
-    elapsed = time() - start
-
-    results.append( {'n_units': n_units, 'time_to_10_epochs': elapsed})
-
-
-results_df = pd.DataFrame(results)
-title='Time to Train Model for 10 Epochs\nwith Data Dimensionality of `n_units`'
-results_df.plot(x='n_units', kind='bar', figsize=(8, 6), title=title)
-```
-
 ![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_15_1.png)
-
 
 To reduce computational burden, and/or to fit a Boltzmann machine to data of non-trivial dimensionality (e.g. a 28x28 grey-scale image, which implies a random variable with 28x28=784 dimensions), we need to compute the positive and/or negative phase of our gradient faster than we currently are.
 
@@ -699,16 +679,6 @@ for n_units in range(min_units, max_units):
 
 ## Plot
 
-
-```python
-df = pd.concat(all_updates)
-
-plt.figure(figsize=(14, 8))
-plt.title('True vs. approximate negative phase, 100 epochs')
-sns.lineplot(x="step", y="likelihood", hue="n_units", style="algo",
-                legend="full", data=df, ci=None, alpha=.8, palette=sns.color_palette("colorblind", max_units - min_units))
-```
-
 ![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_23_1.png)
 
 
@@ -763,32 +733,11 @@ for n_units in range(min_units, max_units):
 
 Before plotting results, let’s examine how many epochs each algorithm completes in its allotted time. In fact, for some values of `n_units`, we couldn’t even complete a single epoch (when computing the true negative phase) in $\leq 1$ second.
 
-
-```python
-df = pd.concat(all_updates)
-n_steps_df = df.groupby(['algo', 'n_units'])['step'].max().map(np.log).reset_index()
-
-plt.figure(figsize=(9, 6))
-plt.title('Log # of training epochs finished in 1 seconds\nfor varying data dimensionality `n_units`')
-sns.lineplot(x='n_units', y='step', hue='algo', data=n_steps_df)
-plt.ylabel('Log # of epochs')
-```
-
 ![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_28_1.png)
-
 
 Finally, we look at performance. With `n_units <= 7`, we see that 1 second of training with the true negative phase yields a better model. Conversely, **using 7 or more units, the added performance given by using the true negative phase is overshadowed by the amount of time it takes the model to train.**
 
 ## Plot
-
-
-```python
-plt.figure(figsize=(14, 8))
-plt.title('True vs. approximate negative phase, 1 second of training')
-sns.lineplot(x="time", y="likelihood", hue="n_units", style="algo",
-             legend="full", data=df, ci=None, alpha=.8,
-             palette=sns.color_palette("colorblind", max_units - min_units))
-```
 
 ![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_31_1.png)
 
