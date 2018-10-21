@@ -4,12 +4,8 @@ Author: Will Wolf
 Lang: en
 Slug: thorough-introduction-to-boltzmann-machines
 Status: published
-Summary: Foo
+Summary: A pedantic walk through Boltzmann machines, with focus on the computational thorn-in-side of the partition function.
 Image: figures/thorough-introduction-to-boltzmann-machines/output_23_1.png
-
-Commands:
-- mv ~/Downloads/boltzmann-machines-part-1/output_* content/figures/thorough-introduction-to-boltzmann-machines/
--  mv ~/Downloads/boltzmann-machines-part-1/boltzmann-machines-part-1.md content/articles
 
 The principal task of machine learning is to fit a model to some data. Thinking on the level of APIs, a model is an object with two methods:
 
@@ -29,7 +25,7 @@ How likely is the query point(s) $x$ under our model? In other words, how likely
 
 The likelihood gives a value proportional to a valid probability, but is not necessarily a valid probability itself.
 
-(Finally, the likelihood is often used as an umbrella term for, or interchangeably with, the probability density. The mainstream machine learning community would do well to agree to the use of one of these terms, and to sunset the other; while their definitions may differ slightly, the confusion brought about by their shared used sharply outweighs the pedagogical purity maintained by keeping them distinct.
+(Finally, the likelihood is often used as an umbrella term for, or interchangeably with, the probability density. The mainstream machine learning community would do well to agree to the use of one of these terms, and to sunset the other; while their definitions may differ slightly, the confusion brought about by their dual used in almost identical contexts simply does not warrant by the pedagogical purity we maintain by keeping them distinct.
 
 ## Sample
 
@@ -43,15 +39,15 @@ $$
 x \sim p(x)
 $$
 
-Again, this simple denotation implies two methods: that we can evaluate the likehood of having observed $x$ under our model $p$, and that we can sample a new value $x$ from our model $p$.
+Again, this simple denotation implies two methods: that we can evaluate the likelihood of having observed $x$ under our model $p$, and that we can sample a new value $x$ from our model $p$.
 
 Often, we work with *conditional* models, such as $y \sim p(y\vert x)$, in classification and regression tasks. The same two implicit methods apply.
 
 ## Boltzmann machines
 
-A Boltzmann machine is one of the simplest mechanisms for modeling $p(x)$. It is an undirected graphical model where every dimension $x_i$ of a given observation $x$ influences every other dimension. For $x \in R^3$, our model would look as follows:
+A Boltzmann machine is one of the simplest mechanisms for modeling $p(x)$. It is an undirected graphical model where every dimension $x_i$ of a given observation $x$ influences every other dimension. **As such, we might use it to model data which we believe to exhibit this property, e.g. an image.** For $x \in R^3$, our model would look as follows:
 
-![](figures/boltzmann-machine.svg)
+![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/boltzmann-machine.svg)
 
 For $x \in R^n$, a given node $x_i$ would have $n - 1$ outgoing connections in total—one to each of the other nodes $x_j$ for $j \neq i$.
 
@@ -116,8 +112,9 @@ def _H(self, x):
 
 def likelihood(self, x, log=False):
     """
-    Must have the dimensionality of the data observations. To marginalize, put ellipses (...)
-    in the elements over which you wish to marginalize.
+    :param x: a vector of shape (n_units,) or (n, n_units),
+        where the latter is a matrix of multiple data points
+        for which to compute the joint likelihood.
     """
     x = np.array(x)
     if not self.n_units in x.shape and len(x.shape) in (1, 2):
@@ -251,7 +248,7 @@ In the following toy example, our data are small: we can compute the positive ph
 
 Again, this term asks us to compute then sum the log-likelihood over every possible data configuration in the support of our model, which is $O(nv^d)$. **With non-trivially large $v$ or $d$, this becomes intractable to compute.**
 
-Below, we'll begin our toy example computing the true negative-phase, $\mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, with varying data-dimensionalities $d$. Then, once this computation becomes slow, we'll look to approximate this expectation later on.
+Below, we'll begin our toy example computing the true negative-phase, $\mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, with varying data dimensionalities $d$. Then, once this computation becomes slow, we'll look to approximate this expectation later on.
 
 ## Parameter updates in code
 
@@ -400,28 +397,6 @@ class Model:
 
         return np.array([sample for i, sample in enumerate(samples[burn_in:]) if i % every_n == 0])
 
-    def conditional_likelihood(x, cond: dict):
-        joint = np.array(x)
-        for index, val in cond.items():
-            if isinstance(joint[index], int):
-                raise
-            joint[index] = val
-
-        evidence = [cond.get(i, ...) for i in range(len(x))]
-
-        return self._unnormalized_likelihood(joint) / self.marginal_likelihood(evidence)
-
-    def marginal_likelihood(self, x):
-        """
-        To marginalize, put ellipses (...) in the elements over
-        which you wish to marginalize.
-        """
-        unnormalized_lik = 0
-        for config in product(*[[0, 1] if el == ... else [el] for el in x]):
-            config = np.array(config)
-            unnormalized_lik += np.exp(self._H(config))
-        return unnormalized_lik
-
 
 def update_parameters_with_true_negative_phase(weights, biases, var_combinations, all_configs, data, alpha=alpha, **kwargs):
     model = Model(weights, biases, var_combinations, all_configs)
@@ -450,9 +425,11 @@ def update_parameters_with_true_negative_phase(weights, biases, var_combinations
     return np.array(weights), np.array(biases)
 ```
 
+## Train
+
 
 ```python
-weights, biases, var_combinations, all_configs, data = reset_data_and_parameters(n_units=3)
+weights, biases, var_combinations, all_configs, data = reset_data_and_parameters(n_units=3, p=[.8, .1, .5])
 
 
 for i in range(100):
@@ -475,7 +452,7 @@ for i in range(100):
     Epoch: 90 | Likelihood: -158.06232196551673
 
 
-# Visualize samples
+## Visualize samples
 
 
 ```python
@@ -508,7 +485,7 @@ _ = plt.title(f'{n_samples} Samples from Model')
 ```
 
 
-![png](../figures/thorough-introduction-to-boltzmann-machines/output_7_0.png)
+![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_7_0.png)
 
 
 The plot roughly matches the data-generating distribution: most points assume values of either $[1, 0, 1]$, or $[1, 0, 0]$ (given $p=[.8, .1, .5]$).
@@ -525,7 +502,7 @@ To effectuate this sampling scheme, we'll need a model of each data dimension co
 
 Given that each dimension must assume a 0 or a 1, the above 3 models must necessarily return the probability of observing a 1 (where 1 minus this value gives the probability of observing a 0).
 
-Let's derive these formulas using the workhorse axiom of conditional probability, starting with the first model:
+Let's derive these models using the workhorse axiom of conditional probability, starting with the first:
 
 $$
 \begin{align*}
@@ -546,6 +523,7 @@ Pleasantly enough, this model resolves to a simple Binomial GLM, i.e. logistic r
 
 With the requisite conditionals in hand, let's run this chain and compare it with our (trained) model's true probability distribution.
 
+## True probability distribution
 
 ```python
 model = Model(weights, biases, var_combinations, all_configs)
@@ -567,7 +545,7 @@ for config, likelihood in distribution:
     [1, 1, 1]: 0.05715
 
 
-Next, let's run a Gibbs chain for 1000 steps, compute the empirical probability distribution of the samples returned, and compare it to the true probability distribution.
+## Empirical probability distribution, via Gibbs
 
 
 ```python
@@ -598,6 +576,7 @@ Close, ish enough.
 
 ## Scaling up, and hitting the bottleneck
 
+With data of vary dimensionality `n_units`, the following plot gives the time in seconds that it takes to train this model for 10 epochs.
 
 ```python
 results = []
@@ -618,10 +597,10 @@ title='Time to Train Model for 10 Epochs\nwith Data Dimensionality of `n_units`'
 results_df.plot(x='n_units', kind='bar', figsize=(8, 6), title=title)
 ```
 
-![png](../figures/thorough-introduction-to-boltzmann-machines/output_15_1.png)
+![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_15_1.png)
 
 
-To reduce computational burden, and/or to fit a Boltzmann machine to data of non-trivial dimensionality (e.g. a 28x28 grey-scale image, which implies a Bernoulli random variable with 28x28=784 dimensions), we need to compute the positive and/or negative phase of our gradient faster than we currently are.
+To reduce computational burden, and/or to fit a Boltzmann machine to data of non-trivial dimensionality (e.g. a 28x28 grey-scale image, which implies a random variable with 28x28=784 dimensions), we need to compute the positive and/or negative phase of our gradient faster than we currently are.
 
 To compute the former more quickly, we could employ mini-batches as in canonical stochastic gradient descent.
 
@@ -631,7 +610,7 @@ $$
 \mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j] \approx \frac{1}{N}\sum\limits_{k=1}^N x^{(k)}_i  x^{(k)}_j\quad\text{where}\quad x^{(k)} \sim p_{\text{model}}
 $$
 
-So, now we just need a way to draw these samples. Luckily, we have a Gibb's sampler to tap!
+So, now we just need a way to draw these samples. Luckily, we have a Gibbs sampler to tap!
 
 **Instead of computing the true negative phase, i.e. summing $x_i  x_j$ over all permissible configurations $X$ under our model, we can approximate it by evaluating this expression for a few model samples, then taking the mean.**
 
@@ -666,13 +645,16 @@ def update_parameters_with_gibbs_sampling(weights, biases, var_combinations, all
     return np.array(weights), np.array(biases)
 ```
 
-Next, we'll define a function that we can parameterize by an optimization algorithm (computing the true negative phase, or approximating it via Gibb's sampling, in the above case) which will train a model for $n$ epochs and return data requisite for plotting.
+Next, we'll define a function that we can parameterize by an optimization algorithm (computing the true negative phase, or approximating it via Gibbs sampling, in the above case) which will train a model for $n$ epochs and return data requisite for plotting.
 
 ## How does training progress for varying data dimensionalities?
 
-Finally, for data of `n_units` 3, 4, 5, etc., let's train models for 100 epochs and plot curves.
+Finally, for data of `n_units` 3, 4, 5, etc., let’s train models for 100 epochs and plot likelihood curves.
 
-When training with the approximate negative phase, we'll train several models for a given `n_units`; Seaborn will then average results for us then plot a single line (I think).
+When training with the approximate negative phase, we’ll:
+
+- Derive model samples from a **1000-sample Gibbs chain. Of course, this is a parameter we can tune, which will affect both model accuracy and training runtime. However, we don’t explore that in this post;** instead, we just pick something reasonable and hold this value constant throughout our experiments.
+- Train several models for a given `n_units`; Seaborn will average results for us then plot a single line (I think).
 
 
 ```python
@@ -727,14 +709,14 @@ sns.lineplot(x="step", y="likelihood", hue="n_units", style="algo",
                 legend="full", data=df, ci=None, alpha=.8, palette=sns.color_palette("colorblind", max_units - min_units))
 ```
 
-![png](../figures/thorough-introduction-to-boltzmann-machines/output_23_1.png)
+![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_23_1.png)
 
 
-**When we let each algorithm run for 100 epochs, the true negative phase typically gives a model which assigns higher likelihood to the observed data.**
+**When we let each algorithm run for 100 epochs, the true negative phase gives a model which assigns higher likelihood to the observed data in all of the above training runs.**
 
-However, the central point is that 100 epochs of the true negative phase takes a lot longer to run than does 100 epochs for the approximate negative phase.
+Notwithstanding, the central point is that 100 epochs of the true negative phase takes a long time to run.
 
-As such, let's run each for an equal amount of time, and plot results. Below, we define a function to train models for $n$ seconds (or 1 epoch—whichever comes first).
+As such, let’s run each for an equal amount of time, and plot results. Below, we define a function to train models for $n$ seconds (or 1 epoch—whichever comes first).
 
 ```python
 all_updates = []
@@ -779,7 +761,7 @@ for n_units in range(min_units, max_units):
 
 ## How many epochs do we actually get through?
 
-First, let's examine how many epochs each algorithm completes in its allotted time. In fact, for some values of `n_units`, we couldn't even complete a single epoch (when computing the true negative phase) in <= 1 second.
+Before plotting results, let’s examine how many epochs each algorithm completes in its allotted time. In fact, for some values of `n_units`, we couldn’t even complete a single epoch (when computing the true negative phase) in $\leq 1$ second.
 
 
 ```python
@@ -792,7 +774,7 @@ sns.lineplot(x='n_units', y='step', hue='algo', data=n_steps_df)
 plt.ylabel('Log # of epochs')
 ```
 
-![png](../figures/thorough-introduction-to-boltzmann-machines/output_28_1.png)
+![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_28_1.png)
 
 
 Finally, we look at performance. With `n_units <= 7`, we see that 1 second of training with the true negative phase yields a better model. Conversely, **using 7 or more units, the added performance given by using the true negative phase is overshadowed by the amount of time it takes the model to train.**
@@ -808,18 +790,21 @@ sns.lineplot(x="time", y="likelihood", hue="n_units", style="algo",
              palette=sns.color_palette("colorblind", max_units - min_units))
 ```
 
-![png](../figures/thorough-introduction-to-boltzmann-machines/output_31_1.png)
+![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_31_1.png)
+
+Of course, we re-stress that the exact ablation results are conditional (amongst other things) on **the number of Gibbs samples we chose to draw. Changing this will change the results, but not that about which we care the most: the overall trend.**
 
 
 ## Summary
 
 Throughout this post, we've given a thorough introduction to a Boltzmann machine: what it does, how it trains, and some of the computational burdens and considerations inherent.
 
-In the next post, we'll look at cheaper, more inventive algorithms for avoiding the computating of the negative phase, and describe how they're used in common machine learning models and training routines.
+In the next post, we'll look at cheaper, more inventive algorithms for avoiding the computation of the negative phase, and describe how they're used in common machine learning models and training routines.
 
 ## Code
 The [repository](https://github.com/cavaunpeu/boltzmann-machines) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/boltzmann-machines/blob/master/boltzmann-machines-part-1.ipynb) for this project can be found at their respective links.
 
 ## References
-[^1]: [Gaussian Processes 1 - Philipp Hennig - MLSS 2013 Tübingen
-](https://www.youtube.com/watch?v=50Vgw11qn0o) (from which this post takes heavy inspiration)
+[^1]: [CSC321 Lecture 19: Boltzmann Machines](http://www.cs.toronto.edu/~rgrosse/courses/csc321_2017/slides/lec19.pdf)
+[^2]: [Derivation: Maximum Likelihood for Boltzmann Machines](https://theclevermachine.wordpress.com/2014/09/23/derivation-maximum-likelihood-for-boltzmann-machines/)
+[^3]: [Boltzmann Machines](https://www.cs.toronto.edu/~hinton/csc321/readings/boltz321.pdf)
