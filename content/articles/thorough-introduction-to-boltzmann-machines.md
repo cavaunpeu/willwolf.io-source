@@ -186,7 +186,7 @@ In other words, the average. We will continue to denote this as $\mathcal{L}$, i
 
 Now, deriving the gradient with respect to our weights:
 
-### $\nabla_{w_{i, j}}\log{\mathcal{L}}$
+### $\nabla_{w_{i, j}}\log{\mathcal{L}}$:
 
 $$
 \begin{align*}
@@ -195,7 +195,7 @@ $$
 \end{align*}
 $$
 
-### First term
+### First term:
 
 $$
 \begin{align*}
@@ -206,7 +206,7 @@ $$
 \end{align*}
 $$
 
-### Second term
+### Second term:
 
 NB: $\sum\limits_{\mathcal{x}}$ implies a summation over all $(v^d)^n$ possible configurations of values that $x^{(1)}, ..., x^{(n)}$ can assume.
 
