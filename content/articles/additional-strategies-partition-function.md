@@ -118,7 +118,7 @@ and estimated $c$ as a parameter?
 
 How might we better phrase this problem?
 
-### Noise contrastive estimation
+## Noise contrastive estimation
 
 Ingeniously, NCE proposes an alternative:
 
@@ -230,6 +230,32 @@ We briefly alluded to the fact that our noise distribution is non-parametric. Ho
 
 Of course, we would have to design what "optimal" means. One interesting approach is called [Adversarial Contrastive Estimation
 ](https://arxiv.org/abs/1805.03642), wherein they adapt the noise distribution to generate increasingly "harder negative examples, which forces the main model to learn a better representation of the data."[^2]
+
+## Negative sampling
+
+Negative sampling is the same as NCE except:
+
+1. We consider noise distributions whose likelihood we cannot evaluate
+2. To accommodate, we simply set $p_{\text{noise}}(x) = 1$
+
+Therefore:
+
+$$
+\begin{align*}
+p_{\text{joint}}(y = 0\vert x)
+&= \frac{1}{1 + \frac{p_{\text{model}}(x)}{p_{\text{noise}}(x)\cdot k}}\\
+&= \frac{1}{1 + \frac{p_{\text{model}}(x)}{ k}}\\
+&=\sigma(-\frac{p_{\text{model}}(x)}{ k})\\
+&=\sigma(\log{k} - \log{p_{\text{model}}(x)})\\
+p_{\text{joint}}(y = 1\vert x)
+&= 1 - \sigma(\log{k} - \log{p_{\text{model}}(x)})
+\end{align*}
+$$
+
+## In code
+
+Since I learn best by implementing things, let's play around.
+
 
 ## Code
 The [repository](https://github.com/cavaunpeu/boltzmann-machines) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/boltzmann-machines/blob/master/boltzmann-machines-part-1.ipynb) for this project can be found at their respective links.
