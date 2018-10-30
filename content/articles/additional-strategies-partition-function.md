@@ -1,11 +1,11 @@
 Title: Additional Strategies for Confronting the Partition Function
-Date: 2018-10-20 14:00 #
+Date: 2018-10-29 22:00
 Author: Will Wolf
 Lang: en
 Slug: additional-strategies-partition-function
 Status: published
-Summary:
-Image:
+Summary: Stochastic maximum likelihood, contrastive divergence, negative contrastive estimation and negative sampling for improving or avoiding the computation of the gradient of the log-partition function. (Oof, that's a mouthful.)
+Image: figures/additional-strategies-partition-function/output_3_0.png
 
 In the [previous post]({filename}/articles/thorough-introduction-to-boltzmann-machines.md) we introduced Boltzmann machines and the infeasibility of computing the gradient of its log-partition function $\nabla_{\theta}\log{Z}$. To this end, we explored one strategy for its approximation: Gibbs sampling. Gibbs sampling is a viable alternative because the expression for this gradient simplifies to an expectation over the model distribution, which can be approximated with Monte Carlo samples.
 
