@@ -7,11 +7,11 @@ Status: published
 Summary:
 Image:
 
-In the [previous post](https://cavaunpeu.github.io/2018/10/20/thorough-introduction-to-boltzmann-machines/) we introduced Boltzmann machines and the infeasibility of computing the gradient of its log-partition function $\nabla_{\theta}\log{Z}$. To this end, we explored one strategy for its approximation: Gibbs sampling. This owes to the fact that the expression for the log-partition function is an expectation over the model distribution which can be approximated with Monte Carlo samples.
+In the [previous post]({filename}/articles/thorough-introduction-to-boltzmann-machines.md) we introduced Boltzmann machines and the infeasibility of computing the gradient of its log-partition function $\nabla_{\theta}\log{Z}$. To this end, we explored one strategy for its approximation: Gibbs sampling. Gibbs sampling is a viable alternative because the expression for this gradient simplifies to an expectation over the model distribution, which can be approximated with Monte Carlo samples.
 
 In this post, we'll highlight the imperfections of even this approach, then present more preferable alternatives.
 
-## Pitfalls of vanilla Gibbs sampling
+## Pitfalls of Gibbs sampling
 
 To refresh, the two gradients we seek to compute in a reasonable amount of time are:
 
@@ -45,9 +45,9 @@ Initializing a Markov chain at a random sample incurs a "burn-in" process which 
 
 ## Stochastic maximum likelihood
 
-SML assumes the premise: let's initialize our chain at a point already close to the model's true distribution—reducing or perhaps eliminating the cost of burn-in altogether.  **This said, at what sample do we initialize the chain?**
+SML assumes the premise: let's initialize our chain at a point already close to the model's true distribution—reducing or perhaps eliminating the cost of burn-in altogether.  **This given, at what sample do we initialize the chain?**
 
-In SML, we simply initialize at the terminal value of the previous chain (i.e. the one we manufactured in the previous gradient step). **As long as the model has not changed significantly since, i.e. as long as the previous gradient step was not too large, this sample should exist in a region of high probability w.r.t. the current model.**
+In SML, we simply initialize at the terminal value of the previous chain (i.e. the one we manufactured to compute the gradients of the previous mini-batch). **As long as the model has not changed significantly since, i.e. as long as the previous parameter update (gradient step) was not too large, this sample should exist in a region of high probability under the current model.**
 
 In code, this might look like:
 
@@ -62,7 +62,7 @@ samples = [previous_samples[-1]]
 ```
 
 ### Implications
-Per the expression for the full log-likelihood gradient, e.g. $\nabla_{w_{i, j}}\log{\mathcal{L}} = \mathop{\mathbb{E}}_{x \sim p_{\text{data}}} [x_i  x_j] - \mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, the negative phase works to "reduce the probability of the points in which the model strongly believes,"[^1], i.e. its incorrect beliefs about the world. Since we approximate this term with samples *roughly from* the model's true distribution, **we do not encroach on this foundational task.**
+Per the expression for the full log-likelihood gradient, e.g. $\nabla_{w_{i, j}}\log{\mathcal{L}} = \mathop{\mathbb{E}}_{x \sim p_{\text{data}}} [x_i  x_j] - \mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, the negative phase works to "reduce the probability of the points in which the model strongly, yet wrongly, believes".[^1] Since we approximate this term at each parameter update with samples *roughly from* the current model's true distribution, **we do not encroach on this foundational task.**
 
 ## Contrastive divergence
 
@@ -70,7 +70,7 @@ Alternatively, in the contrastive divergence algorithm, we initialize the chain 
 
 ### Implications
 
-With no guarantee that the data distribution resemble the model distribution, we may systematically fail to sample, and thereafter "suppress," points that are incorrectly likely under the latter (as they do not appear in the former!). **This incurs the growth of "spurious modes"** in our model, aptly named.[^1]
+With no guarantee that the data distribution resembles the model distribution, we may systematically fail to sample, and thereafter "suppress," points that are incorrectly likely under the latter (as they do not appear in the former!). **This incurs the growth of "spurious modes"** in our model, aptly named.[^1]
 
 In code, this might look like:
 
@@ -171,8 +171,8 @@ $$
 
 This equation:
 
-1. Builds a classifier that discriminates between samples generated from the model distribution and noise distribution **trained only on samples from the latter.** Clearly, this will not make for an effective classifier.
-2. To accomplish the former, we note that the equation maximizes the likelihood of the noise samples under the noise distribution—where the noise distribution itself has no actual parameters we intend to train.
+1. Builds a classifier that discriminates between samples generated from the model distribution and noise distribution **trained only on samples from the latter.** (Clearly, this will not make for an effective classifier.)
+2. To train this classifier, we note that the equation asks us to maximize the likelihood of the noise samples under the noise distribution—where the noise distribution itself has no actual parameters we intend to train!
 
 In solution, we trivially expand our expectation to one over both noise samples, and data samples. In doing so, in predicting $\log{p_{\text{joint}}(y = 1\vert x)} = 1 - \log{p_{\text{joint}}(y = 0\vert x)}$, **we'll be maximizing the likelihood of the data under the model.**
 
@@ -218,18 +218,18 @@ Given a joint training distribution over $(X_{\text{data}}, y=1)$ and $(X_{\text
 
 ### Implications
 
-For our training data, we require the ability to sample from our noise distribution.
+For our training data, **we require the ability to sample from our noise distribution.**
 
-For our target, we require the ability to compute the likelihood of some data under our noise distribution.
+For our target, **we require the ability to compute the likelihood of some data under our noise distribution.**
 
 Therefore, these criterion do place practical restrictions on the types of noise distributions that we're able to consider.
 
 ### Extensions
 
-We briefly alluded to the fact that our noise distribution is non-parametric. However, there is nothing stopping us from evolving this distribution, **i.e. giving it trainable parameters, then updating these parameters such that it generates increasingly "optimal" samples.**
+We briefly alluded to the fact that our noise distribution is non-parametric. However, there is nothing stopping us from evolving this distribution and giving it trainable parameters, then updating these parameters such that it generates increasingly "optimal" samples.
 
 Of course, we would have to design what "optimal" means. One interesting approach is called [Adversarial Contrastive Estimation
-](https://arxiv.org/abs/1805.03642), wherein they adapt the noise distribution to generate increasingly "harder negative examples, which forces the main model to learn a better representation of the data."[^2]
+](https://arxiv.org/abs/1805.03642), wherein the authors adapt the noise distribution to generate increasingly "harder negative examples, which forces the main model to learn a better representation of the data."[^2]
 
 ## Negative sampling
 
@@ -254,13 +254,276 @@ $$
 
 ## In code
 
-Since I learn best by implementing things, let's play around.
+Since I learn best by implementing things, let's play around. Below, we train Boltzmann machines via noise contrastive estimation and negative sampling.
 
+# Load data
+
+For this exercise, we'll fit a Boltzmann machine to the [Fashion MNIST](https://www.kaggle.com/zalando-research/fashionmnist) dataset.
+
+
+![png]({filename}/figures/additional-strategies-partition-function/output_3_0.png)
+
+
+# Define model
+
+Below, as opposed to in the previous post, I offer a vectorized implementation of the Boltzmann energy function.
+
+This said, the code is still imperfect: especially re: the line in which I iterate through data points individually to compute the joint likelihood.
+
+Finally, in `Model._H`, I divide by 1000 to get this thing to train. The following is only a toy exercise (like many of my posts); I did not spend much time tuning parameters.
+
+
+```python
+def sigmoid(z):
+    return 1 / (1 + torch.exp(-z))
+
+
+class Model(nn.Module):
+
+    def __init__(self, n_units, seed=42):
+        super().__init__()
+        torch.manual_seed(seed)
+
+        self.params = nn.Linear(n_units, n_units, bias=True)
+        torch.nn.init.xavier_uniform_(self.params.weight)
+        self.c = nn.Parameter(torch.FloatTensor([1.]))
+        self.diagonal_mask = (~torch.eye(n_units).byte()).float()
+        self.n_units = n_units
+
+    def forward(self, x, log=False):
+        return self._likelihood(x, log=log)
+
+    def _unnormalized_likelihood(self, x):
+        return torch.exp(self._H(x))
+
+    def _H(self, x):
+        H = (self.diagonal_mask * torch.triu(self.params.weight * torch.ger(x, x))).sum() + self.params.bias.sum()
+        return H / 1000
+
+    def _likelihood(self, x, log=False):
+        """
+        :param x: a vector of shape (n_units,) or (n, n_units),
+            where the latter is a matrix of multiple data points
+            for which to compute the joint likelihood
+
+        :return: the likelihood, or log-likelihood if `log=True`
+        """
+        if not self.n_units in x.size() and len(x.size()) in (1, 2):
+            raise('Please pass 1 or more points of `n_units` dimensions')
+
+        # compute unnormalized likelihoods
+        multiple_samples = len(x.shape) == 2
+        if multiple_samples:
+            likelihood = [self._unnormalized_likelihood(point) for point in x]
+        else:
+            likelihood = [self._unnormalized_likelihood(x)]
+
+        if log:
+            return torch.stack([torch.log(lik) - torch.log(self.c) for lik in likelihood])
+        else:
+            return torch.stack([lik / self.c for lik in likelihood])
+
+    def sample(self, n_samples=100, init_sample=None, burn_in=25, every_n=10) -> np.array:
+
+        if burn_in > n_samples:
+            n_samples += burn_in
+
+        init_sample = init_sample or torch.zeros_like(self.params.bias)
+        samples = [init_sample]
+
+        def _gibbs_step(sample, i):
+            z = sum([self.params.weight[i, j] * sample[j] for j in range(len(sample)) if j != i]) + self.params.bias[i]
+            p = sigmoid(z)
+            return p
+
+        for _ in range(n_samples):
+            sample = list(samples[-1])  # make copy
+            for i, _ in enumerate(sample):
+                sample[i] = _gibbs_step(sample=sample, i=i)
+            samples.append( torch.Tensor(sample) )
+
+        return [sample for i, sample in enumerate(samples[burn_in:]) if i % every_n == 0]
+```
+
+# Noise contrastive estimation
+
+Train a model using noise contrastive estimation. For our noise distribution, we'll start with a diagonal multivariate Gaussian, from which we can sample, and whose likelihood we can evaluate (as of PyTorch 0.4!).
+
+
+```python
+# define model, noise distribution
+model = Model(n_units)
+noise = MultivariateNormal(loc=torch.zeros(n_units), covariance_matrix=torch.eye(n_units))
+
+# define classifier. we add a multiplicative constant to make training more stable.
+k = 10
+classifier = lambda X: 1 - sigmoid(torch.Tensor([k]).log() + (noise.log_prob(X) / 10000) - model(X, log=True).squeeze())
+
+# define noise generator
+noise_sample = lambda: noise.sample(sample_shape=torch.Size([BATCH_SIZE * k]))
+noiseloader = ( (noise_sample(), _) for _ in range(len(trainloader)) )
+
+# define optimizer, loss
+optimizer = torch.optim.Adam(model.parameters(), lr=.01)
+criterion = nn.BCELoss()
+```
+
+
+```python
+def train_model(classifier, optimizer, trainloader, noiseloader, n_batches=float('inf'), verbose=False):
+
+    for i, (data, noise) in enumerate(zip(trainloader, noiseloader)):
+
+        if i < n_batches:
+
+            # points from data distribution
+            X_data, _ = data
+            X_data = X_data.view(-1, n_units)
+            y_data = torch.FloatTensor([1. for _ in range(X_data.size(0))])
+
+            # points from noise distribution
+            X_noise, _ = noise
+            X_noise = X_noise.view(-1, n_units)
+            y_noise = torch.FloatTensor([0. for _ in range(X_noise.size(0))])
+
+            # stack into single input
+            X = torch.cat([X_data, X_noise]).view(-1, n_units)
+            y = torch.cat([y_data, y_noise]).view(-1)
+
+            optimizer.zero_grad()
+            logits = classifier(X)
+            loss = criterion(logits, y)
+
+            loss.backward()
+            optimizer.step()
+
+            if i % 10 == 0:
+                print(f'Batch: {i} | Loss: {loss.data.item():.3}')
+                if verbose:
+                    print(f'weights.mean(): {model.params.weight.mean():.3}')
+                    print(f'bias.mean(): {model.params.bias.mean():.3}')
+                    print(f'c: {model.c.data.item():.3}')
+                    print(f'weights.grad.mean(): {model.params.weight.grad.mean():.3}')
+                    print(f'bias.grad.mean(): {model.params.bias.grad.mean():.3}')
+                    print(f'c.grad: {model.c.grad.data.item():.3}')
+```
+
+## Train model
+
+
+```python
+train_model(classifier, optimizer, trainloader, noiseloader, n_batches=100)
+```
+
+    Batch: 0 | Loss: 0.305
+    Batch: 10 | Loss: 0.0887
+    Batch: 20 | Loss: 0.0794
+    Batch: 30 | Loss: 0.0603
+    Batch: 40 | Loss: 0.0525
+    Batch: 50 | Loss: 0.0503
+    Batch: 60 | Loss: 0.0414
+    Batch: 70 | Loss: 0.038
+    Batch: 80 | Loss: 0.034
+    Batch: 90 | Loss: 0.0312
+
+
+# Negative sampling
+
+Next, we'll try negative sampling using some actual images as negative samples
+
+
+```python
+noiseset = dset.mnist.MNIST(root = 'data/mnist', download=True, transform=transform)
+noiseloader = torch.utils.data.DataLoader(noiseset, batch_size=BATCH_SIZE * 10, shuffle=True)
+
+# get some random training images
+dataiter = iter(noiseloader)
+images, labels = dataiter.next()
+
+# show images
+imshow(torchvision.utils.make_grid(images))
+```
+
+
+![png]({filename}/figures/additional-strategies-partition-function/output_12_0.png)
+
+
+## Train model
+
+
+```python
+# define model
+model = Model(n_units)
+
+# define classifier
+k = 10
+classifier = lambda X: 1 - sigmoid(torch.Tensor([k]).log() - model(X, log=True).squeeze())
+
+optimizer = torch.optim.Adam(model.parameters(), lr=.1)  # i had to change this learning rate to get this to train
+
+# train
+train_model(classifier, optimizer, trainloader, noiseloader, n_batches=100)
+```
+
+    Batch: 0 | Loss: 0.304
+    Batch: 10 | Loss: 0.027
+    Batch: 20 | Loss: 0.0111
+    Batch: 30 | Loss: 0.00611
+    Batch: 40 | Loss: 0.00505
+    Batch: 50 | Loss: 0.00318
+    Batch: 60 | Loss: 0.00284
+    Batch: 70 | Loss: 0.0029
+    Batch: 80 | Loss: 0.0023
+    Batch: 90 | Loss: 0.00217
+
+
+## Sampling
+
+Once more, the (ideal) goal of this model is to fit a function $p(x)$ to some data, such that we can:
+
+1. Evaluate its likelihood (wherein it actually tells us that data to which the model was fit is more likely than data to which it was not)
+2. Draw realistic samples
+
+From a Boltzmann machine, our primary strategy for drawing samples is via Gibbs sampling. It's slow, and I do not believe it's meant to work particularly well. Let's draw 5 samples and see how we do.
+
+
+```python
+%%time
+
+samples = model.sample(n_samples=30, burn_in=25, every_n=1)
+```
+
+    CPU times: user 4min 10s, sys: 4.09 s, total: 4min 14s
+    Wall time: 4min 17s
+
+
+Takes forever!
+
+
+![png]({filename}/figures/additional-strategies-partition-function/output_18_0.png)
+
+
+Nothing great. These samples are highly correlated, if perfectly identical, as expected.
+
+To generate better images, we'll have to let this run for a lot longer and "thin" the chain (taking every `every_n` samples, where `every_n` is on the order of 1, 10, or 100, roughly).
+
+## Summary
+
+In this post, we discussed four additional strategies for both speeding up, as well as outright avoiding, the computation of the gradient of the log-partition function $\nabla_{\theta}\log{Z}$.
+
+While we only presented toy models here, these strategies see successful application in larger undirected graphical models, as well as directed conditional models for $p(y\vert x)$. One key example of the latter is a language model; though the partition function is a sum over distinct values of $y$ (labels) instead of configurations of $x$ (inputs), it can still be intractable to compute! This is because there are as many distinct values of $y$ as there are tokens in the given language's vocabulary, which is typically on the order of millions.
+
+Thanks for reading.
 
 ## Code
-The [repository](https://github.com/cavaunpeu/boltzmann-machines) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/boltzmann-machines/blob/master/boltzmann-machines-part-1.ipynb) for this project can be found at their respective links.
+The [repository](https://github.com/cavaunpeu/boltzmann-machines) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/boltzmann-machines/blob/master/boltzmann-machines-part-2.ipynb) for this project can be found at their respective links.
 
 ## References
-[^1]: [CSC321 Lecture 19: Boltzmann Machines](http://www.cs.toronto.edu/~rgrosse/courses/csc321_2017/slides/lec19.pdf)
-[^2]: [Derivation: Maximum Likelihood for Boltzmann Machines](https://theclevermachine.wordpress.com/2014/09/23/derivation-maximum-likelihood-for-boltzmann-machines/)
-[^3]: [Boltzmann Machines](https://www.cs.toronto.edu/~hinton/csc321/readings/boltz321.pdf)
+[^1]: @book{Goodfellow-et-al-2016,
+    title={Deep Learning},
+    author={Ian Goodfellow and Yoshua Bengio and Aaron Courville},
+    publisher={MIT Press},
+    note={\url{http://www.deeplearningbook.org}},
+    year={2016}
+}
+[^2]: [Adversarial Contrastive Estimation](https://arxiv.org/abs/1805.03642)
