@@ -1,11 +1,11 @@
-Title:
-Date: 2018-10-29 22:00
+Title: Deriving Expectation-Maximization
+Date: 2018-11-11 16:00
 Author: Will Wolf
 Lang: en
-Slug: additional-strategies-partition-function
+Slug: em-for-lda
 Status: published
-Summary:
-Image: figures/em-for-lda/.png
+Summary: Deriving the expectation-maximization algorithm, and the beginnings of its application to LDA. Upon completing this derivation, its intimate connections to variational inference become immediately apparent.
+Image: figures/em-for-lda/initial_decomp.png
 
 Consider a model with parameters $\theta$ and latent variables $\mathbf{Z}$; the expectation-maximization algorithm (EM) is a mechanism for computing the values of $\theta$ that, under this model, maximize the likelihood of some observed data $\mathbf{X}$.
 
