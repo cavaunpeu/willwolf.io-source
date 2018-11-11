@@ -145,17 +145,17 @@ $$
 **Putting it back together:**
 
 $$
-\log{p(\mathbf{X}\vert\theta)} = \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\bigg] + \text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)
+\log{p(\mathbf{X}\vert\theta)} = \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\bigg] + \text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)
 $$
 
 ## The EM algorithm
 
 The algorithm can be described by a few simple observations.
 
-1. $\text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)$ is a divergence metric which is strictly non-negative.
-1. As $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$—if we decrease $\text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)$ *by changing $q(\mathbf{Z})$*, the ELBO must increase to compensate.
+1. $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ is a divergence metric which is strictly non-negative.
+1. As $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$—if we decrease $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ *by changing $q(\mathbf{Z})$*, the ELBO must increase to compensate.
 
-(For intuition, imagine we're able to decrease $\text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)$ to 0, which occurs when setting $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$.)
+(For intuition, imagine we're able to decrease $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ to 0, which occurs when setting $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$.)
 
 3. If we increase the ELBO *by changing $\theta$*, $\log{p(\mathbf{X}\vert\theta)}$ will increase as well. *In addition, as $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ now diverges from $q(\mathbf{Z})$ in non-zero amount, $\log{p(\mathbf{X}\vert\theta)}$ increase even more.*
 
@@ -173,7 +173,7 @@ Here, the ELBO is written as $\mathcal{L}(q, \theta)$.
 
 ![](../figures/em-for-lda/e_step.png)
 
-Holding the parameters $\theta$ constant, minimize $\text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)$ with respect to $q(\mathbf{Z})$.
+Holding the parameters $\theta$ constant, minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ with respect to $q(\mathbf{Z})$.
 
 The caption implies that we can always compute $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$. We will see in future posts that this is not the case for many interesting models.
 
@@ -197,16 +197,57 @@ we see that it decomposes into an expectation of the joint distribution over dat
 
 Maximizing this expression with respect to $\theta$, we can treat the latter as a constant.
 
-# em for lda
+## EM for LDA
+
+In the next few posts, we'll use the Latent Dirichlet Allocation (LDA) model as a running example.
+
+Since the original paper[^1] is beautiful, I'll default to copying its passages as much as possible.
+
+### Model
 
 ![](../figures/em-for-lda/lda_formulation.png)
 
-![](../figures/em-for-lda/joint_likelihood.png)
+"Given the parameters $\alpha$ and $\beta$, the joint distribution of a topic mixture $\theta$, a set of of $N$ topics $\mathbf{z}$, and a set of $N$ words $\mathbf{w}$ is given by:"
+
+$$
+p(\theta, \mathbf{z}, \mathbf{w}\vert \alpha, \beta) = p(\theta\vert \alpha)\prod\limits_{n=1}^{N}p(z_n\vert \theta)p(w_n\vert z_n, \beta)
+$$
+
+### Log-evidence
+
+The (problematic) log-evidence of a single document:
+
+$$
+\log{p(\mathbf{w}\vert \alpha, \beta)} = \log{\int p(\theta\vert \alpha)\prod\limits_{n=1}^{N}\sum\limits_{z_n} p(z_n\vert \theta)p(w_n\vert z_n, \beta)d\theta}
+$$
+
+NB: The parameters of our model are $\alpha$ and $\beta$, and $\{\theta, \mathbf{z}\}$ are our *latent variables.*
+
+### ELBO
+
+$$
+\mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\bigg(\frac{p(\theta\vert \alpha)}{q(\mathbf{Z})}}\prod\limits_{n=1}^{N}\sum\limits_{z_n} p(z_n\vert \theta)p(w_n\vert z_n, \beta)\bigg)\bigg]
+$$
+
+where $\mathbf{Z} = \{\theta, \mathbf{z}\}$.
+
+### KL term
+
+$$
+\text{KL}\big(q(\mathbf{Z})\Vert \frac{p(\theta, \mathbf{z}, \mathbf{w}\vert \alpha, \beta)}{p(\mathbf{w}\vert \alpha, \beta)}\big)
+$$
+
+Peering at the denominator, we see that expression under the integral is exponential in the number of topics; for any non-trivial number of topics and number of words $N$, it is intractable to compute. As such, the "ideal" E-step solution $q(\mathbf{Z}) = p(\theta, \mathbf{z}\vert \mathbf{w}, \alpha, \beta)$ admits no analytical form.
+
+In the next post, we will cover how to minimize this KL term with respect to $q(\mathbf{Z})$ in detail. This will begin with the derivation of the mean-field algorithm.
+
+## Summary
+
+In this post, we motivated the expectation maximization algorithm and derived its general form. We then, briefly, applied it to the LDA model.
+
+In the next post, we'll expand this logic into mean-field variational Bayes, and eventually, variational inference more broadly.
 
 Thanks for reading.
-
-## Code
-The [repository](https://github.com/cavaunpeu/boltzmann-machines) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/boltzmann-machines/blob/master/boltzmann-machines-part-2.ipynb) for this project can be found at their respective links.
 
 ## References
 [^1]: D.M. Blei, A.Y. Ng, and M.I. Jordan. Latent Dirichlet allocation. JMLR, 3:993–1022, 2003.
