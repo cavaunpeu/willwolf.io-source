@@ -93,7 +93,7 @@ $$
 \end{align*}
 $$
 
-where $q(\mathbf{Z})$ is some distribution over $\mathbf{Z}$ with parameters $\lambda$ (omitted for cleanliness) and known form (e.g. a Gaussian).
+where $q(\mathbf{Z})$ is some distribution over $\mathbf{Z}$ with parameters $\lambda$ (omitted for cleanliness) and known form (e.g. a Gaussian). It is often referred to as the **variational distribution**.
 
 From here, via Jensen's inequality, we can derive the lower-bound:
 
@@ -150,13 +150,52 @@ $$
 
 ## The EM algorithm
 
-The algorithm can be described by a few simple observations:
+The algorithm can be described by a few simple observations.
 
+1. $\text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)$ is a divergence metric which is strictly non-negative.
+1. As $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$—if we decrease $\text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)$ *by changing $q(\mathbf{Z})$*, the ELBO must increase to compensate.
 
+(For intuition, imagine we're able to decrease $\text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)$ to 0, which occurs when setting $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$.)
 
-# remember, $\log{p(\mathbf{X}\vert\theta)}$ doesn't change as $q(\mathbf{Z})$ changes
+3. If we increase the ELBO *by changing $\theta$*, $\log{p(\mathbf{X}\vert\theta)}$ will increase as well. *In addition, as $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ now diverges from $q(\mathbf{Z})$ in non-zero amount, $\log{p(\mathbf{X}\vert\theta)}$ increase even more.*
 
-# in the m-step, it's just the numerator, as the denom splashes out to be h(q(z)) and therefore doesn't depend on \theta
+**The EM algorithm is a repeated alternation between Step 2 (E-step) and Step 3 (M-step).** After each M-Step, $\log{p(\mathbf{X}\vert\theta)}$ is guaranteed to increase (unless it is already at a maximum)[^2].
+
+A graphic is further illustrative.
+
+### Initial decomposition
+
+![](../figures/em-for-lda/initial_decomp.png)
+
+Here, the ELBO is written as $\mathcal{L}(q, \theta)$.
+
+### E-step
+
+![](../figures/em-for-lda/e_step.png)
+
+Holding the parameters $\theta$ constant, minimize $\text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)$ with respect to $q(\mathbf{Z})$.
+
+The caption implies that we can always compute $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$. We will see in future posts that this is not the case for many interesting models.
+
+### M-step
+
+![](../figures/em-for-lda/m_step.png)
+
+In the M-step, maximize the ELBO with respect to the model parameters $\theta$.
+
+Expanding the ELBO:
+
+$$
+\begin{align*}
+\mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\bigg]
+&= \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{X, Z}\vert\theta)}\bigg] - \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{q(\mathbf{Z})}\bigg]\\
+&= \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{X, Z}\vert\theta)}\bigg] + \mathbf{H}[q(\mathbf{Z})]
+\end{align*}
+$$
+
+we see that it decomposes into an expectation of the joint distribution over data and latent variables with respect to the variational distribution $q(\mathbf{Z})$ plus the entropy of $q(\mathbf{Z})$.
+
+Maximizing this expression with respect to $\theta$, we can treat the latter as a constant.
 
 # em for lda
 
