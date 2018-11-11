@@ -11,7 +11,7 @@ In the [previous post]({filename}/articles/thorough-introduction-to-boltzmann-ma
 
 In this post, we'll highlight the imperfections of even this approach, then present more preferable alternatives.
 
-## Pitfalls of Gibbs sampling
+# Pitfalls of Gibbs sampling
 
 To refresh, the two gradients we seek to compute in a reasonable amount of time are:
 
@@ -35,13 +35,13 @@ $$
 
 **We perform this sampling process at each gradient step.**
 
-### The cost of burning in each chain
+## The cost of burning in each chain
 
 Initializing a Markov chain at a random sample incurs a "burn-in" process which comes at non-trivial cost. If paying this cost at each gradient step, it begins to add up. How can we do better?
 
 **In the remainder of the post, we'll explore two new directives for approximating the negative phase more cheaply, and the algorithms they birth.**
 
-## Directive \#1: Cheapen the burn-in process
+# Directive \#1: Cheapen the burn-in process
 
 ## Stochastic maximum likelihood
 
@@ -61,14 +61,14 @@ samples = [np.zeros(dim)]
 samples = [previous_samples[-1]]
 ```
 
-### Implications
+## Implications
 Per the expression for the full log-likelihood gradient, e.g. $\nabla_{w_{i, j}}\log{\mathcal{L}} = \mathop{\mathbb{E}}_{x \sim p_{\text{data}}} [x_i  x_j] - \mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, the negative phase works to "reduce the probability of the points in which the model strongly, yet wrongly, believes".[^1] Since we approximate this term at each parameter update with samples *roughly from* the current model's true distribution, **we do not encroach on this foundational task.**
 
 ## Contrastive divergence
 
 Alternatively, in the contrastive divergence algorithm, we initialize the chain at each gradient step with a sample from the data distribution.
 
-### Implications
+## Implications
 
 With no guarantee that the data distribution resembles the model distribution, we may systematically fail to sample, and thereafter "suppress," points that are incorrectly likely under the latter (as they do not appear in the former!). **This incurs the growth of "spurious modes"** in our model, aptly named.[^1]
 
@@ -87,7 +87,7 @@ samples = [X[np.random.choice(n_obs)]]
 
 Cheapening the burn-in phase indeed gives us a more efficient training routine. Moving forward, what are some even more aggressive strategies we can explore?
 
-## Directive \#2: Skip the computation of $Z$ altogether
+# Directive \#2: Skip the computation of $Z$ altogether
 
 Canonically, we write the log-likelihood of our Boltzmann machine as follows:
 
@@ -216,7 +216,7 @@ $$
 
 Given a joint training distribution over $(X_{\text{data}}, y=1)$ and $(X_{\text{noise}}, y=0)$, this is the target we'd like to maximize.
 
-### Implications
+## Implications
 
 For our training data, **we require the ability to sample from our noise distribution.**
 
@@ -224,7 +224,7 @@ For our target, **we require the ability to compute the likelihood of some data 
 
 Therefore, these criterion do place practical restrictions on the types of noise distributions that we're able to consider.
 
-### Extensions
+## Extensions
 
 We briefly alluded to the fact that our noise distribution is non-parametric. However, there is nothing stopping us from evolving this distribution and giving it trainable parameters, then updating these parameters such that it generates increasingly "optimal" samples.
 
@@ -256,15 +256,14 @@ $$
 
 Since I learn best by implementing things, let's play around. Below, we train Boltzmann machines via noise contrastive estimation and negative sampling.
 
-# Load data
+## Load data
 
 For this exercise, we'll fit a Boltzmann machine to the [Fashion MNIST](https://www.kaggle.com/zalando-research/fashionmnist) dataset.
 
 
 ![png]({filename}/figures/additional-strategies-partition-function/output_3_0.png)
 
-
-# Define model
+## Define model
 
 Below, as opposed to in the previous post, I offer a vectorized implementation of the Boltzmann energy function.
 
@@ -345,7 +344,7 @@ class Model(nn.Module):
         return [sample for i, sample in enumerate(samples[burn_in:]) if i % every_n == 0]
 ```
 
-# Noise contrastive estimation
+## Noise contrastive estimation
 
 Train a model using noise contrastive estimation. For our noise distribution, we'll start with a diagonal multivariate Gaussian, from which we can sample, and whose likelihood we can evaluate (as of PyTorch 0.4!).
 
@@ -427,7 +426,7 @@ train_model(classifier, optimizer, trainloader, noiseloader, n_batches=100)
     Batch: 90 | Loss: 0.0312
 
 
-# Negative sampling
+## Negative sampling
 
 Next, we'll try negative sampling using some actual images as negative samples
 
@@ -477,7 +476,7 @@ train_model(classifier, optimizer, trainloader, noiseloader, n_batches=100)
     Batch: 90 | Loss: 0.00217
 
 
-## Sampling
+# Sampling
 
 Once more, the (ideal) goal of this model is to fit a function $p(x)$ to some data, such that we can:
 
@@ -507,7 +506,7 @@ Nothing great. These samples are highly correlated, if perfectly identical, as e
 
 To generate better images, we'll have to let this run for a lot longer and "thin" the chain (taking every `every_n` samples, where `every_n` is on the order of 1, 10, or 100, roughly).
 
-## Summary
+# Summary
 
 In this post, we discussed four additional strategies for both speeding up, as well as outright avoiding, the computation of the gradient of the log-partition function $\nabla_{\theta}\log{Z}$.
 
