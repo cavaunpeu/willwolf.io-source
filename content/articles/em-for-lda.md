@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: em-for-lda
 Status: published
-Summary: Deriving the expectation-maximization algorithm, and the beginnings of its application to LDA. Upon completing this derivation, its intimate connections to variational inference become immediately apparent.
+Summary: Deriving the expectation-maximization algorithm, and the beginnings of its application to LDA. Once finished, its intimate connection to variational inference is immediately apparent!
 Image: figures/em-for-lda/initial_decomp.png
 
 Consider a model with parameters $\theta$ and latent variables $\mathbf{Z}$; the expectation-maximization algorithm (EM) is a mechanism for computing the values of $\theta$ that, under this model, maximize the likelihood of some observed data $\mathbf{X}$.
@@ -43,7 +43,7 @@ As such, let's derive a lower-bound which features this term. As $\log{p(\mathbf
 
 [Jensen's inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality)[^3] generalizes the statement that the line secant to a **concave function** lies below this function. An example is illustrative:
 
-![](https://alliance.seas.upenn.edu/~cis520/dynamic/2017/wiki/uploads/Lectures/jensen.png)
+![png](https://alliance.seas.upenn.edu/~cis520/dynamic/2017/wiki/uploads/Lectures/jensen.png)
 
 First, we note that the red line is below the blue for all points for which it is defined.
 
@@ -162,13 +162,13 @@ A graphic[^2] (*Pattern Recognition and Machine Learning, Chapter 9*) is further
 
 ### Initial decomposition
 
-![](../figures/em-for-lda/initial_decomp.png)
+![png]({filename}../figures/em-for-lda/initial_decomp.png)
 
 Here, the ELBO is written as $\mathcal{L}(q, \theta)$.
 
 ### E-step
 
-![](../figures/em-for-lda/e_step.png)
+![png]({filename}../figures/em-for-lda/e_step.png)
 
 Holding the parameters $\theta$ constant, minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ with respect to $q(\mathbf{Z})$. Remember, as $q$ is a distribution with a fixed functional form, this amounts to updating its parameters $\lambda$.
 
@@ -176,7 +176,7 @@ The caption implies that we can always compute $q(\mathbf{Z}) = p(\mathbf{Z}\ver
 
 ### M-step
 
-![](../figures/em-for-lda/m_step.png)
+![png]({filename}../figures/em-for-lda/m_step.png)
 
 In the M-step, maximize the ELBO with respect to the model parameters $\theta$.
 
@@ -202,7 +202,7 @@ Since the original paper[^1] is beautiful, I'll default to citing its passages a
 
 ### Model
 
-![](../figures/em-for-lda/lda_formulation.png)
+![png]({filename}../figures/em-for-lda/lda_formulation.png)
 
 "Given the parameters $\alpha$ and $\beta$, the joint distribution of a topic mixture $\theta$, a set of of $N$ topics $\mathbf{z}$, and a set of $N$ words $\mathbf{w}$ is given by:"[^1]
 
