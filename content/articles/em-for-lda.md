@@ -237,7 +237,7 @@ $$
 \text{KL}\big(q(\mathbf{Z})\Vert \frac{p(\theta, \mathbf{z}, \mathbf{w}\vert \alpha, \beta)}{p(\mathbf{w}\vert \alpha, \beta)}\big)
 $$
 
-Peering at the denominator, we see that expression under the integral is exponential in the number of topics; for any non-trivial number of topics and number of words $N$, it is intractable to compute. As such, the "ideal" E-step solution $q(\mathbf{Z}) = p(\theta, \mathbf{z}\vert \mathbf{w}, \alpha, \beta)$ admits no analytical form.
+Peering at the denominator, we see that expression under the integral is exponential in the number of words $N$; for any non-trivial $N$ and number of topics, it is intractable to compute. As such, the "ideal" E-step solution $q(\mathbf{Z}) = p(\theta, \mathbf{z}\vert \mathbf{w}, \alpha, \beta)$ admits no analytical form.
 
 In the next post, we will cover how to minimize this KL term with respect to $q(\mathbf{Z})$ in detail. This will begin with the derivation of the mean-field algorithm.
 
