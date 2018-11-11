@@ -148,9 +148,15 @@ $$
 \log{p(\mathbf{X}\vert\theta)} = \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\bigg] + \text{KL}\big(p(\mathbf{Z}\vert\mathbf{X}, \theta) \Vert q(\mathbf{Z})\big)
 $$
 
-# from here, EM is quite simple
+## The EM algorithm
+
+The algorithm can be described by a few simple observations:
+
+
 
 # remember, $\log{p(\mathbf{X}\vert\theta)}$ doesn't change as $q(\mathbf{Z})$ changes
+
+# in the m-step, it's just the numerator, as the denom splashes out to be h(q(z)) and therefore doesn't depend on \theta
 
 # em for lda
 
