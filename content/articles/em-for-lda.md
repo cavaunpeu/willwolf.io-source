@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: em-for-lda
 Status: published
-Summary: Deriving the expectation-maximization algorithm, and the beginnings of its application to LDA. Once finished, its intimate connection to variational inference is immediately apparent!
+Summary: Deriving the expectation-maximization algorithm, and the beginnings of its application to LDA. Once finished, its intimate connection to variational inference is apparent.
 Image: figures/em-for-lda/initial_decomp.png
 
 Consider a model with parameters $\theta$ and latent variables $\mathbf{Z}$; the expectation-maximization algorithm (EM) is a mechanism for computing the values of $\theta$ that, under this model, maximize the likelihood of some observed data $\mathbf{X}$.
