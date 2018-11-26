@@ -7,19 +7,50 @@ Status: published
 Summary:
 Image: figures/.png
 
-# mean field algorithm
+"Mean-field variational Bayes" (MFVB), is similar to [expectation-maximization]({filename}../content/em-for-lda.md) (EM), yet distinct in two key ways:
+
+1. We do not minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$, i.e. perform the E-step, as [in the problems in which we employ mean-field] the posterior distribution $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ "is too complex to work with," e.g. it has no analytical form.
+2. Our variational distribution $q(\mathbf{Z})$ is a *factorized distribution*, i.e.
 
 $$
-\log{p(\mathbf{X}\vert\theta)} = \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\bigg] + \text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)
+q(\mathbf{Z}) = \prod\limits_i^{M} q_i(\mathbf{Z}_i)
 $$
 
-## thoughts
-- is the marginal log-likelihood of X fixed? is all we can do just minimize the KL divergence (by maximizing the ELBO?)
-- we have to introduce factorized distributions first
+for all latent variables $\mathbf{Z}_i \in \mathbf{Z} \in \mathbb{R}^M$.
 
-## derivation
+Briefly, factorized distributions are cheaper to compute: if each $q_i(\mathbf{Z}_i)$ is Gaussian, $q(\mathbf{Z})$ requires optimization of $2M$ parameters (a mean and a variance for each factor), while an non-factorized $q(\mathbf{Z}) = \text{Normal}(\mu, \Sigma)$ would require optimization of $M(1 + M)$ parameters ($M$ for the mean, and $M^2$ for the covariance). Following intuition, this gain in computational efficiency comes at the cost of decreased accuracy in approximating the true posterior over latent variables.
 
-dropping the dependence on theta...
+## So, what is it?
+
+Mean-field is an iterative maximization of the ELBO, i.e. an iterative M-step, with respect to the variational factors $q_i(\mathbf{Z}_i)$.
+
+In the simplest case, we posit a variational factor over every latent variable, *as well as every parameter*. In other words, as compared to the log-marginal decomposition in EM, $\theta$ is absorbed into $\mathbf{Z}$.
+
+$$
+\log{p(\mathbf{X}\vert\theta)} = \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\bigg] + \text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)\quad \text{(EM)}
+$$
+
+becomes
+
+$$
+\log{p(\mathbf{X})} = \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z})}{q(\mathbf{Z})}}\bigg] + \text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X})\big)\quad \text{(MFVB)}
+$$
+
+From there, we simply maximize the ELBO, i.e. $\mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z})}{q(\mathbf{Z})}}\bigg]$, by iteratively *maximizing with respect to each individual variational factor $q_i(\mathbf{Z}_i)$* in turn.
+
+## What's this do?
+
+Curiously, we note that $\log{p(\mathbf{X})}$ is a *fixed quantity* with respect to $q(\mathbf{Z})$: updating our variational factors *will not change* the marginal log-likelihood of our data.
+
+This said, we note that the ELBO and $p(\mathbf{Z}\vert\mathbf{X})\big)$ trade off linearly: when one goes up $\Delta$, the other goes down by $\Delta$.
+
+As such, (iteratively) maximizing the ELBO in MFVB is akin to minimizing the divergence between the true posterior of the latent variables given data and our variational approximation thereof.
+
+## Derivation
+
+So, what do these updates look like?
+
+First, let's break the ELBO into its two main components:
 
 $$
 \begin{align*}
@@ -30,7 +61,7 @@ $$
 \end{align*}
 $$
 
-we'd like to extract the j'th factor
+From here, we isolate a single variational factor $q_j(\mathbf{Z}_j)$, i.e. the factor with respect to which we're maximizing the ELBO in a given iteration.
 
 $$
 \begin{align*}
@@ -123,6 +154,18 @@ $$
 &= \mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}] + \text{const}\\
 \end{align*}
 $$
+
+# Approximating a Gaussian
+
+Remember, maximizing the ELBO (which we do by minimizing the KL divergence between  $q_j(\mathbf{Z}_j)$ and $\tilde{p}(\mathbf{X}, \mathbf{Z}_j)$ for all factors $j$) is our mechanism for minimizing the KL divergence between the full factorized posterior $q(\mathbf{Z})$ and the true posterior $p(\mathbf{Z}\vert\mathbf{X})$.
+
+Reread this. Let it sink in!
+
+![png]({filename}/figures/mean-field-variational-bayes/mv-gaussian-approx-1.png)
+
+![png]({filename}/figures/mean-field-variational-bayes/mv-gaussian-approx-2.png)
+
+![png]({filename}/figures/mean-field-variational-bayes/mv-gaussian-approx-3.png)
 
 ## Code
 The [repository](https://github.com/cavaunpeu/boltzmann-machines) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/boltzmann-machines/blob/master/boltzmann-machines-part-2.ipynb) for this project can be found at their respective links.
