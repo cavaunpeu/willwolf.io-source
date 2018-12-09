@@ -16,13 +16,13 @@ $$
 q(\mathbf{Z}) = \prod\limits_i^{M} q_i(\mathbf{Z}_i)
 $$
 
-for all latent variables $\mathbf{Z}_i \in \mathbf{Z} \in \mathbb{R}^M$.
+for all latent variables $\mathbf{Z}_i$.
 
-Briefly, factorized distributions are cheaper to compute: if each $q_i(\mathbf{Z}_i)$ is Gaussian, $q(\mathbf{Z})$ requires optimization of $2M$ parameters (a mean and a variance for each factor), while an non-factorized $q(\mathbf{Z}) = \text{Normal}(\mu, \Sigma)$ would require optimization of $M(1 + M)$ parameters ($M$ for the mean, and $M^2$ for the covariance). Following intuition, this gain in computational efficiency comes at the cost of decreased accuracy in approximating the true posterior over latent variables.
+Briefly, factorized distributions are cheaper to compute: if each $q_i(\mathbf{Z}_i)$ is Gaussian, $q(\mathbf{Z})$ requires optimization of $2M$ parameters (a mean and a variance for each factor); conversely, a non-factorized $q(\mathbf{Z}) = \text{Normal}(\mu, \Sigma)$ would require optimization of $M(1 + M)$ parameters ($M$ for the mean, and $M^2$ for the covariance). Following intuition, this gain in computational efficiency comes at the cost of decreased accuracy in approximating the true posterior over latent variables.
 
 ## So, what is it?
 
-Mean-field is an iterative maximization of the ELBO, i.e. an iterative M-step, with respect to the variational factors $q_i(\mathbf{Z}_i)$.
+Mean-field variational Bayes is an iterative maximization of the ELBO. More precisely, it is an iterative M-step with respect to the variational factors $q_i(\mathbf{Z}_i)$.
 
 In the simplest case, we posit a variational factor over every latent variable, *as well as every parameter*. In other words, as compared to the log-marginal decomposition in EM, $\theta$ is absorbed into $\mathbf{Z}$.
 
@@ -42,9 +42,9 @@ From there, we simply maximize the ELBO, i.e. $\mathop{\mathbb{E}}_{q(\mathbf{Z}
 
 Curiously, we note that $\log{p(\mathbf{X})}$ is a *fixed quantity* with respect to $q(\mathbf{Z})$: updating our variational factors *will not change* the marginal log-likelihood of our data.
 
-This said, we note that the ELBO and $p(\mathbf{Z}\vert\mathbf{X})\big)$ trade off linearly: when one goes up $\Delta$, the other goes down by $\Delta$.
+This said, we note that the ELBO and $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X})\big)$ trade off linearly: when one goes up by $\Delta$, the other goes down by $\Delta$.
 
-As such, (iteratively) maximizing the ELBO in MFVB is akin to minimizing the divergence between the true posterior of the latent variables given data and our variational approximation thereof.
+As such, (iteratively) maximizing the ELBO in MFVB is akin to minimizing the divergence between the true posterior over the latent variables given data and our factorized variational approximation thereof.
 
 ## Derivation
 
@@ -61,7 +61,9 @@ $$
 \end{align*}
 $$
 
-From here, we isolate a single variational factor $q_j(\mathbf{Z}_j)$, i.e. the factor with respect to which we're maximizing the ELBO in a given iteration.
+Next, rewrite this expression in a way that isolates a single variational factor $q_j(\mathbf{Z}_j)$, i.e. the factor with respect to which we'd like to maximize the ELBO in a given iteration.
+
+Starting with the first term:
 
 $$
 \begin{align*}
@@ -73,8 +75,129 @@ A
 \end{align*}
 $$
 
-- $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}$ is a function of Z_j
-- do the "inner for loop" exercise
+Following Bishop^[1]'s derivation, we introduce the notation:
+
+$$
+\int{\prod\limits_{i \neq j}q_i(\mathbf{Z}_{i})\log{p(\mathbf{X, Z})}}d\mathbf{Z}_i = \mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]
+$$
+
+A few things to note, and in case this looks strange:
+
+- Were the left-hand side to read $\int{q(\mathbf{Z})\log{p(\mathbf{X, Z})}}d\mathbf{Z}$, this would look like the perfectly vanilla expectation $\mathop{\mathbb{E}}_{q(\mathbf{Z})}[\log{p(\mathbf{X, Z})}]$.
+- An expectation maps a function $f$, e.g. $\log{p(\mathbf{X, Z})}$, to a single real number. As our expression reads $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ as opposed to $\mathop{\mathbb{E}}_{q(\mathbf{Z})}[\log{p(\mathbf{X, Z})}]$, we're conspicuously unable to integrate over the remaining factor $q_j(\mathbf{Z}_j)$; **as such, $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ gives a function of the value of $\mathbf{Z}_j$.**
+
+Some toy Python code is further illustrative:
+
+```python
+# Suppose `Z = [Z_1, Z_2, Z_3]`, with corresponding probability distributions `q_1`, `q_2`, `q_3`:
+
+# pseudo expectation
+
+q_0 = [
+    (1, .2),
+    (2, .3),
+    (3, .5)
+]
+
+q_1 = [
+    (4, .3),
+    (5, .3),
+    (6, .4)
+]
+
+q_2 = [
+    (7, .7),
+    (8, .2),
+    (9, .1)
+]
+
+dists = (q_0, q_1, q_2)
+
+# Suppose j = 2
+j = 2
+```
+
+$\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$, written `E_i_neq_j_log_p_X_Z` below, can be understood as:
+
+```python
+def E_i_neq_j_log_p_X_Z(Z_j):
+
+    E = 0
+    Z_i_neq_j_dists = [dist for i, dist in enumerate(dists) if i != j]
+
+    for comb in product(*Z_i_neq_j_dists):
+        Z = []
+        prob = 0
+        comb = list(comb)
+        for i in range(len(dists)):
+            if i == j:
+                Z.append(Z_j)
+            else:
+                Z_i, p = comb.pop(0)
+                Z.append(Z_i)
+                if prob == 0:
+                    prob = p
+                else:
+                    prob *= p
+        E += prob * ln_p_X_Z(X, Z)
+
+    return E
+```
+
+Next, it was not immediately obvious to me how and why we're able to introduce a second integral sign on line 3 of the derivation above. Notwithstanding, the reason is quite simple; a simple exercise of nested for-loops is illustrative.
+
+Before beginning, we remind the definition of an integral, in code. In the simplest example, $\int{ydx}$ can be written as:
+
+```python
+x = np.linspace(lower_lim, upper_lim, n_ticks)
+
+integral = sum([y * dx for dx in x])
+```
+
+With this in mind, the following confirms the self-evidence of the second integral sign:
+
+```python
+TOTAL = 74.8
+X = np.array([10, 20, 30])
+
+
+def ln_p_X_Z(X, Z):
+    return (X + Z).sum()  # dummy expression
+
+
+# With one integral sign
+total = 0
+for Z_0 in q_0:
+    for Z_1 in q_1:
+        for Z_2 in q_2:
+            val_z_0, prob_z_0 = Z_0
+            val_z_1, prob_z_1 = Z_1
+            val_z_2, prob_z_2 = Z_2
+            Z = np.array([val_z_0, val_z_1, val_z_2])
+            total += prob_z_0 * prob_z_1 * prob_z_2 * ln_p_X_Z(X, Z)
+
+
+assert total == TOTAL
+
+
+# With two integral signs
+total = 0
+for Z_0 in q_0:
+    _total = 0
+    val_z_0, prob_z_0 = Z_0
+    for Z_1 in q_1:
+        for Z_2 in q_2:
+            val_z_1, prob_z_1 = Z_1
+            val_z_2, prob_z_2 = Z_2
+            Z = np.array([val_z_0, val_z_1, val_z_2])
+            _total += prob_z_1 * prob_z_2 * ln_p_X_Z(X, Z)
+    total += prob_z_0 * _total
+
+
+assert total == TOTAL
+```
+
+In effect, isolating $q_j(\mathbf{Z}_j)$ is akin to multiplying penultimate line, i.e. multiplying this probability by an intermediate summation.  Therefore, the second integral sign is akin `_total += prob_z_1 * prob_z_2 * ln_p_X_Z(X, Z)`, i.e. the mechanism that computes this intermediate summation itself.
 
 ## second term
 
