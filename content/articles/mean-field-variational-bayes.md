@@ -199,9 +199,9 @@ assert total == TOTAL
 
 In effect, isolating $q_j(\mathbf{Z}_j)$ is akin to multiplying penultimate line, i.e. multiplying this probability by an intermediate summation.  Therefore, the second integral sign is akin `_total += prob_z_1 * prob_z_2 * ln_p_X_Z(X, Z)`, i.e. the mechanism that computes this intermediate summation itself.
 
-## second term
+## Second
 
-we note that this is the entropy of the full variational joint
+Next, let's expand $B$. We note that this is the entropy of the full variational distribution $q(\mathbf{Z})$.
 
 $$
 \begin{align*}
@@ -218,6 +218,8 @@ B
 \end{align*}
 $$
 
+As we'll be maximizing w.r.t. just $q_j(\mathbf{Z}_j)$, we can set all terms that don't include this factor to constants.
+
 ## Putting it back together
 
 $$
@@ -228,9 +230,9 @@ $$
 \end{align*}
 $$
 
-It would be great if we could remove the expectation, since we'd then have a (negative) KL divergence!
+It would be great if we could remove the expectation, as the entire expression could be rewritten as a negative KL-divergence!
 
-Acknowledging that the $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ in the integrand is an unnormalized log-likelihood written as a function of $\mathbf{Z}_j$, we temporarily rewrite it as:
+Acknowledging that the $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ term in the integrand is an unnormalized log-likelihood written as a function of $\mathbf{Z}_j$, and stomaching one final pseudonym, we temporarily rewrite it as:
 
 $$
 \mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}] = \log{\tilde{p}(\mathbf{X}, \mathbf{Z}_j})
@@ -257,9 +259,9 @@ q_j(\mathbf{Z}_j)
 \end{align*}
 $$
 
-NB: When actually applying mean-field, we are computing this expression analytically. *Therefore, to "obtain the optimal density function," we effectively strive to recognize our result as of the form of some canonical density function, along with its parameters.*
+## Normalization constant
 
-Furthermore, we note that this density function is not necessarily normalized. "By inspection," we compute:
+Nearing the end, we note that this density function is not necessarily normalized. "By inspection," we compute:
 
 $$
 \begin{align*}
@@ -277,6 +279,12 @@ $$
 &= \mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}] + \text{const}\\
 \end{align*}
 $$
+
+## How to actually compute this thing
+
+When actually applying mean-field, we are computing this expression analytically. *Therefore, to "obtain the optimal log-density function," we effectively strive to recognize the right-hand side of the equation as of the form of some canonical density function, along with its parameters.* Should it not, we try to rewrite it as such.
+
+In practice, <clean up> certain types of families guarantee well formed results</clean up>
 
 # Approximating a Gaussian
 
