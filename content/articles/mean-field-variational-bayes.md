@@ -63,7 +63,7 @@ $$
 
 Next, rewrite this expression in a way that isolates a single variational factor $q_j(\mathbf{Z}_j)$, i.e. the factor with respect to which we'd like to maximize the ELBO in a given iteration.
 
-Starting with the first term:
+## Expanding the first term
 
 $$
 \begin{align*}
@@ -84,14 +84,12 @@ $$
 A few things to note, and in case this looks strange:
 
 - Were the left-hand side to read $\int{q(\mathbf{Z})\log{p(\mathbf{X, Z})}}d\mathbf{Z}$, this would look like the perfectly vanilla expectation $\mathop{\mathbb{E}}_{q(\mathbf{Z})}[\log{p(\mathbf{X, Z})}]$.
-- An expectation maps a function $f$, e.g. $\log{p(\mathbf{X, Z})}$, to a single real number. As our expression reads $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ as opposed to $\mathop{\mathbb{E}}_{q(\mathbf{Z})}[\log{p(\mathbf{X, Z})}]$, we're conspicuously unable to integrate over the remaining factor $q_j(\mathbf{Z}_j)$; **as such, $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ gives a function of the value of $\mathbf{Z}_j$.**
+- An expectation maps a function $f$, e.g. $\log{p(\mathbf{X, Z})}$, to a single real number. As our expression reads $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ as opposed to $\mathop{\mathbb{E}}_{q(\mathbf{Z})}[\log{p(\mathbf{X, Z})}]$, we're conspicuously unable to integrate over the remaining factor $q_j(\mathbf{Z}_j)$; **as such, $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ itself gives a function of the value of $\mathbf{Z}_j$.**
 
-Some toy Python code is further illustrative:
+To further illustrate, let's employ some toy Python code:
 
 ```python
-# Suppose `Z = [Z_1, Z_2, Z_3]`, with corresponding probability distributions `q_1`, `q_2`, `q_3`:
-
-# pseudo expectation
+# Suppose `Z = [Z_1, Z_2, Z_3]`, with corresponding probability distributions `q_1`, `q_2`, `q_3`
 
 q_0 = [
     (1, .2),
@@ -113,11 +111,11 @@ q_2 = [
 
 dists = (q_0, q_1, q_2)
 
-# Suppose j = 2
+# Next, suppose we'd like to isolate Z_2
 j = 2
 ```
 
-$\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$, written `E_i_neq_j_log_p_X_Z` below, can be understood as:
+$\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$, written `E_i_neq_j_log_p_X_Z` below, can be computed as:
 
 ```python
 def E_i_neq_j_log_p_X_Z(Z_j):
@@ -144,9 +142,9 @@ def E_i_neq_j_log_p_X_Z(Z_j):
     return E
 ```
 
-Next, it was not immediately obvious to me how and why we're able to introduce a second integral sign on line 3 of the derivation above. Notwithstanding, the reason is quite simple; a simple exercise of nested for-loops is illustrative.
+- It was not immediately obvious to me how and why we're able to introduce a second integral sign on line 3 of the derivation above. Notwithstanding, the reason is quite simple; a simple exercise of nested for-loops is illustrative.
 
-Before beginning, we remind the definition of an integral, in code. In the simplest example, $\int{ydx}$ can be written as:
+Before beginning, we remind the definition of an integral in code. In its simplest example, $\int{ydx}$ can be written as:
 
 ```python
 x = np.linspace(lower_lim, upper_lim, n_ticks)
@@ -162,10 +160,10 @@ X = np.array([10, 20, 30])
 
 
 def ln_p_X_Z(X, Z):
-    return (X + Z).sum()  # dummy expression
+    return (X + Z).sum()  # some dummy expression
 
 
-# With one integral sign
+# Line 2 of the above derivation
 total = 0
 for Z_0 in q_0:
     for Z_1 in q_1:
@@ -180,7 +178,7 @@ for Z_0 in q_0:
 assert total == TOTAL
 
 
-# With two integral signs
+# Line 3 of the above derivation
 total = 0
 for Z_0 in q_0:
     _total = 0
@@ -197,9 +195,9 @@ for Z_0 in q_0:
 assert total == TOTAL
 ```
 
-In effect, isolating $q_j(\mathbf{Z}_j)$ is akin to multiplying penultimate line, i.e. multiplying this probability by an intermediate summation.  Therefore, the second integral sign is akin `_total += prob_z_1 * prob_z_2 * ln_p_X_Z(X, Z)`, i.e. the mechanism that computes this intermediate summation itself.
+In effect, isolating $q_j(\mathbf{Z}_j)$ is akin to the penultimate line `total += prob_z_0 * _total`, i.e. multiplying $q_j(\mathbf{Z}_j)$ by an intermediate summation `_total`.  Therefore, the second integral sign is akin to `_total += prob_z_1 * prob_z_2 * ln_p_X_Z(X, Z)`, i.e. the computation of this intermediate summation itself.
 
-## Second
+## Expanding the second term
 
 Next, let's expand $B$. We note that this is the entropy of the full variational distribution $q(\mathbf{Z})$.
 
@@ -230,15 +228,17 @@ $$
 \end{align*}
 $$
 
-It would be great if we could remove the expectation, as the entire expression could be rewritten as a negative KL-divergence!
+## One final pseudonym
 
-Acknowledging that the $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ term in the integrand is an unnormalized log-likelihood written as a function of $\mathbf{Z}_j$, and stomaching one final pseudonym, we temporarily rewrite it as:
+Were we able to remove the expectation, this entire expression could be rewritten as a negative KL-divergence.
+
+Acknowledging that the $\mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]$ term in the first integrand is an unnormalized log-likelihood written as a function of $\mathbf{Z}_j$, we temporarily rewrite it as:
 
 $$
 \mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}] = \log{\tilde{p}(\mathbf{X}, \mathbf{Z}_j})
 $$
 
-Then:
+As such:
 
 $$
 \begin{align*}
@@ -249,7 +249,7 @@ $$
 \end{align*}
 $$
 
-Finally, this expression, i.e. the ELBO, reaches its minimum when:
+Finally, per this expression, the ELBO reaches its minimum when:
 
 $$
 \begin{align*}
@@ -261,7 +261,7 @@ $$
 
 ## Normalization constant
 
-Nearing the end, we note that this density function is not necessarily normalized. "By inspection," we compute:
+Nearing the end, we note that this function is not necessarily a normalized density (over $\mathbf{Z}_j$). "By inspection," we compute:
 
 $$
 \begin{align*}
@@ -271,7 +271,7 @@ q_j(\mathbf{Z}_j)
 \end{align*}
 $$
 
-So, finally, to work with the log:
+And finally, should it be convenient to work *initially* with the log:
 
 $$
 \begin{align*}
@@ -280,11 +280,21 @@ $$
 \end{align*}
 $$
 
-## How to actually compute this thing
+NB:
 
-When actually applying mean-field, we are computing this expression analytically. *Therefore, to "obtain the optimal log-density function," we effectively strive to recognize the right-hand side of the equation as of the form of some canonical density function, along with its parameters.* Should it not, we try to rewrite it as such.
+- it depends on the values of the other variables, i.e. the values are mutually dependent
+- "In order for the overall method to be tractable, it should be possible to recognize the functional form as belonging to a known distribution"
+- "Significant mathematical manipulation may be required to convert the formula into a form that matches the PDF of a known distribution."
+
+## How to actually employ this thing
+
+When actually employing mean-field, we are computing the expression for $q_j(\mathbf{Z}_j)$ analytically. *Therefore, to "obtain the optimal density function," we effectively strive to recognize the right-hand side of the equation as of the form of some canonical density function, along with its parameters.* Should it not, we try to rewrite it as such.
 
 In practice, <clean up> certain types of families guarantee well formed results</clean up>
+
+Finally, for the below:
+
+you need to correct the fact that you have log q(z_j) is equal to the stuff; it's just q(z_j) if/when you exponentiate it; correct in notes and explain this
 
 # Approximating a Gaussian
 
