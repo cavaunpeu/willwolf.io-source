@@ -155,7 +155,6 @@ integral = sum([y * dx for dx in x])
 With this in mind, the following confirms the self-evidence of the second integral sign:
 
 ```python
-TOTAL = 74.8
 X = np.array([10, 20, 30])
 
 
@@ -163,7 +162,7 @@ def ln_p_X_Z(X, Z):
     return (X + Z).sum()  # some dummy expression
 
 
-# Line 2 of the above derivation
+# Line 2 of `Expanding the first term`
 total = 0
 for Z_0 in q_0:
     for Z_1 in q_1:
@@ -174,11 +173,10 @@ for Z_0 in q_0:
             Z = np.array([val_z_0, val_z_1, val_z_2])
             total += prob_z_0 * prob_z_1 * prob_z_2 * ln_p_X_Z(X, Z)
 
+TOTAL = total
 
-assert total == TOTAL
 
-
-# Line 3 of the above derivation
+# Line 3 of `Expanding the first term`
 total = 0
 for Z_0 in q_0:
     _total = 0
