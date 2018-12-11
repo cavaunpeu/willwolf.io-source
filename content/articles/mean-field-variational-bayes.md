@@ -1,4 +1,4 @@
-Title: Foo Bar
+Title: Deriving Mean-Field Variational Bayes
 Date: 2018-11-23 10:00
 Author: Will Wolf
 Lang: en
@@ -307,6 +307,10 @@ Reread this. Let it sink in!
 ![png]({filename}/figures/mean-field-variational-bayes/mv-gaussian-approx-2.png)
 
 ![png]({filename}/figures/mean-field-variational-bayes/mv-gaussian-approx-3.png)
+
+![png]({filename}/figures/mean-field-variational-bayes/mv-gaussian-approx-4.png)
+
+![png]({filename}/figures/mean-field-variational-bayes/mv-gaussian-approx-5.png)
 
 ## Code
 The [repository](https://github.com/cavaunpeu/boltzmann-machines) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/boltzmann-machines/blob/master/boltzmann-machines-part-2.ipynb) for this project can be found at their respective links.
