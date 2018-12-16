@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: mean-field-variational-bayes
 Status: published
-Summary: A detailed derivation of Mean-Field Variational Bayes, its connection to Expectation-Maximization, and implicit motivation for "black-box variational inference" methods that have followed.
+Summary: A detailed derivation of Mean-Field Variational Bayes, its connection to Expectation-Maximization, and its implicit motivation for the "black-box variational inference" methods born in recent years.
 Image: figures/mean-field-variational-bayes/mv-gaussian-approx-1.png
 
 "Mean-Field Variational Bayes" (MFVB), is similar to [expectation-maximization]({filename}../content/em-for-lda.md) (EM) yet distinct in two key ways:
