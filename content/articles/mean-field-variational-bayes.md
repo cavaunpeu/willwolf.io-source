@@ -278,21 +278,13 @@ $$
 \end{align*}
 $$
 
-NB:
-
-- it depends on the values of the other variables, i.e. the values are mutually dependent
-- "In order for the overall method to be tractable, it should be possible to recognize the functional form as belonging to a known distribution"
-- "Significant mathematical manipulation may be required to convert the formula into a form that matches the PDF of a known distribution."
-
 ## How to actually employ this thing
 
-When actually employing mean-field, we are computing the expression for $q_j(\mathbf{Z}_j)$ analytically. *Therefore, to "obtain the optimal density function," we effectively strive to recognize the right-hand side of the equation as of the form of some canonical density function, along with its parameters.* Should it not, we try to rewrite it as such.
+First, plug in values for the right-hand side.
 
-In practice, <clean up> certain types of families guarantee well formed results</clean up>
+Then, attempt to rearrange this expression such that, once exponentiated (giving $\exp{\big(\log{q_j(\mathbf{Z}_j)}\big)} = q_j(\mathbf{Z}_j)$), we are left with something that resembles a known density function (e.g. a Gaussian, a Gamma, etc.). This may require significant computation.
 
-Finally, for the below:
-
-you need to correct the fact that you have log q(z_j) is equal to the stuff; it's just q(z_j) if/when you exponentiate it; correct in notes and explain this
+Finally, as the optimal density $q_j(\mathbf{Z}_j)$ relies on those of $q_{i \neq j}(\mathbf{Z}_{i \neq j})$, this is necessarily an *iterative optimization algorithm.*
 
 # Approximating a Gaussian
 
