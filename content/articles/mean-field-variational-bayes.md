@@ -4,10 +4,10 @@ Author: Will Wolf
 Lang: en
 Slug: mean-field-variational-bayes
 Status: published
-Summary:
-Image: figures/.png
+Summary: A detailed derivation of Mean-Field Variational Bayes, its connection to Expectation-Maximization, and implicit motivation for "black-box variational inference" methods that have followed.
+Image: figures/mean-field-variational-bayes/mv-gaussian-approx-1.png
 
-"Mean-field variational Bayes" (MFVB), is similar to [expectation-maximization]({filename}../content/em-for-lda.md) (EM) yet distinct in two key ways:
+"Mean-Field Variational Bayes" (MFVB), is similar to [expectation-maximization]({filename}../content/em-for-lda.md) (EM) yet distinct in two key ways:
 
 1. We do not minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$, i.e. perform the E-step, as [in the problems in which we employ mean-field] the posterior distribution $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ "is too complex to work with,"™ i.e. it has no analytical form.
 2. Our variational distribution $q(\mathbf{Z})$ is a *factorized distribution*, i.e.
@@ -22,7 +22,7 @@ Briefly, factorized distributions are cheap to compute: if each $q_i(\mathbf{Z}_
 
 ## So, what is it?
 
-Mean-field variational Bayes is an iterative maximization of the ELBO. More precisely, it is an iterative M-step with respect to the variational factors $q_i(\mathbf{Z}_i)$.
+Mean-field Variational Bayes is an iterative maximization of the ELBO. More precisely, it is an iterative M-step with respect to the variational factors $q_i(\mathbf{Z}_i)$.
 
 In the simplest case, we posit a variational factor over every latent variable, *as well as every parameter*. In other words, as compared to the log-marginal decomposition in EM, $\theta$ is absorbed into $\mathbf{Z}$.
 
@@ -326,7 +326,7 @@ Here, we'll approximate a 2D multivariate Gaussian with a factorized mean-field 
 
 # Summing up
 
-Mean-Field Variational Bayes' is an iterative optimization algorithm for maximizing a lower-bound of the marginal likelihood of some data $\mathbf{X}$ under a given model with latent variables $\mathbf{Z}$. It accomplishes task by positing a factorized variational distribution over all latent variables $\mathbf{Z}$ and parameters $\theta$, then computes, *analytically*, the algebraic forms and parameters of each factor which maximize this bound.
+Mean-Field Variational Bayes is an iterative optimization algorithm for maximizing a lower-bound of the marginal likelihood of some data $\mathbf{X}$ under a given model with latent variables $\mathbf{Z}$. It accomplishes task by positing a factorized variational distribution over all latent variables $\mathbf{Z}$ and parameters $\theta$, then computes, *analytically*, the algebraic forms and parameters of each factor which maximize this bound.
 
 In practice, this process can be cumbersome and labor-intensive. As such, in recent years, "black-box variational inference" techniques were born, which *fix* the forms of each factor $q_j(\mathbf{Z}_j)$, then optimize its parameters via gradient descent.
 
