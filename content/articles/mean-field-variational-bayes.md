@@ -331,11 +331,5 @@ Mean-Field Variational Bayes' is an iterative optimization algorithm for maximiz
 In practice, this process can be cumbersome and labor-intensive. As such, in recent years, "black-box variational inference" techniques were born, which *fix* the forms of each factor $q_j(\mathbf{Z}_j)$, then optimize its parameters via gradient descent.
 
 ## References
-[^1]: @book{Goodfellow-et-al-2016,
-    title={Deep Learning},
-    author={Ian Goodfellow and Yoshua Bengio and Aaron Courville},
-    publisher={MIT Press},
-    note={\url{http://www.deeplearningbook.org}},
-    year={2016}
-}
-[^2]: [Adversarial Contrastive Estimation](https://arxiv.org/abs/1805.03642)
+[^1]: C. M. Bishop. Pattern recognition and machine learning,
+page 229. Springer-Verlag New York, 2006.
