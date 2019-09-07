@@ -73,7 +73,7 @@ Repositories I published (or contributed to) unrelated to the publications above
 ## Employment History
 ---
 
-### > Machine Learning Engineer, [ASAPP, Inc.](https://www.asapp.com/)
+### > Research Engineer, [ASAPP, Inc.](https://www.asapp.com/)
 *New York, New York, August 2017 to Present*
 
 - - AI for enterprise. Stealth, for now.
@@ -153,15 +153,17 @@ After undergrad, before work.
 ## Talks, Teaching
 ---
 
-- "You've Been Doing Statistics All Along," Facebook Developer Circles Casablanca, May 2017
+- "A Practical Guide to the Open-Source Machine Learning Masters", NYC Machine Learning Meetup, August 2019
+- "Minimizing the Negative Log-Likelihood, In English", Boston Bayesians Meetup, August 2018
+- "You've Been Doing Statistics All Along", Facebook Developer Circles Casablanca, May 2017
     - [Slides](https://www.slideshare.net/WilliamWolfDataScien/youve-been-doing-statistics-all-along)
     - [Video](https://www.facebook.com/aboullaite.mohammed/videos/1959648697600819/)
 - Platzi Data Science Courses, Bogotá, Colombia, September 2016
-    - [Beginner's course (Spanish)](https://platzi.com/cursos/data/)
-    - [Advanced course](https://platzi.com/cursos/datascience/)
+    - Beginner's course (Spanish)
+    - Advanced course
 
 ## Personal
 ---
 
-- Languages: Spanish (business level), French (business level)
+- Languages: Spanish (business level), French (business level), Russian (beginner)
 - Interests: Hiking, languages, traveling by bicycle, mathematics
