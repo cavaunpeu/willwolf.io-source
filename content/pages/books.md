@@ -1,0 +1,60 @@
+I spend a lot of time reading. To the extent that we are how we spend our time, well: here's a deeper dive into who I am in recent years.
+
+- The Revenge of Geography, Robert D. Kaplan
+- In Europe's Shadow, Robert D. Kaplan
+- Fantastic Night, Stefan Zweig
+- The Unbearable Lightness of Being, Milan Kundera
+- The Cold War: A New History, John Lewis Gaddis
+- Norwegian Wood, Haruki Murakami
+- Anna Karenina, Leo Tolstoy
+- Cat's Cradle: A Novel, Kurt Vonnegut
+- Hillbilly Elegy: A Memoir of a Family and Culture in Crisis, J. D. Vance
+- "Wind, Sand and Stars", Antoine de Saint-Exupery
+- The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life, Mark Manson
+- Soft Power: The Means To Success In World Politics, Joseph S. Nye Jr.
+- The Pleasure of Finding Things Out, Richard P. Feynman
+- The Rise and Fall of the Third Reich: A History of Nazi Germany, William L. Shirer
+- In Extremis: The Life and Death of the War Correspondent Marie Colvin, Lindsey Hilsum
+- Endurance: Shackleton's Incredible Voyage, Alfred Lansing
+- Survivors in Mexico, Rebecca West
+- The Autobiography of Malcolm X, Malcolm X
+- The Mind of the South, W.J. Cash
+- The Evolution of Cooperation, Robert Axelrod
+- The Travels of Ibn Battutah, Ibn Battutah
+- Swarmwise: The Tactical Manual to Changing the World, Rick, Falkvinge
+- The Social Contract, Jean-Jacques Rousseau
+- Leviathan, Thomas Hobbes
+- The Brothers Karamazov, Fyodor Dostoevsky
+- The Cosmopolites: The Coming of the Global Citizen, Atossa Araxia Abrahamian
+- A Brief History of Mathematical Thought, Luke Heaton
+- Love and Math: The Heart of Hidden Reality, Edward Frenkel
+- The Hidden Pleasures of Life: A New Way of Remembering the Past and Imagining the Future, Theodore Zeldin
+- Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are, Seth Stephens-Davidowitz
+- Creative Visualization, Shakti Gawain
+- The Book of Why: The New Science of Cause and Effect, Judea Pearl
+- Radical Markets: Uprooting Capitalism and Democracy for a Just Society, Eric A. Posner & E. Glen Weyl
+- Born a Crime: Stories from a South African Childhood, Trevor Noah
+- 21 Lessons for the 21st Century, Yuval Noah Harari
+- Prisoners of Geography: Ten Maps That Explain Everything About the World, Tim Marshall
+- Influence: The Psychology of Persuasion, Robert B. Cialdini
+- We Were Eight Years in Power: An American Tragedy, Ta-Nehisi Coates
+- Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy, Cathy O'Neil
+- Brave New World, Aldous Huxley
+- The Post-American World 2.0, Fareed Zakaria
+- The Dictator's Handbook: Why Bad Behavior Is Almost Always Good Politics, Bruce Bueno de Mesquita & Alastair Smith
+- Homo Deus: A Brief History of Tomorrow, Yuval Noah Harari
+- The Bhagavad Gita, Eknath Easwaran
+- Dark Money: The Hidden History of the Billionaires Behind the Rise of the Radical Right, Jane Mayer
+- Open Veins of Latin America: Five Centuries of the Pillage of a Continent, Eduardo Galeano
+- All the Shah's Men: An American Coup and the Roots of Middle East Terror, Stephen Kinzer
+- The Souls of Black Folk, W. E. B. Du Bois
+- Rules for Radicals: A Practical Primer for Realistic Radicals, Saul D. Alinsky
+- Homage to Catalonia, George Orwell
+- The Virgin Way: Everything I Know about Leadership, Richard Branson
+- "Superintelligence: Paths, Dangers, Strategies", Nick Bostrom
+- The Dharma Bums, Jack Kerouac
+- The Art of Learning: An Inner Journey to Optimal Performance, Josh Waitzkin
+- Between the World and Me, Ta-Nehisi Coates
+- Sapiens: A Brief History of Humankind, Yuval Noah Harari
+- The Hitchhiker's Guide to the Galaxy, Douglas Adams
+- "The 4-Hour Workweek: Escape 9-5, Live Anywhere, and Join the New Rich", Timothy Ferriss
