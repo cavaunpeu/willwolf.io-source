@@ -6,7 +6,7 @@ Slug: about
 Status: published
 Template: page
 
-My name is Will Wolf from Philadelphia, USA. I currently work as a Machine Learning Engineer at [ASAPP, Inc.](https://www.asapp.com/), building artificial-intelligence products for enterprise. Previously, I completed an open-source ["masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning in Casablanca, Morocco, and worked as a Data Scientist at [ShopKeep](https://www.shopkeep.com) in New York City. I'm passionate about mathematics, cycling, language and travel.
+My name is Will Wolf from Philadelphia, USA. I currently work as a Research Engineer at [ASAPP, Inc.](https://www.asapp.com/), building artificial-intelligence products for enterprise. Previously, I completed an open-source ["masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning in Casablanca, Morocco, and worked as a Data Scientist at [ShopKeep](https://www.shopkeep.com) in New York City. I'm passionate about mathematics, cycling, language and travel.
 
 I studied Industrial Engineering and Mathematics at Penn State University. There, I played ice hockey, enjoyed math classes more than most, and spent two years writing an Honors [thesis](https://honors-prod.sas.psu.edu/catalog/1947) on game theory and group dynamics with Dr. Eli Byrne. I graduated in December 2011.
 
