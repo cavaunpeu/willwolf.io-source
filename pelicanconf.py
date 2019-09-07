@@ -7,7 +7,7 @@ import os
 # Site settings
 AUTHOR = 'Will Wolf'
 SITENAME = 'will wolf'
-SITESUBTITLE = 'data science things and thoughts on the world'
+SITESUBTITLE = 'machine learning things and thoughts on the world'
 SITEURL = ''
 PATH = 'content'
 TIMEZONE = 'America/New_York'
@@ -60,7 +60,7 @@ DEFAULT_LANG = 'en'
 I18N_UNTRANSLATED_ARTICLES = 'remove'
 I18N_SUBSITES = {
     'es': {
-        'SITESUBTITLE': 'cosas de data science y pensamientos sobre el mundo',
+        'SITESUBTITLE': 'cosas de machine learning y pensamientos sobre el mundo',
         'ABOUT_PAGE_LINK_TEXT': 'Acerca de',
         'ARCHIVE_PAGE_LINK_TEXT': 'Archivo',
         'AVATAR': '../images/will.jpg'
