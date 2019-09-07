@@ -1,4 +1,4 @@
-I spend a lot of time reading. To the extent that we are how we spend our time, well: here's a deeper dive into who I am in recent years.
+I spend a lot of time reading. And to the extent that we are how we spend our time, well: here's a deeper dive into who I am in recent years.
 
 - The Revenge of Geography, Robert D. Kaplan
 - In Europe's Shadow, Robert D. Kaplan
