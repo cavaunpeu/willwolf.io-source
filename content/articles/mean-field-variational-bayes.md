@@ -7,7 +7,7 @@ Status: published
 Summary: A detailed derivation of Mean-Field Variational Bayes, its connection to Expectation-Maximization, and its implicit motivation for the "black-box variational inference" methods born in recent years.
 Image: figures/mean-field-variational-bayes/mv-gaussian-approx-1.png
 
-"Mean-Field Variational Bayes" (MFVB), is similar to [expectation-maximization]({filename}../content/em-for-lda.md) (EM) yet distinct in two key ways:
+"Mean-Field Variational Bayes" (MFVB), is similar to [expectation-maximization]({filename}/articles/em-for-lda.md) (EM) yet distinct in two key ways:
 
 1. We do not minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$, i.e. perform the E-step, as [in the problems in which we employ mean-field] the posterior distribution $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ "is too complex to work with,"™ i.e. it has no analytical form.
 2. Our variational distribution $q(\mathbf{Z})$ is a *factorized distribution*, i.e.

@@ -157,8 +157,8 @@ After undergrad, before work.
 ## Talks, Teaching
 ---
 
-- "A Practical Guide to the Open-Source Machine Learning Masters", NYC Machine Learning Meetup, August 2019
-- "Minimizing the Negative Log-Likelihood, In English", Boston Bayesians Meetup, August 2018
+- "A Practical Guide to the Open-Source Machine Learning Masters", NYC Machine Learning, August 2019
+- "Minimizing the Negative Log-Likelihood, In English", Boston Bayesians, August 2018
 - "You've Been Doing Statistics All Along", Facebook Developer Circles Casablanca, May 2017
     - [Slides](https://www.slideshare.net/WilliamWolfDataScien/youve-been-doing-statistics-all-along)
     - [Video](https://www.facebook.com/aboullaite.mohammed/videos/1959648697600819/)
@@ -169,5 +169,5 @@ After undergrad, before work.
 ## Personal
 ---
 
-- Languages: Spanish (business level), French (business level), Russian (beginner)
+- Languages: **English** (native) **Spanish** (business level), **French** (business level), **Russian** (beginner)
 - Interests: Hiking, languages, traveling by bicycle, mathematics
