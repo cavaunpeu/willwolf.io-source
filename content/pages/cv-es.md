@@ -73,10 +73,14 @@ Repositories I published (or contributed to) unrelated to the publications above
 ## Employment History
 ---
 
-### > Research Engineer, [ASAPP, Inc.](https://www.asapp.com/)
+### > [ASAPP, Inc.](https://www.asapp.com/)
 *New York, New York, August 2017 to Present*
 
-- - AI for enterprise. Stealth, for now.
+- **Research Engineer**, *January 2019 to Present*
+- **Lead Machine Learning Engineer**, *October 2018 to January 2019*
+- **Machine Learning Engineer**, *August 2017 to October 2018*
+
+AI for enterprise. Stealth for now.
 
 ### > Data Scientist, [ShopKeep](http://www.shopkeep.com/)
 *New York, New York, March 2015 to July 2016*

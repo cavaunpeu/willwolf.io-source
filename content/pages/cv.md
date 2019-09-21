@@ -73,10 +73,14 @@ Repositories I published (or contributed to) unrelated to the publications above
 ## Employment History
 ---
 
-### > Research Engineer, [ASAPP, Inc.](https://www.asapp.com/)
+### > [ASAPP, Inc.](https://www.asapp.com/)
 *New York, New York, August 2017 to Present*
 
-- AI for enterprise. Stealth, for now.
+- **Research Engineer**, *January 2019 to Present*
+- **Lead Machine Learning Engineer**, *October 2018 to January 2019*
+- **Machine Learning Engineer**, *August 2017 to October 2018*
+
+AI for enterprise. Stealth for now.
 
 ### > Data Scientist, [ShopKeep](http://www.shopkeep.com/)
 *New York, New York, March 2015 to July 2016*
@@ -87,7 +91,7 @@ Repositories I published (or contributed to) unrelated to the publications above
 - Built and maintained internal ETL infrastructure
 
 ### > Data Science Mentor, [Thinkful](https://www.thinkful.com/)
-*New York, New York, August 2015 to Present*
+*New York, New York, August 2015 to December 2017*
 
 - Mentoring students throughout a 10-12 week, project-based Data Science curriculum
 - Main topics include: Python scientific and inferential stack, databases and APIs, Git and version control, probability and statistics, and machine learning algorithms and their applications
