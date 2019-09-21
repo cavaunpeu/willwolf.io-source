@@ -73,12 +73,12 @@ Repositories I published (or contributed to) unrelated to the publications above
 ## Employment History
 ---
 
-### > [ASAPP, Inc.](https://www.asapp.com/)
+### > NLP, [ASAPP, Inc.](https://www.asapp.com/)
 *New York, New York, August 2017 to Present*
 
-- **Research Engineer**, *January 2019 to Present*
-- **Lead Machine Learning Engineer**, *October 2018 to January 2019*
-- **Machine Learning Engineer**, *August 2017 to October 2018*
+- Research Engineer, *January 2019 to Present*
+- Lead Machine Learning Engineer, *October 2018 to January 2019*
+- Machine Learning Engineer, *August 2017 to October 2018*
 
 AI for enterprise. Stealth for now.
 
