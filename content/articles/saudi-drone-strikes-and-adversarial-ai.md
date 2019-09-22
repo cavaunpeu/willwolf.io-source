@@ -75,7 +75,7 @@ Machine learning algorithms are notoriously bad at “knowing what they don’t 
 
 In a world of autonomous fly-and-finish drones, one would hope that its finish decisions are taken with extreme care. Fundamentally, this dovetails quickly into the notion of “out-of-distribution” data, i.e. data that the classifier knows it has not seen before, and about which it therefore neglects to make a prediction.
 
-**As such, insight into the data on which an enemy’s system was trained naturally implies “defense by what’s different”: show the drone images you know that it hasn’t seen before, and thereby increase its uncertainty around the decision at hand**—buying time, and keeping your stuff in tact.
+**As such, insight into the data on which an enemy’s system was trained naturally implies “defense by what’s different”**: show the drone images you know that it hasn’t seen before, and thereby increase its uncertainty around the decision at hand—buying time, and keeping your stuff in tact.
 
 ## Learning optimal defense via reinforcement learning
 
