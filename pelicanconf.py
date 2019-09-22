@@ -60,7 +60,7 @@ DEFAULT_LANG = 'en'
 I18N_UNTRANSLATED_ARTICLES = 'remove'
 I18N_SUBSITES = {
     'es': {
-        'SITESUBTITLE': 'cosas de machine learning y pensamientos sobre el mundo',
+        'SITESUBTITLE': 'cosas de machine learning',
         'ABOUT_PAGE_LINK_TEXT': 'Acerca de',
         'ARCHIVE_PAGE_LINK_TEXT': 'Archivo',
         'AVATAR': '../images/will.jpg'
