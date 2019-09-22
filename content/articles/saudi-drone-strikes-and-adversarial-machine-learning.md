@@ -53,18 +53,21 @@ Weaponized drone deployment will likely progress as follows:
 
 Adversarial examples for supervised image classification models are inputs, i.e. images, whose pixels have been perturbed in a way imperceptible to a human eye, yet cause the classifier to change its prediction entirely.
 
-An example looks as follows:
+An example[^1] looks as follows:
 
-<insert examples from IG deck>
+![png]({filename}../figures/em-for-lda/e_step.png)
 
-As such, knowledge of the data on which an aggressive drone was trained gives unique opportunity to algorithmically design adversarial examples that confuse its classifier aboard. Concrete opportunities would include:
+Initially, the classifier is 57.7% confident that the image contains a panda; after adding noise, resulting in the image on the right—still, inarguably, a panda, to the human eye—the classifier has now changed its prediction to "gibbon" with 99.3% confidence.
 
-- At “find”, defensive lasers pointed at critical infrastructure dynamically perturb, by just a few pixels, its appearance, tricking the drone into thinking it has not found what it actually has.
-- At “fix”, these lasers dynamically concoct sequences of perturbations, tricking the drone into thinking its target is moving erratically when it’s actually still.
-- At “finish”, adversarial examples make the drone believe its strike would, put simply, cause more damage than it intends.
+**As such, knowledge of the data on which an aggressive drone was trained gives unique opportunity to algorithmically design adversarial examples, like the above, that confuse its classifier aboard.**
 
-As adversarial examples are, once more, built from real examples, perturbed minimally,
-in a way imperceptible to the human eye, they are in fact difficult to, even a priori, teach our classifier to ignore. At present, this problem ultimately plagues all technology driven by computer vision algorithms.
+Concrete opportunities would include:
+
+- **At “find”**: defensive lasers pointed at critical infrastructure dynamically perturb, by just a few pixels, its appearance, tricking the drone into thinking it has not found what it actually has.
+- **At “fix”**: these lasers dynamically concoct sequences of perturbations, tricking the drone into thinking its target is moving erratically when it’s actually still.
+- **At “finish”**: adversarial examples make the drone believe its strike would, put simply, cause more damage than it intends.
+
+As adversarial examples are, once more, built from real examples, perturbed minimally, in a way imperceptible to the human eye, they are in fact difficult to, even a priori, teach our classifier to ignore. At present, this problem ultimately plagues all technology driven by computer vision algorithms.
 
 ## Out-of-distribution data
 
@@ -72,23 +75,27 @@ Machine learning algorithms are notoriously bad at “knowing what they don’t 
 
 In a world of autonomous fly-and-finish drones, one would hope that its finish decisions are taken with extreme care. Fundamentally, this dovetails quickly into the notion of “out-of-distribution” data, i.e. data that the classifier knows it has not seen before, and about which it therefore neglects to make a prediction.
 
-As such, insight into the data on which an enemy’s system was trained naturally implies “defense by what’s different”: show the drone images you know that it hasn’t seen before, and thereby increase its uncertainty around the decision at hand—buying time, and keeping your stuff in tact.
+**As such, insight into the data on which an enemy’s system was trained naturally implies “defense by what’s different”: show the drone images you know that it hasn’t seen before, and thereby increase its uncertainty around the decision at hand**—buying time, and keeping your stuff in tact.
 
 ## Learning optimal defense via reinforcement learning
 
-Reinforcement learning, though exceedingly powerful, and often overhyped, is a relatively simple idea: given an environment, try an action, observe a reward, and repeat the actions that give high rewards; additionally, periodically explore new actions you’ve never tried before just to see how it goes.
+[Reinforcement learning](https://en.wikipedia.org/wiki/Reinforcement_learning), though exceedingly powerful, and often overhyped, is a relatively simple idea: given an environment and its state, try an action, observe a reward, and repeat the actions that give high rewards; additionally, periodically explore new actions you’ve never tried before just to see how it goes.
 
 Reinforcement learning, or RL, requires vast amounts of data. As such, as a point of “meta defensive strategy”, trying out different types of adversarial attacks against a drone, seeing which work best, then repeating the best performers, while plausible in theory, would not work in practice if one drone approaches your one oil refinery but once a year.
 
-This said, swarms of drones might change the game; what if, in 20 years, Houthi militants deployed one autonomous, armed drone for every square mile of Saudi territory? And what if we could simulate this scenario a priori, and learn how to optimally defend against the swarm?
+This said, swarms of drones might change the game; *what if, in 20 years, Houthi militants deployed one autonomous, armed drone for every square mile of Saudi territory?* And what if we could simulate this scenario a priori, and learn how to optimally defend against the swarm?
 
 To do this, one would require:
 
-- A heavy investment into sensors, on all of: the infrastructure you’re trying to protect, atmospheric conditions in which the drones are flying, tools to monitor the drones’ speeds and movements, etc. Succinctly, any and all technologies that capture the state of the environment, and the rewards, to as granular level of detail as possible.
-- Simulation environments. In certain reinforcement learning problems, this scenario potentially included, one has the delicious ability to generate data from which the algorithm can learn, by letting it play games with itself. AlphaGo Zero is one famous such example. Learning to optimally defend against a swarm of drones might fit the bit as well: deploy thousands of your own into a broad swath of desert, instruct them to “capture your flag”, then let your defensive systems get to work: taking actions, observing the subsequent “reward”—“Did I divert the drone away from my flag?”, “Did the drone hesitate more than usual before acting?”, etc.—and repeat those actions that work best.
+- **A heavy investment into sensors**, on all of: the infrastructure you’re trying to protect, atmospheric conditions in which the drones are flying, tools to monitor the drones’ speeds and movements, etc. In other words, any and all technologies that capture the state of the environment, and the rewards, to as granular level of detail as possible.
+- **Simulation environments.** In certain RL problems, this one potentially included, one has the delicious ability to generate data from which the algorithm can learn—by letting it play games with itself. [AlphaGo Zero](https://deepmind.com/blog/article/alphago-zero-starting-scratch) is one famous such example. Learning to optimally defend against a swarm of drones might fit the bit as well: deploy thousands of your own into a broad swath of desert, instruct them to “capture your flag”, then let your defensive systems get to work: taking actions, observing the subsequent reward—“Did I divert the drone away from my flag?”; “Did the drone hesitate more than usual before acting?”; etc.—and repeat those actions that work best.
 
 ## Summary
 
-As the years roll forward, machine learning algorithms will continue to direct more and more of our most critical systems—our investments, healthcare, transportation, and alas, the offensive technologies of political groups.
+As the years roll forward, machine learning algorithms will continue to direct more and more of our most critical systems—financial markets, healthcare, transportation, and alas—the offensive technologies of political groups.
 
 To wit, an understanding of the workings of these algorithms sheds light on the new risks these systems will introduce, and the new, geopolitical opportunities that will thereafter arise.
+
+## References
+
+[^1]: Goodfellow, I., Shlens, J., Szegedy, C. (2014). Explaining and Harnessing Adversarial Examples https://arxiv.org/abs/1412.6572
