@@ -1,11 +1,11 @@
-Title: On Saudi Drone Strikes and Adversarial Machine Learning
+Title: On Saudi Drone Strikes and Adversarial AI
 Date: 2019-09-22 08:30
 Author: Will Wolf
 Lang: geopolitics
-Slug: saudi-drone-strikes-and-adversarial-machine-learning
+Slug: saudi-drone-strikes-and-adversarial-ai
 Status: published
 Summary: In a future world of autonomous, weaponized drones piloted by machine learning algorithms, what new risks and opportunities arise?
-<!-- Image: figures/saudi-adversarial/initial_decomp.png -->
+Image: images/saudi-adversarial/thumbnail.png
 
 Last week, Houthi rebels—a militant political group in Yemen—claimed credit for exploding an oil refinery in Saudi Arabia. The explosion was the work of a missile, fired from a drone.
 
@@ -55,7 +55,7 @@ Adversarial examples for supervised image classification models are inputs, i.e.
 
 An example[^1] looks as follows:
 
-![png]({filename}../figures/em-for-lda/e_step.png)
+![png]({filename}../images/saudi-adversarial/panda-adversarial-example.png)
 
 Initially, the classifier is 57.7% confident that the image contains a panda; after adding noise, resulting in the image on the right—still, inarguably, a panda, to the human eye—the classifier has now changed its prediction to "gibbon" with 99.3% confidence.
 
@@ -99,3 +99,4 @@ To wit, an understanding of the workings of these algorithms sheds light on the 
 ## References
 
 [^1]: Goodfellow, I., Shlens, J., Szegedy, C. (2014). Explaining and Harnessing Adversarial Examples https://arxiv.org/abs/1412.6572
+[^2]: Thumbnail: https://bit.ly/2ktIwAm
