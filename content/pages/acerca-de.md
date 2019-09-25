@@ -6,7 +6,7 @@ Slug: about
 Status: published
 Template: page
 
-My name is Will Wolf from Philadelphia, USA. I currently work as a Machine Learning Engineer at [ASAPP, Inc.](https://www.asapp.com/), building artificial-intelligence products for enterprise. Previously, I completed an open-source ["masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning in Casablanca, Morocco, and worked as a Data Scientist at [ShopKeep](https://www.shopkeep.com) in New York City. I'm passionate about mathematics, cycling, language and travel.
+My name is Will Wolf from Philadelphia, USA. I currently work as a Research Engineer at [ASAPP, Inc.](https://www.asapp.com/), pursuing low-level problems in NLP (Natural Language Processing). Previously, I completed an open-source ["masters"]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning in Casablanca, Morocco, and worked as a Data Scientist at [ShopKeep](https://www.shopkeep.com) in New York City. I'm passionate about mathematics, cycling, language and travel.
 
 I studied Industrial Engineering and Mathematics at Penn State University. There, I played ice hockey, enjoyed math classes more than most, and spent two years writing an Honors [thesis](https://honors-prod.sas.psu.edu/catalog/1947) on game theory and group dynamics with Dr. Eli Byrne. I graduated in December 2011.
 
@@ -22,4 +22,4 @@ As a human, I carry a deep passion for cycling and language. I speak fluent [Spa
 
 Travel is a big part of who I am. I've been to over 60 countries and believe strongly in the concrete, extraordinary value of traveling abroad. In addition, I'm active in the global [CouchSurfing](https://www.couchsurfing.com/) community as a guest, host and event participant. My profile can be found [here](https://www.couchsurfing.com/people/willw9).
 
-While I'm not sure where I plan to go with data science, I do not plan to stop. Ultimately, I'd like to improve lives, predict world events and inform human-scale problems that actually matter.
+While I'm not sure where I plan to go with machine learning, I do not plan to stop. Ultimately, I'd like to work on human-scale problems that actually matter.

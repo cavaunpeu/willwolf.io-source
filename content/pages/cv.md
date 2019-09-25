@@ -73,10 +73,14 @@ Repositories I published (or contributed to) unrelated to the publications above
 ## Employment History
 ---
 
-### > Machine Learning Engineer, [ASAPP, Inc.](https://www.asapp.com/)
+### > NLP, [ASAPP, Inc.](https://www.asapp.com/)
 *New York, New York, August 2017 to Present*
 
-- AI for enterprise. Stealth, for now.
+- Research Engineer, *January 2019 to Present*
+- Lead Machine Learning Engineer, *October 2018 to January 2019*
+- Machine Learning Engineer, *August 2017 to October 2018*
+
+AI for enterprise. Stealth for now.
 
 ### > Data Scientist, [ShopKeep](http://www.shopkeep.com/)
 *New York, New York, March 2015 to July 2016*
@@ -87,7 +91,7 @@ Repositories I published (or contributed to) unrelated to the publications above
 - Built and maintained internal ETL infrastructure
 
 ### > Data Science Mentor, [Thinkful](https://www.thinkful.com/)
-*New York, New York, August 2015 to Present*
+*New York, New York, August 2015 to December 2017*
 
 - Mentoring students throughout a 10-12 week, project-based Data Science curriculum
 - Main topics include: Python scientific and inferential stack, databases and APIs, Git and version control, probability and statistics, and machine learning algorithms and their applications
@@ -153,15 +157,17 @@ After undergrad, before work.
 ## Talks, Teaching
 ---
 
-- "You've Been Doing Statistics All Along," Facebook Developer Circles Casablanca, May 2017
+- "A Practical Guide to the Open-Source Machine Learning Masters", NYC Machine Learning, August 2019
+- "Minimizing the Negative Log-Likelihood, In English", Boston Bayesians, August 2018
+- "You've Been Doing Statistics All Along", Facebook Developer Circles Casablanca, May 2017
     - [Slides](https://www.slideshare.net/WilliamWolfDataScien/youve-been-doing-statistics-all-along)
     - [Video](https://www.facebook.com/aboullaite.mohammed/videos/1959648697600819/)
 - Platzi Data Science Courses, Bogotá, Colombia, September 2016
-    - [Beginner's course (Spanish)](https://platzi.com/cursos/data/)
-    - [Advanced course](https://platzi.com/cursos/datascience/)
+    - Beginner's course (Spanish)
+    - Advanced course
 
 ## Personal
 ---
 
-- Languages: Spanish (business level), French (business level)
+- Languages: **English** (native) **Spanish** (business level), **French** (business level), **Russian** (beginner)
 - Interests: Hiking, languages, traveling by bicycle, mathematics
