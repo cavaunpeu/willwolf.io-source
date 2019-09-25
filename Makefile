@@ -25,7 +25,9 @@ CLOUDFILES_CONTAINER=my_cloudfiles_container
 
 DROPBOX_DIR=~/Dropbox/Public/
 
-GITHUB_PAGES_REMOTE=git@github.com:cavaunpeu/cavaunpeu.github.io.git
+# GITHUB_PAGES_REMOTE=git@github.com:cavaunpeu/cavaunpeu.github.io.git
+GITHUB_PAGES_REMOTE=https://github.com/cavaunpeu/cavaunpeu.github.io.git
+
 GITHUB_PAGES_BRANCH=master
 
 GIT_COMMIT_HASH = $(shell git rev-parse HEAD)
