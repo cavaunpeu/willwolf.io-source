@@ -1,5 +1,5 @@
 Title: Artificial Intelligence and Geopolitics
-Date: 2019-09-24 21:00
+Date: 2019-09-21 21:00
 Author: Will Wolf
 Lang: geopolitics
 Slug: ai-and-geopolitics
