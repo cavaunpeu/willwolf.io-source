@@ -64,14 +64,10 @@ I18N_UNTRANSLATED_ARTICLES = 'remove'
 I18N_SUBSITES = {
     'es': {
         'SITESUBTITLE': 'cosas de machine learning',
-        'ABOUT_PAGE_LINK_TEXT': 'Acerca de',
-        'ARCHIVE_PAGE_LINK_TEXT': 'Archivo',
         'AVATAR': '../images/will.jpg'
     },
     'geopolitics': {
         'SITESUBTITLE': 'artificial intelligence ∩ geopolitics',
-        'ABOUT_PAGE_LINK_TEXT': 'About',
-        'ARCHIVE_PAGE_LINK_TEXT': 'Archive',
         'AVATAR': '../images/will.jpg'
     }
 }
