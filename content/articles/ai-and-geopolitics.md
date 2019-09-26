@@ -5,7 +5,7 @@ Lang: geopolitics
 Slug: ai-and-geopolitics
 Status: published
 Summary: I'm beginning to write about the intersection of artificial intelligence and geopolitics.
-Image: images/ai-and-geopolitics.jpg
+Image: ../images/ai-and-geopolitics.jpg
 
 Machine learning and artificial intelligence have long been passions; to date, I've spent many years—my entire professional career included—developing relevant expertise. This has been the historical focus of this blog.
 
