@@ -39,6 +39,9 @@ ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 CV_PAGE = 'cv/'
 CV_PAGE_LINK_TEXT = 'CV'
 
+GEOPOLITICS_PAGE = 'geopolitics/'
+GEOPOLITICS_PAGE_LINK_TEXT = 'Geopolitics'
+
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
 PLUGINS = [
@@ -61,13 +64,16 @@ I18N_UNTRANSLATED_ARTICLES = 'remove'
 I18N_SUBSITES = {
     'es': {
         'SITESUBTITLE': 'cosas de machine learning',
-        'ABOUT_PAGE_LINK_TEXT': 'Acerca de',
-        'ARCHIVE_PAGE_LINK_TEXT': 'Archivo',
+        'AVATAR': '../images/will.jpg'
+    },
+    'geopolitics': {
+        'SITESUBTITLE': 'artificial intelligence ∩ geopolitics',
         'AVATAR': '../images/will.jpg'
     }
 }
 language_name_lookup = {
     'en': 'English',
+    'geopolitics': 'English',
     'es': 'Español',
 }
 

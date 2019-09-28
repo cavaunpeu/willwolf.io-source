@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: es
 Url: 2016/10/18/gradientes-de-recurrent-neural-networks-y-lo-que-aprendi-derivandolos/
 Save_as: 2016/10/18/gradientes-de-recurrent-neural-networks-y-lo-que-aprendi-derivandolos/index.html
-Slug: recurrent-neural-network-gradients-and-lessons-learned-therein
+Slug: gradientes-de-recurrent-neural-networks-y-lo-que-aprendi-derivandolos
 Status: published
 Summary: Gradientes de recurrent neural networks a mano.
 Image: ../images/rnn_gradient.png

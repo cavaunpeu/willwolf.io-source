@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: es
 Url: 2016/10/12/simulating-the-colombian-peace-vote-did-the-no-really-win-2/
 Save_as: 2016/10/12/simulating-the-colombian-peace-vote-did-the-no-really-win-2/index.html
-Slug: simulating-the-colombian-peace-vote-did-the-no-really-win
+Slug: simulating-the-colombian-peace-vote-did-the-no-really-win-2
 Status: published
 Summary: Una simulación estadística del [plebiscito colombiano de 2016](https://en.wikipedia.org/wiki/Colombian_peace_agreement_referendum,_2016).
 Image: ../images/colombian_plebiscite_vote.jpg

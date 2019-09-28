@@ -20,7 +20,7 @@ In NYC, I felt that many of my professional successes stemmed directly from proj
 
 As a data scientist, I work frequently with the following tools: the Python scientific and inferential stack, R, Jupyter, AWS, Google Cloud, SQL, Flask, Docker and a heavy handful of machine learning and probabilistic models. I work periodically with many more: Scala, Spark and React to name a few. I believe it crucial to be able to both build models and productionize one's own solutions.
 
-As a human, I carry a deep passion for cycling and language. I speak fluent [Spanish](https://www.youtube.com/watch?v=xqO0KW3O9uU) and am boyishly passionate about all things Latin America. I speak ~fluent French from time spent in Morocco and West Africa. Cycling — in New York City or through Central Asian deserts alike — makes me smile from ear to ear.
+As a human, I carry a deep passion for cycling and language. I speak fluent [Spanish](https://www.youtube.com/watch?v=xqO0KW3O9uU) and am boyishly passionate about all things Latin America. I speak ~fluent French from time spent in Morocco and West Africa. Cycling—in New York City or through Central Asian deserts alike—makes me smile from ear to ear.
 
 Travel is a big part of who I am. I've been to over 60 countries and believe strongly in the concrete, extraordinary value of traveling abroad. In addition, I'm active in the global [CouchSurfing](https://www.couchsurfing.com/) community as a guest, host and event participant. My profile can be found [here](https://www.couchsurfing.com/people/willw9).
 
