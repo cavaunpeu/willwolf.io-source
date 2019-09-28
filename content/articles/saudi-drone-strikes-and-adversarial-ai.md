@@ -5,7 +5,7 @@ Lang: geopolitics
 Slug: saudi-drone-strikes-and-adversarial-ai
 Status: published
 Summary: In world of weaponized drones piloted by algorithms, what new strategic opportunities arise?
-Image: ../images/saudi-adversarial/thumbnail.png
+Image: ../images/saudi-adversarial/thumbnail.jpg
 
 Last week, Houthi rebels—a militant political group in Yemen—claimed credit for exploding an oil refinery in Saudi Arabia. The explosion was the work of a missile, fired from a drone.
 
