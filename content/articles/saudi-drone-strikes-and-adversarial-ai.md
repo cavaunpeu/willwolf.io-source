@@ -4,8 +4,8 @@ Author: Will Wolf
 Lang: geopolitics
 Slug: saudi-drone-strikes-and-adversarial-ai
 Status: published
-Summary: In a future world of autonomous, weaponized drones piloted by machine learning algorithms, what new strategic opportunities arise?
-Image: images/saudi-adversarial/thumbnail.png
+Summary: In world of autonomous, weaponized drones piloted by algorithms, what new strategic opportunities arise?
+Image: ../images/saudi-adversarial/thumbnail.png
 
 Last week, Houthi rebels—a militant political group in Yemen—claimed credit for exploding an oil refinery in Saudi Arabia. The explosion was the work of a missile, fired from a drone.
 
@@ -98,4 +98,4 @@ To wit, an understanding of the workings of these algorithms sheds light on the 
 ## References
 
 [^1]: Goodfellow, I., Shlens, J., Szegedy, C. (2014). Explaining and Harnessing Adversarial Examples https://arxiv.org/abs/1412.6572
-[^2]: Thumbnail: https://bit.ly/2ktIwAm
+[^2]: (Thumbnail) “Adversarial AI: As New Attack Vector Opens, Researchers Aim to Defend Against It.” DataProtectionCenter.com - Tech and Security, 17 Apr. 2018, dataprotectioncenter.com/malware/adversarial-ai-as-new-attack-vector-opens-researchers-aim-to-defend-against-it/.
