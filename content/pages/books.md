@@ -5,6 +5,7 @@ Lang: en
 Slug: books
 Status: published
 Template: page
+Image: images/books.jpg
 
 To the extent that we are how we spend our time, here's a bit more about me in recent years:
 
