@@ -9,6 +9,8 @@ Image: images/books.jpg
 
 To the extent that we are how we spend our time, here's a bit more about me in recent years:
 
+- **The Magic Mountain** by Thomas Mann
+- **Talking to Strangers** by Malcom Gladwell
 - **Superhuman by Habit** by Tynan
 - **The Next 100 Years** by George Friedman
 - **AI Superpowers** by Kai-Fu Lee
