@@ -7,7 +7,7 @@ Status: published
 Summary:
 Image:
 
-Nations exert influence in two key ways: hard power, and soft power. Hard power is [dropping the atomic bomb](https://www.history.com/topics/world-war-ii/bombing-of-hiroshima-and-nagasaki) on Hiroshima and Nagasaki during World War II, compelling the Japanese to surrender. In contrast, soft power is building American libraries in foreign universities, placing American films in foreign theaters, and sending [United States Peace Corps](https://en.wikipedia.org/wiki/Peace_Corps) volunteers to rural communities worldwide, compelling a favorable image of our country abroad.
+Nations exert influence in two key ways: hard power, and soft power. Hard power is [dropping the atomic bomb](https://www.history.com/topics/world-war-ii/bombing-of-hiroshima-and-nagasaki) on Hiroshima and Nagasaki during World War II, compelling the Japanese to surrender. Conversely, soft power is building American libraries in foreign universities, placing American films in foreign theaters, and sending [United States Peace Corps](https://en.wikipedia.org/wiki/Peace_Corps) volunteers to rural communities worldwide, compelling a favorable image of our country abroad.
 
 In other words, hard power is to influence via economic and military violence; soft power is to influence via *attraction.*
 
