@@ -20,6 +20,9 @@
           {% if CV_PAGE %}
               <li><a href="{{ main_siteurl }}/{{ CV_PAGE }}" title="{{ CV_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-folder-open"></span> {{ CV_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
+          {% if BOOKS_PAGE %}
+              <li><a href="{{ main_siteurl }}/{{ BOOKS_PAGE }}" title="{{ BOOKS_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-book"></span> {{ BOOKS_PAGE_LINK_TEXT }}</a></li>
+          {% endif %}
           {% if ARCHIVE_PAGE %}
               <li><a href="{{ main_siteurl }}/{{ ARCHIVE_PAGE }}" title="{{ ARCHIVE_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-th-list"></span> {{ ARCHIVE_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
