@@ -9,6 +9,17 @@ Image: images/books.jpg
 
 To the extent that we are how we spend our time, here's a bit more about me in recent years:
 
+- **The Inner Game of Tennis** by W. Timothy Gallwey
+- **Ikigai** by Héctor Garcia and Francesc Mirales
+- **Digital Minimalism** by Cal Newport
+- **The Pendulum** by Julie Lindahl
+- **Zero to One** by Peter Thiel
+- **Life and Fate** by Vasily Grossman
+- **A Convenient Hatred: The History of Antisemitism** by Phyllis Goldstein
+- **Memoirs of an Anti-Semite: A Novel in Five Stories** by Gregor von Rezzori
+- **Starship Troopers** by Robert Heinlein
+- **Eichmann in Jerusalem: A Report on the Banality of Evil** by Hannah Arendt
+- **Soldiers of God: With Islamic Warriors in Afghanistan and Pakistan** by Robert D. Kaplan
 - **The Magic Mountain** by Thomas Mann
 - **Talking to Strangers** by Malcom Gladwell
 - **Superhuman by Habit** by Tynan
