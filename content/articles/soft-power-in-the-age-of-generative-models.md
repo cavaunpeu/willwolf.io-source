@@ -7,8 +7,6 @@ Status: published
 Summary:
 Image:
 
-## Soft power
-
 Nations exert influence in two key ways: hard power, and soft power. Hard power is [dropping the atomic bomb](https://www.history.com/topics/world-war-ii/bombing-of-hiroshima-and-nagasaki) on Hiroshima and Nagasaki during World War II, compelling the Japanese to surrender. In contrast, soft power is building American libraries in foreign universities, placing American films in foreign theaters, and sending [United States Peace Corps](https://en.wikipedia.org/wiki/Peace_Corps) volunteers to rural communities worldwide, compelling a favorable image of our country abroad.
 
 In other words, hard power is to influence via economic and military violence; soft power is to influence via *attraction.*
@@ -37,6 +35,7 @@ Generative models are those that empower [“deep fakes.”](https://en.wikipedi
 
 > “Xiaoice’s framework is learning to write literature as well as compose and perform songs. Last year she published a book of poems and helps her followers write their own. She can sing her own songs in styles based on existing popular performers. There are plans to release an album of pop tunes soon. And she is able to author tailor-made stories for children and reads them out in voices suited to each of the characters she has created.
 
+
 > She’s painting images based on keywords and other inputs. She’s also gone into mainstream media as a host of dozens of TV and radio programs that are broadcast across China. She reads news stories and provides commentary. And, she is generating multiple reports based on information from China’s financial markets and used by investors and traders who subscribe to Wind, a major financial information service.”
 
 *In short, generative models automate the creation of media itself—smashing the “creation bottleneck” outright.*
@@ -45,7 +44,7 @@ Generative models are those that empower [“deep fakes.”](https://en.wikipedi
 
 At present, generative models succeed at tasks like: [transferring dance moves](https://www.youtube.com/watch?v=PCBTZh41Ris) from professionals to amateurs, [translating pencil sketches](https://github.com/elliottwu/sText2Image) to high-resolution images with the guidance of text, and making Obama lip sync the words of American actor Jordan Peele.
 
-[![Obama lip sync](http://img.youtube.com/vi/cQ54GDm1eL0/0.jpg)](http://www.youtube.com/watch?v=cQ54GDm1eL0 "Obama lip sync")
+[![Click me!](http://img.youtube.com/vi/cQ54GDm1eL0/0.jpg)](http://www.youtube.com/watch?v=cQ54GDm1eL0 "Click me!")
 
 These feats are impressive. However, to achieve widespread impact, these models must allow for more “control” over the media they create.
 
@@ -71,7 +70,7 @@ During the Cold War, the United States flexed its “peacetime” soft power mus
 
 Following the Cold War, however, American soft power institutions began to slowly decline.
 
-In 1999, the USIA was absorbed into the US State Department; its staff, and budget for key projects, were cut roughly in half. (cite Chapter 4, soft power) “From 1995 to 2001, academic and cultural exchanges dropped from 45,000 to 29,000 annually, and many accessible cultural centers and libraries were closed.” Finally, “while government-funded radio broadcasts reached between 70 and 80 percent of the populace of Eastern Europe during the Cold War, around year 2000, a mere 2 percent of Arabs heard the VOA.”
+In 1999, the USIA was absorbed into the US State Department; its staff, and budget for key projects, were cut roughly in half.[^6] “From 1995 to 2001, academic and cultural exchanges dropped from 45,000 to 29,000 annually, and many accessible cultural centers and libraries were closed.”[^6] Finally, “while government-funded radio broadcasts reached between 70 and 80 percent of the populace of Eastern Europe during the Cold War, around year 2000, a mere 2 percent of Arabs heard the VOA.”[^6]
 
 At present, the United States has a largely [isolationist president](https://www.nationalreview.com/2017/01/trump-foreign-policy-isolationsim-america-first-allies-nato-trans-pacific-partnership/) in Donald Trump. Since the beginning of his term, American soft power has fallen globally according to the Portland [Soft Power 30](https://softpower30.com/). Trump himself is unconcerned with others actively [laughing](https://www.rollcall.com/2018/09/25/world-leaders-laugh-as-trump-boasts-of-accomplishments/) at him and his country.
 
@@ -79,7 +78,7 @@ At present, the United States has a largely [isolationist president](https://www
 
 In a recent article, Joseph Nye, the Harvard professor who coined the term “soft power” itself, neatly summarizes this phenomenon:
 
-> “U.S. President Donald Trump’s administration has shown little interest in public diplomacy. And yet public diplomacy—a government’s efforts to communicate directly with other countries’ publics—is one of the key instruments policymakers use to generate soft power, and the current information revolution makes such instruments more important than ever.” (cite this)
+> “U.S. President Donald Trump’s administration has shown little interest in public diplomacy. And yet public diplomacy—a government’s efforts to communicate directly with other countries’ publics—is one of the key instruments policymakers use to generate soft power, and the current information revolution makes such instruments more important than ever.”[^4]
 
 ## A renewed interest in soft power
 
@@ -116,3 +115,17 @@ Finally, current state-to-individual media is largely *unidirectional*: media is
 In the same way that the Chinese government *passively* learns about its citizens by [monitoring WeChat data](http://harvardpolitics.com/world/wechat-the-people-technology-and-social-control-in-china/), generative models will *actively* solicit information re the efficacy of their soft power plays. Then, like a savvy marketer, they’ll double down on the stuff that works best.
 
 ## Conclusion
+
+## References
+
+[^1]: Brands, Hal. “Not Even Trump Can Obliterate America's Soft Power.” Bloomberg.com, Bloomberg, www.bloomberg.com/opinion/articles/2018-01-18/not-even-trump-can-obliterate-america-s-soft-power.
+
+[^2]: Chakravarti, Sudeshna. Soft Power: The Culture Weapon in The Cold War and South Asia. www.culturaldiplomacy.org/academy/content/pdf/participant-papers/academy/Sudeshna-Khasnobis-Soft-Power-The-Culture-Weapon-in-The-Cold-War-and-South-Asia.pdf.
+
+[^3]: Khandelwal, Aakash. “Economics of Digital Goods.” LinkedIn SlideShare, 23 Nov. 2016, www.slideshare.net/aakashkhandelwal921/economics-of-digital-goods.
+
+[^4]: Nye, Joseph S. “No, President Trump: You've Weakened America's Soft Power.” The New York Times, The New York Times, 25 Feb. 2020, www.nytimes.com/2020/02/25/opinion/trump-soft-power.html.
+
+[^5]: Shah, Ritula. “Is US Monopoly on the Use of Soft Power at an End?” BBC News, BBC, 19 Nov. 2014, www.bbc.com/news/world-29536648.
+
+[^6]: Nye, Joseph S. Soft Power: the Means to Success in World Politics. Knowledge World, 2012.
