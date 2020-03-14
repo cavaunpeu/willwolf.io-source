@@ -117,6 +117,14 @@ In the same way that the Chinese government *passively* learns about its citizen
 
 ## Conclusion
 
+For over a century, states have exercised soft power through media. Throughout, the marginal cost of distributing this media has trended towards zero. Conversely, to date, the marginal cost of its creation remains high.
+
+Generative models are a powerful technology which trend the latter towards zero as well. They're here and they work. However, to be truly impactful, there's still a short ways to go.
+
+In 5 years' time, a dazed, reputationally-bruised United States, and robust, flexible, practical generative models, will collide head-on.
+
+*At this point, soft power media—and human politics in general—are likely to change forever.*
+
 ## References
 
 [^1]: Brands, Hal. “Not Even Trump Can Obliterate America's Soft Power.” Bloomberg.com, Bloomberg, www.bloomberg.com/opinion/articles/2018-01-18/not-even-trump-can-obliterate-america-s-soft-power.
