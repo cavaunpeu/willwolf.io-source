@@ -4,8 +4,8 @@ Author: Will Wolf
 Lang: geopolitics
 Slug: soft-power-in-the-age-of-generative-models
 Status: published
-Summary:
-Image:
+Summary: What happens when a post-Trump, reputationally-bruised United States, and improved generative models (the technology behind "deepfakes") collide head-on?
+Image: ../images/soft-power-in-the-age-of-generative-models/thumbnail.jpg
 
 Nations exert influence in two key ways: hard power, and soft power. Hard power is [dropping the atomic bomb](https://www.history.com/topics/world-war-ii/bombing-of-hiroshima-and-nagasaki) on Hiroshima and Nagasaki during World War II, compelling the Japanese to surrender. Conversely, soft power is building American libraries in foreign universities, placing American films in foreign theaters, and sending [United States Peace Corps](https://en.wikipedia.org/wiki/Peace_Corps) volunteers to rural communities worldwide, compelling a favorable image of our country abroad.
 
@@ -124,6 +124,10 @@ Generative models are a powerful technology which trend the latter towards zero 
 In 5 years' time, a dazed, reputationally-bruised United States, and robust, flexible, practical generative models, will collide head-on.
 
 *At this point, soft power media—and human politics in general—are likely to change forever.*
+
+## Credit
+
+Many thanks to Abishur Prakash for reviewing earlier drafts of this piece.
 
 ## References
 
