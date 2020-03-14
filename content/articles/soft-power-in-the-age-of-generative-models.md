@@ -73,9 +73,9 @@ In 1999, the USIA was absorbed into the US State Department; its staff, and budg
 
 At present, the United States has a largely [isolationist president](https://www.nationalreview.com/2017/01/trump-foreign-policy-isolationsim-america-first-allies-nato-trans-pacific-partnership/) in Donald Trump. Since the beginning of his term, American soft power has fallen globally according to the Portland [Soft Power 30](https://softpower30.com/). Trump himself is unconcerned with others actively [laughing](https://www.rollcall.com/2018/09/25/world-leaders-laugh-as-trump-boasts-of-accomplishments/) at him and his country.
 
-*In this [Information Age](https://en.wikipedia.org/wiki/Information_Age), where as of writing over 60% of the world's population owns a mobile phone, a dwindling interest in soft power institutions is an opportunity missed.*
+By 2018, Statista estimates that there were 1.67 billion "pay TV households" worldwide.[^9] By 2019, they estimate that half of private households had a computer.[^10] Finally, Pew Research estimates that "more than 5 billion people have mobile devices, and over half of these connections are smartphones."[^11]
 
--- insert stats about phones, computers, tvs, etc. -- 
+*In [Information Age](https://en.wikipedia.org/wiki/Information_Age), a dwindling interest in soft power institutions is a **major** opportunity missed.*
 
 In a recent article, Joseph Nye, the Harvard professor who coined the term “soft power” itself, neatly summarizes this phenomenon:
 
@@ -85,35 +85,35 @@ In a recent article, Joseph Nye, the Harvard professor who coined the term “so
 
 Truly impactful generative models, and Trump’s exit from office, will soon collide head-on.
 
-At this point, the United States—with its tarnished reputation, exorbitant military budget, longstanding technical leadership and forever proactive drive—will be sitting on transformative communications technology and a clear-cut mission: rebuild its image abroad.
+At this point, the United States—with its blemished reputation, exorbitant military budget[^12], longstanding technical leadership[^13] and forever proactive drive—will be sitting on transformative media tech and a clear-cut mission: rebuild its image at home and abroad.
 
 *To this effect, I predict that the United States will soon make a concerted investment in generative models for soft power at true scale.*
 
 Here’s what this might look like.
 
-## Soft power through media in the age of generative models
+## Soft power through media, in the age of generative models
 
-The two keys areas on which generative models will make impact are state-to-public, and state-to-individual media.
+The two keys areas which generative models will impact are state-to-public, and state-to-individual media.
 
 ### State-to-public media
 
 Current examples of state-to-public soft power media, like Presidential addresses to the American people, English-language CNN news broadcasts to foreign viewers, and front-line conflict reporting will see their use both quickened and expanded by generative models.
 
-Presently, Presidential addresses to the American people happen once every few weeks or months. Conversely, Donald Trump writes on Twitter hourly. With generative models, the text of a given tweet will be used to *instantaneously* generate a video of him reciting the words instead. Americans at large devour Trump’s media appearances; if a generated video legitimately looks and sounds just like him, they’re likely to devour it as well.
+Presently, Presidential addresses happen once every few weeks or months. Conversely, Donald Trump writes on [Twitter](https://twitter.com/realDonaldTrump) hourly. With generative models, the next President will *instantaneously* generate videos of herself reciting the tweet instead. Americans at large devour the President's tweets; if a generated video legitimately looks and sounds just like her, they’re likely to devour it as well.
 
-Sponsorship deals, like [Lebrons’ lifetime appointment](https://www.espn.com/nba/story/_/id/14314807/lebron-james-signs-life-deal-nike) with Nike, will expand to include the right to generate content with the athlete’s likeness as well. Politicians will travel less to campaign; they’ll instead send generated holograms—of them, their spouses, their key supporters—to campaign instead—each one personalized to the venue in question.
+Sponsorship deals, like [Lebrons’ lifetime appointment](https://www.espn.com/nba/story/_/id/14314807/lebron-james-signs-life-deal-nike) with Nike, will crucially expand to include the right to generate content with the athlete’s likeness. Politicians will travel less to campaign; instead, they’ll send generated holograms—of them, their spouses, their key supporters—to campaign instead—each one personalized to the venue in question.
 
-Finally, a generative model will be trained to ingest footage of an event—for example, an [attack](https://www.cnn.com/2019/09/14/middleeast/yemen-houthi-rebels-drone-attacks-saudi-aramco-intl/index.html) on a Saudi oil refinery—and produce text describing that event. This text will be used to generate a news report. Humans won’t be on the front line to capture this footage either; why not send a drone?
+Finally, a generative model will be trained to ingest footage of world events—for example, the [attack](https://www.cnn.com/2019/09/14/middleeast/yemen-houthi-rebels-drone-attacks-saudi-aramco-intl/index.html) on the Saudi oil refinery—and produce text describing what happened. This text will then be used to generate a news report. Humans won’t be on the front line to capture this footage either; why not send a drone instead?
 
 ### State-to-individual media
 
-Microsoft’s Xiaoice demonstrates the enormous traction of personalized chatbots. From here, the jump to a state-built, propaganda-(subtly)-infused chatbot is small.
+Microsoft’s Xiaoice demonstrates the enormous traction of personalized chatbots. From here, the jump to state-built, propaganda-(subtly)-infused chatbots is small.
 
-In general, the public distrusts governments; to this effect, humanitarian missions are typically run by NGOs. As such, states will deploy such chatbots on behalf of related entities: tourism boards, online universities, cultural centers, etc.
+In general, the public distrusts governments; to this effect, humanitarian missions are typically run by NGOs. As such, states will deploy these chatbots on behalf of related entities: tourism boards, online universities, cultural centers, etc.
 
-Finally, current state-to-individual media is largely *unidirectional*: media is sent from the former to the latter, and never the reverse. Chatbots powered by generative models, however, will solicit feedback from their viewer in a personalized way; for example, “Are you enjoying this media? What do you like about American schools as compared to your own? What do you think about democracy?”
+Finally, current state-to-individual media is largely *unidirectional*: media is sent from the former to the latter, and rarely vice versa. Chatbots powered by generative models, however, will solicit *feedback* from their viewer in a personalized way; for example, “Are you enjoying this media? What do you like about American schools as compared to your own? What do you think about democracy?”
 
-In the same way that the Chinese government *passively* learns about its citizens by [monitoring WeChat data](http://harvardpolitics.com/world/wechat-the-people-technology-and-social-control-in-china/), generative models will *actively* solicit information re the efficacy of their soft power plays. Then, like a savvy marketer, they’ll double down on the stuff that works best.
+In the same way that the Chinese government *passively* learns about its citizens by [monitoring WeChat data](http://harvardpolitics.com/world/wechat-the-people-technology-and-social-control-in-china/), generative models will *actively solicit information* re the efficacy of their soft power plays. Then, like a savvy marketer, they’ll double down on the stuff that works best.
 
 ## Conclusion
 
@@ -134,3 +134,13 @@ In the same way that the Chinese government *passively* learns about its citizen
 [^7]: Harris, Paul. “Man on the Moon: Moment of Greatness That Defined the American Century.” The Guardian, Guardian News and Media, 25 Aug. 2012, www.theguardian.com/science/2012/aug/25/man-moon-american-century.
 
 [^8]: “United States Office of War Information.” Wikipedia, Wikimedia Foundation, 7 Jan. 2020, en.wikipedia.org/wiki/United_States_Office_of_War_Information.
+
+[^9]: Watson, Amy. “TV Households Worldwide.” Statista, 4 Dec. 2019, www.statista.com/statistics/268695/number-of-tv-households-worldwide/.
+
+[^10]: Statista Research Department. “How Many People Have Access to a Computer 2018.” Statista, 2 Mar. 2020, www.statista.com/statistics/748551/worldwide-households-with-computer/.
+
+[^11]: Silver, Laura. “Smartphone Ownership Is Growing Rapidly Around the World, but Not Always Equally.” Pew Research Center's Global Attitudes Project, Pew Research Center, 30 Dec. 2019, www.pewresearch.org/global/2019/02/05/smartphone-ownership-is-growing-rapidly-around-the-world-but-not-always-equally/.
+
+[^12]: Cancian, Mark F. “U.S. Military Forces in FY 2020: The Strategic and Budget Context.” U.S. Military Forces in FY 2020: The Strategic and Budget Context | Center for Strategic and International Studies, 12 Mar. 2020, www.csis.org/analysis/us-military-forces-fy-2020-strategic-and-budget-context?gclid=CjwKCAjwgbLzBRBsEiwAXVIygLkZlNLc3zV8EVVhPPwjOoqrUoQ4kjTeaTHN5vFktRWET2wsnHCwRhoCm2QQAvD_BwE.
+
+[^13]: “Report Shows United States Leads in Science and Technology as China Rapidly Advances.” ScienceDaily, ScienceDaily, 24 Jan. 2018, www.sciencedaily.com/releases/2018/01/180124113951.htm.
