@@ -8,7 +8,7 @@ Template: page
 
 Hi! My name's Will. I'm equal parts: **technologist, bookworm, polyglot, cyclist, optimist, traveler**.
 
-*Broadly, my story is as follows:*
+### Broadly, my story is as follows:
 
 - `[2005-2010]:` I was a **semi-professional internet poker player.** From age 15-20, I methodically built $50 into $150,000 through hard work and the help of terrific peers. In addition, I coached players from around the world via Skype.
 - `[2007-2011]:` I studied **industrial engineering and mathematics** at Penn State University as a member of the Schreyer Honors College.
@@ -17,31 +17,31 @@ Hi! My name's Will. I'm equal parts: **technologist, bookworm, polyglot, cyclist
 - `[2016-2017]:` I quit my job and **moved to Casablanca, Morocco to pursue an open-source ["masters"]({filename}/articles/practical-guide-open-source-ml-masters.md)** in machine learning and statistics—a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog.
 - `[2017-]:` I [joined ASAPP]({filename}/articles/joining-asapp.md) as a **machine learning engineer, now researcher.**
 
-*Presently, I spend my time on:*
+### Presently, I spend my time on
 
-### Research
+#### Research
 
 I currently work for [ASAPP](https://www.asapp.com/) as a machine learning researcher. Broadly, I focus on problems in [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing). (Specifically, on inducing procedural structure in task-oriented dialog.)
 
-### Language
+#### Language
 
 I love learning and speaking foreign languages. I'm a longtime speaker of [Spanish](http://willwolf.io/es/) and French. At present, I'm voraciously learning Russian.
 
-### Geopolitics
+#### Geopolitics
 
 Lately, I'm [writing](http://willwolf.io/geopolitics/) about intersections of artificial intelligence and geopolitics. Specifically, I'm exploring the impact that the former—the subject of my expertise—will have on trade, policy, power, cooperation, defense, etc.
 
-### Reading
+#### Reading
 
 I read a lot of books. [Here's](http://willwolf.io/books/) a few from recent years.
 
-*What's next:*
+### What's next
 
-### In one year
+#### In one year
 
 I aim to be a better researcher and Russian speaker.
 
-### In ten years
+#### In ten years
 
 I aim to be an advisor, leader and cross-functional decision maker: advising governments, informing policy, mentoring others, and building something special.
 
