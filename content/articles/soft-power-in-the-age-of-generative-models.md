@@ -5,7 +5,7 @@ Lang: geopolitics
 Slug: soft-power-in-the-age-of-generative-models
 Status: published
 Summary: What happens when a post-Trump, reputationally-bruised United States, and improved generative models (the technology behind "deepfakes") collide head-on?
-Image: ../images/soft-power-in-the-age-of-generative-models/thumbnail.jpg
+Image: ../images/soft-power-in-the-age-of-generative-models/thumbnail.png
 
 Nations exert influence in two key ways: hard power, and soft power. Hard power is [dropping the atomic bomb](https://www.history.com/topics/world-war-ii/bombing-of-hiroshima-and-nagasaki) on Hiroshima and Nagasaki during World War II, compelling the Japanese to surrender. Conversely, soft power is building American libraries in foreign universities, placing American films in foreign theaters, and sending [United States Peace Corps](https://en.wikipedia.org/wiki/Peace_Corps) volunteers to rural communities worldwide, compelling a favorable image of our country abroad.
 
