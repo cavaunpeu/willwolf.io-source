@@ -7,7 +7,7 @@ Status: published
 Summary: Beginning the search for an impossibly awesome next role.
 Image: images/math_blackboard.jpg
 
-My nine-month open-source ["masters"]({filename}/machine-learning/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning and statistics — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog — is soon ending. I'm now starting my search for an impossibly awesome "what's next."
+My nine-month open-source ["masters"]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning and statistics — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog — is soon ending. I'm now starting my search for an impossibly awesome "what's next."
 
 ## What I bring
 I bring abundant experience in: **machine learning, Bayesian statistics and probabilistic programming, backend engineering, visualization and making complex ideas easy to understand.**
