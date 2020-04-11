@@ -11,7 +11,7 @@ As an "in" professional discipline, Machine Learning exhibits a curious behavior
 
 I did not get a bachelor's degree in this field. Self-teaching at my kitchen table in 2014, I landed a job as a software developer. Self-teaching still, I joined [ShopKeep](https://www.shopkeep.com/)'s Data Science team. Eighteen months later and wanting further technical expertise, I quit my job, left NYC, and jumped full-time into machine learning self-study — the best, if only, way I knew how.
 
-In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Masters"]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/life/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to plan and execute a similar program for yourself.
+In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Masters"]({static}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({static}/life/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to plan and execute a similar program for yourself.
 
 The following is a practical guide to the "Open-Source Machine Learning Masters" (OSMLM). It is *not* a technical guide, which would provide concrete guidance on what to study. Instead, my aim is to provide motivation, logistical details, and strategic insight — to take you from "that seems cool, but crazy" to "woah, this is not only feasible, but really makes a lot of sense." I personally find the latter much more valuable.
 
@@ -46,7 +46,7 @@ The content is organized as follows:
 ## Why this might be right for you
 You should pursue the OSMLM for the same reasons that you'd pursue a traditional master's program: because you want further technical expertise in this field. The motivation behind this ambition may vary: perhaps you've a bachelor's in Economics and want to break into data science, or perhaps you're dexterous with [scikit-learn](http://scikit-learn.org/stable/), are effective in your role, yet need to understand more deeply how your tools work in order to obtain a promotion. The OSMLM, like a formal master's, is a semi-broad deep-dive into select topics in machine learning and not much more.
 
-The OSMLM confers a number of obvious benefits in cost, expediency and flexibility. These are enumerated in detail in the [motivating post]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md). Notwithstanding, what are the downsides? To this effect, what type of person is required to pull this off?
+The OSMLM confers a number of obvious benefits in cost, expediency and flexibility. These are enumerated in detail in the [motivating post]({static}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md). Notwithstanding, what are the downsides? To this effect, what type of person is required to pull this off?
 
 ### Downsides
 1. **There is no one to push you but yourself.** A priori, there are no professors. There are no study groups. There will be no tangible social pressure: it will probably just be you.

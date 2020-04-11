@@ -7,7 +7,7 @@ Status: published
 Summary: Stochastic maximum likelihood, contrastive divergence, negative contrastive estimation and negative sampling for improving or avoiding the computation of the gradient of the log-partition function. (Oof, that's a mouthful.)
 Image: figures/additional-strategies-partition-function/output_3_0.png
 
-In the [previous post]({filename}/machine-learning/thorough-introduction-to-boltzmann-machines.md) we introduced Boltzmann machines and the infeasibility of computing the gradient of its log-partition function $\nabla_{\theta}\log{Z}$. To this end, we explored one strategy for its approximation: Gibbs sampling. Gibbs sampling is a viable alternative because the expression for this gradient simplifies to an expectation over the model distribution, which can be approximated with Monte Carlo samples.
+In the [previous post]({static}/machine-learning/thorough-introduction-to-boltzmann-machines.md) we introduced Boltzmann machines and the infeasibility of computing the gradient of its log-partition function $\nabla_{\theta}\log{Z}$. To this end, we explored one strategy for its approximation: Gibbs sampling. Gibbs sampling is a viable alternative because the expression for this gradient simplifies to an expectation over the model distribution, which can be approximated with Monte Carlo samples.
 
 In this post, we'll highlight the imperfections of even this approach, then present more preferable alternatives.
 
@@ -261,7 +261,7 @@ Since I learn best by implementing things, let's play around. Below, we train Bo
 For this exercise, we'll fit a Boltzmann machine to the [Fashion MNIST](https://www.kaggle.com/zalando-research/fashionmnist) dataset.
 
 
-![png]({filename}/figures/additional-strategies-partition-function/output_3_0.png)
+![png]({static}/figures/additional-strategies-partition-function/output_3_0.png)
 
 ## Define model
 
@@ -444,7 +444,7 @@ imshow(torchvision.utils.make_grid(images))
 ```
 
 
-![png]({filename}/figures/additional-strategies-partition-function/output_12_0.png)
+![png]({static}/figures/additional-strategies-partition-function/output_12_0.png)
 
 
 ## Train model
@@ -499,7 +499,7 @@ samples = model.sample(n_samples=30, burn_in=25, every_n=1)
 Takes forever!
 
 
-![png]({filename}/figures/additional-strategies-partition-function/output_18_0.png)
+![png]({static}/figures/additional-strategies-partition-function/output_18_0.png)
 
 
 Nothing great. These samples are highly correlated, if perfectly identical, as expected.

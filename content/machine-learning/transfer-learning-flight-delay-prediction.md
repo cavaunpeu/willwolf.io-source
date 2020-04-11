@@ -164,7 +164,7 @@ simple_reg_fit = fit_flight_model(simple_reg, X_train, y_train, X_val, y_val, ep
 plot_model_fit(simple_reg_fit)
 ```
 
-![simple regression initial]({filename}/figures/transfer_learning_simple_regression_initial.png)
+![simple regression initial]({static}/figures/transfer_learning_simple_regression_initial.png)
 
 
 ## Deeper regression
@@ -177,7 +177,7 @@ deeper_reg_fit = fit_flight_model(deeper_reg, X_train, y_train, X_val, y_val, ep
 plot_model_fit(deeper_reg_fit)
 ```
 
-![deeper regression initial]({filename}/figures/transfer_learning_deeper_regression_initial.png)
+![deeper regression initial]({static}/figures/transfer_learning_deeper_regression_initial.png)
 
 ## Test set predictions
 
@@ -226,7 +226,7 @@ Instead, as the intermediate step, they simply compute an *unnormalized* joint d
 
 $$P(Y\vert x) = \frac{P(x, Y)}{P(x)} = \frac{\tilde{P}(x, Y)}{\text{partition function}}$$
 
-This is explained much more thoroughly in a previous blog post: [Deriving the Softmax from First Principles]({filename}deriving-the-softmax-from-first-principles.md).
+This is explained much more thoroughly in a previous blog post: [Deriving the Softmax from First Principles]({static}deriving-the-softmax-from-first-principles.md).
 
 ### Generative models
 Conversely, a variational autoencoder is a *generative* model: instead of jumping *directly* to the conditional probability of all possible outputs given a specific input, they first compute the true component parts: the joint probability distribution over data and inputs alike, $P(X, Y)$, and the distribution over our data, $P(X)$.
@@ -251,7 +251,7 @@ _**In the context of autoencoders (and dimensionality reduction algorithms), "le
 ### Graphical models
 Variational autoencoders do not have the same notion of an "output" - namely, "does a route between two airports exist?" - as our dot product siamese network. To detail this model, we'll start near first principles with probabilistic graphical models with our notion of the ceramic plate in mind:
 
-![VAE pgm]({filename}/images/vae_pgm.png)
+![VAE pgm]({static}/images/vae_pgm.png)
 
 Coordinates on the plate detail airport character; choosing coordinates - say, `[global_hub_ness = 500, is_in_asia = 500]` - allows us to *generate* an airport. In this case, it might be Seoul. In variational autoencoders, ceramic-plate coordinates are called the "latent vector," denoted $z$. The joint probability of our graphical model is given as:
 
@@ -447,11 +447,11 @@ dp_model.compile(optimizer=Adam(lr=.001), loss='binary_crossentropy')
 SVG(model_to_dot(dp_model.model).create(prog='dot', format='svg'))
 ```
 
-![dot product embedding model]({filename}/figures/dot_product_embedding_model.svg)
+![dot product embedding model]({static}/figures/dot_product_embedding_model.svg)
 
 ## Fit
 
-![dot product embedding model fit]({filename}/figures/dot_product_embedding_model_fit.png)
+![dot product embedding model fit]({static}/figures/dot_product_embedding_model_fit.png)
 
 ## Visualize embeddings
 
@@ -462,7 +462,7 @@ To visualize results, we'll:
 4. Use the scaled embedding as a percentile-index into a color gradient. Here, we've chosen the colors of the rainbow: low values are blue/purple, and high values are orange/red.
 
 ```python
-plot_embeddings_on_world_map(unique_origins, output_path='{filename}/figures/dp_model_map.html')
+plot_embeddings_on_world_map(unique_origins, output_path='{static}/figures/dp_model_map.html')
 ```
 
 <iframe width="946" height="800" src="https://willwolf-public.s3.amazonaws.com/transfer-learning-flight-delays/dp_model_map.html" frameborder="0" allowfullscreen></iframe>
@@ -579,7 +579,7 @@ vae_model.compile(optimizer=Adam(lr=LEARNING_RATE), loss=[vae_model.variational_
 SVG(model_to_dot(vae_model.model).create(prog='dot', format='svg'))
 ```
 
-![vae embedding model]({filename}/figures/vae_embedding_model.svg)
+![vae embedding model]({static}/figures/vae_embedding_model.svg)
 
 ```python
 # build VAE training, test sets
@@ -604,7 +604,7 @@ print('    Test:       {}'.format(X_test_r_origin.shape))
         Test:       (21907, 3186)
 
 ## Fit
-![vae product embedding model fit]({filename}/figures/vae_product_embedding_model_fit.png)
+![vae product embedding model fit]({static}/figures/vae_product_embedding_model_fit.png)
 
 ## Visualize
 <iframe width="946" height="800" src="https://willwolf-public.s3.amazonaws.com/transfer-learning-flight-delays/vae_model_map.html" frameborder="0" allowfullscreen></iframe>
@@ -630,7 +630,7 @@ simple_reg_fit = fit_flight_model(simple_reg, X_train, y_train, X_val, y_val, ep
 plot_model_fit(simple_reg_fit)
 ```
 
-![simple regression augmented]({filename}/figures/transfer_learning_simple_regression_augmented.png)
+![simple regression augmented]({static}/figures/transfer_learning_simple_regression_augmented.png)
 
 
 ```python
@@ -641,7 +641,7 @@ deeper_reg_fit = fit_flight_model(deeper_reg, X_train, y_train, X_val, y_val, ep
 plot_model_fit(deeper_reg_fit)
 ```
 
-![deeper regression augmented]({filename}/figures/transfer_learning_deeper_regression_augmented.png)
+![deeper regression augmented]({static}/figures/transfer_learning_deeper_regression_augmented.png)
 
 ```python
 y_pred_simple = simple_reg.model.predict(X_test).ravel()

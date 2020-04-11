@@ -47,69 +47,69 @@ First, let's see how well our network does. Again, its goal was to learn how to
 Here's an image of the downsized flag of Afghanistan as passed into our network:
 
 <p align="center">
-  <img src='{filename}/images/afghanistan_reduced_bitmap.png'>
+  <img src='{static}/images/afghanistan_reduced_bitmap.png'>
 </p>
 
 So, this is as good as we're ever going to do. When we pass this into our network, here's what it predicts:
 
 <p align="center">
-  <img src='{filename}/images/reconstructed_afghanistan_reduced_bitmap.png'>
+  <img src='{static}/images/reconstructed_afghanistan_reduced_bitmap.png'>
 </p>
 
 Not terrible. Of course, this could be improved with, squarely, more training data.
 
 After training our auto-encoder, we solve for the 64 individual images that "maximally activate" each of the 64 "feature detectors," i.e. each of our hidden-layer nodes.
 
-![embedded features]({filename}/figures/flag_embedding_features.png)
+![embedded features]({static}/figures/flag_embedding_features.png)
 
 As anticipated, there does in fact appear to be some higher-level "structure" in our flags. In other words, we can now empirically see: a flag is a thing made up of some combination of horizontal stripes, vertical stripes, diagonal crosses, central emblems, the British crest, etc.
 
 Next, let's pass all images back through our network, obtain the 64-dimensional encoding for each, reduce these encodings into 2-dimensional space via the [TSNE](http://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html) algorithm, and plot.
 
-![tsne plot]({filename}/figures/country_embeddings_tsne_plot.png)
+![tsne plot]({static}/figures/country_embeddings_tsne_plot.png)
 
 Points that are close together indicate flags that are visually similar. So, what have we learned (or rather, what human intuition have we corroborated with empirical, numerical evidence)? Notable similarities include:
 
 Belgium, Chad and Mali:
 
 <p align="center">
-  <img src='{filename}/images/belgium_flag.jpg'>
+  <img src='{static}/images/belgium_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='{filename}/images/chad_flag.jpg'>
+  <img src='{static}/images/chad_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='{filename}/images/mali_flag.jpg'>
+  <img src='{static}/images/mali_flag.jpg'>
 </p>
 
 Malaysia, Liberia and Puerto Rico:
 
 <p align="center">
-  <img src='{filename}/images/malaysia_flag.jpg'>
+  <img src='{static}/images/malaysia_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='{filename}/images/liberia_flag.jpg'>
+  <img src='{static}/images/liberia_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='{filename}/images/puerto_rico_flag.jpg'>
+  <img src='{static}/images/puerto_rico_flag.jpg'>
 </p>
 
 Canada, Denmark and Peru:
 
 <p align="center">
-  <img src='{filename}/images/canada_flag.jpg'>
+  <img src='{static}/images/canada_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='{filename}/images/denmark_flag.jpg'>
+  <img src='{static}/images/denmark_flag.jpg'>
 </p>
 
 <p align="center">
-  <img src='{filename}/images/peru_flag.jpg'>
+  <img src='{static}/images/peru_flag.jpg'>
 </p>
 
 Here, we see that similarity is defined not just across one type of feature, but necessarily, across all. Respectively, the above 3 groups seem heavy in: the "3 vertical bars" feature(s), the "stripes" and "thing in the top-left corner" feature(s), and the "cherry red" feature(s). (I include the optional "s" because the features are not particularly easy to identify nor apparently mutually exclusive in the feature map above.)
@@ -119,19 +119,19 @@ Finally, let's generate some new flags. The following images are what happens wh
 Morocco:
 
 <p align="center">
-  <img src='{filename}/images/morocco_generated_flag.png'>
+  <img src='{static}/images/morocco_generated_flag.png'>
 </p>
 
 Morocco + Colombia:
 
 <p align="center">
-  <img src='{filename}/images/morocco_colombia_generated_flag.png'>
+  <img src='{static}/images/morocco_colombia_generated_flag.png'>
 </p>
 
 Morocco + Colombia + Malaysia:
 
 <p align="center">
-  <img src='{filename}/images/morocco_colombia_malaysia_generated_flag.png'>
+  <img src='{static}/images/morocco_colombia_malaysia_generated_flag.png'>
 </p>
 
 If only there were more countries in the world such that I could get more data. But hey, we need fewer borders, not more.

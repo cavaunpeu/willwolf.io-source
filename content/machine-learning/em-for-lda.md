@@ -162,13 +162,13 @@ A graphic[^2] (*Pattern Recognition and Machine Learning, Chapter 9*) is further
 
 ### Initial decomposition
 
-![png]({filename}../figures/em-for-lda/initial_decomp.png)
+![png]({static}../figures/em-for-lda/initial_decomp.png)
 
 Here, the ELBO is written as $\mathcal{L}(q, \theta)$.
 
 ### E-step
 
-![png]({filename}../figures/em-for-lda/e_step.png)
+![png]({static}../figures/em-for-lda/e_step.png)
 
 Holding the parameters $\theta$ constant, minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ with respect to $q(\mathbf{Z})$. Remember, as $q$ is a distribution with a fixed functional form, this amounts to updating its parameters $\lambda$.
 
@@ -176,7 +176,7 @@ The caption implies that we can always compute $q(\mathbf{Z}) = p(\mathbf{Z}\ver
 
 ### M-step
 
-![png]({filename}../figures/em-for-lda/m_step.png)
+![png]({static}../figures/em-for-lda/m_step.png)
 
 In the M-step, maximize the ELBO with respect to the model parameters $\theta$.
 
@@ -202,7 +202,7 @@ Since the original paper[^1] is beautiful, I'll default to citing its passages a
 
 ### Model
 
-![png]({filename}../figures/em-for-lda/lda_formulation.png)
+![png]({static}../figures/em-for-lda/lda_formulation.png)
 
 "Given the parameters $\alpha$ and $\beta$, the joint distribution of a topic mixture $\theta$, a set of of $N$ topics $\mathbf{z}$, and a set of $N$ words $\mathbf{w}$ is given by:"[^1]
 

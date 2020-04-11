@@ -13,7 +13,7 @@ Este post tiene como objetivo familiarizarlos con lo que es Docker, por qué y c
 
 Una mañana de lunes, Enrique sale de debajo de su cobija rayada, pone los dos pies en el piso y abre la ventana de su cuarto. Echa un vistazo hacia la metrópoli llena de galletas y muñecos de peluche, endereza el cuello de su suéter color banana, suelta un fuerte bostezo matutino y exclama: "Hoy, voy a preparar pasteles para mi querido compañero Beto."
 
-![ernie and bert]({filename}/images/ernie_and_bert.png)
+![ernie and bert]({static}/images/ernie_and_bert.png)
 
 Por mala suerte, Enrique nunca ha hecho pasteles antes. ¡Pero no importa! Se precipita con prisa hacia la cocina, toma un libro de cocina, organiza los ingredientes y prende su hornito Easy-Bake. "Lo pongo a prueba igual. Prepararé el mejor pastel jamás hecho por todos los muñecos de peluche. Y una vez que el resultado me complazca, haré 50 más," grita.
 

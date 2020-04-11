@@ -47,7 +47,7 @@ Often, we work with *conditional* models, such as $y \sim p(y\vert x)$, in class
 
 A Boltzmann machine is one of the simplest mechanisms for modeling $p(x)$. It is an undirected graphical model where every dimension $x_i$ of a given observation $x$ influences every other dimension. **As such, we might use it to model data which we believe to exhibit this property, e.g. an image.** For $x \in R^3$, our model would look as follows:
 
-![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/boltzmann-machine.svg)
+![png]({static}/figures/thorough-introduction-to-boltzmann-machines/boltzmann-machine.svg)
 
 For $x \in R^n$, a given node $x_i$ would have $n - 1$ outgoing connections in total—one to each of the other nodes $x_j$ for $j \neq i$.
 
@@ -485,7 +485,7 @@ _ = plt.title(f'{n_samples} Samples from Model')
 ```
 
 
-![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_7_0.png)
+![png]({static}/figures/thorough-introduction-to-boltzmann-machines/output_7_0.png)
 
 
 The plot roughly matches the data-generating distribution: most points assume values of either $[1, 0, 1]$, or $[1, 0, 0]$ (given $p=[.8, .1, .5]$).
@@ -578,7 +578,7 @@ Close, ish enough.
 
 With data of vary dimensionality `n_units`, the following plot gives the time in seconds that it takes to train this model for 10 epochs.
 
-![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_15_1.png)
+![png]({static}/figures/thorough-introduction-to-boltzmann-machines/output_15_1.png)
 
 To reduce computational burden, and/or to fit a Boltzmann machine to data of non-trivial dimensionality (e.g. a 28x28 grey-scale image, which implies a random variable with 28x28=784 dimensions), we need to compute the positive and/or negative phase of our gradient faster than we currently are.
 
@@ -679,7 +679,7 @@ for n_units in range(min_units, max_units):
 
 ## Plot
 
-![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_23_1.png)
+![png]({static}/figures/thorough-introduction-to-boltzmann-machines/output_23_1.png)
 
 
 **When we let each algorithm run for 100 epochs, the true negative phase gives a model which assigns higher likelihood to the observed data in all of the above training runs.**
@@ -733,13 +733,13 @@ for n_units in range(min_units, max_units):
 
 Before plotting results, let’s examine how many epochs each algorithm completes in its allotted time. In fact, for some values of `n_units`, we couldn’t even complete a single epoch (when computing the true negative phase) in $\leq 1$ second.
 
-![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_28_1.png)
+![png]({static}/figures/thorough-introduction-to-boltzmann-machines/output_28_1.png)
 
 Finally, we look at performance. With `n_units <= 7`, we see that 1 second of training with the true negative phase yields a better model. Conversely, **using 7 or more units, the added performance given by using the true negative phase is overshadowed by the amount of time it takes the model to train.**
 
 ## Plot
 
-![png]({filename}/figures/thorough-introduction-to-boltzmann-machines/output_31_1.png)
+![png]({static}/figures/thorough-introduction-to-boltzmann-machines/output_31_1.png)
 
 Of course, we re-stress that the exact ablation results are conditional (amongst other things) on **the number of Gibbs samples we chose to draw. Changing this will change the results, but not that about which we care the most: the overall trend.**
 

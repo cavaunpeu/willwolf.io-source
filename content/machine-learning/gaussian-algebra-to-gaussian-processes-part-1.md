@@ -77,7 +77,7 @@ _ = plt.title('`Gaussian(mu=.123, var=.456)` Density')
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_8_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_8_0.png)
 
 
 If we increase the variance `var`, what happens?
@@ -97,7 +97,7 @@ _ = plt.title('`Gaussian(mu=.123, var=bigger_number)` Density')
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_10_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_10_0.png)
 
 
 The density gets fatter. This should be familiar to you.
@@ -130,7 +130,7 @@ _ = plt.title('Histogram of 500 samples from `Gaussian(mu=.123, var=.456)`')
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_13_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_13_0.png)
 
 
 This looks similar to the true `Gaussian(mu=.123, var=.456)` density we plotted above. The more random samples we draw (then plot), the closer this histogram will approximate (look similar to) the true density.
@@ -227,7 +227,7 @@ plt.grid(True)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_17_1.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_17_1.png)
 
 
 ## Gaussians are closed under linear maps
@@ -308,7 +308,7 @@ for _ in range(17):
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_20_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_20_0.png)
 
 
 **This distribution over linear maps gives a distribution over functions**, where the "mean function" is $\phi(X)^T\mu_w$ (which reads directly from the `mu_lm` variable above).
@@ -328,7 +328,7 @@ phi_x = np.array([x ** (1 + i) for i in range(2)])
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_23_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_23_0.png)
 
 
 "The features we choose give a 'language' with which we can express a relationship between $x$ and $y$."[^1] Some features are more expressive than others; some restrict us entirely from expressing certain relationships.
@@ -342,7 +342,7 @@ phi_x = np.array([x < i for i in range(10)])
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_25_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_25_0.png)
 
 
 ## Gaussians are closed under conditioning and marginalization
@@ -390,7 +390,7 @@ _ = plt.title('Histogram of y-values, when x > 1')
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_28_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_28_0.png)
 
 
 Cool! Looks kind of Gaussian as well.
@@ -575,7 +575,7 @@ first_dim_post, second_dim_post = zip(*TSNE(n_components=2).fit_transform(sample
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_34_1.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_34_1.png)
 
 
 Samples from the prior are plotted in orange; samples from the posterior are plotted in blue. As this is a stochastic dimensionality-reduction algorithm, the results will be slightly different each time.
@@ -646,7 +646,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_40_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_40_0.png)
 
 
 The posterior distribution is nothing more than a distribution over function evaluations (from which we've sampled 25 function evaluations above) *most consistent with our model and observed data tuples.* As such, and to give further intuition, a crude way of computing this distribution might be continuously *drawing samples from our prior over function evaluations, and keeping only the ones that pass through, i.e. are "most consistent with," all of the red points above.*
@@ -673,7 +673,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_42_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_42_0.png)
 
 
 Not great. As a brief aside, how do we read the plot above? It's simply a function, a transformation, a lookup: given an $x$, it tells us the corresponding expected value $y$, and the variance around this estimate.
@@ -690,7 +690,7 @@ def phi_func(x, D=D, a=1e-5):
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_44_1.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_44_1.png)
 
 
 
@@ -700,7 +700,7 @@ def phi_func(x, D=D):
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_45_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_45_0.png)
 
 
 That last one might look familiar. Therein, the features we chose (still arbitrarily, really) are called "radial basis functions" (among other names).
@@ -728,7 +728,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_47_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_47_0.png)
 
 
 Very different! Holy overfit. What about 250?
@@ -752,7 +752,7 @@ plot_gp_posterior(mu_y_post, cov_y_post, x_train, y_train, x_test, n_samples=25)
 ```
 
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_49_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_49_0.png)
 
 
 It appears that the more features we use, the more expressive, and/or less endemically prone to overfitting, our model becomes.

@@ -54,7 +54,7 @@ Adversarial examples for supervised image classification models are inputs, i.e.
 
 An example[^1] looks as follows:
 
-![png]({filename}../images/saudi-adversarial/panda-adversarial-example.png)
+![png]({static}../images/saudi-adversarial/panda-adversarial-example.png)
 
 Initially, the classifier is 57.7% confident that the image contains a panda; after adding noise, resulting in the image on the right—still, inarguably, a panda, to the human eye—the classifier has now changed its prediction to "gibbon" with 99.3% confidence.
 

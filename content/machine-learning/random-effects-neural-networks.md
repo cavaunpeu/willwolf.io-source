@@ -88,7 +88,7 @@ For an introduction to variational inference and Edward's API thereof, please re
 - [Edward: KL(q||p) Minimization](http://edwardlib.org/tutorials/klqp)
 - [Edward: API and Documentation - Inference](http://edwardlib.org/api/inference)
 
-Additionally, I provide an introduction to the basic math behind variational inference and the [ELBO](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/lectures/variational-inference-i.pdf) in the previous post on this blog: [Further Exploring Common Probabilistic Models]({filename}/machine-learning/further-exploring-common-probabilistic-models.md).
+Additionally, I provide an introduction to the basic math behind variational inference and the [ELBO](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/lectures/variational-inference-i.pdf) in the previous post on this blog: [Further Exploring Common Probabilistic Models]({static}/machine-learning/further-exploring-common-probabilistic-models.md).
 
 ### Fit model
 For the approximate q-distributions, we apply the [softplus function](https://www.tensorflow.org/api_docs/python/tf/nn/softplus) — `log(exp(z) + 1)` — to the scale parameter values at the suggestion of the Edward docs.
@@ -137,10 +137,10 @@ inference.run(n_samples=5, n_iter=250)
 ### Criticize model
 
 #### Visualize data fit given parameter priors
-![data fit given parameter priors]({filename}/figures/data_fit_given_parameter_priors.png)
+![data fit given parameter priors]({static}/figures/data_fit_given_parameter_priors.png)
 
 #### Visualize data fit given parameter posteriors
-![data fit given parameter posteriors]({filename}/figures/data_fit_given_parameter_posteriors.png)
+![data fit given parameter posteriors]({static}/figures/data_fit_given_parameter_posteriors.png)
 
 It appears as if our model fits the data along the first two dimensions. This said, we could improve this fit considerably. This will become apparent when we compute the MAE on our validation set.
 
@@ -164,12 +164,12 @@ Mean absolute error on validation data: 0.089943
 ```
 
 #### Inspect residuals
-![bayesian linear regression residuals]({filename}/figures/bayesian_linear_regression_residuals.png)
+![bayesian linear regression residuals]({static}/figures/bayesian_linear_regression_residuals.png)
 
 "The residuals appear normally distributed with mean 0: this is a good sanity check for the model."<sup>1</sup> However, with respect to the magnitude of the mean of the validation `logerror`, our validation score is terrible. This is likely due to the fact that three predictors are not nearly sufficient for capturing the variation in the response. (Additionally, because the response itself is an *error*, it should be fundamentally harder to capture than the thing actually being predicted — the house price. This is because Zillow's team has already built models to capture this signal, then effectively threw the remaining "uncaptured" signal into this competition, i.e. "figure out how to get right the little that we got wrong.")
 
 #### Inspect parameter posteriors
-![bayesian linear regression posteriors]({filename}/figures/bayesian_linear_regression_posteriors.png)
+![bayesian linear regression posteriors]({static}/figures/bayesian_linear_regression_posteriors.png)
 
 In keeping with the definition of multivariate linear regression itself, the above parameter posteriors tell us: "conditional on the assumption that the log-error and fixed effects can be related by a straight line, what is the predictive value of one variable once I already know the values of all other variables?"<sup>2</sup>
 
@@ -240,14 +240,14 @@ Mean absolute error on validation data: 0.084635
 ```
 
 #### Inspect residuals
-![bayesian linear regression with random effects residuals]({filename}/figures/bayesian_linear_regression_with_random_effects_residuals.png)
+![bayesian linear regression with random effects residuals]({static}/figures/bayesian_linear_regression_with_random_effects_residuals.png)
 
 ### Plot shrinkage
 To illustrate shrinkage we'll pare our model down to intercepts only (removing the fixed effects entirely). We'll first fit a random-effects model on the full dataset then compute the cluster-specific-intercept posterior means. Next, we'll fit a separate model to each individual cluster and compute the intercept posterior mean of each. The plot below shows how estimates from the former can be viewed as "estimates from the latter — shrunk towards the global-intercept posterior mean."
 
 Finally, <span style="color: #377eb8">blue</span>, <span style="color: #4daf4a">green</span> and <span style="color: #ff7f00">orange</span> points represent small, medium and large clusters respectively. As mentioned before, the larger the cluster size, i.e. the more data points we've observed belonging to a given cluster, the *less* prone it is to shrinkage towards the mean.
 
-![shrinkage plot]({filename}/figures/shrinkage_plot.png)
+![shrinkage plot]({static}/figures/shrinkage_plot.png)
 
 ## Neural network with random effects
 Neural networks are powerful function approximators. Keras is a library that lets us flexibly define complex neural architectures. Thus far, we've been approximating the relationship between our fixed effects and response variable with a simple dot product; can we leverage Keras to make this relationship more expressive? Is it painless? Finally, how does it integrate with Edward's existing APIs and constructs? Can we couple nimble generative models with deep neural networks?
@@ -298,7 +298,7 @@ Mean absolute error on validation data: 0.081484
 ```
 
 #### Inspect residuals
-![neural network with random effects residuals]({filename}/figures/neural_network_with_random_effects_residuals.png)
+![neural network with random effects residuals]({static}/figures/neural_network_with_random_effects_residuals.png)
 
 # Future work
 We've now laid a stable, if trivially simple foundation for building models with Edward and Keras. From here, I see two distinct paths to building more expressive probabilistic models using these tools:

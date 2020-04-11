@@ -21,7 +21,7 @@ Next, we make everything lowercase, and remove numbers and punctuation. Lastly, 
 
 From there, we visualize! For this visualization, I choose to create a word-cloud with R's "wordcloud" package, and only include words that occur 20 times or more across the 9 constitutions. The bigger words occur more frequently, and vice versa. The biggest word, "derecho," therefore occurs most frequently across the documents.
 
-![constitution word cloud]({filename}/figures/constitution_wordcloud.png)
+![constitution word cloud]({static}/figures/constitution_wordcloud.png)
 
 So, what do we have? Again, "derecho," or "right" (as in your "right" as a citizen) is used most frequently. In addition, it appears that the majority of countries have presidents, as the word "presidente" is rather large, as well as consider themselves republics, as the word "república" is large as well. Interestingly, we see in yellow that the word "podrá" is used frequently, a future-tense verb meaning "will be able to"; why is this word used instead of "puede," a present-tense conjugation of the same verb meaning "is *now* able to?" Given that most of these countries gained independence from Spain in the last 200 years, perhaps this small caveat is a reflection of founders' general apprehension for their country's future and true independence?
 

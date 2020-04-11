@@ -17,7 +17,7 @@ As I move through my 20's I'm consistently delighted by the subtle ways in which
 
 > Will at 22: Western Europe is boring. No — I've seen a lot of it! Everything is too clean, too nice, too perfect for my taste.
 
-> Will at 28, in Barcelona, after 9 months in [Casablanca]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md): Wait a second: *I get it now*. What *is* this summertime paradise of crosswalks, vehicle civility and apple-green parks and where has it been all my life?
+> Will at 28, in Barcelona, after 9 months in [Casablanca]({static}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md): Wait a second: *I get it now*. What *is* this summertime paradise of crosswalks, vehicle civility and apple-green parks and where has it been all my life?
 
 > <br>
 
@@ -30,7 +30,7 @@ Emojis are an increasingly-pervasive sub-lingua-franca of the internet. They cap
 ## Question-answer models
 The original aim of this post was to explore Siamese question-answer models of the type typically applied to the [InsuranceQA Corpus](https://github.com/shuzi/insuranceQA) as introduced in "Applying Deep Learning To Answer Selection: A Study And An Open Task" ([Feng, Xiang, Glass, Wang, & Zhou, 2015](https://arxiv.org/pdf/1508.01585v2.pdf)). We'll call them SQAM for clarity. The basic architecture looks as follows:
 
-![qa model architecture]({filename}/figures/qa_model_architecture.png)
+![qa model architecture]({static}/figures/qa_model_architecture.png)
 
 By layer and in general terms:
 
@@ -77,7 +77,7 @@ for m in mu:
 z_samples = np.array(z_samples).ravel()
 ```
 
-![aggregate gaussian]({filename}/figures/aggregate_gaussian.png)
+![aggregate gaussian]({static}/figures/aggregate_gaussian.png)
 
 Training a variational autoencoder to learn low-dimensional emoji embeddings serves two principal ends:
 
@@ -148,7 +148,7 @@ Dataset sizes:
 
 Before we begin, let's examine some emojis.
 
-![emojis]({filename}/images/emojis.png)
+![emojis]({static}/images/emojis.png)
 
 ## Model emojis
 
@@ -159,7 +159,7 @@ BATCH_SIZE = 16
 ```
 
 ### Variational layer
-This is taken from a previous post of mine, [Transfer Learning for Flight Delay Prediction via Variational Autoencoders]({filename}/machine-learning/transfer-learning-flight-delay-prediction.md).
+This is taken from a previous post of mine, [Transfer Learning for Flight Delay Prediction via Variational Autoencoders]({static}/machine-learning/transfer-learning-flight-delay-prediction.md).
 
 ```python
 class VariationalLayer(KerasLayer):
@@ -326,19 +326,19 @@ axis = np.linspace(-2, 2, ticks)
 plot_generated_emojis(compose_code_A)
 ```
 
-![generated emojis A]({filename}/figures/generated_emojis_A.png)
+![generated emojis A]({static}/figures/generated_emojis_A.png)
 
 ```python
 plot_generated_emojis(compose_code_B)
 ```
 
-![generated emojis B]({filename}/figures/generated_emojis_B.png)
+![generated emojis B]({static}/figures/generated_emojis_B.png)
 
 ```python
 plot_generated_emojis(compose_code_C)
 ```
 
-![generated emojis C]({filename}/figures/generated_emojis_C.png)
+![generated emojis C]({static}/figures/generated_emojis_C.png)
 
 As our emojis live in a continuous latent space we can observe the smoothness of the transition from one to the next.
 
@@ -581,7 +581,7 @@ cosine_sim = dot([dense_question, dense_answer], normalize=True, axes=-1)
 qa_model = Model([question, answer], [cosine_sim], name='qa_model')
 ```
 
-![qa model]({filename}/figures/qa_model.png)
+![qa model]({static}/figures/qa_model.png)
 
 ### Build contrastive model
 Two Siamese networks, trained jointly so as to minimize the hinge loss of their respective outputs.
@@ -744,7 +744,7 @@ top_5_matches = extract_top_5_argmax(preds_1)
 display_top_5_results(top_5_matches)
 ```
 
-![predicted tweets 1]({filename}/images/predicted_tweets_1.png)
+![predicted tweets 1]({static}/images/predicted_tweets_1.png)
 
 ### Tweet #2
 ```python
@@ -753,7 +753,7 @@ top_5_matches = extract_top_5_argmax(preds_2)
 display_top_5_results(top_5_matches)
 ```
 
-![predicted tweets 2]({filename}/images/predicted_tweets_2.png)
+![predicted tweets 2]({static}/images/predicted_tweets_2.png)
 
 ### Tweet #3
 ```python
@@ -762,7 +762,7 @@ top_5_matches = extract_top_5_argmax(preds_3)
 display_top_5_results(top_5_matches)
 ```
 
-![predicted tweets 3]({filename}/images/predicted_tweets_3.png)
+![predicted tweets 3]({static}/images/predicted_tweets_3.png)
 
 Not particularly useful. These emojis have 0 notion of sentiment, though: the model is simply predicting on their (pixel-based) latent codes.
 

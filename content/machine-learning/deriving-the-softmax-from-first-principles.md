@@ -14,7 +14,7 @@ Once derived, I quickly realized how this relationship backed out into a more ge
 ## Our goal
 This is a predictive model. It is a diamond that receives an input and produces an output.
 
-![simple input/output model]({filename}/images/simple_input_output_model.png)
+![simple input/output model]({static}/images/simple_input_output_model.png)
 
 The input is a vector $\mathbf{x} = [x_0, x_1, x_2, x_3]$. There are 3 possible outputs: $a, b, c$. The goal of our model is to predict the probability of producing each output conditional on the input, i.e.
 
@@ -407,7 +407,7 @@ In Naive Bayes, we simply assume that the probability of observing each input el
 ## Hidden Markov models and beyond
 Finally, hidden Markov models are to naive Bayes what conditional random fields are to softmax regression: the former in each pair builds upon the latter by modeling a *sequence* of labels. This graphic[^1] gives a bit more insight into these relationships:
 
-![generative vs. discriminative models]({filename}/images/generative_discriminative_models_flowchart.png)
+![generative vs. discriminative models]({static}/images/generative_discriminative_models_flowchart.png)
 
 ## Where does $e$ come from?
 Equation (2) states that the numerator of the softmax, i.e. the exponentiated linear combination of input elements, is equivalent to the unnormalized joint probability of our inputs and outputs as given by the Gibbs distribution factor product.

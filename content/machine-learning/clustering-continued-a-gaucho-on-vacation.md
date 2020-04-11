@@ -4,10 +4,10 @@ Author: Will Wolf
 Lang: en
 Slug: clustering-continued-a-gaucho-on-vacation
 Status: published
-Summary: In our [previous post]({filename}clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups; moving forward, we'll take a closer look at what this really means.
+Summary: In our [previous post]({static}clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups; moving forward, we'll take a closer look at what this really means.
 Image: figures/cluster_proportions_stacked_barchart.png
 
-In our [previous post]({filename}clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups. Moving forward, we'll take a closer look into what this really means.
+In our [previous post]({static}clustering-the-airports.md) we chose to cluster South American airports into $k = 3$ distinct groups. Moving forward, we'll take a closer look into what this really means.
 
 As mentioned previously, the k-means algorithm incorporates some element of mathematical randomness. On one k-means trial, the algorithm may assign 30% of our airports to Cluster 1, 65% to Cluster 2, and 5% to Cluster 3. Other times, this distribution could look more like 35%, 55%, and 10% respectively. The more clusters we input, or the larger we make k, the less the distributions vary by trial.
 
@@ -15,7 +15,7 @@ Irrespective, we previously deemed $k = 3$ to be the way to go, informed by stat
 
 In addition to cluster sizes varying by trial, the actual number assigned to each cluster - 1, 2, or 3 - will vary by trial as well. For example, in Argentina, Buenos Aires' international airport is assumed to be consistently placed in the cluster pertaining to "major" airports; however, the cluster number assigned to this group on a given trial could be 1, 2, or 3. Below is a histogram of cluster sizes across 100 k-means trials for the 293 South American airports being examined.
 
-![Cluster Assignment Frequency Histogram]({filename}/figures/airport_cluster_frequency_histograms.png)
+![Cluster Assignment Frequency Histogram]({static}/figures/airport_cluster_frequency_histograms.png)
 
 Since numbers assigned to each cluster (1, 2, or 3) change by trial, this graph isn't particularly useful. However, it does given significant evidence that cluster sizes will indeed vary by trial, which we'll use later on. As such, it follows that clusters should not be judged by their respective cluster numbers, but rather, by the mean "centers" values associated with the airports grouped within. This is what really defines the clusters themselves, or in other words, what makes each cluster pertain to "major," "semi-major," and "non-major" air hubs (I'll continue to keep these words in quotations, since k-means clustering is ultimately an attempt to give a quantitative definition to an ultimately qualitative distinction, which is always, at best, an approximation).
 
@@ -35,7 +35,7 @@ ggplot(km_by_country, aes(x=Country, y=FractOfWhole, fill=Cluster))
         )
 ```
 
-![Stack Bar Cluster Props]({filename}/figures/cluster_proportions_stacked_barchart.png)
+![Stack Bar Cluster Props]({static}/figures/cluster_proportions_stacked_barchart.png)
 
 Now for the fun part.
 
@@ -45,6 +45,6 @@ So - what does this all mean? Countries with more evenly distributed "major," "s
 
 In a future post, it will be interesting to look more closely at the economic causes and effects for these air distributions. For now, let's just be thankful we're not gauchos in [Patagonia](http://willtravellife.com/blog/2013/04/22/photo-essay-the-conical-cathedral-of-patagonias-fitzroy/) planning a vacation.
 
-![Gaucho Photo]({filename}/images/guachos_on_vacation.jpg)
+![Gaucho Photo]({static}/images/guachos_on_vacation.jpg)
 
 Photo Credit: [Jimmy Nelson](http://www.beforethey.com/tribe/gauchos)

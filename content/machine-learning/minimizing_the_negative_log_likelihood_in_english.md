@@ -159,7 +159,7 @@ Now, let's dive into the pool. We'll start at the bottom and work our way back t
 # Response variable
 Roughly speaking, each model looks as follows. It is a diamond that receives an input and produces an output.
 
-![simple input/output model]({filename}/images/simple_input_output_model.png)
+![simple input/output model]({static}/images/simple_input_output_model.png)
 
 The models differ in the type of response variable they predict, i.e. the $y$.
 
@@ -195,8 +195,8 @@ Consider another continuous-valued random variable: "Uber's yearly profit." Like
 
 Plotting, we get:
 
-![temperature random variable]({filename}/figures/temperature_random_variable.png?)
-![uber random variable]({filename}/figures/uber_random_variable.png?)
+![temperature random variable]({static}/figures/temperature_random_variable.png?)
+![uber random variable]({static}/figures/uber_random_variable.png?)
 
 We are not given the true underlying probability distribution associated with each random variable — not its general "shape," nor the parameters that control this shape. We will *never* be given these things, in fact: the point of statistics is to infer what they are.
 
@@ -277,7 +277,7 @@ where:
 
 - $\eta$ is the *canonical parameter* of the distribution. (We will hereby work with the single-canonical-parameter exponential family form.)
 - $T(y)$ is the *sufficient statistic*. It is often the case that $T(y) = y$.
-- $a(\eta)$ is the *log partition function*, which normalizes the distribution. (A more in-depth discussion of this normalizing constant can be found in a previous post of mine: [Deriving the Softmax from First Principles]({filename}deriving-the-softmax-from-first-principles.md).)
+- $a(\eta)$ is the *log partition function*, which normalizes the distribution. (A more in-depth discussion of this normalizing constant can be found in a previous post of mine: [Deriving the Softmax from First Principles]({static}deriving-the-softmax-from-first-principles.md).)
 
 "A fixed choice of $T$, $a$ and $b$ defines a family (or set) of distributions that is parameterized by $\eta$; as we vary $\eta$, we then get different distributions within this family."[^1] This simply means that a coin with $\Pr(\text{heads}) = .6$ gives a different distribution over outcomes than one with $\Pr(\text{heads}) = .7$. Easy.
 
@@ -422,7 +422,7 @@ $$
 \end{align*}
 $$
 
-This you will recognize as the softmax function. (For a probabilistically-motivated derivation, please see a previous [post]({filename}deriving-the-softmax-from-first-principles.md).)
+This you will recognize as the softmax function. (For a probabilistically-motivated derivation, please see a previous [post]({static}deriving-the-softmax-from-first-principles.md).)
 
 Finally:
 
@@ -512,7 +512,7 @@ _**> The softmax function gives us the probability that the response variable ta
 
 Finally, why a linear model, i.e. why $\eta = \theta^Tx$?
 
-Andrew Ng calls it a "design choice."[^1] I've motivated this formulation a bit in the [softmax post]({filename}deriving-the-softmax-from-first-principles.md). mathematicalmonk[^2] would probably have a more principled explanation than us both. For now, we'll make do with the following:
+Andrew Ng calls it a "design choice."[^1] I've motivated this formulation a bit in the [softmax post]({static}deriving-the-softmax-from-first-principles.md). mathematicalmonk[^2] would probably have a more principled explanation than us both. For now, we'll make do with the following:
 
 - A linear combination is perhaps the simplest way to consider the impact of each feature on the canonical parameter.
 - A linear combination commands that either $x$, or a *function of $x$*, vary linearly with $\eta$. As such, we could write our model as $\eta = \theta^T\Phi(x)$, where $\Phi$ applies some complex transformation to our features. This makes the "simplicity" of the linear combination less simple.
@@ -740,7 +740,7 @@ _**> Instead of a point estimate for $\theta$, and a point estimate for $y$ give
 
 Unfortunately, in complex systems with a non-trivial functional form and number of weights, this computation becomes intractably large. As such, in fully Bayesian modeling, we approximate these distributions. In classic machine learning, we assign them a single value (point estimate). It's a bit lazy, really.
 
-![@betanalpha bayesian tweet]({filename}/images/going_fully_bayesian.png)
+![@betanalpha bayesian tweet]({static}/images/going_fully_bayesian.png)
 
 # Summary
 I hope this post serves as useful context for the machine learning models we know and love. A deeper understanding of these algorithms offers humility — the knowledge that none of these concepts are particularly new — as well as a vision for how to extend these algorithms in the direction of robustness and increased expressivity.

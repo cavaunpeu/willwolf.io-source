@@ -11,7 +11,7 @@ I recently finished a [course](https://www.coursera.org/learn/discrete-optimizat
 
 This work was brief, amusing and experimental. The result is a simple [Shiny app](https://willwolf.shinyapps.io/bayesian-inference-simulated-annealing/) that contrasts MCMC search via simulated annealing versus the (more standard) Metropolis algorithm. While far from groundbreaking, I did pick up the following few bits of intuition along the way.
 
-![traceplot]({filename}/figures/bayesian_inference_simulated_annealing_traceplot.png)
+![traceplot]({static}/figures/bayesian_inference_simulated_annealing_traceplot.png)
 
 ### A new favorite analogy for Bayesian inference
 

@@ -13,7 +13,7 @@ ASAPP builds artificial-intelligence tools for enterprise. My work involves buil
 
 Of course, we are hiring — for Research Scientist, Machine Learning Engineer, Data Scientist, Software Engineer, Automation Engineer, DevOps, iOS/Android Engineer, Security Engineer and Product Designer roles. If you'd like to work with a truly fantastic [team](https://www.asapp.com/team/), feel free to [get in touch](mailto:will@asapp.com). We're on the 83rd floor of the World Trade Center as well — with a view.
 
-![view from world trade center]({filename}/images/world_trade_center.jpg)
+![view from world trade center]({static}/images/world_trade_center.jpg)
 
 In this next chapter of life, my primary professional and personal focuses will be:
 

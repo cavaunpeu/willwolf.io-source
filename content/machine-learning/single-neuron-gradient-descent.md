@@ -13,7 +13,7 @@ In my experience, the gap between a conceptual understanding of how a machine le
 
 Our neuron looks like this:
 
-![single_neuron_gradient_descent]({filename}/images/single_neuron_gradient_descent.png)
+![single_neuron_gradient_descent]({static}/images/single_neuron_gradient_descent.png)
 
 Our parameters look like this:
 

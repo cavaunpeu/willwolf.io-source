@@ -9,7 +9,7 @@ Image: images/pool_ring.jpg
 Url: 2017/07/06/further-exploring-common-probabilistic-models/
 Save_as: 2017/07/06/further-exploring-common-probabilistic-models/index.html
 
-The [previous post]({filename}/machine-learning/minimizing_the_negative_log_likelihood_in_english.md) on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them for fun and profit — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
+The [previous post]({static}/machine-learning/minimizing_the_negative_log_likelihood_in_english.md) on this blog sought to expose the statistical underpinnings of several machine learning models you know and love. Therein, we made the analogy of a swimming pool: you start on the surface — you know what these models do and how to use them for fun and profit — dive to the bottom — you deconstruct these models into their elementary assumptions and intentions — then finally, work your way back to the surface — reconstructing their functional forms, optimization exigencies and loss functions one step at a time.
 
 In this post, we're going to stay on the surface: instead of deconstructing common models, we're going to further explore the relationships between them — swimming to different corners of the pool itself. Keeping us afloat will be Bayes' theorem — a balanced, dependable yet at times fragile pool ring, so to speak — which we'll take with us wherever we go.
 
@@ -23,7 +23,7 @@ Finally, our pool ring is not a godhead — we are not nautical missionaries bra
 The goal of a supervised model is to compute the distribution over outcomes $y$ given an input $x$, written $P(y\vert x)$. If $y$ is discrete, this distribution is a probability mass function, e.g. a multinomial or binomial distribution. If continuous, it is a probability density function, e.g. a Gaussian distribution.
 
 ## Discriminative models
-In discriminative models, we immediately direct our focus to this output distribution. Taking an example from the [previous post]({filename}/machine-learning/minimizing_the_negative_log_likelihood_in_english.md), let's assume a softmax regression which receives some data $x$ and predicts a multi-class label `red or green or blue`. The model's output distribution is therefore multinomial; a multinomial distribution requires as a parameter a vector $\pi$ of respective outcome probabilities, e.g. `{red: .27, green: .11, blue: .62}`. We can compute these individual probabilities via the softmax function, where:
+In discriminative models, we immediately direct our focus to this output distribution. Taking an example from the [previous post]({static}/machine-learning/minimizing_the_negative_log_likelihood_in_english.md), let's assume a softmax regression which receives some data $x$ and predicts a multi-class label `red or green or blue`. The model's output distribution is therefore multinomial; a multinomial distribution requires as a parameter a vector $\pi$ of respective outcome probabilities, e.g. `{red: .27, green: .11, blue: .62}`. We can compute these individual probabilities via the softmax function, where:
 
 - $\pi_k = \frac{e^{\eta_k}}{\sum\limits_{k=1}^K e^{\eta_k}}$
 - $\eta_k = \theta_k^Tx$
@@ -283,7 +283,7 @@ In simple terms, MCMC inference for a given parameter $\phi$ works as follows:
 After collecting a few thousand samples — and discarding the first few hundred, in which we drunkenly amble towards the region of high joint probability (a quantity *proportional* to the posterior probability) — we now have a bucket of samples from our desired posterior distribution. Nota bene: we never had to touch the high-dimensional integral $\int P(D, \theta)d\theta$.
 
 ## Variational inference
-In large-scale models, MCMC methods are often too slow. Conversely, variational inference provides a framework for casting the problem of posterior approximation as one of *optimization* — far faster than a sampling-based approach. This yields an *analytical* approximation to $P(\theta\vert D)$. The following explanation of variational inference is taken largely from a previous post of mine: [Transfer Learning for Flight Delay Prediction]({filename}/machine-learning/transfer-learning-flight-delay-prediction.md).
+In large-scale models, MCMC methods are often too slow. Conversely, variational inference provides a framework for casting the problem of posterior approximation as one of *optimization* — far faster than a sampling-based approach. This yields an *analytical* approximation to $P(\theta\vert D)$. The following explanation of variational inference is taken largely from a previous post of mine: [Transfer Learning for Flight Delay Prediction]({static}/machine-learning/transfer-learning-flight-delay-prediction.md).
 
 For our approximating distribution we'll choose one that is simple, parametric and familiar: the normal (Gaussian) distribution, parameterized by some set of parameters $\lambda$.
 
@@ -361,7 +361,7 @@ $$
 
 In machine learning parlance: "minimize the negative log joint probability of our data and parameter $\theta$ — a MAP estimate — plus the entropy of our variational approximation." As a *higher* entropy is desirable — an approximation which distributes its mass in a *conservative* fashion — this minimization is a balancing act between the two terms.
 
-For a more in-depth discussion of both entropy and KL-divergence please see [Minimizing the Negative Log-Likelihood, in English]({filename}/machine-learning/minimizing_the_negative_log_likelihood_in_english.md).
+For a more in-depth discussion of both entropy and KL-divergence please see [Minimizing the Negative Log-Likelihood, in English]({static}/machine-learning/minimizing_the_negative_log_likelihood_in_english.md).
 
 # Posterior predictive distribution
 With our estimate for $\theta$ as a full distribution, we can now make a new prediction as a full distribution as well.

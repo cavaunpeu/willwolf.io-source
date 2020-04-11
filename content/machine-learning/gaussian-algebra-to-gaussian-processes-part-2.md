@@ -272,7 +272,7 @@ Note that this is nothing else but a dot product between two vectors $(1, x_1^2,
 
 ### What this means
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-2/kernels-for-gaussian-processes.svg)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-2/kernels-for-gaussian-processes.svg)
 
 - We start with inputs $X$ and $Y$.
 - Our goal is to compute the similarity between then, $\text{Sim}(X, Y)$.
@@ -383,12 +383,12 @@ cov_y_test_post = k(X_test, X_test) - A @ k(X_train, X_test)
 
 ## Visualizing results
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-2/output_17_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-2/output_17_0.png)
 
 
 And for good measure, with some samples from the posterior:
 
-![png]({filename}/figures/gaussian-algebra-to-gaussian-processes-part-2/output_19_0.png)
+![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-2/output_19_0.png)
 
 ## In summary
 
