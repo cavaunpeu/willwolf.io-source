@@ -2,20 +2,51 @@
 	<div class="container"> <!-- footer -->
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1" id="footer-wrapper">
-				<div id="social-links">
-					<h4>
-						Social:
-						<a href="http://twitter.com/{{ TWITTER_USERNAME }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-						<a href="http://github.com/{{ GITHUB_USERNAME }}"><i class="fa fa-github" aria-hidden="true"></i></a>
-						<a href="http://linkedin.com/in/{{ LINKEDIN_USERNAME }}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-						<a href="mailto:{{ EMAIL_ADDRESS }}"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-					</h4>
+				<div class="col-md-3">
+					<div id="social-links">
+						<h4>
+							Social:
+							<a href="http://twitter.com/{{ TWITTER_USERNAME }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="http://github.com/{{ GITHUB_USERNAME }}"><i class="fa fa-github" aria-hidden="true"></i></a>
+							<a href="http://linkedin.com/in/{{ LINKEDIN_USERNAME }}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+							<a href="mailto:{{ EMAIL_ADDRESS }}"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+						</h4>
+					</div>
 				</div>
-				<div id="travel-blog">
-					<h4>
-						Links:
-						<a href="http://willtravellife.com">Travel Blog</a>, <a href="https://github.com/cavaunpeu/willwolf.io-source">Source Code</a>
-					</h4>
+				<div class="col-md-3">
+				  <div id="categories">
+				    <h4>
+				      Categories
+				    </h4>
+				    <ul>
+				    {% for category, articles in categories %}
+				      <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</li>
+				    {% endfor %}
+				    </ul>
+				  </div>
+				</div>
+				<div class="col-md-3">
+					<div id="other-links">
+						<h4>
+							Links
+						</h4>
+						<ul>
+							<li><a href="http://willtravellife.com">Travel Blog</a></li>
+							<li><a href="https://github.com/cavaunpeu/willwolf.io-source">Source Code</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3">
+				  <div id="pages">
+				    <h4>
+				      Pages
+				    </h4>
+				    <ul>
+				      {% if ARCHIVE_PAGE %}
+				      <li><a href="{{ main_siteurl }}/{{ ARCHIVE_PAGE }}" title="{{ ARCHIVE_PAGE_LINK_TEXT }}">{{ ARCHIVE_PAGE_LINK_TEXT }}</a></li>
+				      {% endif %}
+				    </ul>
+				  </div>
 				</div>
 			</div>
 		</div>
