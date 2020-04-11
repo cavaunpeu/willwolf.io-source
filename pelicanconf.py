@@ -7,7 +7,7 @@ import os
 # Site settings
 AUTHOR = 'Will Wolf'
 SITENAME = 'will wolf'
-SITESUBTITLE = 'machine learning things and thoughts on the world'
+SITESUBTITLE = 'writings on life, geopolitics, machine learning'
 SITEURL = ''
 PATH = 'content'
 TIMEZONE = 'America/New_York'
@@ -64,7 +64,7 @@ DEFAULT_LANG = 'en'
 I18N_UNTRANSLATED_ARTICLES = 'remove'
 I18N_SUBSITES = {
     'es': {
-        'SITESUBTITLE': 'cosas de machine learning',
+        'SITESUBTITLE': 'escritura sobre la vida, la geopolítica, y machine learning',
         'AVATAR': '../images/will.jpg'
     }
 }
