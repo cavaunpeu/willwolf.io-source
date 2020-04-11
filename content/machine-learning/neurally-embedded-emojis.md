@@ -17,7 +17,7 @@ As I move through my 20's I'm consistently delighted by the subtle ways in which
 
 > Will at 22: Western Europe is boring. No — I've seen a lot of it! Everything is too clean, too nice, too perfect for my taste.
 
-> Will at 28, in Barcelona, after 9 months in [Casablanca]({filename}/articles/my-open-source-machine-learning-masters-in-casablanca-morocco.md): Wait a second: *I get it now*. What *is* this summertime paradise of crosswalks, vehicle civility and apple-green parks and where has it been all my life?
+> Will at 28, in Barcelona, after 9 months in [Casablanca]({filename}/machine-learning/my-open-source-machine-learning-masters-in-casablanca-morocco.md): Wait a second: *I get it now*. What *is* this summertime paradise of crosswalks, vehicle civility and apple-green parks and where has it been all my life?
 
 > <br>
 
@@ -159,7 +159,7 @@ BATCH_SIZE = 16
 ```
 
 ### Variational layer
-This is taken from a previous post of mine, [Transfer Learning for Flight Delay Prediction via Variational Autoencoders]({filename}/articles/transfer-learning-flight-delay-prediction.md).
+This is taken from a previous post of mine, [Transfer Learning for Flight Delay Prediction via Variational Autoencoders]({filename}/machine-learning/transfer-learning-flight-delay-prediction.md).
 
 ```python
 class VariationalLayer(KerasLayer):

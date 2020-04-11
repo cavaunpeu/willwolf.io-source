@@ -1,7 +1,7 @@
 Title: Artificial Intelligence and Geopolitics
 Date: 2019-09-21 21:00
 Author: Will Wolf
-Lang: geopolitics
+Lang: en
 Slug: ai-and-geopolitics
 Status: published
 Summary: I'm beginning to write about the intersection of artificial intelligence and geopolitics.

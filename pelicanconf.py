@@ -26,8 +26,9 @@ PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 
 # Category settings
-USE_FOLDER_AS_CATEGORY = False
-DEFAULT_CATEGORY = 'Uncategorized'
+USE_FOLDER_AS_CATEGORY = True
+CATEGORY_URL = '{slug}/'
+CATEGORY_SAVE_AS = '{slug}/index.html'
 
 # Page settings
 ABOUT_PAGE = 'about/'
@@ -41,9 +42,6 @@ CV_PAGE_LINK_TEXT = 'CV'
 
 BOOKS_PAGE = 'books/'
 BOOKS_PAGE_LINK_TEXT = 'Books'
-
-GEOPOLITICS_PAGE = 'geopolitics/'
-GEOPOLITICS_PAGE_LINK_TEXT = 'Geopolitics'
 
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
@@ -68,15 +66,10 @@ I18N_SUBSITES = {
     'es': {
         'SITESUBTITLE': 'cosas de machine learning',
         'AVATAR': '../images/will.jpg'
-    },
-    'geopolitics': {
-        'SITESUBTITLE': 'artificial intelligence ∩ geopolitics',
-        'AVATAR': '../images/will.jpg'
     }
 }
 language_name_lookup = {
     'en': 'English',
-    'geopolitics': 'English',
     'es': 'Español',
 }
 

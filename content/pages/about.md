@@ -14,8 +14,8 @@ Hi! My name's Will. I'm equal parts: **technologist, bookworm, polyglot, cyclist
 - `[2007-2011]` I studied **industrial engineering and mathematics** at Penn State University as a member of the Schreyer Honors College.
 - `[2012-2014]` I completed a **26.5-month solo backpacking and cycling [trip](http://www.willtravellife.com) around the world**, visiting over 40 countries on 5 continents. As highlights, I: traveled overland from Sweden to Côte D’Ivoire; taught university Spanish and middle school Physics (in French) in Guinea-Conakry; rode a [bicycle](http://willtravellife.com/category/will-bikes-central-asia/) 7,600 kilometers from Turkey to Kyrgyzstan through the Caucasus and Central Asian “Stans."
 - `[2014-2016]` After **teaching myself topics in machine learning** and software engineering, I worked at [LiveAuctioneers](https://www.liveauctioneers.com) and [ShopKeep](https://www.shopkeep.com) in data science roles.
-- `[2016-2017]` I quit my job and **moved to Casablanca, Morocco to pursue an open-source ["masters"]({filename}/articles/practical-guide-open-source-ml-masters.md)** in machine learning and statistics—a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog.
-- `[2017-present]` I [joined ASAPP]({filename}/articles/joining-asapp.md) as a **machine learning engineer, now researcher.**
+- `[2016-2017]` I quit my job and **moved to Casablanca, Morocco to pursue an open-source ["masters"]({filename}/machine-learning/practical-guide-open-source-ml-masters.md)** in machine learning and statistics—a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog.
+- `[2017-present]` I [joined ASAPP]({filename}/life/joining-asapp.md) as a **machine learning engineer, now researcher.**
 
 **Presently, I spend my time on:**
 

@@ -1,7 +1,7 @@
 Title: On Saudi Drone Strikes and Adversarial AI
 Date: 2019-09-22 08:30
 Author: Will Wolf
-Lang: geopolitics
+Lang: en
 Slug: saudi-drone-strikes-and-adversarial-ai
 Status: published
 Summary: In world of weaponized drones piloted by algorithms, what new strategic opportunities arise?
