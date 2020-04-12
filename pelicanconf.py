@@ -50,7 +50,8 @@ PLUGINS = [
     'disqus_static',
     'ipynb.liquid',
     'i18n_subsites',
-    'bootstrapify'
+    'bootstrapify',
+    'pelican_alias'
 ]
 MARKUP = ['md']
 

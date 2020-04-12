@@ -3,6 +3,7 @@ Date: 2020-03-12 8:00
 Author: Will Wolf
 Lang: en
 Slug: soft-power-in-the-age-of-generative-models
+Alias: /geopolitics/2020/03/12/soft-power-in-the-age-of-generative-models/
 Status: published
 Summary: What happens when a post-Trump, reputationally-bruised United States, and improved generative models (the technology behind "deepfakes") collide head-on?
 Image: ../images/soft-power-in-the-age-of-generative-models/thumbnail.png

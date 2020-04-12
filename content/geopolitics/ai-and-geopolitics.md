@@ -3,6 +3,7 @@ Date: 2019-09-21 21:00
 Author: Will Wolf
 Lang: en
 Slug: ai-and-geopolitics
+Alias: /geopolitics/2019/09/21/ai-and-geopolitics/
 Status: published
 Summary: I'm beginning to write about the intersection of artificial intelligence and geopolitics.
 Image: ../images/ai-and-geopolitics.jpg
