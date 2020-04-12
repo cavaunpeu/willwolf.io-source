@@ -6,6 +6,7 @@ import os
 
 # Site settings
 AUTHOR = 'Will Wolf'
+YEAR = '2020'
 SITENAME = 'will wolf'
 SITESUBTITLE = 'writings on machine learning, geopolitics, life'
 SITEURL = ''
