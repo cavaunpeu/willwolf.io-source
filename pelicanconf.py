@@ -6,12 +6,18 @@ import os
 
 # Site settings
 AUTHOR = 'Will Wolf'
+YEAR = '2020'
 SITENAME = 'will wolf'
-SITESUBTITLE = 'machine learning things and thoughts on the world'
+SITESUBTITLE = 'writings on machine learning, geopolitics, life'
 SITEURL = ''
 PATH = 'content'
 TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
+SITESUBTITLE_WITH_LINKS = SITESUBTITLE
+for cat in ['machine learning', 'geopolitics', 'life']:
+    catslug = cat.replace(' ', '-')
+    link = f'<a id="sitesubtitle-{catslug}" href="{SITEURL}/{catslug}">{cat}</a>'
+    SITESUBTITLE_WITH_LINKS = SITESUBTITLE_WITH_LINKS.replace(cat, link)
 
 # Theme settings
 THEME = './theme/'
@@ -26,8 +32,9 @@ PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 
 # Category settings
-USE_FOLDER_AS_CATEGORY = False
-DEFAULT_CATEGORY = 'Uncategorized'
+USE_FOLDER_AS_CATEGORY = True
+CATEGORY_URL = '{slug}/'
+CATEGORY_SAVE_AS = '{slug}/index.html'
 
 # Page settings
 ABOUT_PAGE = 'about/'
@@ -42,9 +49,6 @@ CV_PAGE_LINK_TEXT = 'CV'
 BOOKS_PAGE = 'books/'
 BOOKS_PAGE_LINK_TEXT = 'Books'
 
-GEOPOLITICS_PAGE = 'geopolitics/'
-GEOPOLITICS_PAGE_LINK_TEXT = 'Geopolitics'
-
 # Plugin settings
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
 PLUGINS = [
@@ -52,7 +56,8 @@ PLUGINS = [
     'disqus_static',
     'ipynb.liquid',
     'i18n_subsites',
-    'bootstrapify'
+    'bootstrapify',
+    'pelican_alias'
 ]
 MARKUP = ['md']
 
@@ -64,19 +69,19 @@ DATE_FORMATS = {
 # Multilanguage
 DEFAULT_LANG = 'en'
 I18N_UNTRANSLATED_ARTICLES = 'remove'
+ES_SITESUBTITLE = 'escritura sobre machine learning, la geopolítica, y la vida'
+ES_SITESUBTITLE_WITH_LINKS = ES_SITESUBTITLE.replace(
+    'machine learning', f'<a id="sitesubtitle-machine-learning" href="{SITEURL}/es/machine-learning">machine learning</a>')
+
 I18N_SUBSITES = {
     'es': {
-        'SITESUBTITLE': 'cosas de machine learning',
-        'AVATAR': '../images/will.jpg'
-    },
-    'geopolitics': {
-        'SITESUBTITLE': 'artificial intelligence ∩ geopolitics',
+        'SITESUBTITLE': ES_SITESUBTITLE,
+        'SITESUBTITLE_WITH_LINKS': ES_SITESUBTITLE_WITH_LINKS,
         'AVATAR': '../images/will.jpg'
     }
 }
 language_name_lookup = {
     'en': 'English',
-    'geopolitics': 'English',
     'es': 'Español',
 }
 
