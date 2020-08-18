@@ -14,49 +14,18 @@ At the start, Mackinder asserts that at the time of his writing, the world stand
 
 With the stage set thus, Mackinder begins his famous opus by inviting us to step back, inhale deeply, and reflect—with a bias towards Continental Europe, no doubt, owing implicitly to its then-dominant stature—on some of history's broadest currents through the lens of geography: what was, what is, and what will be utterly crucial in the 20th century—his coming "Geographical Pivot".
 
-> It appears  
+The Continental European landmass comprises an intricate series of mountains, valleys, and peninsulas. These features, in turn, provide Europeans with ample physical barriers between which a multitude of politically and culturally distinct nation-states could and did take root. In stark contrast, Mackinder describes the Russian landmass, of an altogether different geographic profile: dense mixed and deciduous forest to the North; dry, arid, steppe to the South, relatively inhospitable to both life and agriculture; unendingly flat throughout. Unlike Europe, this geography bred a different type of person and society: regional capitals like Kiev, Moscow and Kazan took root just north of this dividing forest-steppe frontier, whereas the sandy steppe itself spawned, well, a thousand years of nomadic invaders—Huns, Avers, Bulgarians, Magyars, Khazars, Patzinaks, Cumans, Kalmuks, Genghis Khan's Mongol hordes, and others—hardened by its brutal conditions, in sync with the land's silent whisper of "keep on moving, life won't survive here."
 
-on how Continental Europe got where it is today, and what
+In its first 1,500 years following the death of Jesus Christ, Continental Europe evolved largely on land. Corralled from the West by the Atlantic, as yet uncrossed, the North by the Scandinavian tundra, the South by, in effect, the immense sweep of the Sahara, and the East by roughly 7,500 kilometers of remaining Eurasia, comprised primarily of hostile Central Asian steppe, separating Berlin from Beijing and the Pacific Ocean. As such, the bulk of Europe's military and political growth remained on its home turf. And implicitly, as the only game in town, *land power* reigned supreme.
 
+On the heels of the Renaissance around 1,500 A.D., things changed. Emboldened and energized by a newfound knowledge existence at home, European explorers took to the seas in search of more abroad. In 1498, Vasco de Gama rounded the Cape of Good Hope, traveling directly from Europe to India. In 1492, Columbus, the namesake of the Columbian age itself, crossed the Atlantic and reached the Americas. Over the next 400 years, European nation-states swiftly amassed empires of global proportions, subjugating previous inhabitants under their economic, military, and political control, and becoming, new in history, the preeminent titans of *sea power* throughout.
 
+In 1904, following 400 years of global domination, European historians were wont to consider their own stories and influence as superior to the rest. In response, in his paper, Mackinder implores us to reconsider the map of pre-Columbian Continental Europe, and the ways in which, owing to this map, the development of Europe was considerably shaped from the *outside* in.
 
+Indeed, until Columbus, the Atlantic Ocean remained uncrossed, thereby serving as an impregnable natural border to the west. Like, the menacing infinity of the Sahara to the south remained uncrossed until the mid-19th century. Conversely, the cold and cheerless tundra to the north—while effectively moot as a border itself, separating Continental Europe from the uninhabited Arctic—played host to the [Viking Age](https://en.wikipedia.org/wiki/Viking_Age), a 200-year period of disruption and settlement in and around the North Sea—the British Isles, Ireland, Iceland, Greenland, the Faroe Islands, and others—as well as a descent down the Dnieper and Volga, living and trading with peoples in Kievan Rus and the Eastern Roman Empire.
 
-no doubt with a bias towards that of Continental
+Finally, east of the Carpathians (in present day Romania), sweeping north-east to the Ural Mountains, then south-east through both Kazakhstan and Mongolia, is, well, what? What protected, and will henceforth protect, Europe from its eastern neighbors? On what natural borders can it count? Here, Mackinder (figuratively) smiles, stands up, cooly eyes the crowd, and concludes: "Nothing." Then, he reminds European historians what actually happened before the Columbian epoch that has so warped their perception and egos.
 
-English
-
-no doubt with a bias towards that of Continental Europe, broader currents: where we've been, where we really are, and what we crucially must beware in the coming (20th) century.
-
-
-
-breathe deep, step back, and reflect on where we've been, and of what, cruci
-
-emerged from this landmass bounded by ice to the north, and desert to the south
-
-developed sea power
-
-
-
-Furthermore, this expansion met little resistance, as local populations were no match for their invaders' superior ships, weapons and on-land transport in the form of horses.
-
-Next, Mackinder zooms out, asking:
-
-1. What might bring down these almighty Europeans powers?
-2. Who or what rattled these states in the past?
-3. What facet of the modern era is neatly poised to reify this disruption—and more ferociously than ever before?
-
-The continental European landmass comprises an intricate series of mountains, valleys, and peninsulas; in turn, this geography provides ample natural, physical barriers between peoples, in which a multitude of politically and culturally distinct states could take root. Conversely, Mackinder notes that the Russian landmass has an altogether different geographic profile: dense forest to the North, dry, arid, inhospitable steppe to the south, and unendingly flat throughout. Unlike Europe, this geography bred a different type of person and societal organization: regional capitals like Kiev, Moscow and Kazan took root in the former, while the latter gave rise to a thousand years of nomadic invaders—Huns, Avers, Bulgarians, Magyars, Khazars, Patzinaks, Cumans, Kalmuks, Genghis Khan's Mongols, and others—hardened by its brutal conditions, in sync with the land's silent whisper of "keep on moving, life won't survive here."
-
-this is land power!
-
-Following 400 years of global domination, European historians were wont to consider their own stories and influence as superior to the rest. In response, Mackinder implores us to consider the era that *preceded* the Columbian epoch, and the influence had *on Europe* therein.
-
-In effect, the 5th to 16th centuries saw unending progressions of inveterate Asiatic invaders crossing the Russian steppe and *hammering* the European land powers like *"pestle to mortar."* Furthermore, Mackinder posits that these invasions sparked the formation of many of the modern European states themselves! He writes:
+In reality, the 5th to 16th centuries saw unending progressions of inveterate Asiatic invaders crossing this ceaseless Russian steppe and *hammering* the European land powers like *"pestle to mortar."* Furthermore, there is evidence that these invasions sparked the formation of many of the modern Continental European states themselves! Mackinder writes:
 
 > A large part of modern history might be written as a commentary upon the changes directly or indirectly ensuing from these raids. The Angles and Saxons, it is quite possible, were then driven to cross the seas to found England in Britain. The Franks, the Goths, and the Roman provincials were compelled, for the first time, to stand shoulder to shoulder on the battlefield of Chalons, making common cause against the Asiatics, who were unconsciously welding together modern France. Venice was founded from the destruction of Aquileia and Padua; and even the Papacy owed a decisive prestige to the successful mediation of Pope Leo with Attila at Milan. Such was the harvest of results produced by a cloud of ruthless and idealess horsemen sweeping over the unimpeded plain—a blow, as it were, from the great Asiatic hammer striking freely through the vacant space.
-
-
-
-
-
-the world map went
