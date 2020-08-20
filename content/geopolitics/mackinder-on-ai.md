@@ -38,20 +38,56 @@ In reality, the 5th to 16th centuries saw unending progressions of inveterate As
 
 > A large part of modern history might be written as a commentary upon the changes directly or indirectly ensuing from these raids. The Angles and Saxons, it is quite possible, were then driven to cross the seas to found England in Britain. The Franks, the Goths, and the Roman provincials were compelled, for the first time, to stand shoulder to shoulder on the battlefield of Chalons, making common cause against the Asiatics, who were unconsciously welding together modern France. Venice was founded from the destruction of Aquileia and Padua; and even the Papacy owed a decisive prestige to the successful mediation of Pope Leo with [Attila](https://en.wikipedia.org/wiki/Attila) at Milan. Such was the harvest of results produced by a cloud of ruthless and idealess horsemen sweeping over the unimpeded plain—a blow, as it were, from the great Asiatic hammer striking freely through the vacant space.
 
-In other words, though Europe society had matured significantly in the preceding 2,000 years, evolving from land-based principalities to sea-faring, nation-state empires of global scale, its *geography* had not, and will not. In 1904, transcontinental dominion notwithstanding, the steppe to Europe's east lay flat, barren, uninterrupted, *and un-mastered by Europe* as ever.
+In other words, though Europe society had matured significantly in the preceding 2,000 years, evolving from land-based principalities to sea-faring, nation-state empires of global scale, its *geography* had, and will always, stay the same. In 1904, transcontinental dominion notwithstanding, the steppe to Europe's east lay flat, barren, uninterrupted—*and un-mastered by Europe* as ever.
 
 ![european colonial possessions 1900](https://apworldunit5.weebly.com/uploads/7/6/7/6/76761401/701214.gif?880)
 
 (N.B. By 1900, the majority of Latin American states, their own colonial history predominantly that of Spanish and Portuguese imperialism, had already gained independence.)
 
-And finally, in 1904, why was this so significant? Among his esteemed and learned colleagues at the Royal Geographical Society, representing in turn the titans of global order whose colonial possessions spanned the majority of the planet, why was Mackinder so acutely preoccupied with the final "piece of the puzzle"—the "Heartland,"—so influential in Europe's pre-Columbian history?
+And finally, in 1904, why was this so significant? Among his esteemed and learned colleagues at the Royal Geographical Society, representing in turn the titans of contemporary global order whose colonial possessions spanned the majority of the planet, why was Mackinder so acutely preoccupied with the final "piece of the puzzle"—the "Heartland"—so influential in Europe's pre-Columbian history?
 
-As a barren steppe, the Heartland lacks the stone and timber necessary for road-making. As such, throughout the majority of history, it was best traversed in the same fashion as that of the Asiatic invaders: on horse and camel. However, in 1904, a recent technology was set to radically alter this fact, to substantially accelerate the pace with which the steppe could be crossed, to transform the perennial Steppe Invasion, abetted by unchanging geography, from a dainty pestle into an industrial-strength pneumatic drill. This technology was the railroad.
+As a barren steppe, the Heartland lacks the stone and timber necessary for road-making. As such, throughout the majority of history, it was best traversed in the same fashion as that of the Asiatic invaders: on horse and camel. However, in 1904, a recent technology was set to radically alter this fact, to substantially accelerate the pace with which the steppe could be crossed, to transform the perennial Steppe Invasion, abetted by unchanging geography, from a dainty pestle into an industrial-strength pneumatic drill. This technology, [introduced](https://en.wikipedia.org/wiki/History_of_rail_transport) in Britain around 1830, was the *railroad*, and the steam-powered trains to which it played host.
 
-Here, Mackinder concludes, delivering his key insight, as well as the Heartland Theory itself, in one sweep:
+| Year | Total Miles of British Railway |
+|------|--------------------------------|
+| 1830 |                             98 |
+| 1835 |                            338 |
+| 1840 |                          1,498 |
+| 1845 |                          2,441 |
+| 1850 |                          6,621 |
+| 1855 |                          8,280 |
+| 1860 |                         10,433 |
+
+Here, Mackinder concludes, delivering his key insight, as well as the Heartland Theory itself, in one grand sweep:
 
 > A generation ago steam and the Suez canal appeared to have increased the mobility of sea-power relatively to land-power. Railways acted chiefly as feeders to ocean-going commerce. But trans-continental railways are now transmuting the conditions of land-power, and nowhere can they have such effect as in the closed heart-land of Euro-Asia, in vast areas of which neither timber nor accessible stone was available for road-making. Railways work the greater wonders in the steppe, because they directly replace horse and camel mobility, the road stage of development having here been omitted.
 
 > As we consider this rapid review of the broader currents of history, does not a certain persistence of geographical relationship become evident? Is not the pivot region of the world's politics that vast area of Euro-Asia which is inaccessible to ships, but in antiquity lay open to the horse-riding nomads, as is to-day about to be covered with a network of railways?
 
 ![geographical pivot]({static}../images/mackinder-on-ai/geographical-pivot.png)
+
+## Zooming out
+
+Though Mackinder's thesis is specific to 20th-century Continental Europe, I think there is a broader framework at play. Personally, I read Mackinder as saying the following:
+
+1. In the present day, there is a global hegemon. This hegemon is content, if haughty, with its place in the world. Modern history presented this hegemon with a task, a challenge, an "unclaimed space on which to plant its flags," and the hegemon did just that.
+
+2. Well, not quite; there is still *some* space it failed to claim. And this particular space, as it goes, played host to singular and outsized destruction in the past. So, hegemon beware!
+
+3. There is today a novel technology neatly poised to reify this destruction on a much grander scale than ever before.
+
+With this framework in mind, what might Mackinder say if he were alive today?
+
+## The United States
+
+In the past 100 years, the United States has transformed itself from a non-interventionist island nation of lofty ideals into a heavyweight champion of military might, economic preponderance, and cultural dominance at global scale. To wit, 1918 saw President Woodrow Wilson delivering his [Fourteen Points](https://www.theworldwar.org/learn/peace/fourteen-points) touting "freedom of the seas and free trade and the concept of national self-determination," while 2020 America maintains ~1,000 [military bases](https://www.thenation.com/article/archive/the-us-has-military-bases-in-172-countries-all-of-them-must-close/) in ~100 countries, controls ~30% of the [world's wealth](https://www.visualcapitalist.com/all-of-the-worlds-wealth-in-one-visualization/#:~:text=Leading%20the%20pack%20is%20the,share%20of%20the%20global%20total.), and cannot count on [seven sets of hands](https://www.washingtonpost.com/news/monkey-cage/wp/2016/12/23/the-cia-says-russia-hacked-the-u-s-election-here-are-6-things-to-learn-from-cold-war-attempts-to-change-regimes/) the number of times the CIA has [intervened in foreign countries](https://www.amazon.com/Killing-Hope-C-I-Interventions-II-Updated/dp/1567512526) since its [establishment in 1947](https://www.cia.gov/about-cia/history-of-the-cia). Though its detractors are harsh, and though President Donald Trump's foppishness and distinctly isolationist bent may indeed alter this course, the fact remains that the United States *is* Mackinder's unambiguous contemporary hegemon—his Continental Europe of 1904—comfortable, if [decaying](https://www.nytimes.com/2020/02/07/opinion/sunday/western-society-decadence.html), in its golden seat on the [58th floor](https://en.wikipedia.org/wiki/Trump_Tower).
+
+Europe achieved its own preponderance by winning the war of global *land*: occupying, with lust, zeal, and greed, as much of the map as it could. In turn, the United States reached its current seat by winning the war of global *ideas*, which Europe lost: from the brutal, hellish ruins of a 77-year battle royal from 1914 to 1991 between fascism, communism, and market-based democracy—in other words, not over who gets what of an empty map, but how we live where we currently are in a map already full—encompassing the two World Wars and the Cold War—the United States and the ideas it represented emerged victorious, while Continental Europe fell to ruin. In other words, the United States became the global imperial much like Columbian Europeans, patrolling the space of ideas with weapons and money instead of the seas themselves, and cementing its role as global hegemon in the process.
+
+## The modern war of ideas
+
+Whereas the 20th century fought over what I will call "macro-ideology"—how nation-states should self-organize in the broadest of terms—2020 America is home to vicious wars over, in comparison, "micro-ideology": conduct in the workplace, gender identity and bias, police brutality, racial justice, and a seeming infinity of other like topics that animate a sizable chunk of our current social discourse.
+
+- railroads vs. ai
+- where does the battle for micro-ideology play out?
+- cancel culture: policing the seas of micro-ideology?
