@@ -86,8 +86,18 @@ Europe achieved its own preponderance by winning the war of global *land*: occup
 
 ## The modern war of ideas
 
-Whereas the 20th century fought over what I will call "macro-ideology"—how nation-states should self-organize in the broadest of terms—2020 America is home to vicious wars over, in comparison, "micro-ideology": conduct in the workplace, gender identity and bias, police brutality, racial justice, and a seeming infinity of other like topics that animate a sizable chunk of our current social discourse.
+Whereas the 20th century fought over what I will call "macro-ideology"—how nation-states should self-organize in the broadest of terms—2020 America is home to vicious wars over, in comparison, "micro-ideology": conduct in the workplace, gender identity and bias, police brutality, racial justice, who "belongs" where, and a seeming infinity of other like topics that animate a sizable chunk of our current social discourse.
 
+In this fight, people have taken to the street. To wit, the May 2020 murder of [George Floyd](https://en.wikipedia.org/wiki/George_Floyd) at the hands of Minneapolis police officer Derek Chauvin sparked humungous protests—mostly peaceful, with pockets of looting and outright violence on the part of the demonstrators and opposing police forces alike—around the country and world. In 2017, the day after Donald Trump's inauguration, the [Women's March](https://en.wikipedia.org/wiki/2017_Women%27s_March) protesting his anti-women rhetoric became the largest single-day protest in U.S. history. Throughout the Trump presidency, white nationalists groups have variously assembled—the infamous Unite the Right 2017 rally in [Charlottesville](https://en.wikipedia.org/wiki/Unite_the_Right_rally) as the most prominent example—declaiming in fire and fury, well, who really knows—to much public attention and even [counter-protest](https://www.bbc.com/news/world-us-canada-40980175).
+
+Nevertheless, for all of the issues over which we currently fight, does it not feel like we fight the *majority* of these battles on our *screens* rather than in the streets themselves? Are the [Brownshirts](https://en.wikipedia.org/wiki/Sturmabteilung) of our time not smashing the heads of their in the physical streets, instead patrolling the forums of Reddit and the "I don't know who needs to hear this; Thread 🧵:"'s of Twitter, throwing flame in the form of words at whoever disagrees? Has physical violence not largely been replaced by *reputational* violence, i.e. our modern [*cancel culture*](https://www.dictionary.com/e/pop-culture/cancel-culture/#:~:text=Cancel%20culture%20refers%20to%20the,the%20form%20of%20group%20shaming.)? For the *majority* of Americans, is the intensity of our political beliefs *really* commensurate with our corresponding actions in ["meatspace"](https://www.urbandictionary.com/define.php?term=meatspace)? Or do we say these things to our like-minded friends, feel these things when we come home from work, and then, out for blood and looking to fight, we take to the internet for twenty minutes to throw a few punches and be punched right back, then ice cream, Netflix, and early to bed?
+
+Protest and demonstration in the streets is not dead. However, in terms of dynamism, impact, and sheer number of combatants, the internet truly is the modern battlefield.
+
+## The remaining space on the map
+
+the dust settled after 1991
+the us thought it was in control of the world's ideology
+the internet is still as yet unclaimed
+ai is set to twist the whole thing up
 - railroads vs. ai
-- where does the battle for micro-ideology play out?
-- cancel culture: policing the seas of micro-ideology?
