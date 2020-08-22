@@ -68,7 +68,7 @@ Here, Mackinder concludes, delivering his key insight, as well as the Heartland 
 
 ## Zooming out
 
-Though Mackinder's thesis is specific to 20th-century Continental Europe, I think there is a broader framework at play. Personally, I read Mackinder as saying the following:
+Though Mackinder's thesis is specific to 20th century Continental Europe, I think there is a broader framework at play. Personally, I read Mackinder as saying the following:
 
 1. In the present day, there is a global hegemon. This hegemon is content, if haughty, with its place in the world. Modern history presented this hegemon with a task, a challenge, an "unclaimed space on which to plant its flags," and the hegemon did just that.
 
@@ -96,8 +96,28 @@ Protest and demonstration in the streets is not dead. However, in terms of dynam
 
 ## The remaining space on the map
 
-the dust settled after 1991
-the us thought it was in control of the world's ideology
-the internet is still as yet unclaimed
-ai is set to twist the whole thing up
-- railroads vs. ai
+As the dust settled over the world following, in effect, 75 brutal years of physical and ideological battle over macro-ideology, the United States emerged with a monopoly on economic, military and cultural capital. Today, it remains in this seat, much like Mackinder's Continental Europe at the conclusion of their own implicit victory—400 years of territorial and economic expansion unlike the world had ever seen. Nevertheless, in our modern day, there exists a new space on the map of human interaction that the United States has *not* conquered, the space where the modern war of ideology is largely waged, and, as it was ultimately the battle for ideology the felled the previous global rulers, a space of critical importance. This space, of course, is the internet—the Mackinderian Digital Heartland.
+
+## The practical nature of battles online
+
+Mackinder's dictum about the importance of the Central Asian heart-land stemmed from the impending technological revolution in its harmful potential: whereas the invaders used to crosse the steppe on camel and horse—slowly, in other words—they would soon be racing under starry desert skies on steam-powered train.
+
+Presently, ideological battles online take place with text, video, and audio authored manually by humans; in other words, slowly! It is humans that write tweets and think-pieces to which other humans respond. It is humans that start digital media campaigns, create YouTube content, stoke the fires that lead to real-life protest and violence, and even coordinate large-scale protests themselves.
+
+So, what happens when a technology comes along that stands to turbo-charge the speed and chaos with which these battles take place? What happens when the text, video and audio that comprise these battles are created not by humans, but by *algorithms*—unaccountable, indefatigable, at times sloppy, and brutally fast? Finally, what happens when human combatants, who we currently "eliminate" from battle via *reputational* assassination, are replaced by algorithms that are immune to our deadliest weapon?
+
+## Mackinder on artifical intelligence
+
+A 21st century Halford Mackinder would look at the deafening roll of artificial intelligence innovation in models that generate video, audio and language and be rightfully crapping his pants. Because simply, these models have the ability to online debate not what trains, but intercontinental ballistic missiles, would have done for the steppe invaders of centuries past.
+
+To make this claim, we don't have to go much past the recent advent of [OpenAI's GPT-3](https://openai.com/blog/openai-api/), neatly explained in the following video:
+
+[![Click me!](http://img.youtube.com/vi/SboKeK6FFHQ/0.jpg)](http://www.youtube.com/watch?v=SboKeK6FFHQ "GPT-3 - explained in layman terms.")
+
+In essence, and borrowing from the video, "GPT-3 is an extremely sophisticated text predictor. A human gives it a chunk of text as input, and the model generates its best guess as to what the next chunk of text should be." In other words, and in terms of online battle, it reads what's written, and responds. However, crucially, whereas a human might reply to 1 or 2 posts over a 5-minute period, GPT-3 could reply to *thousands.*
+
+And what happens when online battles proceed at warp speed? In a world whose news cycle already changes by the hour? In which social media is already such a dominant force?
+
+Honestly, Mackinder's guess, and your guess, are as good as mine.
+
+## Control of the Digital Heartland, and what's at stake
