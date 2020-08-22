@@ -121,3 +121,11 @@ And what happens when online battles proceed at warp speed? In a world whose new
 Honestly, Mackinder's guess, and your guess, are as good as mine.
 
 ## Control of the Digital Heartland, and what's at stake
+
+I've based the above thesis on the premise that the United States does not "control" the internet, in the same way that the Russian Empire, and not Continental Europe, controlled Mackinder's Heartland at the beginning of the 20th century.
+
+But what would control even look like? A monopoly on ideology, a la victory in the Cold War? A monopoly on infrastructure and data, i.e. the United States controlling the servers on which online war is waged, and the data that is generated? Or maybe specific the platforms, like Twitter and Reddit, on which combatants clash?
+
+To me, the answer is not clear, and a deeper analysis of this issue is a topic for another day. Nonetheless, it is clear that the outcome of this war—the 1991 of our current age—has the real potential to spawn some sort of parallel, supranational organization or hegemony rooted more in a sense of identity and ideological affiliation, in which your figurative "digital passport" does not have the name of a sovereign physical territory embroidered on its front, but instead, a way of thought or belief from amongst the ideological dreamscape that is the modern internet.
+
+And hopefully, Mackinder might say, as artificial intelligence combatants are increasingly whisked off to wage internet war, we don't burn it all down before we arrive.
