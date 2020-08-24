@@ -120,8 +120,12 @@ To me, the answer is not necessarily clear, and a deeper analysis of this issue 
 
 ## A closing warning
 
-something about how we now live in a closed system!
+As 1904 Continental Europe stood at, in his view, the exit of the Columbian era, Mackinder leaves us with one final warning about the practical reality of the coming world order. Whereas pre-Columbian Europe was "pent into a narrow region and threatened by external barbarism," and Columbian Europe was characterized by "the expansion of Europe against almost negligible resistances," a now post-Columbian Europe will take an altogether different hue:
 
-And hopefully, Mackinder might say, as artificial intelligence combatants are increasingly whisked off to wage internet war, we don't burn it all down before we arrive.
+> From the present time forth, in the post-Columbian age, we shall again have to deal with a closed political system, and none the less that it will be one of worldwide scope. Every explosion of social forces, instead of being dissipated in a surrounding circuit of unknown space and barbaric chaos, will be sharply re-echoed from the far side of the globe, and weak elements in the political and economic organism of the world will be shattered in consequence.
 
-https://www.theverge.com/2020/8/16/21371049/gpt3-hacker-news-ai-blog
+To me, his second sentence is utterly jarring: if Mackinder worries thus about the consequences of an "explosion of social forces" in a "closed political system," what would he say about combat on our modern internet? In which social forces, quite literally, can reach the remotest corners of the world minutes after their birth? In which further explosions of these forces themselves are, as the military-industrial complex is to traditional warfare, bolstered by advertising revenue, wherein wealthy and powerful executives have a direct incentive to throw kerosene on the flames? Or, how would he feel about the fact that, in a broad sense, this fiery battlefield is increasing hard to leave, as we learn more, bank more, socialize more, and work more online?
+
+To paraphrase Robert Kaplan in Chapter 9 of [*The Revenge of Geography*](https://www.amazon.com/Revenge-Geography-Coming-Conflicts-Against/dp/0812982223), "though Mackinder was often attacked as an arch-deterministic, a charge not wholly unfair, no doubt, owing to the fact that geography was his subject, and geography itself can by its very nature be deterministic, Mackinder was no mere fatalist: ultimately, he believed that geography and the environment could be overcome, but only if we treat those subjects with the greatest knowledge and respect."
+
+In other words, a 21st century Mackinder might say that the technology that we current build does not have to invite an invasion of the Huns. It does not have to poison social order. And finally, as artificial intelligence combatants are increasingly whisked off to wage internet war, he'd hope that we don't inadvertently burn it all down before we get much further.
