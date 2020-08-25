@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: mackinder-on-ai
 Alias: /geopolitics/2020/08/16/mackinder-on-ai/
-Status: published
+Status: draft
 Summary: What would preeminent 20th century English geographer Halford J. Mackinder say about the coming revolution in artificial intelligence and its impact on our current ideological war?
 Image: ../images/mackinder-on-ai/thumbnail.png
 
