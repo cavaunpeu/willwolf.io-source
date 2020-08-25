@@ -5,7 +5,7 @@ Lang: en
 Slug: mackinder-on-ai
 Alias: /geopolitics/2020/08/16/mackinder-on-ai/
 Status: draft
-Summary: What would preeminent 20th century English geographer Halford J. Mackinder say about the coming revolution in artificial intelligence and its impact on our current ideological war?
+Summary: What would preeminent 20th century geographer Halford J. Mackinder say about the coming revolution in artificial intelligence and its impact on our current ideological war?
 Image: ../images/mackinder-on-ai/thumbnail.png
 
 [Halford J. Mackinder](en.wikipedia.org/wiki/Halford_Mackinder) was an English geographer, academic and politician. Born in the 1860s and deceased shortly after the end of World War II, he is largely famous for a reading at the Royal Geographical Society of his 1904 paper, *[The Geographical Pivot of History](https://www.iwp.edu/wp-content/uploads/2019/05/20131016_MackinderTheGeographicalJournal.pdf)*. In this work, Mackinder outlines his famous "Heartland Theory"—a geopolitical analysis of the importance of controlling what is modern Central Asia in the coming (20th) century—for which he is most singularly remembered.
