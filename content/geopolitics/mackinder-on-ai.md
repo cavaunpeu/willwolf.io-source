@@ -6,7 +6,7 @@ Slug: mackinder-on-ai
 Alias: /geopolitics/2020/08/16/mackinder-on-ai/
 Status: draft
 Summary: What would preeminent 20th century geographer Halford J. Mackinder say about the coming revolution in artificial intelligence and its impact on our current ideological war?
-Image: ../images/mackinder-on-ai/thumbnail.png
+Image: ../images/mackinder-on-ai/european-exploration-map.jpg
 
 [Halford J. Mackinder](en.wikipedia.org/wiki/Halford_Mackinder) was an English geographer, academic and politician. Born in the 1860s and deceased shortly after the end of World War II, he is largely famous for a reading at the Royal Geographical Society of his 1904 paper, *[The Geographical Pivot of History](https://www.iwp.edu/wp-content/uploads/2019/05/20131016_MackinderTheGeographicalJournal.pdf)*. In this work, Mackinder outlines his famous "Heartland Theory"—a geopolitical analysis of the importance of controlling what is modern Central Asia in the coming (20th) century—for which he is most singularly remembered.
 
@@ -134,6 +134,18 @@ To paraphrase Robert Kaplan in Chapter 9 of [*The Revenge of Geography*](https:/
 
 In other words, a 21st century Mackinder might say that the technology that we currently build does not have to invite an invasion of the Huns. It does not have to poison social order. And finally, as artificial intelligence combatants are increasingly whisked off to wage internet war, he'd hope that we don't inadvertently burn it all down before we get much further.
 
-## References
+## Additional references
 
-[^1]:
+[^1]: “Are We on the Road to Civilisation Collapse?” BBC Future, BBC, www.bbc.com/future/article/20190218-are-we-on-the-road-to-civilisation-collapse.
+
+[^2]: Chan, Amy. “Behind the Lines: When Empires Collapse.” HistoryNet, HistoryNet, 15 May 2017, www.historynet.com/behind-lines-empires-collapse.htm.
+
+[^3]: Douthat, Ross Gregory. The Decadent Society How We Became the Victims of Our Own Success. Avid Reader Press, 2020.
+
+[^4]: Holland, Tom. Why Empires Fall: from Ancient Rome to Putin's Russia, 23 May 2014, www.newstatesman.com/politics/2014/05/why-empires-fall-ancient-rome-putins-russia.
+
+[^5]: Mackinder, Halford J. “The Geographical Pivot of History.” The Geographical Journal, vol. 23, no. 4, 1904, p. 421., doi:10.2307/1775498.
+
+[^6]: Mihir Shukla, Automation Anywhere. “The Role of Automation in the Aging Workforce.” VentureBeat, VentureBeat, 19 Apr. 2018, venturebeat.com/2018/04/19/the-role-of-automation-in-the-aging-workforce/.
+
+[^7]: “Why Do Empires Decline?” Quora, www.quora.com/Why-do-empires-decline.
