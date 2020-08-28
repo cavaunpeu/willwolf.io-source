@@ -138,6 +138,10 @@ To paraphrase Robert Kaplan in Chapter 9 of [*The Revenge of Geography*](https:/
 
 In other words, a 21st century Mackinder might say that the technology that we currently build does not have to invite an invasion of the Huns. It does not have to poison social order. And finally, as artificial intelligence combatants are increasingly whisked off to wage internet war, he'd hope that we don't inadvertently burn it all down before we get much further.
 
+## Credit
+
+Many thanks to Abishur Prakash for reviewing an earlier draft of this piece.
+
 ## Additional references
 
 [^1]: “Are We on the Road to Civilisation Collapse?” BBC Future, BBC, www.bbc.com/future/article/20190218-are-we-on-the-road-to-civilisation-collapse.
