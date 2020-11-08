@@ -1,9 +1,9 @@
-Title: Soft Power in the Age of Generative Models
+Title: Soft Power in the Age of Deepfakes
 Date: 2020-03-12 8:00
 Author: Will Wolf
 Lang: en
 Slug: soft-power-in-the-age-of-generative-models
-Alias: /geopolitics/2020/03/12/soft-power-in-the-age-of-generative-models/
+Alias: /geopolitics/2020/03/12/soft-power-in-the-age-of-generative-models/, /geopolitics/2020/03/12/soft-power-in-the-age-of-deepfakes/
 Status: published
 Summary: What happens when a post-Trump, reputationally-bruised United States, and improved generative models (the technology behind "deepfakes") collide head-on?
 Image: ../images/soft-power-in-the-age-of-generative-models/thumbnail.png
@@ -32,7 +32,7 @@ The dwindling marginal cost of its distribution makes soft power media efficient
 
 ## Generative models
 
-Generative models are those that empower [“deep fakes.”](https://en.wikipedia.org/wiki/Deepfake) They are algorithms that generate realistic [images](https://thispersondoesnotexist.com/) (refresh this link for more), [video](https://medium.com/syncedreview/deepmind-dvd-gan-impressive-step-toward-realistic-video-synthesis-12027d942e53), [audio](https://openai.com/blog/musenet/), [text](https://talktotransformer.com/), or other types of rich media. Presently, generative models excel in creating art, music, literature, news reports, and textiles. [Microsoft’s Xiaoice](https://news.microsoft.com/apac/features/much-more-than-a-chatbot-chinas-xiaoice-mixes-ai-with-emotions-and-wins-over-millions-of-fans/), a multi-purpose [chatbot](https://en.wikipedia.org/wiki/Chatbot) (which currently dialogs with over 660 million registered users), pulls all this off and more:
+Generative models are those that empower [“deepfakes.”](https://en.wikipedia.org/wiki/Deepfake) They are algorithms that generate realistic [images](https://thispersondoesnotexist.com/) (refresh this link for more), [video](https://medium.com/syncedreview/deepmind-dvd-gan-impressive-step-toward-realistic-video-synthesis-12027d942e53), [audio](https://openai.com/blog/musenet/), [text](https://talktotransformer.com/), or other types of rich media. Presently, generative models excel in creating art, music, literature, news reports, and textiles. [Microsoft’s Xiaoice](https://news.microsoft.com/apac/features/much-more-than-a-chatbot-chinas-xiaoice-mixes-ai-with-emotions-and-wins-over-millions-of-fans/), a multi-purpose [chatbot](https://en.wikipedia.org/wiki/Chatbot) (which currently dialogs with over 660 million registered users), pulls all this off and more:
 
 > “Xiaoice’s framework is learning to write literature as well as compose and perform songs. Last year she published a book of poems and helps her followers write their own. She can sing her own songs in styles based on existing popular performers. There are plans to release an album of pop tunes soon. And she is able to author tailor-made stories for children and reads them out in voices suited to each of the characters she has created.<br><br>She’s painting images based on keywords and other inputs. She’s also gone into mainstream media as a host of dozens of TV and radio programs that are broadcast across China. She reads news stories and provides commentary. And, she is generating multiple reports based on information from China’s financial markets and used by investors and traders who subscribe to Wind, a major financial information service.”
 
