@@ -9,6 +9,22 @@ Image: images/books.jpg
 
 To the extent that we are how we spend our time, here's a bit more about me in recent years:
 
+- **The Cossacks** by Leo Tolstoy
+- **The World of Yesterday** by Stefan Zweig
+- **On the Road** by Jack Kerouac
+- **Odessa Stories** by Isaac Babel
+- **Dead Souls** by Nikolai Gogol
+- **In Patagonia** by Bruce Chatwin
+- **The Snows of Yesteryear** by Gregor von Rezzori
+- **Loonshots** by Safi Bahcall
+- **The Decadent Society** by Ross Douthat
+- **Shoe Dog** by Phil Knight
+- **The Algebra of Happiness** by Scott Galloway
+- **Trust Me, I'm Lying** by Ryan Holiday
+- **Lands of Lost Borders: A Journey on the Silk Road** by Kate Harris
+- **Down and Out in Paris and London** by George Orwell
+- **The Road to Oxiana** by Robert Byron
+- **War and Peace** by Leo Tolstoy
 - **The Inner Game of Tennis** by W. Timothy Gallwey
 - **Ikigai** by Héctor Garcia and Francesc Mirales
 - **Digital Minimalism** by Cal Newport
