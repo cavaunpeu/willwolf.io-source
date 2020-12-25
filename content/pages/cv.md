@@ -24,10 +24,7 @@ A ten-month, self-curated deep-dive into select topics in machine learning and s
 ### > Royal Melbourne Institute of Technology
 *Melbourne, Australia, March to July 2010*
 
-- Semester abroad experience
-- Mathematics and engineering courses in credit towards undergraduate degree
-
-## Employment History
+## Employment
 ---
 
 ### > NLP, [ASAPP, Inc.](https://www.asapp.com/)
