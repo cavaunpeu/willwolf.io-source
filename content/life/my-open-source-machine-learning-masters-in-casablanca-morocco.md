@@ -73,3 +73,48 @@ In addition to self-study, I'd like to assist a few fascinating Moroccan technol
 ## In Two Sentences
 
 The Open-Source Machine Learning Masters in Casablanca, Morocco allows me to pursue several significant personal goals at the same time. This is my Francophone machine learning adventure.
+
+## Update: Now Finished, Here's What I Did
+
+#### Publications:
+
+- [Neurally Embedded Emojis](http://willwolf.io/2017/06/19/neurally-embedded-emojis/)
+- [Random Effects Neural Networks in Edward and Keras](http://willwolf.io/2017/06/15/random-effects-neural-networks/)
+- [Further Exploring Common Probabilistic Models](http://willwolf.io/2017/07/06/further-exploring-common-probabilistic-models/)
+- [Minimizing the Negative Log-Likelihood, in English](http://willwolf.io/2017/05/18/minimizing_the_negative_log_likelihood_in_english/)
+- [Transfer Learning for Flight Delay Prediction via Variational Autoencoders](http://willwolf.io/2017/05/08/transfer-learning-flight-delay-prediction/)
+- [Deriving the Softmax from First Principles](http://willwolf.io/2017/04/19/deriving-the-softmax-from-first-principles/)
+- [Approximating Implicit Matrix Factorization with Shallow Neural Networks](http://willwolf.io/2017/04/07/approximating-implicit-matrix-factorization-with-shallow-neural-networks/)
+- [Ordered Categorical GLMs for Product Feedback Scores](http://willwolf.io/2017/03/17/ordered-categorical-glms-for-product-feedback-scores/)
+    - [Shiny app](https://willwolf.shinyapps.io/ordered-categorical-a-b-test/)
+- [Intercausal Reasoning in Bayesian Networks](http://willwolf.io/2017/03/13/intercausal-reasoning-in-bayesian-networks/)
+- [Bayesian Inference via Simulated Annealing](http://willwolf.io/2017/02/07/bayesian-inference-via-simulated-annealing/)
+    - [Shiny app](https://willwolf.shinyapps.io/bayesian-inference-simulated-annealing/)
+- [RescueTime Inference via the "Poor Man's Dirichlet"](http://willwolf.io/2017/02/03/bayesian-estimation-of-rescuetime-productivity/)
+    - [Shiny app](https://willwolf.shinyapps.io/rescue-time-estimation/)
+- [Generating World Flags with Sparse Auto-Encoders](http://willwolf.io/2016/12/13/generating-world-flags-with-sparse-auto-encoders/)
+- [Docker and Kaggle with Ernie and Bert](http://willwolf.io/2016/11/22/docker-and-kaggle-with-ernie-and-bert/)
+- [Recurrent Neural Network Gradients, and Lessons Learned Therein](http://willwolf.io/2016/10/18/recurrent-neural-network-gradients-and-lessons-learned-therein/)
+- [Simulating the Colombian Peace Vote: Did the "No" Really Win?](http://willwolf.io/2016/10/12/simulating-the-colombian-peace-vote-did-the-no-really-win/)
+
+#### Notable courses, books:
+- [Statistical Rethinking: A Bayesian Course with Examples in R and Stan](http://xcelab.net/rm/statistical-rethinking/)
+- [Probabilistic Graphical Models: Representation, Stanford University](https://www.coursera.org/learn/probabilistic-graphical-models/home/welcome)
+- [Probabilistic Graphical Models: Inference, Stanford University](https://www.coursera.org/learn/probabilistic-graphical-models-2-inference)
+- [Probabilistic Graphical Models: Learning, Stanford University](https://www.coursera.org/learn/probabilistic-graphical-models-3-learning/)
+- [Practical Deep Learning For Coders, fast.ai](http://course.fast.ai/)
+- [Discrete Optimization, University of Melbourne](https://www.coursera.org/learn/discrete-optimization)
+- [Artificial Intelligence Nanodegree (Part 1), Udacity](https://classroom.udacity.com/courses/ud889)
+- [Deep Learning, Udacity](https://www.udacity.com/course/deep-learning--ud730)
+- [Apache Kafka, Udemy](https://www.udemy.com/apache-kafka-tutorial-for-beginners/)
+
+#### Code:
+
+Repositories I published (or contributed to) unrelated to the publications above.
+
+- [tensorflow-models](https://github.com/cavaunpeu/tensorflow-models): Some basic models in TensorFlow
+- [vanilla-neural-nets](https://github.com/cavaunpeu/vanilla-neural-nets): A straightforward and highly readable implementation of vanilla neural nets
+- [dotify](https://github.com/cavaunpeu/dotify): A web application that recommends songs via "country arithmetic" and hand-rolled Implicit Matrix Factorization
+    - [Heroku app](http://dotify.herokuapp.com/)
+- [n-queens-sympy](https://github.com/cavaunpeu/n-queens-sympy): A simple solver for the N-Queens Problem using SymPy
+- [markdown-insert-screenshot](https://github.com/cavaunpeu/markdown-insert-screenshot): A lightweight Atom plugin for saving an interactive screen capture to a relative file destination
