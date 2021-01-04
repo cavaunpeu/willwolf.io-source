@@ -226,7 +226,7 @@ Instead, as the intermediate step, they simply compute an *unnormalized* joint d
 
 $$P(Y\vert x) = \frac{P(x, Y)}{P(x)} = \frac{\tilde{P}(x, Y)}{\text{partition function}}$$
 
-This is explained much more thoroughly in a previous blog post: [Deriving the Softmax from First Principles]({static}deriving-the-softmax-from-first-principles.md).
+This is explained much more thoroughly in a previous blog post: [Deriving the Softmax from First Principles]({filename}/machine-learning/deriving-the-softmax-from-first-principles.md).
 
 ### Generative models
 Conversely, a variational autoencoder is a *generative* model: instead of jumping *directly* to the conditional probability of all possible outputs given a specific input, they first compute the true component parts: the joint probability distribution over data and inputs alike, $P(X, Y)$, and the distribution over our data, $P(X)$.
