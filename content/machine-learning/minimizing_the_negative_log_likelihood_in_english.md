@@ -277,7 +277,7 @@ where:
 
 - $\eta$ is the *canonical parameter* of the distribution. (We will hereby work with the single-canonical-parameter exponential family form.)
 - $T(y)$ is the *sufficient statistic*. It is often the case that $T(y) = y$.
-- $a(\eta)$ is the *log partition function*, which normalizes the distribution. (A more in-depth discussion of this normalizing constant can be found in a previous post of mine: [Deriving the Softmax from First Principles]({static}deriving-the-softmax-from-first-principles.md).)
+- $a(\eta)$ is the *log partition function*, which normalizes the distribution. (A more in-depth discussion of this normalizing constant can be found in a previous post of mine: [Deriving the Softmax from First Principles]({filename}/machine-learning/deriving-the-softmax-from-first-principles.md).)
 
 "A fixed choice of $T$, $a$ and $b$ defines a family (or set) of distributions that is parameterized by $\eta$; as we vary $\eta$, we then get different distributions within this family."[^1] This simply means that a coin with $\Pr(\text{heads}) = .6$ gives a different distribution over outcomes than one with $\Pr(\text{heads}) = .7$. Easy.
 
