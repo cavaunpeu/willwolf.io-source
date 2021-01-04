@@ -76,3 +76,7 @@ utils
 
 # ignore python version
 .python-version
+
+# virtualenv
+deactivate
+env
