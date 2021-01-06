@@ -38,4 +38,4 @@ NYC/SF, primarily.
 - I once taught a university Spanish course, in French, in Guinea-Conakry.
 - Mathematics and code keep me smiling from ear to ear.
 
-For more, please see my full [bio]({static}/pages/about.md) and [résumé]({static}/pages/cv.md). In addition, social links can be found below.
+For more, please see my full [bio]({filename}/pages/about.md) and [résumé]({filename}/pages/cv.md). In addition, social links can be found below.
