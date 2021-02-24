@@ -24,7 +24,7 @@ The goal of this post is to take three models we know, love, and know how to use
 
 When deploying a predictive model in a production setting, it is generally in our best interest to `import sklearn`, i.e. use a model that someone else has built. This is something we already know how to do. As such, this post will start and end here: your head is currently above water; we're going to dive into the pool, touch the bottom, then work our way back to the surface. Lemmas will be written in _**bold**_.
 
-![bottom of pool](http://img2.hungertv.com/wp-content/uploads/2014/09/SP_Kanawaza-616x957.jpg)
+![bottom of pool](https://previews.123rf.com/images/cookelma/cookelma1603/cookelma160300003/53105871-man-sitting-on-the-bottom-of-the-swimming-pool-under-water.jpg)
 
 First, let's meet our three protagonists. We'll define them in [Keras](https://keras.io/) for the illustrative purpose of a unified and idiomatic API.
 
@@ -178,7 +178,7 @@ Unfortunately, we don't know. All we do know, in fact, is the following:
 For clarity, each one of these assumptions is utterly banal — "so lacking in originality as to be obvious and boring." *Can we use them nonetheless to select probability distributions for our random variables?*
 
 ## Maximum entropy distributions
-Consider another continuous-valued random variable: "Uber's yearly profit." Like `temperature`, it also has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (-\infty, \infty)$. Trivially, the respective means and variances will be different. Assume we observe 10 (fictional) values of each that look as follows:
+Consider another continuous-valued random variable: "Uber's yearly profit." Like `temperature`, it also has an underlying true mean $\mu \in (-\infty, \infty)$ and variance $\sigma^2 \in (0, \infty)$. Trivially, the respective means and variances will be different. Assume we observe 10 (fictional) values of each that look as follows:
 
 | uber | temperature |
 |------|-------------|
@@ -256,7 +256,7 @@ In this section, I'd like to:
 
 Graphically, this looks as follows, with three distributions going in and three output functions coming out.
 
-![bottleneck](https://electric-cloud.com/wp-content/uploads/use-case-graphic_bottleneck.png)
+![bottleneck](https://capacity.com/wp-content/uploads/2020/03/BlogHeader_EnterpriseAi_bottleneck-01.png)
 
 The conceptual bottleneck is the ["exponential family"](https://en.wikipedia.org/wiki/Exponential_family) of probability distributions.
 
