@@ -25,7 +25,7 @@ An example of a latent variable model is the Latent Dirichlet Allocation[^1] (LD
 
 ## Why not maximum likelihood estimation?
 
-As the adage goes, computing the MLE with respect to this marginal is "hard." I loosely understand why. In any case, Bishop[^2] states:
+As the adage goes, computing the MLE with respect to this marginal is "hard." For one, it requires summing over an (implicitly) humongous number of configurations of latent variables $z$. Further, as Bishop[^2] states:
 
 > A key observation is that the summation over the latent variables appears inside the logarithm. Even if the joint distribution $p(\mathbf{X, Z}\vert\theta)$ belongs to the exponential family, the marginal distribution $p(\mathbf{X}\vert\theta)$ typically does not as a result of this summation. The presence of the sum prevents the logarithm from acting directly on the joint distribution, resulting in complicated expressions for the maximum likelihood solution.
 
@@ -35,7 +35,7 @@ As the adage goes, computing the MLE with respect to this marginal is "hard." I 
 
 Instead of maximizing the log-marginal $\log{p(\mathbf{X}\vert\theta)}$ (with respect to model parameters $\theta$), let's maximize a lower-bound with a less-problematic form.
 
-One candidate for this form is $\log{p(\mathbf{X}, \mathbf{Z}\vert \theta)}$ which, almost tautologically, removes the summation over latent variables $\mathbf{Z}$.
+Perhaps, we'd work with $\log{p(\mathbf{X}, \mathbf{Z}\vert \theta)}$ which, almost tautologically, removes the summation over latent variables $\mathbf{Z}$.
 
 As such, let's derive a lower-bound which features this term. As $\log{p(\mathbf{X}\vert\theta)}$ is often called the log-"evidence," we'll call our expression the "evidence lower-bound," or ELBO.
 
@@ -49,7 +49,7 @@ First, we note that the red line is below the blue for all points for which it i
 
 Second, working through the example, and assuming:
 
-- $y = f(x) = \exp(-(x - 2)^2)$
+- $f(x) = \exp(-(x - 2)^2)$
 - $v_1 = 1; v_2 = 2.5; \alpha = .3$
 
 $$
@@ -103,7 +103,7 @@ $$
 \end{align*}
 $$
 
-*Et voilà*, we see that this term contains $\log{p(\mathbf{X, Z}\vert\theta)}$; the ELBO should be easy to optimize with respect to our parameters $\theta$.
+*Et voilà*, we see that this term contains $\log{p(\mathbf{X, Z}\vert\theta)}$; the ELBO should now be easier to optimize with respect to our parameters $\theta$.
 
 # So, what's $R$?
 
@@ -111,30 +111,13 @@ $$
 \begin{align*}
 R
 &= \log{p(\mathbf{X}\vert\theta)} -  \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\bigg]\\
-&= \log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}
-\end{align*}
-$$
-
-Before expanding further, let's briefly restate basic results of Bayes' theorem as applied to our model:
-
-- $p(\mathbf{Z}\vert\mathbf{X}, \theta) = \frac{p(\mathbf{X}, \mathbf{Z}\vert\theta)}{p(\mathbf{X}\vert\theta)}$
-- $\log{p(\mathbf{X}, \mathbf{Z}\vert\theta)} = \log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)}$
-
-Additionally, we note that as $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$, $\mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{X}\vert\theta)}\bigg] = \log{p(\mathbf{X}\vert\theta)}$.
-
-**Continuing:**
-
-$$
-\begin{align*}
-R
-&= \log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\\
-&= \log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{X, Z}\vert\theta) - \log{q(\mathbf{Z})}}\bigg)\\
-&= \log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\bigg)\\
-&= \sum_{\mathbf{Z}}q(\mathbf{Z})\log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\bigg)\\
-&= \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{X}\vert\theta)} -  \big(\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\big)\bigg)\\
-&= \sum_{\mathbf{Z}}q(\mathbf{Z})-  \big(\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} - \log{q(\mathbf{Z})}\big)\\
+&= \log{p(\mathbf{X}\vert\theta)} -  \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{X, Z}\vert\theta) - \log{q(\mathbf{Z})}}\bigg]\\
+&= \log{p(\mathbf{X}\vert\theta)} -  \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\bigg]\\
+&= \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{X}\vert\theta)}\bigg] -  \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\bigg]\\
+&= \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{X}\vert\theta)} - \log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} - \log{p(\mathbf{X}\vert\theta)} + \log{q(\mathbf{Z})}\bigg)\\
+&= \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg( - \log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{q(\mathbf{Z})}\bigg)\\
 &=
--\sum_{\mathbf{Z}}q(\mathbf{Z})\log{\frac{p(\mathbf{Z}\vert\mathbf{X}, \theta)}{q(\mathbf{Z})}}\\
+\sum_{\mathbf{Z}}q(\mathbf{Z})\log{\frac{q(\mathbf{Z})}{p(\mathbf{Z}\vert\mathbf{X}, \theta)}}\\
 &= \text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)\\
 \end{align*}
 $$
