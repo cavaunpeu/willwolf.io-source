@@ -133,15 +133,14 @@ $$
 The algorithm can be described by a few simple observations.
 
 1. $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ is a divergence metric which is strictly non-negative.
-1. As $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$—if we decrease $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ *by changing $q(\mathbf{Z})$*, the ELBO must increase to compensate.
 
-(For intuition, imagine we're able to decrease $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ to 0, which occurs when setting $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$.)
+2. As $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$—if we decrease $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ by changing $q(\mathbf{Z})$, the ELBO must increase to compensate.
 
-3. If we increase the ELBO *by changing $\theta$*, $\log{p(\mathbf{X}\vert\theta)}$ will increase as well. *In addition, as $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ now (likely) diverges from $q(\mathbf{Z})$ in non-zero amount, $\log{p(\mathbf{X}\vert\theta)}$ will increase even more.*
+3. If we increase the ELBO by changing $\theta$, $\log{p(\mathbf{X}\vert\theta)}$ will increase as well. In addition, as $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ now (likely) diverges from $q(\mathbf{Z})$ in non-zero amount, $\log{p(\mathbf{X}\vert\theta)}$ will increase even more.
 
 **The EM algorithm is a repeated alternation between Step 2 (E-step) and Step 3 (M-step).** After each M-Step, $\log{p(\mathbf{X}\vert\theta)}$ is guaranteed to increase (unless it is already at a maximum)[^2].
 
-A graphic[^2] (*Pattern Recognition and Machine Learning, Chapter 9*) is further illustrative.
+A graphic[^2] is further illustrative.
 
 ### Initial decomposition
 
@@ -153,15 +152,15 @@ Here, the ELBO is written as $\mathcal{L}(q, \theta)$.
 
 ![png]({static}../figures/em-for-lda/e_step.png)
 
-Holding the parameters $\theta$ constant, minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ with respect to $q(\mathbf{Z})$. Remember, as $q$ is a distribution with a fixed functional form, this amounts to updating its parameters $\lambda$.
+In other words, holding the parameters $\theta$ constant, minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ with respect to $q(\mathbf{Z})$. Remember, as $q$ is a distribution with a fixed functional form, this amounts to updating its parameters $\lambda$.
 
-The caption implies that we can always compute $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$. We will below that this is not the case for LDA, nor for many interesting models.
+The caption implies that we can always compute $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$. We will show below that this is not the case for LDA, nor for many interesting models.
 
 ### M-step
 
 ![png]({static}../figures/em-for-lda/m_step.png)
 
-In the M-step, maximize the ELBO with respect to the model parameters $\theta$.
+In other words, in the M-step, maximize the ELBO with respect to the model parameters $\theta$.
 
 Expanding the ELBO:
 
@@ -173,21 +172,19 @@ $$
 \end{align*}
 $$
 
-we see that it decomposes into an expectation of the joint distribution over data and latent variables with respect to the variational distribution $q(\mathbf{Z})$, plus the entropy of $q(\mathbf{Z})$.
+we see that it decomposes into an expectation of the joint distribution over data and latent variables given parameters $\theta$ with respect to the variational distribution $q(\mathbf{Z})$, plus the entropy of $q(\mathbf{Z})$.
 
-Maximizing this expression with respect to $\theta$, we treat the latter as a constant.
+As our task is to maximize this expression with respect to $\theta$, we can treat the latter term as a constant.
 
 ## EM for LDA
 
-In the next few posts, we'll use the Latent Dirichlet Allocation (LDA) model as a running example.
-
-Since the original paper[^1] is beautiful, I'll default to citing its passages as much as possible.
+To give an example of the above, we'll examine the classic Latent Dirichlet Allocation[^1] paper.
 
 ### Model
 
 ![png]({static}../figures/em-for-lda/lda_formulation.png)
 
-"Given the parameters $\alpha$ and $\beta$, the joint distribution of a topic mixture $\theta$, a set of of $N$ topics $\mathbf{z}$, and a set of $N$ words $\mathbf{w}$ is given by:"[^1]
+"Given the parameters $\alpha$ and $\beta$, the joint distribution of a topic mixture $\theta$, a set of $N$ topics $\mathbf{z}$, and a set of $N$ words $\mathbf{w}$ is given by:"[^1]
 
 $$
 p(\theta, \mathbf{z}, \mathbf{w}\vert \alpha, \beta) = p(\theta\vert \alpha)\prod\limits_{n=1}^{N}p(z_n\vert \theta)p(w_n\vert z_n, \beta)
@@ -201,7 +198,7 @@ $$
 \log{p(\mathbf{w}\vert \alpha, \beta)} = \log{\int p(\theta\vert \alpha)\prod\limits_{n=1}^{N}\sum\limits_{z_n} p(z_n\vert \theta)p(w_n\vert z_n, \beta)d\theta}
 $$
 
-NB: The parameters of our model are $\alpha$ and $\beta$, and $\{\theta, \mathbf{z}\}$ are our *latent variables.*
+NB: The parameters of our model are $\{\alpha,  \beta\}$ and $\{\theta, \mathbf{z}\}$ are our latent variables.
 
 ### ELBO
 
@@ -217,13 +214,14 @@ $$
 \text{KL}\big(q(\mathbf{Z})\Vert \frac{p(\theta, \mathbf{z}, \mathbf{w}\vert \alpha, \beta)}{p(\mathbf{w}\vert \alpha, \beta)}\big)
 $$
 
-Peering at the denominator, we see that the expression under the integral is exponential in the number of words $N$; for any non-trivial $N$ and number of topics, it is intractable to compute. As such, the "ideal" E-step solution $q(\mathbf{Z}) = p(\theta, \mathbf{z}\vert \mathbf{w}, \alpha, \beta)$ admits no analytical form.
+
+Peering at the denominator, we see that it includes an integration over all values $\theta$, which we assume is intractable to compute. As such, the "ideal" E-step solution $q(\mathbf{Z}) = p(\theta, \mathbf{z}\vert \mathbf{w}, \alpha, \beta)$ will elude us as well.
 
 In the next post, we'll cover how to minimize this KL term with respect to $q(\mathbf{Z})$ in detail. This effort will begin with the derivation of the mean-field algorithm.
 
 ## Summary
 
-In this post, we motivated the expectation-maximization algorithm then derived its general form. We then, briefly, applied it to the LDA model.
+In this post, we motivated the expectation-maximization algorithm then derived its general form. We then applied this framework to the LDA model.
 
 In the next post, we'll expand this logic into mean-field variational Bayes, and eventually, variational inference more broadly.
 
