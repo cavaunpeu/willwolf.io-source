@@ -167,7 +167,7 @@ $$
 \begin{align*}
 \mathop{\mathbb{E}}_{x \sim p_{\text{data}}}\big[ \mathcal{L}(x) \big]
 &= \sum\limits_{k=1}^N p_{\text{data}}(x = x^{(k)}) \mathcal{L(x^{(k)})}\\
-&= \sum\limits_{k=1}^N \frac{1}{N} \mathcal{L(x^{(k)})}\\
+&\approx \sum\limits_{k=1}^N \frac{1}{N} \mathcal{L(x^{(k)})}\\
 &= \frac{1}{N} \sum\limits_{k=1}^N  \mathcal{L(x^{(k)})}\\
 \end{align*}
 $$
@@ -190,9 +190,9 @@ $$
 $$
 \begin{align*}
 \frac{1}{N} \sum\limits_{k=1}^n \nabla_{w_{i, j}}  H(x^{(k)})
-&= \frac{1}{N} \sum\limits_{k=1}^n \nabla_{w_{i, j}} \sum\limits_{i \neq j} w_{i, j} x_i^{(k)} x_j^{(k)} + \sum\limits_i b_i x_i^{(k)}\\
+&= \frac{1}{N} \sum\limits_{k=1}^n \nabla_{w_{i, j}} \bigg[ \sum\limits_{i \neq j} w_{i, j} x_i^{(k)} x_j^{(k)} + \sum\limits_i b_i x_i^{(k)} \bigg]\\
 &= \frac{1}{N} \sum\limits_{k=1}^n x_i^{(k)} x_j^{(k)}\\
-&= \mathop{\mathbb{E}}_{x \sim p_{\text{data}}} [x_i  x_j]
+&\approx \mathop{\mathbb{E}}_{x \sim p_{\text{data}}} [x_i  x_j]
 \end{align*}
 $$
 
@@ -205,7 +205,7 @@ $$
 \nabla_{w_{i, j}} \log{Z}
 &= \nabla_{w_{i, j}} \log{\sum\limits_{\mathcal{x}}} \exp{(H(x))}\\
 &= \frac{1}{\sum\limits_{\mathcal{x}} \exp{(H(x))}} \nabla_{w_{i, j}} \sum\limits_{\mathcal{x}} \exp{(H(x))}\\
-&= \frac{1}{Z} \nabla_{w_{i, j}} \sum\limits_{\mathcal{x}} \exp{(H(x))}\\
+&= \frac{1}{Z} \sum\limits_{\mathcal{x}} \nabla_{w_{i, j}} \exp{(H(x))}\\
 &= \frac{1}{Z} \sum\limits_{\mathcal{x}} \exp{(H(x))} \nabla_{w_{i, j}} H(x)\\
 &= \sum\limits_{\mathcal{x}} \frac{\exp{(H(x))}}{Z} \nabla_{w_{i, j}} H(x)\\
 &= \sum\limits_{\mathcal{x}} p(x) \nabla_{w_{i, j}} H(x)\\
@@ -232,13 +232,13 @@ The first and second terms of each gradient are called, respectively, **the posi
 
 ## Computing the positive phase
 
-In the following toy example, our data are small: we can compute the positive phase using all of the training data, i.e. $\frac{1}{N} \sum\limits_{k=1}^n x_i^{(k)} x_j^{(k)}$. Were our data bigger, we could approximate this expectation with a mini-batch of training data and we do in SGD.
+In the following toy example, our data are small: we can compute the positive phase using all of the training data, i.e. $\frac{1}{N} \sum\limits_{k=1}^n x_i^{(k)} x_j^{(k)}$. Were our data bigger, we could approximate this expectation with a mini-batch of training data (much like SGD).
 
 ## Computing the negative phase
 
-Again, this term asks us to compute then sum the log-likelihood over every possible data configuration in the support of our model, which is $O(nv^d)$. **With non-trivially large $v$ or $d$, this becomes intractable to compute.**
+Again, this term asks us to compute then sum the log-likelihood over every possible data configuration in the support of our model, which is $O(v^d)$. **With non-trivially large $v$ or $d$, this becomes intractable to compute.**
 
-Below, we'll begin our toy example computing the true negative-phase, $\mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, with varying data dimensionalities $d$. Then, once this computation becomes slow, we'll look to approximate this expectation later on.
+Below, we'll begin our toy example by computing the true negative-phase, $\mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, with varying data dimensionalities $d$. Then, once this computation becomes slow, we'll look to approximate this expectation later on.
 
 ## Parameter updates in code
 
@@ -291,7 +291,7 @@ def reset_data_and_parameters(n_units=3, n_obs=100, p=[.8, .1, .5]):
     however, there are only 3 distinct weights in this matrix that we'll actually
     want to update: those connecting Node 0 --> Node 1, Node 1 --> Node 2, and
     Node 0 --> Node 2. This function returns a list containing these tuples
-    named `var_combinations.
+    named `var_combinations`.
 
     :param n_units: the dimensionality of our data `d`
     :param n_obs: the number of observations in our training set
@@ -346,7 +346,7 @@ class Model:
             for which to compute the joint likelihood.
         """
         x = np.array(x)
-        if not self.n_units in x.shape and len(x.shape) in (1, 2):
+        if x.shape[-1] != self.n_units:
             raise('Please pass 1 or more points of `n_units` dimensions')
 
         # compute unnormalized likelihoods
@@ -624,7 +624,7 @@ Finally, for data of `n_units` 3, 4, 5, etc., let’s train models for 100 epoch
 When training with the approximate negative phase, we’ll:
 
 - Derive model samples from a **1000-sample Gibbs chain. Of course, this is a parameter we can tune, which will affect both model accuracy and training runtime. However, we don’t explore that in this post;** instead, we just pick something reasonable and hold this value constant throughout our experiments.
-- Train several models for a given `n_units`; Seaborn will average results for us then plot a single line (I think).
+- Train several models for a given `n_units`; Seaborn will average results for us then plot a single line.
 
 
 ```python
