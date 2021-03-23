@@ -222,7 +222,8 @@ $$
 p_{\text{joint}}(y = 0\vert x)
 &= \frac{1}{1 + \frac{p_{\text{model}}(x)}{p_{\text{noise}}(x)\cdot k}}\\
 &= \frac{1}{1 + \frac{p_{\text{model}}(x)}{ k}}\\
-&=\sigma(-\frac{p_{\text{model}}(x)}{ k})\\
+&= \frac{1}{1 + \exp\big(\log\frac{p_{\text{model}}(x)}{ k}\big)}\\
+&=\sigma(-\log\frac{p_{\text{model}}(x)}{ k})\\
 &=\sigma(\log{k} - \log{p_{\text{model}}(x)})\\
 p_{\text{joint}}(y = 1\vert x)
 &= 1 - \sigma(\log{k} - \log{p_{\text{model}}(x)})
@@ -457,7 +458,7 @@ train_model(classifier, optimizer, trainloader, noiseloader, n_batches=100)
 
 Once more, the (ideal) goal of this model is to fit a function $p(x)$ to some data, such that we can:
 
-1. Evaluate its likelihood (wherein it actually tells us that data to which the model was fit is more likely than data to which it was not)
+1. Evaluate its likelihood (wherein it actually tells us that data on which the model was fit is more likely than data on which it was not)
 2. Draw realistic samples
 
 From a Boltzmann machine, our primary strategy for drawing samples is via Gibbs sampling. It's slow, and I do not believe it's meant to work particularly well. Let's draw 5 samples and see how we do.
@@ -485,7 +486,7 @@ To generate better images, we'll have to let this run for a lot longer and "thin
 
 # Summary
 
-In this post, we discussed four additional strategies for both speeding up, as well as outright avoiding, the computation of the gradient of the log-partition function $\nabla_{\theta}\log{Z}$.
+In this post, we discussed four additional strategies for both speeding up, as well as outright avoiding, the computation of the gradient of the log-partition function $\nabla\log{Z}$.
 
 While we only presented toy models here, these strategies see successful application in larger undirected graphical models, as well as directed conditional models for $p(y\vert x)$. One key example of the latter is a language model; though the partition function is a sum over distinct values of $y$ (labels) instead of configurations of $x$ (inputs), it can still be intractable to compute! This is because there are as many distinct values of $y$ as there are tokens in the given language's vocabulary, which is typically on the order of millions.
 
