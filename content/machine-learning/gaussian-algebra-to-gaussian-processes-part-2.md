@@ -9,13 +9,13 @@ Image: figures/gaussian-algebra-to-gaussian-processes-part-2/output_19_0.png
 
 In the previous post, we covered the following topics:
 
-- A Gaussian process (GP) defines a distribution over functions (i.e. function evaluations). √
-- Marginalizing a Gaussian over a subset of its elements gives another Gaussian (just pluck out the pieces of interest). √
-- Conditioning a subset of the elements of a Gaussian on another subset gives another Gaussian (a simple algebraic formula). √
-- Posterior over functions (the linear map of the posterior over weights onto some matrix $A = \phi(X_{*})^T$) √
-- Covariances (the second thing we need in order to specify a multivariate Gaussian) √
+- A Gaussian process (GP) defines a distribution over functions (i.e. function evaluations)
+- Marginalizing a Gaussian over a subset of its elements gives another Gaussian (just pluck out the pieces of interest)
+- Conditioning a subset of the elements of a Gaussian on another subset gives another Gaussian (a simple algebraic formula)
+- Posterior over functions (the linear map of the posterior over weights onto some matrix $A = \phi(X_{*})^T$)
+- Covariances (the second thing we need in order to specify a multivariate Gaussian)
 
-**If any of the above is still not clear, please look no further, and re-visit the [previous post]().**
+**If any of the above is still not clear, please look no further, and re-visit the [previous post]({filename}/machine-learning/gaussian-algebra-to-gaussian-processes-part-1.md).**
 
 Conversely, we did not directly cover:
 
@@ -68,9 +68,9 @@ Ideally, we'd compute as many features as possible for each input element, i.e. 
 
 Let's bring back our GP equations, and prepare ourselves to *squint*! In the previous post, we outlined the following modeling process:
 
-1. Define prior distribution over weights and function evaluations, $P(w, y)$.
-2. Marginalizing $P(w, y)$ over $y$, i.e. $\int P(w, y)dy$, and given some observed function evaluations $y$, compute the posterior distribution over weights, $P(w\vert y)$.
-3. Linear-mapping $P(w\vert y)$ onto some new, transformed test input $\phi(X_*)^T$, compute the posterior distribution over function evaluations, $P(y_*\ \vert\ y) = P(\phi(X_{*})^Tw\ \vert\ y)$.
+1. Define prior distribution over weights and function evaluations, $P(w, y)$
+2. Marginalizing $P(w, y)$ over $y$, i.e. $\int P(w, y)dy$, and given some observed function evaluations $y$, compute the posterior distribution over weights, $P(w\vert y)$
+3. After linear-mapping $P(w\vert y)$ onto some new, transformed test input $\phi(X_*)^T$, compute the posterior distribution over function evaluations, $P(y_*\ \vert\ y) = P(\phi(X_{*})^Tw\ \vert\ y)$
 
 Now, let's unpack #2 and #3.
 
@@ -190,7 +190,7 @@ As such, our four distinct scaled-dot-product terms can be rewritten as:
 
 **In other words, these terms can be equivalently written as dot-products in some space $\varphi$.**
 
-*We have **not** explicitly chosen what this $\varphi$ function is.*
+*NB: we have **not** explicitly chosen what this $\varphi$ function is.*
 
 ## Kernels
 
@@ -238,7 +238,7 @@ For instance, imagine we have two sets of countries, $\{\text{France}, \text{Ger
 </table>
 </div>
 
-**When you hear the term "kernel" in the context of machine learning, think "similarity between things in lists." That's it.**
+**When you hear the term "kernel" in the context of machine learning, think "similarity between things in lists."**
 
 NB: A "list" could be a list of vectors, i.e. a matrix. A vector, or a matrix, are the canonical inputs to a kernel.
 
@@ -282,7 +282,7 @@ Note that this is nothing else but a dot product between two vectors $(1, x_1^2,
 - Unfortunately, this robustness comes at a cost: **the computation is extremely expensive.**
 
 #### Top Path
-- A valid kernel computes similarity between inputs. The function it employs might be extremely simple, e.g. $(X - Y)^{123}$; **the computation is extremely cheap.**
+- A valid kernel computes similarity between inputs. The function it employs might be extremely simple, e.g. $(X - Y)^{2}$; **the computation is extremely cheap.**
 
 #### Mercer!
 - Mercer's Theorem tells us that every valid kernel, i.e. the top path, is *implicitly traversing the bottom path.* **In other words, kernels allow us to directly compute the result of an extremely expensive computation, extremely cheaply.**
