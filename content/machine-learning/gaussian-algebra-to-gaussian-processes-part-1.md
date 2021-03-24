@@ -7,29 +7,27 @@ Status: published
 Summary: A thorough, straightforward, un-intimidating introduction to Gaussian processes in NumPy.
 Image: figures/gaussian-algebra-to-gaussian-processes-part-1/output_40_0.png
 
-Most **introductory tutorials** on Gaussian processes start with a nose-punch of **fancy statements**, like:
+Most **introductory tutorials** on Gaussian processes start with a nose-punch of statements, like:
 
 - A Gaussian process (GP) defines a distribution over functions.
 - A Gaussian process is non-parametric, i.e. it has an infinite number of parameters (duh?).
 - Marginalizing a Gaussian over a subset of its elements gives another Gaussian.
 - Conditioning a subset of the elements of a Gaussian on another subset of its elements gives another Gaussian.
 
-They continue with **fancy terms**, like:
+They continue with terms, like:
 
 - Kernels
 - Posterior over functions
 - Squared-exponentials
 - Covariances
 
-**Is this really supposed to make sense to the GP beginner?**
-
-The following is the introductory tutorial on GPs that I wish I'd had myself. The goal is pedagogy — not the waving of **fancy words**.
+Alas, this is often confusing to the GP beginner; the following is the introductory tutorial on GPs that I wish I'd had myself.
 
 By the end of this tutorial, you should understand:
 
-- **What a Gaussian process is and how to build one in NumPy** — including those cool, swirly error blobs.
+- **What a Gaussian process is and how to build one in NumPy.**
 - **The motivations behind their functional form**, i.e. how the GP comes to be.
-- The **fancy statements** and **fancy terms** above.
+- The statements and terms above.
 
 Let's get started.
 
@@ -52,17 +50,12 @@ class Gaussian:
         self.stddev = np.sqrt(var)  # the standard deviation is the square-root of the variance
 
     def density(self, x):
-        """
-        NB: Understanding the two bullet points above is more important than understanding the following line.
-
-        That said, it's just the second bullet in code, via SciPy.
-        """
         return norm(loc=self.mu, scale=self.stddev).pdf(x)
 ```
 
-So, how do we make those cool bell-shaped plots? **A 2D plot is just a list of tuples — each with an `x`, and a corresponding `y` — shown visually.**
+So, how do we make those cool bell-shaped plots? A 2D plot is just a list of tuples— each with an `x`, and a corresponding `y`—shown visually.
 
-As such, we lay out our `x`-axis, then compute the corresponding `y` — the `density` — for each. We'll choose an arbitrary `mu` and `variance`.
+As such, we lay out our `x`-axis, then compute the corresponding `y`—the `density`—for each. We'll choose an arbitrary `mu` and `variance`.
 
 
 ```python
@@ -133,7 +126,7 @@ _ = plt.title('Histogram of 500 samples from `Gaussian(mu=.123, var=.456)`')
 ![png]({static}/figures/gaussian-algebra-to-gaussian-processes-part-1/output_13_0.png)
 
 
-This looks similar to the true `Gaussian(mu=.123, var=.456)` density we plotted above. The more random samples we draw (then plot), the closer this histogram will approximate (look similar to) the true density.
+This looks similar to the true `Gaussian(mu=.123, var=.456)` density we plotted above. The more random samples we draw (then plot), the closer this histogram will approximate the true density.
 
 Now, we'll start to move a bit faster.
 
@@ -150,7 +143,7 @@ We just drew samples from a 1-dimensional Gaussian, i.e. the `sample` itself was
 1.050830033400354
 ```
 
-In 2D, each sample will be a list of two numbers. `mu` will dictate the most-likely pair of values for the `sample` to assume, and the second parameter (yet unnamed) will dictate:
+In 2D, each sample will be a list of two numbers. `mu` will dictate the most-likely pair of values for the `sample` to assume, and a second parameter (yet unnamed) will dictate:
 
 1. How much the values for the first element of the pair vary
 2. How much the values for the second element of the pair vary
@@ -173,10 +166,13 @@ def plot_2d_draws(mu, cov, color, n_draws=100):
 
 
 """
-The purple dots should center around `(x, y) = (0, 0)`. `np.diag([1, 1])` gives the covariance matrix `[[1, 0], [0, 1]]`:
-`x`-values have a variance of `var=1`; `y`-values have `var=1`; these values do not covary with one another
-(e.g. if `x` is larger than its mean, the corresponding `y` has 0 tendency to "follow suit," i.e. trend larger than its
-mean as well).
+The purple dots should center around `(x, y) = (0, 0)`.
+
+`np.diag([1, 1])` gives the covariance matrix `[[1, 0], [0, 1]]`:
+
+`x`-values have a variance of `var=1`;
+`y`-values have `var=1`;
+these values do not covary with one another.
 """
 plot_2d_draws(
     mu=np.array([0, 0]),
@@ -194,8 +190,11 @@ plot_2d_draws(
 )
 
 """
-Here, the values along the diagonal of the covariance matrix are much larger: the cloud of green point should be much more
-disperse. There is no off-diagonal covariance (`x` and `y` values do not vary — above or below their respective means — *together*).
+Here, the values along the diagonal of the covariance matrix are much larger:
+
+the cloud of green points should be much more disperse.
+
+There is no off-diagonal covariance.
 """
 plot_2d_draws(
     mu=np.array([8, 8]),
@@ -204,7 +203,9 @@ plot_2d_draws(
 )
 
 """
-The covariance matrix has off-diagonal values of -2. This means that if `x` trends above its mean, `y` will tend to vary *twice as much, below its mean.*
+The covariance matrix has off-diagonal values of -2.
+
+This means that if `x` trends above its mean, `y` will tend to vary *twice as much, below its mean.*
 """
 plot_2d_draws(
     mu=np.array([-5, -2]),
@@ -268,7 +269,10 @@ Next, and still with the goal of obtaining samples $Aw$, we'll multiply this mat
 Finally, we'll take draws from this $\text{Normal}(A\mu_w,\ A\Sigma_w A^T)$. This will give us tuples of the form `(x, Aw)`. For simplicity, we'll hereafter refer to this tuple as `(x, y)`.
 
 - `x` is the original `x`-value
-- `y` is the value obtained after: making features out of $X$ and taking the transpose, giving $A$; taking the linear combination of $A$ with the mean-vector of weights; taking a draw from the multivariate-Gaussian we just defined, then plucking out the sample-element corresponding to `x`.
+- `y` is the value obtained after:
+    - Making features out of $X$ and taking the transpose, giving $A$
+    - Taking the linear combination of $A$ with the mean-vector of weights
+    - Taking a draw from the multivariate-Gaussian we just defined, then plucking out the sample-element corresponding to `x`
 
 **Each draw from our Gaussian will yield 200 `y`-values, each corresponding to its original `x`. In other words, it will yield 200 `(x, y)` tuples — which we can plot.**
 
@@ -347,11 +351,13 @@ phi_x = np.array([x < i for i in range(10)])
 
 ## Gaussians are closed under conditioning and marginalization
 
-Let's revisit the 2D Gaussians plotted above. They took the form (where $\mathcal{N}$ denotes the Normal, i.e. Gaussian distribution):
+Let's revisit the 2D Gaussians plotted above. They took the form
 
 $$
 (x, y) \sim \mathcal{N}(\mu, \Sigma)
 $$
+
+where $\mathcal{N}$ denotes the Normal, i.e. Gaussian distribution.
 
 Said differently:
 
@@ -442,7 +448,7 @@ cov_marginal = np.array([
 
 ```
 
-Finally, we compute the conditional Gaussian of interest — a result well-documented by mathematicians long ago:
+Finally, we compute the conditional Gaussian of interest—a result well-documented by mathematicians long ago:
 
 $$
 \begin{align*}
@@ -476,7 +482,7 @@ $$
 
 Given some ground-truth samples from this distribution $y = \phi(X)^Tw$, i.e. ground-truth "function evaluations," we'd like to infer the weights $w$ most consistent with $y$.
 
-*In machine learning, we equivalently say that given a model and some observed data `(X_train, y_train)`, we'd like to compute/train/optimize the weights of said model (often via backpropagation).*
+*In machine learning, we equivalently say that given a model and some observed data `(X_train, y_train)`, we'd like to compute/train/optimize the weights of said model.*
 
 Most precisely, our goal is to infer $P(w\vert y)$ (where $y$ are our observed function evaluations). To do this, we simply posit a joint distribution over both quantities:
 
@@ -765,21 +771,19 @@ In this tutorial, we've arrived at the mechanical notion of a Gaussian process v
 
 **Thus far, we've elucidated the following ideas:**
 
-- A Gaussian process (GP) defines a distribution over functions (i.e. function evaluations). √
-- Marginalizing a Gaussian over a subset of its elements gives another Gaussian (just pluck out the pieces of interest). √
-- Conditioning a subset of the elements of a Gaussian on another subset gives another Gaussian (a simple algebraic formula). √
-- Posterior over functions (the linear map of the posterior over weights onto some matrix $A = \phi(X_{*})^T$) √
-- Covariances (the second thing we need in order to specify a multivariate Gaussian) √
+- A Gaussian process (GP) defines a distribution over functions (i.e. function evaluations) ✅
+- Marginalizing a Gaussian over a subset of its elements gives another Gaussian (just pluck out the pieces of interest) ✅
+- Conditioning a subset of the elements of a Gaussian on another subset gives another Gaussian (a simple algebraic formula) ✅
+- Posterior over functions (the linear map of the posterior over weights onto some matrix $A = \phi(X_{*})^T$) ✅
+- Covariances (the second thing we need in order to specify a multivariate Gaussian) ✅
 
 **Conversely, we did not yet cover (directly):**
 
 - Kernels
 - Squared-exponentials
-- A Gaussian process is non-parametric, i.e. it has an infinite number of parameters (duh?).
+- "A Gaussian process is non-parametric, i.e. it has an infinite number of parameters"
 
-These will be the subject of the following post.
-
-Thanks for reading, and **don't let arcane pedagogy discourage you:** there's almost always a clearer explanation (or at least its attempt) at bay.
+These will be the subject of the following post. Thanks for reading.
 
 ## Code
 The [repository](https://github.com/cavaunpeu/gaussian-processes) and [rendered notebook](https://nbviewer.jupyter.org/github/cavaunpeu/gaussian-processes/blob/master/gaussian-processes-part-1.ipynb) for this project can be found at their respective links.
