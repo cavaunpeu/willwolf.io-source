@@ -33,7 +33,7 @@ A ten-month, self-curated deep-dive into select topics in machine learning and s
 
 My work at ASAPP spans **pure NLP research, applied NLP research, engineering and product.**
 
-- As a pure researcher, I work under [Dr. Kilian Weinberger](https://scholar.google.com/citations?user=8RVWMycAAAAJ&hl=en&oi=ao) and [S.R.K. Branavan](https://www.linkedin.com/in/s-r-k-branavan-29475b4/) on problems in: online learning, "procedural structure induction" in goal-oriented dialog, dialog segmentation, language modeling, self-improving text recommendation systems.
+- As a pure researcher, I work under [Dr. Kilian Weinberger](https://scholar.google.com/citations?user=8RVWMycAAAAJ&hl=en&oi=ao) and [S.R.K. Branavan](https://www.linkedin.com/in/s-r-k-branavan-29475b4/) on problems in: online learning, "procedural structure induction" in goal-oriented dialog, dialog segmentation, language modeling, and self-improving text recommendation systems.
 - As an applied researcher, I implement, deploy and improve bespoke machine learning systems for text classification, recommendation and summarization used daily by thousands of customer service agents (and their millions of customers) at companies like Vodafone, jetBlue, Dish.
 - As an engineer, I write internal tooling for training, evaluation, portability and provenance of machine learning models.
 - As a mentor, I guide more junior team members in all of the above.
