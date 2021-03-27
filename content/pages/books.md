@@ -9,6 +9,8 @@ Image: images/books.jpg
 
 To the extent that we are how we spend our time, here's a bit more about me in recent years:
 
+- **Magdalena** by Wade Davis
+- **The Art of Doing Science and Engineering** by Richard Hamming
 - **The Cossacks** by Leo Tolstoy
 - **The World of Yesterday** by Stefan Zweig
 - **On the Road** by Jack Kerouac
