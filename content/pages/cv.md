@@ -44,7 +44,7 @@ My work at ASAPP spans **pure NLP research, applied NLP research, engineering an
 My work at ShopKeep spanned data analysis, internal analytics services, data engineering and statistical experimentation.
 
 - As a data scientist, I built a service for computing merchant similarity in a continuous space, survival analysis models for predicting merchant churn, and designed and analyzed A/B tests of marketing and sales efforts.
-- As a data engineer, I built and maintained a software package offering composable, "rehydratable" predicting modeling objects, as well as ETL infrastructure for data ingestion and business intelligence.
+- As a data engineer, I built and maintained a software package offering composable, "rehydratable" predictive modeling objects, as well as ETL infrastructure for data ingestion and business intelligence.
 
 ### > Data Science Mentor, [Thinkful](https://www.thinkful.com/)
 *New York, New York, August 2015 to December 2017*
