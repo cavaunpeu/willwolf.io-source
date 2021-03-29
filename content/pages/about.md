@@ -19,7 +19,7 @@ Hi! My name's Will. I'm equal parts: **technologist, bookworm, polyglot, cyclist
 
 **Presently, I spend my time on:**
 
-- `Research` I currently work for [ASAPP](https://www.asapp.com/) as a **machine learning researcher.** Broadly, I focus on problems in [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing). (Specifically, on inducing procedural structure in task-oriented dialog.)
+- `Research` I currently work for [ASAPP](https://www.asapp.com/) as a **machine learning researcher.** Broadly, I focus on problems in [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing).
 
 - `Language` I love learning and speaking foreign languages. I'm a longtime speaker of **[Spanish](http://willwolf.io/es/)** and **French**. At present, I'm voraciously learning **Russian**.
 
