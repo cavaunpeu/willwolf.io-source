@@ -18,7 +18,7 @@ $$
 
 for all latent variables $\mathbf{Z}_i$.
 
-Briefly, factorized distributions are cheap to compute: if each $q_i(\mathbf{Z}_i)$ is Gaussian, $q(\mathbf{Z})$ requires optimization of $2M$ parameters (a mean and a variance for each factor); conversely, a non-factorized $q(\mathbf{Z}) = \text{Normal}(\mu, \Sigma)$ would require optimization of $M + \frac{M^2 + M}{2}$ parameters for the mean and covariance respectively. Following intuition, this gain in computational efficiency comes at the cost of decreased accuracy in approximating the true posterior over latent variables.
+Briefly, factorized distributions are cheap to compute: if each $q_i(\mathbf{Z}_i)$ is Gaussian, $q(\mathbf{Z})$ requires optimization of $2M$ parameters (a mean and a variance for each factor); conversely, a non-factorized $q(\mathbf{Z}) = \text{Normal}(\mu, \Sigma)$ would require optimization of $M$ parameters for the mean and $\frac{M^2 + M}{2}$ parameters for the covariance. Following intuition, this gain in computational efficiency comes at the cost of decreased accuracy in approximating the true posterior over latent variables.
 
 ## So, what is it?
 
@@ -75,7 +75,7 @@ A
 \end{align*}
 $$
 
-Following Bishop[^1]'s derivation, we introduce the notation:
+Following Bishop[^1]'s derivation, we've introduced the notation:
 
 $$
 \int{\prod\limits_{i \neq j}q_i(\mathbf{Z}_{i})\log{p(\mathbf{X, Z})}}d\mathbf{Z}_i = \mathop{\mathbb{E}}_{i \neq j}[\log{p(\mathbf{X, Z})}]
@@ -90,10 +90,10 @@ A few things to note, and in case this looks strange:
 To further illustrate, let's employ some toy Python code:
 
 ```python
-# Suppose `Z = [Z_1, Z_2, Z_3]`, with corresponding variational distributions `q_1`, `q_2`, `q_3`
+# Suppose `Z = [Z_0, Z_1, Z_2]`, with corresponding (discrete) variational distributions `q_0`, `q_1`, `q_2`
 
 q_0 = [
-    (1, .2),
+    (1, .2),  # q_0(1) = .2
     (2, .3),
     (3, .5)
 ]
@@ -304,9 +304,7 @@ $$
 
 Then, attempt to rearrange this expression such that:
 
-- Once exponentiated, giving $\exp{\big(\log{q_j(\mathbf{Z}_j)}\big)} = q_j(\mathbf{Z}_j)$,
-- We are left with something that, once normalized (by inspection),
-- Resembles a known density function (e.g. a Gaussian, a Gamma, etc.)
+Once exponentiated, giving $\exp{\big(\log{q_j(\mathbf{Z}_j)}\big)} = q_j(\mathbf{Z}_j)$, we are left with something that, once normalized (by inspection), resembles a known density function (e.g. a Gaussian, a Gamma, etc.).
 
 NB: This may require significant computation.
 
@@ -326,7 +324,7 @@ Here, we'll approximate a 2D multivariate Gaussian with a factorized mean-field 
 
 # Summing up
 
-Mean-Field Variational Bayes is an iterative optimization algorithm for maximizing a lower-bound of the marginal likelihood of some data $\mathbf{X}$ under a given model with latent variables $\mathbf{Z}$. It accomplishes task by positing a factorized variational distribution over all latent variables $\mathbf{Z}$ and parameters $\theta$, then computes, *analytically*, the algebraic forms and parameters of each factor which maximize this bound.
+Mean-Field Variational Bayes is an iterative optimization algorithm for maximizing a lower-bound of the marginal likelihood of some data $\mathbf{X}$ under a given model with latent variables $\mathbf{Z}$. It accomplishes this task by positing a factorized variational distribution over all latent variables $\mathbf{Z}$ and parameters $\theta$, then computes, *analytically*, the algebraic forms and parameters of each factor which maximize this bound.
 
 In practice, this process can be cumbersome and labor-intensive. As such, in recent years, "black-box variational inference" techniques were born, which *fix* the forms of each factor $q_j(\mathbf{Z}_j)$, then optimize its parameters via gradient descent.
 

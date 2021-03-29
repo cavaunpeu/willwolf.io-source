@@ -25,7 +25,7 @@ An example of a latent variable model is the Latent Dirichlet Allocation[^1] (LD
 
 ## Why not maximum likelihood estimation?
 
-As the adage goes, computing the MLE with respect to this marginal is "hard." I loosely understand why. In any case, Bishop[^2] states:
+As the adage goes, computing the MLE with respect to this marginal is "hard." For one, it requires summing over an (implicitly) humongous number of configurations of latent variables $z$. Further, as Bishop[^2] states:
 
 > A key observation is that the summation over the latent variables appears inside the logarithm. Even if the joint distribution $p(\mathbf{X, Z}\vert\theta)$ belongs to the exponential family, the marginal distribution $p(\mathbf{X}\vert\theta)$ typically does not as a result of this summation. The presence of the sum prevents the logarithm from acting directly on the joint distribution, resulting in complicated expressions for the maximum likelihood solution.
 
@@ -35,7 +35,7 @@ As the adage goes, computing the MLE with respect to this marginal is "hard." I 
 
 Instead of maximizing the log-marginal $\log{p(\mathbf{X}\vert\theta)}$ (with respect to model parameters $\theta$), let's maximize a lower-bound with a less-problematic form.
 
-One candidate for this form is $\log{p(\mathbf{X}, \mathbf{Z}\vert \theta)}$ which, almost tautologically, removes the summation over latent variables $\mathbf{Z}$.
+Perhaps, we'd work with $\log{p(\mathbf{X}, \mathbf{Z}\vert \theta)}$ which, almost tautologically, removes the summation over latent variables $\mathbf{Z}$.
 
 As such, let's derive a lower-bound which features this term. As $\log{p(\mathbf{X}\vert\theta)}$ is often called the log-"evidence," we'll call our expression the "evidence lower-bound," or ELBO.
 
@@ -49,7 +49,7 @@ First, we note that the red line is below the blue for all points for which it i
 
 Second, working through the example, and assuming:
 
-- $y = f(x) = \exp(-(x - 2)^2)$
+- $f(x) = \exp(-(x - 2)^2)$
 - $v_1 = 1; v_2 = 2.5; \alpha = .3$
 
 $$
@@ -103,7 +103,7 @@ $$
 \end{align*}
 $$
 
-*Et voilà*, we see that this term contains $\log{p(\mathbf{X, Z}\vert\theta)}$; the ELBO should be easy to optimize with respect to our parameters $\theta$.
+*Et voilà*, we see that this term contains $\log{p(\mathbf{X, Z}\vert\theta)}$; the ELBO should now be easier to optimize with respect to our parameters $\theta$.
 
 # So, what's $R$?
 
@@ -111,30 +111,13 @@ $$
 \begin{align*}
 R
 &= \log{p(\mathbf{X}\vert\theta)} -  \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\bigg]\\
-&= \log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}
-\end{align*}
-$$
-
-Before expanding further, let's briefly restate basic results of Bayes' theorem as applied to our model:
-
-- $p(\mathbf{Z}\vert\mathbf{X}, \theta) = \frac{p(\mathbf{X}, \mathbf{Z}\vert\theta)}{p(\mathbf{X}\vert\theta)}$
-- $\log{p(\mathbf{X}, \mathbf{Z}\vert\theta)} = \log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)}$
-
-Additionally, we note that as $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$, $\mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{X}\vert\theta)}\bigg] = \log{p(\mathbf{X}\vert\theta)}$.
-
-**Continuing:**
-
-$$
-\begin{align*}
-R
-&= \log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\log{\frac{p(\mathbf{X, Z}\vert\theta)}{q(\mathbf{Z})}}\\
-&= \log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{X, Z}\vert\theta) - \log{q(\mathbf{Z})}}\bigg)\\
-&= \log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\bigg)\\
-&= \sum_{\mathbf{Z}}q(\mathbf{Z})\log{p(\mathbf{X}\vert\theta)} -  \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\bigg)\\
-&= \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{X}\vert\theta)} -  \big(\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\big)\bigg)\\
-&= \sum_{\mathbf{Z}}q(\mathbf{Z})-  \big(\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} - \log{q(\mathbf{Z})}\big)\\
+&= \log{p(\mathbf{X}\vert\theta)} -  \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{X, Z}\vert\theta) - \log{q(\mathbf{Z})}}\bigg]\\
+&= \log{p(\mathbf{X}\vert\theta)} -  \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\bigg]\\
+&= \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{X}\vert\theta)}\bigg] -  \mathop{\mathbb{E}}_{q(\mathbf{Z})}\bigg[\log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{p(\mathbf{X}\vert\theta)} - \log{q(\mathbf{Z})}\bigg]\\
+&= \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg(\log{p(\mathbf{X}\vert\theta)} - \log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} - \log{p(\mathbf{X}\vert\theta)} + \log{q(\mathbf{Z})}\bigg)\\
+&= \sum_{\mathbf{Z}}q(\mathbf{Z})\bigg( - \log{p(\mathbf{Z}\vert\mathbf{X}, \theta)} + \log{q(\mathbf{Z})}\bigg)\\
 &=
--\sum_{\mathbf{Z}}q(\mathbf{Z})\log{\frac{p(\mathbf{Z}\vert\mathbf{X}, \theta)}{q(\mathbf{Z})}}\\
+\sum_{\mathbf{Z}}q(\mathbf{Z})\log{\frac{q(\mathbf{Z})}{p(\mathbf{Z}\vert\mathbf{X}, \theta)}}\\
 &= \text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)\\
 \end{align*}
 $$
@@ -150,15 +133,14 @@ $$
 The algorithm can be described by a few simple observations.
 
 1. $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ is a divergence metric which is strictly non-negative.
-1. As $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$—if we decrease $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ *by changing $q(\mathbf{Z})$*, the ELBO must increase to compensate.
 
-(For intuition, imagine we're able to decrease $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ to 0, which occurs when setting $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$.)
+2. As $\log{p(\mathbf{X}\vert\theta)}$ does not depend on $q(\mathbf{Z})$—if we decrease $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ by changing $q(\mathbf{Z})$, the ELBO must increase to compensate.
 
-3. If we increase the ELBO *by changing $\theta$*, $\log{p(\mathbf{X}\vert\theta)}$ will increase as well. *In addition, as $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ now (likely) diverges from $q(\mathbf{Z})$ in non-zero amount, $\log{p(\mathbf{X}\vert\theta)}$ will increase even more.*
+3. If we increase the ELBO by changing $\theta$, $\log{p(\mathbf{X}\vert\theta)}$ will increase as well. In addition, as $p(\mathbf{Z}\vert\mathbf{X}, \theta)$ now (likely) diverges from $q(\mathbf{Z})$ in non-zero amount, $\log{p(\mathbf{X}\vert\theta)}$ will increase even more.
 
 **The EM algorithm is a repeated alternation between Step 2 (E-step) and Step 3 (M-step).** After each M-Step, $\log{p(\mathbf{X}\vert\theta)}$ is guaranteed to increase (unless it is already at a maximum)[^2].
 
-A graphic[^2] (*Pattern Recognition and Machine Learning, Chapter 9*) is further illustrative.
+A graphic[^2] is further illustrative.
 
 ### Initial decomposition
 
@@ -170,15 +152,15 @@ Here, the ELBO is written as $\mathcal{L}(q, \theta)$.
 
 ![png]({static}../figures/em-for-lda/e_step.png)
 
-Holding the parameters $\theta$ constant, minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ with respect to $q(\mathbf{Z})$. Remember, as $q$ is a distribution with a fixed functional form, this amounts to updating its parameters $\lambda$.
+In other words, holding the parameters $\theta$ constant, minimize $\text{KL}\big(q(\mathbf{Z})\Vert p(\mathbf{Z}\vert\mathbf{X}, \theta)\big)$ with respect to $q(\mathbf{Z})$. Remember, as $q$ is a distribution with a fixed functional form, this amounts to updating its parameters $\lambda$.
 
-The caption implies that we can always compute $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$. We will below that this is not the case for LDA, nor for many interesting models.
+The caption implies that we can always compute $q(\mathbf{Z}) = p(\mathbf{Z}\vert\mathbf{X}, \theta)$. We will show below that this is not the case for LDA, nor for many interesting models.
 
 ### M-step
 
 ![png]({static}../figures/em-for-lda/m_step.png)
 
-In the M-step, maximize the ELBO with respect to the model parameters $\theta$.
+In other words, in the M-step, maximize the ELBO with respect to the model parameters $\theta$.
 
 Expanding the ELBO:
 
@@ -190,21 +172,19 @@ $$
 \end{align*}
 $$
 
-we see that it decomposes into an expectation of the joint distribution over data and latent variables with respect to the variational distribution $q(\mathbf{Z})$, plus the entropy of $q(\mathbf{Z})$.
+we see that it decomposes into an expectation of the joint distribution over data and latent variables given parameters $\theta$ with respect to the variational distribution $q(\mathbf{Z})$, plus the entropy of $q(\mathbf{Z})$.
 
-Maximizing this expression with respect to $\theta$, we treat the latter as a constant.
+As our task is to maximize this expression with respect to $\theta$, we can treat the latter term as a constant.
 
 ## EM for LDA
 
-In the next few posts, we'll use the Latent Dirichlet Allocation (LDA) model as a running example.
-
-Since the original paper[^1] is beautiful, I'll default to citing its passages as much as possible.
+To give an example of the above, we'll examine the classic Latent Dirichlet Allocation[^1] paper.
 
 ### Model
 
 ![png]({static}../figures/em-for-lda/lda_formulation.png)
 
-"Given the parameters $\alpha$ and $\beta$, the joint distribution of a topic mixture $\theta$, a set of of $N$ topics $\mathbf{z}$, and a set of $N$ words $\mathbf{w}$ is given by:"[^1]
+"Given the parameters $\alpha$ and $\beta$, the joint distribution of a topic mixture $\theta$, a set of $N$ topics $\mathbf{z}$, and a set of $N$ words $\mathbf{w}$ is given by:"[^1]
 
 $$
 p(\theta, \mathbf{z}, \mathbf{w}\vert \alpha, \beta) = p(\theta\vert \alpha)\prod\limits_{n=1}^{N}p(z_n\vert \theta)p(w_n\vert z_n, \beta)
@@ -218,7 +198,7 @@ $$
 \log{p(\mathbf{w}\vert \alpha, \beta)} = \log{\int p(\theta\vert \alpha)\prod\limits_{n=1}^{N}\sum\limits_{z_n} p(z_n\vert \theta)p(w_n\vert z_n, \beta)d\theta}
 $$
 
-NB: The parameters of our model are $\alpha$ and $\beta$, and $\{\theta, \mathbf{z}\}$ are our *latent variables.*
+NB: The parameters of our model are $\{\alpha,  \beta\}$ and $\{\theta, \mathbf{z}\}$ are our latent variables.
 
 ### ELBO
 
@@ -234,13 +214,14 @@ $$
 \text{KL}\big(q(\mathbf{Z})\Vert \frac{p(\theta, \mathbf{z}, \mathbf{w}\vert \alpha, \beta)}{p(\mathbf{w}\vert \alpha, \beta)}\big)
 $$
 
-Peering at the denominator, we see that the expression under the integral is exponential in the number of words $N$; for any non-trivial $N$ and number of topics, it is intractable to compute. As such, the "ideal" E-step solution $q(\mathbf{Z}) = p(\theta, \mathbf{z}\vert \mathbf{w}, \alpha, \beta)$ admits no analytical form.
+
+Peering at the denominator, we see that it includes an integration over all values $\theta$, which we assume is intractable to compute. As such, the "ideal" E-step solution $q(\mathbf{Z}) = p(\theta, \mathbf{z}\vert \mathbf{w}, \alpha, \beta)$ will elude us as well.
 
 In the next post, we'll cover how to minimize this KL term with respect to $q(\mathbf{Z})$ in detail. This effort will begin with the derivation of the mean-field algorithm.
 
 ## Summary
 
-In this post, we motivated the expectation-maximization algorithm then derived its general form. We then, briefly, applied it to the LDA model.
+In this post, we motivated the expectation-maximization algorithm then derived its general form. We then applied this framework to the LDA model.
 
 In the next post, we'll expand this logic into mean-field variational Bayes, and eventually, variational inference more broadly.
 

@@ -7,7 +7,7 @@ Status: published
 Summary: A pedantic walk through Boltzmann machines, with focus on the computational thorn-in-side of the partition function.
 Image: figures/thorough-introduction-to-boltzmann-machines/output_23_1.png
 
-The principal task of machine learning is to fit a model to some data. Thinking on the level of APIs, a model is an object with two methods:
+The principal task of machine learning is to fit a model to some data. In programming terms, this model is an object with two methods:
 
 ```python
 class Model:
@@ -21,17 +21,15 @@ class Model:
 
 ## Likelihood
 
-How likely is the query point(s) $x$ under our model? In other words, how likely was it that our model produced $x$?
+How likely is the query point $x$ under our model? In other words, how likely was it that our model produced $x$?
 
-The likelihood gives a value proportional to a valid probability, but is not necessarily a valid probability itself.
-
-(Finally, the likelihood is often used as an umbrella term for, or interchangeably with, the probability density. The mainstream machine learning community would do well to agree to the use of one of these terms, and to sunset the other; while their definitions may differ slightly, the confusion brought about by their dual used in almost identical contexts simply does not warrant by the pedagogical purity we maintain by keeping them distinct.
+Note: The likelihood gives a value proportional to a valid probability, but is not necessarily a valid probability itself.
 
 ## Sample
 
-Draw samples from the model.
+Draw a sample datum $x$ from the model.
 
-## Denotation
+## Notation
 
 Canonically, we denote an instance of our `Model` in mathematical syntax as follows:
 
@@ -39,23 +37,23 @@ $$
 x \sim p(x)
 $$
 
-Again, this simple denotation implies two methods: that we can evaluate the likelihood of having observed $x$ under our model $p$, and that we can sample a new value $x$ from our model $p$.
+Again, this simple notation implies two powerful methods: that we can evaluate the `likelihood` of having observed $x$ under our model $p$, and that we can `sample` a new value $x$ from our model $p$.
 
-Often, we work with *conditional* models, such as $y \sim p(y\vert x)$, in classification and regression tasks. The same two implicit methods apply.
+Often, we work instead with *conditional* models, e.g. $y \sim p(y\vert x)$, in classification and regression tasks. The `likelihood` and `sample` methods apply all the same.
 
 ## Boltzmann machines
 
-A Boltzmann machine is one of the simplest mechanisms for modeling $p(x)$. It is an undirected graphical model where every dimension $x_i$ of a given observation $x$ influences every other dimension. **As such, we might use it to model data which we believe to exhibit this property, e.g. an image.** For $x \in R^3$, our model would look as follows:
+A Boltzmann machine is one of the simplest mechanisms for modeling $p(x)$. It is an undirected graphical model where every dimension $x_i$ of a given observation $x$ influences every other dimension. As such, we might use it to model data which we believe to exhibit this property, e.g. an image (where intuitively, pixel values influence neighboring pixel values). For $x \in R^3$, our model would look as follows:
 
 ![png]({static}/figures/thorough-introduction-to-boltzmann-machines/boltzmann-machine.svg)
 
-For $x \in R^n$, a given node $x_i$ would have $n - 1$ outgoing connections in total—one to each of the other nodes $x_j$ for $j \neq i$.
+For $x \in R^n$, a given node $x_i$ would have $n - 1$ outgoing connections in total—one to every other node $x_j\ \forall\ j \neq i$.
 
 Finally, a Boltzmann machine strictly operates on *binary* data. This keeps things simple.
 
 ## Computing the likelihood
 
-A Boltzmann machines admits the following formula for computing the likelihood of data points $x^{(1)}, ..., x^{(n)}$:
+A Boltzmann machines admits the following formula for computing the `likelihood` of data points $x^{(1)}, ..., x^{(n)}$:
 
 $$
 H(x) = \sum\limits_{i \neq j} w_{i, j} x_i x_j + \sum\limits_i b_i x_i
@@ -71,33 +69,25 @@ $$
 
 Note:
 
-- Since our weights can be negative, $H(x)$ can be negative. As a likelihood gives an optionally-normalized probability, it must be non-negative.
+- Since our weights can be negative, $H(x)$ can be negative. Since our likelihood is proportional to a valid probability, we'd prefer it to be non-negative.
 - To enforce this constraint, we exponentiate $H(x)$ in the second equation.
 - To normalize, we divide by the normalization constant $Z$, i.e. the sum of the likelihoods of all possible values of $x^{(1)}, ..., x^{(n)}$.
 
-## Computing the partition function, with examples
+## Computing the partition function by hand
 
-In the case of 2-dimensional binary $x$, the only possible "configurations" of $x$ are: $[0, 0], [0, 1], [1, 0], [1, 1]$, i.e. 4 distinct values. This means that in evaluating the likelihood of one datum $x$, the normalization constant $Z$ would be a sum of 4 terms.
+In the case of 2-dimensional binary datum $x$, there are 4 possible "configurations": $[0, 0], [0, 1], [1, 0], [1, 1]$. As such, to compute the likelihood of one of these configurations, e.g.
 
-Now, with two data points $x^{(1)}$ and $x^{(2)}$, there are 16 possible "configurations":
+$$
+p([1, 0]) = \frac{\exp{(H([1, 0]))}}{\exp{(H([0, 0]))} + \exp{(H([0, 1]))} + \exp{(H([1, 0]))} + \exp{(H([1, 1]))}}
+$$
 
-1. $x^{(1)} = [0, 0]$, $x^{(2)} = [0, 0]$
-2. $x^{(1)} = [0, 0]$, $x^{(2)} = [0, 1]$
-3. $x^{(1)} = [0, 0]$, $x^{(2)} = [1, 0]$
-4. $x^{(1)} = [0, 0]$, $x^{(2)} = [1, 1]$
-5. $x^{(1)} = [0, 1]$, $x^{(2)} = [0, 0]$
-6. $x^{(1)} = [0, 1]$, $x^{(2)} = [0, 1]$
-7. Etc.
+we see that the normalization constant $Z$ is a sum of 4 terms.
 
-This means that in evaluating the likelihood of $\mathcal{L}(x^{(1)}, x^{(2)})$, the normalization constant $Z$ would be a sum of 16 terms.
+More generally, given $d$-dimensional $x$, where each $x_i$ can assume one of $v$ distinct values, computing $p(x)$ implies a summation over $v^d$ terms. **With a non-trivially large $v$ or $d$ this becomes intractable to compute.**
 
-More generally, given $d$-dimensional $x$, where each $x_i$ can assume one of $v$ distinct values, and $n$ data points $x^{(1)}, ..., x^{(n)}$—in evaluating the likelihood of $\mathcal{L}(x^{(1)}, ..., x^{(n)})$ the normalization constant $Z$ would be a sum of $(v^d)^n$ terms. **With a non-trivially large $v$ or $d$ (in the discrete case), or a non-trivially large $k$ in the continuous case, this becomes intractable to compute.**
-
-In the case of a Boltzmann machine, $v = 2$, which is not large. Below, we will vary $d$ and examine its impact on the tractability (in terms of, "can we actually compute $Z$ before the end of the universe?") of inference.
+Below, we'll demonstrate how "tractability," i.e. "can we actually compute $Z$ before the end of the universe?" changes with varying $d$ for our Boltzmann machine (of $v = 2$).
 
 ## The likelihood function in code
-
-In code, the likelihood function looks as follows:
 
 ```python
 def _unnormalized_likelihood(self, x):
@@ -117,7 +107,7 @@ def likelihood(self, x, log=False):
         for which to compute the joint likelihood.
     """
     x = np.array(x)
-    if not self.n_units in x.shape and len(x.shape) in (1, 2):
+    if x.shape[-1] != self.n_units:
         raise('Please pass 1 or more points of `n_units` dimensions')
 
     # compute unnormalized likelihoods
@@ -136,13 +126,13 @@ def likelihood(self, x, log=False):
         return reduce(np.multiply, [lik / Z for lik in likelihood])
 ```
 
+NB: In mathematical Python code, for-loops are bad; we should prefer `numpy` instead. Nevertheless, I've used for-loops here because they are easier to read.
+
 This code block is longer than you might expect because it includes a few supplementary behaviors, namely:
 
 - Computing the likelihood of one or more points
 - Avoiding redundant computation of `Z`
 - Optionally computing the log-likelihood
-
-Above all, note that: the likelihood is a function of the model's parameters, i.e. `self.weights` and `self.biases`, which we can vary, and the data `x`, which we can't.
 
 ## Training the model
 
@@ -177,12 +167,12 @@ $$
 \begin{align*}
 \mathop{\mathbb{E}}_{x \sim p_{\text{data}}}\big[ \mathcal{L}(x) \big]
 &= \sum\limits_{k=1}^N p_{\text{data}}(x = x^{(k)}) \mathcal{L(x^{(k)})}\\
-&= \sum\limits_{k=1}^N \frac{1}{N} \mathcal{L(x^{(k)})}\\
+&\approx \sum\limits_{k=1}^N \frac{1}{N} \mathcal{L(x^{(k)})}\\
 &= \frac{1}{N} \sum\limits_{k=1}^N  \mathcal{L(x^{(k)})}\\
 \end{align*}
 $$
 
-In other words, the average. We will continue to denote this as $\mathcal{L}$, i.e. $\mathcal{L} = \frac{1}{N} \sum\limits_{k=1}^n H(x^{(k)}) - \log{Z}$.
+In other words, we wish to maximize the average likelihood of our data under the model. Henceforth, we will refer to this quantity as $\mathcal{L}$, i.e. $\mathcal{L} = \frac{1}{N} \sum\limits_{k=1}^n H(x^{(k)}) - \log{Z}$.
 
 Now, deriving the gradient with respect to our weights:
 
@@ -200,26 +190,26 @@ $$
 $$
 \begin{align*}
 \frac{1}{N} \sum\limits_{k=1}^n \nabla_{w_{i, j}}  H(x^{(k)})
-&= \frac{1}{N} \sum\limits_{k=1}^n \nabla_{w_{i, j}} \sum\limits_{i \neq j} w_{i, j} x_i^{(k)} x_j^{(k)} + \sum\limits_i b_i x_i^{(k)}\\
+&= \frac{1}{N} \sum\limits_{k=1}^n \nabla_{w_{i, j}} \bigg[ \sum\limits_{i \neq j} w_{i, j} x_i^{(k)} x_j^{(k)} + \sum\limits_i b_i x_i^{(k)} \bigg]\\
 &= \frac{1}{N} \sum\limits_{k=1}^n x_i^{(k)} x_j^{(k)}\\
-&= \mathop{\mathbb{E}}_{x \sim p_{\text{data}}} [x_i  x_j]
+&\approx \mathop{\mathbb{E}}_{x \sim p_{\text{data}}} [x_i  x_j]
 \end{align*}
 $$
 
 ### Second term:
 
-NB: $\sum\limits_{\mathcal{x}}$ implies a summation over all $(v^d)^n$ possible configurations of values that $x^{(1)}, ..., x^{(n)}$ can assume.
+NB: $\sum\limits_{\mathcal{x}}$ implies a summation over all $v^d$ possible configurations of $x$.
 
 $$
 \begin{align*}
 \nabla_{w_{i, j}} \log{Z}
 &= \nabla_{w_{i, j}} \log{\sum\limits_{\mathcal{x}}} \exp{(H(x))}\\
 &= \frac{1}{\sum\limits_{\mathcal{x}} \exp{(H(x))}} \nabla_{w_{i, j}} \sum\limits_{\mathcal{x}} \exp{(H(x))}\\
-&= \frac{1}{Z} \nabla_{w_{i, j}} \sum\limits_{\mathcal{x}} \exp{(H(x))}\\
+&= \frac{1}{Z} \sum\limits_{\mathcal{x}} \nabla_{w_{i, j}} \exp{(H(x))}\\
 &= \frac{1}{Z} \sum\limits_{\mathcal{x}} \exp{(H(x))} \nabla_{w_{i, j}} H(x)\\
 &= \sum\limits_{\mathcal{x}} \frac{\exp{(H(x))}}{Z} \nabla_{w_{i, j}} H(x)\\
-&= \sum\limits_{\mathcal{x}} P(x) \nabla_{w_{i, j}} H(x)\\
-&= \sum\limits_{\mathcal{x}} P(x) [x_i  x_j]\\
+&= \sum\limits_{\mathcal{x}} p(x) \nabla_{w_{i, j}} H(x)\\
+&= \sum\limits_{\mathcal{x}} p(x) [x_i  x_j]\\
 &= \mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]
 \end{align*}
 $$
@@ -242,13 +232,13 @@ The first and second terms of each gradient are called, respectively, **the posi
 
 ## Computing the positive phase
 
-In the following toy example, our data are small: we can compute the positive phase using all of the training data, i.e. $\frac{1}{N} \sum\limits_{k=1}^n x_i^{(k)} x_j^{(k)}$. Were our data bigger, we could approximate this expectation with a mini-batch of training data and we do in SGD.
+In the following toy example, our data are small: we can compute the positive phase using all of the training data, i.e. $\frac{1}{N} \sum\limits_{k=1}^n x_i^{(k)} x_j^{(k)}$. Were our data bigger, we could approximate this expectation with a mini-batch of training data (much like SGD).
 
 ## Computing the negative phase
 
-Again, this term asks us to compute then sum the log-likelihood over every possible data configuration in the support of our model, which is $O(nv^d)$. **With non-trivially large $v$ or $d$, this becomes intractable to compute.**
+Again, this term asks us to compute then sum the log-likelihood over every possible data configuration in the support of our model, which is $O(v^d)$. **With non-trivially large $v$ or $d$, this becomes intractable to compute.**
 
-Below, we'll begin our toy example computing the true negative-phase, $\mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, with varying data dimensionalities $d$. Then, once this computation becomes slow, we'll look to approximate this expectation later on.
+Below, we'll begin our toy example by computing the true negative-phase, $\mathop{\mathbb{E}}_{x \sim p_{\text{model}}} [x_i  x_j]$, with varying data dimensionalities $d$. Then, once this computation becomes slow, we'll look to approximate this expectation later on.
 
 ## Parameter updates in code
 
@@ -301,7 +291,7 @@ def reset_data_and_parameters(n_units=3, n_obs=100, p=[.8, .1, .5]):
     however, there are only 3 distinct weights in this matrix that we'll actually
     want to update: those connecting Node 0 --> Node 1, Node 1 --> Node 2, and
     Node 0 --> Node 2. This function returns a list containing these tuples
-    named `var_combinations.
+    named `var_combinations`.
 
     :param n_units: the dimensionality of our data `d`
     :param n_obs: the number of observations in our training set
@@ -356,7 +346,7 @@ class Model:
             for which to compute the joint likelihood.
         """
         x = np.array(x)
-        if not self.n_units in x.shape and len(x.shape) in (1, 2):
+        if x.shape[-1] != self.n_units:
             raise('Please pass 1 or more points of `n_units` dimensions')
 
         # compute unnormalized likelihoods
@@ -634,7 +624,7 @@ Finally, for data of `n_units` 3, 4, 5, etc., let’s train models for 100 epoch
 When training with the approximate negative phase, we’ll:
 
 - Derive model samples from a **1000-sample Gibbs chain. Of course, this is a parameter we can tune, which will affect both model accuracy and training runtime. However, we don’t explore that in this post;** instead, we just pick something reasonable and hold this value constant throughout our experiments.
-- Train several models for a given `n_units`; Seaborn will average results for us then plot a single line (I think).
+- Train several models for a given `n_units`; Seaborn will average results for us then plot a single line.
 
 
 ```python
