@@ -43,8 +43,8 @@ ABOUT_PAGE_LINK_TEXT = 'About'
 ARCHIVE_PAGE = 'archive/'
 ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 
-CV_PAGE = 'cv/'
-CV_PAGE_LINK_TEXT = 'CV'
+RESUME_PAGE = 'resume/'
+RESUME_PAGE_LINK_TEXT = 'Résumé'
 
 BOOKS_PAGE = 'books/'
 BOOKS_PAGE_LINK_TEXT = 'Books'
