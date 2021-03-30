@@ -7,3 +7,7 @@
 [submodule "plugins/bootstrapify"]
 	path = plugins/bootstrapify
 	url = https://github.com/ingwinlu/pelican-bootstrapify
+[submodule "plugins/pelican-jupyter"]
+	path = plugins/pelican-jupyter
+	url = git@github.com:danielfrg/pelican-jupyter.git
+	branch = master
