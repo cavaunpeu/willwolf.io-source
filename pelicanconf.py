@@ -50,11 +50,14 @@ BOOKS_PAGE = 'books/'
 BOOKS_PAGE_LINK_TEXT = 'Books'
 
 # Plugin settings
+from pelican_jupyter import liquid as nb_liquid
+
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
+IGNORE_FILES = [".ipynb_checkpoints"]
 PLUGINS = [
     'render_math',
     'disqus_static',
-    'ipynb.liquid',
+    nb_liquid,
     'i18n_subsites',
     'bootstrapify',
     'pelican_alias'
