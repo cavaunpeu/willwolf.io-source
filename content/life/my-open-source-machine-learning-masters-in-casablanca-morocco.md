@@ -11,7 +11,7 @@ The Open-Source Machine Learning Master's (OSMLM) is a self-curated deep-dive in
 
 ## Why Am I Doing This?
 
-I want to become more of a technical expert in machine learning. I want to use this expertise to solve real-world problems that actually matter (moving the field forward on purely theoretical grounds is less interesting to me).
+I want to become more of a technical expert in machine learning. I want to use this expertise to solve real-world problems that actually matter.
 
 To this end, I see two main roads: a traditional graduate program, and the OSMLM.
 
