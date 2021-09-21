@@ -43,18 +43,21 @@ ABOUT_PAGE_LINK_TEXT = 'About'
 ARCHIVE_PAGE = 'archive/'
 ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 
-CV_PAGE = 'cv/'
-CV_PAGE_LINK_TEXT = 'CV'
+RESUME_PAGE = 'resume/'
+RESUME_PAGE_LINK_TEXT = 'Résumé'
 
 BOOKS_PAGE = 'books/'
 BOOKS_PAGE_LINK_TEXT = 'Books'
 
 # Plugin settings
+from pelican_jupyter import liquid as nb_liquid
+
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
+IGNORE_FILES = [".ipynb_checkpoints"]
 PLUGINS = [
     'render_math',
     'disqus_static',
-    'ipynb.liquid',
+    nb_liquid,
     'i18n_subsites',
     'bootstrapify',
     'pelican_alias'
