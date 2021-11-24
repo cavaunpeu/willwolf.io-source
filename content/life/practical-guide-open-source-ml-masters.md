@@ -1,4 +1,4 @@
-Title: A Practical Guide to the "Open-Source Machine Learning Master's"
+Title: A Practical Guide to the "Open-Source ML Master's"
 Date: 2018-02-03 18:30
 Author: Will Wolf
 Lang: en

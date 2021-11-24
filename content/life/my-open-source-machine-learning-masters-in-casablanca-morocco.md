@@ -1,4 +1,4 @@
-Title: My Open-Source Machine Learning Master's (in Casablanca, Morocco)
+Title: My Open-Source ML Master's (in Casablanca, Morocco)
 Date: 2016-07-29 15:23
 Author: Will Wolf
 Lang: en
