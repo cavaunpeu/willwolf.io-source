@@ -7,7 +7,7 @@ Status: published
 Summary: I'm joining [ASAPP, Inc.](https://www.asapp.com/) as a Machine Learning Engineer.
 Image: images/asapp.jpg
 
-The open-source ["Master's"](http://willwolf.io/2016/07/29/my-open-source-machine-learning-masters-in-casablanca-morocco/) has come to a close. I'm now joining [ASAPP, Inc.](https://www.asapp.com/) as a Machine Learning Engineer.
+The Open-Source ["Master's"](http://willwolf.io/2016/07/29/my-open-source-machine-learning-masters-in-casablanca-morocco/) has come to a close. I'm now joining [ASAPP, Inc.](https://www.asapp.com/) as a Machine Learning Engineer.
 
 ASAPP builds artificial-intelligence tools for enterprise. My work involves building backend infrastructure for machine-learning products — with a focus on NLP. We're rather stealth, so that's all I can say for now.
 

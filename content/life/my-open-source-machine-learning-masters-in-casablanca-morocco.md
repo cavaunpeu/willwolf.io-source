@@ -1,4 +1,4 @@
-Title: My Open-Source Machine Learning Master's (in Casablanca, Morocco)
+Title: My Open-Source ML "Master's" (in Casablanca, Morocco)
 Date: 2016-07-29 15:23
 Author: Will Wolf
 Lang: en
@@ -7,7 +7,7 @@ Status: published
 Summary: A 9-month self-curated deep-dive into select topics in machine learning and distributed computing.
 Image: images/open_source.png
 
-The Open-Source Machine Learning Master's (OSMLM) is a self-curated deep-dive into select topics in machine learning and distributed computing. Educational resources are derived from online courses ([MOOCs](https://en.wikipedia.org/wiki/Massive_open_online_course)), textbooks, predictive modeling competitions, academic research ([arXiv](https://arxiv.org/)), and the open-source software community. In machine learning, both the quantity and quality of these resources - all available for free or at a trivial cost - is truly f*cking amazing.
+The Open-Source Machine Learning "Master's" (OSMLM) is a self-curated deep-dive into select topics in machine learning and distributed computing. Educational resources are derived from online courses ([MOOCs](https://en.wikipedia.org/wiki/Massive_open_online_course)), textbooks, predictive modeling competitions, academic research ([arXiv](https://arxiv.org/)), and the open-source software community. In machine learning, both the quantity and quality of these resources - all available for free or at a trivial cost - is truly f*cking amazing.
 
 ## Why Am I Doing This?
 
@@ -72,7 +72,7 @@ In addition to self-study, I'd like to assist a few fascinating Moroccan technol
 
 ## In Two Sentences
 
-The Open-Source Machine Learning Master's in Casablanca, Morocco allows me to pursue several significant personal goals at the same time. This is my Francophone machine learning adventure.
+The Open-Source Machine Learning "Master's" in Casablanca, Morocco allows me to pursue several significant personal goals at the same time. This is my Francophone machine learning adventure.
 
 ## Update: Now Finished, Here's What I Did
 
