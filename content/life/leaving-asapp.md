@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: leaving-asapp
 Status: published
-Summary: I left [ASAPP, Inc.](https://www.asapp.com/) after 4+ wonderful years.
+Summary: I left [ASAPP](https://www.asapp.com/) after 4+ wonderful years.
 Image: images/asapp.jpg
 
 I joined ASAPP in August 2017 as its 78th hire. I'd just finished my Open-Source ML ["Master's"]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in Morocco; I wanted to [join]({filename}/life/my-next-role.md) "a small company with ML at its core." I was referred by an old colleague. We barely had a [website](https://web.archive.org/web/20170825060205/https://www.asapp.com/).
