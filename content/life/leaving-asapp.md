@@ -1,5 +1,5 @@
 Title: Leaving ASAPP
-Date: 2021-11-11 12:00
+Date: 2021-12-04 12:00
 Author: Will Wolf
 Lang: en
 Slug: leaving-asapp
