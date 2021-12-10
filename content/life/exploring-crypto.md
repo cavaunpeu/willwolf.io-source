@@ -7,7 +7,7 @@ Status: published
 Summary: I'm taking some time to explore: Rust, complex systems, crypto.
 Image: images/complex_system.jpg
 
-"Explore vs. exploit" is a classic dilemma in decision-making. To illustrate, imagine it’s date-night in downtown Manhattan and you’re choosing where to eat.
+To "explore vs. exploit" is a classic dilemma in decision-making. To illustrate, imagine it’s date-night in downtown Manhattan and you’re choosing where to eat.
 
 To *exploit* is to dine at your favorite restaurant. The food is well-cooked. The servers are attentive. The decor is tasteful. You'll have a great meal and you know it.
 
