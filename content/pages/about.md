@@ -24,6 +24,8 @@ Hi! My name's Will. I'm equal parts: **technologist, bookworm, polyglot, cyclist
 
 - `Language` I love learning and speaking foreign languages. I'm a longtime speaker of **[Spanish](http://willwolf.io/es/)** and **French**. At present, I'm voraciously learning **Russian**.
 
+- `Reading` I read a lot of books. [Here's]({filename}/pages/books.md) a few from recent years.
+
 **To get in touch, please see the contact links below.**
 
 Will
