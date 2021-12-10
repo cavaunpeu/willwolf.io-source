@@ -4,7 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: exploring-crypto
 Status: published
-Summary: I'm taking some time to explore: Rust, smart contract development, complex systems, and their application to the crypto space at large.
+Summary: I'm taking some time to explore: Rust, smart contract development, complex systems, crypto.
 Image: images/complex_system.jpg
 
 The "explore vs. exploit" tradeoff is a classic decision-making dilemma. To illustrate, imagine it’s date-night in downtown Manhattan and you’re choosing where to eat.
