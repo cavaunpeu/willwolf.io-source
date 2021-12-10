@@ -9,7 +9,7 @@ Image: images/complex_system.jpg
 
 To "explore vs. exploit" is a classic dilemma in decision-making. To illustrate, imagine it’s date-night in downtown Manhattan and you’re choosing where to eat.
 
-To *exploit* is to dine at your favorite restaurant. The food is well-cooked. The servers are attentive. The decor is tasteful. You'll have a great meal and you know it.
+To *exploit* is to dine at your favorite restaurant. The food is well-cooked. The servers are attentive. You'll have a great meal and you know it.
 
 To *explore* is to try something new. It's to implicitly concede that while your favorite restaurant is great, it may not be the best overall. Your new choice may be worse. However, you'll never find something better unless you try.
 
