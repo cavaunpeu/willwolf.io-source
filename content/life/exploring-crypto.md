@@ -11,7 +11,7 @@ To "explore vs. exploit" is a classic dilemma in decision-making. To illustrate,
 
 To *exploit* is to dine at your favorite restaurant. The food is well-cooked. The servers are attentive. You'll have a great meal and you know it.
 
-To *explore* is to try something new. It's to implicitly concede that while your favorite restaurant is great, it may not be the best overall. Your new choice may be worse. However, you'll never find something better unless you try.
+To *explore* is to try something new. It's to implicitly concede that while your favorite restaurant is great, it may not be the best overall. Your new choice may very well end in vomit and tears. However, you'll never find something better unless you try.
 
 ## ASAPP
 
