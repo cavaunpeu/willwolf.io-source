@@ -15,7 +15,7 @@ To *explore* is to try something new. It's to implicitly concede that while your
 
 ## ASAPP
 
-Four and a half years at [ASAPP]({filename}/life/leaving-asapp.md) was my career on "exploit." ASAPP is a company solving important problems replete with wonderful colleagues and opportunities for growth. I benefited from this environment each and every day. I kept choosing ASAPP because it unfailingly was, and remains, an excellent place to call my professional home.
+Four and a half years at [ASAPP]({filename}/life/leaving-asapp.md) was my career on "exploit." ASAPP is a company solving important problems replete with wonderful colleagues and ample opportunity for personal growth. I benefited from this environment each and every day. I kept choosing ASAPP because it unfailingly was, and remains, an excellent place to call my professional home.
 
 I joined ASAPP at age 28. I'm now 32. I'd like to see what else there is. Where else I can learn, enjoy, create and grow. In simple terms, I'd like to explore.
 
