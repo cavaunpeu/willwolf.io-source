@@ -1,19 +1,19 @@
-Title: A Practical Guide to the "Open-Source Machine Learning Master's"
+Title: A Practical Guide to the Open-Source ML "Master's"
 Date: 2018-02-03 18:30
 Author: Will Wolf
 Lang: en
 Slug: practical-guide-open-source-ml-masters
 Status: published
-Summary: The higher education paradigm is changing. Motivation, logistics and strategic insight re: designing the "Open-Source Master's" for yourself.
+Summary: Motivation, logistics and strategic insight re: designing the Open-Source "Master's" for yourself.
 Image: images/osmlm.jpg
 
 As an "in" professional discipline, Machine Learning exhibits a curious behavior: though talent is frustratingly scarce, it's immensely *easy* for the individual to obtain. Why? **It's all available online, (largely) free for the taking.**
 
 I did not get a bachelor's degree in this field. Self-teaching at my kitchen table in 2014, I landed a job as a software developer. Self-teaching still, I joined [ShopKeep](https://www.shopkeep.com/)'s Data Science team. Eighteen months later and wanting further technical expertise, I quit my job, left NYC, and jumped full-time into machine learning self-study — the best, if only, way I knew how.
 
-In September of 2016, I moved to Casablanca, Morocco to pursue the ["Open-Source Machine Learning Master's"]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/life/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to plan and execute a similar program for yourself.
+In September of 2016, I moved to Casablanca, Morocco to pursue the [Open-Source Machine Learning "Master's"]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md) — a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog. Now back living and working in NYC, [decidedly successful]({filename}/life/joining-asapp.md) in what I set out to do, I'd like to inform others as to how to plan and execute a similar program for yourself.
 
-The following is a practical guide to the "Open-Source Machine Learning Master's" (OSMLM). It is *not* a technical guide, which would provide concrete guidance on what to study. Instead, my aim is to provide motivation, logistical details, and strategic insight — to take you from "that seems cool, but crazy" to "woah, this is not only feasible, but really makes a lot of sense." I personally find the latter much more valuable.
+The following is a practical guide to the Open-Source Machine Learning "Master's" (OSMLM). It is *not* a technical guide, which would provide concrete guidance on what to study. Instead, my aim is to provide motivation, logistical details, and strategic insight — to take you from "that seems cool, but crazy" to "woah, this is not only feasible, but really makes a lot of sense." I personally find the latter much more valuable.
 
 The content is organized as follows:
 
@@ -50,7 +50,7 @@ The OSMLM confers a number of obvious benefits in cost, expediency and flexibili
 
 ### Downsides
 1. **There is no one to push you but yourself.** A priori, there are no professors. There are no study groups. There will be no tangible social pressure: it will probably just be you.
-2. **This might be viewed as a "radical" choice**. In ten years, I'm certain this will change. However, in 2018, you'll find few people with the line "Open-Source Master's" on their résumé.
+2. **This might be viewed as a "radical" choice**. In ten years, I'm certain this will change. However, in 2018, you'll find few people with the line Open-Source "Master's" on their résumé.
 3. **The meritocracy comes to bear.** A master's degree from a prominent University, along with a passable GPA, holds professional weight (for better or for worse). In contrast, the OSMLM attacks on one singular vector: that *talent* is weight, and that success in this program is developing this talent. There will be no "diploma-crutch."
 
 ### Who this is for
