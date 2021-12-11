@@ -16,7 +16,7 @@ Hi! My name's Will. I'm equal parts: **technologist, bookworm, polyglot, cyclist
 - `[2014-2016]` After **teaching myself topics in machine learning** and software engineering, I worked at [LiveAuctioneers](https://www.liveauctioneers.com) and [ShopKeep](https://www.shopkeep.com) in data science roles.
 - `[2016-2017]` I quit my job and **moved to Casablanca, Morocco to pursue an Open-Source ["Master's"]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md)** in machine learning and statistics—a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog.
 - `[2017-2021]` I [joined ASAPP]({filename}/life/joining-asapp.md) as a machine learning engineer, then researcher, then machine learning engineer. My work spanned **pure NLP research, applied NLP research, engineering and product.**
-- `[2021-present]` I left ASAPP. I'm taking some time to [explore]({filename}/life/exploring-crypto.md)!
+- `[2021-present]` I [left ASAPP]({filename}/life/leaving-asapp.md). I'm taking some time to [explore]({filename}/life/exploring-crypto.md)!
 
 **Presently, I spend my time on:**
 
