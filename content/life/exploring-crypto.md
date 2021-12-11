@@ -41,6 +41,6 @@ In addition, I've applied for Ph.D. programs in statistical ML. Hopefully, I'll 
 
 In the spirit of exploration, I won't rigidly structure this period of my life. Instead, I'll see where my interests lead and follow them vigorously.
 
-Please don't hesitate to say 👋 if any of the above resonates with you.
+Please don't hesitate to say 👋 if any of the above resonates with you!
 
 Will
