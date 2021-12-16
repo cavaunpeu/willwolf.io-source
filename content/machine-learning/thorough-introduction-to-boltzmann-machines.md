@@ -71,7 +71,7 @@ Note:
 
 - Since our weights can be negative, $H(x)$ can be negative. Since our likelihood is proportional to a valid probability, we'd prefer it to be non-negative.
 - To enforce this constraint, we exponentiate $H(x)$ in the second equation.
-- To normalize, we divide by the normalization constant $Z$, i.e. the sum of the likelihoods of all possible values of $x^{(1)}, ..., x^{(n)}$.
+- To normalize, we divide by the normalization constant $Z$, i.e. the sum of the likelihoods of all possible values of $x$.
 
 ## Computing the partition function by hand
 
