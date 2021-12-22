@@ -4,11 +4,11 @@ Author: Will Wolf
 Lang: en
 Slug: crypto-projects
 Status: published
-Summary: A running lists of things I've built in crypto.
+Summary: A running list of things I've built in and around the crypto space.
 
 I'm currently taking some time to [explore]({filename}/life/exploring-crypto.md): Rust, complex systems, crypto.
 
-Here's a running list of things I've built in this space.
+Here's a running list of things I've built in and around this space.
 
 ## Anchor Escrow Program
 
