@@ -83,10 +83,10 @@ data.append((x, theta))
 Stitching this all together, our SBI routine looks as follows:
 
 ```python
-for i in range(N_EPOCHS):
+for e in range(N_EPOCHS):
     data = []
-    for j in range(N_SAMPLES):
-        if i == 0:
+    for _ in range(N_SAMPLES):
+        if e == 0:
             theta = prior.sample()
         else:
             theta = q_phi(x=x_o).sample()
@@ -99,6 +99,13 @@ posterior_samples = [q_phi(x=x_o).sample() for _ in range(ANY_NUMBER)]
 ```
 
 ## Learning the right estimator
+
+Unfortunately, we're still left with a problem:
+
+1. In the first epoch, we learn $q_{\phi, e=0}(\bm{\theta}\vert\mathbf{x}) \propto p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})$, i.e. the **right** estimator.
+2. Otherwise, we learn $q_{\phi, e}(\bm{\theta}\vert\mathbf{x}) \propto p(\mathbf{x}\vert\bm{\theta})q_{\phi, e-1}(\bm{\theta}\vert\mathbf{x})$, i.e. the **wrong** estimator.
+
+So, how do we correct this mistake?
 
 # Neural Likelihood Estimation
 
