@@ -48,7 +48,7 @@ Then, we train our network.
 q_phi.train(data)
 ```
 
-Finally, once trained, we can estimate the true posterior $p(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$—our posterior belief over parameters $\bm{\theta}$ given our *observed* (not simulated!) data $\mathbf{x}_o$ via $q_{\phi}(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$.
+Finally, once trained, we can estimate the true posterior $p(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$—our posterior belief over parameters $\bm{\theta}$ given our *observed* (not simulated!) data $\mathbf{x}_o$ as $\hat{p}(\bm{\theta}\vert\mathbf{x}_o) = q_{\phi}(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$.
 
 ## Learning the wrong estimator
 
@@ -67,7 +67,7 @@ Otherwise, $q_{\phi}$ will learn estimator a posterior over parameters given dat
 
 ## Learning a better estimator
 
-So, how do we obtain parameters $\bm{\theta}_n$ that will produce $\mathbf{x}_n \sim p(\mathbf{x}\vert\bm{\theta}_n)$ near $\mathbf{x}_o$? We take those that have high (estimated) posterior density given $\mathbf{x}_o$!
+So, how do we obtain parameters $\bm{\theta}_n$ that produce $\mathbf{x}_n \sim p(\mathbf{x}\vert\bm{\theta}_n)$ near $\mathbf{x}_o$? We take those that have high (estimated) posterior density given $\mathbf{x}_o$!
 
 In this vein, we build our training set as follows:
 
@@ -83,7 +83,7 @@ data.append((x, theta))
 Stitching this all together, our SBI routine looks as follows:
 
 ```python
-for e in range(N_EPOCHS):
+for r in range(N_ROUNDS):
     data = []
     for _ in range(N_SAMPLES):
         if e == 0:
@@ -102,18 +102,24 @@ posterior_samples = [q_phi(x=x_o).sample() for _ in range(ANY_NUMBER)]
 
 Unfortunately, we're still left with a problem:
 
-1. In the first epoch, we learn $q_{\phi, e=0}(\bm{\theta}\vert\mathbf{x}) \propto p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})$, i.e. the **right** estimator.
-2. Otherwise, we learn $q_{\phi, e}(\bm{\theta}\vert\mathbf{x}) \propto p(\mathbf{x}\vert\bm{\theta})q_{\phi, e-1}(\bm{\theta}\vert\mathbf{x})$, i.e. the **wrong** estimator.
+1. In the first round, we learn $q_{\phi, r=0}(\bm{\theta}\vert\mathbf{x}) \propto p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})$, i.e. the **right** estimator.
+2. Otherwise, we learn $q_{\phi, r}(\bm{\theta}\vert\mathbf{x}) \propto p(\mathbf{x}\vert\bm{\theta})q_{\phi, r-1}(\bm{\theta}\vert\mathbf{x})$, i.e. the **wrong** estimator.
 
 So, how do we correct this mistake?
 
-In [2], the authors adjust the learned posterior $q_{\phi, e}(\bm{\theta}\vert\mathbf{x})$ by simply dividing it by $q_{\phi, e-1}(\bm{\theta}\vert\mathbf{x})$ then multiplying it by $p(\bm{\theta})$. Furthermore, as they choose $q_{\phi}$ to be a *Mixture Density Network*—a neural network which outputs the parameters of a mixture of Gaussians—and the prior to be "simple distribution (uniform or Gaussian, as is typically the case in practice)," this adjustment can be done analytically.
+In [2], the authors adjust the learned posterior $q_{\phi, r}(\bm{\theta}\vert\mathbf{x})$ by simply dividing it by $q_{\phi, r-1}(\bm{\theta}\vert\mathbf{x})$ then multiplying it by $p(\bm{\theta})$. Furthermore, as they choose $q_{\phi}$ to be a *Mixture Density Network*—a neural network which outputs the parameters of a mixture of Gaussians—and the prior to be "simple distribution (uniform or Gaussian, as is typically the case in practice)," this adjustment can be done analytically.
 
-Conversely, the authors in [3] *train* $q_{\phi}$ on a target *reweighted* to similar effect: instead of maximizing the total (log) likelihood $\Sigma_{n} \log q_{\phi}(\bm{\theta}_n\vert\mathbf{x}_n)$, they maximize $\Sigma_{n} \log w_n q_{\phi}(\bm{\theta}_n\vert\mathbf{x}_n)$, where $w_n = \frac{p(\bm{\theta}_n)}{q_{\phi, e-1}(\bm{\theta}_n\vert\mathbf{x}_n)}$.
+Conversely, the authors in [3] *train* $q_{\phi}$ on a target *reweighted* to similar effect: instead of maximizing the total (log) likelihood $\Sigma_{n} \log q_{\phi}(\bm{\theta}_n\vert\mathbf{x}_n)$, they maximize $\Sigma_{n} \log w_n q_{\phi}(\bm{\theta}_n\vert\mathbf{x}_n)$, where $w_n = \frac{p(\bm{\theta}_n)}{q_{\phi, r-1}(\bm{\theta}_n\vert\mathbf{x}_n)}$.
 
 While both approaches carry further nuance and potential pitfalls, they bring us effective methods for using a neural network to directly estimate a faithful posterior in SBI routines.
 
 # Neural Likelihood Estimation
+
+In neural likelihood estimation (NLE), we use a neural network to directly estimate the (intractable) likelihood function of the simulator $p(\mathbf{x}\vert\bm{\theta})$ itself. We denote this estimator $q_{\phi}(\mathbf{x}\vert\bm{\theta})$. Finally, we compute our desired posterior as $\hat{p}(\bm{\theta}\vert\mathbf{x}_o) \propto q_{\phi}(\mathbf{x}_o\vert\bm{\theta})p(\bm{\theta})$.
+
+Similar to Neural Posterior Estimation (NPE) approaches, we'd like to learn our estimator on inputs $\bm{\theta}$ that produce $\mathbf{x}_n \sim p(\mathbf{x}\vert\bm{\theta}_n)$ near $\mathbf{x}_o$. To do this, we again sample them from regions of high approximate posterior density. In each round $r$, in NPE, this posterior was $q_{\phi, r-1}(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$; in NLE, it is $q_{\phi, r-1}(\mathbf{x}_o\vert\bm{\theta})p(\bm{\theta})$. In both cases, we draw samples from our approximate posterior density, then feed them to the simulator to generate novel data for training our estimator $q_{\phi}$.
+
+For a more detailed treatment, please refer to original works [4], [5].
 
 # Neural Likelihood Ratio Estimation
 
@@ -146,11 +152,42 @@ While both approaches carry further nuance and potential pitfalls, they bring us
     year = {2016}
 }
 
-3. @article{lueckmann2017,
-year = {2017},
-title = {{Flexible statistical inference for mechanistic models of neural dynamics}},
-author = {Lueckmann, Jan-Matthis and Goncalves, Pedro J and Bassetto, Giacomo and Öcal, Kaan and Nonnenmacher, Marcel and Macke, Jakob H},
-journal = {arXiv},
-eprint = {1711.01861},
+3. @article{
+    lueckmann2017,
+    year = {2017},
+    title = {{Flexible statistical inference for mechanistic models of neural dynamics}},
+    author = {Lueckmann, Jan-Matthis and Goncalves, Pedro J and Bassetto, Giacomo and Öcal, Kaan and Nonnenmacher, Marcel and Macke, Jakob H},
+    journal = {arXiv},
+    eprint = {1711.01861},
 }
+
+4. @InProceedings{
+    pmlr-v89-papamakarios19a,
+    title = {Sequential Neural Likelihood: Fast Likelihood-free Inference with Autoregressive Flows},
+    author = {Papamakarios, George and Sterratt, David and Murray, Iain},
+    booktitle = {Proceedings of the Twenty-Second International Conference on Artificial Intelligence and Statistics},
+    pages = {837--848},
+    year = {2019},
+    editor = {Chaudhuri, Kamalika and Sugiyama, Masashi},
+    volume = {89},
+    series = {Proceedings of Machine Learning Research},
+    month = {16--18 Apr},
+    publisher = {PMLR},
+    pdf = {http://proceedings.mlr.press/v89/papamakarios19a/papamakarios19a.pdf},
+    url = {http://proceedings.mlr.press/v89/papamakarios19a.html}
+}
+
+5. @InProceedings{
+    pmlr-v96-lueckmann19a,
+    title = {Likelihood-free inference with emulator networks},
+    author = {Lueckmann, Jan-Matthis and Bassetto, Giacomo and Karaletsos, Theofanis and Macke, Jakob H.},
+    booktitle = {Proceedings of The 1st Symposium on Advances in Approximate Bayesian Inference}, pages = {32--53}, year = {2019},
+    editor = {Francisco Ruiz and Cheng Zhang and Dawen Liang and Thang Bui},
+    volume = {96},
+    series = {Proceedings of Machine Learning Research},
+    address = {},
+    month = {02 Dec},
+    publisher = {PMLR},
+    pdf = {http://proceedings.mlr.press/v96/lueckmann19a/lueckmann19a.pdf},
+    url = {http://proceedings.mlr.press/v96/lueckmann19a.html} }
 ```
