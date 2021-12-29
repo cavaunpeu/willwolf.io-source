@@ -119,9 +119,11 @@ In neural likelihood estimation (NLE), we use a neural network to directly estim
 
 Similar to Neural Posterior Estimation (NPE) approaches, we'd like to learn our estimator on inputs $\bm{\theta}$ that produce $\mathbf{x}_n \sim p(\mathbf{x}\vert\bm{\theta}_n)$ near $\mathbf{x}_o$. To do this, we again sample them from regions of high approximate posterior density. In each round $r$, in NPE, this posterior was $q_{\phi, r-1}(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$; in NLE, it is $q_{\phi, r-1}(\mathbf{x}_o\vert\bm{\theta})p(\bm{\theta})$. In both cases, we draw samples from our approximate posterior density, then feed them to the simulator to generate novel data for training our estimator $q_{\phi}$.
 
-For a more detailed treatment, please refer to original works [4], [5].
+For a more detailed treatment, please refer to original works [4], [5] (among others).
 
 # Neural Likelihood Ratio Estimation
+
+
 
 
 # References
