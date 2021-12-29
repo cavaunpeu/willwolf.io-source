@@ -107,6 +107,12 @@ Unfortunately, we're still left with a problem:
 
 So, how do we correct this mistake?
 
+In [2], the authors adjust the learned posterior $q_{\phi, e}(\bm{\theta}\vert\mathbf{x})$ by simply dividing it by $q_{\phi, e-1}(\bm{\theta}\vert\mathbf{x})$ then multiplying it by $p(\bm{\theta})$. Furthermore, as they choose $q_{\phi}$ to be a *Mixture Density Network*—a neural network which outputs the parameters of a mixture of Gaussians—and the prior to be "simple distribution (uniform or Gaussian, as is typically the case in practice)," this adjustment can be done analytically.
+
+Conversely, the authors in [3] *train* $q_{\phi}$ on a target *reweighted* to similar effect: instead of maximizing the total (log) likelihood $\Sigma_{n} \log q_{\phi}(\bm{\theta}_n\vert\mathbf{x}_n)$, they maximize $\Sigma_{n} \log w_n q_{\phi}(\bm{\theta}_n\vert\mathbf{x}_n)$, where $w_n = \frac{p(\bm{\theta}_n)}{q_{\phi, e-1}(\bm{\theta}_n\vert\mathbf{x}_n)}$.
+
+While both approaches carry further nuance and potential pitfalls, they bring us effective methods for using a neural network to directly estimate a faithful posterior in SBI routines.
+
 # Neural Likelihood Estimation
 
 # Neural Likelihood Ratio Estimation
@@ -126,5 +132,25 @@ So, how do we correct this mistake?
     pages = {30055--30062},
     number = {48},
     volume = {117}
+}
+
+2. @inproceedings{papamakarios2016,
+    author = {Papamakarios, George and Murray, Iain},
+    booktitle = {Advances in Neural Information Processing Systems},
+    editor = {D. Lee and M. Sugiyama and U. Luxburg and I. Guyon and R. Garnett},
+    pages = {},
+    publisher = {Curran Associates, Inc.},
+    title = {Fast $\epsilon$-free Inference of Simulation Models with Bayesian Conditional Density Estimation},
+    url = {https://proceedings.neurips.cc/paper/2016/file/6aca97005c68f1206823815f66102863-Paper.pdf},
+    volume = {29},
+    year = {2016}
+}
+
+3. @article{lueckmann2017,
+year = {2017},
+title = {{Flexible statistical inference for mechanistic models of neural dynamics}},
+author = {Lueckmann, Jan-Matthis and Goncalves, Pedro J and Bassetto, Giacomo and Öcal, Kaan and Nonnenmacher, Marcel and Macke, Jakob H},
+journal = {arXiv},
+eprint = {1711.01861},
 }
 ```
