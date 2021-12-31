@@ -125,12 +125,21 @@ For a more detailed treatment, please refer to original works [4], [5] (among ot
 
 # Neural Likelihood Ratio Estimation
 
-<go clarify that the >
+In this final class of models, we instead try to directly draw *samples* from the true posterior itself. However, since we can't compute $p(\mathbf{x}\vert\bm{\theta})$ nor $p(\mathbf{x})$, we first need a sampling algorithm that satisifes our constraints. One such class of algorithms is *Markov chain Monte Carlo*, termed MCMC.
 
-In this final class of models, we instead try to directly draw *samples* from the posterior itself.
+In MCMC, we first *propose* parameter samples $\bm{\theta}_i$ from a proposal distribution. Then, we evaluate their *fitness* by asking the question: "does this sample $\bm{\theta}_i$ have higher posterior density than the previous sample $\bm{\theta}_j$ we drew?" Generally, this question is answered through a comparison, e.g.
 
+$\frac{
+    p(\bm{\theta}_i\vert\mathbf{x})
+} {
+    p(\bm{\theta}_{j}\vert\mathbf{x})
+} = \frac{
+    p(\mathbf{x}\vert\bm{\theta}_i)p(\bm{\theta}_i) / p(\mathbf{x})
+} {
+    p(\mathbf{x}\vert\bm{\theta}_j)p(\bm{\theta}_j) / p(\mathbf{x})
+}$
 
-
+Fortunately, the evidence terms $p(\mathbf{x})$ cancel, and the prior densities $p(\bm{\theta})$ are evaluable. Though we cannot compute the likelihood terms outright, we can estimate their *ratio* and proceed with MCMC as per normal. If $\frac{p(\bm{\theta}_i\vert\mathbf{x})}{p(\bm{\theta}_j\vert\mathbf{x})} \gt 1$, we (are likely to) *accept* $\bm{\theta}_i$ as a sample from our target posterior.
 
 # References
 ```
