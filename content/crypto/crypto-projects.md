@@ -5,6 +5,7 @@ Lang: en
 Slug: crypto-projects
 Status: published
 Summary: A running list of things I've built in and around the crypto space.
+Image: images/complex_system.jpg
 
 I'm currently taking some time to [explore]({filename}/life/exploring-crypto.md): Rust, complex systems, crypto.
 

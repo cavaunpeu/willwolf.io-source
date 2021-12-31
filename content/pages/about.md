@@ -5,6 +5,7 @@ Lang: en
 Slug: about
 Status: published
 Template: page
+Image: images/will.jpg
 
 Hi! My name's Will. I'm equal parts: **technologist, bookworm, polyglot, cyclist, optimist, traveler**.
 
