@@ -9,9 +9,9 @@ Image:
 
 Bayesian inference is the task of quantifying a posterior belief over parameters $\bm{\theta}$ given observed data $\mathbf{x}$—where $\mathbf{x}$ was generated from a model $p(\mathbf{x}\vert{\bm{\theta}})$—via Bayes' Theorem:
 
-\begin{equation*}
+$
     p(\bm{\theta}\vert\mathbf{x}) = \frac{p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})}{p(\mathbf{x})}
-\end{equation*}
+$
 
 In numerous applications of scientific interest, e.g. cosmological, climatic or urban-mobility phenomena, the likelihood of the data $\mathbf{x}$ under the data-generating function $p(\mathbf{x}\vert\bm{\theta})$ is intractable to compute, precluding classical inference approaches. Notwithstanding, *simulating* new data $\mathbf{x}$ from this function is often trivial—for example, by coding the generative process in a few lines of Python—
 
@@ -127,9 +127,10 @@ For a more detailed treatment, please refer to original works [4], [5] (among ot
 
 In this final class of models, we instead try to directly draw *samples* from the true posterior itself. However, since we can't compute $p(\mathbf{x}\vert\bm{\theta})$ nor $p(\mathbf{x})$, we first need a sampling algorithm that satisifes our constraints. One such class of algorithms is *Markov chain Monte Carlo*, termed MCMC.
 
-In MCMC, we first *propose* parameter samples $\bm{\theta}_i$ from a proposal distribution. Then, we evaluate their *fitness* by asking the question: "does this sample $\bm{\theta}_i$ have higher posterior density than the previous sample $\bm{\theta}_j$ we drew?" Generally, this question is answered through a comparison, e.g.
+In MCMC, we first *propose* parameter samples $\bm{\theta}_i$ from a proposal distribution. Then, we evaluate their *fitness* by asking the question: "does this sample $\bm{\theta}_i$ have higher posterior density than the previous sample $\bm{\theta}_j$ we drew?" Generally, this question is answered through comparison, e.g.
 
-$\frac{
+$$
+\frac{
     p(\bm{\theta}_i\vert\mathbf{x})
 } {
     p(\bm{\theta}_{j}\vert\mathbf{x})
@@ -137,11 +138,70 @@ $\frac{
     p(\mathbf{x}\vert\bm{\theta}_i)p(\bm{\theta}_i) / p(\mathbf{x})
 } {
     p(\mathbf{x}\vert\bm{\theta}_j)p(\bm{\theta}_j) / p(\mathbf{x})
-}$
+}
+$$
 
 Fortunately, the evidence terms $p(\mathbf{x})$ cancel, and the prior densities $p(\bm{\theta})$ are evaluable. Though we cannot compute the likelihood terms outright, we can estimate their *ratio* and proceed with MCMC as per normal. If $\frac{p(\bm{\theta}_i\vert\mathbf{x})}{p(\bm{\theta}_j\vert\mathbf{x})} \gt 1$, we (are likely to) *accept* $\bm{\theta}_i$ as a sample from our target posterior.
 
-# References
+### Estimating the likelihood ratio
+
+Let us term the likelihood ratio as
+
+$$
+r(\mathbf{x}\vert\bm{\theta}_i, \bm{\theta}_j) = \frac{
+    p(\mathbf{x}\vert\bm{\theta}_i)
+} {
+    p(\mathbf{x}\vert\bm{\theta}_j)
+}
+$$
+
+Ingeniously, [7] propose to learn a classifier to discriminate samples $\mathbf{x} \sim p(\mathbf{x}\vert\bm{\theta}_i)$ from $\mathbf{x} \sim p(\mathbf{x}\vert\bm{\theta}_j)$, then use its predictions to compute to estimate $r(\mathbf{x}\vert\bm{\theta}_i, \bm{\theta}_j)$.
+
+To do this, we draw training samples $(\mathbf{x}, y=1) \sim p(\mathbf{x}\vert\bm{\theta}_i)$ and $(\mathbf{x}, y=0) \sim p(\mathbf{x}\vert\bm{\theta}_j)$ then train a binary classifer $d(y\vert\mathbf{x})$ on this data. In this vein, a perfect classifier gives:
+
+$$
+\begin{align*}
+d^*(y=1\vert\mathbf{x})
+&= \frac{
+    p(\mathbf{x}\vert\bm{\theta}_i)
+} {
+    p(\mathbf{x}\vert\bm{\theta}_i) + p(\mathbf{x}\vert\bm{\theta}_j)
+} \\
+d^*(y=0\vert\mathbf{x}) &= \frac{
+    p(\mathbf{x}\vert\bm{\theta}_j)
+} {
+    p(\mathbf{x}\vert\bm{\theta}_i) + p(\mathbf{x}\vert\bm{\theta}_j)
+} \\
+\end{align*}
+$$
+
+Consequently,
+
+$$
+\begin{align*}
+r(\mathbf{x}\vert\bm{\theta}_i, \bm{\theta}_j) &= \frac{
+    p(\mathbf{x}\vert\bm{\theta}_i)
+} {
+    p(\mathbf{x}\vert\bm{\theta}_j)
+} \\
+&= \frac{
+    d^*(y=1\vert\mathbf{x})
+} {
+    d^*(y=0\vert\mathbf{x})
+} \\
+&= \frac{
+    d^*(y=1\vert\mathbf{x})
+} {
+    1 - d^*(y=1\vert\mathbf{x})
+}
+\end{align*}
+$$
+
+Since our classifier won't be perfect, we simply term it $d(y\vert\mathbf{x})$, where $\hat{r}(\mathbf{x}\vert\bm{\theta}_i, \bm{\theta}_j) = \frac{d(y=1\vert\mathbf{x})}{1 - d(y=1\vert\mathbf{x})}$. With $\hat{r}(\mathbf{x}\vert\bm{\theta}_i, \bm{\theta}_j)$ in hand, we can compare the posterior density of proposed samples $\bm{\theta}_i$ and $\bm{\theta}_j$ in our MCMC routine.
+
+### Generalizing our classifier
+
+## References
 ```
 1. @article{
     10.1073/pnas.1912789117,
@@ -221,5 +281,13 @@ Fortunately, the evidence terms $p(\mathbf{x})$ cancel, and the prior densities 
     pages = {859--877},
     number = {518},
     volume = {112}
+}
+
+7. @article{
+    year = {2015},
+    title = {{Approximating Likelihood Ratios with Calibrated Discriminative Classifiers}},
+    author = {Cranmer, Kyle and Pavez, Juan and Louppe, Gilles},
+    journal = {arXiv},
+    eprint = {1506.02169},
 }
 ```
