@@ -27,11 +27,13 @@ simulated_data = [generative_process(p) for p in [.2, .4, .6, .8, 1]]
 
 —motivating the study of *simulation-based* Bayesian *inference* methods, termed SBI.
 
+Furthermore, the evidence $p(\mathbf{x}) = \int{p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})}d\bm{\theta}$ is typically intractable to compute as well. This is because the integral has no closed-form solution; or, were the functional form of the likelihood (which we don't have) and the prior (which we do have) available, expanding these terms yields a summation over an "impractically large" number of terms, e.g. the number of possible cluster assignment configurations in a mixture of Gaussians [6]. For this reason, in SBI, we typically estimate the *unnormalized* posterior $\hat{p}(\bm{\theta}\vert\mathbf{x}) = p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})$.
+
 Recent work has explored the use of neural networks to perform key density estimation tasks, i.e. subroutines, of the SBI routine itself. We refer to this work as Neural SBI. In the following sections, we detail the various classes of these estimation tasks. For a more thorough analysis of their respective motivations, behaviors, and tradeoffs, we refer the reader to the original work.
 
 # Neural Posterior Estimation
 
-In this class of models, we estimate the true posterior $p(\bm{\theta}\vert\mathbf{x})$ with a conditional neural density estimator $q_{\phi}(\bm{\theta}\vert\mathbf{x})$. Simply, this estimator is a neural network with parameters $\phi$ that accepts $\mathbf{x}$ as input and produces $\bm{\theta}$ as output. It is trained on data tuples $\{\bm{\theta}_n, \mathbf{x}_n\}_{1:N}$ sampled from $p(\mathbf{x}, \bm{\theta}) = p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})$, where $p(\bm{\theta})$ is a prior we choose, and $p(\mathbf{x}\vert\bm{\theta})$ is our *simulator*. For example, constructing this training set might look as follows:
+In this class of models, we estimate $\hat{p}(\bm{\theta}\vert\mathbf{x})$ with a conditional neural density estimator $q_{\phi}(\bm{\theta}\vert\mathbf{x})$. Simply, this estimator is a neural network with parameters $\phi$ that accepts $\mathbf{x}$ as input and produces $\bm{\theta}$ as output. It is trained on data tuples $\{\bm{\theta}_n, \mathbf{x}_n\}_{1:N}$ sampled from $p(\mathbf{x}, \bm{\theta}) = p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})$, where $p(\bm{\theta})$ is a prior we choose, and $p(\mathbf{x}\vert\bm{\theta})$ is our *simulator*. For example, we can construct this training set as follows:
 
 ```python
 data = []
@@ -48,7 +50,7 @@ Then, we train our network.
 q_phi.train(data)
 ```
 
-Finally, once trained, we can estimate the true posterior $p(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$—our posterior belief over parameters $\bm{\theta}$ given our *observed* (not simulated!) data $\mathbf{x}_o$ as $\hat{p}(\bm{\theta}\vert\mathbf{x}_o) = q_{\phi}(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$.
+Finally, once trained, we can estimate $\hat{p}(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$—our posterior belief over parameters $\bm{\theta}$ given our *observed* (not simulated!) data $\mathbf{x}_o$ as $\hat{p}(\bm{\theta}\vert\mathbf{x}_o) = q_{\phi}(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$.
 
 ## Learning the wrong estimator
 
@@ -102,8 +104,8 @@ posterior_samples = [q_phi(x=x_o).sample() for _ in range(ANY_NUMBER)]
 
 Unfortunately, we're still left with a problem:
 
-1. In the first round, we learn $q_{\phi, r=0}(\bm{\theta}\vert\mathbf{x}) \propto p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})$, i.e. the **right** estimator.
-2. Otherwise, we learn $q_{\phi, r}(\bm{\theta}\vert\mathbf{x}) \propto p(\mathbf{x}\vert\bm{\theta})q_{\phi, r-1}(\bm{\theta}\vert\mathbf{x})$, i.e. the **wrong** estimator.
+1. In the first round, we learn $q_{\phi, r=0}(\bm{\theta}\vert\mathbf{x}) \approx p(\mathbf{x}\vert\bm{\theta})p(\bm{\theta})$, i.e. the **right** estimator.
+2. Otherwise, we learn $q_{\phi, r}(\bm{\theta}\vert\mathbf{x}) \approx p(\mathbf{x}\vert\bm{\theta})q_{\phi, r-1}(\bm{\theta}\vert\mathbf{x})$, i.e. the **wrong** estimator.
 
 So, how do we correct this mistake?
 
@@ -115,13 +117,17 @@ While both approaches carry further nuance and potential pitfalls, they bring us
 
 # Neural Likelihood Estimation
 
-In neural likelihood estimation (NLE), we use a neural network to directly estimate the (intractable) likelihood function of the simulator $p(\mathbf{x}\vert\bm{\theta})$ itself. We denote this estimator $q_{\phi}(\mathbf{x}\vert\bm{\theta})$. Finally, we compute our desired posterior as $\hat{p}(\bm{\theta}\vert\mathbf{x}_o) \propto q_{\phi}(\mathbf{x}_o\vert\bm{\theta})p(\bm{\theta})$.
+In neural likelihood estimation (NLE), we use a neural network to directly estimate the (intractable) likelihood function of the simulator $p(\mathbf{x}\vert\bm{\theta})$ itself. We denote this estimator $q_{\phi}(\mathbf{x}\vert\bm{\theta})$. Finally, we compute our desired posterior as $\hat{p}(\bm{\theta}\vert\mathbf{x}_o) = q_{\phi}(\mathbf{x}_o\vert\bm{\theta})p(\bm{\theta})$.
 
 Similar to Neural Posterior Estimation (NPE) approaches, we'd like to learn our estimator on inputs $\bm{\theta}$ that produce $\mathbf{x}_n \sim p(\mathbf{x}\vert\bm{\theta}_n)$ near $\mathbf{x}_o$. To do this, we again sample them from regions of high approximate posterior density. In each round $r$, in NPE, this posterior was $q_{\phi, r-1}(\bm{\theta}\vert\mathbf{x} = \mathbf{x}_o)$; in NLE, it is $q_{\phi, r-1}(\mathbf{x}_o\vert\bm{\theta})p(\bm{\theta})$. In both cases, we draw samples from our approximate posterior density, then feed them to the simulator to generate novel data for training our estimator $q_{\phi}$.
 
 For a more detailed treatment, please refer to original works [4], [5] (among others).
 
 # Neural Likelihood Ratio Estimation
+
+<go clarify that the >
+
+In this final class of models, we instead try to directly draw *samples* from the posterior itself.
 
 
 
@@ -191,5 +197,20 @@ For a more detailed treatment, please refer to original works [4], [5] (among ot
     month = {02 Dec},
     publisher = {PMLR},
     pdf = {http://proceedings.mlr.press/v96/lueckmann19a/lueckmann19a.pdf},
-    url = {http://proceedings.mlr.press/v96/lueckmann19a.html} }
+    url = {http://proceedings.mlr.press/v96/lueckmann19a.html}
+}
+
+6. @article{
+    10.1080/01621459.2017.1285773,
+    year = {2017},
+    title = {{Variational Inference: A Review for Statisticians}},
+    author = {Blei, David M. and Kucukelbir, Alp and McAuliffe, Jon D.},
+    journal = {Journal of the American Statistical Association},
+    issn = {0162-1459},
+    doi = {10.1080/01621459.2017.1285773},
+    eprint = {1601.00670},
+    pages = {859--877},
+    number = {518},
+    volume = {112}
+}
 ```
