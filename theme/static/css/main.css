@@ -42,6 +42,25 @@ h5 {
 .navbar-nav > li > a {
   line-height: 90px;
   font-size: 22px;
+  color: #444444 !important
+}
+
+.navbar-nav > li > a:hover {
+  color: #d9230f !important
+}
+
+#subscribeButton {
+  margin-top: 29.5px !important;
+  margin-bottom: 29.5px !important;
+  margin-left: 12px !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+#subscribeButton > a:hover {
+  text-decoration: none;
 }
 
 #myNavbar > ul > li > #activeLanguage.dropdown-toggle {

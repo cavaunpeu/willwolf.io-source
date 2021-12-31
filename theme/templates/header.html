@@ -17,28 +17,18 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
           {% if ABOUT_PAGE %}
-              <li><a href="{{ main_siteurl }}/{{ ABOUT_PAGE }}" title="{{ ABOUT_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-user"></span> {{ ABOUT_PAGE_LINK_TEXT }}</a></li>
+              <li><a href="{{ main_siteurl }}/{{ ABOUT_PAGE }}" title="{{ ABOUT_PAGE_LINK_TEXT }}">{{ ABOUT_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
           {% if RESUME_PAGE %}
-              <li><a href="{{ main_siteurl }}/images/resume.pdf" title="{{ RESUME_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-folder-open"></span> {{ RESUME_PAGE_LINK_TEXT }}</a></li>
+              <li><a href="{{ main_siteurl }}/images/resume.pdf" title="{{ RESUME_PAGE_LINK_TEXT }}"></span> {{ RESUME_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
           {% if BOOKS_PAGE %}
-              <li><a href="{{ main_siteurl }}/{{ BOOKS_PAGE }}" title="{{ BOOKS_PAGE_LINK_TEXT }}"><span class="glyphicon glyphicon-book"></span> {{ BOOKS_PAGE_LINK_TEXT }}</a></li>
+              <li><a href="{{ main_siteurl }}/{{ BOOKS_PAGE }}" title="{{ BOOKS_PAGE_LINK_TEXT }}">{{ BOOKS_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
-          {% if SHOW_FEED %}
-              <li><a href="{{ main_siteurl }}/{{ FEED_ALL_ATOM }}" title="willwolf.io Atom feed"><span class="icon-rss"></span> RSS</a></li>
-          {% endif %}
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="{{ SITEURL }}" title={{ DEFAULT_LANG | lookup_lang_name }} id="activeLanguage"><span class="glyphicon glyphicon-flag"></span>{{ DEFAULT_LANG.upper() }}<span class="caret"></span></a>
-            {% if extra_siteurls %}
-            <ul class="dropdown-menu">
-              {% for lang, url in extra_siteurls.items() %}
-                <li>
-                  <a id="inactiveLanguage" href="{{ url }}/" title={{ lang | lookup_lang_name }}>{{ lang.upper() }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-            {% endif %}
+          <li>
+            <button id="subscribeButton">
+              <a href="{{ main_siteurl }}/{{ SUBSCRIBE_PAGE }}" title="Get new posts by email">{{ SUBSCRIBE_PAGE_LINK_TEXT }}</a>
+            </button>
           </li>
         </ul>
       </div>

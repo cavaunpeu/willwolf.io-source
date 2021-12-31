@@ -8,13 +8,13 @@ import os
 AUTHOR = 'Will Wolf'
 YEAR = '2020'
 SITENAME = 'will wolf'
-SITESUBTITLE = 'writings on machine learning, geopolitics, life'
+SITESUBTITLE = 'writings on machine learning, crypto, geopolitics, life'
 SITEURL = ''
 PATH = 'content'
 TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
 SITESUBTITLE_WITH_LINKS = SITESUBTITLE
-for cat in ['machine learning', 'geopolitics', 'life']:
+for cat in ['machine learning', 'crypto', 'geopolitics', 'life']:
     catslug = cat.replace(' ', '-')
     link = f'<a id="sitesubtitle-{catslug}" href="{SITEURL}/{catslug}">{cat}</a>'
     SITESUBTITLE_WITH_LINKS = SITESUBTITLE_WITH_LINKS.replace(cat, link)
@@ -49,6 +49,9 @@ RESUME_PAGE_LINK_TEXT = 'Résumé'
 BOOKS_PAGE = 'books/'
 BOOKS_PAGE_LINK_TEXT = 'Books'
 
+SUBSCRIBE_PAGE = 'subscribe/'
+SUBSCRIBE_PAGE_LINK_TEXT = 'Subscribe'
+
 # Plugin settings
 from pelican_jupyter import liquid as nb_liquid
 
@@ -72,7 +75,7 @@ DATE_FORMATS = {
 # Multilanguage
 DEFAULT_LANG = 'en'
 I18N_UNTRANSLATED_ARTICLES = 'remove'
-ES_SITESUBTITLE = 'escritura sobre machine learning, la geopolítica, y la vida'
+ES_SITESUBTITLE = 'escritura sobre machine learning, crypto, la geopolítica, y la vida'
 ES_SITESUBTITLE_WITH_LINKS = ES_SITESUBTITLE.replace(
     'machine learning', f'<a id="sitesubtitle-machine-learning" href="{SITEURL}/es/machine-learning">machine learning</a>')
 
@@ -113,6 +116,7 @@ GITHUB_USERNAME = 'cavaunpeu'
 TWITTER_USERNAME = 'willwolf_'
 LINKEDIN_USERNAME = 'williamabrwolf'
 EMAIL_ADDRESS = 'williamabrwolf@gmail.com'
+CALENDLY_USERNAME = 'willwolf'
 
 # Twitter cards
 TWITTER_CARDS = True
