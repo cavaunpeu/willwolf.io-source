@@ -167,7 +167,8 @@ d^*(y=1\vert\mathbf{x})
 } {
     p(\mathbf{x}\vert\boldsymbol{\theta}_i) + p(\mathbf{x}\vert\boldsymbol{\theta}_j)
 } \\
-d^*(y=0\vert\mathbf{x}) &= \frac{
+d^*(y=0\vert\mathbf{x})
+&= \frac{
     p(\mathbf{x}\vert\boldsymbol{\theta}_j)
 } {
     p(\mathbf{x}\vert\boldsymbol{\theta}_i) + p(\mathbf{x}\vert\boldsymbol{\theta}_j)
@@ -179,7 +180,8 @@ Consequently,
 
 $$
 \begin{align*}
-r(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_j) &= \frac{
+r(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_j)
+&= \frac{
     p(\mathbf{x}\vert\boldsymbol{\theta}_i)
 } {
     p(\mathbf{x}\vert\boldsymbol{\theta}_j)
@@ -200,6 +202,43 @@ $$
 Since our classifier won't be perfect, we simply term it $d(y\vert\mathbf{x})$, where $\hat{r}(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_j) = \frac{d(y=1\vert\mathbf{x})}{1 - d(y=1\vert\mathbf{x})}$. With $\hat{r}(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_j)$ in hand, we can compare the posterior density of proposed samples $\boldsymbol{\theta}_i$ and $\boldsymbol{\theta}_j$ in our MCMC routine.
 
 ## Generalizing our classifier
+
+To use the above classifier in our inference routine requires we *retrain* a *new* classifier for every *unique* set of parameters $\{\boldsymbol{\theta}_i\, \boldsymbol{\theta}_j\}$. Clearly, this is extremely impractical. How can we generalize our classifier such that we only have to train it once?
+
+In [7], the authors learn a *single* classifier $d(y\vert\mathbf{x}, \boldsymbol{\theta})$ to discriminate samples $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta})$ from $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$, where $\boldsymbol{\theta}$ is an *arbitrary* parameter value, and $\boldsymbol{\theta}_{ref}$ is a fixed, *reference* parameter value. It is trained on data $(\mathbf{x},  \boldsymbol{\theta}, y=1) \sim p(\mathbf{x}\vert\boldsymbol{\theta})$ and $(\mathbf{x}, \boldsymbol{\theta}_{ref},  y=0) \sim p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$. Once trained, it gives:
+
+$$
+r(\mathbf{x}\vert\boldsymbol{\theta}, \boldsymbol{\theta}_{ref})
+= \frac{
+    d^*(y\vert\mathbf{x}, \boldsymbol{\theta})
+} {
+    1 - d^*(y\vert\mathbf{x}, \boldsymbol{\theta})
+}
+$$
+
+Consequently,
+
+$$
+\begin{align*}
+r(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_j)
+&= \frac{
+    r(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_{ref})
+} {
+    r(\mathbf{x}\vert\boldsymbol{\theta}_j, \boldsymbol{\theta}_{ref})
+} \\
+&= \frac{
+    d^*(y\vert\mathbf{x}, \boldsymbol{\theta}_i)
+} {
+    1 - d^*(y\vert\mathbf{x}, \boldsymbol{\theta}_i)
+} * \frac{
+    1 - d^*(y\vert\mathbf{x}, \boldsymbol{\theta}_j)
+} {
+    d^*(y\vert\mathbf{x}, \boldsymbol{\theta}_j)
+}
+\end{align*}
+$$
+
+With *two* inference calls to a *single* model, we can now compare the density of two proposed posterior samples.
 
 ## References
 ```
