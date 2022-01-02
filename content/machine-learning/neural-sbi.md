@@ -9,9 +9,9 @@ Image:
 
 Bayesian inference is the task of quantifying a posterior belief over parameters $\boldsymbol{\theta}$ given observed data $\mathbf{x}$—where $\mathbf{x}$ was generated from a model $p(\mathbf{x}\vert{\boldsymbol{\theta}})$—via Bayes' Theorem:
 
-$
+$$
     p(\boldsymbol{\theta}\vert\mathbf{x}) = \frac{p(\mathbf{x}\vert\boldsymbol{\theta})p(\boldsymbol{\theta})}{p(\mathbf{x})}
-$
+$$
 
 In numerous applications of scientific interest, e.g. cosmological, climatic or urban-mobility phenomena, the likelihood of the data $\mathbf{x}$ under the data-generating function $p(\mathbf{x}\vert\boldsymbol{\theta})$ is intractable to compute, precluding classical inference approaches. Notwithstanding, *simulating* new data $\mathbf{x}$ from this function is often trivial—for example, by coding the generative process in a few lines of Python—
 
