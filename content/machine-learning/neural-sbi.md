@@ -240,6 +240,20 @@ $$
 
 With *two* inference calls to a *single* model, we can now compare the density of two proposed posterior samples.
 
+## Improving our generalized classifier
+
+Once more, our classifier $d(y\vert\mathbf{x}, \boldsymbol{\theta})$ discriminates samples $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta})$ from $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$. In this vein, in the case that a given $\mathbf{x}$ was drawn from neither $p(\mathbf{x}\vert\boldsymbol{\theta})$ *nor* $p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$, what should our classifier do? In [8], the authors illustrate this problem:
+
+![png]({static}/figures/neural-sbi/undefined-classifier.png)
+
+stressing that "poor inference results occur in the absence of support between $p(\mathbf{x}\vert\boldsymbol{\theta})$ and $p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$."
+
+In solution, they propose to learn a (neural) classifier that instead discriminates between *dependent* sample-parameter pairs $(\mathbf{x}, \boldsymbol{\theta}) \sim p(\mathbf{x}\vert\boldsymbol{\theta})p(\boldsymbol{\theta})$ from *independent* sample-parameter pairs $(\mathbf{x}, \boldsymbol{\theta}) \sim p(\mathbf{x})p(\boldsymbol{\theta})$. Since $p(\mathbf{x}\vert\boldsymbol{\theta})p(\boldsymbol{\theta})$ and $p(\mathbf{x})p(\boldsymbol{\theta})$ occupy the same space, they share a common support. In other words, the likelihood of a given $\mathbf{x}$ will *always* be positive for *some* $\boldsymbol{\theta}$ in the figure above.
+
+# Conclusion
+
+Simulation-based inference is a class of techniques that allows us to perform Bayesian inference in the absence of a tractable likelihood function $p(\mathbf{x}\vert\boldsymbol{\theta})$, but from which we can simulate new data $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta})$. In the above sections, we detailed several SBI approaches, and ways in which neural networks are currently being used in each.
+
 ## References
 ```
 1. @article{
@@ -328,5 +342,14 @@ With *two* inference calls to a *single* model, we can now compare the density o
     author = {Cranmer, Kyle and Pavez, Juan and Louppe, Gilles},
     journal = {arXiv},
     eprint = {1506.02169},
+}
+
+8. @article{
+    hermans2019,
+    year = {2019},
+    title = {{Likelihood-free MCMC with Amortized Approximate Ratio Estimators}},
+    author = {Hermans, Joeri and Begy, Volodimir and Louppe, Gilles},
+    journal = {arXiv},
+    eprint = {1903.04057},
 }
 ```
