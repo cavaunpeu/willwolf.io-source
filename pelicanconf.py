@@ -58,12 +58,13 @@ from pelican_jupyter import liquid as nb_liquid
 PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
 IGNORE_FILES = [".ipynb_checkpoints"]
 PLUGINS = [
+    'pelican-cite',
     'render_math',
     'disqus_static',
     nb_liquid,
     'i18n_subsites',
     'bootstrapify',
-    'pelican_alias'
+    'pelican_alias',
 ]
 MARKUP = ['md']
 

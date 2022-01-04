@@ -4,6 +4,7 @@ Author: Will Wolf
 Lang: en
 Slug: neural-methods-in-sbi
 Status: published
+publications_src: content/bib/neural-sbi.bib
 Summary: A survey of how neural networks are currently being used in simulator-based inference routines.
 Image:
 
@@ -27,7 +28,7 @@ simulated_data = [generative_process(p) for p in [.2, .4, .6, .8, 1]]
 
 —motivating the study of *simulation-based* Bayesian *inference* methods, termed SBI.
 
-Furthermore, the evidence $p(\mathbf{x}) = \int{p(\mathbf{x}\vert\boldsymbol{\theta})p(\boldsymbol{\theta})}d\boldsymbol{\theta}$ is typically intractable to compute as well. This is because the integral has no closed-form solution; or, were the functional form of the likelihood (which we don't have) and the prior (which we do have) available, expanding these terms yields a summation over an "impractically large" number of terms, e.g. the number of possible cluster assignment configurations in a mixture of Gaussians [6]. For this reason, in SBI, we typically estimate the *unnormalized* posterior $\hat{p}(\boldsymbol{\theta}\vert\mathbf{x}) = p(\mathbf{x}\vert\boldsymbol{\theta})p(\boldsymbol{\theta})$.
+Furthermore, the evidence $p(\mathbf{x}) = \int{p(\mathbf{x}\vert\boldsymbol{\theta})p(\boldsymbol{\theta})}d\boldsymbol{\theta}$ is typically intractable to compute as well. This is because the integral has no closed-form solution; or, were the functional form of the likelihood (which we don't have) and the prior (which we do have) available, expanding these terms yields a summation over an "impractically large" number of terms, e.g. the number of possible cluster assignment configurations in a mixture of Gaussians [@10.1080/01621459.2017.1285773]. For this reason, in SBI, we typically estimate the *unnormalized* posterior $\hat{p}(\boldsymbol{\theta}\vert\mathbf{x}) = p(\mathbf{x}\vert\boldsymbol{\theta})p(\boldsymbol{\theta})$.
 
 Recent work has explored the use of neural networks to perform key density estimation tasks, i.e. subroutines, of the SBI routine itself. We refer to this work as Neural SBI. In the following sections, we detail the various classes of these estimation tasks. For a more thorough analysis of their respective motivations, behaviors, and tradeoffs, we refer the reader to the original work.
 
@@ -109,9 +110,9 @@ Unfortunately, we're still left with a problem:
 
 So, how do we correct this mistake?
 
-In [2], the authors adjust the learned posterior $q_{\phi, r}(\boldsymbol{\theta}\vert\mathbf{x})$ by simply dividing it by $q_{\phi, r-1}(\boldsymbol{\theta}\vert\mathbf{x})$ then multiplying it by $p(\boldsymbol{\theta})$. Furthermore, as they choose $q_{\phi}$ to be a *Mixture Density Network*—a neural network which outputs the parameters of a mixture of Gaussians—and the prior to be "simple distribution (uniform or Gaussian, as is typically the case in practice)," this adjustment can be done analytically.
+In [@papamakarios2016], the authors adjust the learned posterior $q_{\phi, r}(\boldsymbol{\theta}\vert\mathbf{x})$ by simply dividing it by $q_{\phi, r-1}(\boldsymbol{\theta}\vert\mathbf{x})$ then multiplying it by $p(\boldsymbol{\theta})$. Furthermore, as they choose $q_{\phi}$ to be a *Mixture Density Network*—a neural network which outputs the parameters of a mixture of Gaussians—and the prior to be "simple distribution (uniform or Gaussian, as is typically the case in practice)," this adjustment can be done analytically.
 
-Conversely, the authors in [3] *train* $q_{\phi}$ on a target *reweighted* to similar effect: instead of maximizing the total (log) likelihood $\Sigma_{n} \log q_{\phi}(\boldsymbol{\theta}_n\vert\mathbf{x}_n)$, they maximize $\Sigma_{n} \log w_n q_{\phi}(\boldsymbol{\theta}_n\vert\mathbf{x}_n)$, where $w_n = \frac{p(\boldsymbol{\theta}_n)}{q_{\phi, r-1}(\boldsymbol{\theta}_n\vert\mathbf{x}_n)}$.
+Conversely, the authors in [@lueckmann2017] *train* $q_{\phi}$ on a target *reweighted* to similar effect: instead of maximizing the total (log) likelihood $\Sigma_{n} \log q_{\phi}(\boldsymbol{\theta}_n\vert\mathbf{x}_n)$, they maximize $\Sigma_{n} \log w_n q_{\phi}(\boldsymbol{\theta}_n\vert\mathbf{x}_n)$, where $w_n = \frac{p(\boldsymbol{\theta}_n)}{q_{\phi, r-1}(\boldsymbol{\theta}_n\vert\mathbf{x}_n)}$.
 
 While both approaches carry further nuance and potential pitfalls, they bring us effective methods for using a neural network to directly estimate a faithful posterior in SBI routines.
 
@@ -121,7 +122,7 @@ In neural likelihood estimation (NLE), we use a neural network to directly estim
 
 Similar to Neural Posterior Estimation (NPE) approaches, we'd like to learn our estimator on inputs $\boldsymbol{\theta}$ that produce $\mathbf{x}_n \sim p(\mathbf{x}\vert\boldsymbol{\theta}_n)$ near $\mathbf{x}_o$. To do this, we again sample them from regions of high approximate posterior density. In each round $r$, in NPE, this posterior was $q_{\phi, r-1}(\boldsymbol{\theta}\vert\mathbf{x} = \mathbf{x}_o)$; in NLE, it is $q_{\phi, r-1}(\mathbf{x}_o\vert\boldsymbol{\theta})p(\boldsymbol{\theta})$. In both cases, we draw samples from our approximate posterior density, then feed them to the simulator to generate novel data for training our estimator $q_{\phi}$.
 
-For a more detailed treatment, please refer to original works [4], [5] (among others).
+For a more detailed treatment, please refer to original works [@pmlr-v89-papamakarios19a] and [@pmlr-v96-lueckmann19a] (among others).
 
 # Neural Likelihood Ratio Estimation
 
@@ -155,7 +156,7 @@ r(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_j) = \frac{
 }
 $$
 
-Ingeniously, [7] propose to learn a classifier to discriminate samples $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta}_i)$ from $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta}_j)$, then use its predictions to compute to estimate $r(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_j)$.
+Ingeniously, [@cranmer2015] propose to learn a classifier to discriminate samples $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta}_i)$ from $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta}_j)$, then use its predictions to compute to estimate $r(\mathbf{x}\vert\boldsymbol{\theta}_i, \boldsymbol{\theta}_j)$.
 
 To do this, we draw training samples $(\mathbf{x}, y=1) \sim p(\mathbf{x}\vert\boldsymbol{\theta}_i)$ and $(\mathbf{x}, y=0) \sim p(\mathbf{x}\vert\boldsymbol{\theta}_j)$ then train a binary classifer $d(y\vert\mathbf{x})$ on this data. In this vein, a perfect classifier gives:
 
@@ -242,7 +243,7 @@ With *two* inference calls to a *single* model, we can now compare the density o
 
 ## Improving our generalized classifier
 
-Once more, our classifier $d(y\vert\mathbf{x}, \boldsymbol{\theta})$ discriminates samples $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta})$ from $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$. In this vein, in the case that a given $\mathbf{x}$ was drawn from neither $p(\mathbf{x}\vert\boldsymbol{\theta})$ *nor* $p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$, what should our classifier do? In [8], the authors illustrate this problem:
+Once more, our classifier $d(y\vert\mathbf{x}, \boldsymbol{\theta})$ discriminates samples $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta})$ from $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$. In this vein, in the case that a given $\mathbf{x}$ was drawn from neither $p(\mathbf{x}\vert\boldsymbol{\theta})$ *nor* $p(\mathbf{x}\vert\boldsymbol{\theta}_{ref})$, what should our classifier do? In [@hermans2019], the authors illustrate this problem:
 
 ![png]({static}/figures/neural-sbi/undefined-classifier.png)
 
@@ -253,103 +254,3 @@ In solution, they propose to learn a (neural) classifier that instead discrimina
 # Conclusion
 
 Simulation-based inference is a class of techniques that allows us to perform Bayesian inference in the absence of a tractable likelihood function $p(\mathbf{x}\vert\boldsymbol{\theta})$, but from which we can simulate new data $\mathbf{x} \sim p(\mathbf{x}\vert\boldsymbol{\theta})$. In the above sections, we detailed several SBI approaches, and ways in which neural networks are currently being used in each.
-
-## References
-```
-1. @article{
-    10.1073/pnas.1912789117,
-    year = {2020},
-    title = {{The frontier of simulation-based inference}},
-    author = {Cranmer, Kyle and Brehmer, Johann and Louppe, Gilles},
-    journal = {Proceedings of the National Academy of Sciences},
-    issn = {0027-8424},
-    doi = {10.1073/pnas.1912789117},
-    pmid = {32471948},
-    pages = {30055--30062},
-    number = {48},
-    volume = {117}
-}
-
-2. @inproceedings{papamakarios2016,
-    author = {Papamakarios, George and Murray, Iain},
-    booktitle = {Advances in Neural Information Processing Systems},
-    editor = {D. Lee and M. Sugiyama and U. Luxburg and I. Guyon and R. Garnett},
-    pages = {},
-    publisher = {Curran Associates, Inc.},
-    title = {Fast $\epsilon$-free Inference of Simulation Models with Bayesian Conditional Density Estimation},
-    url = {https://proceedings.neurips.cc/paper/2016/file/6aca97005c68f1206823815f66102863-Paper.pdf},
-    volume = {29},
-    year = {2016}
-}
-
-3. @article{
-    lueckmann2017,
-    year = {2017},
-    title = {{Flexible statistical inference for mechanistic models of neural dynamics}},
-    author = {Lueckmann, Jan-Matthis and Goncalves, Pedro J and Bassetto, Giacomo and Öcal, Kaan and Nonnenmacher, Marcel and Macke, Jakob H},
-    journal = {arXiv},
-    eprint = {1711.01861},
-}
-
-4. @InProceedings{
-    pmlr-v89-papamakarios19a,
-    title = {Sequential Neural Likelihood: Fast Likelihood-free Inference with Autoregressive Flows},
-    author = {Papamakarios, George and Sterratt, David and Murray, Iain},
-    booktitle = {Proceedings of the Twenty-Second International Conference on Artificial Intelligence and Statistics},
-    pages = {837--848},
-    year = {2019},
-    editor = {Chaudhuri, Kamalika and Sugiyama, Masashi},
-    volume = {89},
-    series = {Proceedings of Machine Learning Research},
-    month = {16--18 Apr},
-    publisher = {PMLR},
-    pdf = {http://proceedings.mlr.press/v89/papamakarios19a/papamakarios19a.pdf},
-    url = {http://proceedings.mlr.press/v89/papamakarios19a.html}
-}
-
-5. @InProceedings{
-    pmlr-v96-lueckmann19a,
-    title = {Likelihood-free inference with emulator networks},
-    author = {Lueckmann, Jan-Matthis and Bassetto, Giacomo and Karaletsos, Theofanis and Macke, Jakob H.},
-    booktitle = {Proceedings of The 1st Symposium on Advances in Approximate Bayesian Inference}, pages = {32--53}, year = {2019},
-    editor = {Francisco Ruiz and Cheng Zhang and Dawen Liang and Thang Bui},
-    volume = {96},
-    series = {Proceedings of Machine Learning Research},
-    address = {},
-    month = {02 Dec},
-    publisher = {PMLR},
-    pdf = {http://proceedings.mlr.press/v96/lueckmann19a/lueckmann19a.pdf},
-    url = {http://proceedings.mlr.press/v96/lueckmann19a.html}
-}
-
-6. @article{
-    10.1080/01621459.2017.1285773,
-    year = {2017},
-    title = {{Variational Inference: A Review for Statisticians}},
-    author = {Blei, David M. and Kucukelbir, Alp and McAuliffe, Jon D.},
-    journal = {Journal of the American Statistical Association},
-    issn = {0162-1459},
-    doi = {10.1080/01621459.2017.1285773},
-    eprint = {1601.00670},
-    pages = {859--877},
-    number = {518},
-    volume = {112}
-}
-
-7. @article{
-    year = {2015},
-    title = {{Approximating Likelihood Ratios with Calibrated Discriminative Classifiers}},
-    author = {Cranmer, Kyle and Pavez, Juan and Louppe, Gilles},
-    journal = {arXiv},
-    eprint = {1506.02169},
-}
-
-8. @article{
-    hermans2019,
-    year = {2019},
-    title = {{Likelihood-free MCMC with Amortized Approximate Ratio Estimators}},
-    author = {Hermans, Joeri and Begy, Volodimir and Louppe, Gilles},
-    journal = {arXiv},
-    eprint = {1903.04057},
-}
-```
