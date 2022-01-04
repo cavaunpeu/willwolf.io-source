@@ -1,12 +1,12 @@
-Title: Neural Methods in Simulator-Based Inference
-Date: 2021-12-27 09:00
+Title: Neural Methods in Simulation-Based Inference
+Date: 2022-01-04 10:00
 Author: Will Wolf
 Lang: en
 Slug: neural-methods-in-sbi
 Status: published
 publications_src: content/bib/neural-sbi.bib
-Summary: A survey of how neural networks are currently being used in simulator-based inference routines.
-Image:
+Summary: A survey of how neural networks are currently being used in simulation-based inference routines.
+Image: https://www.processmaker.com/wp-content/uploads/2021/07/simulation-modeling-process-mining.jpg
 
 Bayesian inference is the task of quantifying a posterior belief over parameters $\boldsymbol{\theta}$ given observed data $\mathbf{x}$—where $\mathbf{x}$ was generated from a model $p(\mathbf{x}\mid{\boldsymbol{\theta}})$—via Bayes' Theorem:
 
