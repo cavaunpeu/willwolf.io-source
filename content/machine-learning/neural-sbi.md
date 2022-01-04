@@ -6,7 +6,7 @@ Slug: neural-methods-in-sbi
 Status: published
 publications_src: content/bib/neural-sbi.bib
 Summary: A survey of how neural networks are currently being used in simulation-based inference routines.
-Image: https://www.processmaker.com/wp-content/uploads/2021/07/simulation-modeling-process-mining.jpg
+Image: images/neural-sbi.jpeg
 
 Bayesian inference is the task of quantifying a posterior belief over parameters $\boldsymbol{\theta}$ given observed data $\mathbf{x}$—where $\mathbf{x}$ was generated from a model $p(\mathbf{x}\mid{\boldsymbol{\theta}})$—via Bayes' Theorem:
 
@@ -266,3 +266,7 @@ In solution, they propose to learn a (neural) classifier that instead discrimina
 # Conclusion
 
 Simulation-based inference is a class of techniques that allows us to perform Bayesian inference where our data-generating model $p(\mathbf{x}\mid\boldsymbol{\theta})$ lacks a tractable likelihood function, yet permits simulation of novel data. In the above sections, we detailed several SBI approaches, and ways in which neural networks are currently being used in each.
+
+## Credit
+
+Credit to [ProcessMaker](https://www.processmaker.com/wp-content/uploads/2021/07/simulation-modeling-process-mining.jpg) for social card image.
