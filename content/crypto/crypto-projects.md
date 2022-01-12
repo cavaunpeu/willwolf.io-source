@@ -11,13 +11,13 @@ I'm currently taking some time to [explore]({filename}/life/exploring-crypto.md)
 
 Here's a running list of things I've built in and around this space.
 
-## Anchor Escrow Program
+# Anchor Escrow Program
 
 A toy implementation of a Solana escrow [program](https://anchor-escrow-program.netlify.app/) in Anchor and React.
 
 ![escrow program screenshot](https://anchor-escrow-program.netlify.app/card_image.png)
 
-## Solana Economic Simulator
+# Solana Economic Simulator
 
 A Streamlit [app](https://share.streamlit.io/cavaunpeu/solana-economics/main/app/main.py) for simulating Solana validator economics
 
