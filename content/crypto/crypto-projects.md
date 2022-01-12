@@ -17,3 +17,8 @@ A toy implementation of a Solana escrow [program](https://anchor-escrow-program.
 
 ![escrow program screenshot](https://anchor-escrow-program.netlify.app/card_image.png)
 
+## Solana Economic Simulator
+
+A Streamlit [app](https://share.streamlit.io/cavaunpeu/solana-economics/main/app/main.py) for simulating Solana validator economics
+
+![solana economics simulation screenshot](https://raw.githubusercontent.com/cavaunpeu/solana-economics/main/screenshot.png)
