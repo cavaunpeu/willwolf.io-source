@@ -24,7 +24,7 @@ I joined ASAPP at age 28. I'm now 32. And I'd like to see what else there is. Wh
 On the technical front:
 
 - Learn **Rust** and smart-contract development in Solana.
-- Study the theory and applications of [**complex systems**](https://en.wikipedia.org/wiki/Complex_system).
+- Study the theory and applications of [**complex systems**](https://en.wikipedia.org/wiki/Complex_system) (per my long-standing [interest](https://honors.libraries.psu.edu/files/final_submissions/970) in this space).
 - Apply these tools to the **crypto** space at large.
 
 On the personal front:
