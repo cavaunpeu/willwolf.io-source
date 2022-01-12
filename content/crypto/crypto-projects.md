@@ -14,5 +14,5 @@ Here's a running list of things I've built in and around this space.
 
 A toy implementation of a Solana escrow [program](https://anchor-escrow-program.netlify.app/) in Anchor and React.
 
-![](https://anchor-escrow-program.netlify.app/card_image.png)
+![escrow program screenshot](https://anchor-escrow-program.netlify.app/card_image.png)
 

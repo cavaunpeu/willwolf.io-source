@@ -49,6 +49,9 @@ RESUME_PAGE_LINK_TEXT = 'Résumé'
 BOOKS_PAGE = 'books/'
 BOOKS_PAGE_LINK_TEXT = 'Books'
 
+SUBSCRIBE_PAGE = 'subscribe/'
+SUBSCRIBE_PAGE_LINK_TEXT = 'Subscribe'
+
 # Plugin settings
 from pelican_jupyter import liquid as nb_liquid
 
@@ -113,6 +116,7 @@ GITHUB_USERNAME = 'cavaunpeu'
 TWITTER_USERNAME = 'willwolf_'
 LINKEDIN_USERNAME = 'williamabrwolf'
 EMAIL_ADDRESS = 'williamabrwolf@gmail.com'
+CALENDLY_USERNAME = 'willwolf'
 
 # Twitter cards
 TWITTER_CARDS = True
