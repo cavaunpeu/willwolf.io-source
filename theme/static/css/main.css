@@ -5,22 +5,27 @@ body {
 
 h1 {
   font-size: 40px !important;
+  color: rgb(48, 48, 48) !important;
 }
 
 h2 {
   font-size: 33px !important;
+  color: rgb(48, 48, 48) !important;
 }
 
 h3 {
   font-size: 27px !important;
+  color: rgb(48, 48, 48) !important;
 }
 
 h4 {
   font-size: 20px !important;
+  color: rgb(48, 48, 48) !important;
 }
 
 h5 {
   font-size: 15px !important;
+  color: rgb(48, 48, 48) !important;
 }
 
 /*Header*/

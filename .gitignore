@@ -81,3 +81,6 @@ utils
 deactivate
 env
 output
+
+# desktop services
+.DS_Store
