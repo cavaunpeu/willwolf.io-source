@@ -18,7 +18,7 @@ A [simulator](https://github.com/cavaunpeu/solsim) for complex systems on the So
 ![solsim results app screenshot](https://raw.githubusercontent.com/cavaunpeu/solsim/main/img/results_explorer_app.png)
 # Solana Economic Simulator
 
-A Streamlit [app](https://share.streamlit.io/cavaunpeu/solana-economics/main/app/main.py) for simulating Solana validator economics
+A Streamlit [app](https://share.streamlit.io/cavaunpeu/solana-economics/main/app/main.py) for simulating Solana validator economics.
 
 ![solana economics simulation screenshot](https://raw.githubusercontent.com/cavaunpeu/solana-economics/main/screenshot.png)
 
