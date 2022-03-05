@@ -11,14 +11,19 @@ I'm currently taking some time to [explore]({filename}/life/exploring-crypto.md)
 
 Here's a running list of things I've built in and around this space.
 
-# Anchor Escrow Program
+# Solsim
 
-A toy implementation of a Solana escrow [program](https://anchor-escrow-program.netlify.app/) in Anchor and React.
+A [simulator](https://github.com/cavaunpeu/solsim) for complex systems on the Solana blockchain.
 
-![escrow program screenshot](https://anchor-escrow-program.netlify.app/card_image.png)
-
+![solsim results app screenshot](https://raw.githubusercontent.com/cavaunpeu/solsim/main/img/results_explorer_app.png)
 # Solana Economic Simulator
 
 A Streamlit [app](https://share.streamlit.io/cavaunpeu/solana-economics/main/app/main.py) for simulating Solana validator economics
 
 ![solana economics simulation screenshot](https://raw.githubusercontent.com/cavaunpeu/solana-economics/main/screenshot.png)
+
+# Anchor Escrow Program
+
+A toy implementation of a Solana escrow [program](https://anchor-escrow-program.netlify.app/) in Anchor and React.
+
+![escrow program screenshot](https://anchor-escrow-program.netlify.app/card_image.png)
