@@ -9,10 +9,16 @@ Image: images/books.jpg
 
 To the extent that we are how we spend our time, here's a bit more about me in recent years:
 
+- **The State of Affairs** by Esther Perel
+- **Four Thousand Weeks** by Oliver Burkeman
+- **The Blocksize War** by Jonathan Bier
+- **The Internet of Money** by Andreas M. Antonopoulos
+- **Underground: The Tokyo Gas Attack and the Japanese Psyche** by Haruki Murakami
 - **The Sovereign Individual** by James Dale Davidson
 - **Atomic Habits** by James Clear
 - **The Art of Travel** by Alain de Botton
 - **Magdalena** by Wade Davis
+- **Mating in Captivity** by Esther Perel
 - **The Art of Doing Science and Engineering** by Richard Hamming
 - **The Cossacks** by Leo Tolstoy
 - **The World of Yesterday** by Stefan Zweig
