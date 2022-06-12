@@ -5,7 +5,7 @@ Lang: en
 Slug: work-in-crypto
 Status: published
 Summary: I now work in crypto—building credit scoring models at [Cred Protocol](https://www.credprotocol.com/) and simulations of complex systems at [Block Science](https://block.science/).
-Image:
+Image: images/work-in-crypto.png
 
 I [left]({filename}/life/leaving-asapp.md) ASAPP in December 2021 to "explore": Rust, complex systems, crypto. After ~4 months of study, podcasts, conversations, toy [projects]({filename}/crypto/crypto-projects.md), Twitter, meetups, conferences, and general experimentation, I've now re-entered the workforce; I now work in crypto!
 
@@ -26,3 +26,5 @@ Block Science is a leader in doing exactly this. As a visiting contributor, I bu
 Both companies are hiring. If you're interested in what we do, do reach out.
 
 Will
+
+[^1]: Thumbnail image credit goes [here](https://jingculturecommerce.com/museum-cryptocurrency-donations/).
