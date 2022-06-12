@@ -21,9 +21,9 @@ Ten years ago, I wrote an undergraduate [thesis](https://honors.libraries.psu.ed
 
 Block Science is a leader in doing exactly this. As a visiting contributor, I build, analyze, and communicate simulations of "cryptoeconomic" systems for a variety of partners. Block Science is comprised of ~30 talented and diverse members—with backgrounds spanning economics, social science, natural science, behavioral science, multi-agent systems, and more.
 
-# Join us
+# Join us!
 
-Both companies are hiring. If you're interested in what we do, do reach out.
+Both companies are hiring. If you're interested in what we do, do reach out!
 
 Will
 
