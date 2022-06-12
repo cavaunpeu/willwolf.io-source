@@ -13,14 +13,16 @@ Per our brave new remote world and the breadth of my technical interests, I rece
 
 # Cred Protocol
 
-Cred aims to enable under-collateralized, capital efficient borrowing of cryptocurrencies by quantifying wallet risk. In other words, much like FICO's "300-850," we're building a credit score. From a technical stance, credit scoring implies systems and algorithms to quantify risk—of tens of millions of crypto wallets—in near real-time. Per my longstanding interests in building systems and statistical products, my current energy to build great things from the ground up, and the chance to explore a world of new data, new players, new algorithms, new rules, I jumped at the opportunity to join Cred as one of its first few hires. We're currently about ~10 people.
+Cred aims to enable under-collateralized, capital efficient borrowing of cryptocurrencies by quantifying wallet risk. In other words, much like FICO's "300-850," we're building a credit score. From a technical stance, credit scoring implies systems and algorithms to quantify risk—of tens of millions of crypto wallets—in near real-time. Per my longstanding interests in building systems and statistical products, my current energy to build from the ground up, and the chance to explore a world of new data, new players, new algorithms, new rules—I jumped at the opportunity to join Cred as one of its first few hires. We're currently about ~10 people.
 
 # Block Science
 
-Ten years ago, I wrote an undergraduate on about the simulation of iterated Prisoner's Dilemma games on the surface of a geodesic dome. This work has remained of abiding fascination ever since. Last year, I realized that crypto offers a perfect "arena" for the simulation of similar "complex systems": similarly, a blockchain gives a graph data structure indexed by time—with copious amounts of structured, *public* data to boot! In other words, simulating the behavior of blockchain systems, e.g. a lending-and-borrowing protocol like [Aave](https://aave.com/), then aligning simulated results with empirical results, is a highly tractable, useful, and interesting line of work.
+Ten years ago, I wrote an undergraduate [thesis](https://honors.libraries.psu.edu/catalog/1947) about the simulation of iterated Prisoner's Dilemma games on the surface of a geodesic dome. This work has remained of abiding fascination ever since. Last year, I realized that crypto offers a perfect "arena" for the simulation of similar "complex systems": a blockchain gives a graph data structure indexed by time—with copious amounts of structured, *public* data to boot! In other words, simulating the behavior of systems built on blockchains, e.g. a lending-and-borrowing protocol like [Aave](https://aave.com/), then aligning simulated results with empirical results, is a highly tractable, useful, and interesting line of work.
 
-Block Science is a leader in doing exactly this. As a visiting contributor, I build, analyze, and communicate simulations of "cryptoeconomic" systems for a variety of partners. Broadly, Block Science is comprised of ~30 talented and diverse members—with backgrounds spanning economics, social science, natural science, behavioral science, and more.
+Block Science is a leader in doing exactly this. As a visiting contributor, I build, analyze, and communicate simulations of "cryptoeconomic" systems for a variety of partners. Block Science is comprised of ~30 talented and diverse members—with backgrounds spanning economics, social science, natural science, behavioral science, multi-agent systems, and more.
 
-# Join us!
+# Join us
 
-Both [Cred](https://join.credprotocol.com/) and Block Science are hiring. If you're interested in what we're doing, do get in touch!
+Both companies are hiring. If you're interested in what we do, do reach out.
+
+Will
