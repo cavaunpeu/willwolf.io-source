@@ -4,20 +4,20 @@ Author: Will Wolf
 Lang: en
 Slug: readme-for-me
 Status: published
-Summary: A document describing how to (professionally) interact with *me.* What am I like? How do I work best? And more.
+Summary: A document describing how to work with *me.*
 Image: images/myreadme.png
 
-A README is a document describing how to use a piece of software. Done [well](https://github.com/pandas-dev/pandas/blob/main/README.md), it clearly and succinctly communicates how to use, i.e. interact with, the code in question.
+A README is a document describing how to use a piece of software. Done [well](https://github.com/pandas-dev/pandas/blob/main/README.md), it clearly and succinctly communicates how to work with the code in question.
 
-I recently came across the idea of writing a README not for my project, but for *myself*: in other words, a document describing how to (professionally) interact with *me*. What am I like? How do I work best? And more.
+I recently came across the idea of writing a README not for my project, but for *myself*; in other words, a document describing how to work with *me*! What am I like? How do I work best? And more.
 
-In the following text, I endeavour to do exactly this, both as an exercise in self-exploration, and a light step towards working more effectively with others in my remote-dominated professional world.
+In the following text, I endeavour to do exactly this, both as an exercise in self-exploration, and a step towards working more effectively with others in my remote-dominated professional world.
 
 Without further ado, let's begin.
 
 # How I type on Slack
 
-I generally type in all lowercase letters and with punctuation. For example, I might send the following update message:
+I generally type in all lowercase letters and with punctuation. For example, I might send the following message:
 
 ```
 heya. how goes? how was your weekend? what are you working on today?
@@ -25,13 +25,13 @@ heya. how goes? how was your weekend? what are you working on today?
 i'm tweaking our model. i should be done this evening. i'll let you know when i'm finished.
 ```
 
-This (textual) tone may seem curt and cold. In reality, it's not. Punctuation helps me keep my thoughts organized and speak succinctly. Capitalization is far too much effort for far too little reward.
+My (textual) tone may seem curt and cold. In reality, it's not. Punctuation helps me keep my thoughts organized and speak succinctly. Capitalization is far too much effort for far too little reward.
 
 # My communication style
 
-I speak directly in (non-sensitive) professional conversations. I ask questions, plainly, like: "Why did you make that choice? How many hours will that take? What other solutions did you consider?
+I speak directly in (non-sensitive) professional conversations. I ask questions plainly, e.g. "Why did you make that choice? How many hours will that take? What other solutions did you consider?
 
-In science, explicit communication of hypotheses, methods, and outcomes is crucial. Clarifying questions are sexy. Sanity checks are king. My proefessional brain lives in this space; speaking directly keeps my feet on this particular ground, and moves me and my team forward.
+In science, explicit communication of hypotheses, methods, and outcomes is crucial. Clarifying questions are sexy. Sanity checks are king. My proefessional brain lives in this space; speaking directly keeps my feet on this particular ground, and (hopefully!) moves me and my team forward.
 
 # When I have energy
 
@@ -55,6 +55,8 @@ At work, I prize learning from others—math, engineering, leadership, you name 
 
 # How to learn from me
 
-If you value what I have to say, let me know. Ask for more. I love to share what I've learned from others. If you're open to learn, I'm genuinely excited to teach.
+If you value what I have to say, let me know. Ask for more. I love to share what I've been taught by others. To pass the torch, if you will! If you're open to learn, I'm genuinely excited to teach.
 
-[^1]: .
+# Anything I missed?
+
+Let me know in the comments and I'll do my best to address.
