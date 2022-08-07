@@ -1,11 +1,11 @@
-Title: I Work in Crypto
+Title: README
 Date: 2022-08-01 17:00
 Author: Will Wolf
 Lang: en
-Slug: my-readme
+Slug: readme-for-me
 Status: published
-Summary:
-Image:
+Summary: A document describing how to (professionally) interact with *me.* What am I like? How do I work best? And more.
+Image: images/myreadme.png
 
 A README is a document describing how to use a piece of software. Done [well](https://github.com/pandas-dev/pandas/blob/main/README.md), it clearly and succinctly communicates how to use, i.e. interact with, the code in question.
 
