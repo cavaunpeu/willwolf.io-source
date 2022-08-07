@@ -7,9 +7,13 @@ Status: published
 Summary:
 Image:
 
-A README is a document describing how to use a piece of software. Done [well](https://github.com/pandas-dev/pandas/blob/main/README.md), it is structured, succint, and thorough; it allows the user, foreign to the software in question, to begin using this software effectively, quickly.
+A README is a document describing how to use a piece of software. Done [well](https://github.com/pandas-dev/pandas/blob/main/README.md), it clearly and succinctly communicates how to use, i.e. interact with, the code in question.
 
-One of my colleagues recently shared the idea of a README for *yourself*; in other words, *how to work with me.* In the following text, I endeavour to do exactly this, both as an exercise in self-exploration, and a clean communication "interface" in our remote-dominated professional world.
+I recently came across the idea of writing a README not for my project, but for *myself*: in other words, a document describing how to (professionally) interact with *me*. What am I like? How do I work best? And more.
+
+In the following text, I endeavour to do exactly this, both as an exercise in self-exploration, and a light step towards working more effectively with others in my remote-dominated professional world.
+
+Without further ado, let's begin.
 
 # How I type on Slack
 
@@ -18,22 +22,20 @@ I generally type in all lowercase letters and with punctuation. For example, I m
 ```
 heya. how goes? how was your weekend? what are you working on today?
 
-i'm tweaking our model. i should be done this evening. i'll let you know when finished.
+i'm tweaking our model. i should be done this evening. i'll let you know when i'm finished.
 ```
 
-I can imagine this style coming across as *cold, aggravated, even passive-aggressive.* Of course, this is *not* my aim. Properly capitalized text is too much effort for too little reward. Punctuation helps me speak declaratively and stay organized. I'm happy as I type! Promise.
+This (textual) tone may seem curt and cold. In reality, it's not. Punctuation helps me keep my thoughts organized and speak succinctly. Capitalization is far too much effort for far too little reward.
 
 # My communication style
 
-I speak directly about non-sensitive manners. I ask questions, plainly, like: "Why did you make that choice? How much time and effort will that cost? What other solutions did you consider?"
+I speak directly in (non-sensitive) professional conversations. I ask questions, plainly, like: "Why did you make that choice? How many hours will that take? What other solutions did you consider?
 
-Good science is like a personal chef trying to discover the dish you like most: she'll place food on the plate, you'll take a bite, you'll provide feedback, and she'll iterate. This only works if it is clear to all parties what the dish is and what you truly thought. Otherwise, progress is difficult.
-
-In this vein, explicit communication is crucial. Clarifying questions are sexy. Sanity checks are king. A simple, clear, shared understanding of where we are and where we're not is the name of the game.
+In science, explicit communication of hypotheses, methods, and outcomes is crucial. Clarifying questions are sexy. Sanity checks are king. My proefessional brain lives in this space; speaking directly keeps my feet on this particular ground, and moves me and my team forward.
 
 # When I have energy
 
-I'm a morning person. My most productive coding/technical hours are between 8 am and 12 pm. In the afternoons, I'd ideally spend my time talking to other people, e.g. in 1 on 1's, team meetings, etc.
+I'm a morning person. My most productive technical hours are between 8 am and 12 pm. Ideally, I spend these hours writing code, undistracted. In the afternoons, I prefer talking to others. Ideally, I spend these hours in 1 on 1's, planning, retros, etc.
 
 # How to message me
 
@@ -41,9 +43,11 @@ Don't overthink it. I don't bite!
 
 # What I look like when I'm thinking
 
-When I need to understanding a problem or make a decision on the spot, I often stare off into space for 5-15 seconds. This helps me think clearly (conversely, staring directly at the camera clouds my brain). Please don't take this as rudeness.
+When I'm trying to understand a complex problem, I divert my gaze and stare at the wall for 5-15 seconds. (Conversely, staring directly at the camera clouds my brain).
 
-Similarly, when I'm engaged in a technical conversation, my brow is often furrowed. I look intense, exacting, prickly. Again, please don't take this the wrong way. I'm focused on clarifying details for myself and others above all else.
+When I'm engaged in a technical conversation, my brow is furrowed. I look intense, exacting, prickly.
+
+In both cases, please don't intuit rudeness! I'm focused on clarifying details for myself and my teammates.
 
 # How to teach me
 
@@ -51,6 +55,6 @@ At work, I prize learning from others—math, engineering, leadership, you name 
 
 # How to learn from me
 
-If you value what I have to say, let me know. Ask me for more. I love to teach what I've learned from others. If you're open to it, I'll keep it coming as well.
+If you value what I have to say, let me know. Ask for more. I love to share what I've learned from others. If you're open to learn, I'm genuinely excited to teach.
 
 [^1]: .
