@@ -2,10 +2,11 @@ Title: README
 Date: 2022-08-01 17:00
 Author: Will Wolf
 Lang: en
-Slug: readme-for-me
+Slug: readme
 Status: published
 Summary: A document describing how to work with *me.* What am I like? How do I work best? And more.
 Image: images/myreadme.png
+Alias: /life/2022/08/01/readme-for-me
 
 A README is a document describing how to use a piece of software. Done [well](https://github.com/pandas-dev/pandas/blob/main/README.md), it clearly and succinctly communicates how to work with the code in question.
 
