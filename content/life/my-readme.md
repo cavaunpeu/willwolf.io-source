@@ -31,7 +31,7 @@ My (textual) tone may seem curt and cold. In reality, it's not. Punctuation help
 
 I speak directly in (non-sensitive) professional conversations. I ask questions plainly, e.g. "Why did you make that choice? How many hours will that take? What other solutions did you consider?
 
-In science, explicit communication of hypotheses, methods, and outcomes is crucial. Clarifying questions are sexy. Sanity checks are king. My proefessional brain lives in this space; speaking directly keeps my feet on this particular ground, and (hopefully!) moves me and my team forward.
+In science, explicit communication of hypotheses, methods, and outcomes is crucial. Clarifying questions are sexy. Sanity checks are king. My professional brain lives in this space; speaking directly keeps my feet on this particular ground, and (hopefully!) moves me and my team forward.
 
 ## When I have energy
 
