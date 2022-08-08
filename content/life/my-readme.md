@@ -43,7 +43,7 @@ Don't overthink it. I don't bite!
 
 ## What I look like when I'm thinking
 
-When I'm trying to understand a complex problem, I divert my gaze and stare at the wall for 5-15 seconds. (Conversely, staring directly at the camera clouds my brain).
+When I'm trying to understand a complex problem, I divert my gaze and stare at the wall for 5-15 seconds. (Conversely, staring directly at the camera clouds my brain.)
 
 When I'm engaged in a technical conversation, my brow is furrowed. I look intense, exacting, prickly.
 
