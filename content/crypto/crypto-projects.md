@@ -11,7 +11,13 @@ I'm currently taking some time to [explore]({filename}/life/exploring-crypto.md)
 
 Here's a running list of things I've built in and around this space.
 
-# Solsim
+# simsim
+
+A (sim)ple (sim)ulation [framework](https://github.com/cavaunpeu/simsim) for generalized dynamical systems, in Rust.
+
+![simsim]({static}/images/simsim.png)
+
+# solsim
 
 A [simulator](https://github.com/cavaunpeu/solsim) for complex systems on the Solana blockchain.
 
