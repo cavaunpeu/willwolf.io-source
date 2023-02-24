@@ -9,6 +9,11 @@ Image: images/books.jpg
 
 To the extent that we are how we spend our time, here's a bit more about me in recent years:
 
+- **My Life as a Quant** by Emanuel Derman
+- **The Cabinet** by Kim Un-Su
+- **The Wind-Up Bird Chronicle** by Haruki Murakami
+- **The Pillar of Salt** by Albert Memmi
+- **Move** by Parag Khanna
 - **The State of Affairs** by Esther Perel
 - **Four Thousand Weeks** by Oliver Burkeman
 - **The Blocksize War** by Jonathan Bier
