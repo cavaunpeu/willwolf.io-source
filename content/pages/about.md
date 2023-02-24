@@ -18,7 +18,8 @@ Hi! My name's Will. I'm equal parts: **technologist, bookworm, polyglot, cyclist
 - `[2016-2017]` I quit my job and moved to Casablanca, Morocco to pursue an **Open-Source ["Master's"]({filename}/life/my-open-source-machine-learning-masters-in-casablanca-morocco.md) in machine learning and statistics**—a full-time, self-curated schedule of textbooks, MOOCs, publishing code to my [GitHub](https://github.com/cavaunpeu) and writing to this blog.
 - `[2017-2021]` I [joined ASAPP]({filename}/life/joining-asapp.md) as a machine learning engineer, then researcher, then machine learning engineer. My work spanned **pure NLP research, applied NLP research, engineering and product.**
 - `[2021-2022]` I [left ASAPP]({filename}/life/leaving-asapp.md). I'm taking some time to [explore]({filename}/life/exploring-crypto.md).
-- `[2022-present]` I joined [Block Science](https://block.science/) as a Visiting Research Engineer working on the **design, simulation, and analysis of cryptoeconomic systems.** In addition, I joined [Cred Protocol](https://www.credprotocol.com/) as a Staff Machine Learning Engineer, building **credit scoring models for DeFi.**
+- `[2022-2023]` I joined [Block Science](https://block.science/) as a Visiting Research Engineer working on the **design, simulation, and analysis of cryptoeconomic systems.** In addition, I joined [Cred Protocol](https://www.credprotocol.com/) as a Staff Machine Learning Engineer, building **credit scoring models for DeFi.**
+- `[2023-Present] I work as a Senior Simulation Engineer at [Gauntlet](https://gauntlet.network/), building DeFi risk management tools and products with the best in the game.
 
 **Presently, I spend my time on:**
 
