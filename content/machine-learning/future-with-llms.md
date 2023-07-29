@@ -25,13 +25,13 @@ This makes it very good at predicting the next word in a phrase, such as our ear
 
 Creating ChatGPT involves three steps:
 
-1. **Train a language model:** Given a phrase, teach the model how to predict the next word. (It can then append this next word to the phrase, and repeat this process ad infinitum to generate a full sentence.    )
+1. **Train a language model:** Given a phrase, teach the model how to output, i.e. "predict," the next word. (Repeating this process ad infinitum, appending the predicted word to the end of the initial phrase each time, it can generate a complete response.)
 2. **Fine-tune on `(prompt, response)` pairs:** Humans provide both parts of these pairs, giving concrete demonstrations of the tasks the model should accomplish.
-3. **Further fine-tune via a model of output quality.** Humans train a model to assign a quality score to a given output; ChatGPT is then refined to only output high-quality responses. This process is known as ["Reinforcement Learning from Human Feedback"](https://huggingface.co/blog/rlhf) (RLHF).
+3. **Further fine-tune via a model of output quality.** Humans rate the quality of ChatGPT's outputs, a second model learns these relationships, and ChatGPT learns to output high-quality responses via this second model. This process is known as ["Reinforcement Learning from Human Feedback"](https://huggingface.co/blog/rlhf) (RLHF).
 
 # This is a story about data
 
-Throughout my career in machine learning, I've learned almost every ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we get more of it? And on. Of course, ChatGPT is no different.
+Throughout my career in machine learning, I've learned almost every ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we de-bias it? How do we get more of it? And on and on. ChatGPT is no different.
 
 How does the dependency on data shape ChatGPT's abilities and limitations? The language model behind ChatGPT, as of this writing, has been trained on a substantial portion of the written internet up until September 2021 (as users will now know by heart, as the model loves to restate this limitation). This data encapsulates the knowledge required for an array of *static-knowledge* tasks. For instance, it can translate English to Greek, a skill that doesn't significantly evolve over the years, hence, doesn't require perpetual data updates. Likewise, it can summarize text, write songs in the style of Johnny Cash, and so on.
 
