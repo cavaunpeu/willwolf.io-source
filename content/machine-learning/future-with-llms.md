@@ -1,11 +1,11 @@
-Title: Musings on Our Future with Large Language Models
+Title: Our Future with Large Language Models
 Date: 2023-07-29 10:00
 Author: Will Wolf
 Lang: en
-Slug: musings-on-llms
+Slug: future-with-llms
 Status: published
 Summary: In this post, I explore the evolving world of Language Learning Models (LLMs), considering how they learn, the future of human-LLM conversations, the hallucination problem, compensating data providers, the potential lucrativeness of data annotation, and the idea of a new Marxist struggle.
-Image: ../images/musings-on-llms/human-mind.png
+Image: ../images/future-with-llms/human-mind.png
 
 ## What is a Language Model?
 
