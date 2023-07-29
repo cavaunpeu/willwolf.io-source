@@ -9,15 +9,17 @@ Image: ../images/future-with-llms/human-mind.png
 
 # What is a Language Model?
 
-A language model is best understood through human speech. If I were to say, "The boy put on his boots and went to the...," what words might come next? You could probably list a few sensible options: "store," "park," "bar," even "best" as in "best ice cream spot in town." On the other hand, there are words that would almost certainly never follow this phrase, like "don't," "photosynthesis," or "trigonometry."
+To introduce the language model let's talk about human speech. If I were to say, "The boy put on his boots and went to the...," what word comes next? Well, there are many that fit. As an English speaker, you could surely list a few: "store," "park," "bar," even "best" as in "best ice cream spot in town." Conversely, many words could *never* follow this phrase, like "don't," "photosynthesis," or "trigonometry."
 
-How do you know this? You have a "model of language" in your brain, a "language model" that you've acquired over your lifetime. The more language you ingest, the better your model becomes.
+And how do you know this? How can you be sure? It's because: you have a "model of language" in your brain, a "language model" that you've acquired over your lifetime. The more language you ingest through interacting with the world the better your model becomes.
 
 # How does ChatGPT know so much?
 
-Over the past 30 years, internet users have unwittingly built the largest, most robust, most diverse, most interesting dataset in human history for learning machine learning models. These data come in various forms, or "modalities," including images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many other sources.
+In the past 30 years, internet users have unwittingly built the largest, broadest, most diverse, most interesting dataset in human history from which to learn machine learning models. These data come in various forms, or "modalities," like images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many more.
 
-ChatGPT, a "large language model" or LLM, is trained on a meaningful portion of all text data online. This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots.
+ChatGPT is learned from text. Whereas you’ve trained your language model only on the language you've encountered in the handful of decades for which you've been alive, ChatGPT has been trained on a large chunk of all text ever written on the internet, period. For comparison, [Quora](https://www.quora.com/How-long-would-it-take-you-to-read-the-entire-internet) users estimate that this would take a human roughly "23.8 million years" to "you can't, so it's an impossible question" to "you would be dead long before you even made a start."
+
+This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots. More generally, it can skillfully continue almost *any* text, such as "Can you recite me the Indonesian national anthem in the style of Shakespeare?" or "What should I make for dinner if I only have salmon and chocolate?" or "What's the best way to get to the moon?"
 
 # How does ChatGPT work?
 
@@ -29,9 +31,15 @@ Creating ChatGPT involves three steps:
 
 # This is a story about data
 
-Throughout my career in machine learning, I've learned that almost ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we get more of it? And on and on.
+Throughout my career in machine learning, I've learned almost every ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we get more of it? And on. Of course, ChatGPT is no different.
 
-ChatGPT is no different. Its language model has been trained on a huge chunk of the internet, and it's been fine-tuned using data provided by human annotators. The extent of its abilities, or the ways in which it could be improved, are determined by the nature and amount of the data it has been trained on.
+How does the dependency on data shape ChatGPT's abilities and limitations? The language model behind ChatGPT, as of this writing, has been trained on a substantial portion of the written internet up until September 2021 (as users will now know by heart, as the model loves to restate this limitation). This data encapsulates the knowledge required for an array of *static-knowledge* tasks. For instance, it can translate English to Greek, a skill that doesn't significantly evolve over the years, hence, doesn't require perpetual data updates. Likewise, it can summarize text, write songs in the style of Johnny Cash, and so on.
+
+However, there's a flip side. The model can't tackle *dynamic-knowledge* tasks, such as acknowledging that we may have built the first room-temperature [superconductor](https://phys.org/news/2023-07-korean-team-room-temperature-ambient-pressure-superconductor.html) (maybe!). To do so, it would need data created after July 2023 detailing these events.
+
+In addition, we can't overlook the invaluable role of human annotators. Paid and trained by OpenAI, these individuals provide the data necessary for the supervised fine-tuning and RLHF rankings. If we aim to expand the foundational set of tasks that ChatGPT can explicitly solve or wish to update our preference regarding its communication style, we’ll need to invest in more annotations.
+
+So, in essence, the ChatGPT saga hinges on data—its current limitations, its future prospects, and the ongoing interplay between the two.
 
 # A menu of questions
 
@@ -46,28 +54,27 @@ In this post, I explore our future with LLMs from the perspective of *data*. I'l
 
 ## How will LLMs learn new information?
 
-Imagine you're a software engineer. You might think that the job entails memorizing all code required to solve the task. However, most engineers rely heavily on "question-answer" sites like [Stack Overflow](https://stackoverflow.com/), where developers ask common questions and other developers provide detailed responses, either out of altruism, reputation-building, or simply for the satisfaction of helping their peers.
+I'm a software engineer. You might think that this job entails memorizing all code required to solve every task. However, most engineers rely heavily on "question-answer" sites like [Stack Overflow](https://stackoverflow.com/), where developers ask common questions and other developers provide detailed responses, either out of altruism, reputation-building, or simply for the satisfaction of helping others. We visit these sites almost every day.
 
-There's been speculation recently that ChatGPT is siphoning traffic from Stack Overflow. Some [sources](https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/) suggest this based on observed trends, but I personally find the evidence inconclusive. Regardless, anecdotally speaking, since the advent of ChatGPT, I've found less of a need to visit Stack Overflow. Why wait for human responses when ChatGPT can instantly help me solve problems or even write the code for me?
+Several sources [posit](https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/) that ChatGPT is directly cannibalizing Stack Overflow traffic. In my view, the statistics they offer are not overwhelmingly convincing. Irrespective, since the advent of ChatGPT, I myself have not been on Stack Overflow once. Why wait for human responses when ChatGPT responds instantly? Should other develoepers follow suit, Stack Overflow "freezes." In other words, no novel human knowledge is published at all.
 
-This shift in behavior could cause a "freeze" in the development of Stack Overflow. If developers stop asking questions, there will be fewer responses and less novel human knowledge being published. This scenario arises from a simple question of incentives - why wait for a response on Stack Overflow when you can get an instant answer from ChatGPT?
+If an AI model like ChatGPT cannot learn new things, that would indeed be a problem. We've already categorized knowledge into two types: static and dynamic. We can generally assume that LLMs like ChatGPT have sufficiently grasped static knowledge, but when it comes to dynamic knowledge, we need a mechanism for updating the model with new information.
 
-Now, it's crucial to acknowledge that if an AI model like ChatGPT cannot learn new things, that would indeed be a problem. We've already categorized knowledge into two types: static and dynamic. We can generally assume that LLMs like ChatGPT have sufficiently grasped static knowledge, but when it comes to dynamic knowledge, we need a mechanism for updating the model with new information.
+Let's consider an example: [Mojo](https://www.modular.com/mojo), a new programming language built specifically for machine learning tasks. Mojo is a superset of Python, so the basic principles of data structures and algorithms remain the same, but the syntax, semantics, and performance features are new. Simply put, how will ChatGPT learn how to read and debug Mojo?
 
-Let's consider an example: [Mojo](https://www.modular.com/mojo), a new programming language built specifically for machine learning tasks. Mojo is a superset of Python, so the basic principles of data structures and algorithms remain the same, but the syntax, semantics, and performance features are new. How can we enable ChatGPT to read and debug Mojo?
+For reading, the answer might be simple: include the Mojo [documentation](https://docs.modular.com/mojo/) in the model's training set. This provides a basis for understanding the syntax and semantics of Mojo.
 
-For reading, the answer might be simple: include the Mojo [documentation](https://docs.modular.com/mojo/) in the model’s training set. This provides a basis for understanding the syntax and semantics of Mojo.
+But for debugging, I think it’s more subtle. [GitHub Copilot X](https://github.com/features/preview/copilot-x)—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" regarding the workflows, questions, patterns, etc. inherent in programming in Mojo. And furthermore, as these humans contribute data that improves the tool, they’re still paying ($20/month) for the use of the tool itself!
 
-But for debugging, the solution could be more nuanced. With tools like [GitHub Copilot X](https://github.com/features/preview/copilot-x), which is powered by an LLM, your codebase and terminal context can be streamed into the model. As a result, while you're using Mojo, you are implicitly providing the LLM with valuable data about workflows, patterns, and issues inherent in programming with this new language. Notably, you are doing so while paying a subscription fee for the service!
-
-Another scenario to consider is how an LLM might learn about dynamic events like a war. We don't yet have a system capable of capturing and processing real-time audio, video, or other sensor data into a form that can be used by LLMs. While a working prototype of such a system is likely feasible and inevitable over the next decade, we still rely on humans to translate complex inputs (e.g., on-the-ground reporting) into outputs (e.g., news articles) that can feed into LLM training.
+Another scenario to consider is how an LLM might learn about dynamic events like a war. In the future, you can imagine a world outfitted to the teeth with audio, video, motion, etc. sensors that perceive, synthesize into text, then publish this information in real-time. A working prototype of such a system is probably feasible today, and almost inevitable over the next decade. However, today, humans are still required to translate complex inputs (e.g. audio, video, motion signals) into outputs (e.g., news articles) that can feed into LLM training.
 
 **In summary:**
 - LLMs can learn implicitly from captured data, as seen in the case of programming languages.
 - For data we can't yet capture effectively, LLMs will need explicit inputs, as is the case with dynamic events like wars.
 - As the technology for capturing inputs improves, we can progressively automate this process.
-- In the meantime, humans will continue to focus on the areas where LLMs fall short, synthesizing complex inputs into outputs to create a rich and diverse (input, output) dataset.
-- This dynamic relationship between human efforts and AI capabilities will continue to drive the evolution and improvement of large language models.
+- In the meantime, humans will continue to focus on the areas where LLMs fall short, synthesizing complex inputs into outputs to create a rich and diverse `(input, output)` dataset.
+- From this dataset, we can fit models.
+- As we develop better technology to capture the inputs, we can automate the whole thing.
 
 ## What will we do with human-LLM conversations?
 
