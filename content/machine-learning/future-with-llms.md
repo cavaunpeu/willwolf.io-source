@@ -7,19 +7,19 @@ Status: published
 Summary: In this post, I explore the evolving world of Language Learning Models (LLMs), considering how they learn, the future of human-LLM conversations, the hallucination problem, compensating data providers, the potential lucrativeness of data annotation, and the idea of a new Marxist struggle.
 Image: ../images/future-with-llms/human-mind.png
 
-## What is a Language Model?
+# What is a Language Model?
 
 A language model is best understood through human speech. If I were to say, "The boy put on his boots and went to the...," what words might come next? You could probably list a few sensible options: "store," "park," "bar," even "best" as in "best ice cream spot in town." On the other hand, there are words that would almost certainly never follow this phrase, like "don't," "photosynthesis," or "trigonometry."
 
 How do you know this? You have a "model of language" in your brain, a "language model" that you've acquired over your lifetime. The more language you ingest, the better your model becomes.
 
-## How Does ChatGPT Know So Much?
+# How does ChatGPT know so much?
 
 Over the past 30 years, internet users have unwittingly built the largest, most robust, most diverse, most interesting dataset in human history for learning machine learning models. These data come in various forms, or "modalities," including images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many other sources.
 
 ChatGPT, a "large language model" or LLM, is trained on a meaningful portion of all text data online. This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots.
 
-## How does ChatGPT work?
+# How does ChatGPT work?
 
 Creating ChatGPT involves three steps:
 
@@ -27,13 +27,13 @@ Creating ChatGPT involves three steps:
 2. **Fine-tune on `(prompt, response)` pairs:** Humans provide both parts of these pairs, giving concrete demonstrations of the tasks the model should accomplish.
 3. **Further fine-tune via a model of output quality.** Humans train a model to assign a quality score to a given output; ChatGPT is then refined to only output high-quality responses. This process is known as ["Reinforcement Learning from Human Feedback"](https://huggingface.co/blog/rlhf) (RLHF).
 
-## This is a story about data
+# This is a story about data
 
 Throughout my career in machine learning, I've learned that almost ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we get more of it? And on and on.
 
 ChatGPT is no different. Its language model has been trained on a huge chunk of the internet, and it's been fine-tuned using data provided by human annotators. The extent of its abilities, or the ways in which it could be improved, are determined by the nature and amount of the data it has been trained on.
 
-## A menu of questions
+# A menu of questions
 
 In this post, I explore our future with LLMs from the perspective of *data*. I'll do so by asking and answering a series of questions, touching on the methods, the players, the economics, and the power struggles that potentially lie ahead.
 
@@ -44,7 +44,7 @@ In this post, I explore our future with LLMs from the perspective of *data*. I'l
 5. Will data annotation be lucrative?
 6. Is this the new Marxist struggle?
 
-### How will LLMs learn new information?
+## How will LLMs learn new information?
 
 Imagine you're a software engineer. You might think that the job entails memorizing all code required to solve the task. However, most engineers rely heavily on "question-answer" sites like [Stack Overflow](https://stackoverflow.com/), where developers ask common questions and other developers provide detailed responses, either out of altruism, reputation-building, or simply for the satisfaction of helping their peers.
 
@@ -69,7 +69,7 @@ Another scenario to consider is how an LLM might learn about dynamic events like
 - In the meantime, humans will continue to focus on the areas where LLMs fall short, synthesizing complex inputs into outputs to create a rich and diverse (input, output) dataset.
 - This dynamic relationship between human efforts and AI capabilities will continue to drive the evolution and improvement of large language models.
 
-### What will we do with human-LLM conversations?
+## What will we do with human-LLM conversations?
 
 As of today, ChatGPT boasts a staggering [100 million users](https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/), resulting in an extensive volume of human-LLM conversations. The question then arises: what do we do with these interactions? As with most things in AI, it comes back to data. What valuable data can be gleaned from these conversations, and how can OpenAI utilize this information? Let's examine a few possibilities.
 
@@ -85,7 +85,7 @@ As of today, ChatGPT boasts a staggering [100 million users](https://www.reuters
     - Improve the model itself, based on conversation outcomes and reward signals.
     - Discover and prioritize novel applications or products by analyzing usage patterns and directly soliciting user feedback.
 
-### How do we solve the hallucination problem?
+## How do we solve the hallucination problem?
 
 The challenge of hallucination — where generative models invent content rather than accurately generating information from their training data — is a critical hurdle to clear in the advancement of Language Learning Models (LLMs). One possible solution has occurred to me recently, influenced as I am by my current work in the field of cryptocurrency and my previous experience in machine learning. I don't present this as the definitive answer, but merely as an intriguing idea that draws on the principles of decentralized systems.
 
@@ -115,7 +115,7 @@ Such a system could encourage accurate feedback and dissuade detrimental actions
 - As the hallucination issue is fundamentally a data problem, any viable solutions need to consider how data can be accurately generated, scrutinized, and managed.
 - Decentralized consensus systems might provide a fresh perspective on how to maintain the quality and integrity of generative models without relying on a centralized authority.
 
-### How will we compensate data providers?
+## How will we compensate data providers?
 
 In the vast world of data, there exist two predominant categories of providers: **platforms or companies** that aggregate data (like Reddit, Stack Overflow, Mastercard, Facebook), and **individuals** who are the original creators of such data. As the landscape of data usage shifts, particularly with the advent of Language Learning Models (LLMs), so too will the compensation models for these providers.
 
@@ -146,7 +146,7 @@ As LLMs become more prevalent, demand for data is likely to shift from purely co
 **In summary:**
 In the long term, the rise of LLMs could fundamentally alter the dynamics of data provision and consumption. It presents a complex blend of opportunities and challenges, potentially devaluing individual contributions by making human creators superfluous for the ongoing generation of content. This shift prompts a deeper philosophical question about the significance of individual uniqueness and human contribution in a world of digital content. While the benefits of LLMs — such as increased efficiency and wider knowledge distribution — are appealing, the potential impacts on individual creators and their sense of value and contribution warrant careful contemplation.
 
-### Will data annotation be lucrative?
+## Will data annotation be lucrative?
 
 From the humble beginnings of 'cat' or 'dog' labels to resolving sophisticated moral dilemmas for autonomous vehicles, the role of **data annotators** has evolved tremendously alongside the advances in machine learning. In our journey towards a future shaped by Large Language Models (LLMs), their contribution continues to be vital, and arguably, more complex and specialized than ever.
 
@@ -167,7 +167,7 @@ Intriguingly, the future of data annotation could be seen as a battle between a 
 **In summary:**
 In the end, the future of data annotation — its evolution and potential lucrativeness — hangs in the balance of legal frameworks, societal choices, and the ever-increasing sophistication of the questions these models need to answer. As we lean into this future, the complexity and importance of the data annotators' roles only seem to magnify. Just another day in the exhilarating roller coaster ride of machine learning and artificial intelligence!
 
-### Is this the new Marxist struggle?
+## Is this the new Marxist struggle?
 
 **Model Providers and Data Providers:**
 In the context of Marxist theory, [OpenAI] and similar entities have become the bourgeoisie of our time, the owners of the means of production. They control AI models, which in today's digital age, represent the critical tools of production. On the flip side, data providers serve as the proletariat. Their labor, in the form of data, powers these AI models in the same way manual labor fuels traditional industries.
@@ -187,12 +187,13 @@ Furthermore, we should consider potential dystopian futures, as depicted in Yuva
 **In summary:**
 Whether we're on the precipice of a new Marxist struggle over data and compensation is an intricate question interwoven with societal, economic, and technological factors. But one thing is clear: as AI continues to pervade our lives, these debates will grow louder and more urgent. It's our collective responsibility to engage in these conversations, shaping a future where technological advancement and societal welfare can coexist harmoniously.
 
-## Conclusion
+# Conclusion
 
 The LLM story is sure to evolve quickly. It's unclear where it will go. In the best case, human knowledge, satisfaction, and general well-being compound exponentially. Fingers crossed.
 
-## References
+# References
 
+```
 [^1]: @online{johnson2023,
     title={Exploring Methods for Model Selection and Training Data Curation},
     author={Kathryn Johnson and others},
@@ -369,3 +370,4 @@ The LLM story is sure to evolve quickly. It's unclear where it will go. In the b
     year={2020},
     note={\url{https://durmonski.com/book-summaries/who-owns-the-future/#5-lesson-2-ordinary-people-are-not-compensated-for-the-information-taken-from-them}}
 }
+```
