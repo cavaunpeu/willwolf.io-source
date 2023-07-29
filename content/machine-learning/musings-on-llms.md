@@ -1,4 +1,11 @@
-# Musings on Our Future with Large Language Models
+Title: Musings on Our Future with Large Language Models
+Date: 2023-07-29 10:00
+Author: Will Wolf
+Lang: en
+Slug: musings-on-llms
+Status: published
+Summary: In this post, I explore the evolving world of Language Learning Models (LLMs), considering how they learn, the future of human-LLM conversations, the hallucination problem, compensating data providers, the potential lucrativeness of data annotation, and the idea of a new Marxist struggle.
+Image: ../images/musings-on-llms/human-mind.png
 
 ## What is a Language Model?
 
@@ -8,7 +15,7 @@ How do you know this? You have a "model of language" in your brain, a "language 
 
 ## How Does ChatGPT Know So Much?
 
-Over the past 30 years, humanity has unwittingly built the greatest dataset for learning machine learning models. This data is in numerous forms, including images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many other sources.
+Over the past 30 years, humans have unwittingly built the biggest, most robust, most diverse, most interesting dataset imaginable for learning machine learning models. This data is in numerous forms, including images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many other sources.
 
 ChatGPT, a "large language model" or LLM, is trained on text data from a substantial portion of the internet. This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots.
 
@@ -181,6 +188,10 @@ Furthermore, we should consider potential dystopian futures, as depicted in Yuva
 
 **In summary:**
 Whether we're on the precipice of a new Marxist struggle over data and compensation is an intricate question interwoven with societal, economic, and technological factors. But one thing is clear: as AI continues to pervade our lives, these debates will grow louder and more urgent. It's our collective responsibility to engage in these conversations, shaping a future where technological advancement and societal welfare can coexist harmoniously.
+
+## Conclusion
+
+The LLM story is sure to evolve quickly. It's unclear where it will go. In the best case, human knowledge, satisfaction, and general well-being compound exponentially. Fingers crossed.
 
 ## References
 
