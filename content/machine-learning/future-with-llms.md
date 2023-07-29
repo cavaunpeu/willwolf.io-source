@@ -1,4 +1,4 @@
-Title: Our Future with Large Language Models
+Title: Our Future with LLMs
 Date: 2023-07-29 10:00
 Author: Will Wolf
 Lang: en
@@ -9,33 +9,33 @@ Image: ../images/future-with-llms/human-mind.png
 
 ## What is a Language Model?
 
-Let's sidestep the technical jargon and have a chat about human speech. If I were to say, "The boy put on his boots and went to the...," what words might come next? You could probably list a few sensible options: "store," "park," "bar," even "best" as in "best ice cream spot in town." On the other hand, there are words that would almost certainly never follow this phrase, like "don't," "photosynthesis," or "trigonometry."
+A language model is best understood through human speech. If I were to say, "The boy put on his boots and went to the...," what words might come next? You could probably list a few sensible options: "store," "park," "bar," even "best" as in "best ice cream spot in town." On the other hand, there are words that would almost certainly never follow this phrase, like "don't," "photosynthesis," or "trigonometry."
 
 How do you know this? You have a "model of language" in your brain, a "language model" that you've acquired over your lifetime. The more language you ingest, the better your model becomes.
 
 ## How Does ChatGPT Know So Much?
 
-Over the past 30 years, humans have unwittingly built the biggest, most robust, most diverse, most interesting dataset imaginable for learning machine learning models. This data is in numerous forms, including images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many other sources.
+Over the past 30 years, internet users have unwittingly built the largest, most robust, most diverse, most interesting dataset in human history for learning machine learning models. These data come in various forms, or "modalities," including images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many other sources.
 
-ChatGPT, a "large language model" or LLM, is trained on text data from a substantial portion of the internet. This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots.
+ChatGPT, a "large language model" or LLM, is trained on a meaningful portion of all text data online. This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots.
 
-## How Does ChatGPT Work?
+## How does ChatGPT work?
 
 Creating ChatGPT involves three steps:
 
-1. **Train a language model:** This is just about predicting the next word, over and over again.
+1. **Train a language model:** Given a phrase, teach the model how to predict the next word. (It can then append this next word to the phrase, and repeat this process ad infinitum to generate a full sentence.    )
 2. **Fine-tune on `(prompt, response)` pairs:** Humans provide both parts of these pairs, giving concrete demonstrations of the tasks the model should accomplish.
-3. **Further fine-tuning via a ranking model:** This model, trained by humans, helps to rank the model's outputs.
+3. **Further fine-tune via a model of output quality.** Humans train a model to assign a quality score to a given output; ChatGPT is then refined to only output high-quality responses. This process is known as ["Reinforcement Learning from Human Feedback"](https://huggingface.co/blog/rlhf) (RLHF).
 
-## This is a Story about Data
+## This is a story about data
 
-In my experience with machine learning, I've found that almost every system is a story about data. Where does it come from? What's wrong with it? How much does it cost? These are just a few of the questions that come up.
+Throughout my career in machine learning, I've learned that almost ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we get more of it? And on and on.
 
 ChatGPT is no different. Its language model has been trained on a huge chunk of the internet, and it's been fine-tuned using data provided by human annotators. The extent of its abilities, or the ways in which it could be improved, are determined by the nature and amount of the data it has been trained on.
 
-## A Menu of Questions I'd Like to Explore
+## A menu of questions
 
-Given this background, I want to delve into the "LLM data story"—the methods, the players, the economics, and the power struggles—through the lens of six key questions:
+In this post, I explore our future with LLMs from the perspective of *data*. I'll do so by asking and answering a series of questions, touching on the methods, the players, the economics, and the power struggles that potentially lie ahead.
 
 1. How will LLMs learn new information?
 2. What will we do with human-LLM conversations?
@@ -43,8 +43,6 @@ Given this background, I want to delve into the "LLM data story"—the methods, 
 4. How will we compensate data providers?
 5. Will data annotation be lucrative?
 6. Is this the new Marxist struggle?
-
-In the following sections, we'll discuss these questions in more detail.
 
 ### How will LLMs learn new information?
 
