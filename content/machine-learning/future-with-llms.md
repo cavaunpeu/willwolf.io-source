@@ -31,19 +31,19 @@ Creating ChatGPT involves three steps:
 
 # This is a story about data
 
-Throughout my career in machine learning, I've learned almost every ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we de-bias it? How do we get more of it? And on and on. ChatGPT is no different.
+Throughout my career in machine learning, I've learned almost every ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we de-bias it? How do we get more of it? Which data should we label next? And on. ChatGPT is no different.
 
-How does the dependency on data shape ChatGPT's abilities and limitations? The language model behind ChatGPT, as of this writing, has been trained on a substantial portion of the written internet up until September 2021 (as users will now know by heart, as the model loves to restate this limitation). This data encapsulates the knowledge required for an array of *static-knowledge* tasks. For instance, it can translate English to Greek, a skill that doesn't significantly evolve over the years, hence, doesn't require perpetual data updates. Likewise, it can summarize text, write songs in the style of Johnny Cash, and so on.
+With this in mind, here are a few keys points regarding where we stand today:
 
-However, there's a flip side. The model can't tackle *dynamic-knowledge* tasks, such as acknowledging that we may have built the first room-temperature [superconductor](https://phys.org/news/2023-07-korean-team-room-temperature-ambient-pressure-superconductor.html) (maybe!). To do so, it would need data created after July 2023 detailing these events.
+**Static knowledge**: The language model has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the model loves to restate this limitation). Encapsulated in this data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can translate English to Greek; as the nature of this translation doesn’t really evolve year over year, the model does not per se require any more data to accomplish this task. It has enough already.
 
-In addition, we can't overlook the invaluable role of human annotators. Paid and trained by OpenAI, these individuals provide the data necessary for the supervised fine-tuning and RLHF rankings. If we aim to expand the foundational set of tasks that ChatGPT can explicitly solve or wish to update our preference regarding its communication style, we’ll need to invest in more annotations.
+**Dynamic knowledge**: Conversely, the model is (trivially) unable to solve *dynamic-knowledge* tasks, like answering questions about the room-temperature [superconductor](https://phys.org/news/2023-07-korean-team-room-temperature-ambient-pressure-superconductor.html) paper that was published last week. Why? It's never seen this data before. In order to impart this knowledge, we'd need to update the model with this new information.
 
-So, in essence, the ChatGPT saga hinges on data—its current limitations, its future prospects, and the ongoing interplay between the two.
+**Human annotators**: Human annotators (paid and trained by OpenAI) have provided the data required for the supervised fine-tuning and RLHF [steps]({filename}/machine-learning/future-with-llms.md). Should we wish to expand the "foundational" set of tasks that we explicitly want the model to solve, or update our "preference" regarding the way in which the model expresses itself, we'll need more annotations.
 
 # A menu of questions
 
-In this post, I explore our future with LLMs from the perspective of *data*. I'll do so by asking and answering a series of questions, touching on the methods, the players, the economics, and the power struggles that potentially lie ahead.
+In this post, I explore our future with LLMs from the perspective of *data*. I'll do so by asking and answering a series of questions—touching on the methods, the players, the economics, and the power struggles that potentially lie ahead.
 
 1. How will LLMs learn new information?
 2. What will we do with human-LLM conversations?
@@ -51,6 +51,8 @@ In this post, I explore our future with LLMs from the perspective of *data*. I'l
 4. How will we compensate data providers?
 5. Will data annotation be lucrative?
 6. Is this the new Marxist struggle?
+
+Let's begin.
 
 ## How will LLMs learn new information?
 
