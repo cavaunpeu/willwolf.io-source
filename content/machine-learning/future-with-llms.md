@@ -35,9 +35,9 @@ Throughout my career in machine learning, I've learned almost every ML problem i
 
 With this in mind, here are a few keys points regarding where we stand today:
 
-**Static knowledge**: The language model has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the model loves to restate this limitation). Encapsulated in this data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can translate English to Greek; as the nature of this translation doesn’t really evolve year over year, the model does not per se require any more data to accomplish this task. It has enough already.
+**Static knowledge**: The language model has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the model loves to restate this limitation). Encapsulated in this data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can summarize news articles; as the nature of summarization doesn't really evolve year over year, the model does not per se require any more data to accomplish this task. It has enough already.
 
-**Dynamic knowledge**: Conversely, the model is (trivially) unable to solve *dynamic-knowledge* tasks, like answering questions about the room-temperature [superconductor](https://phys.org/news/2023-07-korean-team-room-temperature-ambient-pressure-superconductor.html) paper that was published last week. Why? It's never seen this data before. In order to impart this knowledge, we'd need to update the model with this new information.
+**Dynamic knowledge**: Conversely, imagine that we'd like to translate classical Greek into modern English. Well, what does "modern" mean? Language constantly [evolves](https://www.amazon.com/Because-Internet-Understanding-Rules-Language/dp/0735210934) to include new vocabularly and modes of expression. So, while the fundamentals of translation don't really change, the contemporary details do. To keep pace with these details, the model needs to be updated with examples of this text. I surely wasn't saying "that's lit" myself ten years ago.
 
 **Human annotators**: Human annotators (paid and trained by OpenAI) have provided the data required for the supervised fine-tuning and RLHF [steps]({filename}/machine-learning/future-with-llms.md). Should we wish to expand the "foundational" set of tasks that we explicitly want the model to solve, or update our "preference" regarding the way in which the model expresses itself, we'll need more annotations.
 
@@ -56,27 +56,43 @@ Let's begin.
 
 ## How will LLMs learn new information?
 
-I'm a software engineer. You might think that this job entails memorizing all code required to solve every task. However, most engineers rely heavily on "question-answer" sites like [Stack Overflow](https://stackoverflow.com/), where developers ask common questions and other developers provide detailed responses, either out of altruism, reputation-building, or simply for the satisfaction of helping others. We visit these sites almost every day.
+I work as a software engineer. If you don't, you might believe that all engineers have committed to memory the knowledge and syntax required to solve every task we ever encounter throughout our day. Alas, we haven't. Instead, we commonly use "question-answer" sites like [Stack Overflow](https://stackoverflow.com/) to see how other developers have solved the problem at hand. Before ChatGPT, I used StackOverflow almost daily.
 
-Several sources [posit](https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/) that ChatGPT is directly cannibalizing Stack Overflow traffic. In my view, the statistics they offer are not overwhelmingly convincing. Irrespective, since the advent of ChatGPT, I myself have not been on Stack Overflow once. Why wait for human responses when ChatGPT responds instantly? Should other develoepers follow suit, Stack Overflow "freezes." In other words, no novel human knowledge is published at all.
+Several sources [posit](https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/) that ChatGPT is directly cannibalizing Stack Overflow traffic. Personally, I don't find the statistics they provide particularly convincing. So, let's use an anecdote instead: since I started using ChatGPT in ~4 months ago, I have not been on Stack Overflow once. Why wait for human responses when ChatGPT responds instantly?
 
-If an AI model like ChatGPT cannot learn new things, that would indeed be a problem. We've already categorized knowledge into two types: static and dynamic. We can generally assume that LLMs like ChatGPT have sufficiently grasped static knowledge, but when it comes to dynamic knowledge, we need a mechanism for updating the model with new information.
+If other developers are doing the same, Stack Overflow "freezes." In other words, no new human programming knowledge is published at all. Like language translation, coding implies translating a set of logical expressions in ones brain into machine-readable instructions. Across the spectrum of present and future programming languages, the fundamentals generally don't change. However, the details do. In this vein, being a software engineer (as a human, or an AI model) is a dynamic-knowledge task. With the next programming language to hit the market, how will developers know how to use it?
 
-Let's consider an example: [Mojo](https://www.modular.com/mojo), a new programming language built specifically for machine learning tasks. Mojo is a superset of Python, so the basic principles of data structures and algorithms remain the same, but the syntax, semantics, and performance features are new. Simply put, how will ChatGPT learn how to read and debug Mojo?
+Let's consider [Mojo](https://www.modular.com/mojo), a new programming language built specifically for AI developers. As Mojo is a superset of Python, our knowledge about Python will still apply. However, Mojo will bring new features that we haven't seen before. Simply put, how will ChatGPT learn how to read and debug Mojo?
 
 For reading, the answer might be simple: include the Mojo [documentation](https://docs.modular.com/mojo/) in the model's training set. This provides a basis for understanding the syntax and semantics of Mojo.
 
-But for debugging, I think it’s more subtle. [GitHub Copilot X](https://github.com/features/preview/copilot-x)—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" regarding the workflows, questions, patterns, etc. inherent in programming in Mojo. And furthermore, as these humans contribute data that improves the tool, they’re still paying ($20/month) for the use of the tool itself!
+For debugging, I think it's more subtle. [GitHub Copilot X](https://github.com/features/preview/copilot-x)—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" regarding the workflows, questions, patterns, etc. inherent in programming in Mojo. (And furthermore, as these humans contribute the data that improves the model, they're still paying $20/month for the use of the tool itself!)
 
-Another scenario to consider is how an LLM might learn about dynamic events like a war. In the future, you can imagine a world outfitted to the teeth with audio, video, motion, etc. sensors that perceive, synthesize into text, then publish this information in real-time. A working prototype of such a system is probably feasible today, and almost inevitable over the next decade. However, today, humans are still required to translate complex inputs (e.g. audio, video, motion signals) into outputs (e.g., news articles) that can feed into LLM training.
+### Learning the right things, fast
+
+The Stack Overflow and "capturing terminal context" settings aren't that different. In the former, humans converse with humans in pursuit of a working program. In the latter, humans converse with the programming language's compiler or interpreter, i.e. the "machine," in pursuit of a working program. In both cases, we assume humans act *rationally*, meaning earnestly trying to implement the "right thing," and/or the "thing that I, LLM, want to learn."
+
+Conversely, the *speed* with which we can generate a large and diverse dataset is different. On Stack Overflow (human-human), it's slow. In the terminal (human-machine), it's fast. In a machine-machine setup, e.g. a reinforcement learning system where an AI plays the part of the programmer, gets feedback from the language, and iterates, would be even faster...
+
+Taken together, the question becomes: where can I find the highest-value dataset *per unit time* whose creators I *know to be rational*? In learning novel internet slang, this is likely Twitter (human-human, with a few [machines](https://www.businessinsider.com/twitter-blue-elon-musk-failure-bots-running-rampant-2023-7) thrown in the mix...); in programming, this might be human-machine (or soon machine-machine). Irrespective, for each task, this "limiting case" is ultimately a statement on the instrinsic value of ...
+
+### Skating to the puck
+
+From here, it's simply business strategy. As an LLM provider, how can I "insert myself" into this
+
+- the stack overflow setting and copilot setting aren't that different.
+    - in SO, it's humans going back and forth and working toward the right answer.
+    - in copilot, it's the human and the language runtime (machine).
+    - (you could imagine building an RL system that go machine-to-machine to try to learn even faster.)
+- in "learning online slang," you're kind of bottlenecked by humans.
+- overall, we want to learn the *right* information, i.e. information generated by rational actors.
+- so, we condition on rationality, then skate to where the highest-velocity information source is.
+- from a strategic perspective, this is what companies will try to do. above, we saw how the LLM is in my IDE, helping me while i help it. this creates a flywheel effect and mutually positive incentives.
+
 
 **In summary:**
-- LLMs can learn implicitly from captured data, as seen in the case of programming languages.
-- For data we can't yet capture effectively, LLMs will need explicit inputs, as is the case with dynamic events like wars.
-- As the technology for capturing inputs improves, we can progressively automate this process.
-- In the meantime, humans will continue to focus on the areas where LLMs fall short, synthesizing complex inputs into outputs to create a rich and diverse `(input, output)` dataset.
-- From this dataset, we can fit models.
-- As we develop better technology to capture the inputs, we can automate the whole thing.
+
+-
 
 ## What will we do with human-LLM conversations?
 
