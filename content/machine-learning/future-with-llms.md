@@ -72,6 +72,22 @@ For reading, the answer might be simple: include the Mojo [documentation](https:
 
 For debugging, I think it's more subtle. [GitHub Copilot X](https://github.com/features/preview/copilot-x)—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" regarding the workflows, questions, patterns, etc. inherent in programming in Mojo. (And furthermore, as these humans contribute the data that improves the model, they're still paying $20/month for the use of the tool itself!)
 
+Taken together, for the model to update its understanding of dynamic and novel knowledge tasks, we must provide it with new data. In what follows, we codify the nature of this provision along three main axes: implicit vs. explicit, velocity, and rationality.
+
+### Implicit vs. explicit
+
+The nature of data provision will *range* from implicit to explicit. Capturing the Mojo developer's terminal context is an example of implicit data provision. Curating model training examples about how to resolve common Mojo errors is an example of explicit data provision. Answering empirical questions on Stack Overflow has elements of both.
+
+### Fidelity
+
+In the three cases just mentioned, we assume humans act *rationally*, meaning that they earnestly try to produce the "right information" in order to solve their problem, which we can ideally add to the model's training set. However, this data "fidelity" varies across each case—as a function of who is providing the data, and what their incentives and requirements are.
+
+In the "capturing terminal context" setting—implemented naively—we are capturing information from *all* developers. Some might be good, others bad. While most developers are likely "trying to solve their problem," or "debugging code until it works," the quality, and therefore fidelity, of this information will vary as a function of their skills.
+
+In Stack Overflow, the same "available to all" feature applies. However, there is both an additional social pressure placed on users of the site to provide correct information—people don't want to look silly in front of their peers—as well as an explicit feedback mechanism—answers deemed correct get "upvoted," and vice versa. Nominally, these constraints increase data fidelity.
+
+Finally, we assume that the "manually curate training set examples" setting gives the highest-fidelity data of the three. Why? A company is paying a human to explicitly teach the model information. Before annotation, they ensure the human has the right qualifications; after annotation, they likely review the results. Taken together, the highest scrutiny gives the highest fidelity.
+
 ### Learning the right things, fast
 
 The Stack Overflow and "capturing terminal context" settings aren't that different. In the former, humans converse with humans in pursuit of a working program. In the latter, humans converse with the programming language's compiler or interpreter, i.e. the "machine," in pursuit of a working program. In both cases, we assume humans act *rationally*, meaning earnestly trying to implement the "right thing," and/or the "thing that I, LLM, want to learn."
