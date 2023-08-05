@@ -39,6 +39,10 @@ With this in mind, here are a few keys points regarding where we stand today:
 
 **Dynamic knowledge**: Conversely, imagine that we'd like to translate classical Greek into modern English. Well, what does "modern" mean? Language constantly [evolves](https://www.amazon.com/Because-Internet-Understanding-Rules-Language/dp/0735210934) to include new vocabularly and modes of expression. So, while the fundamentals of translation don't really change, the contemporary details do. To keep pace with these details, the model needs to be updated with examples of this text. I surely wasn't saying "that's lit" myself ten years ago.
 
+**Novel knowledge**: Finally, novel knowledge defines the set of tasks or abilities that the model has never encountered. For instance, a novel discovery in physics, e.g. room-temperature [superconductivity](https://phys.org/news/2023-07-korean-team-room-temperature-ambient-pressure-superconductor.html) is an example of *dynamic knowledge* if this work is an *extension* of the scientific knowledge, logical reasoning, historical expectations, etc. that the model already posseses. Conversely, this discovery is an example of *novel knowledge* if it is predominantly composed of never-before-seen ways of conceptualizing the world, e.g. "a new mathematics," alien anatomy, etc.
+
+The vast majority of knowledge is either static or dynamic. However, for completeness, we leave a small sliver of space for novel knowledge as well.
+
 **Human annotators**: Human annotators (paid and trained by OpenAI) have provided the data required for the supervised fine-tuning and RLHF [steps]({filename}/machine-learning/future-with-llms.md). Should we wish to expand the "foundational" set of tasks that we explicitly want the model to solve, or update our "preference" regarding the way in which the model expresses itself, we'll need more annotations.
 
 # A menu of questions
