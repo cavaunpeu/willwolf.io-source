@@ -72,11 +72,13 @@ For reading, the answer might be simple: include the Mojo [documentation](https:
 
 For debugging, I think it's more subtle. [GitHub Copilot X](https://github.com/features/preview/copilot-x)—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" regarding the workflows, questions, patterns, etc. inherent in programming in Mojo. (And furthermore, as these humans contribute the data that improves the model, they're still paying $20/month for the use of the tool itself!)
 
-Taken together, for the model to update its understanding of dynamic and novel knowledge tasks, we must provide it with new data. In what follows, we codify the nature of this provision along three main axes: implicit vs. explicit, velocity, and rationality.
+Taken together, for the model to update its understanding of dynamic and novel knowledge tasks, we must provide it with new data. In what follows, we codify the nature of this provision along three main axes: implicit vs. explicit, fidelity, and velocity.
 
 ### Implicit vs. explicit
 
 The nature of data provision will *range* from implicit to explicit. Capturing the Mojo developer's terminal context is an example of implicit data provision. Curating model training examples about how to resolve common Mojo errors is an example of explicit data provision. Answering empirical questions on Stack Overflow has elements of both.
+
+Broadly, implicit data will be easier to collect (there's more of it to go around), and vice versa.
 
 ### Fidelity
 
@@ -88,31 +90,15 @@ In Stack Overflow, the same "available to all" feature applies. However, there i
 
 Finally, we assume that the "manually curate training set examples" setting gives the highest-fidelity data of the three. Why? A company is paying a human to explicitly teach the model information. Before annotation, they ensure the human has the right qualifications; after annotation, they likely review the results. Taken together, the highest scrutiny gives the highest fidelity.
 
-### Learning the right things, fast
+### Velocity
 
-The Stack Overflow and "capturing terminal context" settings aren't that different. In the former, humans converse with humans in pursuit of a working program. In the latter, humans converse with the programming language's compiler or interpreter, i.e. the "machine," in pursuit of a working program. In both cases, we assume humans act *rationally*, meaning earnestly trying to implement the "right thing," and/or the "thing that I, LLM, want to learn."
+Finally, across the three settings, the *speed* with which we can generate a large and diverse dataset is different. In manual curation, it's slowest (single human). On Stack Overflow (many human-human interactions), it's faster. In the terminal (many human-machine interactions), it's fastest (and probably by a lot). A "many machine-machine interactions" setup, e.g. copies of a reinforcement learning system where an AI plays the part of the programmer, gets feedback from the language, and iterates, all running in parallel, would be even faster...
 
-Conversely, the *speed* with which we can generate a large and diverse dataset is different. On Stack Overflow (human-human), it's slow. In the terminal (human-machine), it's fast. In a machine-machine setup, e.g. a reinforcement learning system where an AI plays the part of the programmer, gets feedback from the language, and iterates, would be even faster...
+### So where do I get data?
 
-Taken together, the question becomes: where can I find the highest-value dataset *per unit time* whose creators I *know to be rational*? In learning novel internet slang, this is likely Twitter (human-human, with a few [machines](https://www.businessinsider.com/twitter-blue-elon-musk-failure-bots-running-rampant-2023-7) thrown in the mix...); in programming, this might be human-machine (or soon machine-machine). Irrespective, for each task, this "limiting case" is ultimately a statement on the instrinsic value of ...
+With the above in mind, companies will seek out data sources that make an optimal tradeoff between: the pragmatic implications of collecting implicit vs. explicit data, the fidelity of the data provided, and the speed with which it is generated. Broadly, implicit data will be easier to collect, low fidelity, and high velocity. Explicit data will be harder to collect, high fidelity, and low velocity.
 
-### Skating to the puck
-
-From here, it's simply business strategy. As an LLM provider, how can I "insert myself" into this
-
-- the stack overflow setting and copilot setting aren't that different.
-    - in SO, it's humans going back and forth and working toward the right answer.
-    - in copilot, it's the human and the language runtime (machine).
-    - (you could imagine building an RL system that go machine-to-machine to try to learn even faster.)
-- in "learning online slang," you're kind of bottlenecked by humans.
-- overall, we want to learn the *right* information, i.e. information generated by rational actors.
-- so, we condition on rationality, then skate to where the highest-velocity information source is.
-- from a strategic perspective, this is what companies will try to do. above, we saw how the LLM is in my IDE, helping me while i help it. this creates a flywheel effect and mutually positive incentives.
-
-
-**In summary:**
-
--
+**Overall, companies will need to identify the "data provision venue" that makes the right tradeoffs for them and their model.** Then, they'll need to be strategic about how to "drop their net" into this stream and catch the passing fish.
 
 ## What will we do with human-LLM conversations?
 
