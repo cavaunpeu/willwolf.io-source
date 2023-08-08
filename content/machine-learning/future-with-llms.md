@@ -124,33 +124,19 @@ Lastly, by associating tasks with clusters of conversations and their descriptio
 
 ## How do we solve the hallucination problem?
 
-The challenge of hallucination — where generative models invent content rather than accurately generating information from their training data — is a critical hurdle to clear in the advancement of Language Learning Models (LLMs). One possible solution has occurred to me recently, influenced as I am by my current work in the field of cryptocurrency and my previous experience in machine learning. I don't present this as the definitive answer, but merely as an intriguing idea that draws on the principles of decentralized systems.
+"Hallucation" is when an LLM says things that have no basis in fact or reality. If we knew *when* the model did this, we could simply restrict those outputs. If we knew *why*, we could likely design better models that hallucinate less. Unfortunately, the answers to these [questions](https://cims.nyu.edu/~sbowman/eightthings.pdf) remain elusive.
 
-Retrieval models, which select fixed outputs from a fixed 'menu' of options, inherently navigate around the hallucination problem by explicitly restricting the model's potential responses. Generative models, on the other hand, create new content *ex nihilo*, and in doing so relinquish some control over what is produced — potentially leading to hallucinations.
+[Retrieval](https://en.wikipedia.org/wiki/Information_retrieval#:~:text=Information%20retrieval%20is%20the%20science,of%20texts%2C%20images%20or%20sounds.) models select fixed outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can’t "say." Generative models, on the other hand, make a different tradeoff: allowing the model to generate novel content *ex nihilo* implies forfeiting some amount of control over what it can say.
 
-At its core, the LLM problem is a data problem. If we could enlist human annotators to rectify hallucinations on a large scale, we could directly teach the model to avoid producing such outputs. However, an important question arises: ***who*** gets to decide what is an acceptable output? Currently, that's OpenAI — analogous to how Facebook was the arbiter of acceptable content during the 2020 presidential election.
+Paying rational human annotators to "correct" all recorded hallucinations would likely improve the situation. However, much like dictatorship, policing the actions and behaviors of every constituent is not a particularly scalable strategy. In addition, the question of *who* decides what "correct" means itself remains open for debate. In the context of ChatGPT, this is OpenAI. Similarly, in the context of the 2020 presidential election, it was Facebook that decided what content was and was not acceptable to promote. Combining the two, an interesting question arises: How do we solve the hallucination problem without a centralized authority? Said differently, how do we build models whose voice represents that of the broader consensus?
 
-This sparks an even deeper question: How do we resolve the hallucination problem ***without*** a centralized authority? That is, how do we develop models whose voice genuinely echoes the consensus of the larger community?
+My technical background is largely in machine learning. However, I've detoured into crypto for the past two years. In this section, I'll borrow an idea from the latter, and play out a thought experiment.
 
-The tech world has been wrestling with a similar question for the last ~15 years, particularly in terms of monetary systems. The challenge is to create a trustworthy system for transferring monetary value that doesn't hinge on centralized, potentially biased, intermediaries.
+### Addressing hallucation through Proof of Stake
 
-These concurrent threads of thought led me to a conceptual crossroads. An interesting avenue to explore, in the spirit of thought experimentation, might look something like this:
+The crypto world has spent the last ~15 years trying to answer a similar question: How do we build a scalable, trustworthy system for the transfer of monetary value that does not rely on centralized intermediaries?
 
-The blockchain consensus algorithm known as Proof of Stake (PoS) has validators propose and verify blocks based on the number of tokens they're willing to stake. Proposing valid blocks earns rewards; proposing fraudulent ones incurs penalties, including losing their stake.
 
-Adapting a PoS-like structure to LLMs might involve:
-- Users as validators, offering feedback on the model's outputs.
-- Validators having something at stake — be it points, reputation, privileges, or digital currency.
-- Validators providing accurate feedback would be rewarded.
-- Those giving inaccurate feedback or behaving maliciously would lose their stake.
-
-Such a system could encourage accurate feedback and dissuade detrimental actions. Still, it's not without challenges. There's the risk of exploitation by coordinated groups and the requisite for validators to have adequate expertise to provide accurate validation. And, of course, it's vital to have a diverse and balanced group of validators to avoid biases.
-
-**In summary:**
-
-- This contemplation is just one of numerous potential solutions to the hallucination problem, inspired by the fusion of decentralized systems and machine learning principles.
-- As the hallucination issue is fundamentally a data problem, any viable solutions need to consider how data can be accurately generated, scrutinized, and managed.
-- Decentralized consensus systems might provide a fresh perspective on how to maintain the quality and integrity of generative models without relying on a centralized authority.
 
 ## How will we compensate data providers?
 
@@ -407,4 +393,5 @@ The LLM story is sure to evolve quickly. It's unclear where it will go. In the b
     year={2020},
     note={\url{https://durmonski.com/book-summaries/who-owns-the-future/#5-lesson-2-ordinary-people-are-not-compensated-for-the-information-taken-from-them}}
 }
+https://cims.nyu.edu/~sbowman/eightthings.pdf
 ```
