@@ -126,17 +126,37 @@ Lastly, by associating tasks with clusters of conversations and their descriptio
 
 "Hallucation" is when an LLM says things that have no basis in fact or reality. If we knew *when* the model did this, we could simply restrict those outputs. If we knew *why*, we could likely design better models that hallucinate less. Unfortunately, the answers to these [questions](https://cims.nyu.edu/~sbowman/eightthings.pdf) remain elusive.
 
-[Retrieval](https://en.wikipedia.org/wiki/Information_retrieval#:~:text=Information%20retrieval%20is%20the%20science,of%20texts%2C%20images%20or%20sounds.) models select fixed outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can’t "say." Generative models, on the other hand, make a different tradeoff: allowing the model to generate novel content *ex nihilo* implies forfeiting some amount of control over what it can say.
+[Retrieval](https://en.wikipedia.org/wiki/Information_retrieval#:~:text=Information%20retrieval%20is%20the%20science,of%20texts%2C%20images%20or%20sounds.) models select outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can't "say." Generative models, on the other hand, make a different tradeoff: allowing the model to generate novel content *ex nihilo* implies forfeiting some control over what it can say.
 
-Paying rational human annotators to "correct" all recorded hallucinations would likely improve the situation. However, much like dictatorship, policing the actions and behaviors of every constituent is not a particularly scalable strategy. In addition, the question of *who* decides what "correct" means itself remains open for debate. In the context of ChatGPT, this is OpenAI. Similarly, in the context of the 2020 presidential election, it was Facebook that decided what content was and was not acceptable to promote. Combining the two, an interesting question arises: How do we solve the hallucination problem without a centralized authority? Said differently, how do we build models whose voice represents that of the broader consensus?
+Paying rational human annotators to "correct" all recorded hallucinations would likely improve this situation. However, much like dictatorship, policing the actions and behaviors of every constituent is not a scalable strategy. In addition, the question of *who* decides what "correct" actually means remains open for virulent debate. In the context of ChatGPT, this is OpenAI. Similarly, in the context of the 2020 presidential election, it was Facebook that decided what content was and was not acceptable to promote. Combining the two, an interesting question arises: How do we solve the hallucination problem without a centralized authority? Said differently, how do we build models whose voice represents that of the broader consensus? It is extremely likely that a discussion surrounding some form of this question will unfold in the coming years.
 
-My technical background is largely in machine learning. However, I've detoured into crypto for the past two years. In this section, I'll borrow an idea from the latter, and play out a thought experiment.
+My technical background is largely in machine learning. However, I've been working in crypto for the past two years. In this section, I'll borrow an idea from the latter and apply it to the former. The following idea may be fancfiful and impractical, and is certainly not the only way to approach this problem. Nonetheless, it makes for an interesting thought experiment.
 
-### Addressing hallucation through Proof of Stake
+### Proof of Stake
 
-The crypto world has spent the last ~15 years trying to answer a similar question: How do we build a scalable, trustworthy system for the transfer of monetary value that does not rely on centralized intermediaries?
+The crypto world has spent the last ~15 years trying to answer a similar question: How do we build a scalable, trustworthy system for the transfer of monetary value that does not rely on centralized intermediaries? To date, one of the key mechanisms used to achieve this end is Proof of Stake (PoS). PoS is a consensus algorithm where partipicants, or "validators," are collectively entrusted to verify the legitimacy of transactions. To incentivize earnest behavior, PoS employs the following mechanism:
 
+- Participants are paid to validate transactions.
+- Prior to validating transactions, participants "stake" capital. This "stake" is like a hold placed on your credit card when renting a car.
+- The more capital you "stake," the more likely you are to be selected to validate transactions.
+- If other partipicants deem your behavior dishonest, your "stake" is taken (and you do not get paid).
 
+Take together, PoS promotes transaction fidelity with economic incentives and penalties. Dishonest participants may lose their staked tokens, creating a self-regulating system where everyone has a vested interest in success.
+
+### Applying Proof of Stake to LLMs
+
+How might we apply PoS to LLMs? In effect, the users are the validators who ensure the legitimacy not of transactions, but of model outputs. Validators would have a stake, such as points, reputation, privileges, or digital currency, at risk, creating a vested interest in the accuracy of feedback. Then, model outputs would be periodically selected for collective review. Validators would be rewarded for proposing valid feedback in consensus with other users. Conversely, those providing inaccurate feedback or acting maliciously would lose their stake.
+
+Much like PoS in the blockchain world, this system is not without its challenges. For instance:
+
+- How do we ensure that a small number of "high-stake" users don't control the system?
+- Will the collective expertise of users empirically "satisfy" the model provider? Elon, maybe; Sam ([Altman](https://en.wikipedia.org/wiki/Sam_Altman)), unclear.
+- What balance between rewards and penalties promotes truthful feedback without stifling participation?
+- Etc.
+
+Finally, the question of *when or why* this type of system might ever be introduced is ultimately a question of who retains power. Will LLMs simply be services offered by private companies? Will governments mandate their use as a public utility informed by, and built for, the body politic itself? I don't have the answers to any of these questions. However, my popcorn is ready!
+
+**Overall, Proof of Stake is but one approach to solving the hallucination problem.** As an algorithm for decentralized consensus, its relevance will correlate with the evolving narratives of scalability, fairness, and the distribution of power in the context of LLMs.
 
 ## How will we compensate data providers?
 
