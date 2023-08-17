@@ -160,34 +160,32 @@ Finally, the question of *when or why* this type of system might ever be introdu
 
 ## How will we compensate data providers?
 
-In the vast world of data, there exist two predominant categories of providers: **platforms or companies** that aggregate data (like Reddit, Stack Overflow, Mastercard, Facebook), and **individuals** who are the original creators of such data. As the landscape of data usage shifts, particularly with the advent of Language Learning Models (LLMs), so too will the compensation models for these providers.
+Much like LLMs, business is a story about data as well. For instance, historical customer purchase data allows a business to prioritize which products and services to sell in the the future. Customer characteristics like age, location, gender, and political preferences enable more targeted advertisements. Data collected in feedback forms hint at new products that customers might buy.
 
-**Current Compensation Paradigms:**
+Before the internet, companies employed a variety of traditional methods to collect these data: questionnaires or comment cards, tracking purchases and preferences through loyalty cards, and utilizing demographic information and other publicly available data. With the internet, the game changed overnight. Now, companies could track every page visit, click, and even [eye movements](https://theconversation.com/companies-are-increasingly-tracking-eye-movements-but-is-it-ethical-191842#:~:text=Apple%2C%20Google%2C%20Snap%2C%20Microsoft,contact%20lenses%20and%20AR%20headsets.). In addition, they encouraged the creation of data expressing *implicit* user preferences, such as pictures on Instagram, chats between friends on Messenger, videos on YouTube. Much like before, these data offered clear value to businesses.
 
-At present, data is mainly consumed for advertising, with companies acquiring it to better understand and target consumer behavior. Compensation for this data generally falls into three categories:
+Other types of data were valuable as well. Expert replies on question-answer sites like Quora offered informational value to users, and garnered reputational value for the author herself. Basic data annotation enabled machine learning practitioners to train models. In [this](https://open.spotify.com/episode/26xt8MwmfaBlmU6GFjYumu) episode of The Daily, Sheera Frenkel discusses how fantasy story writing communities a sense of purpose and satisfaction to writers, and of course entertainment value to readers. Finally, online courses on sites like [Platzi](https://platzi.com/) offer clear educational value to students.
 
-- **Financial**: Direct payments or royalties serve as the most straightforward form of compensation. Yet, complications arise due to copyright laws and the ease with which digital content can be replicated, diminishing the monetary value of the original content.
+Overall, these data remain valuable to diverse parties in myriad ways.
 
-- **Reputation**: Platforms like Quora or Stack Overflow award individuals with recognition for quality contributions, thus enhancing their personal brand or standing within a community.
+### Current compensation for individuals
 
-- **Moral**: Individuals may derive satisfaction from contributing unique content or insights to the world. This form of compensation grants a sense of purpose and validation.
+In exchange for the data above, its *creators* are *compensated* through the following three means:
 
-**The Impact of LLMs on Compensation:**
+- **Financial**: Direct payments, royalties, or subscription fees for music, art, literature, educational material, data annotation, and more.
 
-As LLMs become more prevalent, demand for data is likely to shift from purely consumer-targeting information towards a more comprehensive understanding of the world — problem-solving techniques, programming languages, writing styles, current events, and more. This evolution will necessitate changes to existing compensation models:
+- **Reputation**: On platforms like Quora or Stack Overflow, individuals gain recognition based on the quality of their responses, knowledge, and expertise, enhancing their personal brand within a community.
 
-- **For Companies**: In the LLM world, companies that provide data will likely continue to be [financially compensated](https://www.wired.com/story/stack-overflow-will-charge-ai-giants-for-training-data/), maintaining a familiar model.
+- **Moral**: Individuals derive personal satisifaction from contributing something unique to the world.
 
-- **For Individuals**: The LLM landscape will introduce new dynamics around individual compensation:
+### What do LLMs providers value?
 
-    - **Financial**: The same challenges persist, particularly the dilution of content's monetary value due to easy replication.
+LLMs represent an entirely new consumer of data. As such, as a function of the ways in which these models will be used, LLM providers value different things. Already, "beyond its mastery of language, GPT-4 [the LLM behind ChatGPT] can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more, without needing any special prompting. Moreover, in all of these tasks, GPT-4's performance is strikingly close to human-level performance." Conversely, beyond hallucination, what are these systems *not* good at? What do they need to be maximally useful and achieve widespread user adoption?
 
-    - **Reputation**: The potential for reputational benefits increases. If LLMs can credit their sources, individuals who initially provided key information could garner more widespread recognition. Rather than being ***the*** source on Quora, they could be known as ***the*** source behind the LLM, which might be one of just a few do-it-all AI entities.
-
-    - **Moral**: The sense of moral satisfaction might be undermined, as LLMs' capacity to replicate and generate human-like content could diminish the feeling of individual uniqueness and the joy of creation.
-
-**In summary:**
-In the long term, the rise of LLMs could fundamentally alter the dynamics of data provision and consumption. It presents a complex blend of opportunities and challenges, potentially devaluing individual contributions by making human creators superfluous for the ongoing generation of content. This shift prompts a deeper philosophical question about the significance of individual uniqueness and human contribution in a world of digital content. While the benefits of LLMs — such as increased efficiency and wider knowledge distribution — are appealing, the potential impacts on individual creators and their sense of value and contribution warrant careful contemplation.
+- mojo-like updates. could compensate with royalty payments, via provenance proving data structures.
+- multi-turn feedback. could compensate with just free usage of the LLMs themselves.
+- authoritative answers; it can't just be "this is the official OpenAI answer," right? we want: "this is an official answer from this person of this perspective." as to how these answers are solicited, i'm not sure; could be another social mechanism design task. however, reputational benefit awaits the person who is cited (and they'll be *the* answer from *the* LLM). when you shrink the podium, its space becomes all the more valuable.
+- what kind of ~spiritual compensation will come to those who just... talk to LLMs? seems like it could suck? will LLM providers explicitly make models say things that "make people feel better?" will they "soma" them to sleep?
 
 ## Will data annotation be lucrative?
 
