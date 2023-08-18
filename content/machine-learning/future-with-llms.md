@@ -176,16 +176,27 @@ In exchange for the data above, its *creators* are *compensated* through the fol
 
 - **Reputation**: On platforms like Quora or Stack Overflow, individuals gain recognition based on the quality of their responses, knowledge, and expertise, enhancing their personal brand within a community.
 
-- **Moral**: Individuals derive personal satisifaction from contributing something unique to the world.
+- **Spiritual**: Individuals derive personal satisifaction from contributing something unique to the world.
 
 ### What do LLMs providers value?
 
-LLMs represent an entirely new consumer of data. As such, as a function of the ways in which these models will be used, LLM providers value different things. Already, "beyond its mastery of language, GPT-4 [the LLM behind ChatGPT] can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more, without needing any special prompting. Moreover, in all of these tasks, GPT-4's performance is strikingly close to human-level performance." Conversely, beyond hallucination, what are these systems *not* good at? What do they need to be maximally useful and achieve widespread user adoption?
+LLMs represent an entirely new consumer of data. As such, as a function of the ways in which these models will be used, LLM providers value different things. Already, "beyond its mastery of language, GPT-4 [the LLM behind ChatGPT] can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more, without needing any special prompting. Moreover, in all of these tasks, GPT-4's performance is strikingly close to human-level performance." Conversely, beyond hallucination, what are these systems *not* good at? What do they need to be maximally useful and achieve widespread user adoption? Finally, how will model providers compensate those that provide the requisite data?
 
-- mojo-like updates. could compensate with royalty payments, via provenance proving data structures.
-- multi-turn feedback. could compensate with just free usage of the LLMs themselves.
-- authoritative answers; it can't just be "this is the official OpenAI answer," right? we want: "this is an official answer from this person of this perspective." as to how these answers are solicited, i'm not sure; could be another social mechanism design task. however, reputational benefit awaits the person who is cited (and they'll be *the* answer from *the* LLM). when you shrink the podium, its space becomes all the more valuable.
-- what kind of ~spiritual compensation will come to those who just... talk to LLMs? seems like it could suck? will LLM providers explicitly make models say things that "make people feel better?" will they "soma" them to sleep?
+**New information**: First and foremost, LLMs need to learn new information as detailed above. In exchange for this information, model providers could compensate data creators financially. For instance, OpenAI might ([continue](https://www.nytimes.com/2023/04/18/technology/reddit-ai-openai-google.html) to) pay Reddit for its forum data, or pay the NYT for the articles that its staff writes.
+
+**Multi-turn feedback**: Responding to factoid questions is easy; maintaining a coherent and intuitive conversation over multiple "turns" is comparatively more difficult. As LLMs are increasingly used for conversational use cases, these type of data become more relevant. Ironically, the predominant place where these data will likely be created are in human-LLM conversations themselves. As such, model providers may offer free usage of their services in exchange for these data, neatly mirroring the "free but invasive but no one cares" models that Facebook and Google refined.
+
+**Answering subjective questions**: When answering a subjective question, a model should provide one or many credible viewpoints in response. For instance, "Why did the United States experience inflation in 2021 and onward?" should be addressed with the diverse perspectives of capable economists. Irrespective of who these economists are chosen to be, it's clear that the "airtime" they will receive will be immense. As such, being *the* person featured by *the* LLM offers significant reputational benefits, much like being the top search result on the Google of today.
+
+### Future compensation models
+
+Taken together, future compensation models may resemble those current but with a few small changes:
+
+- **Financial**: Direct payment for data dumps, application usage data, etc. In addition, data providers may achieve royalty (micro) payments every time their data are referenced in a model output.
+
+- **Reputation**: Becoming *the* response from *the* LLM offers similar benefit to being a "top answer" on today's question-answer sites. To wit, GitHub Copilot is [already](https://github.blog/2023-08-03-introducing-code-referencing-for-github-copilot/#:~:text=Today%2C%20we're%20announcing%20a,matching%20public%20code%20on%20GitHub.&text=Make%20more%20informed%20decisions%20about%20the%20code%20you%20use.) implementing such "attribution" features that could achieve this effect.
+
+- **Spiritual**: This form of compensation may really change. As we "share our unique voice" with the LLM, e.g. a short story that we've written, the model can effectively "impersonate" us forever thereafter? Will this "digital immortality" inspire feelings of personal grandeur? Or, despair for the fact that we're "no longer needed?" Similarly, how will people feel interacting with an intelligence superior to their own? These questions are highly uncertain and will find answers in time.
 
 ## Will data annotation be lucrative?
 
