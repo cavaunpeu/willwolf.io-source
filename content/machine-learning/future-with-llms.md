@@ -218,14 +218,13 @@ To begin, let's examine the relationship between social media platforms and thei
 
 The advent of LLMs, however, introduces a crucial difference: the dramatically expanding range of AI applications. The services promised by LLMs aren't confined to social communication or productivity tools. Instead, they're likely to fill roles as diverse as tax consultants, therapists, fitness coaches, educators, etc. As AI permeates deeper into our daily lives, the issues of labor and compensation in data provision become that much more salient.
 
-**Compensation Concerns:**
-The growing discontent over the lack of compensation for data provision may correlate directly with whether these AI services are enhancing users' lives or supplanting their jobs. In contrast to Facebook or Google, which mainly served as communication and information tools, LLMs have the potential to replace entire job roles, like accounting. The threat of job displacement due to AI could accelerate conversations around compensation, fueling a struggle akin to labor dynamics.
+The outcome of this tension will be heavily informed by the answer to the following question: will AI make "all boats rise," or will it swallow them whole? In the former, people lose jobs, retrain, and are re-employed in the next generation of professional careers. In the latter, we devolve into the dystopia depicted in Yuval Noah Harari's "Homo Deus," in which a sizeable portion of the label force has nothing of "economic relevance" to contribute at all.
 
-**Implications for Job Loss and Economic Value:**
-Furthermore, we should consider potential dystopian futures, as depicted in Yuval Noah Harari's "Homo Deus". In this extreme scenario, widespread automation could lead to substantial job losses, leaving people with only their data as a means of economic contribution. Such a situation would intensify the "Marxist struggle" around data and compensation, underscoring the importance of these issues in societal discourse.
+In contemplating the latter, we must contemplate the types of jobs that can be done by LLMs. To wit, the answer to this question is synonymous with the data on which the model was trained. As such, "knowledge worker" jobs based in text (writing, coding, etc.) stand threatened. In addition, and while this post has covered text-only LLMs alone, these models will invariably trend towards *multiple* digital modalities, accepting inputs and producing outputs in the form of text, images, video, audio, and more. These systems will work because of volume on such data on which we can train, putting the creators of that data—software engineers, digital artists, YouTube content producers, etc.—at risk.
 
-**In summary:**
-Whether we're on the precipice of a new Marxist struggle over data and compensation is an intricate question interwoven with societal, economic, and technological factors. But one thing is clear: as AI continues to pervade our lives, these debates will grow louder and more urgent. It's our collective responsibility to engage in these conversations, shaping a future where technological advancement and societal welfare can coexist harmoniously.
+Crucially, though, this type of work is one among many. To date, jobs in physical labor, hospitality, childcare, etc. are not at real risk of replacement from AI. As such, we may simply see the knowledge worker gasket "diffuse" into these other spheres. From there, the cycle might repeat: humans create data, model providers collect that data, then train models, then replace humans.
+
+**Taken together, I don't envision a material class struggle anytime soon.** AI has a lot further to go towards Harari's dystopia for this to happen. For the time being, the relationship between model providers and data producers will remain largely peaceful, and endlessly interesting.
 
 # Conclusion
 
