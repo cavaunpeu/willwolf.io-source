@@ -198,12 +198,7 @@ Taken together, future compensation models may resemble those current but with a
 
 - **Spiritual**: This form of compensation may really change. As we "share our unique voice" with the LLM, e.g. a short story that we've written, the model can effectively "impersonate" us forever thereafter? Will this "digital immortality" inspire feelings of personal grandeur? Or, despair for the fact that we're "no longer needed?" Similarly, how will people feel interacting with an intelligence superior to their own? These questions are highly uncertain and will find answers in time.
 
-## Will data annotation be lucrative?
-
-From the humble beginnings of 'cat' or 'dog' labels to resolving sophisticated moral dilemmas for autonomous vehicles, the role of **data annotators** has evolved tremendously alongside the advances in machine learning. In our journey towards a future shaped by Large Language Models (LLMs), their contribution continues to be vital, and arguably, more complex and specialized than ever.
-
-**The Evolution of Data Annotation:**
-Historically, the role of data annotators was rather straightforward, confined to supervised learning tasks. However, as machine learning tasks grew more intricate, the skill requirements for data annotators escalated as well. Training these individuals became a more significant burden for task creators, dealing with tasks such as [semantic role labeling](https://en.wikipedia.org/wiki/Semantic_role_labeling).
+**Overall, models for data compensation in a world with LLMs will largely remain static.** However, the spiritual experience of contributing data to this model will be novel.
 
 **The LLM Shift:**
 In the world of LLMs, data annotators' roles have expanded beyond mere labeling. Today, they guide model behavior through Reinforcement Learning with Human Feedback (RLHF), influencing the models by embedding human preferences into them. These annotators hold the keys to the behavior guidelines of LLMs and, in essence, shape the future of machine learning.
