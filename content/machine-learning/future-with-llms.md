@@ -200,19 +200,15 @@ Taken together, future compensation models may resemble those current but with a
 
 **Overall, models for data compensation in a world with LLMs will largely remain static.** However, the spiritual experience of contributing data to this model will be novel.
 
-**The LLM Shift:**
-In the world of LLMs, data annotators' roles have expanded beyond mere labeling. Today, they guide model behavior through Reinforcement Learning with Human Feedback (RLHF), influencing the models by embedding human preferences into them. These annotators hold the keys to the behavior guidelines of LLMs and, in essence, shape the future of machine learning.
+## Will data annotation be lucrative?
 
-**What Lies Ahead:**
-As we steer into the future, the tasks of data annotators will likely grow more nuanced and specialized. A hypothetical scenario in this "logical extreme" could see data annotators as trained ethicists, making high-stakes decisions akin to resolving moral dilemmas for autonomous cars. Does this mean that the role of data annotators will become more lucrative? Quite possibly. Yet, the question of who gets to appoint these annotators and how this process is regulated will significantly influence this trajectory.
+Machine learning models are trained to accomplish specific tasks. To do this, humans first "label some data," i.e. perform this task up front; then, we train the model to learn relationships between its inputs and these labels. For instance, when training a model to distinguish between "cat" and "dog" images, it learns from a dataset where each photo has been specifically labeled by humans as either "cat" or "dog." Similarly, an autonomous vehicle capable of resolving sophisticated moral dilemmas implies that humans imparted this judgement during training. As we ambition to build models that accomplish increasingly sophisticated tasks, data annotation complexity will increase in turn.
 
-Will these models remain in the hands of private companies, leading to fewer but more specialized annotators? Or will we see a shift towards a more public, democratic process where lawmakers or public opinion shape the annotation landscape?
+As noted above, ChatGPT relies on two types of data annotation: diverse task demonstrations, e.g. given a prompt, "act out" both sides of the human-machine conversation, as well as model output quality ranking. In effect, these annotations namely control how the model should respond and which types of responses are preferred. In other words, they control a lot! As such, to use this model effectively in increasingly "high stakes" corners of society, e.g. as behavioral therapists, legal counsel, tax attorneys, etc., we may require annotations of increasingly nuanced ethical, moral, "human" substance. Taken to its extreme, we can imagine these annotators as philosphers, legal scholars, and religious authorities. In other words, highly-trained specialists commanding due compensation.
 
-**Politics and Data Annotation:**
-Intriguingly, the future of data annotation could be seen as a battle between a highly educated autocracy and a democracy. In an autocratic model, specialized and "intelligent" individuals make decisions, not unlike countries requiring public officials to pass competency exams, as seen in [South Korea](https://en.wikipedia.org/wiki/Republic_of_Korea_public_service_examinations). In contrast, a democratic model invites broader public participation, embodying a more bottom-up approach.
+With this in mind, key questions: who will appoint these annotators? Will private companies continue to train LLMs exclusively? Will governments train their own? Will governments mandate a certain participation model, e.g. "democratic" annotation, with each constituent or interest group having a say? Financial compensation aside, will annotators gain status, a la Supreme Court justices?
 
-**In summary:**
-In the end, the future of data annotation — its evolution and potential lucrativeness — hangs in the balance of legal frameworks, societal choices, and the ever-increasing sophistication of the questions these models need to answer. As we lean into this future, the complexity and importance of the data annotators' roles only seem to magnify. Just another day in the exhilarating roller coaster ride of machine learning and artificial intelligence!
+**Overall, we can say with some confidence that highly-specialized data annotation will be in demand.** Time will tell if this translates into a financially lucrative career path.
 
 ## Is this the new Marxist struggle?
 
