@@ -58,7 +58,7 @@ Let's begin.
 
 ## How will LLMs learn new information?
 
-I work as a software engineer. If you don't, you might believe that all engineers have committed to memory the knowledge and syntax required to solve every task we ever encounter. Alas, we haven't. Instead, we commonly use "question-answer" sites like Stack Overflow[^30] to see how other developers have solved the problem at hand. Before ChatGPT, I used StackOverflow almost daily.
+I work as a software engineer. If you don't, you might believe that all engineers have committed to memory the knowledge and syntax required to solve every task we ever encounter. Alas, we haven't. Instead, we commonly use "question-answer" sites like Stack Overflow[^30] to see how other developers have solved the problem at hand. Before ChatGPT, I used Stack Overflow almost daily.
 
 Several sources posit[^31] that ChatGPT is directly cannibalizing Stack Overflow traffic. Personally, I don't find the statistics they provide particularly convincing. So, let's use an anecdote instead: since I started using ChatGPT in ~4 months ago, I have not been on Stack Overflow once. Why wait for human responses when ChatGPT responds instantly?
 
@@ -80,7 +80,7 @@ Broadly, implicit data will be easier to collect as there's more of it to go aro
 
 ### Quality
 
-In the three cases just mentioned, we suppose that humans act *rationally*, meaning that they earnestly try to produce the "right information" in order to solve their problem. However, the quality of these data vary across each case—as a function of who is providing the data, and what their incentives and requirements are.
+In the three cases just mentioned, we suppose that humans act *rationally*, meaning that they earnestly try to produce the "right information" in order to solve their problem. However, the quality of these data varies across each case—as a function of who is providing the data, and what their incentives and requirements are.
 
 In the "capturing terminal context" setting—implemented naively—we are capturing information from *all* developers. Some might be good, others bad. While most developers are likely "trying to solve their problem," or "debugging code until it works," the quality of this information will vary as a function of their skills.
 
@@ -90,13 +90,13 @@ Finally, we assume that the "manually curate training set examples" setting give
 
 ### Velocity
 
-Finally, across the three settings, the *speed* with which we can generate a large and diverse dataset is different. In manual curation, it's slowest (single human). On Stack Overflow (many human-human interactions), it's faster. In the terminal (many human-machine interactions), it's fastest (and probably by a lot). A "many machine-machine interactions" setup, e.g. copies of a reinforcement learning system where an AI plays the part of the programmer, gets feedback from the language, and iterates, all running in parallel, would be even faster...
+Finally, across the three settings, the *speed* with which we can generate a large and diverse dataset varies. In manual curation, it's slowest (single human). On Stack Overflow (many human-human interactions), it's faster. In the terminal (many human-machine interactions), it's fastest (and probably by a lot). A "many machine-machine interactions" setup, e.g. copies of a reinforcement learning system where an AI plays the part of the programmer, gets feedback from the language, and iterates, all running in parallel, would be even faster...
 
 ### So where do I get data?
 
-With the above in mind, companies will seek out data sources that make an optimal tradeoff between: the pragmatic implications of collecting implicit vs. explicit data, the quality of the data provided, and the speed with which it is generated. Broadly, implicit data will be easier to collect, of lower quality, and higher velocity. Explicit data will be harder to collect, of higher quality, and lower velocity.
+With the above in mind, companies will seek out data sources that make an optimal trade-off between: the pragmatic implications of collecting implicit vs. explicit data, the quality of the data provided, and the speed with which it is generated. Broadly, implicit data will be easier to collect, of lower quality, and higher velocity. Explicit data will be harder to collect, of higher quality, and lower velocity.
 
-**Overall, companies will need to identify the "data provision venue" that makes the right tradeoffs for them and their model.** Then, they'll need to be strategic about how to "drop their net" into this stream and catch the passing fish.
+**Overall, companies will need to identify the "data provision venue" that makes the right trade-offs for them and their model.** Then, they'll need to be strategic about how to "drop their net" into this stream and catch the passing fish.
 
 ## What will we do with human-LLM conversations?
 
@@ -104,7 +104,7 @@ ChatGPT already boasts a staggering 100 million users[^35]. An enormous quantity
 
 ### Product discovery
 
-To start, OpenAI could use these conversations to determine how people are using the model, and what new products to therefore build build. For instance, we could summarize the conversations, embed the summaries, cluster them, then use the cluster's centroid to generate a cluster label. In this way, we can start to understand what people are using the model for. Furthermore, ChatGPT could be trained to proactively ask users for feedback or suggestions, gauging their interest in potential new products.
+To start, OpenAI could use these conversations to determine how people are using the model, and what new products to therefore build. For instance, we could summarize the conversations, embed the summaries, cluster them, then use the cluster's centroid to generate a cluster label. In this way, we can start to understand what people are using the model for. Furthermore, ChatGPT could be trained to proactively ask users for feedback or suggestions, gauging their interest in potential new features or products.
 
 ### Reinforcement learning
 
@@ -114,13 +114,13 @@ In another approach, we could use conversation outcomes as signals for reinforce
 
 Lastly, by associating tasks with clusters of conversations and their descriptions, the system could learn to generate optimal prompts for those tasks. For instance, we could generate a prompt, have two LLMs engage in a conversation based on this prompt, score the result using our reward signal, then update the prompt-generation policy itself.
 
-**Taken together, companies will use human-LLM conversations to**, among other things, discover and prioritize novel applications and products, improve the model, and improve the experience of using the model itself.
+**Taken together, companies will use human-LLM conversations to** among other things, discover and prioritize novel applications and products, improve the model, and improve the experience of using the model itself.
 
 ## How do we solve the hallucination problem?
 
-"Hallucation" is when an LLM says things that have no basis in fact or reality. If we knew *when* the model did this, we could simply restrict those outputs. If we knew *why*, we could likely design better models that hallucinate less. Unfortunately, the answers to these questions remain elusive[^17].
+"Hallucation" is when an LLM says things that have no basis in fact or reality. If we knew *when* the model did this, we could simply restrict those outputs; if we knew *why*, we could design better models that hallucinate less. Unfortunately, the answers to these questions remain elusive[^17].
 
-Retrieval[^37] models select outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can't "say." Generative models, on the other hand, make a different tradeoff: by allowing the model to generate novel content *ex nihilo*, we forfeit some control over what it can say.
+Retrieval[^37] models select outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can't "say." Generative models, on the other hand, make a different trade-off: by allowing the model to generate novel content *ex nihilo*, we forfeit some control over what it can say.
 
 Paying rational human annotators to "correct" all recorded hallucinations would likely improve this situation. However, much like dictatorship, policing the actions and behaviors of every constituent is not a scalable strategy. In addition, the question of *who* decides what "correct" actually means remains open for (virulent) debate. In the context of ChatGPT, this is OpenAI. Similarly, in the context of the 2020 presidential election, it was Facebook that decided what content was and was not acceptable to promote. Combining the two, an interesting question arises: How do we solve the hallucination problem without a centralized authority? Said differently, how do we build models whose voice represents that of the broader consensus? It is extremely likely that a discussion surrounding some form of this question will unfold in the coming years.
 
@@ -128,14 +128,14 @@ My technical background is largely in machine learning. However, I've been worki
 
 ### Proof of Stake
 
-The crypto world has spent the last ~15 years trying to answer a similar question: How do we build a scalable, trustworthy system for the transfer of monetary value that does not rely on centralized intermediaries? To date, one of the key mechanisms used to achieve this end is Proof of Stake (PoS). PoS is a consensus algorithm where partipicants, or "validators," are collectively entrusted to verify the legitimacy of transactions. To incentivize earnest behavior, PoS employs the following mechanism:
+The crypto world has spent the last ~15 years trying to answer a similar question: How do we build a scalable, trustworthy system for the transfer of monetary value that does not rely on centralized intermediaries? To date, one of the key mechanisms used to achieve this end is Proof of Stake (PoS). PoS is a consensus algorithm where participants, or "validators," are collectively entrusted to verify the legitimacy of transactions. To incentivize earnest behavior, PoS employs the following mechanism:
 
 - Participants are paid to validate transactions.
 - Prior to validating transactions, participants "stake" capital. This "stake" is like a "hold" placed on your credit card when renting a car.
 - The more capital you "stake," the more likely you are to be selected to validate transactions.
-- If other partipicants deem your behavior dishonest, your "stake" is taken (and you do not get paid).
+- If other participants deem your behavior dishonest, your "stake" is taken (and you do not get paid).
 
-Take together, PoS promotes transaction fidelity with economic incentives and penalties. Dishonest participants may lose their staked tokens, creating a self-regulating system where everyone has a vested interest in success.
+Taken together, PoS promotes transaction fidelity with economic incentives and penalties. Dishonest participants may lose their staked tokens, creating a self-regulating system where everyone has a vested interest in success.
 
 ### Applying Proof of Stake to LLMs
 
@@ -148,7 +148,7 @@ Much like PoS in the blockchain world, this system is not without its challenges
 - What balance between rewards and penalties promotes truthful feedback yet does not stifle participation?
 - Etc.
 
-Finally, the question of *when or why* this type of system might ever be introduced is ultimately a question of who retains power. Will LLMs simply be services offered by private companies? Will governments mandate their use as a public utility informed by, and built for, the body politic itself? I don't have the answers to any of these questions. However, my popcorn is ready.
+Ultimately, whether or when this type of system might be introduced hinges on the question of who retains power. Will LLMs simply be services offered by private companies? Will governments mandate their use as a public utility informed by, and built for, the body politic itself? I don't have the answers to any of these questions. However, my popcorn is ready.
 
 **Overall, Proof of Stake is but one approach to solving the hallucination problem.** As an algorithm for decentralized consensus, its relevance will evolve with ongoing narratives surrounding scalability, fairness, and the distribution of power in the context of LLMs.
 
