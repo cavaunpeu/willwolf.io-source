@@ -15,7 +15,7 @@ And how do you know this? How can you be sure? It's because you have a "model of
 
 # How does ChatGPT know so much?
 
-In the past 30 years, internet users have unwittingly built the largest, broadest, most diverse, most interesting dataset in human history from which to learn machine learning models. These data come in various forms, or "modalities," like images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many more.
+In the past 30 years, internet users have unwittingly built the largest, broadest, most diverse, most interesting dataset in human history from which to learn machine learning models. These data come in various forms, or "modalities," like images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and more.
 
 ChatGPT is learned from text. Whereas you've trained your language model only on the language you've encountered in the handful of decades for which you've been alive, ChatGPT has been trained on a large chunk of all text ever written on the internet, period. For comparison, Quora[^27] users estimate that this would take a human roughly "23.8 million years" to "you can't, so it's an impossible question" to "you would be dead long before you even made a start." This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots. More generally, it can skillfully continue almost *any* text, such as "Can you recite me the Indonesian national anthem in the style of Shakespeare?" or "What should I make for dinner if I only have salmon and chocolate?" or "What's the best way to get to the moon?"
 
@@ -33,7 +33,7 @@ Throughout my career, I've learned almost every ML problem is a story about data
 
 With this in mind, here are a few keys points regarding where we stand today:
 
-**Static knowledge**: ChatGPT's language model (GPT-4) has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the system loves to restate this limitation). Encapsulated in these data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can summarize news articles; as the nature of summarization doesn't really evolve year over year, the model does not per se require any more data to accomplish this task. It has enough already.
+**Static knowledge**: ChatGPT's language model (GPT-4) has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the system loves to restate this limitation). Encapsulated in these data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can summarize news articles; as the nature of summarization doesn't really evolve year over year, the model does not per se require additional data to accomplish this task. It has enough already.
 
 **Dynamic knowledge**: Conversely, imagine that we'd like to translate classical Greek into modern English. Well, what does "modern" mean? Language constantly evolves[^28] to include new vocabularly and modes of expression. So, while the fundamentals of translation don't really change, the contemporary details do. To keep pace with these details, the model needs to be updated with examples of this text. Ten years ago, I surely wasn't saying "that's lit" myself.
 
@@ -68,7 +68,7 @@ Let's consider Mojo[^32], a new programming language built specifically for AI d
 
 For reading, the answer might be simple: include the Mojo documentation[^33] in the model's training set. This provides a basis for understanding the syntax and semantics of Mojo.
 
-For debugging, I think it's more subtle. GitHub Copilot X[^34]—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" on the workflows, questions, patterns, etc. inherent in programming in Mojo.
+For debugging, it's more subtle. GitHub Copilot X[^34]—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" on the workflows, questions, patterns, etc. inherent in programming in Mojo.
 
 Taken together, for the model to update its understanding of dynamic and novel knowledge tasks, we must provide it with new data. In what follows, we codify the nature of this provision along three main axes: implicit vs. explicit, quality, and velocity.
 
@@ -80,7 +80,7 @@ Broadly, implicit data will be easier to collect as there's more of it to go aro
 
 ### Quality
 
-In the three cases just mentioned, we suppose that humans act *rationally*, meaning that they earnestly try to produce the "right information" in order to solve their problem. However, the quality of these data varies across each case—as a function of who is providing the data, and what their incentives and requirements are.
+In the three cases just mentioned, we suppose that humans act "rationally," meaning that they earnestly try to produce the "right information" in order to solve their problem. However, the quality of these data varies across each case—as a function of who is providing it, and what their incentives and requirements are.
 
 In the "capturing terminal context" setting—implemented naively—we are capturing information from *all* developers. Some might be good, others bad. While most developers are likely "trying to solve their problem," or "debugging code until it works," the quality of this information will vary as a function of their skills.
 
@@ -112,7 +112,7 @@ In another approach, we could use conversation outcomes as signals for reinforce
 
 ### Learning optimal prompts
 
-Lastly, by associating tasks with clusters of conversations and their descriptions, the system could learn to generate optimal prompts for those tasks. For instance, we could generate a prompt, have two LLMs engage in a conversation based on this prompt, score the result using our reward signal, then update the prompt-generation policy itself.
+Lastly, by associating tasks with clusters of conversations and their descriptions, the system could learn to generate optimal prompts for those tasks. For instance, we could generate a prompt, have two LLMs engage in a conversation based on this prompt, score the result using our reward model, then update the prompt-generation policy itself.
 
 **Taken together, companies will use human-LLM conversations to** among other things, discover and prioritize novel applications and products, improve the model, and improve the experience of using the model itself.
 
@@ -120,15 +120,15 @@ Lastly, by associating tasks with clusters of conversations and their descriptio
 
 "Hallucation" is when an LLM says things that have no basis in fact or reality. If we knew *when* the model did this, we could simply restrict those outputs; if we knew *why*, we could design better models that hallucinate less. Unfortunately, the answers to these questions remain elusive[^17].
 
-Retrieval[^37] models select outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can't "say." Generative models, on the other hand, make a different trade-off: by allowing the model to generate novel content *ex nihilo*, we forfeit some control over what it can say.
+Retrieval[^37] models select outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can't "say." Generative models, on the other hand, make a different trade-off: by allowing the model to generate novel content *ex nihilo*, we forfeit some of this control.
 
-Paying rational human annotators to "correct" all recorded hallucinations would likely improve this situation. However, much like dictatorship, policing the actions and behaviors of every constituent is not a scalable strategy. In addition, the question of *who* decides what "correct" actually means remains open for (heated) debate. In the context of ChatGPT, this is OpenAI. Similarly, in the context of the 2020 presidential election, it was Facebook that decided what content was and was not acceptable to promote. Combining the two, an interesting question arises: How do we solve the hallucination problem without a centralized authority? Said differently, how do we build models whose voice represents that of the broader consensus? It is extremely likely that a discussion surrounding some form of this question will unfold in the coming years.
+Paying rational human annotators to "correct" all recorded hallucinations would likely improve this situation. However, as history has shown, policing the actions and behaviors of every constituent is not a scalable strategy. In addition, the question of *who* decides what "correct" actually means remains open for debate. In the context of ChatGPT, this is OpenAI. Similarly, in the context of the 2020 presidential election, it was Facebook that decided what content was and was not acceptable to promote. Combining the two, an interesting question arises: How do we solve the hallucination problem without a centralized authority? Said differently, how do we build models whose voice represents that of the broader consensus? It is extremely likely that a (heated) discussion surrounding some form of this question will unfold in the coming years.
 
 My technical background is largely in machine learning. However, I've been working in crypto for the past two years. In this section, I'll borrow an idea from the latter and apply it to the former. The following idea may be fanciful and impractical and is not the only way to approach this problem. Nonetheless, it makes for an interesting thought experiment.
 
 ### Proof of Stake
 
-The crypto world has spent the last ~15 years trying to answer a similar question: How do we build a scalable, trustworthy system for the transfer of monetary value that does not rely on centralized intermediaries? To date, one of the key mechanisms used to achieve this end is Proof of Stake (PoS). PoS is a consensus algorithm where participants, or "validators," are collectively entrusted to verify the legitimacy of transactions. To incentivize earnest behavior, PoS employs the following mechanism:
+The crypto world has spent the last ~15 years trying to answer a similar question: How do we build a scalable, trustworthy system for the digital transfer of monetary value that does not rely on centralized intermediaries? To date, one of the key mechanisms used to achieve this end is Proof of Stake (PoS). PoS is a consensus algorithm where participants, or "validators," are collectively entrusted to verify the legitimacy of transactions. To incentivize earnest behavior, PoS employs the following mechanism:
 
 - Participants are paid to validate transactions.
 - Prior to validating transactions, participants "stake" capital. This "stake" is like a "hold" placed on your credit card when renting a car.
@@ -144,7 +144,7 @@ How might we apply PoS to LLMs? In effect, the users are the validators who ensu
 Much like PoS in the blockchain world, this system is not without its challenges. For instance:
 
 - How do we ensure that a small number of "high-stake" users don't control the system?
-- Will the collective expertise of users empirically "satisfy" the model provider? Elon, maybe; Sam Altman, unclear.
+- Will the collective expertise of users empirically "satisfy" the model provider? If it's Elon, maybe; if it's Sam Altman, unclear.
 - What balance between rewards and penalties promotes truthful feedback yet does not stifle participation?
 - Etc.
 
