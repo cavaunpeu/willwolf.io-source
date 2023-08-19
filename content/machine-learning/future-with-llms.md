@@ -556,7 +556,7 @@ Eprint={arXiv:2303.12712},
   publisher={Quartz}
 }
 
-@online{salva2023introducing,
+[^40]: @online{salva2023introducing,
     author={Ryan J. Salva},
     title={Introducing code referencing for GitHub Copilot},
     year={2023},
