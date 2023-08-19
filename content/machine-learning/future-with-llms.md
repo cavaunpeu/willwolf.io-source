@@ -1,5 +1,5 @@
 Title: Our Future with LLMs
-Date: 2023-07-29 10:00
+Date: 2023-08-19 17:00
 Author: Will Wolf
 Lang: en
 Slug: future-with-llms
