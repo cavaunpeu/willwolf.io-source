@@ -4,46 +4,44 @@ Author: Will Wolf
 Lang: en
 Slug: future-with-llms
 Status: published
-Summary: In this post, I explore the evolving world of Language Learning Models (LLMs), considering how they learn, the future of human-LLM conversations, the hallucination problem, compensating data providers, the potential lucrativeness of data annotation, and the idea of a new Marxist struggle.
+Summary: In this post, I explore the evolving world of Language Learning Models (LLMs), considering how they learn, the future of human-LLM conversations, the hallucination problem, compensating data providers, the potential lucrativeness of data annotation, and the advent of a new Marxist struggle.
 Image: ../images/future-with-llms/human-mind.png
 
 # What is a Language Model?
 
-To introduce the language model let's talk about human speech. If I were to say, "The boy put on his boots and went to the...," what word comes next? Well, there are many that fit. As an English speaker, you could surely list a few: "store," "park," "bar," even "best" as in "best ice cream spot in town." Conversely, many words could *never* follow this phrase, like "don't," "photosynthesis," or "trigonometry."
+To introduce the language model let's talk about human speech. If I were to say, "The boy put on his boots and went to the...," what word comes next? Well, there are many that fit. As an English speaker, you could surely list a few: "store," "park," "bar," even "best"—as in "best ice cream spot in town." Conversely, many words could *never* follow this phrase, like "don't," "photosynthesis," or "trigonometry."
 
-And how do you know this? How can you be sure? It's because: you have a "model of language" in your brain, a "language model" that you've acquired over your lifetime. The more language you ingest through interacting with the world the better your model becomes.
+And how do you know this? How can you be sure? It's because you have a "model of language" in your brain, a "language model" that you've acquired over your lifetime. The more language you ingest through interacting with the world the better your model becomes.
 
 # How does ChatGPT know so much?
 
 In the past 30 years, internet users have unwittingly built the largest, broadest, most diverse, most interesting dataset in human history from which to learn machine learning models. These data come in various forms, or "modalities," like images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many more.
 
-ChatGPT is learned from text. Whereas you've trained your language model only on the language you've encountered in the handful of decades for which you've been alive, ChatGPT has been trained on a large chunk of all text ever written on the internet, period. For comparison, [Quora](https://www.quora.com/How-long-would-it-take-you-to-read-the-entire-internet) users estimate that this would take a human roughly "23.8 million years" to "you can't, so it's an impossible question" to "you would be dead long before you even made a start."
-
-This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots. More generally, it can skillfully continue almost *any* text, such as "Can you recite me the Indonesian national anthem in the style of Shakespeare?" or "What should I make for dinner if I only have salmon and chocolate?" or "What's the best way to get to the moon?"
+ChatGPT is learned from text. Whereas you've trained your language model only on the language you've encountered in the handful of decades for which you've been alive, ChatGPT has been trained on a large chunk of all text ever written on the internet, period. For comparison, Quora[^27] users estimate that this would take a human roughly "23.8 million years" to "you can't, so it's an impossible question" to "you would be dead long before you even made a start." This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots. More generally, it can skillfully continue almost *any* text, such as "Can you recite me the Indonesian national anthem in the style of Shakespeare?" or "What should I make for dinner if I only have salmon and chocolate?" or "What's the best way to get to the moon?"
 
 # How does ChatGPT work?
 
-Creating ChatGPT involves three steps:
+Creating ChatGPT involves three steps[^20]:
 
-1. **Train a language model:** Given a phrase, teach the model how to output, i.e. "predict," the next word. (Repeating this process ad infinitum, appending the predicted word to the end of the initial phrase each time, it can generate a complete response.)
-2. **Fine-tune on `(prompt, response)` pairs:** Humans provide both parts of these pairs, giving concrete demonstrations of the tasks the model should accomplish.
-3. **Further fine-tune via a model of output quality.** Humans rate the quality of ChatGPT's outputs, a second model learns these relationships, and ChatGPT learns to output high-quality responses via this second model. This process is known as ["Reinforcement Learning from Human Feedback"](https://huggingface.co/blog/rlhf) (RLHF).
+1. **Train a language model:** Given a phrase, teach the model how to output, i.e. "predict," the next word. (Repeating this process ad infinitum, and appending the predicted word to the end of the initial phrase each time, it can generate a complete response.)
+2. **Fine-tune on `(prompt, response)` pairs:** Humans provide both parts of these pairs, giving concrete demonstrations of how to complete the tasks the model will be asked to perform.
+3. **Further fine-tune via a model of output quality.** Humans rate the quality of ChatGPT's outputs, then a second model learns these relationships, then ChatGPT learns to output high-quality responses via this second model. This process is known as "Reinforcement Learning from Human Feedback"[^24] (RLHF).
 
 # This is a story about data
 
-Throughout my career in machine learning, I've learned almost every ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we de-bias it? How do we get more of it? Which data should we label next? And on. ChatGPT is no different.
+Throughout my career, I've learned almost every ML problem is a story about data. Where does it come from? What's wrong with it? How much does it cost? How do we de-bias it? How do we get more of it? Which data should we label next? And on. ChatGPT is no different.
 
 With this in mind, here are a few keys points regarding where we stand today:
 
-**Static knowledge**: The language model has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the model loves to restate this limitation). Encapsulated in this data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can summarize news articles; as the nature of summarization doesn't really evolve year over year, the model does not per se require any more data to accomplish this task. It has enough already.
+**Static knowledge**: ChatGPT's language model (GPT-4) has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the system loves to restate this limitation). Encapsulated in this data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can summarize news articles; as the nature of summarization doesn't really evolve year over year, the model does not per se require any more data to accomplish this task. It has enough already.
 
-**Dynamic knowledge**: Conversely, imagine that we'd like to translate classical Greek into modern English. Well, what does "modern" mean? Language constantly [evolves](https://www.amazon.com/Because-Internet-Understanding-Rules-Language/dp/0735210934) to include new vocabularly and modes of expression. So, while the fundamentals of translation don't really change, the contemporary details do. To keep pace with these details, the model needs to be updated with examples of this text. I surely wasn't saying "that's lit" myself ten years ago.
+**Dynamic knowledge**: Conversely, imagine that we'd like to translate classical Greek into modern English. Well, what does "modern" mean? Language constantly evolves[^28] to include new vocabularly and modes of expression. So, while the fundamentals of translation don't really change, the contemporary details do. To keep pace with these details, the model needs to be updated with examples of this text. I surely wasn't saying "that's lit" myself ten years ago.
 
-**Novel knowledge**: Finally, novel knowledge defines the set of tasks or abilities that the model has never encountered. For instance, a novel discovery in physics, e.g. room-temperature [superconductivity](https://phys.org/news/2023-07-korean-team-room-temperature-ambient-pressure-superconductor.html) is an example of *dynamic knowledge* if this work is an *extension* of the scientific knowledge, logical reasoning, historical expectations, etc. that the model already posseses. Conversely, this discovery is an example of *novel knowledge* if it is predominantly composed of never-before-seen ways of conceptualizing the world, e.g. "a new mathematics," alien anatomy, etc.
+**Novel knowledge**: Finally, novel knowledge defines the set of tasks or abilities that the model has never encountered. For instance, a novel discovery in physics, e.g. room-temperature superconductivity[^29] is an example of *dynamic knowledge* if this work is an *extension* of the scientific knowledge, logical reasoning, historical expectations, etc. that the model already posseses. Conversely, this discovery is an example of *novel knowledge* if it is predominantly composed of never-before-seen ways of conceptualizing the world, e.g. "a new mathematics," alien anatomy, etc.
 
 The vast majority of knowledge is either static or dynamic. However, for completeness, we leave a small sliver of space for novel knowledge as well.
 
-**Human annotators**: Human annotators (paid and trained by OpenAI) have provided the data required for the supervised fine-tuning and RLHF [steps]({filename}/machine-learning/future-with-llms.md). Should we wish to expand the "foundational" set of tasks that we explicitly want the model to solve, or update our "preference" regarding the way in which the model expresses itself, we'll need more annotations.
+**Human annotators**: Human annotators (paid and trained by OpenAI) have provided the data required for the supervised fine-tuning and RLHF steps. Should we wish to expand the "foundational" set of tasks that we explicitly want the model to solve, or update our "preference" regarding the way in which the model expresses itself, we'll need more annotations.
 
 # A menu of questions
 
@@ -232,7 +230,6 @@ The LLM story is sure to evolve quickly. It's unclear where it will go. In the b
 
 # References
 
-```
 [^1]: @misc{2210.11610,
 Author = {Jiaxin Huang and Shixiang Shane Gu and Le Hou and Yuexin Wu and Xuezhi Wang and Hongkun Yu and Jiawei Han},
 Title = {Large Language Models Can Self-Improve},
@@ -451,4 +448,29 @@ Eprint = {arXiv:2303.12712},
   publisher={Microsoft Research},
   url={https://www.microsoft.com/en-us/research/publication/sparks-of-artificial-general-intelligence-early-experiments-with-gpt-4/}
 }
-```
+
+[^27]: @misc{author2023howlong,
+  title={How long would it take you to read the entire internet?},
+  author={Stinson, Mark and Chovanek, Chris and Gibson, Jack},
+  year={2023},
+  howpublished={\url{https://www.quora.com/How-long-would-it-take-you-to-read-the-entire-internet}},
+  note={Accessed: [insert date you accessed the link]}
+}
+
+[^28]: @book{mcculloch2019because,
+  title={Because Internet: Understanding the New Rules of Language},
+  author={McCulloch, Gretchen},
+  year={2019},
+  publisher={Hardcover},
+  note={Published on July 23, 2019}
+}
+
+[^29]: @article{yirka2023korean,
+  title={Korean team claims to have created the first room-temperature, ambient-pressure superconductor},
+  author={Yirka, Bob},
+  year={2023},
+  month={July},
+  day={27},
+  journal={Phys.org},
+  url={https://phys.org/news/2023-07-korean-team-room-temperature-ambient-pressure-superconductor.html}
+}
