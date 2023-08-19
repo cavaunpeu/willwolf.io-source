@@ -122,9 +122,9 @@ Lastly, by associating tasks with clusters of conversations and their descriptio
 
 Retrieval[^37] models select outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can't "say." Generative models, on the other hand, make a different trade-off: by allowing the model to generate novel content *ex nihilo*, we forfeit some control over what it can say.
 
-Paying rational human annotators to "correct" all recorded hallucinations would likely improve this situation. However, much like dictatorship, policing the actions and behaviors of every constituent is not a scalable strategy. In addition, the question of *who* decides what "correct" actually means remains open for (virulent) debate. In the context of ChatGPT, this is OpenAI. Similarly, in the context of the 2020 presidential election, it was Facebook that decided what content was and was not acceptable to promote. Combining the two, an interesting question arises: How do we solve the hallucination problem without a centralized authority? Said differently, how do we build models whose voice represents that of the broader consensus? It is extremely likely that a discussion surrounding some form of this question will unfold in the coming years.
+Paying rational human annotators to "correct" all recorded hallucinations would likely improve this situation. However, much like dictatorship, policing the actions and behaviors of every constituent is not a scalable strategy. In addition, the question of *who* decides what "correct" actually means remains open for (heated) debate. In the context of ChatGPT, this is OpenAI. Similarly, in the context of the 2020 presidential election, it was Facebook that decided what content was and was not acceptable to promote. Combining the two, an interesting question arises: How do we solve the hallucination problem without a centralized authority? Said differently, how do we build models whose voice represents that of the broader consensus? It is extremely likely that a discussion surrounding some form of this question will unfold in the coming years.
 
-My technical background is largely in machine learning. However, I've been working in crypto for the past two years. In this section, I'll borrow an idea from the latter and apply it to the former. The following idea may be fancfiful and impractical and is not the only way to approach this problem. Nonetheless, it makes for an interesting thought experiment.
+My technical background is largely in machine learning. However, I've been working in crypto for the past two years. In this section, I'll borrow an idea from the latter and apply it to the former. The following idea may be fanciful and impractical and is not the only way to approach this problem. Nonetheless, it makes for an interesting thought experiment.
 
 ### Proof of Stake
 
@@ -170,7 +170,7 @@ In exchange for the data above, its creators are compensated through the followi
 
 - **Reputation**: On platforms like Quora or Stack Overflow, individuals gain recognition based on the quality of their responses, knowledge, and expertise, enhancing their personal brand within a community.
 
-- **Spiritual**: Individuals derive personal satisifaction from contributing something unique to the world.
+- **Spiritual**: Individuals derive personal satisfaction from contributing something unique to the world.
 
 ### What do LLMs providers value?
 
@@ -178,9 +178,9 @@ LLMs represent an entirely new consumer of data. As such, given the ways these m
 
 **New information**: First and foremost, LLMs need to learn new information as detailed above. In exchange for this information, model providers could compensate data creators financially. For instance, OpenAI might (continue[^39] to) pay Reddit for its forum data or pay the NYT for the articles its staff writes.
 
-**Multi-turn feedback**: Responding to factoid questions is easy; maintaining a coherent and intuitive conversation over multiple "turns" is comparatively harder. As LLMs are increasingly used for conversational use cases, these type of data become more relevant. Ironically, the predominant place where these data will likely be created are in human-LLM conversations themselves. As such, model providers may offer free usage of their services in exchange for these data, neatly mirroring the "free but invasive but no one cares" playbook that Facebook and Google have perfected.
+**Multi-turn feedback**: Responding to factoid questions is easy; maintaining a coherent and intuitive conversation over multiple "turns" is more difficult. As LLMs are increasingly used for conversational use cases, this type of data become more relevant. Ironically, the predominant place where these data will likely be created are in human-LLM conversations themselves. As such, model providers may offer free usage of their services in exchange for these data, neatly mirroring the "free but invasive but no one cares" playbook that Facebook and Google have perfected.
 
-**Answering subjective questions**: When answering a subjective question, a model should provide one or many credible viewpoints in response. For instance, "Why did the United States experience inflation in 2021 and onward?" should be addressed with the diverse perspectives of capable economists. Irrespective of who these economists are chosen to be, it's clear that the "airtime" they will receive will be immense. As such, being *the* person featured by *the* LLM offers significant reputational benefits, much like being the top search result on Google in years past.
+**Answering subjective questions**: When answering a subjective question, a model should provide one or more credible viewpoints in response. For instance, "Why did the United States experience inflation in 2021 and onward?" should be addressed with the diverse perspectives of capable economists. Irrespective of who these economists are chosen to be, it's clear that the "airtime" they will receive will be immense. As such, being *the* person featured by *the* LLM offers significant reputational benefits, much like being the top search result on Google in years past.
 
 ### Future compensation models
 
@@ -190,9 +190,9 @@ Taken together, future compensation models might look as follows:
 
 - **Reputation**: Becoming *the* response from *the* LLM offers similar benefit to being a "top answer" on today's question-answer sites. To wit, GitHub Copilot is already[^40] implementing such "attribution" features.
 
-- **Spiritual**: This form of compensation may really change. As we "share our unique voice" with the LLM, e.g. a short story that we've written, the model can effectively "impersonate" us thereafter—forever. Will this "digital immortality" inspire feelings of personal grandeur? Or, despair for the fact that we're "no longer needed?" Similarly, how will people feel interacting with an intelligence superior to their own? These questions are highly uncertain and will find answers in time.
+- **Spiritual**: This form of compensation may really change. As we "share our unique voice" with the LLM, e.g. a short story that we've written, the model can effectively "impersonate" us thereafter—forever. Will this "digital immortality" inspire feelings of personal grandeur? Or despair for the fact that we're "no longer needed?" Similarly, how will people feel interacting with an intelligence superior to their own? These questions are highly uncertain and will find answers in time.
 
-**Overall, models for data compensation in a world with LLMs will remain similar to those of today.** However, the spiritual experience of contributing data to and interacting with these models will evolve materially, challenging our perceptions of identity, purpose, and place in the digital cosmos.
+**Overall, models for data compensation in a world with LLMs will remain similar to those of today.** However, the spiritual experience of contributing data to and interacting with these models will evolve materially, challenging our perceptions of identity, purpose, and place in the years to come.
 
 ## Will data annotation be lucrative?
 
