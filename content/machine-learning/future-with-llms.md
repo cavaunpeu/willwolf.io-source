@@ -47,12 +47,12 @@ The vast majority of knowledge is either static or dynamic. However, for complet
 
 In this post, I explore our future with LLMs from the perspective of *data*. I'll do so by asking and answering a series of questions—touching on the methods, the players, the economics, and the power struggles that potentially lie ahead.
 
-1. How will LLMs learn new information?
-2. What will we do with human-LLM conversations?
-3. How do we solve the "hallucination" problem?
-4. How will we compensate data providers?
-5. Will data annotation be lucrative?
-6. Is this the new Marxist struggle?
+1. **How will LLMs learn new information?**
+2. **What will we do with human-LLM conversations?**
+3. **How do we solve the "hallucination" problem?**
+4. **How will we compensate data providers?**
+5. **Will data annotation be lucrative?**
+6. **Is this the new Marxist struggle?**
 
 Let's begin.
 
