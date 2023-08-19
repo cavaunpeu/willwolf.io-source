@@ -80,7 +80,7 @@ Broadly, implicit data will be easier to collect as there's more of it to go aro
 
 ### Quality
 
-In the three cases just mentioned, we suppose that humans act *rationally*, meaning that they earnestly try to produce the "right information" in order to solve their problem. If true, we should want to add this data to the model's training set. However, the quality of these data vary across each case—as a function of who is providing the data, and what their incentives and requirements are.
+In the three cases just mentioned, we suppose that humans act *rationally*, meaning that they earnestly try to produce the "right information" in order to solve their problem. However, the quality of these data vary across each case—as a function of who is providing the data, and what their incentives and requirements are.
 
 In the "capturing terminal context" setting—implemented naively—we are capturing information from *all* developers. Some might be good, others bad. While most developers are likely "trying to solve their problem," or "debugging code until it works," the quality of this information will vary as a function of their skills.
 
