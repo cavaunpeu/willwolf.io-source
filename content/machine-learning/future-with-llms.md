@@ -58,35 +58,35 @@ Let's begin.
 
 ## How will LLMs learn new information?
 
-I work as a software engineer. If you don't, you might believe that all engineers have committed to memory the knowledge and syntax required to solve every task we ever encounter throughout our day. Alas, we haven't. Instead, we commonly use "question-answer" sites like [Stack Overflow](https://stackoverflow.com/) to see how other developers have solved the problem at hand. Before ChatGPT, I used StackOverflow almost daily.
+I work as a software engineer. If you don't, you might believe that all engineers have committed to memory the knowledge and syntax required to solve every task we ever encounter. Alas, we haven't. Instead, we commonly use "question-answer" sites like Stack Overflow[^30] to see how other developers have solved the problem at hand. Before ChatGPT, I used StackOverflow almost daily.
 
-Several sources [posit](https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/) that ChatGPT is directly cannibalizing Stack Overflow traffic. Personally, I don't find the statistics they provide particularly convincing. So, let's use an anecdote instead: since I started using ChatGPT in ~4 months ago, I have not been on Stack Overflow once. Why wait for human responses when ChatGPT responds instantly?
+Several sources posit[^31] that ChatGPT is directly cannibalizing Stack Overflow traffic. Personally, I don't find the statistics they provide particularly convincing. So, let's use an anecdote instead: since I started using ChatGPT in ~4 months ago, I have not been on Stack Overflow once. Why wait for human responses when ChatGPT responds instantly?
 
-If other developers are doing the same, Stack Overflow "freezes." In other words, no new human programming knowledge is published at all. Like language translation, coding implies translating a set of logical expressions in ones brain into machine-readable instructions. Across the spectrum of present and future programming languages, the fundamentals generally don't change. However, the details do. In this vein, being a software engineer (as a human, or an AI model) is a dynamic-knowledge task. With the next programming language to hit the market, how will developers know how to use it?
+If other developers do the same, Stack Overflow "freezes." In other words, no new human programming knowledge is published at all. Like language translation, coding implies translating a set of logical expressions in one's brain into machine-readable instructions. Across the spectrum of present and future programming languages, the fundamentals generally don't change. However, the details do. In this vein, being a software engineer (as a human, or an AI model) is a dynamic-knowledge task. When the next programming language hits the market, how will developers know how to use it?
 
-Let's consider [Mojo](https://www.modular.com/mojo), a new programming language built specifically for AI developers. As Mojo is a superset of Python, our knowledge about Python will still apply. However, Mojo will bring new features that we haven't seen before. Simply put, how will ChatGPT learn how to read and debug Mojo?
+Let's consider Mojo[^32], a new programming language built specifically for AI developers. As Mojo is a superset of Python, our knowledge about Python will still apply. However, Mojo will bring new features that we haven't seen before. Simply put, how will ChatGPT learn how to read and debug Mojo?
 
-For reading, the answer might be simple: include the Mojo [documentation](https://docs.modular.com/mojo/) in the model's training set. This provides a basis for understanding the syntax and semantics of Mojo.
+For reading, the answer might be simple: include the Mojo documentation[^33] in the model's training set. This provides a basis for understanding the syntax and semantics of Mojo.
 
-For debugging, I think it's more subtle. [GitHub Copilot X](https://github.com/features/preview/copilot-x)—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" regarding the workflows, questions, patterns, etc. inherent in programming in Mojo. (And furthermore, as these humans contribute the data that improves the model, they're still paying $20/month for the use of the tool itself!)
+For debugging, I think it's more subtle. GitHub Copilot X[^34]—the LLM-powered tool that helps you write and debug code—will now capture and send your terminal context back to OpenAI itself. As such, with this beta, the LLM is actively "acquiring new data" on the workflows, questions, patterns, etc. inherent in programming in Mojo.
 
-Taken together, for the model to update its understanding of dynamic and novel knowledge tasks, we must provide it with new data. In what follows, we codify the nature of this provision along three main axes: implicit vs. explicit, fidelity, and velocity.
+Taken together, for the model to update its understanding of dynamic and novel knowledge tasks, we must provide it with new data. In what follows, we codify the nature of this provision along three main axes: implicit vs. explicit, quality, and velocity.
 
 ### Implicit vs. explicit
 
-The nature of data provision will *range* from implicit to explicit. Capturing the Mojo developer's terminal context is an example of implicit data provision. Curating model training examples about how to resolve common Mojo errors is an example of explicit data provision. Answering empirical questions on Stack Overflow has elements of both.
+The nature of data provision will range from implicit to explicit. Capturing the Mojo developer's terminal context is an example of implicit data provision. Curating model training examples about how to resolve common Mojo errors is an example of explicit data provision. Answering empirical questions on Stack Overflow has elements of both.
 
-Broadly, implicit data will be easier to collect (there's more of it to go around), and vice versa.
+Broadly, implicit data will be easier to collect as there's more of it to go around, and vice versa.
 
-### Fidelity
+### Quality
 
-In the three cases just mentioned, we assume humans act *rationally*, meaning that they earnestly try to produce the "right information" in order to solve their problem, which we can ideally add to the model's training set. However, this data "fidelity" varies across each case—as a function of who is providing the data, and what their incentives and requirements are.
+In the three cases just mentioned, we suppose that humans act *rationally*, meaning that they earnestly try to produce the "right information" in order to solve their problem. If true, we should want to add this data to the model's training set. However, the quality of these data vary across each case—as a function of who is providing the data, and what their incentives and requirements are.
 
-In the "capturing terminal context" setting—implemented naively—we are capturing information from *all* developers. Some might be good, others bad. While most developers are likely "trying to solve their problem," or "debugging code until it works," the quality, and therefore fidelity, of this information will vary as a function of their skills.
+In the "capturing terminal context" setting—implemented naively—we are capturing information from *all* developers. Some might be good, others bad. While most developers are likely "trying to solve their problem," or "debugging code until it works," the quality of this information will vary as a function of their skills.
 
-In Stack Overflow, the same "available to all" feature applies. However, there is both an additional social pressure placed on users of the site to provide correct information—people don't want to look silly in front of their peers—as well as an explicit feedback mechanism—answers deemed correct get "upvoted," and vice versa. Nominally, these constraints increase data fidelity.
+In Stack Overflow, the same "available to all" feature applies. However, there is both an additional social pressure placed on users of the site to provide correct information—people don't want to look silly in front of their peers—as well as an explicit feedback mechanism—answers deemed correct get "upvoted," and vice versa. Nominally, these constraints increase data quality.
 
-Finally, we assume that the "manually curate training set examples" setting gives the highest-fidelity data of the three. Why? A company is paying a human to explicitly teach the model information. Before annotation, they ensure the human has the right qualifications; after annotation, they likely review the results. Taken together, the highest scrutiny gives the highest fidelity.
+Finally, we assume that the "manually curate training set examples" setting gives the highest quality data of the three. Why? A company is paying a human to explicitly teach the model information. Before annotation, they ensure this human has the right qualifications; after annotation, they likely review the results. Taken together, the more training and scrutiny, the higher the quality.
 
 ### Velocity
 
@@ -94,7 +94,7 @@ Finally, across the three settings, the *speed* with which we can generate a lar
 
 ### So where do I get data?
 
-With the above in mind, companies will seek out data sources that make an optimal tradeoff between: the pragmatic implications of collecting implicit vs. explicit data, the fidelity of the data provided, and the speed with which it is generated. Broadly, implicit data will be easier to collect, low fidelity, and high velocity. Explicit data will be harder to collect, high fidelity, and low velocity.
+With the above in mind, companies will seek out data sources that make an optimal tradeoff between: the pragmatic implications of collecting implicit vs. explicit data, the quality of the data provided, and the speed with which it is generated. Broadly, implicit data will be easier to collect, of lower quality, and higher velocity. Explicit data will be harder to collect, of higher quality, and lower velocity.
 
 **Overall, companies will need to identify the "data provision venue" that makes the right tradeoffs for them and their model.** Then, they'll need to be strategic about how to "drop their net" into this stream and catch the passing fish.
 
@@ -231,10 +231,10 @@ The LLM story is sure to evolve quickly. It's unclear where it will go. In the b
 # References
 
 [^1]: @misc{2210.11610,
-Author = {Jiaxin Huang and Shixiang Shane Gu and Le Hou and Yuexin Wu and Xuezhi Wang and Hongkun Yu and Jiawei Han},
-Title = {Large Language Models Can Self-Improve},
-Year = {2022},
-Eprint = {arXiv:2210.11610},
+Author={Jiaxin Huang and Shixiang Shane Gu and Le Hou and Yuexin Wu and Xuezhi Wang and Hongkun Yu and Jiawei Han},
+Title={Large Language Models Can Self-Improve},
+Year={2022},
+Eprint={arXiv:2210.11610},
 }
 
 [^2]: @article{dave2023stackoverflow,
@@ -274,53 +274,53 @@ Eprint = {arXiv:2210.11610},
 }
 
 [^5]: @misc{2306.15774,
-Author = {Xiang 'Anthony' Chen and Jeff Burke and Ruofei Du and Matthew K. Hong and Jennifer Jacobs and Philippe Laban and Dingzeyu Li and Nanyun Peng and Karl D. D. Willis and Chien-Sheng Wu and Bolei Zhou},
-Title = {Next Steps for Human-Centered Generative AI: A Technical Perspective},
-Year = {2023},
-Eprint = {arXiv:2306.15774},
+Author={Xiang 'Anthony' Chen and Jeff Burke and Ruofei Du and Matthew K. Hong and Jennifer Jacobs and Philippe Laban and Dingzeyu Li and Nanyun Peng and Karl D. D. Willis and Chien-Sheng Wu and Bolei Zhou},
+Title={Next Steps for Human-Centered Generative AI: A Technical Perspective},
+Year={2023},
+Eprint={arXiv:2306.15774},
 }
 
 [^6]: @misc{2306.08302,
-Author = {Shirui Pan and Linhao Luo and Yufei Wang and Chen Chen and Jiapu Wang and Xindong Wu},
-Title = {Unifying Large Language Models and Knowledge Graphs: A Roadmap},
-Year = {2023},
-Eprint = {arXiv:2306.08302},
+Author={Shirui Pan and Linhao Luo and Yufei Wang and Chen Chen and Jiapu Wang and Xindong Wu},
+Title={Unifying Large Language Models and Knowledge Graphs: A Roadmap},
+Year={2023},
+Eprint={arXiv:2306.08302},
 }
 
 [^7]: @article{2305.18339,
-Author = {Yuntao Wang and Yanghe Pan and Miao Yan and Zhou Su and Tom H. Luan},
-Title = {A Survey on ChatGPT: AI-Generated Contents, Challenges, and Solutions},
-Year = {2023},
-Eprint = {arXiv:2305.18339},
-Doi = {10.1109/OJCS.2023.3300321},
+Author={Yuntao Wang and Yanghe Pan and Miao Yan and Zhou Su and Tom H. Luan},
+Title={A Survey on ChatGPT: AI-Generated Contents, Challenges, and Solutions},
+Year={2023},
+Eprint={arXiv:2305.18339},
+Doi={10.1109/OJCS.2023.3300321},
 }
 
 [^8]: @misc{2108.13487,
-Author = {Shuohang Wang and Yang Liu and Yichong Xu and Chenguang Zhu and Michael Zeng},
-Title = {Want To Reduce Labeling Cost? GPT-3 Can Help},
-Year = {2021},
-Eprint = {arXiv:2108.13487},
+Author={Shuohang Wang and Yang Liu and Yichong Xu and Chenguang Zhu and Michael Zeng},
+Title={Want To Reduce Labeling Cost? GPT-3 Can Help},
+Year={2021},
+Eprint={arXiv:2108.13487},
 }
 
 [^9]: @misc{2307.10169,
-Author = {Jean Kaddour and Joshua Harris and Maximilian Mozes and Herbie Bradley and Roberta Raileanu and Robert McHardy},
-Title = {Challenges and Applications of Large Language Models},
-Year = {2023},
-Eprint = {arXiv:2307.10169},
+Author={Jean Kaddour and Joshua Harris and Maximilian Mozes and Herbie Bradley and Roberta Raileanu and Robert McHardy},
+Title={Challenges and Applications of Large Language Models},
+Year={2023},
+Eprint={arXiv:2307.10169},
 }
 
 [^10]: @misc{2212.10450,
-Author = {Bosheng Ding and Chengwei Qin and Linlin Liu and Yew Ken Chia and Shafiq Joty and Boyang Li and Lidong Bing},
-Title = {Is GPT-3 a Good Data Annotator?},
-Year = {2022},
-Eprint = {arXiv:2212.10450},
+Author={Bosheng Ding and Chengwei Qin and Linlin Liu and Yew Ken Chia and Shafiq Joty and Boyang Li and Lidong Bing},
+Title={Is GPT-3 a Good Data Annotator?},
+Year={2022},
+Eprint={arXiv:2212.10450},
 }
 
 [^11]: @misc{2306.11644,
-Author = {Suriya Gunasekar and Yi Zhang and Jyoti Aneja and Caio César Teodoro Mendes and Allie Del Giorno and Sivakanth Gopi and Mojan Javaheripi and Piero Kauffmann and Gustavo de Rosa and Olli Saarikivi and Adil Salim and Shital Shah and Harkirat Singh Behl and Xin Wang and Sébastien Bubeck and Ronen Eldan and Adam Tauman Kalai and Yin Tat Lee and Yuanzhi Li},
-Title = {Textbooks Are All You Need},
-Year = {2023},
-Eprint = {arXiv:2306.11644},
+Author={Suriya Gunasekar and Yi Zhang and Jyoti Aneja and Caio César Teodoro Mendes and Allie Del Giorno and Sivakanth Gopi and Mojan Javaheripi and Piero Kauffmann and Gustavo de Rosa and Olli Saarikivi and Adil Salim and Shital Shah and Harkirat Singh Behl and Xin Wang and Sébastien Bubeck and Ronen Eldan and Adam Tauman Kalai and Yin Tat Lee and Yuanzhi Li},
+Title={Textbooks Are All You Need},
+Year={2023},
+Eprint={arXiv:2306.11644},
 }
 
 [^12]: @inproceedings{yoo2021gpt3mix,
@@ -335,45 +335,45 @@ Eprint = {arXiv:2306.11644},
 }
 
 [^13]: @misc{2302.13007,
-Author = {Haixing Dai and Zhengliang Liu and Wenxiong Liao and Xiaoke Huang and Yihan Cao and Zihao Wu and Lin Zhao and Shaochen Xu and Wei Liu and Ninghao Liu and Sheng Li and Dajiang Zhu and Hongmin Cai and Lichao Sun and Quanzheng Li and Dinggang Shen and Tianming Liu and Xiang Li},
-Title = {AugGPT: Leveraging ChatGPT for Text Data Augmentation},
-Year = {2023},
-Eprint = {arXiv:2302.13007},
+Author={Haixing Dai and Zhengliang Liu and Wenxiong Liao and Xiaoke Huang and Yihan Cao and Zihao Wu and Lin Zhao and Shaochen Xu and Wei Liu and Ninghao Liu and Sheng Li and Dajiang Zhu and Hongmin Cai and Lichao Sun and Quanzheng Li and Dinggang Shen and Tianming Liu and Xiang Li},
+Title={AugGPT: Leveraging ChatGPT for Text Data Augmentation},
+Year={2023},
+Eprint={arXiv:2302.13007},
 }
 
 [^14]: @misc{1707.06347,
-Author = {John Schulman and Filip Wolski and Prafulla Dhariwal and Alec Radford and Oleg Klimov},
-Title = {Proximal Policy Optimization Algorithms},
-Year = {2017},
-Eprint = {arXiv:1707.06347},
+Author={John Schulman and Filip Wolski and Prafulla Dhariwal and Alec Radford and Oleg Klimov},
+Title={Proximal Policy Optimization Algorithms},
+Year={2017},
+Eprint={arXiv:1707.06347},
 }
 
 [^15]: @misc{2304.01852,
-Author = {Yiheng Liu and Tianle Han and Siyuan Ma and Jiayue Zhang and Yuanyuan Yang and Jiaming Tian and Hao He and Antong Li and Mengshen He and Zhengliang Liu and Zihao Wu and Dajiang Zhu and Xiang Li and Ning Qiang and Dingang Shen and Tianming Liu and Bao Ge},
-Title = {Summary of ChatGPT/GPT-4 Research and Perspective Towards the Future of Large Language Models},
-Year = {2023},
-Eprint = {arXiv:2304.01852},
+Author={Yiheng Liu and Tianle Han and Siyuan Ma and Jiayue Zhang and Yuanyuan Yang and Jiaming Tian and Hao He and Antong Li and Mengshen He and Zhengliang Liu and Zihao Wu and Dajiang Zhu and Xiang Li and Ning Qiang and Dingang Shen and Tianming Liu and Bao Ge},
+Title={Summary of ChatGPT/GPT-4 Research and Perspective Towards the Future of Large Language Models},
+Year={2023},
+Eprint={arXiv:2304.01852},
 }
 
 [^16]: @misc{2209.01538,
-Author = {Xin Mu and Ming Pang and Feida Zhu},
-Title = {Data Provenance via Differential Auditing},
-Year = {2022},
-Eprint = {arXiv:2209.01538},
+Author={Xin Mu and Ming Pang and Feida Zhu},
+Title={Data Provenance via Differential Auditing},
+Year={2022},
+Eprint={arXiv:2209.01538},
 }
 
 [^17]: @misc{2304.00612,
-Author = {Samuel R. Bowman},
-Title = {Eight Things to Know about Large Language Models},
-Year = {2023},
-Eprint = {arXiv:2304.00612},
+Author={Samuel R. Bowman},
+Title={Eight Things to Know about Large Language Models},
+Year={2023},
+Eprint={arXiv:2304.00612},
 }
 
 [^18]: @misc{2303.12712,
-Author = {Sébastien Bubeck and Varun Chandrasekaran and Ronen Eldan and Johannes Gehrke and Eric Horvitz and Ece Kamar and Peter Lee and Yin Tat Lee and Yuanzhi Li and Scott Lundberg and Harsha Nori and Hamid Palangi and Marco Tulio Ribeiro and Yi Zhang},
-Title = {Sparks of Artificial General Intelligence: Early experiments with GPT-4},
-Year = {2023},
-Eprint = {arXiv:2303.12712},
+Author={Sébastien Bubeck and Varun Chandrasekaran and Ronen Eldan and Johannes Gehrke and Eric Horvitz and Ece Kamar and Peter Lee and Yin Tat Lee and Yuanzhi Li and Scott Lundberg and Harsha Nori and Hamid Palangi and Marco Tulio Ribeiro and Yi Zhang},
+Title={Sparks of Artificial General Intelligence: Early experiments with GPT-4},
+Year={2023},
+Eprint={arXiv:2303.12712},
 }
 
 [^19]: @book{lanier2013future,
@@ -473,4 +473,41 @@ Eprint = {arXiv:2303.12712},
   day={27},
   journal={Phys.org},
   url={https://phys.org/news/2023-07-korean-team-room-temperature-ambient-pressure-superconductor.html}
+}
+
+[^30]: @misc{stackoverflow,
+  title={Stack Overflow},
+  year={2008},
+  url={https://stackoverflow.com/}
+}
+
+[^31]: @online{carr2023stackoverflow,
+  author={David F. Carr},
+  title={Stack Overflow is ChatGPT Casualty: Traffic Down 14% in March},
+  year={2023},
+  url={https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/},
+  note={Accessed: [insert date you accessed the website]},
+  month={April 19},
+  update={Updated June 21, 2023}
+}
+
+[^32]: @online{modular2023mojo,
+  title={Mojo 🔥 — a new programming language for all AI developers},
+  year={2023},
+  url={https://www.modular.com/mojo},
+  publisher={Modular},
+}
+
+[^33]: @online{modulardocs2023mojo,
+  title={Mojo Documentation},
+  year={2023},
+  url={https://docs.modular.com/mojo/},
+  publisher={Modular},
+}
+
+[^34]: @online{github2023copilotx,
+  title={Your AI pair programmer is leveling up},
+  year={2023},
+  url={https://github.com/features/preview/copilot-x},
+  publisher={GitHub},
 }
