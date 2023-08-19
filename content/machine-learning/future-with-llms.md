@@ -17,7 +17,7 @@ And how do you know this? How can you be sure? It's because: you have a "model o
 
 In the past 30 years, internet users have unwittingly built the largest, broadest, most diverse, most interesting dataset in human history from which to learn machine learning models. These data come in various forms, or "modalities," like images from Instagram, videos from YouTube, audio from various platforms, and text from Wikipedia, Reddit, and many more.
 
-ChatGPT is learned from text. Whereas you’ve trained your language model only on the language you've encountered in the handful of decades for which you've been alive, ChatGPT has been trained on a large chunk of all text ever written on the internet, period. For comparison, [Quora](https://www.quora.com/How-long-would-it-take-you-to-read-the-entire-internet) users estimate that this would take a human roughly "23.8 million years" to "you can't, so it's an impossible question" to "you would be dead long before you even made a start."
+ChatGPT is learned from text. Whereas you've trained your language model only on the language you've encountered in the handful of decades for which you've been alive, ChatGPT has been trained on a large chunk of all text ever written on the internet, period. For comparison, [Quora](https://www.quora.com/How-long-would-it-take-you-to-read-the-entire-internet) users estimate that this would take a human roughly "23.8 million years" to "you can't, so it's an impossible question" to "you would be dead long before you even made a start."
 
 This makes it very good at predicting the next word in a phrase, such as our earlier example about the boy and his boots. More generally, it can skillfully continue almost *any* text, such as "Can you recite me the Indonesian national anthem in the style of Shakespeare?" or "What should I make for dinner if I only have salmon and chocolate?" or "What's the best way to get to the moon?"
 
@@ -233,181 +233,222 @@ The LLM story is sure to evolve quickly. It's unclear where it will go. In the b
 # References
 
 ```
-[^1]: @online{johnson2023,
-    title={Exploring Methods for Model Selection and Training Data Curation},
-    author={Kathryn Johnson and others},
-    year={2023},
-    eprint={2210.11610},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG},
-    note={\url{https://arxiv.org/pdf/2210.11610.pdf}}
+[^1]: @misc{2210.11610,
+Author = {Jiaxin Huang and Shixiang Shane Gu and Le Hou and Yuexin Wu and Xuezhi Wang and Hongkun Yu and Jiawei Han},
+Title = {Large Language Models Can Self-Improve},
+Year = {2022},
+Eprint = {arXiv:2210.11610},
 }
-[^2]: @online{wired2023,
-    title={Stack Overflow Will Charge AI Giants for Training Data},
-    year={2023},
-    note={\url{https://www.wired.com/story/stack-overflow-will-charge-ai-giants-for-training-data/}}
+
+[^2]: @article{dave2023stackoverflow,
+  title={Stack Overflow Will Charge AI Giants for Training Data},
+  author={Dave, Paresh},
+  journal={Wired},
+  year={2023},
+  month={Apr},
+  day={20},
+  note={The programmer Q&A site joins Reddit in demanding compensation when its data is used to train algorithms and ChatGPT-style bots},
+  url={https://www.wired.com/story/stack-overflow-will-charge-ai-giants-for-training-data/},
+  timestamp={5:19 PM}
 }
-[^3]: @online{analyticsindiamag2023,
-    title={Is This the Beginning of the End of Stack Overflow?},
-    year={2023},
-    note={\url{https://analyticsindiamag.com/is-this-the-beginning-of-the-end-of-stack-overflow/}}
+
+[^3]: @article{anirudh2023stackoverflow,
+  title={Is This the Beginning of the End of Stack Overflow?},
+  author={Anirudh, VK},
+  journal={Analytics India Magazine},
+  year={2023},
+  month={Apr},
+  day={18},
+  note={Integrating an LLM into Stack Overflow won't make its problems disappear},
+  url={https://analyticsindiamag.com/is-this-the-beginning-of-the-end-of-stack-overflow/},
+  publisher={Endless Origins}
 }
-[^4]: @online{stackoverflow2023,
-    title={Community is the Future of AI},
-    year={2023},
-    note={\url{https://stackoverflow.blog/2023/04/17/community-is-the-future-of-ai/}}
+
+[^4]: @online{chandrasekar2023community,
+  title={Community is the future of AI},
+  author={Chandrasekar, Prashanth},
+  year={2023},
+  month={Apr},
+  day={17},
+  note={To keep knowledge open and accessible to all, we must come together to build the future of AI.},
+  url={https://stackoverflow.blog/2023/04/17/community-is-the-future-of-ai/},
+  publisher={Stack Overflow Blog},
+  organization={Stack Overflow}
 }
-[^5]: @online{zhang2023,
-    title={On the Community and Automation of Machine Learning},
-    author={Jiehang Zhang and others},
-    year={2023},
-    eprint={2306.15774},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG},
-    note={\url{https://arxiv.org/pdf/2306.15774.pdf}}
+
+[^5]: @misc{2306.15774,
+Author = {Xiang 'Anthony' Chen and Jeff Burke and Ruofei Du and Matthew K. Hong and Jennifer Jacobs and Philippe Laban and Dingzeyu Li and Nanyun Peng and Karl D. D. Willis and Chien-Sheng Wu and Bolei Zhou},
+Title = {Next Steps for Human-Centered Generative AI: A Technical Perspective},
+Year = {2023},
+Eprint = {arXiv:2306.15774},
 }
-[^6]: @online{lin2023,
-    title={Harnessing Data from the Wisdom of Crowds for Machine Learning},
-    author={Simon Lin and others},
-    year={2023},
-    eprint={2306.08302},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG},
-    note={\url{https://arxiv.org/abs/2306.08302}}
+
+[^6]: @misc{2306.08302,
+Author = {Shirui Pan and Linhao Luo and Yufei Wang and Chen Chen and Jiapu Wang and Xindong Wu},
+Title = {Unifying Large Language Models and Knowledge Graphs: A Roadmap},
+Year = {2023},
+Eprint = {arXiv:2306.08302},
 }
-[^7]: @online{singh2023,
-    title={Lessons Learned from the Deployment of an AI-Based Teacher Assistant},
-    author={Harshit Singh and others},
-    year={2023},
-    eprint={2305.18339},
-    archivePrefix={arXiv},
-    primaryClass={cs.AI},
-    note={\url{https://arxiv.org/abs/2305.18339}}
+
+[^7]: @article{2305.18339,
+Author = {Yuntao Wang and Yanghe Pan and Miao Yan and Zhou Su and Tom H. Luan},
+Title = {A Survey on ChatGPT: AI-Generated Contents, Challenges, and Solutions},
+Year = {2023},
+Eprint = {arXiv:2305.18339},
+Doi = {10.1109/OJCS.2023.3300321},
 }
-[^8]: @online{sun2022,
-    title={The High Stakes of Low-Level Details: A Close Reading of Disturbing Behaviors in AI Chatbots},
-    author={Sun, J. and others},
-    year={2022},
-    eprint={2202.05144},
-    archivePrefix={arXiv},
-    primaryClass={cs.AI},
-    note={\url{https://arxiv.org/abs/2202.05144}}
+
+[^8]: @misc{2108.13487,
+Author = {Shuohang Wang and Yang Liu and Yichong Xu and Chenguang Zhu and Michael Zeng},
+Title = {Want To Reduce Labeling Cost? GPT-3 Can Help},
+Year = {2021},
+Eprint = {arXiv:2108.13487},
 }
-[^9]: @online{rosenfeld2021,
-    title={Deciphering the components of national AI strategies},
-    author={Rosenfeld, E. and Vincent, N.},
-    year={2021},
-    eprint={2108.13487},
-    archivePrefix={arXiv},
-    primaryClass={cs.CY},
-    note={\url{https://arxiv.org/abs/2108.13487}}
+
+[^9]: @misc{2307.10169,
+Author = {Jean Kaddour and Joshua Harris and Maximilian Mozes and Herbie Bradley and Roberta Raileanu and Robert McHardy},
+Title = {Challenges and Applications of Large Language Models},
+Year = {2023},
+Eprint = {arXiv:2307.10169},
 }
-[^10]: @online{zhao2023,
-    title={Ethics as a Service: a pragmatic operationalisation of AI Ethics},
-    author={Zhao, J. and others},
-    year={2023},
-    eprint={2307.10169},
-    archivePrefix={arXiv},
-    primaryClass={cs.CY},
-    note={\url{https://arxiv.org/pdf/2307.10169.pdf}}
+
+[^10]: @misc{2212.10450,
+Author = {Bosheng Ding and Chengwei Qin and Linlin Liu and Yew Ken Chia and Shafiq Joty and Boyang Li and Lidong Bing},
+Title = {Is GPT-3 a Good Data Annotator?},
+Year = {2022},
+Eprint = {arXiv:2212.10450},
 }
-[^11]: @online{frase2022,
-    title={End User Licensing Agreements for AI Systems},
-    author={Frase, L. and others},
-    year={2022},
-    eprint={2212.10450},
-    archivePrefix={arXiv},
-    primaryClass={cs.AI},
-    note={\url{https://arxiv.org/abs/2212.10450}}
+
+[^11]: @misc{2306.11644,
+Author = {Suriya Gunasekar and Yi Zhang and Jyoti Aneja and Caio César Teodoro Mendes and Allie Del Giorno and Sivakanth Gopi and Mojan Javaheripi and Piero Kauffmann and Gustavo de Rosa and Olli Saarikivi and Adil Salim and Shital Shah and Harkirat Singh Behl and Xin Wang and Sébastien Bubeck and Ronen Eldan and Adam Tauman Kalai and Yin Tat Lee and Yuanzhi Li},
+Title = {Textbooks Are All You Need},
+Year = {2023},
+Eprint = {arXiv:2306.11644},
 }
-[^12]: @online{deng2023,
-    title={The Impact of Stack Overflow Data on AI Model Performance},
-    author={Deng, J. and others},
-    year={2023},
-    eprint={2306.11644},
-    archivePrefix={arXiv},
-    primaryClass={cs.AI},
-    note={\url{https://arxiv.org/abs/2306.11644}}
+
+[^12]: @inproceedings{yoo2021gpt3mix,
+  title={GPT3Mix: Leveraging Large-scale Language Models for Text Augmentation},
+  author={Yoo, Kang Min and Park, Dongju and Kang, Jaewook and Lee, Sang-Woo and Park, Woomyeong},
+  pages={192},
+  year={2021},
+  organization={NAVER AI Lab and NAVER Clova AI},
+  address={NAVER AI Lab and NAVER Clova AI},
+  email={{kangmin.yoo, dongju.park, jaewook.kang}@navercorp.com, {sang.woo.lee, max.park}@navercorp.com},
+  url={https://aclanthology.org/2021.findings-emnlp.192.pdf}
 }
-[^13]: @inproceedings{findings-emnlp2021,
-    title={A Review of the Evolution of Ethical Guidelines for AI Development},
-    author={N/A},
-    booktitle={Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (Findings)},
-    year={2021},
-    note={\url{https://aclanthology.org/2021.findings-emnlp.192.pdf}}
+
+[^13]: @misc{2302.13007,
+Author = {Haixing Dai and Zhengliang Liu and Wenxiong Liao and Xiaoke Huang and Yihan Cao and Zihao Wu and Lin Zhao and Shaochen Xu and Wei Liu and Ninghao Liu and Sheng Li and Dajiang Zhu and Hongmin Cai and Lichao Sun and Quanzheng Li and Dinggang Shen and Tianming Liu and Xiang Li},
+Title = {AugGPT: Leveraging ChatGPT for Text Data Augmentation},
+Year = {2023},
+Eprint = {arXiv:2302.13007},
 }
-[^14]: @online{liu2023,
-    title={A Sociotechnical Framework for the Development and Deployment of AI},
-    author={Liu, C. and others},
-    year={2023},
-    eprint={2302.13007},
-    archivePrefix={arXiv},
-    primaryClass={cs.CY},
-    note={\url{https://arxiv.org/pdf/2302.13007.pdf}}
+
+[^14]: @misc{1707.06347,
+Author = {John Schulman and Filip Wolski and Prafulla Dhariwal and Alec Radford and Oleg Klimov},
+Title = {Proximal Policy Optimization Algorithms},
+Year = {2017},
+Eprint = {arXiv:1707.06347},
 }
-[^15]: @book{lanier2013,
-    title={Who Owns the Future?},
-    author={Jaron Lanier},
-    publisher={Simon & Schuster},
-    year={2013},
-    chapter={Chapter 3}
+
+[^15]: @misc{2304.01852,
+Author = {Yiheng Liu and Tianle Han and Siyuan Ma and Jiayue Zhang and Yuanyuan Yang and Jiaming Tian and Hao He and Antong Li and Mengshen He and Zhengliang Liu and Zihao Wu and Dajiang Zhu and Xiang Li and Ning Qiang and Dingang Shen and Tianming Liu and Bao Ge},
+Title = {Summary of ChatGPT/GPT-4 Research and Perspective Towards the Future of Large Language Models},
+Year = {2023},
+Eprint = {arXiv:2304.01852},
 }
-[^16]: @online{openai2020,
-    title={ChatGPT},
-    year={2020},
-    note={\url{https://openai.com/blog/chatgpt}}
+
+[^16]: @misc{2209.01538,
+Author = {Xin Mu and Ming Pang and Feida Zhu},
+Title = {Data Provenance via Differential Auditing},
+Year = {2022},
+Eprint = {arXiv:2209.01538},
 }
-[^17]: @online{openai2021,
-    title={Instruction Following},
-    year={2021},
-    note={\url{https://openai.com/research/instruction-following}}
+
+[^17]: @misc{2304.00612,
+Author = {Samuel R. Bowman},
+Title = {Eight Things to Know about Large Language Models},
+Year = {2023},
+Eprint = {arXiv:2304.00612},
 }
-[^18]: @online{openai2021,
-    title={Learning from Human Preferences},
-    year={2021},
-    note={\url{https://openai.com/research/learning-from-human-preferences}}
+
+[^18]: @misc{2303.12712,
+Author = {Sébastien Bubeck and Varun Chandrasekaran and Ronen Eldan and Johannes Gehrke and Eric Horvitz and Ece Kamar and Peter Lee and Yin Tat Lee and Yuanzhi Li and Scott Lundberg and Harsha Nori and Hamid Palangi and Marco Tulio Ribeiro and Yi Zhang},
+Title = {Sparks of Artificial General Intelligence: Early experiments with GPT-4},
+Year = {2023},
+Eprint = {arXiv:2303.12712},
 }
-[^19]: @online{openai2021,
-    title={OpenAI Baselines: PPO},
-    year={2021},
-    note={\url{https://openai.com/research/openai-baselines-ppo}}
+
+[^19]: @book{lanier2013future,
+  title={Who owns the future?},
+  author={Lanier, Jaron},
+  year={2013},
+  publisher={Simon & Schuster}
 }
-[^20]: @online{schulman2017,
-    title={Proximal Policy Optimization Algorithms},
-    author={Schulman, J. and others},
-    year={2017},
-    eprint={1707.06347},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG},
-    note={\url{https://arxiv.org/pdf/1707.06347.pdf}}
+
+[^20]: @online{openai2022chatgpt,
+  title={Introducing ChatGPT},
+  author={OpenAI},
+  year={2022},
+  month={11},
+  day={30},
+  url={https://openai.com/blog/chatgpt}
 }
-[^21]: @online{you2023,
-    title={A Survey of Annotation Methods for AI Model Development},
-    author={You, Z. and others},
-    year={2023},
-    eprint={2304.01852},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG},
-    note={\url{https://arxiv.org/pdf/2304.01852.pdf}}
+
+[^21]: @online{openai2022instruction,
+  title={Aligning language models to follow instructions},
+  author={OpenAI},
+  year={2022},
+  month={01},
+  day={27},
+  url={https://openai.com/research/instruction-following}
 }
-[^22]: @online{lee2022,
-    title={Public Engagement in AI Development: A Case Study},
-    author={Lee, D. and others},
-    year={2022},
-    eprint={2209.01538},
-    archivePrefix={arXiv},
-    primaryClass={cs.CY},
-    note={\url{https://arxiv.org/abs/2209.01538}}
+
+[^22]: @online{openai2017humanprefs,
+  title={Learning from human preferences},
+  author={OpenAI},
+  year={2017},
+  month={06},
+  day={13},
+  url={https://openai.com/research/learning-from-human-preferences}
 }
-[^23]: @online{huggingface2022,
-    title={Training Chatbots with Reinforcement Learning at Hugging Face},
-    year={2022},
-    note={\url{https://huggingface.co/blog/rlhf}}
+
+[^23]: @online{openai2017ppo,
+  title={Proximal Policy Optimization},
+  author={OpenAI},
+  year={2017},
+  month={07},
+  day={20},
+  url={https://openai.com/research/openai-baselines-ppo}
 }
-[^24]: @online{durmonski2020,
-    title={Who Owns The Future: 5 Things We Learned From Jaron Lanier},
-    year={2020},
-    note={\url{https://durmonski.com/book-summaries/who-owns-the-future/#5-lesson-2-ordinary-people-are-not-compensated-for-the-information-taken-from-them}}
+
+[^24]: @online{huggingface2022rlhf,
+  title={Illustrating Reinforcement Learning from Human Feedback (RLHF)},
+  author={Nathan Lambert and Louis Castricato and Leandro von Werra and Alex Havrilla},
+  year={2022},
+  month={12},
+  day={9},
+  url={https://huggingface.co/blog/rlhf},
+  organization={Hugging Face}
 }
-https://cims.nyu.edu/~sbowman/eightthings.pdf
+
+[^25]: @online{durmonski2023owns,
+  title={Who Owns The Future? by Jaron Lanier [Actionable Summary]},
+  author={Ivaylo Durmonski},
+  year={2023},
+  month={7},
+  day={7},
+  url={https://durmonski.com/book-summaries/who-owns-the-future/#5-lesson-2-ordinary-people-are-not-compensated-for-the-information-taken-from-them},
+  organization={Durmonski.com},
+  note={Actionable Book Summaries, Science & Tech Book Summaries}
+}
+
+[^26]: @article{bubeck2023sparks,
+  title={Sparks of Artificial General Intelligence: Early experiments with GPT-4},
+  author={Bubeck, Sébastien and Chandrasekaran, Varun and Eldan, Ronen and Gehrke, Johannes and Horvitz, Eric and Kamar, Ece and Lee, Peter and Lee, Yin Tat and Li, Yuanzhi and Lundberg, Scott and Nori, Harsha and Palangi, Hamid and Ribeiro, Marco Tulio and Zhang, Yi},
+  year={2023},
+  month={3},
+  publisher={Microsoft Research},
+  url={https://www.microsoft.com/en-us/research/publication/sparks-of-artificial-general-intelligence-early-experiments-with-gpt-4/}
+}
 ```
