@@ -33,7 +33,7 @@ Throughout my career, I've learned almost every ML problem is a story about data
 
 With this in mind, here are a few keys points regarding where we stand today:
 
-**Static knowledge**: ChatGPT's language model (GPT-4) has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the system loves to restate this limitation). Encapsulated in this data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can summarize news articles; as the nature of summarization doesn't really evolve year over year, the model does not per se require any more data to accomplish this task. It has enough already.
+**Static knowledge**: ChatGPT's language model (GPT-4) has been trained on a large chunk of the written internet, dated through September 2021 (as users will now know by heart, as the system loves to restate this limitation). Encapsulated in these data is the knowledge required to solve a substantial number of *static-knowledge* tasks. For example, the model can summarize news articles; as the nature of summarization doesn't really evolve year over year, the model does not per se require any more data to accomplish this task. It has enough already.
 
 **Dynamic knowledge**: Conversely, imagine that we'd like to translate classical Greek into modern English. Well, what does "modern" mean? Language constantly evolves[^28] to include new vocabularly and modes of expression. So, while the fundamentals of translation don't really change, the contemporary details do. To keep pace with these details, the model needs to be updated with examples of this text. I surely wasn't saying "that's lit" myself ten years ago.
 
@@ -154,17 +154,17 @@ Finally, the question of *when or why* this type of system might ever be introdu
 
 ## How will we compensate data providers?
 
-Much like LLMs, business is a story about data as well. For instance, historical customer purchase data allows a business to prioritize which products and services to sell in the the future. Customer characteristics like age, location, gender, and political preferences enable more targeted advertisements. Data collected in feedback forms hint at new products that customers might buy.
+Much like LLMs, business is a story about data as well. For instance, historical customer purchase data allows a business to prioritize which products and services to sell. Customer attributes like age, location, gender, and political preference enable more targeted advertisements. Data collected in feedback forms hint at new products that customers might buy.
 
-Before the internet, companies employed a variety of traditional methods to collect these data: questionnaires or comment cards, tracking purchases and preferences through loyalty cards, and utilizing demographic information and other publicly available data. With the internet, the game changed overnight. Now, companies could track every page visit, click, and even [eye movements](https://theconversation.com/companies-are-increasingly-tracking-eye-movements-but-is-it-ethical-191842#:~:text=Apple%2C%20Google%2C%20Snap%2C%20Microsoft,contact%20lenses%20and%20AR%20headsets.). In addition, they encouraged the creation of data expressing *implicit* user preferences, such as pictures on Instagram, chats between friends on Messenger, videos on YouTube. Much like before, these data offered clear value to businesses.
+Before the internet, companies employed a variety of traditional methods to collect these data: questionnaires or comment cards, tracking purchases and preferences through loyalty cards, and utilizing demographic information and other publicly available data. With the internet, the game changed overnight. Now, companies can track every page visit, click, and even eye movements[^37]. In addition, they encourage the creation of data expressing *implicit* user preferences, such as pictures on Instagram, chats between friends on Messenger, videos on YouTube. Much like before, these data offer clear value to businesses.
 
-Other types of data were valuable as well. Expert replies on question-answer sites like Quora offered informational value to users, and garnered reputational value for the author herself. Basic data annotation enabled machine learning practitioners to train models. In [this](https://open.spotify.com/episode/26xt8MwmfaBlmU6GFjYumu) episode of The Daily, Sheera Frenkel discusses how fantasy story writing communities a sense of purpose and satisfaction to writers, and of course entertainment value to readers. Finally, online courses on sites like [Platzi](https://platzi.com/) offer clear educational value to students.
+Other types of data are valuable as well. Expert replies on question-answer sites like Quora offer informational value to users, and garner reputational value for the author herself. Basic data annotation enables machine learning practitioners to train models. In this[^38] episode of The Daily, Sheera Frenkel discusses how fantasy story writing communities give a sense of purpose and satisfaction to their writers, and of course entertainment value to their readers. Finally, online courses on sites like [Platzi](https://platzi.com/) offer clear educational value to students.
 
 Overall, these data remain valuable to diverse parties in myriad ways.
 
 ### Current compensation for individuals
 
-In exchange for the data above, its *creators* are *compensated* through the following three means:
+In exchange for the data above, its creators are compensated through the following three means:
 
 - **Financial**: Direct payments, royalties, or subscription fees for music, art, literature, educational material, data annotation, and more.
 
@@ -174,25 +174,25 @@ In exchange for the data above, its *creators* are *compensated* through the fol
 
 ### What do LLMs providers value?
 
-LLMs represent an entirely new consumer of data. As such, as a function of the ways in which these models will be used, LLM providers value different things. Already, "beyond its mastery of language, GPT-4 [the LLM behind ChatGPT] can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more, without needing any special prompting. Moreover, in all of these tasks, GPT-4's performance is strikingly close to human-level performance." Conversely, beyond hallucination, what are these systems *not* good at? What do they need to be maximally useful and achieve widespread user adoption? Finally, how will model providers compensate those that provide the requisite data?
+LLMs represent an entirely new consumer of data. As such, as a function of the ways in which these models will be used, LLM providers value different things. Already, "beyond its mastery of language, GPT-4 can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more, without needing any special prompting. Moreover, in all of these tasks, GPT-4's performance is strikingly close to human-level performance."[^18] Conversely, beyond hallucination, what are these systems *not* good at? What do they need to be maximally useful and achieve widespread user adoption? Finally, how will model providers compensate those that provide the requisite data?
 
-**New information**: First and foremost, LLMs need to learn new information as detailed above. In exchange for this information, model providers could compensate data creators financially. For instance, OpenAI might ([continue](https://www.nytimes.com/2023/04/18/technology/reddit-ai-openai-google.html) to) pay Reddit for its forum data, or pay the NYT for the articles that its staff writes.
+**New information**: First and foremost, LLMs need to learn new information as detailed above. In exchange for this information, model providers could compensate data creators financially. For instance, OpenAI might (continue[^39] to) pay Reddit for its forum data, or pay the NYT for the articles that its staff writes.
 
-**Multi-turn feedback**: Responding to factoid questions is easy; maintaining a coherent and intuitive conversation over multiple "turns" is comparatively more difficult. As LLMs are increasingly used for conversational use cases, these type of data become more relevant. Ironically, the predominant place where these data will likely be created are in human-LLM conversations themselves. As such, model providers may offer free usage of their services in exchange for these data, neatly mirroring the "free but invasive but no one cares" models that Facebook and Google refined.
+**Multi-turn feedback**: Responding to factoid questions is easy; maintaining a coherent and intuitive conversation over multiple "turns" is comparatively harder. As LLMs are increasingly used for conversational use cases, these type of data become more relevant. Ironically, the predominant place where these data will likely be created are in human-LLM conversations themselves. As such, model providers may offer free usage of their services in exchange for these data, neatly mirroring the "free but invasive but no one cares" playbook that Facebook and Google have perfected.
 
-**Answering subjective questions**: When answering a subjective question, a model should provide one or many credible viewpoints in response. For instance, "Why did the United States experience inflation in 2021 and onward?" should be addressed with the diverse perspectives of capable economists. Irrespective of who these economists are chosen to be, it's clear that the "airtime" they will receive will be immense. As such, being *the* person featured by *the* LLM offers significant reputational benefits, much like being the top search result on the Google of today.
+**Answering subjective questions**: When answering a subjective question, a model should provide one or many credible viewpoints in response. For instance, "Why did the United States experience inflation in 2021 and onward?" should be addressed with the diverse perspectives of capable economists. Irrespective of who these economists are chosen to be, it's clear that the "airtime" they will receive will be immense. As such, being *the* person featured by *the* LLM offers significant reputational benefits, much like being the top search result on Google in years past.
 
 ### Future compensation models
 
-Taken together, future compensation models may resemble those current but with a few small changes:
+Taken together, future compensation models might look as follows:
 
-- **Financial**: Direct payment for data dumps, application usage data, etc. In addition, data providers may achieve royalty (micro) payments every time their data are referenced in a model output.
+- **Financial**: Direct payment for data dumps, application usage data, etc. In addition, data providers may achieve (micro) royalty[^19] payments[^25] every time their data are referenced in a model output.
 
-- **Reputation**: Becoming *the* response from *the* LLM offers similar benefit to being a "top answer" on today's question-answer sites. To wit, GitHub Copilot is [already](https://github.blog/2023-08-03-introducing-code-referencing-for-github-copilot/#:~:text=Today%2C%20we're%20announcing%20a,matching%20public%20code%20on%20GitHub.&text=Make%20more%20informed%20decisions%20about%20the%20code%20you%20use.) implementing such "attribution" features that could achieve this effect.
+- **Reputation**: Becoming *the* response from *the* LLM offers similar benefit to being a "top answer" on today's question-answer sites. To wit, GitHub Copilot is already[^40] implementing such "attribution" features.
 
-- **Spiritual**: This form of compensation may really change. As we "share our unique voice" with the LLM, e.g. a short story that we've written, the model can effectively "impersonate" us forever thereafter? Will this "digital immortality" inspire feelings of personal grandeur? Or, despair for the fact that we're "no longer needed?" Similarly, how will people feel interacting with an intelligence superior to their own? These questions are highly uncertain and will find answers in time.
+- **Spiritual**: This form of compensation may really change. As we "share our unique voice" with the LLM, e.g. a short story that we've written, the model can effectively "impersonate" us thereafter—forever. Will this "digital immortality" inspire feelings of personal grandeur? Or, despair for the fact that we're "no longer needed?" Similarly, how will people feel interacting with an intelligence superior to their own? These questions are highly uncertain and will find answers in time.
 
-**Overall, models for data compensation in a world with LLMs will largely remain static.** However, the spiritual experience of contributing data to this model will be novel.
+**Overall, models for data compensation in a world with LLMs will largely remain static.** However, the spiritual experience of contributing data to and interacting with these models will evolve materially, challenging our perceptions of identity, purpose, and place in the digital cosmos.
 
 ## Will data annotation be lucrative?
 
@@ -481,8 +481,7 @@ Eprint={arXiv:2303.12712},
   author={David F. Carr},
   title={Stack Overflow is ChatGPT Casualty: Traffic Down 14% in March},
   year={2023},
-  url={https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/},
-  note={Accessed: [insert date you accessed the website]},
+  url={https://www.similarweb.com/blog/insights/ai-news/stack-overflow-chatgpt/}
   month={April 19},
   update={Updated June 21, 2023}
 }
@@ -509,20 +508,58 @@ Eprint={arXiv:2303.12712},
 }
 
 [^35]: @article{hu2023chatgpt,
-  title = {ChatGPT sets record for fastest-growing user base - analyst note},
-  author = {Hu, Krystal},
-  journal = {Reuters},
-  year = {2023},
-  month = {Feb},
-  day = {2},
-  url = {https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/},
-  note = {Accessed: [insert date you accessed the website]}
+  title={ChatGPT sets record for fastest-growing user base - analyst note},
+  author={Hu, Krystal},
+  journal={Reuters},
+  year={2023},
+  month={Feb},
+  day={2},
+  url={https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/}
 }
 
 [^36]: @misc{wikipedia2023information,
-  title = {Information retrieval},
-  author = {Wikipedia, The Free Encyclopedia},
-  year = {2023},
-  note = {Available: \url{https://en.wikipedia.org/wiki/Information_retrieval}},
-  lastaccessed = {Accessed: [insert date you accessed the website]}
+  title={Information retrieval},
+  author={Wikipedia, The Free Encyclopedia},
+  year={2023},
+  note={Available: \url{https://en.wikipedia.org/wiki/Information_retrieval}}
+}
+
+[^37]: @online{lecomte2022,
+  author={Patrick Lecomte},
+  title={Companies are increasingly tracking eye movements — but is it ethical?},
+  year={2022},
+  url={https://theconversation.com/companies-are-increasingly-tracking-eye-movements-but-is-it-ethical-191842},
+  note={Published: October 16, 2022 8.28am EDT},
+  organization={The Conversation},
+  institution={Université du Québec à Montréal (UQAM)},
+  keywords={eye tracking, ethics}
+}
+
+[^38]: @misc{frenkel2023,
+  author={Sheera Frenkel},
+  title={The Writer's Revolt Against AI Companies},
+  year={2023},
+  note={Episode of The Daily},
+  howpublished={Available at: \url{https://open.spotify.com/episode/26xt8MwmfaBlmU6GFjYumu}},
+  organization={The New York Times},
+  abstract={To refine their popular technology, new artificial intelligence platforms like Chat-GPT are gobbling up the work of authors, poets, comedians and actors — without their consent. Sheera Frenkel, a technology correspondent for The Times, explains why a rebellion is brewing.},
+  keywords={AI, Chat-GPT, rebellion, technology, ethics}
+}
+
+[^39]: @online{ngila2023reddit,
+  title={AI bots trained on Reddit conversations. Now Reddit wants to be paid for it.},
+  author={Ngila, Faustine},
+  year={2023},
+  month={April},
+  day={19},
+  url={https://qz.com/reddit-ai-bots-training-payment-1850352526},
+  publisher={Quartz}
+}
+
+@online{salva2023introducing,
+    author={Ryan J. Salva},
+    title={Introducing code referencing for GitHub Copilot},
+    year={2023},
+    url={https://github.blog/2023-08-03-introducing-code-referencing-for-github-copilot/},
+    month={August}
 }
