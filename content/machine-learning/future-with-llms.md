@@ -192,7 +192,7 @@ Taken together, future compensation models might look as follows:
 
 - **Spiritual**: This form of compensation may really change. As we "share our unique voice" with the LLM, e.g. a short story that we've written, the model can effectively "impersonate" us thereafter—forever. Will this "digital immortality" inspire feelings of personal grandeur? Or, despair for the fact that we're "no longer needed?" Similarly, how will people feel interacting with an intelligence superior to their own? These questions are highly uncertain and will find answers in time.
 
-**Overall, models for data compensation in a world with LLMs will largely remain static.** However, the spiritual experience of contributing data to and interacting with these models will evolve materially, challenging our perceptions of identity, purpose, and place in the digital cosmos.
+**Overall, models for data compensation in a world with LLMs will remain similar to those of today.** However, the spiritual experience of contributing data to and interacting with these models will evolve materially, challenging our perceptions of identity, purpose, and place in the digital cosmos.
 
 ## Will data annotation be lucrative?
 
@@ -222,7 +222,7 @@ Crucially, though, this type of work is one among many. To date, jobs in physica
 
 # Conclusion
 
-The LLM story is sure to evolve quickly. It's unclear where it will go. In the best case, human knowledge, satisfaction, and general well-being compound exponentially. Fingers crossed.
+The LLM story is sure to evolve quickly. It's unclear where it will go. In the best case, human knowledge, satisfaction, and general well-being compound exponentially. My fingers are crossed.
 
 # References
 
