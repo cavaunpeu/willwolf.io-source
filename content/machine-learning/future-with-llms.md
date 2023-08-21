@@ -118,7 +118,7 @@ Lastly, by associating tasks with clusters of conversations and their descriptio
 
 ## How do we solve the hallucination problem?
 
-"Hallucation" is when an LLM says things that have no basis in fact or reality. If we knew *when* the model did this, we could simply restrict those outputs; if we knew *why*, we could design better models that hallucinate less. Unfortunately, the answers to these questions remain elusive[^17].
+"Hallucination" is when an LLM says things that have no basis in fact or reality. If we knew *when* the model did this, we could simply restrict those outputs; if we knew *why*, we could design better models that hallucinate less. Unfortunately, the answers to these questions remain elusive[^17].
 
 Retrieval[^37] models select outputs from a fixed "menu" of choices. In this way, we implicitly "solve" the hallucination problem by explicitly restricting a priori what the model can and can't "say." Generative models, on the other hand, make a different trade-off: by allowing the model to generate novel content *ex nihilo*, we forfeit some of this control.
 
