@@ -43,8 +43,8 @@ ABOUT_PAGE_LINK_TEXT = 'About'
 ARCHIVE_PAGE = 'archive/'
 ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 
-RESUME_PAGE = 'resume/'
-RESUME_PAGE_LINK_TEXT = 'Résumé'
+# RESUME_PAGE = 'resume/'
+# RESUME_PAGE_LINK_TEXT = 'Résumé'
 
 CONSULTING_PAGE = 'consulting/'
 CONSULTING_PAGE_LINK_TEXT = 'Consulting'
