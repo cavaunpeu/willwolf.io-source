@@ -46,6 +46,9 @@ ARCHIVE_PAGE_LINK_TEXT = 'Archive'
 RESUME_PAGE = 'resume/'
 RESUME_PAGE_LINK_TEXT = 'Résumé'
 
+CONSULTING_PAGE = 'consulting/'
+CONSULTING_PAGE_LINK_TEXT = 'Consulting'
+
 BOOKS_PAGE = 'books/'
 BOOKS_PAGE_LINK_TEXT = 'Books'
 

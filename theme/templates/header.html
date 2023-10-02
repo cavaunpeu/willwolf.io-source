@@ -22,6 +22,9 @@
           {% if RESUME_PAGE %}
               <li><a href="{{ main_siteurl }}/images/resume.pdf" title="{{ RESUME_PAGE_LINK_TEXT }}"></span> {{ RESUME_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
+          {% if CONSULTING_PAGE %}
+              <li><a href="{{ main_siteurl }}/{{ CONSULTING_PAGE }}" title="{{ CONSULTING_PAGE_LINK_TEXT }}"></span> {{ CONSULTING_PAGE_LINK_TEXT }}</a></li>
+          {% endif %}
           {% if BOOKS_PAGE %}
               <li><a href="{{ main_siteurl }}/{{ BOOKS_PAGE }}" title="{{ BOOKS_PAGE_LINK_TEXT }}">{{ BOOKS_PAGE_LINK_TEXT }}</a></li>
           {% endif %}
