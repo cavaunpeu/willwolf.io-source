@@ -17,9 +17,19 @@ In addition, I've maintained a keen interest in "statistical" machine learning t
 
 **Taken together, I'd be a good person to hire for:**
 
-- Applied research: researching and developing novel ML-based products.
+- Applied research: researching and prototyping novel ML-based products.
 - Software engineering: building production ML systems.
 - Advisory: ML product development, infrastructure and tooling, data collection and labeling, team structure and hiring, etc.
+
+# Multi-agent systems
+
+After ASAPP, I took time to [explore]({filename}/life/exploring-crypto.md) topics in complex systems and simulation in the context of crypto. In that time, I spent a ~year working at [Block Science](https://block.science/) where I built dynamical pricing models for a peer-to-peer compute network, as well as simulations of the rewards economy implicit in a "we pay you for your stock picks" hedge fund. In addition, I worked on a variety of personal [projects]({filename}/crypto/crypto-projects.md) in this space. Currently, I work on the Core Risk team at [Gauntlet](https://www.gauntlet.xyz/) where I build algorithms and systems for statistical risk management in DeFi.
+
+**Taken together, I'd be a good person to hire for:**
+
+- Applied research: researching and prototyping models of multi-agent systems.
+- Software engineering: building production simulation systems.
+- Advisory: simulation product development, infrastructure and tooling, team structure and hiring, etc.
 
 # summary
 
