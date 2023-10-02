@@ -5,7 +5,7 @@ Lang: en
 Slug: consulting
 Status: published
 Template: page
-<!-- Image: images/books.jpg -->
+Image: images/will.jpg
 
 As time permits, I am available for consulting and advisory work in the following areas:
 
@@ -31,6 +31,32 @@ After ASAPP, I took time to [explore]({filename}/life/exploring-crypto.md) topic
 - Software engineering: building production simulation systems.
 - Advisory: simulation product development, infrastructure and tooling, team structure and hiring, etc.
 
-# summary
+# Rust
 
-Crucially, this work cannot conflict with my full-time employ at [Gauntlet](https://www.gauntlet.xyz/).
+I've been learning Rust since 2021. I've built a few small projects in the language, including a simple simulation [framework](https://github.com/cavaunpeu/simsim) for generalized dynamical systems. I'd love to do more.
+
+**Taken together, I'd be a good person to hire for:**
+
+- Tooling: Rust-based tooling for ML and simulation. For instance, writing NLP tokenizers in Rust for use in Python, or a Rust-based simulation engine.
+- Software engineering: building production systems in Rust. Though I have 10 years' experience in Python, I'd likely need a bit of supervision here to start.
+
+# Domains of interest
+
+Here are some domains I'd be particularly interested in working in:
+
+- Autonomous digital agents
+- Autonomous physical agents, e.g. autonomous vehicles
+- Education
+- Foreign language learning
+- Robotics
+- Logistics and transportation
+- Defense
+
+This said, I'm open to working in any domain where I can learn something new and interesting amongst fantastic peers.
+
+# Notes
+
+Crucially, this work cannot conflict with my full-time employ at [Gauntlet](https://www.gauntlet.xyz/). For rates and availability, please email me at williamabrwolf [at] gmail [dot] com. Social links can be found below.
+
+
+Cheers 😊
