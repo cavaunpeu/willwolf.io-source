@@ -7,7 +7,7 @@ Status: published
 Template: page
 Image: images/will.jpg
 
-As time permits, I am available for consulting and advisory work in the following areas:
+As time permits, and not in conflict with any full-time employ I might hold, I am available for consulting and advisory work in the following areas:
 
 # 1️⃣ Machine learning
 
@@ -55,8 +55,8 @@ Here are some domains I'd be particularly interested in working in:
 
 This said, I'm open to working in any domain where I can learn something new and interesting amongst fantastic peers.
 
-# Notes
+# Contact
 
-Crucially, this work cannot conflict with my full-time employ. For rates and availability, please email me at williamabrwolf [at] gmail [dot] com. Social links can be found below.
+For rates and availability, please email me at williamabrwolf [at] gmail [dot] com. Additional social links can be found below.
 
 Cheers 😊
