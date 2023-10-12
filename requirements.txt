@@ -5,7 +5,7 @@ backports-abc==0.5
 beautifulsoup4==4.8.2
 bleach==3.3.0
 blinker==1.4
-certifi==2020.4.5.1
+certifi==2022.12.7
 decorator==4.4.2
 defusedxml==0.6.0
 disqus-python==0.4.2
