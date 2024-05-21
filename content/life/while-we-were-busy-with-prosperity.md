@@ -16,8 +16,6 @@ While my peers are very diverse in race, culture, gender and geography, I don'
 
 As it is now so grippingly clear, these people do exist, and in numbers! They are blue collar workers. They are white men and white women from Middle America. They are Latina females in Florida. They are tailgaters at Penn State football games. They are critical thinkers from Ohio. And I don't know a single one.
 
-![trump rally]({static}/images/trump_rally.jpeg)
-
 Republican presidential candidate, Donald Trump, waves to supporters after speaking at a campaign rally at the I-X Center Saturday, March 12, 2016, in Cleveland. (AP Photo/Tony Dejak)[/caption]
 
 We have spent our adult lives in swift, upward mobility. We went to strong Universities because we went to strong high schools. For many, our parents paid for our education, leaving us as debt-free graduates with little existential challenge beyond navigating the subway map. Thereafter, we moved to great cities and found great jobs. We traveled internationally. We learned to speak Russian, to play the viola, to build ceramic pots on the weekends and take pictures with a DSLR. Moreover, from birth, we were taught that education, self-diversification and intellectual curiosity were normal and cool. Simply, we were taught how to dream.
