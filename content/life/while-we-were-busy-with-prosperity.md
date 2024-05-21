@@ -5,7 +5,6 @@ Lang: en
 Slug: while-we-were-busy-with-prosperity
 Status: published
 Summary: Some whirling thoughts on the Trump election.
-Image: images/trump_rally.jpeg
 
 I address this post to my peers - to my liberal, driven, University-educated and multi-cultural counterparts.
 
