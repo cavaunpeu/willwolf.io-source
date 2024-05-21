@@ -1,4 +1,4 @@
-Title: Soft Power in the Age of Deepfakes
+Title: Soft Power in the Age of Generative Models
 Date: 2020-03-12 8:00
 Author: Will Wolf
 Lang: en
