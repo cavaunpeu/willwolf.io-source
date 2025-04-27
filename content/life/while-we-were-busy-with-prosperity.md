@@ -5,7 +5,6 @@ Lang: en
 Slug: while-we-were-busy-with-prosperity
 Status: published
 Summary: Some whirling thoughts on the Trump election.
-Image: images/trump_rally.jpeg
 
 I address this post to my peers - to my liberal, driven, University-educated and multi-cultural counterparts.
 
@@ -16,8 +15,6 @@ Like most of you, I spent the day of Donald Trump's election in a state of disb
 While my peers are very diverse in race, culture, gender and geography, I don't believe a single one voted for Trump.
 
 As it is now so grippingly clear, these people do exist, and in numbers! They are blue collar workers. They are white men and white women from Middle America. They are Latina females in Florida. They are tailgaters at Penn State football games. They are critical thinkers from Ohio. And I don't know a single one.
-
-![trump rally]({static}/images/trump_rally.jpeg)
 
 Republican presidential candidate, Donald Trump, waves to supporters after speaking at a campaign rally at the I-X Center Saturday, March 12, 2016, in Cleveland. (AP Photo/Tony Dejak)[/caption]
 

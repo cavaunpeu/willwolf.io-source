@@ -7,7 +7,6 @@ Save_as: 2016/10/12/simulating-the-colombian-peace-vote-did-the-no-really-win-2/
 Slug: simulating-the-colombian-peace-vote-did-the-no-really-win-2
 Status: published
 Summary: Una simulación estadística del [plebiscito colombiano de 2016](https://en.wikipedia.org/wiki/Colombian_peace_agreement_referendum,_2016).
-Image: ../images/colombian_plebiscite_vote.jpg
 
 El 2 de octubre del 2016, observé con terror como los colombianos votaron por el "No" en su plebiscito nacional para decretar el recién firmado acuerdo de paz. En la siguiente semana, medité sobre el resultado y las cosas que hubieran sucedido: la gran campaña de desinformación, las payasadas de Uribe y lo súper bueno que realmente parecía el [acuerdo](https://www.youtube.com/playlist?list=PLa28R7QEiMblKeZ_OlZ_XfjjxjfeIhpuL) mismo. Hace dos días, me topé por casualidad con este [post](https://theconversation.com/colombia-did-not-vote-no-in-its-peace-referendum-what-the-statistics-reveal-66471), que nos pide recordar que el margen escaso con el que ganó el "No" - 6,431,376 vs. 6,377,482 - no es particularmente convincente, ni, en realidad, tan decisivo frente al error humano.
 
@@ -18,8 +17,6 @@ En otras palabras, fueron seres humanos - seres humanos agotados - contando los 
 > The technology of tired humans sorting pieces of paper into four stacks is, at best, crude. As a large research literature has made clear, we can reasonably assume that even well-rested people would have made mistakes with between 0.5% and 1% of the ballots. On this estimate, about 65,000-130,000 votes would have been unintentionally misclassified. It means the number of innocent counting errors could easily be substantially larger than the 53,894 yes-no difference.
 
 ¿Sería posible que la mayoría quería el "Sí" y sin embargo perdió igual?
-
-![plebiscite vote]({static}/images/colombian_plebiscite_vote.jpg)
 
 Para investigarlo, podemos formular el proceso del voto como un sencillo proceso estadístico y preguntarse: "Si repitiéramos el plebiscito muchas más veces, ¿con qué frecuencia ganaría el 'Sí' de verdad?"
 

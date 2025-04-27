@@ -5,7 +5,6 @@ Lang: en
 Slug: simulating-the-colombian-peace-vote-did-the-no-really-win
 Status: published
 Summary: A post-mortem statistical simulation of the [2016 Colombian plebiscite](https://en.wikipedia.org/wiki/Colombian_peace_agreement_referendum,_2016).
-Image: images/colombian_plebiscite_vote.jpg
 
 On October 2nd, 2016, I watched in awe as Colombia's national plebiscite for its just-signed peace accord narrowly failed. For the following week, I brooded over the result: the disinformation campaign, Uribe's antics, and just how good the [deal](https://www.youtube.com/playlist?list=PLa28R7QEiMblKeZ_OlZ_XfjjxjfeIhpuL) really seemed to be. Two days ago, I chanced upon this [post](https://theconversation.com/colombia-did-not-vote-no-in-its-peace-referendum-what-the-statistics-reveal-66471), which reminds us that the razor-thin margin - 6,431,376 "No" vs. 6,377,482 "Yes" - is not particularly convincing, nor, as it happens, immune to human error.
 
@@ -16,8 +15,6 @@ In other words, it was humans - tired humans - counting ballots by hand.
 > The technology of tired humans sorting pieces of paper into four stacks is, at best, crude. As a large research literature has made clear, we can reasonably assume that even well-rested people would have made mistakes with between 0.5% and 1% of the ballots. On this estimate, about 65,000-130,000 votes would have been unintentionally misclassified. It means the number of innocent counting errors could easily be substantially larger than the 53,894 yes-no difference.
 
 Is it possible that the majority wanted "Yes" and still happened to lose?
-
-![plebiscite vote]({static}/images/colombian_plebiscite_vote.jpg)
 
 To answer this question, we can frame the vote as a simple statistical process and ask: "if we were to re-hold the vote many more times, how often would the 'Yes' vote actually win?"
 
